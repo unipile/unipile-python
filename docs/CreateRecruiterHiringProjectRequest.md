@@ -1,0 +1,35 @@
+# CreateRecruiterHiringProjectRequest
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **str** | The name of the project. | 
+**visibility** | **str** | The vibility of the project. | 
+**description** | **str** | The description of the project. | [optional] 
+**company** | [**CreateRecruiterHiringProjectRequestCompany**](CreateRecruiterHiringProjectRequestCompany.md) |  | [optional] 
+**job_title** | [**CreateRecruiterHiringProjectRequestJobTitle**](CreateRecruiterHiringProjectRequestJobTitle.md) |  | [optional] 
+**location** | **str** |  | [optional] 
+**seniority_level** | **str** | The level of experience. | [optional] 
+
+## Example
+
+```python
+from unipile.models.create_recruiter_hiring_project_request import CreateRecruiterHiringProjectRequest
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of CreateRecruiterHiringProjectRequest from a JSON string
+create_recruiter_hiring_project_request_instance = CreateRecruiterHiringProjectRequest.from_json(json)
+# print the JSON string representation of the object
+print(CreateRecruiterHiringProjectRequest.to_json())
+
+# convert the object into a dict
+create_recruiter_hiring_project_request_dict = create_recruiter_hiring_project_request_instance.to_dict()
+# create an instance of CreateRecruiterHiringProjectRequest from a dict
+create_recruiter_hiring_project_request_from_dict = CreateRecruiterHiringProjectRequest.from_dict(create_recruiter_hiring_project_request_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
