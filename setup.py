@@ -20,7 +20,7 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-NAME = "unipile"
+NAME = "Unipile"
 VERSION = "2.0.0"
 PYTHON_REQUIRES = ">= 3.9"
 REQUIRES = [
@@ -36,7 +36,7 @@ setup(
     description="Unipile API",
     author="Unipile",
     author_email="team@openapitools.org",
-    url="",
+    url="https://www.unipile.com",
     keywords=["OpenAPI", "OpenAPI-Generator", "Unipile API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
