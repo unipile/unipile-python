@@ -302,9 +302,10 @@ from unipile.models.image import Image
 from unipile.models.image1 import Image1
 from unipile.models.image1_size import Image1Size
 from unipile.models.image_size import ImageSize
+from unipile.models.in_audk import InAUDK
 from unipile.models.in_app_validation import InAppValidation
-from unipile.models.in_k import InK
-from unipile.models.in_k1 import InK1
+from unipile.models.in_gbpk import InGBPK
+from unipile.models.in_usdk import InUSDK
 from unipile.models.include_activities import IncludeActivities
 from unipile.models.instagram import Instagram
 from unipile.models.instagram_config import InstagramConfig

@@ -14,10 +14,10 @@
 
 import unittest
 
-from unipile.models.in_k import InK
+from unipile.models.in_usdk import InUSDK
 
-class TestInK(unittest.TestCase):
-    """InK unit test stubs"""
+class TestInUSDK(unittest.TestCase):
+    """InUSDK unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,28 +25,28 @@ class TestInK(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> InK:
-        """Test InK
+    def make_instance(self, include_optional) -> InUSDK:
+        """Test InUSDK
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `InK`
+        # uncomment below to create an instance of `InUSDK`
         """
-        model = InK()
+        model = InUSDK()
         if include_optional:
-            return InK(
+            return InUSDK(
                 currency = 'USD',
                 starting_from = 40
             )
         else:
-            return InK(
+            return InUSDK(
                 currency = 'USD',
                 starting_from = 40,
         )
         """
 
-    def testInK(self):
-        """Test InK"""
+    def testInUSDK(self):
+        """Test InUSDK"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
