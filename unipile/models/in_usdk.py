@@ -22,9 +22,9 @@ from typing import Any, ClassVar, Dict, List, Union
 from typing import Optional, Set
 from typing_extensions import Self
 
-class InK1(BaseModel):
+class InUSDK(BaseModel):
     """
-    Only available for jobs located in the UK.
+    Only available for jobs located in the US.
     """ # noqa: E501
     currency: StrictStr
     starting_from: Union[StrictFloat, StrictInt] = Field(description="The minimum amount.")
@@ -33,15 +33,15 @@ class InK1(BaseModel):
     @field_validator('currency')
     def currency_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['GBP']):
-            raise ValueError("must be one of enum values ('GBP')")
+        if value not in set(['USD']):
+            raise ValueError("must be one of enum values ('USD')")
         return value
 
     @field_validator('starting_from')
     def starting_from_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set([20, 30, 40, 50, 60, 70, 80, 90, 100]):
-            raise ValueError("must be one of enum values (20, 30, 40, 50, 60, 70, 80, 90, 100)")
+        if value not in set([40, 60, 80, 100, 120, 140, 160, 180, 200]):
+            raise ValueError("must be one of enum values (40, 60, 80, 100, 120, 140, 160, 180, 200)")
         return value
 
     model_config = ConfigDict(
@@ -62,7 +62,7 @@ class InK1(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of InK1 from a JSON string"""
+        """Create an instance of InUSDK from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -87,7 +87,7 @@ class InK1(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of InK1 from a dict"""
+        """Create an instance of InUSDK from a dict"""
         if obj is None:
             return None
 

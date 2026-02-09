@@ -298,9 +298,10 @@ docs/Image.md
 docs/Image1.md
 docs/Image1Size.md
 docs/ImageSize.md
+docs/InAUDK.md
 docs/InAppValidation.md
-docs/InK.md
-docs/InK1.md
+docs/InGBPK.md
+docs/InUSDK.md
 docs/IncludeActivities.md
 docs/Instagram.md
 docs/InstagramApi.md
@@ -371,7 +372,6 @@ docs/PartialProfile1.md
 docs/PartialProfileWorkExperienceInner.md
 docs/ParticipantRemovedFromChatGroup.md
 docs/ParticipantRoleUpdated.md
-docs/PatchesApi.md
 docs/PeopleSearch.md
 docs/PeopleSearch1.md
 docs/PeopleSearch1DataInner.md
@@ -862,8 +862,9 @@ test/test_imap_config.py
 test/test_imap_connections_parameters.py
 test/test_imap_credentials.py
 test/test_in_app_validation.py
-test/test_in_k.py
-test/test_in_k1.py
+test/test_in_audk.py
+test/test_in_gbpk.py
+test/test_in_usdk.py
 test/test_include_activities.py
 test/test_instagram.py
 test/test_instagram_api.py
@@ -934,7 +935,6 @@ test/test_partial_profile1.py
 test/test_partial_profile_work_experience_inner.py
 test/test_participant_removed_from_chat_group.py
 test/test_participant_role_updated.py
-test/test_patches_api.py
 test/test_people_search.py
 test/test_people_search1.py
 test/test_people_search1_data_inner.py
@@ -1134,7 +1134,6 @@ unipile/api/hosted_auth_api.py
 unipile/api/instagram_api.py
 unipile/api/linked_in_api.py
 unipile/api/messaging_api.py
-unipile/api/patches_api.py
 unipile/api/posts_api.py
 unipile/api/users_api.py
 unipile/api/webhooks_api.py
@@ -1433,8 +1432,9 @@ unipile/models/imap_config.py
 unipile/models/imap_connections_parameters.py
 unipile/models/imap_credentials.py
 unipile/models/in_app_validation.py
-unipile/models/in_k.py
-unipile/models/in_k1.py
+unipile/models/in_audk.py
+unipile/models/in_gbpk.py
+unipile/models/in_usdk.py
 unipile/models/include_activities.py
 unipile/models/instagram.py
 unipile/models/instagram_config.py

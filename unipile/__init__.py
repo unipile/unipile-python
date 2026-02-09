@@ -26,7 +26,6 @@ __all__ = [
     "InstagramApi",
     "LinkedInApi",
     "MessagingApi",
-    "PatchesApi",
     "PostsApi",
     "UsersApi",
     "WebhooksApi",
@@ -328,9 +327,10 @@ __all__ = [
     "Image1",
     "Image1Size",
     "ImageSize",
+    "InAUDK",
     "InAppValidation",
-    "InK",
-    "InK1",
+    "InGBPK",
+    "InUSDK",
     "IncludeActivities",
     "Instagram",
     "InstagramConfig",
@@ -594,7 +594,6 @@ from unipile.api.hosted_auth_api import HostedAuthApi as HostedAuthApi
 from unipile.api.instagram_api import InstagramApi as InstagramApi
 from unipile.api.linked_in_api import LinkedInApi as LinkedInApi
 from unipile.api.messaging_api import MessagingApi as MessagingApi
-from unipile.api.patches_api import PatchesApi as PatchesApi
 from unipile.api.posts_api import PostsApi as PostsApi
 from unipile.api.users_api import UsersApi as UsersApi
 from unipile.api.webhooks_api import WebhooksApi as WebhooksApi
@@ -900,9 +899,10 @@ from unipile.models.image import Image as Image
 from unipile.models.image1 import Image1 as Image1
 from unipile.models.image1_size import Image1Size as Image1Size
 from unipile.models.image_size import ImageSize as ImageSize
+from unipile.models.in_audk import InAUDK as InAUDK
 from unipile.models.in_app_validation import InAppValidation as InAppValidation
-from unipile.models.in_k import InK as InK
-from unipile.models.in_k1 import InK1 as InK1
+from unipile.models.in_gbpk import InGBPK as InGBPK
+from unipile.models.in_usdk import InUSDK as InUSDK
 from unipile.models.include_activities import IncludeActivities as IncludeActivities
 from unipile.models.instagram import Instagram as Instagram
 from unipile.models.instagram_config import InstagramConfig as InstagramConfig

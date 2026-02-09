@@ -213,8 +213,6 @@ Class | Method | HTTP request | Description
 *MessagingApi* | [**start_chat**](docs/MessagingApi.md#start_chat) | **POST** /v2/{account_id}/chats/send | Start a Chat
 *MessagingApi* | [**start_chat_from_inbox**](docs/MessagingApi.md#start_chat_from_inbox) | **POST** /v2/{account_id}/inboxes/{inbox_id}/chats/send | Start a Chat from Inbox
 *MessagingApi* | [**update_chat**](docs/MessagingApi.md#update_chat) | **PATCH** /v2/{account_id}/chats/{chat_id} | Update a Chat
-*PatchesApi* | [**update_post**](docs/PatchesApi.md#update_post) | **PATCH** /v2/{account_id}/posts/{post_id} | Update a Post
-*PatchesApi* | [**update_post_comment**](docs/PatchesApi.md#update_post_comment) | **PATCH** /v2/{account_id}/posts/{post_id}/comments/{comment_id} | Update a Comment
 *PostsApi* | [**add_post_comment**](docs/PostsApi.md#add_post_comment) | **POST** /v2/{account_id}/posts/{post_id}/comments | Add Comment to a Post
 *PostsApi* | [**add_post_comment_reaction**](docs/PostsApi.md#add_post_comment_reaction) | **POST** /v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions | Add Reaction to a Comment
 *PostsApi* | [**add_post_reaction**](docs/PostsApi.md#add_post_reaction) | **POST** /v2/{account_id}/posts/{post_id}/reactions | Add Reaction to a Post
@@ -230,6 +228,8 @@ Class | Method | HTTP request | Description
 *PostsApi* | [**remove_post_comment_reaction**](docs/PostsApi.md#remove_post_comment_reaction) | **DELETE** /v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions | Remove Reaction from a Comment
 *PostsApi* | [**remove_post_reaction**](docs/PostsApi.md#remove_post_reaction) | **DELETE** /v2/{account_id}/posts/{post_id}/reactions | Remove Reaction from a Post
 *PostsApi* | [**reply_to_comment**](docs/PostsApi.md#reply_to_comment) | **POST** /v2/{account_id}/posts/{post_id}/comments/{comment_id} | Reply to a Comment
+*PostsApi* | [**update_post**](docs/PostsApi.md#update_post) | **PATCH** /v2/{account_id}/posts/{post_id} | Update a Post
+*PostsApi* | [**update_post_comment**](docs/PostsApi.md#update_post_comment) | **PATCH** /v2/{account_id}/posts/{post_id}/comments/{comment_id} | Update a Comment
 *UsersApi* | [**accept_relation_request**](docs/UsersApi.md#accept_relation_request) | **POST** /v2/{account_id}/users/me/relation-requests/{request_id}/accept | Accept a Relation request
 *UsersApi* | [**cancel_relation_request**](docs/UsersApi.md#cancel_relation_request) | **POST** /v2/{account_id}/users/me/relation-requests/{request_id}/cancel | Cancel or Refuse a Relation / Follow request
 *UsersApi* | [**create_relation_request**](docs/UsersApi.md#create_relation_request) | **POST** /v2/{account_id}/users/me/relation-requests | Send a Relation request
@@ -543,9 +543,10 @@ Class | Method | HTTP request | Description
  - [Image1](docs/Image1.md)
  - [Image1Size](docs/Image1Size.md)
  - [ImageSize](docs/ImageSize.md)
+ - [InAUDK](docs/InAUDK.md)
  - [InAppValidation](docs/InAppValidation.md)
- - [InK](docs/InK.md)
- - [InK1](docs/InK1.md)
+ - [InGBPK](docs/InGBPK.md)
+ - [InUSDK](docs/InUSDK.md)
  - [IncludeActivities](docs/IncludeActivities.md)
  - [Instagram](docs/Instagram.md)
  - [InstagramConfig](docs/InstagramConfig.md)

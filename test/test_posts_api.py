@@ -131,6 +131,20 @@ class TestPostsApi(unittest.TestCase):
         """
         pass
 
+    def test_update_post(self) -> None:
+        """Test case for update_post
+
+        Update a Post
+        """
+        pass
+
+    def test_update_post_comment(self) -> None:
+        """Test case for update_post_comment
+
+        Update a Comment
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

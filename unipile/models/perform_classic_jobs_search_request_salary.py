@@ -19,28 +19,31 @@ import pprint
 import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Optional
-from unipile.models.in_k import InK
-from unipile.models.in_k1 import InK1
+from unipile.models.in_audk import InAUDK
+from unipile.models.in_gbpk import InGBPK
+from unipile.models.in_usdk import InUSDK
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-PERFORMCLASSICJOBSSEARCHREQUESTSALARY_ANY_OF_SCHEMAS = ["InK", "InK1"]
+PERFORMCLASSICJOBSSEARCHREQUESTSALARY_ANY_OF_SCHEMAS = ["InAUDK", "InGBPK", "InUSDK"]
 
 class PerformClassicJobsSearchRequestSalary(BaseModel):
     """
     The minimum salary.    Native filter : Salary   
     """
 
-    # data type: InK
-    anyof_schema_1_validator: Optional[InK] = None
-    # data type: InK1
-    anyof_schema_2_validator: Optional[InK1] = None
+    # data type: InUSDK
+    anyof_schema_1_validator: Optional[InUSDK] = None
+    # data type: InAUDK
+    anyof_schema_2_validator: Optional[InAUDK] = None
+    # data type: InGBPK
+    anyof_schema_3_validator: Optional[InGBPK] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[InK, InK1]] = None
+        actual_instance: Optional[Union[InAUDK, InGBPK, InUSDK]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "InK", "InK1" }
+    any_of_schemas: Set[str] = { "InAUDK", "InGBPK", "InUSDK" }
 
     model_config = {
         "validate_assignment": True,
@@ -61,21 +64,27 @@ class PerformClassicJobsSearchRequestSalary(BaseModel):
     def actual_instance_must_validate_anyof(cls, v):
         instance = PerformClassicJobsSearchRequestSalary.model_construct()
         error_messages = []
-        # validate data type: InK
-        if not isinstance(v, InK):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `InK`")
+        # validate data type: InUSDK
+        if not isinstance(v, InUSDK):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `InUSDK`")
         else:
             return v
 
-        # validate data type: InK1
-        if not isinstance(v, InK1):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `InK1`")
+        # validate data type: InAUDK
+        if not isinstance(v, InAUDK):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `InAUDK`")
+        else:
+            return v
+
+        # validate data type: InGBPK
+        if not isinstance(v, InGBPK):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `InGBPK`")
         else:
             return v
 
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in PerformClassicJobsSearchRequestSalary with anyOf schemas: InK, InK1. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in PerformClassicJobsSearchRequestSalary with anyOf schemas: InAUDK, InGBPK, InUSDK. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -88,22 +97,28 @@ class PerformClassicJobsSearchRequestSalary(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[InK] = None
+        # anyof_schema_1_validator: Optional[InUSDK] = None
         try:
-            instance.actual_instance = InK.from_json(json_str)
+            instance.actual_instance = InUSDK.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[InK1] = None
+        # anyof_schema_2_validator: Optional[InAUDK] = None
         try:
-            instance.actual_instance = InK1.from_json(json_str)
+            instance.actual_instance = InAUDK.from_json(json_str)
+            return instance
+        except (ValidationError, ValueError) as e:
+             error_messages.append(str(e))
+        # anyof_schema_3_validator: Optional[InGBPK] = None
+        try:
+            instance.actual_instance = InGBPK.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into PerformClassicJobsSearchRequestSalary with anyOf schemas: InK, InK1. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into PerformClassicJobsSearchRequestSalary with anyOf schemas: InAUDK, InGBPK, InUSDK. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -117,7 +132,7 @@ class PerformClassicJobsSearchRequestSalary(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], InK, InK1]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], InAUDK, InGBPK, InUSDK]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None
