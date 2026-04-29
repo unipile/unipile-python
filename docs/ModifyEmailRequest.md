@@ -5,7 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**folders_ids** | **List[Optional[str]]** | The ID(s) of the folder(s) to apply, overwriting all folders previously associated with the Email. Outlook emails can be in a single folder only. Google allows a single email to appear in multiple folders. | 
+**folders_ids** | **List[Optional[str]]** | The ID(s) of the folder(s) to apply, overwriting all folders previously associated with the Email. Outlook emails can be in a single folder only. Google allows a single email to appear in multiple folders. | [optional] 
+**specifics** | [**ModifyEmailRequestSpecifics**](ModifyEmailRequestSpecifics.md) |  | [optional] 
 
 ## Example
 

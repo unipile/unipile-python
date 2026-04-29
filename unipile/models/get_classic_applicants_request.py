@@ -19,10 +19,10 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from unipile.models.get_classic_applicants_request_years_of_experience_inner import GetClassicApplicantsRequestYearsOfExperienceInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetClassicApplicantsRequest(BaseModel):
     """
@@ -31,9 +31,9 @@ class GetClassicApplicantsRequest(BaseModel):
     ratings: Optional[List[StrictStr]] = Field(default=None, description="A list of ratings to filter applicants.")
     keywords: Optional[StrictStr] = Field(default=None, description="A keyword or group of keywords.")
     sort_by: Optional[StrictStr] = Field(default='APPLIED_DATE', description="The sort method.")
-    location: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Location   ")
+    location: Optional[List[StrictStr]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Location   ")
     years_of_experience: Optional[List[GetClassicApplicantsRequestYearsOfExperienceInner]] = Field(default=None, description="A list of years ranges.")
-    skills: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `SKILL` type to find out the possible values.    Native filter : Skilled in   ")
+    skills: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `SKILL` type to find out the possible values.    Native filter : Skilled in   ")
     __properties: ClassVar[List[str]] = ["ratings", "keywords", "sort_by", "location", "years_of_experience", "skills"]
 
     @field_validator('ratings')
@@ -58,7 +58,8 @@ class GetClassicApplicantsRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -70,8 +71,7 @@ class GetClassicApplicantsRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

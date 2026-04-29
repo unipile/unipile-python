@@ -37,36 +37,36 @@ class TestEditExistingExperience(unittest.TestCase):
             return EditExistingExperience(
                 notify_network = True,
                 job_title = unipile.models.edit_existing_experience_job_title.Edit_existing_experience_job_title(
-                    text = '', 
-                    id = '4', ),
-                employment_type = '4',
+                    name = '', 
+                    id = '', ),
+                employment_type = '',
                 company = unipile.models.edit_existing_experience_company.Edit_existing_experience_company(
-                    text = '', 
-                    id = '4', ),
+                    name = '', 
+                    id = '', ),
                 location = unipile.models.edit_existing_experience_location.Edit_existing_experience_location(
-                    text = '', 
-                    id = '4', ),
+                    name = '', 
+                    id = '', ),
                 workplace_type = 'ON_SITE',
-                start_date = unipile.models.new_experience_start_date.New_experience_start_date(
+                start_date = unipile.models.create_new_experience_start_date.Create_new_experience_start_date(
                     month = 1.337, 
                     year = 1.337, ),
-                end_date = unipile.models.new_experience_end_date.New_experience_end_date(
+                end_date = unipile.models.create_new_experience_end_date.Create_new_experience_end_date(
                     month = 1.337, 
                     year = 1.337, ),
                 description = '',
                 source_of_hire = 'INDEED',
                 skills = [
-                    unipile.models.new_experience_skills_inner.New_experience_skills_inner(
-                        text = '', 
-                        id = '4', )
+                    unipile.models.create_new_experience_skills_inner.Create_new_experience_skills_inner(
+                        name = '', 
+                        id = '', )
                     ],
-                attachment = None,
-                attachment_title = '',
-                attachment_description = '',
+                media = None,
+                operation = 'edit',
                 id = ''
             )
         else:
             return EditExistingExperience(
+                operation = 'edit',
                 id = '',
         )
         """

@@ -19,17 +19,18 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_certifications_inner_organization import GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization
+from unipile.models.linked_in_certifications_inner_organization import LinkedInCertificationsInnerOrganization
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PartialProfileWorkExperienceInner(BaseModel):
     """
     PartialProfileWorkExperienceInner
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Id of the work experience entry.")
-    company: GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization
-    title: StrictStr = Field(description="Position name in the experience.")
+    company: LinkedInCertificationsInnerOrganization
+    job_title: StrictStr = Field(description="Job title of the experience.")
     started_on: Optional[StrictStr] = Field(default=None, description="Start date of the experience in MM/DD/YYYY format.")
     ended_on: Optional[StrictStr] = Field(default=None, description="End date of the experience in MM/DD/YYYY format.")
     location: Optional[StrictStr] = Field(default=None, description="Location of the experience.")
@@ -38,7 +39,7 @@ class PartialProfileWorkExperienceInner(BaseModel):
     workplace_type: Optional[StrictStr] = Field(default=None, description="Workplace type of the experience.")
     skills: Optional[List[StrictStr]] = Field(default=None, description="Skills acquired with experience.")
     skills_preview: Optional[StrictStr] = Field(default=None, description="Insight of the skills acquired with experience.")
-    __properties: ClassVar[List[str]] = ["id", "company", "title", "started_on", "ended_on", "location", "description", "employment_type", "workplace_type", "skills", "skills_preview"]
+    __properties: ClassVar[List[str]] = ["id", "company", "job_title", "started_on", "ended_on", "location", "description", "employment_type", "workplace_type", "skills", "skills_preview"]
 
     @field_validator('employment_type')
     def employment_type_validate_enum(cls, value):
@@ -61,7 +62,8 @@ class PartialProfileWorkExperienceInner(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -73,8 +75,7 @@ class PartialProfileWorkExperienceInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -115,8 +116,8 @@ class PartialProfileWorkExperienceInner(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "company": GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization.from_dict(obj["company"]) if obj.get("company") is not None else None,
-            "title": obj.get("title"),
+            "company": LinkedInCertificationsInnerOrganization.from_dict(obj["company"]) if obj.get("company") is not None else None,
+            "job_title": obj.get("job_title"),
             "started_on": obj.get("started_on"),
             "ended_on": obj.get("ended_on"),
             "location": obj.get("location"),

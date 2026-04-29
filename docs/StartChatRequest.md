@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **name** | **str** | A custom name for the chat. Some providers allow custom names only on groups. Default is made of participant names. | [optional] 
 **users_ids** | [**StartChatRequestUsersIds**](StartChatRequestUsersIds.md) |  | 
 **attachments** | [**List[MessageFile]**](MessageFile.md) | The list of file attachments to the message to be sent in the chat. | [optional] 
-**options** | **object** |  | [optional] 
 **specifics** | [**StartChatRequestSpecifics**](StartChatRequestSpecifics.md) |  | [optional] 
 
 ## Example

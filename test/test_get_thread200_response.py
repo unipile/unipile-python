@@ -77,6 +77,9 @@ class TestGetThread200Response(unittest.TestCase):
                         folders = [
                             ''
                             ], 
+                        categories = [
+                            ''
+                            ], 
                         is_unread = True, )
                     ]
             )
@@ -122,6 +125,9 @@ class TestGetThread200Response(unittest.TestCase):
                             null
                             ], 
                         folders = [
+                            ''
+                            ], 
+                        categories = [
                             ''
                             ], 
                         is_unread = True, )

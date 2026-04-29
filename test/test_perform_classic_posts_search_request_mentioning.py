@@ -36,10 +36,10 @@ class TestPerformClassicPostsSearchRequestMentioning(unittest.TestCase):
         if include_optional:
             return PerformClassicPostsSearchRequestMentioning(
                 member = [
-                    '4'
+                    ''
                     ],
                 company = [
-                    '4'
+                    ''
                     ]
             )
         else:

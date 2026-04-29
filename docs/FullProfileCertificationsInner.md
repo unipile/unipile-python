@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **str** | Name of the certification. | 
-**organization** | [**GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization**](GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization.md) |  | 
+**organization** | [**LinkedInCertificationsInnerOrganization**](LinkedInCertificationsInnerOrganization.md) |  | 
 **issued_on** | **str** | Date the certification was issued in MM/DD/YYYY format. | [optional] 
 **expires_on** | **str** | Expiration date of the certification in MM/DD/YYYY format. | [optional] 
 **license** | **str** | License identifier. | [optional] 

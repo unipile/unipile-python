@@ -6,7 +6,7 @@ Specific options to apply if the provider of the targeted account is Instagram
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**location** | [**CreatePostRequestSpecificsAllOfInstagramLocation**](CreatePostRequestSpecificsAllOfInstagramLocation.md) |  | [optional] 
+**location_id** | **str** | The ID of the location to tag the post with. | [optional] 
 
 ## Example
 

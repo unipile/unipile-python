@@ -36,6 +36,7 @@ class TestCreateAuthLinkRequest(unittest.TestCase):
         if include_optional:
             return CreateAuthLinkRequest(
                 expires_on = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                domain = '',
                 redirect_uri = '',
                 state = '',
                 config = unipile.models.link_new_account_config.Link_new_account_config(

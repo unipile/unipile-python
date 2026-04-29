@@ -22,6 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ListWebhookConversations200ResponseDataInner(BaseModel):
     """
@@ -29,10 +30,10 @@ class ListWebhookConversations200ResponseDataInner(BaseModel):
     """ # noqa: E501
     first_attempt: StrictBool
     event_type: Annotated[str, Field(strict=True, max_length=255)]
-    created_at: Optional[StrictStr]
+    created_at: Optional[StrictStr] = Field(description="The ID of the Company.")
     http_status: Optional[Annotated[int, Field(le=2147483647, strict=True, ge=-2147483648)]]
-    endpoint_url: Optional[StrictStr]
-    response_body: Optional[StrictStr]
+    endpoint_url: Optional[StrictStr] = Field(description="The ID of the Company.")
+    response_body: Optional[StrictStr] = Field(description="The ID of the Company.")
     object: StrictStr
     id: Annotated[str, Field(strict=True)]
     endpoint_id: Annotated[str, Field(strict=True)]
@@ -49,6 +50,9 @@ class ListWebhookConversations200ResponseDataInner(BaseModel):
     @field_validator('id')
     def id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
         if not re.match(r"^wc_(.*)$", value):
             raise ValueError(r"must validate the regular expression /^wc_(.*)$/")
         return value
@@ -56,6 +60,9 @@ class ListWebhookConversations200ResponseDataInner(BaseModel):
     @field_validator('endpoint_id')
     def endpoint_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
         if not re.match(r"^we_(.*)$", value):
             raise ValueError(r"must validate the regular expression /^we_(.*)$/")
         return value
@@ -63,12 +70,16 @@ class ListWebhookConversations200ResponseDataInner(BaseModel):
     @field_validator('event_id')
     def event_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
         if not re.match(r"^evt_(.*)$", value):
             raise ValueError(r"must validate the regular expression /^evt_(.*)$/")
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -80,8 +91,7 @@ class ListWebhookConversations200ResponseDataInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

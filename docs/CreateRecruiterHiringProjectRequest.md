@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **description** | **str** | The description of the project. | [optional] 
 **company** | [**CreateRecruiterHiringProjectRequestCompany**](CreateRecruiterHiringProjectRequestCompany.md) |  | [optional] 
 **job_title** | [**CreateRecruiterHiringProjectRequestJobTitle**](CreateRecruiterHiringProjectRequestJobTitle.md) |  | [optional] 
-**location** | **str** |  | [optional] 
+**location** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_LOCATION&#x60; type to find out the possible values. | [optional] 
 **seniority_level** | **str** | The level of experience. | [optional] 
 
 ## Example

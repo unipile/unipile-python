@@ -37,7 +37,7 @@ class TestSearchLocations200ResponseInner(unittest.TestCase):
             return SearchLocations200ResponseInner(
                 object = 'InstagramLocation',
                 id = '',
-                id_source = '',
+                source = '',
                 name = '',
                 address = '',
                 latitude = 1.337,
@@ -47,7 +47,7 @@ class TestSearchLocations200ResponseInner(unittest.TestCase):
             return SearchLocations200ResponseInner(
                 object = 'InstagramLocation',
                 id = '',
-                id_source = '',
+                source = '',
                 name = '',
         )
         """

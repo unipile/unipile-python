@@ -38,6 +38,7 @@ class TestGetChatsList200ResponseDataInner(unittest.TestCase):
                 object = 'Chat',
                 id = '',
                 name = '',
+                label = '',
                 description = '',
                 image_url = '',
                 created_at = '',

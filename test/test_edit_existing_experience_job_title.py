@@ -35,12 +35,12 @@ class TestEditExistingExperienceJobTitle(unittest.TestCase):
         model = EditExistingExperienceJobTitle()
         if include_optional:
             return EditExistingExperienceJobTitle(
-                text = '',
-                id = '4'
+                name = '',
+                id = ''
             )
         else:
             return EditExistingExperienceJobTitle(
-                text = '',
+                name = '',
         )
         """
 

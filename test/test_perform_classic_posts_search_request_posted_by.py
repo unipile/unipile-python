@@ -36,10 +36,10 @@ class TestPerformClassicPostsSearchRequestPostedBy(unittest.TestCase):
         if include_optional:
             return PerformClassicPostsSearchRequestPostedBy(
                 member = [
-                    '4'
+                    ''
                     ],
                 company = [
-                    '4'
+                    ''
                     ],
                 me = True,
                 relations = True,

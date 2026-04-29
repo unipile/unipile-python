@@ -38,22 +38,23 @@ class TestCompaniesSearch(unittest.TestCase):
                 data = [
                     unipile.models.companies_search_data_inner.Companies_Search_data_inner(
                         object = 'CompanySearchResult', 
-                        product = 'sales_navigator', 
                         id = '', 
                         display_name = '', 
-                        type = '', 
-                        specialties = [
-                            ''
-                            ], 
                         public_identifier = '', 
                         profile_url = '', 
                         public_picture_url = '', 
+                        public_picture_url_large = '', 
                         location = '', 
                         industry = '', 
                         summary = '', 
-                        headcount = 1.337, 
-                        is_hiring_on_linkedin = True, 
                         relations_count = 1.337, 
+                        product = 'sales_navigator', 
+                        type = '', 
+                        headcount = 1.337, 
+                        specialties = [
+                            ''
+                            ], 
+                        is_hiring_on_linkedin = True, 
                         lists_count = 1.337, 
                         notes_count = 1.337, 
                         website = '', 
@@ -69,22 +70,23 @@ class TestCompaniesSearch(unittest.TestCase):
                 data = [
                     unipile.models.companies_search_data_inner.Companies_Search_data_inner(
                         object = 'CompanySearchResult', 
-                        product = 'sales_navigator', 
                         id = '', 
                         display_name = '', 
-                        type = '', 
-                        specialties = [
-                            ''
-                            ], 
                         public_identifier = '', 
                         profile_url = '', 
                         public_picture_url = '', 
+                        public_picture_url_large = '', 
                         location = '', 
                         industry = '', 
                         summary = '', 
-                        headcount = 1.337, 
-                        is_hiring_on_linkedin = True, 
                         relations_count = 1.337, 
+                        product = 'sales_navigator', 
+                        type = '', 
+                        headcount = 1.337, 
+                        specialties = [
+                            ''
+                            ], 
+                        is_hiring_on_linkedin = True, 
                         lists_count = 1.337, 
                         notes_count = 1.337, 
                         website = '', 

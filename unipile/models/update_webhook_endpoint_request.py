@@ -22,17 +22,19 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class UpdateWebhookEndpointRequest(BaseModel):
     """
     UpdateWebhookEndpointRequest
     """ # noqa: E501
     trigger_events: Optional[List[StrictStr]] = Field(default=None, description="The events that will trigger the webhook endpoint.           Refer to [Events Types](https://developer.unipile.com/v2.0/reference/event-types-1) to see the list of available values.")
+    account_ids: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="Restrict the webhook to specific accounts. Leave empty or omit the field to listen to events from every account in the application.")
     url: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="The URL to send the webhook payload to.")
     description: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="A description of the webhook endpoint.")
     enabled: Optional[StrictBool] = Field(default=None, description="Whether the webhook endpoint is enabled.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["trigger_events", "url", "description", "enabled"]
+    __properties: ClassVar[List[str]] = ["trigger_events", "account_ids", "url", "description", "enabled"]
 
     @field_validator('trigger_events')
     def trigger_events_validate_enum(cls, value):
@@ -46,7 +48,8 @@ class UpdateWebhookEndpointRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -58,8 +61,7 @@ class UpdateWebhookEndpointRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -104,6 +106,7 @@ class UpdateWebhookEndpointRequest(BaseModel):
 
         _obj = cls.model_validate({
             "trigger_events": obj.get("trigger_events"),
+            "account_ids": obj.get("account_ids"),
             "url": obj.get("url"),
             "description": obj.get("description"),
             "enabled": obj.get("enabled")

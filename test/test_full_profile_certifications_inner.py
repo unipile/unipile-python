@@ -36,7 +36,7 @@ class TestFullProfileCertificationsInner(unittest.TestCase):
         if include_optional:
             return FullProfileCertificationsInner(
                 title = '',
-                organization = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                organization = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                     name = '', 
                     id = '', 
                     public_identifier = '', 
@@ -57,7 +57,7 @@ class TestFullProfileCertificationsInner(unittest.TestCase):
         else:
             return FullProfileCertificationsInner(
                 title = '',
-                organization = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                organization = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                     name = '', 
                     id = '', 
                     public_identifier = '', 

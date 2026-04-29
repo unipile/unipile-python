@@ -36,12 +36,12 @@ class TestPerformRecruiterPeopleSearchFromTalentPoolRequestPostalCodeInner(unitt
         if include_optional:
             return PerformRecruiterPeopleSearchFromTalentPoolRequestPostalCodeInner(
                 name = '',
-                id = '4'
+                id = ''
             )
         else:
             return PerformRecruiterPeopleSearchFromTalentPoolRequestPostalCodeInner(
                 name = '',
-                id = '4',
+                id = '',
         )
         """
 

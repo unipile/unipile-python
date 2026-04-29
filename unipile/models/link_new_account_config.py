@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from unipile.models.instagram_config import InstagramConfig
+from unipile.models.instagram1_config import Instagram1Config
 from unipile.models.link_new_account_config_global import LinkNewAccountConfigGlobal
 from unipile.models.link_new_account_config_google import LinkNewAccountConfigGoogle
 from unipile.models.link_new_account_config_imap import LinkNewAccountConfigImap
@@ -28,6 +28,7 @@ from unipile.models.telegram_config import TelegramConfig
 from unipile.models.whats_app_config import WhatsAppConfig
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class LinkNewAccountConfig(BaseModel):
     """
@@ -37,7 +38,7 @@ class LinkNewAccountConfig(BaseModel):
     outlook: Optional[LinkNewAccountConfigGoogle] = None
     linkedin: Optional[LinkNewAccountConfigLinkedin] = None
     whatsapp: Optional[WhatsAppConfig] = None
-    instagram: Optional[InstagramConfig] = None
+    instagram: Optional[Instagram1Config] = None
     imap: Optional[LinkNewAccountConfigImap] = None
     telegram: Optional[TelegramConfig] = None
     var_global: Optional[LinkNewAccountConfigGlobal] = Field(default=None, alias="global")
@@ -45,7 +46,8 @@ class LinkNewAccountConfig(BaseModel):
     __properties: ClassVar[List[str]] = ["google", "outlook", "linkedin", "whatsapp", "instagram", "imap", "telegram", "global"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,8 +59,7 @@ class LinkNewAccountConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -130,7 +131,7 @@ class LinkNewAccountConfig(BaseModel):
             "outlook": LinkNewAccountConfigGoogle.from_dict(obj["outlook"]) if obj.get("outlook") is not None else None,
             "linkedin": LinkNewAccountConfigLinkedin.from_dict(obj["linkedin"]) if obj.get("linkedin") is not None else None,
             "whatsapp": WhatsAppConfig.from_dict(obj["whatsapp"]) if obj.get("whatsapp") is not None else None,
-            "instagram": InstagramConfig.from_dict(obj["instagram"]) if obj.get("instagram") is not None else None,
+            "instagram": Instagram1Config.from_dict(obj["instagram"]) if obj.get("instagram") is not None else None,
             "imap": LinkNewAccountConfigImap.from_dict(obj["imap"]) if obj.get("imap") is not None else None,
             "telegram": TelegramConfig.from_dict(obj["telegram"]) if obj.get("telegram") is not None else None,
             "global": LinkNewAccountConfigGlobal.from_dict(obj["global"]) if obj.get("global") is not None else None

@@ -35,10 +35,7 @@ class TestCreatePostRequestSpecificsAllOfInstagram(unittest.TestCase):
         model = CreatePostRequestSpecificsAllOfInstagram()
         if include_optional:
             return CreatePostRequestSpecificsAllOfInstagram(
-                location = unipile.models.create_post_request_specifics_all_of_instagram_location.createPost_request_specifics_allOf_instagram_location(
-                    id = '', 
-                    longitude = 1.337, 
-                    latitude = 1.337, )
+                location_id = ''
             )
         else:
             return CreatePostRequestSpecificsAllOfInstagram(

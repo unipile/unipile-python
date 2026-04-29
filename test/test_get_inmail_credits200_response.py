@@ -37,7 +37,7 @@ class TestGetInmailCredits200Response(unittest.TestCase):
             return GetInmailCredits200Response(
                 object = 'InmailCredits',
                 credits = unipile.models.get_inmail_credits_200_response_credits.getInmailCredits_200_response_credits(
-                    premium = 1.337, 
+                    classic = 1.337, 
                     recruiter = 1.337, 
                     sales_navigator = 1.337, )
             )
@@ -45,7 +45,7 @@ class TestGetInmailCredits200Response(unittest.TestCase):
             return GetInmailCredits200Response(
                 object = 'InmailCredits',
                 credits = unipile.models.get_inmail_credits_200_response_credits.getInmailCredits_200_response_credits(
-                    premium = 1.337, 
+                    classic = 1.337, 
                     recruiter = 1.337, 
                     sales_navigator = 1.337, ),
         )

@@ -23,6 +23,7 @@ from unipile.models.create_draft_request import CreateDraftRequest
 from unipile.models.create_folder201_response import CreateFolder201Response
 from unipile.models.create_folder_request import CreateFolderRequest
 from unipile.models.get_drafts_list200_response import GetDraftsList200Response
+from unipile.models.get_email_contacts_list200_response import GetEmailContactsList200Response
 from unipile.models.get_emails_list200_response import GetEmailsList200Response
 from unipile.models.get_folders_list200_response import GetFoldersList200Response
 from unipile.models.get_folders_list200_response_data_inner import GetFoldersList200ResponseDataInner
@@ -75,7 +76,7 @@ class EmailsApi:
     ) -> CreateDraft201Response:
         """Create a Draft
 
-        Creates a new Draft in the draft folder of the provider. Use <a href=\"@todo\">Send a Draft</a> to send the Email later.
+        Creates a new Draft in the draft folder of the provider. Use <a href=\"@todo\">Send a Draft</a> to send the Email later.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
@@ -146,7 +147,7 @@ class EmailsApi:
     ) -> ApiResponse[CreateDraft201Response]:
         """Create a Draft
 
-        Creates a new Draft in the draft folder of the provider. Use <a href=\"@todo\">Send a Draft</a> to send the Email later.
+        Creates a new Draft in the draft folder of the provider. Use <a href=\"@todo\">Send a Draft</a> to send the Email later.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
@@ -217,7 +218,7 @@ class EmailsApi:
     ) -> RESTResponseType:
         """Create a Draft
 
-        Creates a new Draft in the draft folder of the provider. Use <a href=\"@todo\">Send a Draft</a> to send the Email later.
+        Creates a new Draft in the draft folder of the provider. Use <a href=\"@todo\">Send a Draft</a> to send the Email later.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
@@ -2388,13 +2389,310 @@ class EmailsApi:
 
 
     @validate_call
+    def get_email_contacts_list(
+        self,
+        account_id: StrictStr,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
+        limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GetEmailContactsList200Response:
+        """List email contacts
+
+        Returns a list of contacts from the email provider.
+
+        :param account_id: (required)
+        :type account_id: str
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
+        :param limit: The limit of items to be returned.
+        :type limit: float
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_email_contacts_list_serialize(
+            account_id=account_id,
+            cursor=cursor,
+            limit=limit,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetEmailContactsList200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_email_contacts_list_with_http_info(
+        self,
+        account_id: StrictStr,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
+        limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[GetEmailContactsList200Response]:
+        """List email contacts
+
+        Returns a list of contacts from the email provider.
+
+        :param account_id: (required)
+        :type account_id: str
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
+        :param limit: The limit of items to be returned.
+        :type limit: float
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_email_contacts_list_serialize(
+            account_id=account_id,
+            cursor=cursor,
+            limit=limit,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetEmailContactsList200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_email_contacts_list_without_preload_content(
+        self,
+        account_id: StrictStr,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
+        limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List email contacts
+
+        Returns a list of contacts from the email provider.
+
+        :param account_id: (required)
+        :type account_id: str
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
+        :param limit: The limit of items to be returned.
+        :type limit: float
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_email_contacts_list_serialize(
+            account_id=account_id,
+            cursor=cursor,
+            limit=limit,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetEmailContactsList200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_email_contacts_list_serialize(
+        self,
+        account_id,
+        cursor,
+        limit,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if account_id is not None:
+            _path_params['account_id'] = account_id
+        # process the query parameters
+        if cursor is not None:
+            
+            _query_params.append(('cursor', cursor))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'apiKey'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v2/{account_id}/contacts',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def get_emails_list(
         self,
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         to: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent to the given email address, either in the to, cc or bcc field.")] = None,
+        subject: Annotated[Optional[StrictStr], Field(description="Filter to only return emails with the given string in the subject.")] = None,
         var_from: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent from the given email address.")] = None,
         any_email: Annotated[Optional[StrictStr], Field(description="Filter to only return emails related to a comma-separated list of email addresses.")] = None,
         before: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.")] = None,
+        exclude_folder: Annotated[Optional[StrictStr], Field(description="Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.")] = None,
         after: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.")] = None,
         meta_only: Annotated[Optional[StrictBool], Field(description="Speed up the response by only returning the email metadata, excluding the body and attachments metadata.")] = None,
         offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
@@ -2421,12 +2719,16 @@ class EmailsApi:
         :type account_id: str
         :param to: Filter to only return emails sent to the given email address, either in the to, cc or bcc field.
         :type to: str
+        :param subject: Filter to only return emails with the given string in the subject.
+        :type subject: str
         :param var_from: Filter to only return emails sent from the given email address.
         :type var_from: str
         :param any_email: Filter to only return emails related to a comma-separated list of email addresses.
         :type any_email: str
         :param before: Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
         :type before: str
+        :param exclude_folder: Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.
+        :type exclude_folder: str
         :param after: Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
         :type after: str
         :param meta_only: Speed up the response by only returning the email metadata, excluding the body and attachments metadata.
@@ -2462,9 +2764,11 @@ class EmailsApi:
         _param = self._get_emails_list_serialize(
             account_id=account_id,
             to=to,
+            subject=subject,
             var_from=var_from,
             any_email=any_email,
             before=before,
+            exclude_folder=exclude_folder,
             after=after,
             meta_only=meta_only,
             offset=offset,
@@ -2495,9 +2799,11 @@ class EmailsApi:
         self,
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         to: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent to the given email address, either in the to, cc or bcc field.")] = None,
+        subject: Annotated[Optional[StrictStr], Field(description="Filter to only return emails with the given string in the subject.")] = None,
         var_from: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent from the given email address.")] = None,
         any_email: Annotated[Optional[StrictStr], Field(description="Filter to only return emails related to a comma-separated list of email addresses.")] = None,
         before: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.")] = None,
+        exclude_folder: Annotated[Optional[StrictStr], Field(description="Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.")] = None,
         after: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.")] = None,
         meta_only: Annotated[Optional[StrictBool], Field(description="Speed up the response by only returning the email metadata, excluding the body and attachments metadata.")] = None,
         offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
@@ -2524,12 +2830,16 @@ class EmailsApi:
         :type account_id: str
         :param to: Filter to only return emails sent to the given email address, either in the to, cc or bcc field.
         :type to: str
+        :param subject: Filter to only return emails with the given string in the subject.
+        :type subject: str
         :param var_from: Filter to only return emails sent from the given email address.
         :type var_from: str
         :param any_email: Filter to only return emails related to a comma-separated list of email addresses.
         :type any_email: str
         :param before: Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
         :type before: str
+        :param exclude_folder: Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.
+        :type exclude_folder: str
         :param after: Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
         :type after: str
         :param meta_only: Speed up the response by only returning the email metadata, excluding the body and attachments metadata.
@@ -2565,9 +2875,11 @@ class EmailsApi:
         _param = self._get_emails_list_serialize(
             account_id=account_id,
             to=to,
+            subject=subject,
             var_from=var_from,
             any_email=any_email,
             before=before,
+            exclude_folder=exclude_folder,
             after=after,
             meta_only=meta_only,
             offset=offset,
@@ -2598,9 +2910,11 @@ class EmailsApi:
         self,
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         to: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent to the given email address, either in the to, cc or bcc field.")] = None,
+        subject: Annotated[Optional[StrictStr], Field(description="Filter to only return emails with the given string in the subject.")] = None,
         var_from: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent from the given email address.")] = None,
         any_email: Annotated[Optional[StrictStr], Field(description="Filter to only return emails related to a comma-separated list of email addresses.")] = None,
         before: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.")] = None,
+        exclude_folder: Annotated[Optional[StrictStr], Field(description="Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.")] = None,
         after: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.")] = None,
         meta_only: Annotated[Optional[StrictBool], Field(description="Speed up the response by only returning the email metadata, excluding the body and attachments metadata.")] = None,
         offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
@@ -2627,12 +2941,16 @@ class EmailsApi:
         :type account_id: str
         :param to: Filter to only return emails sent to the given email address, either in the to, cc or bcc field.
         :type to: str
+        :param subject: Filter to only return emails with the given string in the subject.
+        :type subject: str
         :param var_from: Filter to only return emails sent from the given email address.
         :type var_from: str
         :param any_email: Filter to only return emails related to a comma-separated list of email addresses.
         :type any_email: str
         :param before: Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
         :type before: str
+        :param exclude_folder: Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.
+        :type exclude_folder: str
         :param after: Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
         :type after: str
         :param meta_only: Speed up the response by only returning the email metadata, excluding the body and attachments metadata.
@@ -2668,9 +2986,11 @@ class EmailsApi:
         _param = self._get_emails_list_serialize(
             account_id=account_id,
             to=to,
+            subject=subject,
             var_from=var_from,
             any_email=any_email,
             before=before,
+            exclude_folder=exclude_folder,
             after=after,
             meta_only=meta_only,
             offset=offset,
@@ -2696,9 +3016,11 @@ class EmailsApi:
         self,
         account_id,
         to,
+        subject,
         var_from,
         any_email,
         before,
+        exclude_folder,
         after,
         meta_only,
         offset,
@@ -2732,6 +3054,10 @@ class EmailsApi:
             
             _query_params.append(('to', to))
             
+        if subject is not None:
+            
+            _query_params.append(('subject', subject))
+            
         if var_from is not None:
             
             _query_params.append(('from', var_from))
@@ -2743,6 +3069,10 @@ class EmailsApi:
         if before is not None:
             
             _query_params.append(('before', before))
+            
+        if exclude_folder is not None:
+            
+            _query_params.append(('exclude_folder', exclude_folder))
             
         if after is not None:
             
@@ -3083,9 +3413,11 @@ class EmailsApi:
         folder_id: Annotated[Optional[StrictStr], Field(description="ID of the Folder to retrieve emails from.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         to: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent to the given email address, either in the to, cc or bcc field.")] = None,
+        subject: Annotated[Optional[StrictStr], Field(description="Filter to only return emails with the given string in the subject.")] = None,
         var_from: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent from the given email address.")] = None,
         any_email: Annotated[Optional[StrictStr], Field(description="Filter to only return emails related to a comma-separated list of email addresses.")] = None,
         before: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.")] = None,
+        exclude_folder: Annotated[Optional[StrictStr], Field(description="Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.")] = None,
         after: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.")] = None,
         meta_only: Annotated[Optional[StrictBool], Field(description="Speed up the response by only returning the email metadata, excluding the body and attachments metadata.")] = None,
         offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
@@ -3114,12 +3446,16 @@ class EmailsApi:
         :type account_id: str
         :param to: Filter to only return emails sent to the given email address, either in the to, cc or bcc field.
         :type to: str
+        :param subject: Filter to only return emails with the given string in the subject.
+        :type subject: str
         :param var_from: Filter to only return emails sent from the given email address.
         :type var_from: str
         :param any_email: Filter to only return emails related to a comma-separated list of email addresses.
         :type any_email: str
         :param before: Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
         :type before: str
+        :param exclude_folder: Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.
+        :type exclude_folder: str
         :param after: Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
         :type after: str
         :param meta_only: Speed up the response by only returning the email metadata, excluding the body and attachments metadata.
@@ -3156,9 +3492,11 @@ class EmailsApi:
             folder_id=folder_id,
             account_id=account_id,
             to=to,
+            subject=subject,
             var_from=var_from,
             any_email=any_email,
             before=before,
+            exclude_folder=exclude_folder,
             after=after,
             meta_only=meta_only,
             offset=offset,
@@ -3190,9 +3528,11 @@ class EmailsApi:
         folder_id: Annotated[Optional[StrictStr], Field(description="ID of the Folder to retrieve emails from.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         to: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent to the given email address, either in the to, cc or bcc field.")] = None,
+        subject: Annotated[Optional[StrictStr], Field(description="Filter to only return emails with the given string in the subject.")] = None,
         var_from: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent from the given email address.")] = None,
         any_email: Annotated[Optional[StrictStr], Field(description="Filter to only return emails related to a comma-separated list of email addresses.")] = None,
         before: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.")] = None,
+        exclude_folder: Annotated[Optional[StrictStr], Field(description="Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.")] = None,
         after: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.")] = None,
         meta_only: Annotated[Optional[StrictBool], Field(description="Speed up the response by only returning the email metadata, excluding the body and attachments metadata.")] = None,
         offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
@@ -3221,12 +3561,16 @@ class EmailsApi:
         :type account_id: str
         :param to: Filter to only return emails sent to the given email address, either in the to, cc or bcc field.
         :type to: str
+        :param subject: Filter to only return emails with the given string in the subject.
+        :type subject: str
         :param var_from: Filter to only return emails sent from the given email address.
         :type var_from: str
         :param any_email: Filter to only return emails related to a comma-separated list of email addresses.
         :type any_email: str
         :param before: Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
         :type before: str
+        :param exclude_folder: Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.
+        :type exclude_folder: str
         :param after: Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
         :type after: str
         :param meta_only: Speed up the response by only returning the email metadata, excluding the body and attachments metadata.
@@ -3263,9 +3607,11 @@ class EmailsApi:
             folder_id=folder_id,
             account_id=account_id,
             to=to,
+            subject=subject,
             var_from=var_from,
             any_email=any_email,
             before=before,
+            exclude_folder=exclude_folder,
             after=after,
             meta_only=meta_only,
             offset=offset,
@@ -3297,9 +3643,11 @@ class EmailsApi:
         folder_id: Annotated[Optional[StrictStr], Field(description="ID of the Folder to retrieve emails from.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         to: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent to the given email address, either in the to, cc or bcc field.")] = None,
+        subject: Annotated[Optional[StrictStr], Field(description="Filter to only return emails with the given string in the subject.")] = None,
         var_from: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent from the given email address.")] = None,
         any_email: Annotated[Optional[StrictStr], Field(description="Filter to only return emails related to a comma-separated list of email addresses.")] = None,
         before: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.")] = None,
+        exclude_folder: Annotated[Optional[StrictStr], Field(description="Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.")] = None,
         after: Annotated[Optional[StrictStr], Field(description="Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.")] = None,
         meta_only: Annotated[Optional[StrictBool], Field(description="Speed up the response by only returning the email metadata, excluding the body and attachments metadata.")] = None,
         offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
@@ -3328,12 +3676,16 @@ class EmailsApi:
         :type account_id: str
         :param to: Filter to only return emails sent to the given email address, either in the to, cc or bcc field.
         :type to: str
+        :param subject: Filter to only return emails with the given string in the subject.
+        :type subject: str
         :param var_from: Filter to only return emails sent from the given email address.
         :type var_from: str
         :param any_email: Filter to only return emails related to a comma-separated list of email addresses.
         :type any_email: str
         :param before: Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
         :type before: str
+        :param exclude_folder: Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs.
+        :type exclude_folder: str
         :param after: Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored.
         :type after: str
         :param meta_only: Speed up the response by only returning the email metadata, excluding the body and attachments metadata.
@@ -3370,9 +3722,11 @@ class EmailsApi:
             folder_id=folder_id,
             account_id=account_id,
             to=to,
+            subject=subject,
             var_from=var_from,
             any_email=any_email,
             before=before,
+            exclude_folder=exclude_folder,
             after=after,
             meta_only=meta_only,
             offset=offset,
@@ -3399,9 +3753,11 @@ class EmailsApi:
         folder_id,
         account_id,
         to,
+        subject,
         var_from,
         any_email,
         before,
+        exclude_folder,
         after,
         meta_only,
         offset,
@@ -3437,6 +3793,10 @@ class EmailsApi:
             
             _query_params.append(('to', to))
             
+        if subject is not None:
+            
+            _query_params.append(('subject', subject))
+            
         if var_from is not None:
             
             _query_params.append(('from', var_from))
@@ -3448,6 +3808,10 @@ class EmailsApi:
         if before is not None:
             
             _query_params.append(('before', before))
+            
+        if exclude_folder is not None:
+            
+            _query_params.append(('exclude_folder', exclude_folder))
             
         if after is not None:
             
@@ -4116,7 +4480,7 @@ class EmailsApi:
         self,
         email_id: Annotated[Optional[StrictStr], Field(description="ID of the Email to modify.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        modify_email_request: ModifyEmailRequest,
+        modify_email_request: Optional[ModifyEmailRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4132,13 +4496,13 @@ class EmailsApi:
     ) -> GetThread200ResponseEmailsInner:
         """Modify an Email
 
-        Modifies the folder(s) on the specified Email.
+        Modifies the folder(s) and/or provider-specific properties on the specified Email.
 
         :param email_id: ID of the Email to modify. (required)
         :type email_id: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param modify_email_request: (required)
+        :param modify_email_request:
         :type modify_email_request: ModifyEmailRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4191,7 +4555,7 @@ class EmailsApi:
         self,
         email_id: Annotated[Optional[StrictStr], Field(description="ID of the Email to modify.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        modify_email_request: ModifyEmailRequest,
+        modify_email_request: Optional[ModifyEmailRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4207,13 +4571,13 @@ class EmailsApi:
     ) -> ApiResponse[GetThread200ResponseEmailsInner]:
         """Modify an Email
 
-        Modifies the folder(s) on the specified Email.
+        Modifies the folder(s) and/or provider-specific properties on the specified Email.
 
         :param email_id: ID of the Email to modify. (required)
         :type email_id: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param modify_email_request: (required)
+        :param modify_email_request:
         :type modify_email_request: ModifyEmailRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4266,7 +4630,7 @@ class EmailsApi:
         self,
         email_id: Annotated[Optional[StrictStr], Field(description="ID of the Email to modify.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        modify_email_request: ModifyEmailRequest,
+        modify_email_request: Optional[ModifyEmailRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -4282,13 +4646,13 @@ class EmailsApi:
     ) -> RESTResponseType:
         """Modify an Email
 
-        Modifies the folder(s) on the specified Email.
+        Modifies the folder(s) and/or provider-specific properties on the specified Email.
 
         :param email_id: ID of the Email to modify. (required)
         :type email_id: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param modify_email_request: (required)
+        :param modify_email_request:
         :type modify_email_request: ModifyEmailRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -4987,7 +5351,7 @@ class EmailsApi:
     ) -> SendEmail200Response:
         """Send an Email
 
-        Sends an Email to the recipients in the `to`, `cc`, and `bcc`.
+        Sends an Email to the recipients in the `to`, `cc`, and `bcc`.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
@@ -5058,7 +5422,7 @@ class EmailsApi:
     ) -> ApiResponse[SendEmail200Response]:
         """Send an Email
 
-        Sends an Email to the recipients in the `to`, `cc`, and `bcc`.
+        Sends an Email to the recipients in the `to`, `cc`, and `bcc`.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
@@ -5129,7 +5493,7 @@ class EmailsApi:
     ) -> RESTResponseType:
         """Send an Email
 
-        Sends an Email to the recipients in the `to`, `cc`, and `bcc`.
+        Sends an Email to the recipients in the `to`, `cc`, and `bcc`.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
@@ -5829,7 +6193,7 @@ class EmailsApi:
     ) -> CreateDraft201Response:
         """Update a Draft
 
-        Updates the specified Draft by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+        Updates the specified Draft by setting the values of the parameters passed. Any parameters not provided will be left unchanged.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param draft_id: (required)
         :type draft_id: str
@@ -5904,7 +6268,7 @@ class EmailsApi:
     ) -> ApiResponse[CreateDraft201Response]:
         """Update a Draft
 
-        Updates the specified Draft by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+        Updates the specified Draft by setting the values of the parameters passed. Any parameters not provided will be left unchanged.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param draft_id: (required)
         :type draft_id: str
@@ -5979,7 +6343,7 @@ class EmailsApi:
     ) -> RESTResponseType:
         """Update a Draft
 
-        Updates the specified Draft by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+        Updates the specified Draft by setting the values of the parameters passed. Any parameters not provided will be left unchanged.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param draft_id: (required)
         :type draft_id: str

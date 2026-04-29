@@ -21,33 +21,35 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, Stri
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class CompaniesSearchDataInner(BaseModel):
     """
     CompaniesSearchDataInner
     """ # noqa: E501
     object: StrictStr
-    product: StrictStr
     id: StrictStr = Field(description="The ID of the Company.")
     display_name: StrictStr = Field(description="The display name of the Company.")
-    type: Optional[StrictStr] = Field(default=None, description="The type of the Company.")
-    specialties: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of the company's activities.")
     public_identifier: Optional[StrictStr] = Field(default=None, description="The public identifier of the Company.")
     profile_url: Optional[StrictStr] = Field(default=None, description="The profile URL of the Company.")
-    public_picture_url: Optional[StrictStr] = Field(default=None, description="The profile picture URL of the Company.")
+    public_picture_url: Optional[StrictStr] = Field(default=None, description="The public picture URL of the Company.")
+    public_picture_url_large: Optional[StrictStr] = Field(default=None, description="The public picture URL of the Company in large size.")
     location: Optional[StrictStr] = Field(default=None, description="The location of the Company.")
-    industry: StrictStr = Field(description="The industry to which the Company belongs.")
+    industry: Optional[StrictStr] = Field(default=None, description="The industry to which the Company belongs.")
     summary: Optional[StrictStr] = Field(default=None, description="The summary of the Company's activities.")
-    headcount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of employees of the Company.")
-    is_hiring_on_linkedin: Optional[StrictBool] = Field(default=None, description="Whether the Company is hiring on LinkedIn.")
     relations_count: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of the relations of the Company.")
+    product: StrictStr
+    type: Optional[StrictStr] = Field(default=None, description="The type of the Company.")
+    headcount: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of employees of the Company.")
+    specialties: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of the company's activities.")
+    is_hiring_on_linkedin: Optional[StrictBool] = Field(default=None, description="Whether the Company is hiring on LinkedIn.")
     lists_count: Union[StrictFloat, StrictInt] = Field(description="The number of lists you own on which the Company appears.")
     notes_count: Union[StrictFloat, StrictInt] = Field(description="The number of notes you own about the Company.")
     website: Optional[StrictStr] = Field(default=None, description="The webiste URL of the Company.")
     founded_on: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The date on which the Company was founded. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).")
     has_been_saved: StrictBool = Field(description="Whether the Company has been saved to a list.")
     is_starred: StrictBool = Field(description="Whether the Company is on starred state.")
-    __properties: ClassVar[List[str]] = ["object", "product", "id", "display_name", "type", "specialties", "public_identifier", "profile_url", "public_picture_url", "location", "industry", "summary", "headcount", "is_hiring_on_linkedin", "relations_count", "lists_count", "notes_count", "website", "founded_on", "has_been_saved", "is_starred"]
+    __properties: ClassVar[List[str]] = ["object", "id", "display_name", "public_identifier", "profile_url", "public_picture_url", "public_picture_url_large", "location", "industry", "summary", "relations_count", "product", "type", "headcount", "specialties", "is_hiring_on_linkedin", "lists_count", "notes_count", "website", "founded_on", "has_been_saved", "is_starred"]
 
     @field_validator('object')
     def object_validate_enum(cls, value):
@@ -64,7 +66,8 @@ class CompaniesSearchDataInner(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -76,8 +79,7 @@ class CompaniesSearchDataInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -115,20 +117,21 @@ class CompaniesSearchDataInner(BaseModel):
 
         _obj = cls.model_validate({
             "object": obj.get("object"),
-            "product": obj.get("product"),
             "id": obj.get("id"),
             "display_name": obj.get("display_name"),
-            "type": obj.get("type"),
-            "specialties": obj.get("specialties"),
             "public_identifier": obj.get("public_identifier"),
             "profile_url": obj.get("profile_url"),
             "public_picture_url": obj.get("public_picture_url"),
+            "public_picture_url_large": obj.get("public_picture_url_large"),
             "location": obj.get("location"),
             "industry": obj.get("industry"),
             "summary": obj.get("summary"),
-            "headcount": obj.get("headcount"),
-            "is_hiring_on_linkedin": obj.get("is_hiring_on_linkedin"),
             "relations_count": obj.get("relations_count"),
+            "product": obj.get("product"),
+            "type": obj.get("type"),
+            "headcount": obj.get("headcount"),
+            "specialties": obj.get("specialties"),
+            "is_hiring_on_linkedin": obj.get("is_hiring_on_linkedin"),
             "lists_count": obj.get("lists_count"),
             "notes_count": obj.get("notes_count"),
             "website": obj.get("website"),

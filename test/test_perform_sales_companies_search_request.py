@@ -36,6 +36,13 @@ class TestPerformSalesCompaniesSearchRequest(unittest.TestCase):
         if include_optional:
             return PerformSalesCompaniesSearchRequest(
                 keywords = '',
+                save_search = unipile.models.perform_sales_people_search_request_save_search.performSalesPeopleSearch_request_save_search(
+                    name = '', ),
+                load_saved_search = unipile.models.perform_sales_people_search_request_load_saved_search.performSalesPeopleSearch_request_load_saved_search(
+                    id = '', 
+                    last_viewed_at = 1.337, ),
+                load_recent_search = unipile.models.perform_sales_people_search_request_load_recent_search.performSalesPeopleSearch_request_load_recent_search(
+                    id = '', ),
                 annual_revenue = unipile.models.perform_sales_companies_search_request_annual_revenue.performSalesCompaniesSearch_request_annual_revenue(
                     min = 0, 
                     max = 0.5, 
@@ -50,24 +57,24 @@ class TestPerformSalesCompaniesSearchRequest(unittest.TestCase):
                     max = 1.337, ),
                 location = unipile.models.perform_sales_companies_search_request_location.performSalesCompaniesSearch_request_location(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 postal_code = unipile.models.perform_sales_companies_search_request_postal_code.performSalesCompaniesSearch_request_postal_code(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 industry = unipile.models.perform_sales_companies_search_request_industry.performSalesCompaniesSearch_request_industry(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 followers = [
                     unipile.models.perform_sales_companies_search_request_followers_inner.performSalesCompaniesSearch_request_followers_inner(
@@ -77,33 +84,26 @@ class TestPerformSalesCompaniesSearchRequest(unittest.TestCase):
                 department_headcount = unipile.models.perform_sales_companies_search_request_department_headcount.performSalesCompaniesSearch_request_department_headcount(
                     min = 1.337, 
                     max = 1.337, 
-                    department = '4', ),
+                    department = '', ),
                 department_headcount_growth = unipile.models.perform_sales_companies_search_request_department_headcount_growth.performSalesCompaniesSearch_request_department_headcount_growth(
                     min = 1.337, 
                     max = 1.337, 
-                    department = '4', ),
+                    department = '', ),
                 fortune = [
                     unipile.models.perform_sales_companies_search_request_fortune_inner.performSalesCompaniesSearch_request_fortune_inner(
                         min = 51, 
                         max = 50, )
                     ],
-                technologies = unipile.models.perform_sales_companies_search_request_technologies.performSalesCompaniesSearch_request_technologies(
-                    include = [
-                        '4'
-                        ], 
-                    exclude = [
-                        '4'
-                        ], ),
                 spotlights = [
                     'HIRING_ON_LINKEDIN'
                     ],
                 saved_accounts = True,
-                account_list = unipile.models.perform_sales_people_search_request_account_list.performSalesPeopleSearch_request_account_list(
+                account_list = unipile.models.perform_sales_companies_search_request_account_list.performSalesCompaniesSearch_request_account_list(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], )
             )
         else:

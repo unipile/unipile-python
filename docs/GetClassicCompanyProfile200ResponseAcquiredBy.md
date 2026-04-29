@@ -1,5 +1,6 @@
 # GetClassicCompanyProfile200ResponseAcquiredBy
 
+The acquirer company. 
 
 ## Properties
 

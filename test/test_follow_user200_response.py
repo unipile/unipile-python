@@ -36,7 +36,7 @@ class TestFollowUser200Response(unittest.TestCase):
         if include_optional:
             return FollowUser200Response(
                 object = 'RelationRequest',
-                user = unipile.models.get_relation_requests_list_200_response_data_inner_user.getRelationRequestsList_200_response_data_inner_user(
+                user = unipile.models.linked_in_relation_request_user.LinkedIn_relation_request_user(
                     id = '', 
                     object = 'User', 
                     type = 'individual', 

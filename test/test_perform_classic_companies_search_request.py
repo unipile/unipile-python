@@ -37,10 +37,10 @@ class TestPerformClassicCompaniesSearchRequest(unittest.TestCase):
             return PerformClassicCompaniesSearchRequest(
                 keywords = '',
                 location = [
-                    '4'
+                    ''
                     ],
                 industry = [
-                    '4'
+                    ''
                     ],
                 headcount = [
                     unipile.models.perform_classic_companies_search_request_headcount_inner.performClassicCompaniesSearch_request_headcount_inner(

@@ -48,7 +48,7 @@ class TestPerformClassicJobsSearch200Response(unittest.TestCase):
                         is_promoted = True, 
                         easy_apply = True, 
                         few_applicants = True, 
-                        company = unipile.models.perform_classic_search_from_url_200_response_any_of_data_inner_company.performClassicSearchFromUrl_200_response_anyOf_data_inner_company(
+                        company = unipile.models.jobs_search_results_data_inner_company.Jobs_search_results_data_inner_company(
                             id = '', 
                             name = '', 
                             public_identifier = '', 
@@ -76,7 +76,7 @@ class TestPerformClassicJobsSearch200Response(unittest.TestCase):
                         is_promoted = True, 
                         easy_apply = True, 
                         few_applicants = True, 
-                        company = unipile.models.perform_classic_search_from_url_200_response_any_of_data_inner_company.performClassicSearchFromUrl_200_response_anyOf_data_inner_company(
+                        company = unipile.models.jobs_search_results_data_inner_company.Jobs_search_results_data_inner_company(
                             id = '', 
                             name = '', 
                             public_identifier = '', 

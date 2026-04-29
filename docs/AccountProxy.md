@@ -6,7 +6,7 @@ The proxy used for the account.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**country** | **str** |  | 
+**country** | **str** | The ID of the Company. | 
 **auto_proxy** | **bool** | Whether the proxy was set automatically by Unipile. | 
 
 ## Example

@@ -31,7 +31,7 @@ class StartChat200ResponseMessageId(BaseModel):
     """
 
     # data type: str
-    anyof_schema_1_validator: Optional[StrictStr] = None
+    anyof_schema_1_validator: Optional[StrictStr] = Field(default=None, description="The ID of the Company.")
     # data type: List[Optional[str]]
     anyof_schema_2_validator: Optional[List[Optional[StrictStr]]] = None
     if TYPE_CHECKING:

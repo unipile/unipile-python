@@ -35,12 +35,12 @@ class TestEditExistingEducationFieldOfStudy(unittest.TestCase):
         model = EditExistingEducationFieldOfStudy()
         if include_optional:
             return EditExistingEducationFieldOfStudy(
-                text = '',
-                id = '4'
+                name = '',
+                id = ''
             )
         else:
             return EditExistingEducationFieldOfStudy(
-                text = '',
+                name = '',
         )
         """
 

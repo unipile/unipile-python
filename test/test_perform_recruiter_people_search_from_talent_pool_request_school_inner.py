@@ -35,12 +35,12 @@ class TestPerformRecruiterPeopleSearchFromTalentPoolRequestSchoolInner(unittest.
         model = PerformRecruiterPeopleSearchFromTalentPoolRequestSchoolInner()
         if include_optional:
             return PerformRecruiterPeopleSearchFromTalentPoolRequestSchoolInner(
-                id = '4',
+                id = '',
                 priority = 'CAN_HAVE'
             )
         else:
             return PerformRecruiterPeopleSearchFromTalentPoolRequestSchoolInner(
-                id = '4',
+                id = '',
         )
         """
 

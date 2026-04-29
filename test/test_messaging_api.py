@@ -40,6 +40,13 @@ class TestMessagingApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_chat(self) -> None:
+        """Test case for delete_chat
+
+        Delete a Chat
+        """
+        pass
+
     def test_delete_message(self) -> None:
         """Test case for delete_message
 
@@ -114,6 +121,13 @@ class TestMessagingApi(unittest.TestCase):
         """Test case for get_participants_list
 
         List all Chat Participants
+        """
+        pass
+
+    def test_get_user_chat(self) -> None:
+        """Test case for get_user_chat
+
+        Get a User Chat
         """
         pass
 

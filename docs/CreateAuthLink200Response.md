@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
-**link** | **str** | Link to the Hosted Auth session. Redirect your users to this link so they can authenticate their account. | 
+**link** | **str** | Link to the Hosted Auth session. Redirect your users to this link so they can authenticate their account. If you use a white-label domain, only replace the hostname with a domain that has been explicitly verified by Unipile for the parent Application. | 
 
 ## Example
 

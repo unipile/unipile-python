@@ -35,17 +35,22 @@ class TestPartialProfile(unittest.TestCase):
         model = PartialProfile()
         if include_optional:
             return PartialProfile(
-                visibility = 'partial',
                 id = '',
-                candidate_id = '',
                 headline = '',
                 network_distance = 'SELF',
                 location = '',
+                can_send_inmail = True,
+                visibility = 'partial',
+                candidate_id = '',
                 is_hidden_candidate = True,
+                hiring_project = unipile.models.partial_profile_hiring_project.Partial_profile_hiring_project(
+                    id = '', 
+                    name = '', 
+                    pipeline_stage = '', ),
                 work_experience = [
                     unipile.models.partial_profile_work_experience_inner.Partial_profile_work_experience_inner(
                         id = '', 
-                        company = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                        company = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                             name = '', 
                             id = '', 
                             public_identifier = '', 
@@ -54,7 +59,7 @@ class TestPartialProfile(unittest.TestCase):
                             industries = [
                                 ''
                                 ], ), 
-                        title = '', 
+                        job_title = '', 
                         started_on = '', 
                         ended_on = '', 
                         location = '', 
@@ -65,22 +70,21 @@ class TestPartialProfile(unittest.TestCase):
                             ''
                             ], 
                         skills_preview = '', )
-                    ],
-                can_send_inmail = True
+                    ]
             )
         else:
             return PartialProfile(
-                visibility = 'partial',
                 id = '',
-                candidate_id = '',
                 headline = '',
                 network_distance = 'SELF',
                 location = '',
+                visibility = 'partial',
+                candidate_id = '',
                 is_hidden_candidate = True,
                 work_experience = [
                     unipile.models.partial_profile_work_experience_inner.Partial_profile_work_experience_inner(
                         id = '', 
-                        company = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                        company = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                             name = '', 
                             id = '', 
                             public_identifier = '', 
@@ -89,7 +93,7 @@ class TestPartialProfile(unittest.TestCase):
                             industries = [
                                 ''
                                 ], ), 
-                        title = '', 
+                        job_title = '', 
                         started_on = '', 
                         ended_on = '', 
                         location = '', 

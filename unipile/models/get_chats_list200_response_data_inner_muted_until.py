@@ -31,7 +31,7 @@ class GetChatsList200ResponseDataInnerMutedUntil(BaseModel):
     """
 
     # data type: str
-    anyof_schema_1_validator: Optional[StrictStr] = None
+    anyof_schema_1_validator: Optional[StrictStr] = Field(default=None, description="The ID of the Company.")
     # data type: bool
     anyof_schema_2_validator: Optional[StrictBool] = None
     if TYPE_CHECKING:

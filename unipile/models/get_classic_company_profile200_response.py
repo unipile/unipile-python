@@ -20,11 +20,14 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from unipile.models.get_classic_company_profile200_response_acquired_by import GetClassicCompanyProfile200ResponseAcquiredBy
+from unipile.models.get_classic_company_profile200_response_funding import GetClassicCompanyProfile200ResponseFunding
+from unipile.models.get_classic_company_profile200_response_insights import GetClassicCompanyProfile200ResponseInsights
 from unipile.models.get_classic_company_profile200_response_locations_inner import GetClassicCompanyProfile200ResponseLocationsInner
 from unipile.models.get_classic_company_profile200_response_mailbox import GetClassicCompanyProfile200ResponseMailbox
 from unipile.models.get_classic_company_profile200_response_viewer_roles_inner import GetClassicCompanyProfile200ResponseViewerRolesInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetClassicCompanyProfile200Response(BaseModel):
     """
@@ -53,14 +56,15 @@ class GetClassicCompanyProfile200Response(BaseModel):
     locations: List[GetClassicCompanyProfile200ResponseLocationsInner] = Field(description="The list of locations related to the Company.")
     industry: List[Optional[StrictStr]] = Field(description="A list of industries associated with the the Company.")
     activities: Optional[List[Optional[StrictStr]]] = Field(default=None, description="The list of activities of the Company.")
-    employee_count: Union[StrictFloat, StrictInt] = Field(description="The number of employees of the Company.")
     website: Optional[StrictStr] = Field(default=None, description="The website URL of the Company.")
     establishment_year: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The year the Company was established.")
     phone: Optional[StrictStr] = Field(default=None, description="The phone number of the Company.")
     fields_of_expertise: Optional[List[Optional[StrictStr]]] = Field(default=None, description="The list of fields of expertise of the Company.")
     acquired_by: Optional[GetClassicCompanyProfile200ResponseAcquiredBy] = None
+    insights: GetClassicCompanyProfile200ResponseInsights
+    funding: Optional[GetClassicCompanyProfile200ResponseFunding] = None
     hashtags: List[Optional[StrictStr]] = Field(description="The list of hashtags related to the Company.")
-    __properties: ClassVar[List[str]] = ["id", "name", "public_identifier", "profile_url", "object", "description", "public_picture_url", "tagline", "followers_count", "is_school", "is_active", "is_archived", "is_following", "is_employee", "is_verified", "is_claimable", "is_claimable_by_viewer", "verified_at", "mailbox", "viewer_roles", "locations", "industry", "activities", "employee_count", "website", "establishment_year", "phone", "fields_of_expertise", "acquired_by", "hashtags"]
+    __properties: ClassVar[List[str]] = ["id", "name", "public_identifier", "profile_url", "object", "description", "public_picture_url", "tagline", "followers_count", "is_school", "is_active", "is_archived", "is_following", "is_employee", "is_verified", "is_claimable", "is_claimable_by_viewer", "verified_at", "mailbox", "viewer_roles", "locations", "industry", "activities", "website", "establishment_year", "phone", "fields_of_expertise", "acquired_by", "insights", "funding", "hashtags"]
 
     @field_validator('object')
     def object_validate_enum(cls, value):
@@ -70,7 +74,8 @@ class GetClassicCompanyProfile200Response(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -82,8 +87,7 @@ class GetClassicCompanyProfile200Response(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -128,6 +132,12 @@ class GetClassicCompanyProfile200Response(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of acquired_by
         if self.acquired_by:
             _dict['acquired_by'] = self.acquired_by.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of insights
+        if self.insights:
+            _dict['insights'] = self.insights.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of funding
+        if self.funding:
+            _dict['funding'] = self.funding.to_dict()
         return _dict
 
     @classmethod
@@ -163,12 +173,13 @@ class GetClassicCompanyProfile200Response(BaseModel):
             "locations": [GetClassicCompanyProfile200ResponseLocationsInner.from_dict(_item) for _item in obj["locations"]] if obj.get("locations") is not None else None,
             "industry": obj.get("industry"),
             "activities": obj.get("activities"),
-            "employee_count": obj.get("employee_count"),
             "website": obj.get("website"),
             "establishment_year": obj.get("establishment_year"),
             "phone": obj.get("phone"),
             "fields_of_expertise": obj.get("fields_of_expertise"),
             "acquired_by": GetClassicCompanyProfile200ResponseAcquiredBy.from_dict(obj["acquired_by"]) if obj.get("acquired_by") is not None else None,
+            "insights": GetClassicCompanyProfile200ResponseInsights.from_dict(obj["insights"]) if obj.get("insights") is not None else None,
+            "funding": GetClassicCompanyProfile200ResponseFunding.from_dict(obj["funding"]) if obj.get("funding") is not None else None,
             "hashtags": obj.get("hashtags")
         })
         return _obj

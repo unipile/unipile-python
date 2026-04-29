@@ -6,12 +6,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
-**id** | **str** |  | 
-**id_source** | **str** |  | 
-**name** | **str** |  | 
-**address** | **str** |  | [optional] 
-**latitude** | **float** |  | [optional] 
-**longitude** | **float** |  | [optional] 
+**id** | **str** | The unique identifier of the Instagram location. | 
+**source** | **str** | The source provider of the location. | 
+**name** | **str** | The name of the location. | 
+**address** | **str** | The street address of the location. | [optional] 
+**latitude** | **float** | The latitude coordinate of the location. | [optional] 
+**longitude** | **float** | The longitude coordinate of the location. | [optional] 
 
 ## Example
 

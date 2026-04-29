@@ -35,18 +35,242 @@ class TestLinkedIn(unittest.TestCase):
         model = LinkedIn()
         if include_optional:
             return LinkedIn(
-                provider = 'linkedin',
-                user_agent = '',
-                user_timezone = '',
-                credentials = None,
-                config = {
-                    'key' : null
-                    }
+                member_id = '',
+                can_send_inmail = True,
+                network_distance = 'SELF',
+                relation_request = unipile.models.linked_in_relation_request.LinkedIn_relation_request(
+                    object = 'RelationRequest', 
+                    user = unipile.models.linked_in_relation_request_user.LinkedIn_relation_request_user(
+                        id = '', 
+                        object = 'User', 
+                        type = 'individual', 
+                        public_identifier = '', 
+                        display_name = '', 
+                        profile_url = '', 
+                        public_picture_url = '', 
+                        private_picture_download_url = '', 
+                        description = '', ), 
+                    type = 'sent', 
+                    id = '', 
+                    created_at = '', 
+                    message = '', ),
+                relation_request_status = 'PENDING',
+                pronoun = '',
+                default_locale = '',
+                supported_locales = [
+                    ''
+                    ],
+                notify_visit_token = '',
+                is_open_profile = True,
+                is_premium = True,
+                is_influencer = True,
+                is_creator = True,
+                is_hiring = True,
+                is_open_to_work = True,
+                is_saved_lead = True,
+                is_crm_imported = True,
+                skills = [
+                    unipile.models.linked_in_skills_inner.LinkedIn_skills_inner(
+                        name = '', 
+                        endorsement_count = 1.337, 
+                        endorsement_id = 1.337, 
+                        endorsed = True, 
+                        insights = [
+                            ''
+                            ], )
+                    ],
+                experience = [
+                    unipile.models.linked_in_experience_inner.LinkedIn_experience_inner(
+                        id = '', 
+                        company = unipile.models.linked_in_experience_inner_company.LinkedIn_experience_inner_company(
+                            name = '', 
+                            id = '', 
+                            public_identifier = '', 
+                            picture_url = '', 
+                            profile_url = '', 
+                            industries = [
+                                ''
+                                ], ), 
+                        job_title = '', 
+                        started_on = '', 
+                        ended_on = '', 
+                        location = '', 
+                        description = '', 
+                        employment_type = 'SELF_EMPLOYED', 
+                        workplace_type = 'ON_SITE', 
+                        skills = [
+                            ''
+                            ], 
+                        skills_preview = '', )
+                    ],
+                education = [
+                    unipile.models.linked_in_education_inner.LinkedIn_education_inner(
+                        id = '', 
+                        school = unipile.models.linked_in_education_inner_school.LinkedIn_education_inner_school(
+                            id = '', 
+                            name = '', 
+                            picture_url = '', 
+                            profile_url = '', ), 
+                        degree = '', 
+                        description = '', 
+                        activities = '', 
+                        skills = [
+                            ''
+                            ], 
+                        skills_preview = '', 
+                        grade = '', 
+                        fields_of_study = [
+                            ''
+                            ], 
+                        started_on = '', 
+                        ended_on = '', )
+                    ],
+                languages = [
+                    unipile.models.linked_in_languages_inner.LinkedIn_languages_inner(
+                        language = '', 
+                        proficiency = 'ELEMENTARY', )
+                    ],
+                certifications = [
+                    unipile.models.linked_in_certifications_inner.LinkedIn_certifications_inner(
+                        title = '', 
+                        organization = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
+                            name = '', 
+                            id = '', 
+                            public_identifier = '', 
+                            picture_url = '', 
+                            profile_url = '', 
+                            industries = [
+                                ''
+                                ], ), 
+                        issued_on = '', 
+                        expires_on = '', 
+                        license = '', 
+                        skills = [
+                            ''
+                            ], 
+                        skills_preview = '', 
+                        url = '', )
+                    ],
+                volunteer_experience = [
+                    unipile.models.linked_in_volunteer_experience_inner.LinkedIn_volunteer_experience_inner(
+                        organization = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
+                            name = '', 
+                            id = '', 
+                            public_identifier = '', 
+                            picture_url = '', 
+                            profile_url = '', 
+                            industries = [
+                                ''
+                                ], ), 
+                        role = '', 
+                        cause = '', 
+                        description = '', 
+                        started_on = '', 
+                        ended_on = '', )
+                    ],
+                projects = [
+                    unipile.models.linked_in_projects_inner.LinkedIn_projects_inner(
+                        name = '', 
+                        description = '', 
+                        contributors = [
+                            unipile.models.linked_in_projects_inner_contributors_inner.LinkedIn_projects_inner_contributors_inner(
+                                id = '', 
+                                object = 'User', 
+                                type = 'individual', 
+                                public_identifier = '', 
+                                display_name = '', 
+                                profile_url = '', 
+                                public_picture_url = '', 
+                                private_picture_download_url = '', 
+                                description = '', )
+                            ], 
+                        skills = [
+                            ''
+                            ], 
+                        skills_preview = '', 
+                        started_on = '', 
+                        ended_on = '', )
+                    ],
+                recommendations = unipile.models.linked_in_recommendations.LinkedIn_recommendations(
+                    received = [
+                        unipile.models.linked_in_recommendations_received_inner.LinkedIn_recommendations_received_inner(
+                            caption = '', 
+                            created_on = '', 
+                            text = '', 
+                            user = unipile.models.linked_in_recommendations_received_inner_user.LinkedIn_recommendations_received_inner_user(
+                                id = '', 
+                                object = 'User', 
+                                type = 'individual', 
+                                public_identifier = '', 
+                                display_name = '', 
+                                profile_url = '', 
+                                public_picture_url = '', 
+                                private_picture_download_url = '', 
+                                description = '', ), )
+                        ], 
+                    given = [
+                        unipile.models.linked_in_recommendations_received_inner.LinkedIn_recommendations_received_inner(
+                            caption = '', 
+                            created_on = '', 
+                            text = '', 
+                            user = unipile.models.linked_in_recommendations_received_inner_user.LinkedIn_recommendations_received_inner_user(
+                                id = '', 
+                                object = 'User', 
+                                type = 'individual', 
+                                public_identifier = '', 
+                                display_name = '', 
+                                profile_url = '', 
+                                public_picture_url = '', 
+                                private_picture_download_url = '', 
+                                description = '', ), )
+                        ], ),
+                throttled_sections = [
+                    'experience'
+                    ],
+                recruiting_profile = unipile.models.linked_in_recruiting_profile.LinkedIn_recruiting_profile(
+                    events = [
+                        null
+                        ], 
+                    notes = [
+                        unipile.models.linked_in_recruiting_profile_notes_inner.LinkedIn_recruiting_profile_notes_inner(
+                            project_id = '', 
+                            content = '', 
+                            last_modified_at = '', 
+                            author = unipile.models.linked_in_projects_inner_contributors_inner.LinkedIn_projects_inner_contributors_inner(
+                                id = '', 
+                                object = 'User', 
+                                type = 'individual', 
+                                public_identifier = '', 
+                                display_name = '', 
+                                profile_url = '', 
+                                public_picture_url = '', 
+                                private_picture_download_url = '', 
+                                description = '', ), 
+                            comments = [
+                                unipile.models.linked_in_recruiting_profile_notes_inner_comments_inner.LinkedIn_recruiting_profile_notes_inner_comments_inner(
+                                    content = '', 
+                                    author = unipile.models.linked_in_projects_inner_contributors_inner.LinkedIn_projects_inner_contributors_inner(
+                                        id = '', 
+                                        object = 'User', 
+                                        type = 'individual', 
+                                        public_identifier = '', 
+                                        display_name = '', 
+                                        profile_url = '', 
+                                        public_picture_url = '', 
+                                        private_picture_download_url = '', 
+                                        description = '', ), 
+                                    last_modified_at = '', )
+                                ], )
+                        ], 
+                    tags = [
+                        unipile.models.linked_in_recruiting_profile_tags_inner.LinkedIn_recruiting_profile_tags_inner(
+                            id = '', 
+                            content = '', )
+                        ], )
             )
         else:
             return LinkedIn(
-                provider = 'linkedin',
-                credentials = None,
+                network_distance = 'SELF',
         )
         """
 

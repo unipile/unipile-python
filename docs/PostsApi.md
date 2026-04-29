@@ -16,6 +16,8 @@ Method | HTTP request | Description
 [**get_post_comments_list**](PostsApi.md#get_post_comments_list) | **GET** /v2/{account_id}/posts/{post_id}/comments | List all Post&#39;s Comments
 [**get_post_reactions_list**](PostsApi.md#get_post_reactions_list) | **GET** /v2/{account_id}/posts/{post_id}/reactions | List all Post&#39;s Reactions
 [**get_posts_list**](PostsApi.md#get_posts_list) | **GET** /v2/{account_id}/users/{user_id}/posts | List all User&#39;s Posts
+[**get_user_comments_list**](PostsApi.md#get_user_comments_list) | **GET** /v2/{account_id}/users/{user_id}/comments | List all User Comments
+[**get_user_reactions_list**](PostsApi.md#get_user_reactions_list) | **GET** /v2/{account_id}/users/{user_id}/reactions | List all User Reactions
 [**remove_post_comment_reaction**](PostsApi.md#remove_post_comment_reaction) | **DELETE** /v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions | Remove Reaction from a Comment
 [**remove_post_reaction**](PostsApi.md#remove_post_reaction) | **DELETE** /v2/{account_id}/posts/{post_id}/reactions | Remove Reaction from a Post
 [**reply_to_comment**](PostsApi.md#reply_to_comment) | **POST** /v2/{account_id}/posts/{post_id}/comments/{comment_id} | Reply to a Comment
@@ -29,6 +31,8 @@ Method | HTTP request | Description
 Add Comment to a Post
 
 Adds a comment to a post.
+      <br/>
+      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
@@ -283,6 +287,8 @@ Name | Type | Description  | Notes
 Create a Post
 
 Creates a new post.
+      <br/>
+      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
@@ -777,7 +783,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_post_comments_list**
-> GetPostCommentsList200Response get_post_comments_list(post_id, account_id, offset=offset, limit=limit, cursor=cursor)
+> GetPostCommentsList200Response get_post_comments_list(post_id, account_id, offset=offset, limit=limit, cursor=cursor, sort_by=sort_by)
 
 List all Post's Comments
 
@@ -819,10 +825,11 @@ with unipile.ApiClient(configuration) as api_client:
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    sort_by = MOST_RECENT # str | Sort criterion for the posts list: MOST_RECENT (most recent first) or MOST_RELEVANT (most relevant first). (optional) (default to MOST_RECENT)
 
     try:
         # List all Post's Comments
-        api_response = api_instance.get_post_comments_list(post_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_post_comments_list(post_id, account_id, offset=offset, limit=limit, cursor=cursor, sort_by=sort_by)
         print("The response of PostsApi->get_post_comments_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -841,6 +848,7 @@ Name | Type | Description  | Notes
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **sort_by** | **str**| Sort criterion for the posts list: MOST_RECENT (most recent first) or MOST_RELEVANT (most relevant first). | [optional] [default to MOST_RECENT]
 
 ### Return type
 
@@ -1037,6 +1045,180 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_user_comments_list**
+> GetUserCommentsList200Response get_user_comments_list(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+
+List all User Comments
+
+Returns the list of comments made by a user to posts. Use `me` as `user_id` to specify the owner of the connected account.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.get_user_comments_list200_response import GetUserCommentsList200Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.PostsApi(api_client)
+    user_id = 'user_id_example' # str | The ID of the User to retrieve the comments from.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
+    cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+
+    try:
+        # List all User Comments
+        api_response = api_instance.get_user_comments_list(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        print("The response of PostsApi->get_user_comments_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling PostsApi->get_user_comments_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **str**| The ID of the User to retrieve the comments from. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+ **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
+ **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+
+### Return type
+
+[**GetUserCommentsList200Response**](GetUserCommentsList200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_user_reactions_list**
+> GetUserReactionsList200Response get_user_reactions_list(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+
+List all User Reactions
+
+Returns the list of reactions made by a user to posts. Use `me` as `user_id` to specify the owner of the connected account.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.get_user_reactions_list200_response import GetUserReactionsList200Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.PostsApi(api_client)
+    user_id = 'user_id_example' # str | The ID of the User to retrieve the reactions from.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
+    cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+
+    try:
+        # List all User Reactions
+        api_response = api_instance.get_user_reactions_list(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        print("The response of PostsApi->get_user_reactions_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling PostsApi->get_user_reactions_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **str**| The ID of the User to retrieve the reactions from. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+ **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
+ **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+
+### Return type
+
+[**GetUserReactionsList200Response**](GetUserReactionsList200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **remove_post_comment_reaction**
 > RemovePostCommentReaction200Response remove_post_comment_reaction(post_id, comment_id, account_id, remove_post_comment_reaction_request)
 
@@ -1213,6 +1395,8 @@ Name | Type | Description  | Notes
 Reply to a Comment
 
 Replies to a particular comment.
+      <br/>
+      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 

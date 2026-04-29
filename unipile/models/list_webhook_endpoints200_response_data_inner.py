@@ -20,8 +20,10 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from unipile.models.list_webhook_endpoints200_response_data_inner_account_targets_inner import ListWebhookEndpoints200ResponseDataInnerAccountTargetsInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ListWebhookEndpoints200ResponseDataInner(BaseModel):
     """
@@ -29,13 +31,15 @@ class ListWebhookEndpoints200ResponseDataInner(BaseModel):
     """ # noqa: E501
     enabled: StrictBool
     description: Optional[StrictStr]
-    url: Optional[StrictStr]
+    url: Optional[StrictStr] = Field(description="The ID of the Company.")
     trigger_events: List[StrictStr]
     secret: Annotated[str, Field(strict=True, max_length=36)]
     object: StrictStr
     id: Annotated[str, Field(strict=True)]
     application_id: Annotated[str, Field(strict=True)]
-    __properties: ClassVar[List[str]] = ["enabled", "description", "url", "trigger_events", "secret", "object", "id", "application_id"]
+    account_ids: List[Annotated[str, Field(strict=True)]]
+    account_targets: List[ListWebhookEndpoints200ResponseDataInnerAccountTargetsInner]
+    __properties: ClassVar[List[str]] = ["enabled", "description", "url", "trigger_events", "secret", "object", "id", "application_id", "account_ids", "account_targets"]
 
     @field_validator('trigger_events')
     def trigger_events_validate_enum(cls, value):
@@ -55,6 +59,9 @@ class ListWebhookEndpoints200ResponseDataInner(BaseModel):
     @field_validator('id')
     def id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
         if not re.match(r"^we_(.*)$", value):
             raise ValueError(r"must validate the regular expression /^we_(.*)$/")
         return value
@@ -62,12 +69,16 @@ class ListWebhookEndpoints200ResponseDataInner(BaseModel):
     @field_validator('application_id')
     def application_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
         if not re.match(r"^app_(.*)$", value):
             raise ValueError(r"must validate the regular expression /^app_(.*)$/")
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -79,8 +90,7 @@ class ListWebhookEndpoints200ResponseDataInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -105,6 +115,13 @@ class ListWebhookEndpoints200ResponseDataInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in account_targets (list)
+        _items = []
+        if self.account_targets:
+            for _item_account_targets in self.account_targets:
+                if _item_account_targets:
+                    _items.append(_item_account_targets.to_dict())
+            _dict['account_targets'] = _items
         # set to None if description (nullable) is None
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
@@ -134,7 +151,9 @@ class ListWebhookEndpoints200ResponseDataInner(BaseModel):
             "secret": obj.get("secret"),
             "object": obj.get("object"),
             "id": obj.get("id"),
-            "application_id": obj.get("application_id")
+            "application_id": obj.get("application_id"),
+            "account_ids": obj.get("account_ids"),
+            "account_targets": [ListWebhookEndpoints200ResponseDataInnerAccountTargetsInner.from_dict(_item) for _item in obj["account_targets"]] if obj.get("account_targets") is not None else None
         })
         return _obj
 

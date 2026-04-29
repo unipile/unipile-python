@@ -41,12 +41,12 @@ class TestStartChatRequest(unittest.TestCase):
                 attachments = [
                     unipile.models.message_file.Message File()
                     ],
-                options = None,
                 specifics = unipile.models.start_chat_request_specifics.startChat_request_specifics(
                     linkedin = unipile.models.start_chat_request_specifics_linkedin.startChat_request_specifics_linkedin(
                         classic = unipile.models.linked_in_classic.LinkedIn Classic(
                             inmail = True, 
                             company_topic = 'SERVICE_REQUEST', 
+                            relation_request_id = '', 
                             applicant = unipile.models.linked_in_classic_applicant.LinkedIn_Classic_applicant(
                                 id = '', 
                                 messaging_token = '', ), ), 

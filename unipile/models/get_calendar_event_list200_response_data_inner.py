@@ -26,6 +26,7 @@ from unipile.models.get_calendar_event_list200_response_data_inner_organizer imp
 from unipile.models.get_calendar_event_list200_response_data_inner_start import GetCalendarEventList200ResponseDataInnerStart
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetCalendarEventList200ResponseDataInner(BaseModel):
     """
@@ -40,7 +41,7 @@ class GetCalendarEventList200ResponseDataInner(BaseModel):
     title: StrictStr = Field(description="The title of the event.")
     body: Optional[StrictStr] = Field(default=None, description="The body of the event.")
     location: Optional[StrictStr] = Field(default=None, description="The location of the event.")
-    is_canceled: StrictBool = Field(description="Is the event canceled.")
+    is_cancelled: StrictBool = Field(description="Is the event cancelled.")
     is_all_day: StrictBool = Field(description="Is the event all day.")
     is_attendees_list_hidden: StrictBool = Field(description="Is the attendees list hidden for attendees.")
     attendees: Optional[List[GetCalendarEventList200ResponseDataInnerAttendeesInner]] = Field(default=None, description="The attendees of the event.")
@@ -54,7 +55,7 @@ class GetCalendarEventList200ResponseDataInner(BaseModel):
     event_type: StrictStr = Field(description="The type of the event (`birthday`, `fromGmail`, `outOfOffice`...)")
     background_color: Optional[StrictStr] = Field(default=None, description="Background color of the calendar in hexadecimal format.")
     text_color: Optional[StrictStr] = Field(default=None, description="Foreground color of the event in hexadecimal format.")
-    __properties: ClassVar[List[str]] = ["object", "id", "master_event_id", "calendar_id", "created_at", "updated_at", "title", "body", "location", "is_canceled", "is_all_day", "is_attendees_list_hidden", "attendees", "start", "end", "recurrence", "organizer", "conference", "visibility", "transparency", "event_type", "background_color", "text_color"]
+    __properties: ClassVar[List[str]] = ["object", "id", "master_event_id", "calendar_id", "created_at", "updated_at", "title", "body", "location", "is_cancelled", "is_all_day", "is_attendees_list_hidden", "attendees", "start", "end", "recurrence", "organizer", "conference", "visibility", "transparency", "event_type", "background_color", "text_color"]
 
     @field_validator('object')
     def object_validate_enum(cls, value):
@@ -78,7 +79,8 @@ class GetCalendarEventList200ResponseDataInner(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -90,8 +92,7 @@ class GetCalendarEventList200ResponseDataInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -156,7 +157,7 @@ class GetCalendarEventList200ResponseDataInner(BaseModel):
             "title": obj.get("title"),
             "body": obj.get("body"),
             "location": obj.get("location"),
-            "is_canceled": obj.get("is_canceled"),
+            "is_cancelled": obj.get("is_cancelled"),
             "is_all_day": obj.get("is_all_day"),
             "is_attendees_list_hidden": obj.get("is_attendees_list_hidden"),
             "attendees": [GetCalendarEventList200ResponseDataInnerAttendeesInner.from_dict(_item) for _item in obj["attendees"]] if obj.get("attendees") is not None else None,

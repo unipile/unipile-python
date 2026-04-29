@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Id of the education entry. | [optional] 
-**school** | [**GetUserProfile200ResponseSpecificsAllOfAnyOfEducationInnerSchool**](GetUserProfile200ResponseSpecificsAllOfAnyOfEducationInnerSchool.md) |  | 
+**school** | [**LinkedInEducationInnerSchool**](LinkedInEducationInnerSchool.md) |  | 
 **degree** | **str** | Name of the degree. | [optional] 
 **description** | **str** | Description of the education. | [optional] 
 **activities** | **str** | Activities carried out during education. | [optional] 

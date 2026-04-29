@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **title** | **str** | The title of the event. | 
 **body** | **str** | The body of the event. | [optional] 
 **location** | **str** | The location of the event. | [optional] 
-**is_canceled** | **bool** | Is the event canceled. | 
+**is_cancelled** | **bool** | Is the event cancelled. | 
 **is_all_day** | **bool** | Is the event all day. | 
 **is_attendees_list_hidden** | **bool** | Is the attendees list hidden for attendees. | 
 **attendees** | [**List[GetCalendarEventList200ResponseDataInnerAttendeesInner]**](GetCalendarEventList200ResponseDataInnerAttendeesInner.md) | The attendees of the event. | [optional] 

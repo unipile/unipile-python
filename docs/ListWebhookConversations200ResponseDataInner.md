@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **first_attempt** | **bool** |  | 
 **event_type** | **str** |  | 
-**created_at** | **str** |  | 
+**created_at** | **str** | The ID of the Company. | 
 **http_status** | **int** |  | 
-**endpoint_url** | **str** |  | 
-**response_body** | **str** |  | 
+**endpoint_url** | **str** | The ID of the Company. | 
+**response_body** | **str** | The ID of the Company. | 
 **object** | **str** |  | 
 **id** | **str** |  | 
 **endpoint_id** | **str** |  | 

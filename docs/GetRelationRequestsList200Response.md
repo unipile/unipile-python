@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List[GetRelationRequestsList200ResponseDataInner]**](GetRelationRequestsList200ResponseDataInner.md) |  | 
+**data** | [**List[LinkedInRelationRequest]**](LinkedInRelationRequest.md) |  | 
 **total_count** | **float** | Total number of results if supported by the endpoint. | [optional] 
 **next_cursor** | **str** | Cursor to get the next page of results if supported. Else use &#x60;offset&#x60;. | [optional] 
 

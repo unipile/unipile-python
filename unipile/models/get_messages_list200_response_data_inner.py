@@ -27,6 +27,7 @@ from unipile.models.get_messages_list200_response_data_inner_reactions_counter_i
 from unipile.models.get_messages_list200_response_data_inner_sender import GetMessagesList200ResponseDataInnerSender
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetMessagesList200ResponseDataInner(BaseModel):
     """
@@ -49,7 +50,7 @@ class GetMessagesList200ResponseDataInner(BaseModel):
     is_mentionned: StrictBool = Field(description="Is the message mentionning the current user. Usually to notify.")
     event_type: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The type of message event.     0 : Unknown (Not implemented)     1 : Chat name update     2 : Chat description update     3 : New participant added to the chat group     4 : Participant kicked or left the chat group     5 : A message is pinned     6 : Permissions have been updated     7 : Participant was promoted or demoted     8 : Reaction     9 : Call Missed     10 : Call Started     11 : Call Ended     12 : Call Rejected     13 : Scheduled Call Created     14 : Scheduled Call Cancelled     15 : Scheduled Call Started     16 : Announcement     ")
     event_metadata: Optional[GetMessagesList200ResponseDataInnerEventMetadata] = None
-    reactions_counter: List[GetMessagesList200ResponseDataInnerReactionsCounterInner] = Field(description="The number of reactions to the element")
+    reactions_counter: List[GetMessagesList200ResponseDataInnerReactionsCounterInner] = Field(description="A list of reactions to the element.")
     sender: Optional[GetMessagesList200ResponseDataInnerSender] = None
     provider: StrictStr = Field(description="The provider's of the Account.     - `mock` is mock.     - `whatsapp` is WhatsApp.     - `linkedin` is LinkedIn.     - `instagram` is Instagram.     - `google` is Google.     - `outlook` is Outlook.     - `telegram` is Telegram.     - `imap` is IMAP.")
     attachments: List[GetMessagesList200ResponseDataInnerAttachmentsInner] = Field(description="List of message attachments.")
@@ -83,7 +84,8 @@ class GetMessagesList200ResponseDataInner(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -95,8 +97,7 @@ class GetMessagesList200ResponseDataInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

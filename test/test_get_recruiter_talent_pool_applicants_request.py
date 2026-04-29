@@ -42,34 +42,34 @@ class TestGetRecruiterTalentPoolApplicantsRequest(unittest.TestCase):
                     'ACTIVE_TALENT'
                     ],
                 location = [
-                    '4'
+                    ''
                     ],
                 company = unipile.models.get_recruiter_talent_pool_applicants_request_company.getRecruiterTalentPoolApplicants_request_company(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 skills = [
-                    '4'
+                    ''
                     ],
                 school = unipile.models.get_recruiter_talent_pool_applicants_request_school.getRecruiterTalentPoolApplicants_request_school(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 industry = [
-                    '4'
+                    ''
                     ],
                 job_title = [
-                    '4'
+                    ''
                     ],
                 spoken_language = [
                     unipile.models.get_recruiter_talent_pool_applicants_request_spoken_language_inner.getRecruiterTalentPoolApplicants_request_spoken_language_inner(
-                        id = '4', 
+                        id = '', 
                         priority = 'CAN_HAVE', )
                     ],
                 spoken_language_proficiency = 'ELEMENTARY',
@@ -87,30 +87,30 @@ class TestGetRecruiterTalentPoolApplicantsRequest(unittest.TestCase):
                     max = 1.337, ),
                 degree = unipile.models.get_recruiter_talent_pool_applicants_request_degree.getRecruiterTalentPoolApplicants_request_degree(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 field_of_study = unipile.models.get_recruiter_talent_pool_applicants_request_field_of_study.getRecruiterTalentPoolApplicants_request_field_of_study(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 seniority = [
                     'UNPAID'
                     ],
                 job_function = [
-                    '4'
+                    ''
                     ],
                 current_company = unipile.models.get_recruiter_talent_pool_applicants_request_current_company.getRecruiterTalentPoolApplicants_request_current_company(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 company_size = [
                     unipile.models.get_recruiter_talent_pool_applicants_request_company_size_inner.getRecruiterTalentPoolApplicants_request_company_size_inner(
@@ -119,10 +119,10 @@ class TestGetRecruiterTalentPoolApplicantsRequest(unittest.TestCase):
                     ],
                 tags = unipile.models.get_recruiter_talent_pool_applicants_request_tags.getRecruiterTalentPoolApplicants_request_tags(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], )
             )
         else:

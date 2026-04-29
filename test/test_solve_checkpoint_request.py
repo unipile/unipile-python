@@ -36,8 +36,7 @@ class TestSolveCheckpointRequest(unittest.TestCase):
         if include_optional:
             return SolveCheckpointRequest(
                 code = '',
-                intent_id = 'acc_jUR,rZ#UM/?R,Fp^l6$ARj',
-                state = ''
+                intent_id = 'acc_jUR,rZ#UM/?R,Fp^l6$ARj'
             )
         else:
             return SolveCheckpointRequest(

@@ -39,7 +39,8 @@ class TestGetClassicSearchParameters200Response(unittest.TestCase):
                     unipile.models.get_classic_search_parameters_200_response_data_inner.getClassicSearchParameters_200_response_data_inner(
                         object = 'SearchParameter', 
                         id = '', 
-                        name = '', )
+                        name = '', 
+                        metadata = null, )
                     ],
                 total_count = 1.337,
                 next_cursor = ''
@@ -50,7 +51,8 @@ class TestGetClassicSearchParameters200Response(unittest.TestCase):
                     unipile.models.get_classic_search_parameters_200_response_data_inner.getClassicSearchParameters_200_response_data_inner(
                         object = 'SearchParameter', 
                         id = '', 
-                        name = '', )
+                        name = '', 
+                        metadata = null, )
                     ],
         )
         """

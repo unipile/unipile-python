@@ -19,8 +19,10 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from unipile.models.send_email_request_attachments_inner import SendEmailRequestAttachmentsInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class AddPostCommentRequest(BaseModel):
     """
@@ -28,11 +30,13 @@ class AddPostCommentRequest(BaseModel):
     """ # noqa: E501
     text: StrictStr = Field(description="Textual content of the comment. User mentions can be added by inserting an @ followed by the `id` or `public_identifier` of the user (example: @JohnDoe).")
     comment_as: Optional[StrictStr] = Field(default=None, description="The ID of the User on whose behalf the comment should be published (if supported by the provider).")
+    attachments: Optional[List[SendEmailRequestAttachmentsInner]] = Field(default=None, description="Attachment associated with the comment")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["text", "comment_as"]
+    __properties: ClassVar[List[str]] = ["text", "comment_as", "attachments"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -44,8 +48,7 @@ class AddPostCommentRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -72,6 +75,13 @@ class AddPostCommentRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in attachments (list)
+        _items = []
+        if self.attachments:
+            for _item_attachments in self.attachments:
+                if _item_attachments:
+                    _items.append(_item_attachments.to_dict())
+            _dict['attachments'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -90,7 +100,8 @@ class AddPostCommentRequest(BaseModel):
 
         _obj = cls.model_validate({
             "text": obj.get("text"),
-            "comment_as": obj.get("comment_as")
+            "comment_as": obj.get("comment_as"),
+            "attachments": [SendEmailRequestAttachmentsInner.from_dict(_item) for _item in obj["attachments"]] if obj.get("attachments") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

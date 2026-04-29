@@ -35,12 +35,12 @@ class TestUpdateUserProfileRequestSpecificsAllOfLinkedinSkillsInner(unittest.Tes
         model = UpdateUserProfileRequestSpecificsAllOfLinkedinSkillsInner()
         if include_optional:
             return UpdateUserProfileRequestSpecificsAllOfLinkedinSkillsInner(
-                text = '',
-                id = '4'
+                name = '',
+                id = ''
             )
         else:
             return UpdateUserProfileRequestSpecificsAllOfLinkedinSkillsInner(
-                text = '',
+                name = '',
         )
         """
 

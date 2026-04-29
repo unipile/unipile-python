@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Id of the work experience entry. | [optional] 
-**company** | [**GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization**](GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization.md) |  | 
-**title** | **str** | Position name in the experience. | 
+**company** | [**LinkedInCertificationsInnerOrganization**](LinkedInCertificationsInnerOrganization.md) |  | 
+**job_title** | **str** | Job title of the experience. | 
 **started_on** | **str** | Start date of the experience in MM/DD/YYYY format. | [optional] 
 **ended_on** | **str** | End date of the experience in MM/DD/YYYY format. | [optional] 
 **location** | **str** | Location of the experience. | [optional] 

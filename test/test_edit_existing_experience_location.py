@@ -35,12 +35,12 @@ class TestEditExistingExperienceLocation(unittest.TestCase):
         model = EditExistingExperienceLocation()
         if include_optional:
             return EditExistingExperienceLocation(
-                text = '',
-                id = '4'
+                name = '',
+                id = ''
             )
         else:
             return EditExistingExperienceLocation(
-                text = '',
+                name = '',
         )
         """
 

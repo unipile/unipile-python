@@ -17,18 +17,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PerformSalesPeopleSearchRequestPostalCode(BaseModel):
     """
         Native filter : Personal / Geography / Postal code   
     """ # noqa: E501
-    include: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\">List Search Parameters</a> with `POSTAL_CODE` type to find out the possible values.")
-    exclude: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\">List Search Parameters</a> with `POSTAL_CODE` type to find out the possible values.")
+    include: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\">List Search Parameters</a> with `POSTAL_CODE` type to find out the possible values.")
+    exclude: Optional[List[StrictStr]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\">List Search Parameters</a> with `POSTAL_CODE` type to find out the possible values.")
     radius: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The distance radius around the postal code in miles.")
     __properties: ClassVar[List[str]] = ["include", "exclude", "radius"]
 
@@ -43,7 +43,8 @@ class PerformSalesPeopleSearchRequestPostalCode(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -55,8 +56,7 @@ class PerformSalesPeopleSearchRequestPostalCode(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -21,29 +21,30 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from unipile.models.create_classic_job_posting_draft_request_apply_method import CreateClassicJobPostingDraftRequestApplyMethod
+from unipile.models.create_classic_job_posting_draft_request_company import CreateClassicJobPostingDraftRequestCompany
+from unipile.models.create_classic_job_posting_draft_request_job_title import CreateClassicJobPostingDraftRequestJobTitle
 from unipile.models.create_classic_job_posting_draft_request_rejection_settings import CreateClassicJobPostingDraftRequestRejectionSettings
-from unipile.models.edit_classic_job_posting_request_company import EditClassicJobPostingRequestCompany
 from unipile.models.edit_classic_job_posting_request_screening_questions_inner import EditClassicJobPostingRequestScreeningQuestionsInner
-from unipile.models.edit_classic_job_posting_request_title import EditClassicJobPostingRequestTitle
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EditClassicJobPostingRequest(BaseModel):
     """
     EditClassicJobPostingRequest
     """ # noqa: E501
-    title: Optional[EditClassicJobPostingRequestTitle] = None
-    company: Optional[EditClassicJobPostingRequestCompany] = None
+    job_title: Optional[CreateClassicJobPostingDraftRequestJobTitle] = None
+    company: Optional[CreateClassicJobPostingDraftRequestCompany] = None
     workplace_type: Optional[StrictStr] = Field(default=None, description="The workplace type of the job.")
-    location: Optional[Annotated[str, Field(strict=True)]] = None
-    employment_status: Optional[StrictStr] = None
+    location: Optional[StrictStr] = Field(default=None, description="A parameter ID. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.")
+    employment_status: Optional[StrictStr] = Field(default=None, description="The employment status of the job.")
     description: Optional[Annotated[str, Field(min_length=200, strict=True)]] = Field(default=None, description="The job description. You can use HTML tags to structure your content.")
-    skills: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `SKILL` type to find out the possible values. The skills related to the job posting.")
+    skills: Optional[List[StrictStr]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `SKILL` type to find out the possible values. The skills related to the job posting.")
     apply_method: Optional[CreateClassicJobPostingDraftRequestApplyMethod] = None
     screening_questions: Optional[List[EditClassicJobPostingRequestScreeningQuestionsInner]] = Field(default=None, description="The questions to be asked to the applicants.")
     rejection_settings: Optional[CreateClassicJobPostingDraftRequestRejectionSettings] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["title", "company", "workplace_type", "location", "employment_status", "description", "skills", "apply_method", "screening_questions", "rejection_settings"]
+    __properties: ClassVar[List[str]] = ["job_title", "company", "workplace_type", "location", "employment_status", "description", "skills", "apply_method", "screening_questions", "rejection_settings"]
 
     @field_validator('workplace_type')
     def workplace_type_validate_enum(cls, value):
@@ -53,16 +54,6 @@ class EditClassicJobPostingRequest(BaseModel):
 
         if value not in set(['ON_SITE', 'HYBRID', 'REMOTE']):
             raise ValueError("must be one of enum values ('ON_SITE', 'HYBRID', 'REMOTE')")
-        return value
-
-    @field_validator('location')
-    def location_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^\d+$", value):
-            raise ValueError(r"must validate the regular expression /^\d+$/")
         return value
 
     @field_validator('employment_status')
@@ -76,7 +67,8 @@ class EditClassicJobPostingRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -88,8 +80,7 @@ class EditClassicJobPostingRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -116,9 +107,9 @@ class EditClassicJobPostingRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of title
-        if self.title:
-            _dict['title'] = self.title.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of job_title
+        if self.job_title:
+            _dict['job_title'] = self.job_title.to_dict()
         # override the default output from pydantic by calling `to_dict()` of company
         if self.company:
             _dict['company'] = self.company.to_dict()
@@ -152,8 +143,8 @@ class EditClassicJobPostingRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "title": EditClassicJobPostingRequestTitle.from_dict(obj["title"]) if obj.get("title") is not None else None,
-            "company": EditClassicJobPostingRequestCompany.from_dict(obj["company"]) if obj.get("company") is not None else None,
+            "job_title": CreateClassicJobPostingDraftRequestJobTitle.from_dict(obj["job_title"]) if obj.get("job_title") is not None else None,
+            "company": CreateClassicJobPostingDraftRequestCompany.from_dict(obj["company"]) if obj.get("company") is not None else None,
             "workplace_type": obj.get("workplace_type"),
             "location": obj.get("location"),
             "employment_status": obj.get("employment_status"),

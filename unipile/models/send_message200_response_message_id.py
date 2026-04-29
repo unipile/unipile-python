@@ -31,7 +31,7 @@ class SendMessage200ResponseMessageId(BaseModel):
     """
 
     # data type: str
-    anyof_schema_1_validator: Optional[StrictStr] = None
+    anyof_schema_1_validator: Optional[StrictStr] = Field(default=None, description="The ID of the Company.")
     # data type: List[str]
     anyof_schema_2_validator: Optional[List[StrictStr]] = None
     if TYPE_CHECKING:

@@ -36,7 +36,7 @@ class TestPerformRecruiterPeopleSearchFromTalentPoolRequestSkillsInner(unittest.
         if include_optional:
             return PerformRecruiterPeopleSearchFromTalentPoolRequestSkillsInner(
                 name = '',
-                id = '4',
+                id = '',
                 priority = 'CAN_HAVE'
             )
         else:

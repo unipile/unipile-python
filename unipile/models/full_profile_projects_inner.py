@@ -19,9 +19,10 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_projects_inner_contributors_inner import GetUserProfile200ResponseSpecificsAllOfAnyOfProjectsInnerContributorsInner
+from unipile.models.linked_in_projects_inner_contributors_inner import LinkedInProjectsInnerContributorsInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class FullProfileProjectsInner(BaseModel):
     """
@@ -29,7 +30,7 @@ class FullProfileProjectsInner(BaseModel):
     """ # noqa: E501
     name: StrictStr = Field(description="Name of the project.")
     description: Optional[StrictStr] = Field(default=None, description="Description of the project.")
-    contributors: List[GetUserProfile200ResponseSpecificsAllOfAnyOfProjectsInnerContributorsInner] = Field(description="Contributors to the project.")
+    contributors: List[LinkedInProjectsInnerContributorsInner] = Field(description="Contributors to the project.")
     skills: Optional[List[StrictStr]] = Field(default=None, description="Skills related to the project.")
     skills_preview: Optional[StrictStr] = Field(default=None, description="Insight of the skills related to the project.")
     started_on: Optional[StrictStr] = Field(default=None, description="Start date of the project in MM/DD/YYYY format.")
@@ -37,7 +38,8 @@ class FullProfileProjectsInner(BaseModel):
     __properties: ClassVar[List[str]] = ["name", "description", "contributors", "skills", "skills_preview", "started_on", "ended_on"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,8 +51,7 @@ class FullProfileProjectsInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -96,7 +97,7 @@ class FullProfileProjectsInner(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "contributors": [GetUserProfile200ResponseSpecificsAllOfAnyOfProjectsInnerContributorsInner.from_dict(_item) for _item in obj["contributors"]] if obj.get("contributors") is not None else None,
+            "contributors": [LinkedInProjectsInnerContributorsInner.from_dict(_item) for _item in obj["contributors"]] if obj.get("contributors") is not None else None,
             "skills": obj.get("skills"),
             "skills_preview": obj.get("skills_preview"),
             "started_on": obj.get("started_on"),

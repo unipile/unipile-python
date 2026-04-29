@@ -36,10 +36,10 @@ class TestPerformSalesPeopleSearchRequestSchool(unittest.TestCase):
         if include_optional:
             return PerformSalesPeopleSearchRequestSchool(
                 include = [
-                    '4'
+                    ''
                     ],
                 exclude = [
-                    '4'
+                    ''
                     ]
             )
         else:

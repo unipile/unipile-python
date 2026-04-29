@@ -36,10 +36,10 @@ class TestPerformSalesCompaniesSearchRequestPostalCode(unittest.TestCase):
         if include_optional:
             return PerformSalesCompaniesSearchRequestPostalCode(
                 include = [
-                    '4'
+                    ''
                     ],
                 exclude = [
-                    '4'
+                    ''
                     ]
             )
         else:

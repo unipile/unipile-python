@@ -26,6 +26,7 @@ from unipile.models.get_chats_list200_response_data_inner_participants_inner imp
 from unipile.models.get_chats_list200_response_data_inner_user import GetChatsList200ResponseDataInnerUser
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetChatsList200ResponseDataInner(BaseModel):
     """
@@ -34,6 +35,7 @@ class GetChatsList200ResponseDataInner(BaseModel):
     object: StrictStr
     id: StrictStr = Field(description="The unique identifier of the chat for the provider.")
     name: StrictStr = Field(description="The name / title of the chat. If the provider does not provide a name, name is built out of participants usernames.")
+    label: Optional[StrictStr] = Field(default=None, description="If supported by the provider, a label associated with the chat.")
     description: Optional[StrictStr] = Field(default=None, description="The description / subject of the chat.")
     image_url: Optional[StrictStr] = Field(default=None, description="The URL of the chat image.")
     created_at: Optional[StrictStr] = Field(default=None, description="The creation date of the chat. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).")
@@ -58,7 +60,7 @@ class GetChatsList200ResponseDataInner(BaseModel):
     user: Optional[GetChatsList200ResponseDataInnerUser] = None
     provider: StrictStr = Field(description="The provider's of the Account.     - `mock` is mock.     - `whatsapp` is WhatsApp.     - `linkedin` is LinkedIn.     - `instagram` is Instagram.     - `google` is Google.     - `outlook` is Outlook.     - `telegram` is Telegram.     - `imap` is IMAP.")
     specifics: Optional[Any] = None
-    __properties: ClassVar[List[str]] = ["object", "id", "name", "description", "image_url", "created_at", "updated_at", "last_message_timestamp", "muted_until", "creator_id", "user_id", "is_group", "is_1to1", "is_channel", "type", "is_pinned", "is_readonly", "is_archived", "folders", "participants_count", "unread_count", "restrictions", "participants", "last_message", "user", "provider", "specifics"]
+    __properties: ClassVar[List[str]] = ["object", "id", "name", "label", "description", "image_url", "created_at", "updated_at", "last_message_timestamp", "muted_until", "creator_id", "user_id", "is_group", "is_1to1", "is_channel", "type", "is_pinned", "is_readonly", "is_archived", "folders", "participants_count", "unread_count", "restrictions", "participants", "last_message", "user", "provider", "specifics"]
 
     @field_validator('object')
     def object_validate_enum(cls, value):
@@ -93,7 +95,8 @@ class GetChatsList200ResponseDataInner(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -105,8 +108,7 @@ class GetChatsList200ResponseDataInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -167,6 +169,7 @@ class GetChatsList200ResponseDataInner(BaseModel):
             "object": obj.get("object"),
             "id": obj.get("id"),
             "name": obj.get("name"),
+            "label": obj.get("label"),
             "description": obj.get("description"),
             "image_url": obj.get("image_url"),
             "created_at": obj.get("created_at"),

@@ -7,12 +7,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enabled** | **bool** |  | 
 **description** | **str** |  | 
-**url** | **str** |  | 
+**url** | **str** | The ID of the Company. | 
 **trigger_events** | **List[str]** |  | 
 **secret** | **str** |  | 
 **object** | **str** |  | 
 **id** | **str** |  | 
 **application_id** | **str** |  | 
+**account_ids** | **List[str]** |  | 
+**account_targets** | [**List[ListWebhookEndpoints200ResponseDataInnerAccountTargetsInner]**](ListWebhookEndpoints200ResponseDataInnerAccountTargetsInner.md) |  | 
 
 ## Example
 

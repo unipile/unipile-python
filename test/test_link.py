@@ -35,17 +35,35 @@ class TestLink(unittest.TestCase):
         model = Link()
         if include_optional:
             return Link(
-                url = '',
-                thumbnail = unipile.models.send_email_request_attachments_inner.sendEmail_request_attachments_inner(
-                    content = '', 
-                    content_type = '', 
-                    filename = '', 
-                    metadata = unipile.models.message_file_all_of_metadata.Message_File_allOf_metadata(
-                        duration = 1.337, ), )
+                last_updated_at = '',
+                last_updated_by = unipile.models.linked_in_projects_inner_contributors_inner.LinkedIn_projects_inner_contributors_inner(
+                    id = '', 
+                    object = 'User', 
+                    type = 'individual', 
+                    public_identifier = '', 
+                    display_name = '', 
+                    profile_url = '', 
+                    public_picture_url = '', 
+                    private_picture_download_url = '', 
+                    description = '', ),
+                event = 'LINK_ADDED',
+                link_content = ''
             )
         else:
             return Link(
-                url = '',
+                last_updated_at = '',
+                last_updated_by = unipile.models.linked_in_projects_inner_contributors_inner.LinkedIn_projects_inner_contributors_inner(
+                    id = '', 
+                    object = 'User', 
+                    type = 'individual', 
+                    public_identifier = '', 
+                    display_name = '', 
+                    profile_url = '', 
+                    public_picture_url = '', 
+                    private_picture_download_url = '', 
+                    description = '', ),
+                event = 'LINK_ADDED',
+                link_content = '',
         )
         """
 

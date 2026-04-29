@@ -13,122 +13,88 @@
 
 
 from __future__ import annotations
-from inspect import getfullargspec
-import json
 import pprint
 import re  # noqa: F401
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
-from typing import Optional
-from unipile.models.publish_in_promoted_mode1_budget_any_of import PublishInPromotedMode1BudgetAnyOf
-from unipile.models.publish_in_promoted_mode1_budget_any_of1 import PublishInPromotedMode1BudgetAnyOf1
-from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
-from typing_extensions import Literal, Self
-from pydantic import Field
+import json
 
-PUBLISHINPROMOTEDMODE1BUDGET_ANY_OF_SCHEMAS = ["PublishInPromotedMode1BudgetAnyOf", "PublishInPromotedMode1BudgetAnyOf1"]
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Union
+from typing_extensions import Annotated
+from typing import Optional, Set
+from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PublishInPromotedMode1Budget(BaseModel):
     """
     Leave this field blank if you don't have a choice of budget when posting a job on LinkedIn.
-    """
+    """ # noqa: E501
+    currency: Annotated[str, Field(min_length=3, strict=True, max_length=3)] = Field(description="A 3 capital letters ISO 4217 currency code.")
+    amount: Union[StrictFloat, StrictInt] = Field(description="The amount of money to be spent on the job posting.")
+    scope: StrictStr = Field(description="The time scope of the budget.")
+    __properties: ClassVar[List[str]] = ["currency", "amount", "scope"]
 
-    # data type: PublishInPromotedMode1BudgetAnyOf
-    anyof_schema_1_validator: Optional[PublishInPromotedMode1BudgetAnyOf] = None
-    # data type: PublishInPromotedMode1BudgetAnyOf1
-    anyof_schema_2_validator: Optional[PublishInPromotedMode1BudgetAnyOf1] = None
-    if TYPE_CHECKING:
-        actual_instance: Optional[Union[PublishInPromotedMode1BudgetAnyOf, PublishInPromotedMode1BudgetAnyOf1]] = None
-    else:
-        actual_instance: Any = None
-    any_of_schemas: Set[str] = { "PublishInPromotedMode1BudgetAnyOf", "PublishInPromotedMode1BudgetAnyOf1" }
+    @field_validator('scope')
+    def scope_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['DAILY', 'TOTAL']):
+            raise ValueError("must be one of enum values ('DAILY', 'TOTAL')")
+        return value
 
-    model_config = {
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        validate_by_name=True,
+        validate_by_alias=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
-    def __init__(self, *args, **kwargs) -> None:
-        if args:
-            if len(args) > 1:
-                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
-            if kwargs:
-                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
-            super().__init__(actual_instance=args[0])
-        else:
-            super().__init__(**kwargs)
-
-    @field_validator('actual_instance')
-    def actual_instance_must_validate_anyof(cls, v):
-        instance = PublishInPromotedMode1Budget.model_construct()
-        error_messages = []
-        # validate data type: PublishInPromotedMode1BudgetAnyOf
-        if not isinstance(v, PublishInPromotedMode1BudgetAnyOf):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `PublishInPromotedMode1BudgetAnyOf`")
-        else:
-            return v
-
-        # validate data type: PublishInPromotedMode1BudgetAnyOf1
-        if not isinstance(v, PublishInPromotedMode1BudgetAnyOf1):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `PublishInPromotedMode1BudgetAnyOf1`")
-        else:
-            return v
-
-        if error_messages:
-            # no match
-            raise ValueError("No match found when setting the actual_instance in PublishInPromotedMode1Budget with anyOf schemas: PublishInPromotedMode1BudgetAnyOf, PublishInPromotedMode1BudgetAnyOf1. Details: " + ", ".join(error_messages))
-        else:
-            return v
-
-    @classmethod
-    def from_dict(cls, obj: Dict[str, Any]) -> Self:
-        return cls.from_json(json.dumps(obj))
-
-    @classmethod
-    def from_json(cls, json_str: str) -> Self:
-        """Returns the object represented by the json string"""
-        instance = cls.model_construct()
-        error_messages = []
-        # anyof_schema_1_validator: Optional[PublishInPromotedMode1BudgetAnyOf] = None
-        try:
-            instance.actual_instance = PublishInPromotedMode1BudgetAnyOf.from_json(json_str)
-            return instance
-        except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[PublishInPromotedMode1BudgetAnyOf1] = None
-        try:
-            instance.actual_instance = PublishInPromotedMode1BudgetAnyOf1.from_json(json_str)
-            return instance
-        except (ValidationError, ValueError) as e:
-             error_messages.append(str(e))
-
-        if error_messages:
-            # no match
-            raise ValueError("No match found when deserializing the JSON string into PublishInPromotedMode1Budget with anyOf schemas: PublishInPromotedMode1BudgetAnyOf, PublishInPromotedMode1BudgetAnyOf1. Details: " + ", ".join(error_messages))
-        else:
-            return instance
-
-    def to_json(self) -> str:
-        """Returns the JSON representation of the actual instance"""
-        if self.actual_instance is None:
-            return "null"
-
-        if hasattr(self.actual_instance, "to_json") and callable(self.actual_instance.to_json):
-            return self.actual_instance.to_json()
-        else:
-            return json.dumps(self.actual_instance)
-
-    def to_dict(self) -> Optional[Union[Dict[str, Any], PublishInPromotedMode1BudgetAnyOf, PublishInPromotedMode1BudgetAnyOf1]]:
-        """Returns the dict representation of the actual instance"""
-        if self.actual_instance is None:
-            return None
-
-        if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
-            return self.actual_instance.to_dict()
-        else:
-            return self.actual_instance
 
     def to_str(self) -> str:
-        """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.model_dump())
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
+
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        return json.dumps(to_jsonable_python(self.to_dict()))
+
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of PublishInPromotedMode1Budget from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
+
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of PublishInPromotedMode1Budget from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "currency": obj.get("currency"),
+            "amount": obj.get("amount"),
+            "scope": obj.get("scope")
+        })
+        return _obj
 
 

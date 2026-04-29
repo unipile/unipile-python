@@ -19,31 +19,27 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from unipile.models.partial_profile_hiring_project import PartialProfileHiringProject
 from unipile.models.partial_profile_work_experience_inner import PartialProfileWorkExperienceInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PartialProfile(BaseModel):
     """
     PartialProfile
     """ # noqa: E501
-    visibility: StrictStr = Field(description="Indidates that you don't have access to the full profile of this User.")
-    id: StrictStr = Field(description="The ID of the User.")
-    candidate_id: StrictStr = Field(description="The candidate ID of the User.")
+    id: StrictStr = Field(description="The ID of the user.")
     headline: StrictStr = Field(description="The headline of the User.")
     network_distance: StrictStr = Field(description="Network distance to a User.       `SELF`: Yourself.       `FIRST_DEGREE`: 1st degree connection.       `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).       `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).       `OUT_OF_NETWORK`: Unreachable user.'")
     location: StrictStr = Field(description="The location of the User.")
-    is_hidden_candidate: StrictBool = Field(description="Whether the User has been set as hidden candidate.")
-    work_experience: List[PartialProfileWorkExperienceInner] = Field(description="A list of the User's work experiences.")
     can_send_inmail: Optional[StrictBool] = Field(default=None, description="Whether it is possible to send an inMail to this User.")
-    __properties: ClassVar[List[str]] = ["visibility", "id", "candidate_id", "headline", "network_distance", "location", "is_hidden_candidate", "work_experience", "can_send_inmail"]
-
-    @field_validator('visibility')
-    def visibility_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['partial']):
-            raise ValueError("must be one of enum values ('partial')")
-        return value
+    visibility: StrictStr = Field(description="Indidates that you don't have access to the full profile of this User.")
+    candidate_id: StrictStr = Field(description="The candidate ID of the User.")
+    is_hidden_candidate: StrictBool = Field(description="Whether the User has been set as hidden candidate.")
+    hiring_project: Optional[PartialProfileHiringProject] = None
+    work_experience: List[PartialProfileWorkExperienceInner] = Field(description="A list of the User's work experiences.")
+    __properties: ClassVar[List[str]] = ["id", "headline", "network_distance", "location", "can_send_inmail", "visibility", "candidate_id", "is_hidden_candidate", "hiring_project", "work_experience"]
 
     @field_validator('network_distance')
     def network_distance_validate_enum(cls, value):
@@ -52,8 +48,16 @@ class PartialProfile(BaseModel):
             raise ValueError("must be one of enum values ('SELF', 'FIRST_DEGREE', 'SECOND_DEGREE', 'THIRD_DEGREE', 'OUT_OF_NETWORK')")
         return value
 
+    @field_validator('visibility')
+    def visibility_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['partial']):
+            raise ValueError("must be one of enum values ('partial')")
+        return value
+
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -65,8 +69,7 @@ class PartialProfile(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -91,6 +94,9 @@ class PartialProfile(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of hiring_project
+        if self.hiring_project:
+            _dict['hiring_project'] = self.hiring_project.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in work_experience (list)
         _items = []
         if self.work_experience:
@@ -110,15 +116,16 @@ class PartialProfile(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "visibility": obj.get("visibility"),
             "id": obj.get("id"),
-            "candidate_id": obj.get("candidate_id"),
             "headline": obj.get("headline"),
             "network_distance": obj.get("network_distance"),
             "location": obj.get("location"),
+            "can_send_inmail": obj.get("can_send_inmail"),
+            "visibility": obj.get("visibility"),
+            "candidate_id": obj.get("candidate_id"),
             "is_hidden_candidate": obj.get("is_hidden_candidate"),
-            "work_experience": [PartialProfileWorkExperienceInner.from_dict(_item) for _item in obj["work_experience"]] if obj.get("work_experience") is not None else None,
-            "can_send_inmail": obj.get("can_send_inmail")
+            "hiring_project": PartialProfileHiringProject.from_dict(obj["hiring_project"]) if obj.get("hiring_project") is not None else None,
+            "work_experience": [PartialProfileWorkExperienceInner.from_dict(_item) for _item in obj["work_experience"]] if obj.get("work_experience") is not None else None
         })
         return _obj
 

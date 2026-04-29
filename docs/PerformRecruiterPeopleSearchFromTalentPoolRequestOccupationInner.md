@@ -7,7 +7,7 @@ Occupations are selections of job titles in the same industry.    Native filter 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The occupation name. | 
-**id** | **str** |  | [optional] 
+**id** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;OCCUPATION&#x60; type to find out the possible values. | [optional] 
 **priority** | **str** | Whether the user can, must or shouldn&#39;t have the value.    Native filter : Priority    | [optional] [default to 'CAN_HAVE']
 **preferences** | **str** | Indicates how this professional experience relates to the user&#39;s current employment status.       | [optional] [default to 'CURRENT_OR_PAST']
 

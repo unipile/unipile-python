@@ -37,8 +37,8 @@ class TestUpdateUserProfileRequestSpecificsAllOfLinkedin(unittest.TestCase):
             return UpdateUserProfileRequestSpecificsAllOfLinkedin(
                 skills = [
                     unipile.models.update_user_profile_request_specifics_all_of_linkedin_skills_inner.updateUserProfile_request_specifics_allOf_linkedin_skills_inner(
-                        text = '', 
-                        id = '4', )
+                        name = '', 
+                        id = '', )
                     ],
                 skills_follow = True,
                 postal_code = '',
@@ -47,18 +47,56 @@ class TestUpdateUserProfileRequestSpecificsAllOfLinkedin(unittest.TestCase):
                 education = None,
                 picture_options = unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options.updateUserProfile_request_specifics_allOf_linkedin_picture_options(
                     filter = 'original', 
-                    layout = unipile.models.layout.layout(), 
+                    layout = unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options_layout.updateUserProfile_request_specifics_allOf_linkedin_picture_options_layout(
+                        bottom_left = unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options_layout_bottom_left.updateUserProfile_request_specifics_allOf_linkedin_picture_options_layout_bottom_left(
+                            x = 1.337, 
+                            y = 1.337, ), 
+                        bottom_right = unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options_layout_bottom_left.updateUserProfile_request_specifics_allOf_linkedin_picture_options_layout_bottom_left(
+                            x = 1.337, 
+                            y = 1.337, ), 
+                        top_left = , 
+                        top_right = , ), 
                     contrast = -0.3, 
                     vignette = -0.3, 
                     saturation = -0.3, 
                     brightness = -0.3, ),
                 background_picture_options = unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options.updateUserProfile_request_specifics_allOf_linkedin_picture_options(
                     filter = 'original', 
-                    layout = unipile.models.layout.layout(), 
+                    layout = unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options_layout.updateUserProfile_request_specifics_allOf_linkedin_picture_options_layout(
+                        bottom_left = unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options_layout_bottom_left.updateUserProfile_request_specifics_allOf_linkedin_picture_options_layout_bottom_left(
+                            x = 1.337, 
+                            y = 1.337, ), 
+                        bottom_right = unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options_layout_bottom_left.updateUserProfile_request_specifics_allOf_linkedin_picture_options_layout_bottom_left(
+                            x = 1.337, 
+                            y = 1.337, ), 
+                        top_left = , 
+                        top_right = , ), 
                     contrast = -0.3, 
                     vignette = -0.3, 
                     saturation = -0.3, 
-                    brightness = -0.3, )
+                    brightness = -0.3, ),
+                custom_link = unipile.models.update_user_profile_request_specifics_all_of_linkedin_custom_link.updateUserProfile_request_specifics_allOf_linkedin_custom_link(
+                    type = 'STORE', 
+                    url = '', 
+                    display_on = 'EVERYWHERE', ),
+                open_to_work = unipile.models.update_user_profile_request_specifics_all_of_linkedin_open_to_work.updateUserProfile_request_specifics_allOf_linkedin_open_to_work(
+                    job_title = [
+                        unipile.models.update_user_profile_request_specifics_all_of_linkedin_open_to_work_job_title_inner.updateUserProfile_request_specifics_allOf_linkedin_open_to_work_job_title_inner(
+                            title = '', 
+                            id = '', )
+                        ], 
+                    workplace = [
+                        unipile.models.update_user_profile_request_specifics_all_of_linkedin_open_to_work_workplace_inner.updateUserProfile_request_specifics_allOf_linkedin_open_to_work_workplace_inner(
+                            type = 'ON_SITE', 
+                            location = [
+                                ''
+                                ], )
+                        ], 
+                    start_date = 'IMMEDIATELY', 
+                    employment_type = [
+                        'FULL_TIME'
+                        ], 
+                    visibility = 'ALL', )
             )
         else:
             return UpdateUserProfileRequestSpecificsAllOfLinkedin(

@@ -44,7 +44,7 @@ class TestGetCalendarEventList200ResponseDataInner(unittest.TestCase):
                 title = '',
                 body = '',
                 location = '',
-                is_canceled = True,
+                is_cancelled = True,
                 is_all_day = True,
                 is_attendees_list_hidden = True,
                 attendees = [
@@ -83,7 +83,7 @@ class TestGetCalendarEventList200ResponseDataInner(unittest.TestCase):
                 created_at = '',
                 updated_at = '',
                 title = '',
-                is_canceled = True,
+                is_cancelled = True,
                 is_all_day = True,
                 is_attendees_list_hidden = True,
                 start = None,

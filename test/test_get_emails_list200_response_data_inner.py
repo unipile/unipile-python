@@ -79,6 +79,9 @@ class TestGetEmailsList200ResponseDataInner(unittest.TestCase):
                 folders = [
                     ''
                     ],
+                categories = [
+                    ''
+                    ],
                 is_unread = True
             )
         else:

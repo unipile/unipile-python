@@ -19,31 +19,47 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from typing_extensions import Annotated
 from unipile.models.get_recruiter_talent_pool_applicants_request_company_size_inner import GetRecruiterTalentPoolApplicantsRequestCompanySizeInner
 from unipile.models.get_recruiter_talent_pool_applicants_request_network_distance_inner import GetRecruiterTalentPoolApplicantsRequestNetworkDistanceInner
+from unipile.models.get_recruiter_talent_pool_applicants_request_years_in_current_company import GetRecruiterTalentPoolApplicantsRequestYearsInCurrentCompany
+from unipile.models.get_recruiter_talent_pool_applicants_request_years_in_current_position import GetRecruiterTalentPoolApplicantsRequestYearsInCurrentPosition
 from unipile.models.get_recruiter_talent_pool_applicants_request_years_of_experience import GetRecruiterTalentPoolApplicantsRequestYearsOfExperience
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_company_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestCompanyInner
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_current_company_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestCurrentCompanyInner
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_degree import PerformRecruiterPeopleSearchFromTalentPoolRequestDegree
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_field_of_study_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestFieldOfStudyInner
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_graduation_year import PerformRecruiterPeopleSearchFromTalentPoolRequestGraduationYear
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_hide_previously_viewed import PerformRecruiterPeopleSearchFromTalentPoolRequestHidePreviouslyViewed
-from unipile.models.perform_recruiter_people_search_from_talent_pool_request_industry import PerformRecruiterPeopleSearchFromTalentPoolRequestIndustry
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_job_title_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestJobTitleInner
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_load_custom_filter import PerformRecruiterPeopleSearchFromTalentPoolRequestLoadCustomFilter
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_load_saved_search import PerformRecruiterPeopleSearchFromTalentPoolRequestLoadSavedSearch
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_location_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestLocationInner
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_occupation_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestOccupationInner
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_postal_code_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestPostalCodeInner
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_project import PerformRecruiterPeopleSearchFromTalentPoolRequestProject
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_recently_joined_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestRecentlyJoinedInner
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_recruiting_activity_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestRecruitingActivityInner
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_save_custom_filter import PerformRecruiterPeopleSearchFromTalentPoolRequestSaveCustomFilter
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_save_search import PerformRecruiterPeopleSearchFromTalentPoolRequestSaveSearch
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_school_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestSchoolInner
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_skills_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestSkillsInner
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_spoken_language_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestSpokenLanguageInner
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_tags import PerformRecruiterPeopleSearchFromTalentPoolRequestTags
+from unipile.models.perform_recruiter_people_search_request_industry import PerformRecruiterPeopleSearchRequestIndustry
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PerformRecruiterPeopleSearchRequest(BaseModel):
     """
     PerformRecruiterPeopleSearchRequest
     """ # noqa: E501
     keywords: Optional[StrictStr] = Field(default=None, description="A keyword or group of keywords.")
+    spotlights: Optional[List[StrictStr]] = Field(default=None, description="A list of spotlights.")
+    load_saved_search: Optional[PerformRecruiterPeopleSearchFromTalentPoolRequestLoadSavedSearch] = None
+    load_custom_filter: Optional[PerformRecruiterPeopleSearchFromTalentPoolRequestLoadCustomFilter] = None
+    save_search: Optional[PerformRecruiterPeopleSearchFromTalentPoolRequestSaveSearch] = None
+    save_custom_filter: Optional[PerformRecruiterPeopleSearchFromTalentPoolRequestSaveCustomFilter] = None
     network_distance: Optional[List[GetRecruiterTalentPoolApplicantsRequestNetworkDistanceInner]] = Field(default=None, description="A list of connection degrees (1 for First, 2 for Second, 3 for Third+ and GROUP for Common group members).    Native filter : Connections   ")
     location: Optional[List[PerformRecruiterPeopleSearchFromTalentPoolRequestLocationInner]] = Field(default=None, description="A list of locations.")
     postal_code: Optional[List[PerformRecruiterPeopleSearchFromTalentPoolRequestPostalCodeInner]] = Field(default=None, description="A list of postal codes.")
@@ -52,26 +68,47 @@ class PerformRecruiterPeopleSearchRequest(BaseModel):
     occupation: Optional[List[PerformRecruiterPeopleSearchFromTalentPoolRequestOccupationInner]] = Field(default=None, description="A list of occupations.")
     skills: Optional[List[PerformRecruiterPeopleSearchFromTalentPoolRequestSkillsInner]] = Field(default=None, description="A list of skills.")
     company: Optional[List[PerformRecruiterPeopleSearchFromTalentPoolRequestCompanyInner]] = Field(default=None, description="A list of companies.")
+    current_company: Optional[List[PerformRecruiterPeopleSearchFromTalentPoolRequestCurrentCompanyInner]] = Field(default=None, description="A list of current companies.")
+    past_company: Optional[List[PerformRecruiterPeopleSearchFromTalentPoolRequestCurrentCompanyInner]] = Field(default=None, description="A list of past companies.")
     company_size: Optional[List[GetRecruiterTalentPoolApplicantsRequestCompanySizeInner]] = Field(default=None, description="A list of company size ranges.")
     years_of_experience: Optional[GetRecruiterTalentPoolApplicantsRequestYearsOfExperience] = None
+    years_in_current_position: Optional[GetRecruiterTalentPoolApplicantsRequestYearsInCurrentPosition] = None
+    years_in_current_company: Optional[GetRecruiterTalentPoolApplicantsRequestYearsInCurrentCompany] = None
+    degree: Optional[PerformRecruiterPeopleSearchFromTalentPoolRequestDegree] = None
+    workplace_type: Optional[List[StrictStr]] = Field(default=None, description="A list of workplace types.")
     school: Optional[List[PerformRecruiterPeopleSearchFromTalentPoolRequestSchoolInner]] = Field(default=None, description="A list of schools.")
+    field_of_study: Optional[List[PerformRecruiterPeopleSearchFromTalentPoolRequestFieldOfStudyInner]] = Field(default=None, description="A list of fields of study.")
+    employment_type: Optional[List[StrictStr]] = Field(default=None, description="A list of employment types.")
     graduation_year: Optional[PerformRecruiterPeopleSearchFromTalentPoolRequestGraduationYear] = None
-    industry: Optional[PerformRecruiterPeopleSearchFromTalentPoolRequestIndustry] = None
+    industry: Optional[PerformRecruiterPeopleSearchRequestIndustry] = None
     seniority: Optional[List[StrictStr]] = Field(default=None, description="A list of senorities.")
-    profile_language: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `PROFILE_LANGUAGE` type to find out the possible values.    Native filter : Profile languages   ")
+    spoken_language: Optional[List[PerformRecruiterPeopleSearchFromTalentPoolRequestSpokenLanguageInner]] = Field(default=None, description="A list of languages.")
+    profile_language: Optional[List[StrictStr]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `PROFILE_LANGUAGE` type to find out the possible values.    Native filter : Profile languages   ")
     project: Optional[PerformRecruiterPeopleSearchFromTalentPoolRequestProject] = None
-    function: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.    Native filter : Job functions   ")
+    job_function: Optional[List[StrictStr]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.    Native filter : Job functions   ")
     first_name: Optional[List[StrictStr]] = Field(default=None, description="A list of names.")
     last_name: Optional[List[StrictStr]] = Field(default=None, description="A list of names.")
     recently_joined: Optional[List[PerformRecruiterPeopleSearchFromTalentPoolRequestRecentlyJoinedInner]] = Field(default=None, description="A list of days ranges.")
     is_military_veteran: Optional[StrictBool] = Field(default=None, description="Whether the users should have military background.    Native filter : Military veterans   ")
     recruiting_activity: Optional[List[PerformRecruiterPeopleSearchFromTalentPoolRequestRecruitingActivityInner]] = Field(default=None, description="A list of recruiting activities.")
     hide_previously_viewed: Optional[PerformRecruiterPeopleSearchFromTalentPoolRequestHidePreviouslyViewed] = None
-    group: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `GROUP` type to find out the possible values.    Native filter : All groups   ")
+    group: Optional[List[StrictStr]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `GROUP` type to find out the possible values.    Native filter : All groups   ")
     is_past_applicant: Optional[StrictBool] = Field(default=None, description="Whether the users should have already applied to at least one of your job postings.    Native filter : Past applicants   ")
     notes: Optional[List[StrictStr]] = Field(default=None, description="A list of notes.")
+    tags: Optional[PerformRecruiterPeopleSearchFromTalentPoolRequestTags] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["keywords", "network_distance", "location", "postal_code", "postal_code_radius", "job_title", "occupation", "skills", "company", "company_size", "years_of_experience", "school", "graduation_year", "industry", "seniority", "profile_language", "project", "function", "first_name", "last_name", "recently_joined", "is_military_veteran", "recruiting_activity", "hide_previously_viewed", "group", "is_past_applicant", "notes"]
+    __properties: ClassVar[List[str]] = ["keywords", "spotlights", "load_saved_search", "load_custom_filter", "save_search", "save_custom_filter", "network_distance", "location", "postal_code", "postal_code_radius", "job_title", "occupation", "skills", "company", "current_company", "past_company", "company_size", "years_of_experience", "years_in_current_position", "years_in_current_company", "degree", "workplace_type", "school", "field_of_study", "employment_type", "graduation_year", "industry", "seniority", "spoken_language", "profile_language", "project", "job_function", "first_name", "last_name", "recently_joined", "is_military_veteran", "recruiting_activity", "hide_previously_viewed", "group", "is_past_applicant", "notes", "tags"]
+
+    @field_validator('spotlights')
+    def spotlights_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        for i in value:
+            if i not in set(['OPEN_TO_WORK', 'ACTIVE_TALENT', 'REDISCOVERED_CANDIDATES', 'INTERNAL_CANDIDATES', 'INTERESTED_IN_YOUR_COMPANY', 'HAVE_COMPANY_CONNECTIONS']):
+                raise ValueError("each list item must be one of ('OPEN_TO_WORK', 'ACTIVE_TALENT', 'REDISCOVERED_CANDIDATES', 'INTERNAL_CANDIDATES', 'INTERESTED_IN_YOUR_COMPANY', 'HAVE_COMPANY_CONNECTIONS')")
+        return value
 
     @field_validator('postal_code_radius')
     def postal_code_radius_validate_enum(cls, value):
@@ -81,6 +118,28 @@ class PerformRecruiterPeopleSearchRequest(BaseModel):
 
         if value not in set([1, 5, 10, 25, 50, 100, 200]):
             raise ValueError("must be one of enum values (1, 5, 10, 25, 50, 100, 200)")
+        return value
+
+    @field_validator('workplace_type')
+    def workplace_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        for i in value:
+            if i not in set(['ON_SITE', 'HYBRID', 'REMOTE']):
+                raise ValueError("each list item must be one of ('ON_SITE', 'HYBRID', 'REMOTE')")
+        return value
+
+    @field_validator('employment_type')
+    def employment_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        for i in value:
+            if i not in set(['FULL_TIME', 'PART_TIME', 'CONTRACT', 'INTERNSHIP']):
+                raise ValueError("each list item must be one of ('FULL_TIME', 'PART_TIME', 'CONTRACT', 'INTERNSHIP')")
         return value
 
     @field_validator('seniority')
@@ -95,7 +154,8 @@ class PerformRecruiterPeopleSearchRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -107,8 +167,7 @@ class PerformRecruiterPeopleSearchRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -135,6 +194,18 @@ class PerformRecruiterPeopleSearchRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of load_saved_search
+        if self.load_saved_search:
+            _dict['load_saved_search'] = self.load_saved_search.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of load_custom_filter
+        if self.load_custom_filter:
+            _dict['load_custom_filter'] = self.load_custom_filter.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of save_search
+        if self.save_search:
+            _dict['save_search'] = self.save_search.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of save_custom_filter
+        if self.save_custom_filter:
+            _dict['save_custom_filter'] = self.save_custom_filter.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in network_distance (list)
         _items = []
         if self.network_distance:
@@ -184,6 +255,20 @@ class PerformRecruiterPeopleSearchRequest(BaseModel):
                 if _item_company:
                     _items.append(_item_company.to_dict())
             _dict['company'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in current_company (list)
+        _items = []
+        if self.current_company:
+            for _item_current_company in self.current_company:
+                if _item_current_company:
+                    _items.append(_item_current_company.to_dict())
+            _dict['current_company'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in past_company (list)
+        _items = []
+        if self.past_company:
+            for _item_past_company in self.past_company:
+                if _item_past_company:
+                    _items.append(_item_past_company.to_dict())
+            _dict['past_company'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in company_size (list)
         _items = []
         if self.company_size:
@@ -194,6 +279,15 @@ class PerformRecruiterPeopleSearchRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of years_of_experience
         if self.years_of_experience:
             _dict['years_of_experience'] = self.years_of_experience.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of years_in_current_position
+        if self.years_in_current_position:
+            _dict['years_in_current_position'] = self.years_in_current_position.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of years_in_current_company
+        if self.years_in_current_company:
+            _dict['years_in_current_company'] = self.years_in_current_company.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of degree
+        if self.degree:
+            _dict['degree'] = self.degree.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in school (list)
         _items = []
         if self.school:
@@ -201,12 +295,26 @@ class PerformRecruiterPeopleSearchRequest(BaseModel):
                 if _item_school:
                     _items.append(_item_school.to_dict())
             _dict['school'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in field_of_study (list)
+        _items = []
+        if self.field_of_study:
+            for _item_field_of_study in self.field_of_study:
+                if _item_field_of_study:
+                    _items.append(_item_field_of_study.to_dict())
+            _dict['field_of_study'] = _items
         # override the default output from pydantic by calling `to_dict()` of graduation_year
         if self.graduation_year:
             _dict['graduation_year'] = self.graduation_year.to_dict()
         # override the default output from pydantic by calling `to_dict()` of industry
         if self.industry:
             _dict['industry'] = self.industry.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in spoken_language (list)
+        _items = []
+        if self.spoken_language:
+            for _item_spoken_language in self.spoken_language:
+                if _item_spoken_language:
+                    _items.append(_item_spoken_language.to_dict())
+            _dict['spoken_language'] = _items
         # override the default output from pydantic by calling `to_dict()` of project
         if self.project:
             _dict['project'] = self.project.to_dict()
@@ -227,6 +335,9 @@ class PerformRecruiterPeopleSearchRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of hide_previously_viewed
         if self.hide_previously_viewed:
             _dict['hide_previously_viewed'] = self.hide_previously_viewed.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of tags
+        if self.tags:
+            _dict['tags'] = self.tags.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -245,6 +356,11 @@ class PerformRecruiterPeopleSearchRequest(BaseModel):
 
         _obj = cls.model_validate({
             "keywords": obj.get("keywords"),
+            "spotlights": obj.get("spotlights"),
+            "load_saved_search": PerformRecruiterPeopleSearchFromTalentPoolRequestLoadSavedSearch.from_dict(obj["load_saved_search"]) if obj.get("load_saved_search") is not None else None,
+            "load_custom_filter": PerformRecruiterPeopleSearchFromTalentPoolRequestLoadCustomFilter.from_dict(obj["load_custom_filter"]) if obj.get("load_custom_filter") is not None else None,
+            "save_search": PerformRecruiterPeopleSearchFromTalentPoolRequestSaveSearch.from_dict(obj["save_search"]) if obj.get("save_search") is not None else None,
+            "save_custom_filter": PerformRecruiterPeopleSearchFromTalentPoolRequestSaveCustomFilter.from_dict(obj["save_custom_filter"]) if obj.get("save_custom_filter") is not None else None,
             "network_distance": [GetRecruiterTalentPoolApplicantsRequestNetworkDistanceInner.from_dict(_item) for _item in obj["network_distance"]] if obj.get("network_distance") is not None else None,
             "location": [PerformRecruiterPeopleSearchFromTalentPoolRequestLocationInner.from_dict(_item) for _item in obj["location"]] if obj.get("location") is not None else None,
             "postal_code": [PerformRecruiterPeopleSearchFromTalentPoolRequestPostalCodeInner.from_dict(_item) for _item in obj["postal_code"]] if obj.get("postal_code") is not None else None,
@@ -253,15 +369,24 @@ class PerformRecruiterPeopleSearchRequest(BaseModel):
             "occupation": [PerformRecruiterPeopleSearchFromTalentPoolRequestOccupationInner.from_dict(_item) for _item in obj["occupation"]] if obj.get("occupation") is not None else None,
             "skills": [PerformRecruiterPeopleSearchFromTalentPoolRequestSkillsInner.from_dict(_item) for _item in obj["skills"]] if obj.get("skills") is not None else None,
             "company": [PerformRecruiterPeopleSearchFromTalentPoolRequestCompanyInner.from_dict(_item) for _item in obj["company"]] if obj.get("company") is not None else None,
+            "current_company": [PerformRecruiterPeopleSearchFromTalentPoolRequestCurrentCompanyInner.from_dict(_item) for _item in obj["current_company"]] if obj.get("current_company") is not None else None,
+            "past_company": [PerformRecruiterPeopleSearchFromTalentPoolRequestCurrentCompanyInner.from_dict(_item) for _item in obj["past_company"]] if obj.get("past_company") is not None else None,
             "company_size": [GetRecruiterTalentPoolApplicantsRequestCompanySizeInner.from_dict(_item) for _item in obj["company_size"]] if obj.get("company_size") is not None else None,
             "years_of_experience": GetRecruiterTalentPoolApplicantsRequestYearsOfExperience.from_dict(obj["years_of_experience"]) if obj.get("years_of_experience") is not None else None,
+            "years_in_current_position": GetRecruiterTalentPoolApplicantsRequestYearsInCurrentPosition.from_dict(obj["years_in_current_position"]) if obj.get("years_in_current_position") is not None else None,
+            "years_in_current_company": GetRecruiterTalentPoolApplicantsRequestYearsInCurrentCompany.from_dict(obj["years_in_current_company"]) if obj.get("years_in_current_company") is not None else None,
+            "degree": PerformRecruiterPeopleSearchFromTalentPoolRequestDegree.from_dict(obj["degree"]) if obj.get("degree") is not None else None,
+            "workplace_type": obj.get("workplace_type"),
             "school": [PerformRecruiterPeopleSearchFromTalentPoolRequestSchoolInner.from_dict(_item) for _item in obj["school"]] if obj.get("school") is not None else None,
+            "field_of_study": [PerformRecruiterPeopleSearchFromTalentPoolRequestFieldOfStudyInner.from_dict(_item) for _item in obj["field_of_study"]] if obj.get("field_of_study") is not None else None,
+            "employment_type": obj.get("employment_type"),
             "graduation_year": PerformRecruiterPeopleSearchFromTalentPoolRequestGraduationYear.from_dict(obj["graduation_year"]) if obj.get("graduation_year") is not None else None,
-            "industry": PerformRecruiterPeopleSearchFromTalentPoolRequestIndustry.from_dict(obj["industry"]) if obj.get("industry") is not None else None,
+            "industry": PerformRecruiterPeopleSearchRequestIndustry.from_dict(obj["industry"]) if obj.get("industry") is not None else None,
             "seniority": obj.get("seniority"),
+            "spoken_language": [PerformRecruiterPeopleSearchFromTalentPoolRequestSpokenLanguageInner.from_dict(_item) for _item in obj["spoken_language"]] if obj.get("spoken_language") is not None else None,
             "profile_language": obj.get("profile_language"),
             "project": PerformRecruiterPeopleSearchFromTalentPoolRequestProject.from_dict(obj["project"]) if obj.get("project") is not None else None,
-            "function": obj.get("function"),
+            "job_function": obj.get("job_function"),
             "first_name": obj.get("first_name"),
             "last_name": obj.get("last_name"),
             "recently_joined": [PerformRecruiterPeopleSearchFromTalentPoolRequestRecentlyJoinedInner.from_dict(_item) for _item in obj["recently_joined"]] if obj.get("recently_joined") is not None else None,
@@ -270,7 +395,8 @@ class PerformRecruiterPeopleSearchRequest(BaseModel):
             "hide_previously_viewed": PerformRecruiterPeopleSearchFromTalentPoolRequestHidePreviouslyViewed.from_dict(obj["hide_previously_viewed"]) if obj.get("hide_previously_viewed") is not None else None,
             "group": obj.get("group"),
             "is_past_applicant": obj.get("is_past_applicant"),
-            "notes": obj.get("notes")
+            "notes": obj.get("notes"),
+            "tags": PerformRecruiterPeopleSearchFromTalentPoolRequestTags.from_dict(obj["tags"]) if obj.get("tags") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -36,10 +36,10 @@ class TestPerformSalesPeopleSearchRequestCurrentJobTitle(unittest.TestCase):
         if include_optional:
             return PerformSalesPeopleSearchRequestCurrentJobTitle(
                 include = [
-                    '4'
+                    ''
                     ],
                 exclude = [
-                    '4'
+                    ''
                     ]
             )
         else:

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **filter** | **str** | A visual filter to be applied to the picture. | [optional] 
-**layout** | **object** |  | [optional] 
+**layout** | [**UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptionsLayout**](UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptionsLayout.md) |  | [optional] 
 **contrast** | **float** | The level of contrast. | [optional] 
 **vignette** | **float** | The level of vignetting. | [optional] 
 **saturation** | **float** | The level of saturation. | [optional] 

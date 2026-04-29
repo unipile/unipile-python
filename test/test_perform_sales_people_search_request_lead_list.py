@@ -36,10 +36,10 @@ class TestPerformSalesPeopleSearchRequestLeadList(unittest.TestCase):
         if include_optional:
             return PerformSalesPeopleSearchRequestLeadList(
                 include = [
-                    '4'
+                    ''
                     ],
                 exclude = [
-                    '4'
+                    ''
                     ]
             )
         else:

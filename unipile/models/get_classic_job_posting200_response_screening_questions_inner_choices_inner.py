@@ -31,9 +31,9 @@ class GetClassicJobPosting200ResponseScreeningQuestionsInnerChoicesInner(BaseMod
     """
 
     # data type: str
-    anyof_schema_1_validator: Optional[StrictStr] = None
+    anyof_schema_1_validator: Optional[StrictStr] = Field(default=None, description="The ID of the Company.")
     # data type: float
-    anyof_schema_2_validator: Optional[Union[StrictFloat, StrictInt]] = None
+    anyof_schema_2_validator: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of comments to the post. `null` if counter is hidden.")
     if TYPE_CHECKING:
         actual_instance: Optional[Union[float, str]] = None
     else:

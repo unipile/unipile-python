@@ -35,12 +35,12 @@ class TestPerformRecruiterPeopleSearchFromTalentPoolRequestProjectIncludeInner(u
         model = PerformRecruiterPeopleSearchFromTalentPoolRequestProjectIncludeInner()
         if include_optional:
             return PerformRecruiterPeopleSearchFromTalentPoolRequestProjectIncludeInner(
-                id = '4',
+                id = '',
                 title = ''
             )
         else:
             return PerformRecruiterPeopleSearchFromTalentPoolRequestProjectIncludeInner(
-                id = '4',
+                id = '',
                 title = '',
         )
         """

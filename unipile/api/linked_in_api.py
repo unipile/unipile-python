@@ -37,6 +37,9 @@ from unipile.models.edit_classic_job_posting_request import EditClassicJobPostin
 from unipile.models.edit_recruiter_hiring_project200_response import EditRecruiterHiringProject200Response
 from unipile.models.edit_recruiter_hiring_project_request import EditRecruiterHiringProjectRequest
 from unipile.models.edit_recruiter_job_posting_request import EditRecruiterJobPostingRequest
+from unipile.models.endorse_classic_member_skill200_response import EndorseClassicMemberSkill200Response
+from unipile.models.endorse_classic_member_skill_request import EndorseClassicMemberSkillRequest
+from unipile.models.get_available_contracts200_response import GetAvailableContracts200Response
 from unipile.models.get_classic_applicant_by_id200_response import GetClassicApplicantById200Response
 from unipile.models.get_classic_applicants200_response import GetClassicApplicants200Response
 from unipile.models.get_classic_applicants_request import GetClassicApplicantsRequest
@@ -51,6 +54,7 @@ from unipile.models.get_recruiter_job_posting_budget200_response import GetRecru
 from unipile.models.get_recruiter_job_posting_by_project_id200_response import GetRecruiterJobPostingByProjectId200Response
 from unipile.models.get_recruiter_job_posting_list200_response import GetRecruiterJobPostingList200Response
 from unipile.models.get_recruiter_pipeline_candidates_request import GetRecruiterPipelineCandidatesRequest
+from unipile.models.get_recruiter_search_parameters_request import GetRecruiterSearchParametersRequest
 from unipile.models.get_recruiter_talent_pool_applicants_request import GetRecruiterTalentPoolApplicantsRequest
 from unipile.models.get_sales_account_lists200_response import GetSalesAccountLists200Response
 from unipile.models.get_sales_lead_lists200_response import GetSalesLeadLists200Response
@@ -58,15 +62,15 @@ from unipile.models.lead_list import LeadList
 from unipile.models.list_classic_user_job_postings200_response import ListClassicUserJobPostings200Response
 from unipile.models.people_search import PeopleSearch
 from unipile.models.people_search2 import PeopleSearch2
+from unipile.models.perform_classic_companies_search200_response import PerformClassicCompaniesSearch200Response
 from unipile.models.perform_classic_companies_search_request import PerformClassicCompaniesSearchRequest
 from unipile.models.perform_classic_jobs_search200_response import PerformClassicJobsSearch200Response
 from unipile.models.perform_classic_jobs_search_request import PerformClassicJobsSearchRequest
+from unipile.models.perform_classic_people_search200_response import PerformClassicPeopleSearch200Response
 from unipile.models.perform_classic_people_search_request import PerformClassicPeopleSearchRequest
+from unipile.models.perform_classic_posts_search200_response import PerformClassicPostsSearch200Response
 from unipile.models.perform_classic_posts_search_request import PerformClassicPostsSearchRequest
 from unipile.models.perform_classic_search_from_url200_response import PerformClassicSearchFromUrl200Response
-from unipile.models.perform_classic_search_from_url200_response_any_of1 import PerformClassicSearchFromUrl200ResponseAnyOf1
-from unipile.models.perform_classic_search_from_url200_response_any_of2 import PerformClassicSearchFromUrl200ResponseAnyOf2
-from unipile.models.perform_classic_search_from_url200_response_any_of3 import PerformClassicSearchFromUrl200ResponseAnyOf3
 from unipile.models.perform_classic_search_from_url_request import PerformClassicSearchFromUrlRequest
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request import PerformRecruiterPeopleSearchFromTalentPoolRequest
 from unipile.models.perform_recruiter_people_search_request import PerformRecruiterPeopleSearchRequest
@@ -86,6 +90,7 @@ from unipile.models.save_sales_account_to_list200_response import SaveSalesAccou
 from unipile.models.save_sales_account_to_list_request import SaveSalesAccountToListRequest
 from unipile.models.save_sales_lead_to_list200_response import SaveSalesLeadToList200Response
 from unipile.models.save_sales_lead_to_list_request import SaveSalesLeadToListRequest
+from unipile.models.select_contract200_response import SelectContract200Response
 from unipile.models.submit_classic_company_otp_code200_response import SubmitClassicCompanyOtpCode200Response
 from unipile.models.submit_classic_company_otp_code_request import SubmitClassicCompanyOtpCodeRequest
 from unipile.models.verify_classic_company_member_identity200_response import VerifyClassicCompanyMemberIdentity200Response
@@ -3451,6 +3456,571 @@ class LinkedInApi:
 
 
     @validate_call
+    def endorse_classic_member_skill(
+        self,
+        member_id: Annotated[Optional[StrictStr], Field(description="The ID of the member for which to endorse the skill.")],
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        endorse_classic_member_skill_request: EndorseClassicMemberSkillRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EndorseClassicMemberSkill200Response:
+        """Endorse a Member's Skill
+
+        Validates a given skill for one of your relations.
+
+        :param member_id: The ID of the member for which to endorse the skill. (required)
+        :type member_id: str
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param endorse_classic_member_skill_request: (required)
+        :type endorse_classic_member_skill_request: EndorseClassicMemberSkillRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._endorse_classic_member_skill_serialize(
+            member_id=member_id,
+            account_id=account_id,
+            endorse_classic_member_skill_request=endorse_classic_member_skill_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "EndorseClassicMemberSkill200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def endorse_classic_member_skill_with_http_info(
+        self,
+        member_id: Annotated[Optional[StrictStr], Field(description="The ID of the member for which to endorse the skill.")],
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        endorse_classic_member_skill_request: EndorseClassicMemberSkillRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EndorseClassicMemberSkill200Response]:
+        """Endorse a Member's Skill
+
+        Validates a given skill for one of your relations.
+
+        :param member_id: The ID of the member for which to endorse the skill. (required)
+        :type member_id: str
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param endorse_classic_member_skill_request: (required)
+        :type endorse_classic_member_skill_request: EndorseClassicMemberSkillRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._endorse_classic_member_skill_serialize(
+            member_id=member_id,
+            account_id=account_id,
+            endorse_classic_member_skill_request=endorse_classic_member_skill_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "EndorseClassicMemberSkill200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def endorse_classic_member_skill_without_preload_content(
+        self,
+        member_id: Annotated[Optional[StrictStr], Field(description="The ID of the member for which to endorse the skill.")],
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        endorse_classic_member_skill_request: EndorseClassicMemberSkillRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Endorse a Member's Skill
+
+        Validates a given skill for one of your relations.
+
+        :param member_id: The ID of the member for which to endorse the skill. (required)
+        :type member_id: str
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param endorse_classic_member_skill_request: (required)
+        :type endorse_classic_member_skill_request: EndorseClassicMemberSkillRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._endorse_classic_member_skill_serialize(
+            member_id=member_id,
+            account_id=account_id,
+            endorse_classic_member_skill_request=endorse_classic_member_skill_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "EndorseClassicMemberSkill200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _endorse_classic_member_skill_serialize(
+        self,
+        member_id,
+        account_id,
+        endorse_classic_member_skill_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if member_id is not None:
+            _path_params['member_id'] = member_id
+        if account_id is not None:
+            _path_params['account_id'] = account_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if endorse_classic_member_skill_request is not None:
+            _body_params = endorse_classic_member_skill_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'apiKey'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v2/{account_id}/linkedin/member/{member_id}/endorse-skill',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def get_available_contracts(
+        self,
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GetAvailableContracts200Response:
+        """List Available Contracts
+
+        Returns a list of Recruiter/Sales Navigator contracts associated with your account.
+
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_available_contracts_serialize(
+            account_id=account_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetAvailableContracts200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_available_contracts_with_http_info(
+        self,
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[GetAvailableContracts200Response]:
+        """List Available Contracts
+
+        Returns a list of Recruiter/Sales Navigator contracts associated with your account.
+
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_available_contracts_serialize(
+            account_id=account_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetAvailableContracts200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_available_contracts_without_preload_content(
+        self,
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """List Available Contracts
+
+        Returns a list of Recruiter/Sales Navigator contracts associated with your account.
+
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_available_contracts_serialize(
+            account_id=account_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetAvailableContracts200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_available_contracts_serialize(
+        self,
+        account_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if account_id is not None:
+            _path_params['account_id'] = account_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'apiKey'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v2/{account_id}/linkedin/contracts',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def get_classic_applicant_by_id(
         self,
         job_id: Annotated[Optional[StrictStr], Field(description="The ID of the Job the Applicant applied to.")],
@@ -6689,6 +7259,7 @@ class LinkedInApi:
         self,
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         status: Annotated[Optional[List[StrictStr]], Field(description="A list of statuses that the job posting of the project must match.")] = None,
+        sort_by: Annotated[Optional[StrictStr], Field(description="The sort method.")] = None,
         keywords: Annotated[Optional[StrictStr], Field(description="A keyword or group of keywords to filter projects by name.")] = None,
         offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
@@ -6713,6 +7284,8 @@ class LinkedInApi:
         :type account_id: str
         :param status: A list of statuses that the job posting of the project must match.
         :type status: List[str]
+        :param sort_by: The sort method.
+        :type sort_by: str
         :param keywords: A keyword or group of keywords to filter projects by name.
         :type keywords: str
         :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
@@ -6744,6 +7317,7 @@ class LinkedInApi:
         _param = self._get_recruiter_hiring_project_list_serialize(
             account_id=account_id,
             status=status,
+            sort_by=sort_by,
             keywords=keywords,
             offset=offset,
             limit=limit,
@@ -6772,6 +7346,7 @@ class LinkedInApi:
         self,
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         status: Annotated[Optional[List[StrictStr]], Field(description="A list of statuses that the job posting of the project must match.")] = None,
+        sort_by: Annotated[Optional[StrictStr], Field(description="The sort method.")] = None,
         keywords: Annotated[Optional[StrictStr], Field(description="A keyword or group of keywords to filter projects by name.")] = None,
         offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
@@ -6796,6 +7371,8 @@ class LinkedInApi:
         :type account_id: str
         :param status: A list of statuses that the job posting of the project must match.
         :type status: List[str]
+        :param sort_by: The sort method.
+        :type sort_by: str
         :param keywords: A keyword or group of keywords to filter projects by name.
         :type keywords: str
         :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
@@ -6827,6 +7404,7 @@ class LinkedInApi:
         _param = self._get_recruiter_hiring_project_list_serialize(
             account_id=account_id,
             status=status,
+            sort_by=sort_by,
             keywords=keywords,
             offset=offset,
             limit=limit,
@@ -6855,6 +7433,7 @@ class LinkedInApi:
         self,
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         status: Annotated[Optional[List[StrictStr]], Field(description="A list of statuses that the job posting of the project must match.")] = None,
+        sort_by: Annotated[Optional[StrictStr], Field(description="The sort method.")] = None,
         keywords: Annotated[Optional[StrictStr], Field(description="A keyword or group of keywords to filter projects by name.")] = None,
         offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
@@ -6879,6 +7458,8 @@ class LinkedInApi:
         :type account_id: str
         :param status: A list of statuses that the job posting of the project must match.
         :type status: List[str]
+        :param sort_by: The sort method.
+        :type sort_by: str
         :param keywords: A keyword or group of keywords to filter projects by name.
         :type keywords: str
         :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
@@ -6910,6 +7491,7 @@ class LinkedInApi:
         _param = self._get_recruiter_hiring_project_list_serialize(
             account_id=account_id,
             status=status,
+            sort_by=sort_by,
             keywords=keywords,
             offset=offset,
             limit=limit,
@@ -6933,6 +7515,7 @@ class LinkedInApi:
         self,
         account_id,
         status,
+        sort_by,
         keywords,
         offset,
         limit,
@@ -6964,6 +7547,10 @@ class LinkedInApi:
         if status is not None:
             
             _query_params.append(('status', status))
+            
+        if sort_by is not None:
+            
+            _query_params.append(('sort_by', sort_by))
             
         if keywords is not None:
             
@@ -7863,10 +8450,10 @@ class LinkedInApi:
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         state: Annotated[Optional[List[StrictStr]], Field(description="A list of job posting states.")] = None,
         sort_by: Annotated[Optional[StrictStr], Field(description="The sort method.    Native filter : Sort by   ")] = None,
-        location: Annotated[Optional[List[Annotated[str, Field(strict=True)]]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Location   ")] = None,
-        job_poster: Annotated[Optional[List[Annotated[str, Field(strict=True)]]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SEAT` type to find out the possible values.    Native filter : Job poster   ")] = None,
-        contract: Annotated[Optional[List[Annotated[str, Field(strict=True)]]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `CONTRACT` type to find out the possible values.    Native filter : Contract   ")] = None,
-        workplace_type: Optional[List[StrictStr]] = None,
+        location: Annotated[Optional[List[StrictStr]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Location   ")] = None,
+        job_poster: Annotated[Optional[List[StrictStr]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SEAT` type to find out the possible values.    Native filter : Job poster   ")] = None,
+        contract: Annotated[Optional[List[StrictStr]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `CONTRACT` type to find out the possible values.    Native filter : Contract   ")] = None,
+        workplace_type: Annotated[Optional[List[StrictStr]], Field(description="A list of workplace types.    Native filter : Workplace type   ")] = None,
         offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         _request_timeout: Union[
@@ -7898,7 +8485,7 @@ class LinkedInApi:
         :type job_poster: List[str]
         :param contract: A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `CONTRACT` type to find out the possible values.    Native filter : Contract   
         :type contract: List[str]
-        :param workplace_type:
+        :param workplace_type: A list of workplace types.    Native filter : Workplace type   
         :type workplace_type: List[str]
         :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
         :type offset: float
@@ -7962,10 +8549,10 @@ class LinkedInApi:
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         state: Annotated[Optional[List[StrictStr]], Field(description="A list of job posting states.")] = None,
         sort_by: Annotated[Optional[StrictStr], Field(description="The sort method.    Native filter : Sort by   ")] = None,
-        location: Annotated[Optional[List[Annotated[str, Field(strict=True)]]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Location   ")] = None,
-        job_poster: Annotated[Optional[List[Annotated[str, Field(strict=True)]]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SEAT` type to find out the possible values.    Native filter : Job poster   ")] = None,
-        contract: Annotated[Optional[List[Annotated[str, Field(strict=True)]]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `CONTRACT` type to find out the possible values.    Native filter : Contract   ")] = None,
-        workplace_type: Optional[List[StrictStr]] = None,
+        location: Annotated[Optional[List[StrictStr]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Location   ")] = None,
+        job_poster: Annotated[Optional[List[StrictStr]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SEAT` type to find out the possible values.    Native filter : Job poster   ")] = None,
+        contract: Annotated[Optional[List[StrictStr]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `CONTRACT` type to find out the possible values.    Native filter : Contract   ")] = None,
+        workplace_type: Annotated[Optional[List[StrictStr]], Field(description="A list of workplace types.    Native filter : Workplace type   ")] = None,
         offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         _request_timeout: Union[
@@ -7997,7 +8584,7 @@ class LinkedInApi:
         :type job_poster: List[str]
         :param contract: A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `CONTRACT` type to find out the possible values.    Native filter : Contract   
         :type contract: List[str]
-        :param workplace_type:
+        :param workplace_type: A list of workplace types.    Native filter : Workplace type   
         :type workplace_type: List[str]
         :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
         :type offset: float
@@ -8061,10 +8648,10 @@ class LinkedInApi:
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         state: Annotated[Optional[List[StrictStr]], Field(description="A list of job posting states.")] = None,
         sort_by: Annotated[Optional[StrictStr], Field(description="The sort method.    Native filter : Sort by   ")] = None,
-        location: Annotated[Optional[List[Annotated[str, Field(strict=True)]]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Location   ")] = None,
-        job_poster: Annotated[Optional[List[Annotated[str, Field(strict=True)]]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SEAT` type to find out the possible values.    Native filter : Job poster   ")] = None,
-        contract: Annotated[Optional[List[Annotated[str, Field(strict=True)]]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `CONTRACT` type to find out the possible values.    Native filter : Contract   ")] = None,
-        workplace_type: Optional[List[StrictStr]] = None,
+        location: Annotated[Optional[List[StrictStr]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Location   ")] = None,
+        job_poster: Annotated[Optional[List[StrictStr]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SEAT` type to find out the possible values.    Native filter : Job poster   ")] = None,
+        contract: Annotated[Optional[List[StrictStr]], Field(description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `CONTRACT` type to find out the possible values.    Native filter : Contract   ")] = None,
+        workplace_type: Annotated[Optional[List[StrictStr]], Field(description="A list of workplace types.    Native filter : Workplace type   ")] = None,
         offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         _request_timeout: Union[
@@ -8096,7 +8683,7 @@ class LinkedInApi:
         :type job_poster: List[str]
         :param contract: A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `CONTRACT` type to find out the possible values.    Native filter : Contract   
         :type contract: List[str]
-        :param workplace_type:
+        :param workplace_type: A list of workplace types.    Native filter : Workplace type   
         :type workplace_type: List[str]
         :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
         :type offset: float
@@ -8264,7 +8851,7 @@ class LinkedInApi:
         self,
         project_id: Annotated[str, Field(min_length=1, strict=True, description="The ID of the Hiring Project from which to browse the Pipeline.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         get_recruiter_pipeline_candidates_request: Optional[GetRecruiterPipelineCandidatesRequest] = None,
         _request_timeout: Union[
@@ -8288,8 +8875,8 @@ class LinkedInApi:
         :type project_id: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param get_recruiter_pipeline_candidates_request:
@@ -8319,7 +8906,7 @@ class LinkedInApi:
         _param = self._get_recruiter_pipeline_candidates_serialize(
             project_id=project_id,
             account_id=account_id,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             get_recruiter_pipeline_candidates_request=get_recruiter_pipeline_candidates_request,
             _request_auth=_request_auth,
@@ -8347,7 +8934,7 @@ class LinkedInApi:
         self,
         project_id: Annotated[str, Field(min_length=1, strict=True, description="The ID of the Hiring Project from which to browse the Pipeline.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         get_recruiter_pipeline_candidates_request: Optional[GetRecruiterPipelineCandidatesRequest] = None,
         _request_timeout: Union[
@@ -8371,8 +8958,8 @@ class LinkedInApi:
         :type project_id: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param get_recruiter_pipeline_candidates_request:
@@ -8402,7 +8989,7 @@ class LinkedInApi:
         _param = self._get_recruiter_pipeline_candidates_serialize(
             project_id=project_id,
             account_id=account_id,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             get_recruiter_pipeline_candidates_request=get_recruiter_pipeline_candidates_request,
             _request_auth=_request_auth,
@@ -8430,7 +9017,7 @@ class LinkedInApi:
         self,
         project_id: Annotated[str, Field(min_length=1, strict=True, description="The ID of the Hiring Project from which to browse the Pipeline.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         get_recruiter_pipeline_candidates_request: Optional[GetRecruiterPipelineCandidatesRequest] = None,
         _request_timeout: Union[
@@ -8454,8 +9041,8 @@ class LinkedInApi:
         :type project_id: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param get_recruiter_pipeline_candidates_request:
@@ -8485,7 +9072,7 @@ class LinkedInApi:
         _param = self._get_recruiter_pipeline_candidates_serialize(
             project_id=project_id,
             account_id=account_id,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             get_recruiter_pipeline_candidates_request=get_recruiter_pipeline_candidates_request,
             _request_auth=_request_auth,
@@ -8508,7 +9095,7 @@ class LinkedInApi:
         self,
         project_id,
         account_id,
-        offset,
+        cursor,
         limit,
         get_recruiter_pipeline_candidates_request,
         _request_auth,
@@ -8537,9 +9124,9 @@ class LinkedInApi:
         if account_id is not None:
             _path_params['account_id'] = account_id
         # process the query parameters
-        if offset is not None:
+        if cursor is not None:
             
-            _query_params.append(('offset', offset))
+            _query_params.append(('cursor', cursor))
             
         if limit is not None:
             
@@ -8600,15 +9187,8 @@ class LinkedInApi:
     @validate_call
     def get_recruiter_search_parameters(
         self,
-        source: StrictStr,
-        project_id: Annotated[Optional[StrictStr], Field(description="The ID of the Project the Pipeline belongs to.")],
-        channel_id: Annotated[Optional[StrictStr], Field(description="In Talent Pool context, the ID of the JOB_POSTING Channel to get parameters from.")],
-        type: Annotated[StrictStr, Field(description="The type of search parameter.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        keywords: Annotated[Optional[StrictStr], Field(description="A keyword or group of keywords to filter results.")] = None,
-        stage_id: Annotated[Optional[StrictStr], Field(description="In Pipeline context, the ID of the Stage to get parameters from. Leave undefined to get results from all stages.")] = None,
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination.")] = None,
-        limit: Annotated[Optional[Union[Annotated[float, Field(le=100, strict=True, ge=1)], Annotated[int, Field(le=100, strict=True, ge=1)]]], Field(description="The limit of items to be returned.")] = None,
+        get_recruiter_search_parameters_request: Optional[GetRecruiterSearchParametersRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8626,24 +9206,10 @@ class LinkedInApi:
 
         Returns a list of parameters to be used in Recruiter search endpoints.
 
-        :param source: (required)
-        :type source: str
-        :param project_id: The ID of the Project the Pipeline belongs to. (required)
-        :type project_id: str
-        :param channel_id: In Talent Pool context, the ID of the JOB_POSTING Channel to get parameters from. (required)
-        :type channel_id: str
-        :param type: The type of search parameter. (required)
-        :type type: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param keywords: A keyword or group of keywords to filter results.
-        :type keywords: str
-        :param stage_id: In Pipeline context, the ID of the Stage to get parameters from. Leave undefined to get results from all stages.
-        :type stage_id: str
-        :param offset: An offset used for pagination.
-        :type offset: float
-        :param limit: The limit of items to be returned.
-        :type limit: float
+        :param get_recruiter_search_parameters_request:
+        :type get_recruiter_search_parameters_request: GetRecruiterSearchParametersRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8667,15 +9233,8 @@ class LinkedInApi:
         """ # noqa: E501
 
         _param = self._get_recruiter_search_parameters_serialize(
-            source=source,
-            project_id=project_id,
-            channel_id=channel_id,
-            type=type,
             account_id=account_id,
-            keywords=keywords,
-            stage_id=stage_id,
-            offset=offset,
-            limit=limit,
+            get_recruiter_search_parameters_request=get_recruiter_search_parameters_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8699,15 +9258,8 @@ class LinkedInApi:
     @validate_call
     def get_recruiter_search_parameters_with_http_info(
         self,
-        source: StrictStr,
-        project_id: Annotated[Optional[StrictStr], Field(description="The ID of the Project the Pipeline belongs to.")],
-        channel_id: Annotated[Optional[StrictStr], Field(description="In Talent Pool context, the ID of the JOB_POSTING Channel to get parameters from.")],
-        type: Annotated[StrictStr, Field(description="The type of search parameter.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        keywords: Annotated[Optional[StrictStr], Field(description="A keyword or group of keywords to filter results.")] = None,
-        stage_id: Annotated[Optional[StrictStr], Field(description="In Pipeline context, the ID of the Stage to get parameters from. Leave undefined to get results from all stages.")] = None,
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination.")] = None,
-        limit: Annotated[Optional[Union[Annotated[float, Field(le=100, strict=True, ge=1)], Annotated[int, Field(le=100, strict=True, ge=1)]]], Field(description="The limit of items to be returned.")] = None,
+        get_recruiter_search_parameters_request: Optional[GetRecruiterSearchParametersRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8725,24 +9277,10 @@ class LinkedInApi:
 
         Returns a list of parameters to be used in Recruiter search endpoints.
 
-        :param source: (required)
-        :type source: str
-        :param project_id: The ID of the Project the Pipeline belongs to. (required)
-        :type project_id: str
-        :param channel_id: In Talent Pool context, the ID of the JOB_POSTING Channel to get parameters from. (required)
-        :type channel_id: str
-        :param type: The type of search parameter. (required)
-        :type type: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param keywords: A keyword or group of keywords to filter results.
-        :type keywords: str
-        :param stage_id: In Pipeline context, the ID of the Stage to get parameters from. Leave undefined to get results from all stages.
-        :type stage_id: str
-        :param offset: An offset used for pagination.
-        :type offset: float
-        :param limit: The limit of items to be returned.
-        :type limit: float
+        :param get_recruiter_search_parameters_request:
+        :type get_recruiter_search_parameters_request: GetRecruiterSearchParametersRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8766,15 +9304,8 @@ class LinkedInApi:
         """ # noqa: E501
 
         _param = self._get_recruiter_search_parameters_serialize(
-            source=source,
-            project_id=project_id,
-            channel_id=channel_id,
-            type=type,
             account_id=account_id,
-            keywords=keywords,
-            stage_id=stage_id,
-            offset=offset,
-            limit=limit,
+            get_recruiter_search_parameters_request=get_recruiter_search_parameters_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8798,15 +9329,8 @@ class LinkedInApi:
     @validate_call
     def get_recruiter_search_parameters_without_preload_content(
         self,
-        source: StrictStr,
-        project_id: Annotated[Optional[StrictStr], Field(description="The ID of the Project the Pipeline belongs to.")],
-        channel_id: Annotated[Optional[StrictStr], Field(description="In Talent Pool context, the ID of the JOB_POSTING Channel to get parameters from.")],
-        type: Annotated[StrictStr, Field(description="The type of search parameter.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        keywords: Annotated[Optional[StrictStr], Field(description="A keyword or group of keywords to filter results.")] = None,
-        stage_id: Annotated[Optional[StrictStr], Field(description="In Pipeline context, the ID of the Stage to get parameters from. Leave undefined to get results from all stages.")] = None,
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination.")] = None,
-        limit: Annotated[Optional[Union[Annotated[float, Field(le=100, strict=True, ge=1)], Annotated[int, Field(le=100, strict=True, ge=1)]]], Field(description="The limit of items to be returned.")] = None,
+        get_recruiter_search_parameters_request: Optional[GetRecruiterSearchParametersRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -8824,24 +9348,10 @@ class LinkedInApi:
 
         Returns a list of parameters to be used in Recruiter search endpoints.
 
-        :param source: (required)
-        :type source: str
-        :param project_id: The ID of the Project the Pipeline belongs to. (required)
-        :type project_id: str
-        :param channel_id: In Talent Pool context, the ID of the JOB_POSTING Channel to get parameters from. (required)
-        :type channel_id: str
-        :param type: The type of search parameter. (required)
-        :type type: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param keywords: A keyword or group of keywords to filter results.
-        :type keywords: str
-        :param stage_id: In Pipeline context, the ID of the Stage to get parameters from. Leave undefined to get results from all stages.
-        :type stage_id: str
-        :param offset: An offset used for pagination.
-        :type offset: float
-        :param limit: The limit of items to be returned.
-        :type limit: float
+        :param get_recruiter_search_parameters_request:
+        :type get_recruiter_search_parameters_request: GetRecruiterSearchParametersRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -8865,15 +9375,8 @@ class LinkedInApi:
         """ # noqa: E501
 
         _param = self._get_recruiter_search_parameters_serialize(
-            source=source,
-            project_id=project_id,
-            channel_id=channel_id,
-            type=type,
             account_id=account_id,
-            keywords=keywords,
-            stage_id=stage_id,
-            offset=offset,
-            limit=limit,
+            get_recruiter_search_parameters_request=get_recruiter_search_parameters_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -8892,15 +9395,8 @@ class LinkedInApi:
 
     def _get_recruiter_search_parameters_serialize(
         self,
-        source,
-        project_id,
-        channel_id,
-        type,
         account_id,
-        keywords,
-        stage_id,
-        offset,
-        limit,
+        get_recruiter_search_parameters_request,
         _request_auth,
         _content_type,
         _headers,
@@ -8925,41 +9421,11 @@ class LinkedInApi:
         if account_id is not None:
             _path_params['account_id'] = account_id
         # process the query parameters
-        if source is not None:
-            
-            _query_params.append(('source', source))
-            
-        if project_id is not None:
-            
-            _query_params.append(('project_id', project_id))
-            
-        if channel_id is not None:
-            
-            _query_params.append(('channel_id', channel_id))
-            
-        if keywords is not None:
-            
-            _query_params.append(('keywords', keywords))
-            
-        if type is not None:
-            
-            _query_params.append(('type', type))
-            
-        if stage_id is not None:
-            
-            _query_params.append(('stage_id', stage_id))
-            
-        if offset is not None:
-            
-            _query_params.append(('offset', offset))
-            
-        if limit is not None:
-            
-            _query_params.append(('limit', limit))
-            
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if get_recruiter_search_parameters_request is not None:
+            _body_params = get_recruiter_search_parameters_request
 
 
         # set the HTTP header `Accept`
@@ -8970,6 +9436,19 @@ class LinkedInApi:
                 ]
             )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [
@@ -8977,7 +9456,7 @@ class LinkedInApi:
         ]
 
         return self.api_client.param_serialize(
-            method='GET',
+            method='POST',
             resource_path='/v2/{account_id}/linkedin/recruiter/search/parameters',
             path_params=_path_params,
             query_params=_query_params,
@@ -9000,7 +9479,7 @@ class LinkedInApi:
         project_id: Annotated[str, Field(min_length=1, strict=True, description="The ID of the Hiring Project from which to browse the Talent Pool.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         get_recruiter_talent_pool_applicants_request: GetRecruiterTalentPoolApplicantsRequest,
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         _request_timeout: Union[
             None,
@@ -9025,8 +9504,8 @@ class LinkedInApi:
         :type account_id: str
         :param get_recruiter_talent_pool_applicants_request: (required)
         :type get_recruiter_talent_pool_applicants_request: GetRecruiterTalentPoolApplicantsRequest
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param _request_timeout: timeout setting for this request. If one
@@ -9055,7 +9534,7 @@ class LinkedInApi:
             project_id=project_id,
             account_id=account_id,
             get_recruiter_talent_pool_applicants_request=get_recruiter_talent_pool_applicants_request,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -9083,7 +9562,7 @@ class LinkedInApi:
         project_id: Annotated[str, Field(min_length=1, strict=True, description="The ID of the Hiring Project from which to browse the Talent Pool.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         get_recruiter_talent_pool_applicants_request: GetRecruiterTalentPoolApplicantsRequest,
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         _request_timeout: Union[
             None,
@@ -9108,8 +9587,8 @@ class LinkedInApi:
         :type account_id: str
         :param get_recruiter_talent_pool_applicants_request: (required)
         :type get_recruiter_talent_pool_applicants_request: GetRecruiterTalentPoolApplicantsRequest
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param _request_timeout: timeout setting for this request. If one
@@ -9138,7 +9617,7 @@ class LinkedInApi:
             project_id=project_id,
             account_id=account_id,
             get_recruiter_talent_pool_applicants_request=get_recruiter_talent_pool_applicants_request,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -9166,7 +9645,7 @@ class LinkedInApi:
         project_id: Annotated[str, Field(min_length=1, strict=True, description="The ID of the Hiring Project from which to browse the Talent Pool.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         get_recruiter_talent_pool_applicants_request: GetRecruiterTalentPoolApplicantsRequest,
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         _request_timeout: Union[
             None,
@@ -9191,8 +9670,8 @@ class LinkedInApi:
         :type account_id: str
         :param get_recruiter_talent_pool_applicants_request: (required)
         :type get_recruiter_talent_pool_applicants_request: GetRecruiterTalentPoolApplicantsRequest
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param _request_timeout: timeout setting for this request. If one
@@ -9221,7 +9700,7 @@ class LinkedInApi:
             project_id=project_id,
             account_id=account_id,
             get_recruiter_talent_pool_applicants_request=get_recruiter_talent_pool_applicants_request,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -9244,7 +9723,7 @@ class LinkedInApi:
         project_id,
         account_id,
         get_recruiter_talent_pool_applicants_request,
-        offset,
+        cursor,
         limit,
         _request_auth,
         _content_type,
@@ -9272,9 +9751,9 @@ class LinkedInApi:
         if account_id is not None:
             _path_params['account_id'] = account_id
         # process the query parameters
-        if offset is not None:
+        if cursor is not None:
             
-            _query_params.append(('offset', offset))
+            _query_params.append(('cursor', cursor))
             
         if limit is not None:
             
@@ -10582,7 +11061,7 @@ class LinkedInApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PerformClassicSearchFromUrl200ResponseAnyOf3:
+    ) -> PerformClassicCompaniesSearch200Response:
         """Perform Companies Search
 
         Returns a list of companies from search results.
@@ -10629,7 +11108,7 @@ class LinkedInApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PerformClassicSearchFromUrl200ResponseAnyOf3",
+            '200': "PerformClassicCompaniesSearch200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10661,7 +11140,7 @@ class LinkedInApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PerformClassicSearchFromUrl200ResponseAnyOf3]:
+    ) -> ApiResponse[PerformClassicCompaniesSearch200Response]:
         """Perform Companies Search
 
         Returns a list of companies from search results.
@@ -10708,7 +11187,7 @@ class LinkedInApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PerformClassicSearchFromUrl200ResponseAnyOf3",
+            '200': "PerformClassicCompaniesSearch200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -10787,7 +11266,7 @@ class LinkedInApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PerformClassicSearchFromUrl200ResponseAnyOf3",
+            '200': "PerformClassicCompaniesSearch200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11228,7 +11707,7 @@ class LinkedInApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PerformClassicSearchFromUrl200ResponseAnyOf2:
+    ) -> PerformClassicPeopleSearch200Response:
         """Perform People Search
 
         Returns a list of people from search results.
@@ -11275,7 +11754,7 @@ class LinkedInApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PerformClassicSearchFromUrl200ResponseAnyOf2",
+            '200': "PerformClassicPeopleSearch200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11307,7 +11786,7 @@ class LinkedInApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PerformClassicSearchFromUrl200ResponseAnyOf2]:
+    ) -> ApiResponse[PerformClassicPeopleSearch200Response]:
         """Perform People Search
 
         Returns a list of people from search results.
@@ -11354,7 +11833,7 @@ class LinkedInApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PerformClassicSearchFromUrl200ResponseAnyOf2",
+            '200': "PerformClassicPeopleSearch200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11433,7 +11912,7 @@ class LinkedInApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PerformClassicSearchFromUrl200ResponseAnyOf2",
+            '200': "PerformClassicPeopleSearch200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11551,7 +12030,7 @@ class LinkedInApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PerformClassicSearchFromUrl200ResponseAnyOf1:
+    ) -> PerformClassicPostsSearch200Response:
         """Perform Posts Search
 
         Returns a list of posts from search results.
@@ -11598,7 +12077,7 @@ class LinkedInApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PerformClassicSearchFromUrl200ResponseAnyOf1",
+            '200': "PerformClassicPostsSearch200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11630,7 +12109,7 @@ class LinkedInApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PerformClassicSearchFromUrl200ResponseAnyOf1]:
+    ) -> ApiResponse[PerformClassicPostsSearch200Response]:
         """Perform Posts Search
 
         Returns a list of posts from search results.
@@ -11677,7 +12156,7 @@ class LinkedInApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PerformClassicSearchFromUrl200ResponseAnyOf1",
+            '200': "PerformClassicPostsSearch200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -11756,7 +12235,7 @@ class LinkedInApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "PerformClassicSearchFromUrl200ResponseAnyOf1",
+            '200': "PerformClassicPostsSearch200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -12182,7 +12661,7 @@ class LinkedInApi:
     def perform_recruiter_people_search(
         self,
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         perform_recruiter_people_search_request: Optional[PerformRecruiterPeopleSearchRequest] = None,
         _request_timeout: Union[
@@ -12204,8 +12683,8 @@ class LinkedInApi:
 
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param perform_recruiter_people_search_request:
@@ -12234,7 +12713,7 @@ class LinkedInApi:
 
         _param = self._perform_recruiter_people_search_serialize(
             account_id=account_id,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             perform_recruiter_people_search_request=perform_recruiter_people_search_request,
             _request_auth=_request_auth,
@@ -12261,7 +12740,7 @@ class LinkedInApi:
     def perform_recruiter_people_search_with_http_info(
         self,
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         perform_recruiter_people_search_request: Optional[PerformRecruiterPeopleSearchRequest] = None,
         _request_timeout: Union[
@@ -12283,8 +12762,8 @@ class LinkedInApi:
 
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param perform_recruiter_people_search_request:
@@ -12313,7 +12792,7 @@ class LinkedInApi:
 
         _param = self._perform_recruiter_people_search_serialize(
             account_id=account_id,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             perform_recruiter_people_search_request=perform_recruiter_people_search_request,
             _request_auth=_request_auth,
@@ -12340,7 +12819,7 @@ class LinkedInApi:
     def perform_recruiter_people_search_without_preload_content(
         self,
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         perform_recruiter_people_search_request: Optional[PerformRecruiterPeopleSearchRequest] = None,
         _request_timeout: Union[
@@ -12362,8 +12841,8 @@ class LinkedInApi:
 
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param perform_recruiter_people_search_request:
@@ -12392,7 +12871,7 @@ class LinkedInApi:
 
         _param = self._perform_recruiter_people_search_serialize(
             account_id=account_id,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             perform_recruiter_people_search_request=perform_recruiter_people_search_request,
             _request_auth=_request_auth,
@@ -12414,7 +12893,7 @@ class LinkedInApi:
     def _perform_recruiter_people_search_serialize(
         self,
         account_id,
-        offset,
+        cursor,
         limit,
         perform_recruiter_people_search_request,
         _request_auth,
@@ -12441,9 +12920,9 @@ class LinkedInApi:
         if account_id is not None:
             _path_params['account_id'] = account_id
         # process the query parameters
-        if offset is not None:
+        if cursor is not None:
             
-            _query_params.append(('offset', offset))
+            _query_params.append(('cursor', cursor))
             
         if limit is not None:
             
@@ -12507,7 +12986,7 @@ class LinkedInApi:
         project_id: Annotated[str, Field(min_length=1, strict=True, description="The ID of the Hiring Project from which to browse the Talent Pool.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         perform_recruiter_people_search_from_talent_pool_request: PerformRecruiterPeopleSearchFromTalentPoolRequest,
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         _request_timeout: Union[
             None,
@@ -12532,8 +13011,8 @@ class LinkedInApi:
         :type account_id: str
         :param perform_recruiter_people_search_from_talent_pool_request: (required)
         :type perform_recruiter_people_search_from_talent_pool_request: PerformRecruiterPeopleSearchFromTalentPoolRequest
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param _request_timeout: timeout setting for this request. If one
@@ -12562,7 +13041,7 @@ class LinkedInApi:
             project_id=project_id,
             account_id=account_id,
             perform_recruiter_people_search_from_talent_pool_request=perform_recruiter_people_search_from_talent_pool_request,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12590,7 +13069,7 @@ class LinkedInApi:
         project_id: Annotated[str, Field(min_length=1, strict=True, description="The ID of the Hiring Project from which to browse the Talent Pool.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         perform_recruiter_people_search_from_talent_pool_request: PerformRecruiterPeopleSearchFromTalentPoolRequest,
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         _request_timeout: Union[
             None,
@@ -12615,8 +13094,8 @@ class LinkedInApi:
         :type account_id: str
         :param perform_recruiter_people_search_from_talent_pool_request: (required)
         :type perform_recruiter_people_search_from_talent_pool_request: PerformRecruiterPeopleSearchFromTalentPoolRequest
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param _request_timeout: timeout setting for this request. If one
@@ -12645,7 +13124,7 @@ class LinkedInApi:
             project_id=project_id,
             account_id=account_id,
             perform_recruiter_people_search_from_talent_pool_request=perform_recruiter_people_search_from_talent_pool_request,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12673,7 +13152,7 @@ class LinkedInApi:
         project_id: Annotated[str, Field(min_length=1, strict=True, description="The ID of the Hiring Project from which to browse the Talent Pool.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         perform_recruiter_people_search_from_talent_pool_request: PerformRecruiterPeopleSearchFromTalentPoolRequest,
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         _request_timeout: Union[
             None,
@@ -12698,8 +13177,8 @@ class LinkedInApi:
         :type account_id: str
         :param perform_recruiter_people_search_from_talent_pool_request: (required)
         :type perform_recruiter_people_search_from_talent_pool_request: PerformRecruiterPeopleSearchFromTalentPoolRequest
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param _request_timeout: timeout setting for this request. If one
@@ -12728,7 +13207,7 @@ class LinkedInApi:
             project_id=project_id,
             account_id=account_id,
             perform_recruiter_people_search_from_talent_pool_request=perform_recruiter_people_search_from_talent_pool_request,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12751,7 +13230,7 @@ class LinkedInApi:
         project_id,
         account_id,
         perform_recruiter_people_search_from_talent_pool_request,
-        offset,
+        cursor,
         limit,
         _request_auth,
         _content_type,
@@ -12779,9 +13258,9 @@ class LinkedInApi:
         if account_id is not None:
             _path_params['account_id'] = account_id
         # process the query parameters
-        if offset is not None:
+        if cursor is not None:
             
-            _query_params.append(('offset', offset))
+            _query_params.append(('cursor', cursor))
             
         if limit is not None:
             
@@ -12844,7 +13323,7 @@ class LinkedInApi:
         self,
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         perform_classic_search_from_url_request: PerformClassicSearchFromUrlRequest,
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         _request_timeout: Union[
             None,
@@ -12867,8 +13346,8 @@ class LinkedInApi:
         :type account_id: str
         :param perform_classic_search_from_url_request: (required)
         :type perform_classic_search_from_url_request: PerformClassicSearchFromUrlRequest
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param _request_timeout: timeout setting for this request. If one
@@ -12896,7 +13375,7 @@ class LinkedInApi:
         _param = self._perform_recruiter_search_from_url_serialize(
             account_id=account_id,
             perform_classic_search_from_url_request=perform_classic_search_from_url_request,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -12923,7 +13402,7 @@ class LinkedInApi:
         self,
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         perform_classic_search_from_url_request: PerformClassicSearchFromUrlRequest,
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         _request_timeout: Union[
             None,
@@ -12946,8 +13425,8 @@ class LinkedInApi:
         :type account_id: str
         :param perform_classic_search_from_url_request: (required)
         :type perform_classic_search_from_url_request: PerformClassicSearchFromUrlRequest
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param _request_timeout: timeout setting for this request. If one
@@ -12975,7 +13454,7 @@ class LinkedInApi:
         _param = self._perform_recruiter_search_from_url_serialize(
             account_id=account_id,
             perform_classic_search_from_url_request=perform_classic_search_from_url_request,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -13002,7 +13481,7 @@ class LinkedInApi:
         self,
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
         perform_classic_search_from_url_request: PerformClassicSearchFromUrlRequest,
-        offset: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="An offset used for pagination, if supported by the provider, else use `cursor`.")] = None,
+        cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         _request_timeout: Union[
             None,
@@ -13025,8 +13504,8 @@ class LinkedInApi:
         :type account_id: str
         :param perform_classic_search_from_url_request: (required)
         :type perform_classic_search_from_url_request: PerformClassicSearchFromUrlRequest
-        :param offset: An offset used for pagination, if supported by the provider, else use `cursor`.
-        :type offset: float
+        :param cursor: A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.
+        :type cursor: str
         :param limit: The limit of items to be returned.
         :type limit: float
         :param _request_timeout: timeout setting for this request. If one
@@ -13054,7 +13533,7 @@ class LinkedInApi:
         _param = self._perform_recruiter_search_from_url_serialize(
             account_id=account_id,
             perform_classic_search_from_url_request=perform_classic_search_from_url_request,
-            offset=offset,
+            cursor=cursor,
             limit=limit,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -13076,7 +13555,7 @@ class LinkedInApi:
         self,
         account_id,
         perform_classic_search_from_url_request,
-        offset,
+        cursor,
         limit,
         _request_auth,
         _content_type,
@@ -13102,9 +13581,9 @@ class LinkedInApi:
         if account_id is not None:
             _path_params['account_id'] = account_id
         # process the query parameters
-        if offset is not None:
+        if cursor is not None:
             
-            _query_params.append(('offset', offset))
+            _query_params.append(('cursor', cursor))
             
         if limit is not None:
             
@@ -15940,6 +16419,282 @@ class LinkedInApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/v2/{account_id}/linkedin/sales-navigator/lead-lists/{list_id}/save',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def select_contract(
+        self,
+        contract_id: Annotated[Optional[StrictStr], Field(description="The ID of the contract to be activated on the account.")],
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> SelectContract200Response:
+        """Select a Contract
+
+        Activates a given Recruiter/Sales Navigator contract on your account.
+
+        :param contract_id: The ID of the contract to be activated on the account. (required)
+        :type contract_id: str
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._select_contract_serialize(
+            contract_id=contract_id,
+            account_id=account_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SelectContract200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def select_contract_with_http_info(
+        self,
+        contract_id: Annotated[Optional[StrictStr], Field(description="The ID of the contract to be activated on the account.")],
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[SelectContract200Response]:
+        """Select a Contract
+
+        Activates a given Recruiter/Sales Navigator contract on your account.
+
+        :param contract_id: The ID of the contract to be activated on the account. (required)
+        :type contract_id: str
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._select_contract_serialize(
+            contract_id=contract_id,
+            account_id=account_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SelectContract200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def select_contract_without_preload_content(
+        self,
+        contract_id: Annotated[Optional[StrictStr], Field(description="The ID of the contract to be activated on the account.")],
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Select a Contract
+
+        Activates a given Recruiter/Sales Navigator contract on your account.
+
+        :param contract_id: The ID of the contract to be activated on the account. (required)
+        :type contract_id: str
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._select_contract_serialize(
+            contract_id=contract_id,
+            account_id=account_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "SelectContract200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _select_contract_serialize(
+        self,
+        contract_id,
+        account_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if contract_id is not None:
+            _path_params['contract_id'] = contract_id
+        if account_id is not None:
+            _path_params['account_id'] = account_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'apiKey'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v2/{account_id}/linkedin/contracts/{contract_id}/select',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

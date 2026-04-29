@@ -22,12 +22,13 @@ from typing import Any, ClassVar, Dict, List, Optional
 from unipile.models.message_file_all_of_metadata import MessageFileAllOfMetadata
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class SendEmailRequestAttachmentsInner(BaseModel):
     """
     A file to be uploaded.
     """ # noqa: E501
-    content: StrictStr = Field(description="Content of the file encoded as base64.")
+    content: StrictStr = Field(description="Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files")
     content_type: StrictStr = Field(description="<a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types\">MIME type</a> of the file.")
     filename: StrictStr = Field(description="Name of the file (including extension).")
     metadata: Optional[MessageFileAllOfMetadata] = None
@@ -35,7 +36,8 @@ class SendEmailRequestAttachmentsInner(BaseModel):
     __properties: ClassVar[List[str]] = ["content", "content_type", "filename", "metadata"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,8 +49,7 @@ class SendEmailRequestAttachmentsInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

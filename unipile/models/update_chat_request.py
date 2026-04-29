@@ -22,19 +22,24 @@ from typing import Any, ClassVar, Dict, List, Optional
 from unipile.models.update_chat_request_muted_until import UpdateChatRequestMutedUntil
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class UpdateChatRequest(BaseModel):
     """
     UpdateChatRequest
     """ # noqa: E501
     name: Optional[StrictStr] = Field(default=None, description="A custom name for the chat. Some providers allow custom names only on groups.")
+    pin_status: Optional[StrictBool] = Field(default=None, description="If supported, set to `true` to pin the chat at the top of the list, or `false` to unpin it.")
+    archive_status: Optional[StrictBool] = Field(default=None, description="If supported, set to `true` to archive the chat, or `false` to move it back to the main inbox.")
+    label: Optional[StrictStr] = Field(default=None, description="If supported, associate the chat with the given label. For Whatsapp, this is resolved by label name and created if missing.")
     muted_until: Optional[UpdateChatRequestMutedUntil] = None
     read_status: Optional[StrictBool] = Field(default=None, description="Set to `true` to mark the chat as read. This is useful when displaying the list of messages in your app. Set to `false` to mark the chat as unread.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "muted_until", "read_status"]
+    __properties: ClassVar[List[str]] = ["name", "pin_status", "archive_status", "label", "muted_until", "read_status"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,8 +51,7 @@ class UpdateChatRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -95,6 +99,9 @@ class UpdateChatRequest(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
+            "pin_status": obj.get("pin_status"),
+            "archive_status": obj.get("archive_status"),
+            "label": obj.get("label"),
             "muted_until": UpdateChatRequestMutedUntil.from_dict(obj["muted_until"]) if obj.get("muted_until") is not None else None,
             "read_status": obj.get("read_status")
         })

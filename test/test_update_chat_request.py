@@ -36,6 +36,9 @@ class TestUpdateChatRequest(unittest.TestCase):
         if include_optional:
             return UpdateChatRequest(
                 name = '',
+                pin_status = True,
+                archive_status = True,
+                label = '',
                 muted_until = None,
                 read_status = True
             )

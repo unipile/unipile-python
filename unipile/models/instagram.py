@@ -17,31 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from unipile.models.instagram_config import InstagramConfig
-from unipile.models.instagram_credentials import InstagramCredentials
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class Instagram(BaseModel):
     """
-    Start the authentication intent with Instagram provider.
+    Instagram specific dataset for user profiles.
     """ # noqa: E501
-    provider: StrictStr = Field(description="The provider to authenticate with.")
-    credentials: InstagramCredentials
-    config: Optional[InstagramConfig] = None
-    __properties: ClassVar[List[str]] = ["provider", "credentials", "config"]
-
-    @field_validator('provider')
-    def provider_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['instagram']):
-            raise ValueError("must be one of enum values ('instagram')")
-        return value
+    messaging_identifier: Optional[StrictStr] = Field(description="The ID of the Company.")
+    __properties: ClassVar[List[str]] = ["messaging_identifier"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,8 +44,7 @@ class Instagram(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -79,12 +69,11 @@ class Instagram(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of credentials
-        if self.credentials:
-            _dict['credentials'] = self.credentials.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of config
-        if self.config:
-            _dict['config'] = self.config.to_dict()
+        # set to None if messaging_identifier (nullable) is None
+        # and model_fields_set contains the field
+        if self.messaging_identifier is None and "messaging_identifier" in self.model_fields_set:
+            _dict['messaging_identifier'] = None
+
         return _dict
 
     @classmethod
@@ -97,9 +86,7 @@ class Instagram(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "provider": obj.get("provider"),
-            "credentials": InstagramCredentials.from_dict(obj["credentials"]) if obj.get("credentials") is not None else None,
-            "config": InstagramConfig.from_dict(obj["config"]) if obj.get("config") is not None else None
+            "messaging_identifier": obj.get("messaging_identifier")
         })
         return _obj
 

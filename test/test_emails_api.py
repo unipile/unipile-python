@@ -82,6 +82,13 @@ class TestEmailsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_email_contacts_list(self) -> None:
+        """Test case for get_email_contacts_list
+
+        List email contacts
+        """
+        pass
+
     def test_get_emails_list(self) -> None:
         """Test case for get_emails_list
 

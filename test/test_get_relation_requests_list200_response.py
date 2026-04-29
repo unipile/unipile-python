@@ -36,9 +36,9 @@ class TestGetRelationRequestsList200Response(unittest.TestCase):
         if include_optional:
             return GetRelationRequestsList200Response(
                 data = [
-                    unipile.models.get_relation_requests_list_200_response_data_inner.getRelationRequestsList_200_response_data_inner(
+                    unipile.models.linked_in_relation_request.LinkedIn_relation_request(
                         object = 'RelationRequest', 
-                        user = unipile.models.get_relation_requests_list_200_response_data_inner_user.getRelationRequestsList_200_response_data_inner_user(
+                        user = unipile.models.linked_in_relation_request_user.LinkedIn_relation_request_user(
                             id = '', 
                             object = 'User', 
                             type = 'individual', 
@@ -59,9 +59,9 @@ class TestGetRelationRequestsList200Response(unittest.TestCase):
         else:
             return GetRelationRequestsList200Response(
                 data = [
-                    unipile.models.get_relation_requests_list_200_response_data_inner.getRelationRequestsList_200_response_data_inner(
+                    unipile.models.linked_in_relation_request.LinkedIn_relation_request(
                         object = 'RelationRequest', 
-                        user = unipile.models.get_relation_requests_list_200_response_data_inner_user.getRelationRequestsList_200_response_data_inner_user(
+                        user = unipile.models.linked_in_relation_request_user.LinkedIn_relation_request_user(
                             id = '', 
                             object = 'User', 
                             type = 'individual', 

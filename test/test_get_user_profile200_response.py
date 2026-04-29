@@ -70,7 +70,35 @@ class TestGetUserProfile200Response(unittest.TestCase):
                 shared_followers_count = 1.337,
                 is_blocked = True,
                 provider = 'mock',
-                specifics = None
+                specifics = None,
+                social_handles = unipile.models.get_email_contacts_list_200_response_data_inner_social_handles.getEmailContactsList_200_response_data_inner_social_handles(
+                    linkedin = unipile.models.get_email_contacts_list_200_response_data_inner_social_handles_linkedin.getEmailContactsList_200_response_data_inner_social_handles_linkedin(
+                        url = '', 
+                        name = '', ), 
+                    instagram = unipile.models.get_email_contacts_list_200_response_data_inner_social_handles_linkedin.getEmailContactsList_200_response_data_inner_social_handles_linkedin(
+                        url = '', 
+                        name = '', ), 
+                    github = , 
+                    facebook = , 
+                    x = , 
+                    threads = , 
+                    tiktok = , 
+                    wechat = , 
+                    gtalk = , 
+                    qq = , 
+                    skype = , 
+                    icq = , 
+                    xmpp = , 
+                    sip = , 
+                    yahoo = , 
+                    aim = , 
+                    jabber = , 
+                    msn = , 
+                    netmeeting = , 
+                    googletalk = , ),
+                websites = [
+                    ''
+                    ]
             )
         else:
             return GetUserProfile200Response(

@@ -35,7 +35,7 @@ class TestBrowseSalesAccountListRequest(unittest.TestCase):
         model = BrowseSalesAccountListRequest()
         if include_optional:
             return BrowseSalesAccountListRequest(
-                persona = '4',
+                persona = '',
                 filter = 'STARRED',
                 sort_by = 'NAME',
                 sort_order = 'ASCENDING'

@@ -21,6 +21,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetUserRelations200ResponseDataInnerUser(BaseModel):
     """
@@ -28,7 +29,7 @@ class GetUserRelations200ResponseDataInnerUser(BaseModel):
     """ # noqa: E501
     id: StrictStr = Field(description="Unique identifier of the user for the provider. Usually an internal identifier used by the API only.")
     object: StrictStr
-    type: StrictStr = Field(description="Type of the user.       - `individual` is an individual user.       - `organization` is an organization / business entity.       - `other` is an other type of entity.")
+    type: StrictStr = Field(description="Type of the user       - `individual` is an individual user.       - `organization` is an organization / business entity.       - `other` is an other type of entity.")
     public_identifier: Optional[StrictStr] = Field(default=None, description="Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles. ")
     display_name: StrictStr = Field(description="Display name of the user.")
     profile_url: Optional[StrictStr] = Field(default=None, description="Public url to the profile of the user.")
@@ -52,7 +53,8 @@ class GetUserRelations200ResponseDataInnerUser(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -64,8 +66,7 @@ class GetUserRelations200ResponseDataInnerUser(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

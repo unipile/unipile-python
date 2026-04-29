@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **object** | **str** |  | 
 **id** | **str** |  | 
 **application_id** | **str** |  | 
+**account_ids** | **List[str]** |  | 
+**account_targets** | [**List[ListWebhookEndpoints200ResponseDataInnerAccountTargetsInner]**](ListWebhookEndpoints200ResponseDataInnerAccountTargetsInner.md) |  | 
 
 ## Example
 

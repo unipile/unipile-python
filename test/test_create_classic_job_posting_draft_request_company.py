@@ -35,7 +35,7 @@ class TestCreateClassicJobPostingDraftRequestCompany(unittest.TestCase):
         model = CreateClassicJobPostingDraftRequestCompany()
         if include_optional:
             return CreateClassicJobPostingDraftRequestCompany(
-                id = '4',
+                id = '',
                 name = ''
             )
         else:

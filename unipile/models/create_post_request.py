@@ -23,6 +23,7 @@ from unipile.models.create_post_request_specifics import CreatePostRequestSpecif
 from unipile.models.send_email_request_attachments_inner import SendEmailRequestAttachmentsInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class CreatePostRequest(BaseModel):
     """
@@ -34,7 +35,7 @@ class CreatePostRequest(BaseModel):
     can_comment: Optional[StrictStr] = Field(default='anyone', description="The comment control level for the new post (if supported by the provider).           - `anyone` anyone can comment.           - `relations_only` only to the user's relations can comment.           - `no_one` no one can comment.")
     quoted_post_id: Optional[StrictStr] = Field(default=None, description="The ID of a Post to be quoted. For a simple repost without commentary, leave `text` as an empty string.")
     post_as: Optional[StrictStr] = Field(default=None, description="The ID of the User on whose behalf the post should be published (if supported by the provider).")
-    specifics: CreatePostRequestSpecifics
+    specifics: Optional[CreatePostRequestSpecifics] = None
     __properties: ClassVar[List[str]] = ["text", "attachments", "can_read", "can_comment", "quoted_post_id", "post_as", "specifics"]
 
     @field_validator('can_read')
@@ -58,7 +59,8 @@ class CreatePostRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -70,8 +72,7 @@ class CreatePostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

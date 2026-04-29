@@ -33,7 +33,7 @@ class GetPostsList200ResponseDataInnerUserReacted(BaseModel):
     # data type: bool
     anyof_schema_1_validator: Optional[StrictBool] = None
     # data type: str
-    anyof_schema_2_validator: Optional[StrictStr] = None
+    anyof_schema_2_validator: Optional[StrictStr] = Field(default=None, description="The ID of the Company.")
     if TYPE_CHECKING:
         actual_instance: Optional[Union[bool, str]] = None
     else:

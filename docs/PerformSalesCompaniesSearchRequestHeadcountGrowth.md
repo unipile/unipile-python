@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**min** | **float** |  | 
-**max** | **float** |  | 
+**min** | **float** | The number of comments to the post. &#x60;null&#x60; if counter is hidden. | 
+**max** | **float** | The number of comments to the post. &#x60;null&#x60; if counter is hidden. | 
 
 ## Example
 

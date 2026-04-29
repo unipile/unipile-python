@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | 
-**value** | **str** |  | 
+**name** | **str** | The ID of the Company. | 
+**value** | **str** | The ID of the Company. | 
 
 ## Example
 

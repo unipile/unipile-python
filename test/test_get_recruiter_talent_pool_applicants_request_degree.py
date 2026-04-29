@@ -36,10 +36,10 @@ class TestGetRecruiterTalentPoolApplicantsRequestDegree(unittest.TestCase):
         if include_optional:
             return GetRecruiterTalentPoolApplicantsRequestDegree(
                 include = [
-                    '4'
+                    ''
                     ],
                 exclude = [
-                    '4'
+                    ''
                     ]
             )
         else:

@@ -17,33 +17,86 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from unipile.models.linked_in_config import LinkedInConfig
-from unipile.models.linked_in_credentials import LinkedInCredentials
+from unipile.models.linked_in_certifications_inner import LinkedInCertificationsInner
+from unipile.models.linked_in_education_inner import LinkedInEducationInner
+from unipile.models.linked_in_experience_inner import LinkedInExperienceInner
+from unipile.models.linked_in_languages_inner import LinkedInLanguagesInner
+from unipile.models.linked_in_projects_inner import LinkedInProjectsInner
+from unipile.models.linked_in_recommendations import LinkedInRecommendations
+from unipile.models.linked_in_recruiting_profile import LinkedInRecruitingProfile
+from unipile.models.linked_in_relation_request import LinkedInRelationRequest
+from unipile.models.linked_in_skills_inner import LinkedInSkillsInner
+from unipile.models.linked_in_volunteer_experience_inner import LinkedInVolunteerExperienceInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class LinkedIn(BaseModel):
     """
-    Start the authentication intent with LinkedIn provider.
+    LinkedIn specific dataset for user profiles.
     """ # noqa: E501
-    provider: StrictStr = Field(description="The provider to authenticate with.")
-    user_agent: Optional[StrictStr] = Field(default=None, description="If encountering disconnection issues, enter the exact user agent of the browser on which the account has been connected before the `li_at` retrieval. You can easily get it in the browser's console with this command : `console.log(navigator.userAgent)`")
-    user_timezone: Optional[StrictStr] = Field(default=None, description="The time zone of the current user can be used on a few specific features (e.g. scheduled actions). Setting it at authentication avoids having to do it on a case-by-case basis later on.")
-    credentials: LinkedInCredentials
-    config: Optional[LinkedInConfig] = None
-    __properties: ClassVar[List[str]] = ["provider", "user_agent", "user_timezone", "credentials", "config"]
+    member_id: Optional[StrictStr] = Field(default=None, description="LinkedIn internal member ID of the user.")
+    can_send_inmail: Optional[StrictBool] = Field(default=None, description="Whether the user can be reached with inmails.")
+    network_distance: StrictStr = Field(description="Network distance to a User.       `SELF`: Yourself.       `FIRST_DEGREE`: 1st degree connection.       `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).       `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).       `OUT_OF_NETWORK`: Unreachable user.'")
+    relation_request: Optional[LinkedInRelationRequest] = None
+    relation_request_status: Optional[StrictStr] = Field(default=None, description="The status of the relation request with the user if any.")
+    pronoun: Optional[StrictStr] = Field(default=None, description="The pronoun to be used to refer to this user.")
+    default_locale: Optional[StrictStr] = Field(default=None, description="Default locale for the user's profile (POSIX format e.g. en_US, fr_FR...).")
+    supported_locales: Optional[List[Optional[StrictStr]]] = Field(default=None, description="List of supported locales for the user's profile (POSIX format e.g. en_US, fr_FR...).")
+    notify_visit_token: Optional[StrictStr] = Field(default=None, description="Payload that should be passed to the Notify profile visit route in order to notify the visit.")
+    is_open_profile: Optional[StrictBool] = Field(default=None, description="Whether the user has an open profile (can be reached with free inmails).")
+    is_premium: Optional[StrictBool] = Field(default=None, description="Whether the user has a premium subscription.")
+    is_influencer: Optional[StrictBool] = Field(default=None, description="Whether the user is an influencer.")
+    is_creator: Optional[StrictBool] = Field(default=None, description="Whether the user is a creator.")
+    is_hiring: Optional[StrictBool] = Field(default=None, description="Whether the user is hiring.")
+    is_open_to_work: Optional[StrictBool] = Field(default=None, description="Whether the user is open to work.")
+    is_saved_lead: Optional[StrictBool] = Field(default=None, description="Whether the user is a saved lead.")
+    is_crm_imported: Optional[StrictBool] = Field(default=None, description="Whether the user is a CRM imported user.")
+    skills: Optional[List[LinkedInSkillsInner]] = None
+    experience: Optional[List[LinkedInExperienceInner]] = None
+    education: Optional[List[LinkedInEducationInner]] = None
+    languages: Optional[List[LinkedInLanguagesInner]] = None
+    certifications: Optional[List[LinkedInCertificationsInner]] = None
+    volunteer_experience: Optional[List[LinkedInVolunteerExperienceInner]] = None
+    projects: Optional[List[LinkedInProjectsInner]] = None
+    recommendations: Optional[LinkedInRecommendations] = None
+    throttled_sections: Optional[List[StrictStr]] = Field(default=None, description="A list of sections that are temporary unavailable due to LinkedIn rate limiting.")
+    recruiting_profile: Optional[LinkedInRecruitingProfile] = None
+    __properties: ClassVar[List[str]] = ["member_id", "can_send_inmail", "network_distance", "relation_request", "relation_request_status", "pronoun", "default_locale", "supported_locales", "notify_visit_token", "is_open_profile", "is_premium", "is_influencer", "is_creator", "is_hiring", "is_open_to_work", "is_saved_lead", "is_crm_imported", "skills", "experience", "education", "languages", "certifications", "volunteer_experience", "projects", "recommendations", "throttled_sections", "recruiting_profile"]
 
-    @field_validator('provider')
-    def provider_validate_enum(cls, value):
+    @field_validator('network_distance')
+    def network_distance_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(['linkedin']):
-            raise ValueError("must be one of enum values ('linkedin')")
+        if value not in set(['SELF', 'FIRST_DEGREE', 'SECOND_DEGREE', 'THIRD_DEGREE', 'OUT_OF_NETWORK']):
+            raise ValueError("must be one of enum values ('SELF', 'FIRST_DEGREE', 'SECOND_DEGREE', 'THIRD_DEGREE', 'OUT_OF_NETWORK')")
+        return value
+
+    @field_validator('relation_request_status')
+    def relation_request_status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['PENDING', 'IGNORED', 'WITHDRAWN']):
+            raise ValueError("must be one of enum values ('PENDING', 'IGNORED', 'WITHDRAWN')")
+        return value
+
+    @field_validator('throttled_sections')
+    def throttled_sections_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        for i in value:
+            if i not in set(['experience', 'education', 'languages', 'skills', 'certifications', 'volunteer_experience', 'projects', 'recommendations']):
+                raise ValueError("each list item must be one of ('experience', 'education', 'languages', 'skills', 'certifications', 'volunteer_experience', 'projects', 'recommendations')")
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -55,8 +108,7 @@ class LinkedIn(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -81,12 +133,64 @@ class LinkedIn(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of credentials
-        if self.credentials:
-            _dict['credentials'] = self.credentials.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of config
-        if self.config:
-            _dict['config'] = self.config.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of relation_request
+        if self.relation_request:
+            _dict['relation_request'] = self.relation_request.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in skills (list)
+        _items = []
+        if self.skills:
+            for _item_skills in self.skills:
+                if _item_skills:
+                    _items.append(_item_skills.to_dict())
+            _dict['skills'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in experience (list)
+        _items = []
+        if self.experience:
+            for _item_experience in self.experience:
+                if _item_experience:
+                    _items.append(_item_experience.to_dict())
+            _dict['experience'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in education (list)
+        _items = []
+        if self.education:
+            for _item_education in self.education:
+                if _item_education:
+                    _items.append(_item_education.to_dict())
+            _dict['education'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in languages (list)
+        _items = []
+        if self.languages:
+            for _item_languages in self.languages:
+                if _item_languages:
+                    _items.append(_item_languages.to_dict())
+            _dict['languages'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in certifications (list)
+        _items = []
+        if self.certifications:
+            for _item_certifications in self.certifications:
+                if _item_certifications:
+                    _items.append(_item_certifications.to_dict())
+            _dict['certifications'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in volunteer_experience (list)
+        _items = []
+        if self.volunteer_experience:
+            for _item_volunteer_experience in self.volunteer_experience:
+                if _item_volunteer_experience:
+                    _items.append(_item_volunteer_experience.to_dict())
+            _dict['volunteer_experience'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in projects (list)
+        _items = []
+        if self.projects:
+            for _item_projects in self.projects:
+                if _item_projects:
+                    _items.append(_item_projects.to_dict())
+            _dict['projects'] = _items
+        # override the default output from pydantic by calling `to_dict()` of recommendations
+        if self.recommendations:
+            _dict['recommendations'] = self.recommendations.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of recruiting_profile
+        if self.recruiting_profile:
+            _dict['recruiting_profile'] = self.recruiting_profile.to_dict()
         return _dict
 
     @classmethod
@@ -99,11 +203,33 @@ class LinkedIn(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "provider": obj.get("provider"),
-            "user_agent": obj.get("user_agent"),
-            "user_timezone": obj.get("user_timezone"),
-            "credentials": LinkedInCredentials.from_dict(obj["credentials"]) if obj.get("credentials") is not None else None,
-            "config": LinkedInConfig.from_dict(obj["config"]) if obj.get("config") is not None else None
+            "member_id": obj.get("member_id"),
+            "can_send_inmail": obj.get("can_send_inmail"),
+            "network_distance": obj.get("network_distance"),
+            "relation_request": LinkedInRelationRequest.from_dict(obj["relation_request"]) if obj.get("relation_request") is not None else None,
+            "relation_request_status": obj.get("relation_request_status"),
+            "pronoun": obj.get("pronoun"),
+            "default_locale": obj.get("default_locale"),
+            "supported_locales": obj.get("supported_locales"),
+            "notify_visit_token": obj.get("notify_visit_token"),
+            "is_open_profile": obj.get("is_open_profile"),
+            "is_premium": obj.get("is_premium"),
+            "is_influencer": obj.get("is_influencer"),
+            "is_creator": obj.get("is_creator"),
+            "is_hiring": obj.get("is_hiring"),
+            "is_open_to_work": obj.get("is_open_to_work"),
+            "is_saved_lead": obj.get("is_saved_lead"),
+            "is_crm_imported": obj.get("is_crm_imported"),
+            "skills": [LinkedInSkillsInner.from_dict(_item) for _item in obj["skills"]] if obj.get("skills") is not None else None,
+            "experience": [LinkedInExperienceInner.from_dict(_item) for _item in obj["experience"]] if obj.get("experience") is not None else None,
+            "education": [LinkedInEducationInner.from_dict(_item) for _item in obj["education"]] if obj.get("education") is not None else None,
+            "languages": [LinkedInLanguagesInner.from_dict(_item) for _item in obj["languages"]] if obj.get("languages") is not None else None,
+            "certifications": [LinkedInCertificationsInner.from_dict(_item) for _item in obj["certifications"]] if obj.get("certifications") is not None else None,
+            "volunteer_experience": [LinkedInVolunteerExperienceInner.from_dict(_item) for _item in obj["volunteer_experience"]] if obj.get("volunteer_experience") is not None else None,
+            "projects": [LinkedInProjectsInner.from_dict(_item) for _item in obj["projects"]] if obj.get("projects") is not None else None,
+            "recommendations": LinkedInRecommendations.from_dict(obj["recommendations"]) if obj.get("recommendations") is not None else None,
+            "throttled_sections": obj.get("throttled_sections"),
+            "recruiting_profile": LinkedInRecruitingProfile.from_dict(obj["recruiting_profile"]) if obj.get("recruiting_profile") is not None else None
         })
         return _obj
 

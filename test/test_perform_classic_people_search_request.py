@@ -40,24 +40,24 @@ class TestPerformClassicPeopleSearchRequest(unittest.TestCase):
                     1
                     ],
                 location = [
-                    '4'
+                    ''
                     ],
                 current_company = [
-                    '4'
+                    ''
                     ],
                 past_company = [
-                    '4'
+                    ''
                     ],
                 school = [
-                    '4'
+                    ''
                     ],
-                connections_of = '4',
-                followers_of = '4',
+                connections_of = '',
+                followers_of = '',
                 industry = [
-                    '4'
+                    ''
                     ],
                 service = [
-                    '4'
+                    ''
                     ],
                 profile_language = [
                     '01'

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **set_hiring_frame** | **bool** | Whether to add the hiring frame to you public profile picture. | [optional] [default to True]
 **bypass_email_verification** | **bool** | Whether not to verify if you&#39;re allowed to post a job on behalf on the current company. | [optional] [default to False]
-**mode** | **str** |  | 
+**mode** | **str** | The publishing mode of the job posting. | 
 **budget** | [**PublishInPromotedModeBudget**](PublishInPromotedModeBudget.md) |  | 
 
 ## Example

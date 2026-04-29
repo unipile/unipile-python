@@ -43,10 +43,10 @@ class TestGetRecruiterPipelineCandidatesRequest(unittest.TestCase):
                     ],
                 recruiting_activity = None,
                 added_by = [
-                    '4'
+                    ''
                     ],
                 skills = [
-                    '4'
+                    ''
                     ],
                 years_of_experience = [
                     unipile.models.get_classic_applicants_request_years_of_experience_inner.getClassicApplicants_request_years_of_experience_inner(
@@ -54,13 +54,13 @@ class TestGetRecruiterPipelineCandidatesRequest(unittest.TestCase):
                         max = 1, )
                     ],
                 job_title = [
-                    '4'
+                    ''
                     ],
-                company = [
-                    '4'
+                current_company = [
+                    ''
                     ],
-                location = [
-                    '4'
+                current_location = [
+                    ''
                     ]
             )
         else:

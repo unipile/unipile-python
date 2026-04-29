@@ -19,28 +19,28 @@ import pprint
 import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Optional
+from unipile.models.create_new_experience import CreateNewExperience
 from unipile.models.edit_existing_experience import EditExistingExperience
-from unipile.models.new_experience import NewExperience
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-UPDATEUSERPROFILEREQUESTSPECIFICSALLOFLINKEDINEXPERIENCE_ANY_OF_SCHEMAS = ["EditExistingExperience", "NewExperience"]
+UPDATEUSERPROFILEREQUESTSPECIFICSALLOFLINKEDINEXPERIENCE_ANY_OF_SCHEMAS = ["CreateNewExperience", "EditExistingExperience"]
 
 class UpdateUserProfileRequestSpecificsAllOfLinkedinExperience(BaseModel):
     """
     UpdateUserProfileRequestSpecificsAllOfLinkedinExperience
     """
 
-    # data type: NewExperience
-    anyof_schema_1_validator: Optional[NewExperience] = None
+    # data type: CreateNewExperience
+    anyof_schema_1_validator: Optional[CreateNewExperience] = None
     # data type: EditExistingExperience
     anyof_schema_2_validator: Optional[EditExistingExperience] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[EditExistingExperience, NewExperience]] = None
+        actual_instance: Optional[Union[CreateNewExperience, EditExistingExperience]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "EditExistingExperience", "NewExperience" }
+    any_of_schemas: Set[str] = { "CreateNewExperience", "EditExistingExperience" }
 
     model_config = {
         "validate_assignment": True,
@@ -61,9 +61,9 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinExperience(BaseModel):
     def actual_instance_must_validate_anyof(cls, v):
         instance = UpdateUserProfileRequestSpecificsAllOfLinkedinExperience.model_construct()
         error_messages = []
-        # validate data type: NewExperience
-        if not isinstance(v, NewExperience):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `NewExperience`")
+        # validate data type: CreateNewExperience
+        if not isinstance(v, CreateNewExperience):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `CreateNewExperience`")
         else:
             return v
 
@@ -75,7 +75,7 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinExperience(BaseModel):
 
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in UpdateUserProfileRequestSpecificsAllOfLinkedinExperience with anyOf schemas: EditExistingExperience, NewExperience. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in UpdateUserProfileRequestSpecificsAllOfLinkedinExperience with anyOf schemas: CreateNewExperience, EditExistingExperience. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -88,9 +88,9 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinExperience(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[NewExperience] = None
+        # anyof_schema_1_validator: Optional[CreateNewExperience] = None
         try:
-            instance.actual_instance = NewExperience.from_json(json_str)
+            instance.actual_instance = CreateNewExperience.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
@@ -103,7 +103,7 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinExperience(BaseModel):
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into UpdateUserProfileRequestSpecificsAllOfLinkedinExperience with anyOf schemas: EditExistingExperience, NewExperience. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into UpdateUserProfileRequestSpecificsAllOfLinkedinExperience with anyOf schemas: CreateNewExperience, EditExistingExperience. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -117,7 +117,7 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinExperience(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], EditExistingExperience, NewExperience]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], CreateNewExperience, EditExistingExperience]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

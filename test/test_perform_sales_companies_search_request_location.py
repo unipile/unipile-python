@@ -36,10 +36,10 @@ class TestPerformSalesCompaniesSearchRequestLocation(unittest.TestCase):
         if include_optional:
             return PerformSalesCompaniesSearchRequestLocation(
                 include = [
-                    '4'
+                    ''
                     ],
                 exclude = [
-                    '4'
+                    ''
                     ]
             )
         else:

@@ -44,7 +44,18 @@ class TestCreateWebhookEndpoint200Response(unittest.TestCase):
                 secret = '',
                 object = 'WebhookEndpoint',
                 id = 'we_jUR,rZ#UM/?R,Fp^l6$ARj',
-                application_id = 'app_jUR,rZ#UM/?R,Fp^l6$ARj'
+                application_id = 'app_jUR,rZ#UM/?R,Fp^l6$ARj',
+                account_ids = [
+                    'acc_jUR,rZ#UM/?R,Fp^l6$ARj'
+                    ],
+                account_targets = [
+                    unipile.models.list_webhook_endpoints_200_response_data_inner_account_targets_inner.listWebhookEndpoints_200_response_data_inner_account_targets_inner(
+                        account_name = '', 
+                        account_provider = 'mock', 
+                        object = 'WebhookEndpointAccountTarget', 
+                        id = 'acc_jUR,rZ#UM/?R,Fp^l6$ARj', 
+                        status = 'active', )
+                    ]
             )
         else:
             return CreateWebhookEndpoint200Response(
@@ -58,6 +69,17 @@ class TestCreateWebhookEndpoint200Response(unittest.TestCase):
                 object = 'WebhookEndpoint',
                 id = 'we_jUR,rZ#UM/?R,Fp^l6$ARj',
                 application_id = 'app_jUR,rZ#UM/?R,Fp^l6$ARj',
+                account_ids = [
+                    'acc_jUR,rZ#UM/?R,Fp^l6$ARj'
+                    ],
+                account_targets = [
+                    unipile.models.list_webhook_endpoints_200_response_data_inner_account_targets_inner.listWebhookEndpoints_200_response_data_inner_account_targets_inner(
+                        account_name = '', 
+                        account_provider = 'mock', 
+                        object = 'WebhookEndpointAccountTarget', 
+                        id = 'acc_jUR,rZ#UM/?R,Fp^l6$ARj', 
+                        status = 'active', )
+                    ],
         )
         """
 

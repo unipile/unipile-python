@@ -19,10 +19,10 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from typing_extensions import Annotated
 from unipile.models.perform_classic_jobs_search_request_salary import PerformClassicJobsSearchRequestSalary
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PerformClassicJobsSearchRequest(BaseModel):
     """
@@ -31,16 +31,16 @@ class PerformClassicJobsSearchRequest(BaseModel):
     keywords: Optional[StrictStr] = Field(default=None, description="A keyword or group of keywords.")
     sort_by: Optional[StrictStr] = Field(default=None, description="The sort method.    Native filter : Sort by   ")
     date_posted: Optional[StrictStr] = Field(default=None, description="The time period when the jobs should have been published.    Native filter : Date posted   ")
-    workplace_type: Optional[List[StrictStr]] = None
-    seniority: Optional[List[StrictStr]] = None
-    employment_status: Optional[List[StrictStr]] = None
-    company: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `COMPANY` type to find out the possible values.    Native filter : Company   ")
-    primary_location: Optional[Annotated[str, Field(strict=True)]] = None
-    location: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Location   ")
+    workplace_type: Optional[List[StrictStr]] = Field(default=None, description="A list of workplace types.    Native filter : Remote   ")
+    seniority: Optional[List[StrictStr]] = Field(default=None, description="A list of experience levels required by the jobs.    Native filter : Experience level   ")
+    employment_status: Optional[List[StrictStr]] = Field(default=None, description="A list of employment statuses.    Native filter : Job type   ")
+    company: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `COMPANY` type to find out the possible values.    Native filter : Company   ")
+    primary_location: Optional[StrictStr] = Field(default=None, description="A parameter ID. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Primary location   ")
+    location: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Location   ")
     location_radius: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The distance radius around the location in kilometers.    Native filter : Distance   ")
-    industry: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.    Native filter : Industry   ")
-    function: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.    Native filter : Job function   ")
-    job_title: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.    Native filter : Job title   ")
+    industry: Optional[List[StrictStr]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.    Native filter : Industry   ")
+    function: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.    Native filter : Job function   ")
+    job_title: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.    Native filter : Job title   ")
     easy_apply: Optional[StrictBool] = Field(default=None, description="Whether the application can me made directly on LinkedIn.    Native filter : Easy apply   ")
     has_verifications: Optional[StrictBool] = Field(default=None, description="Whether the jobs have a verification badge.    Native filter : Has verifications   ")
     under_10_applicants: Optional[StrictBool] = Field(default=None, description="Whether the jobs didn't receive more than 10 applications.    Native filter : Under 10 applicants   ")
@@ -105,16 +105,6 @@ class PerformClassicJobsSearchRequest(BaseModel):
                 raise ValueError("each list item must be one of ('FULL_TIME', 'PART_TIME', 'CONTRACT', 'TEMPORARY', 'VOLUNTEER', 'INTERNSHIP', 'OTHER')")
         return value
 
-    @field_validator('primary_location')
-    def primary_location_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^\d+$", value):
-            raise ValueError(r"must validate the regular expression /^\d+$/")
-        return value
-
     @field_validator('location_radius')
     def location_radius_validate_enum(cls, value):
         """Validates the enum"""
@@ -148,7 +138,8 @@ class PerformClassicJobsSearchRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -160,8 +151,7 @@ class PerformClassicJobsSearchRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **education** | [**UpdateUserProfileRequestSpecificsAllOfLinkedinEducation**](UpdateUserProfileRequestSpecificsAllOfLinkedinEducation.md) |  | [optional] 
 **picture_options** | [**UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions**](UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions.md) |  | [optional] 
 **background_picture_options** | [**UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions**](UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions.md) |  | [optional] 
+**custom_link** | [**UpdateUserProfileRequestSpecificsAllOfLinkedinCustomLink**](UpdateUserProfileRequestSpecificsAllOfLinkedinCustomLink.md) |  | [optional] 
+**open_to_work** | [**UpdateUserProfileRequestSpecificsAllOfLinkedinOpenToWork**](UpdateUserProfileRequestSpecificsAllOfLinkedinOpenToWork.md) |  | [optional] 
 
 ## Example
 

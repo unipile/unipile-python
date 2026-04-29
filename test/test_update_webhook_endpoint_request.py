@@ -38,6 +38,9 @@ class TestUpdateWebhookEndpointRequest(unittest.TestCase):
                 trigger_events = [
                     'account.status.disconnected'
                     ],
+                account_ids = [
+                    'acc_jUR,rZ#UM/?R,Fp^l6$ARj'
+                    ],
                 url = '',
                 description = '',
                 enabled = True

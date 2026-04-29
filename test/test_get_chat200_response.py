@@ -38,6 +38,7 @@ class TestGetChat200Response(unittest.TestCase):
                 object = 'Chat',
                 id = '',
                 name = '',
+                label = '',
                 description = '',
                 image_url = '',
                 created_at = '',

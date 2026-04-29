@@ -36,7 +36,15 @@ class TestUpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions(unittest.
         if include_optional:
             return UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions(
                 filter = 'original',
-                layout = unipile.models.layout.layout(),
+                layout = unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options_layout.updateUserProfile_request_specifics_allOf_linkedin_picture_options_layout(
+                    bottom_left = unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options_layout_bottom_left.updateUserProfile_request_specifics_allOf_linkedin_picture_options_layout_bottom_left(
+                        x = 1.337, 
+                        y = 1.337, ), 
+                    bottom_right = unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options_layout_bottom_left.updateUserProfile_request_specifics_allOf_linkedin_picture_options_layout_bottom_left(
+                        x = 1.337, 
+                        y = 1.337, ), 
+                    top_left = , 
+                    top_right = , ),
                 contrast = -0.3,
                 vignette = -0.3,
                 saturation = -0.3,

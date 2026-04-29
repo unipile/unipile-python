@@ -36,19 +36,26 @@ class TestPerformSalesPeopleSearchRequest(unittest.TestCase):
         if include_optional:
             return PerformSalesPeopleSearchRequest(
                 keywords = '',
+                save_search = unipile.models.perform_sales_people_search_request_save_search.performSalesPeopleSearch_request_save_search(
+                    name = '', ),
+                load_saved_search = unipile.models.perform_sales_people_search_request_load_saved_search.performSalesPeopleSearch_request_load_saved_search(
+                    id = '', 
+                    last_viewed_at = 1.337, ),
+                load_recent_search = unipile.models.perform_sales_people_search_request_load_recent_search.performSalesPeopleSearch_request_load_recent_search(
+                    id = '', ),
                 current_company = unipile.models.perform_sales_people_search_request_current_company.performSalesPeopleSearch_request_current_company(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 past_company = unipile.models.perform_sales_people_search_request_past_company.performSalesPeopleSearch_request_past_company(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 company_headcount = [
                     unipile.models.perform_sales_people_search_request_company_headcount_inner.performSalesPeopleSearch_request_company_headcount_inner(
@@ -60,31 +67,31 @@ class TestPerformSalesPeopleSearchRequest(unittest.TestCase):
                     ],
                 company_location = unipile.models.perform_sales_people_search_request_company_location.performSalesPeopleSearch_request_company_location(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 function = unipile.models.perform_sales_people_search_request_function.performSalesPeopleSearch_request_function(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 current_job_title = unipile.models.perform_sales_people_search_request_current_job_title.performSalesPeopleSearch_request_current_job_title(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 past_job_title = unipile.models.perform_sales_people_search_request_past_job_title.performSalesPeopleSearch_request_past_job_title(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 seniority = unipile.models.perform_sales_people_search_request_seniority.performSalesPeopleSearch_request_seniority(
                     include = [
@@ -105,25 +112,25 @@ class TestPerformSalesPeopleSearchRequest(unittest.TestCase):
                     ],
                 location = unipile.models.perform_sales_people_search_request_location.performSalesPeopleSearch_request_location(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 postal_code = unipile.models.perform_sales_people_search_request_postal_code.performSalesPeopleSearch_request_postal_code(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], 
                     radius = 1, ),
                 industry = unipile.models.perform_sales_people_search_request_industry.performSalesPeopleSearch_request_industry(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 first_name = [
                     ''
@@ -132,7 +139,7 @@ class TestPerformSalesPeopleSearchRequest(unittest.TestCase):
                     ''
                     ],
                 profile_language = [
-                    '01'
+                    ''
                     ],
                 years_of_experience = [
                     unipile.models.perform_sales_people_search_request_years_of_experience_inner.performSalesPeopleSearch_request_years_of_experience_inner(
@@ -141,17 +148,17 @@ class TestPerformSalesPeopleSearchRequest(unittest.TestCase):
                     ],
                 group = unipile.models.perform_sales_people_search_request_group.performSalesPeopleSearch_request_group(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 school = unipile.models.perform_sales_people_search_request_school.performSalesPeopleSearch_request_school(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 following_your_company = True,
                 viewed_your_profile_recently = True,
@@ -159,28 +166,28 @@ class TestPerformSalesPeopleSearchRequest(unittest.TestCase):
                     null
                     ],
                 connections_of = [
-                    '4'
+                    ''
                     ],
                 past_colleague = True,
                 shared_experiences = True,
                 changed_jobs = True,
                 posted_on_linkedin = True,
                 persona = [
-                    '4'
+                    ''
                     ],
                 account_list = unipile.models.perform_sales_people_search_request_account_list.performSalesPeopleSearch_request_account_list(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 lead_list = unipile.models.perform_sales_people_search_request_lead_list.performSalesPeopleSearch_request_lead_list(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 recent_interaction = unipile.models.perform_sales_people_search_request_recent_interaction.performSalesPeopleSearch_request_recent_interaction(
                     viewed_profile = True, 

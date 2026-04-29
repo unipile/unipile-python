@@ -19,9 +19,10 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from unipile.models.perform_classic_search_from_url200_response_any_of_data_inner_company import PerformClassicSearchFromUrl200ResponseAnyOfDataInnerCompany
+from unipile.models.jobs_search_results_data_inner_company import JobsSearchResultsDataInnerCompany
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PerformClassicJobsSearch200ResponseDataInner(BaseModel):
     """
@@ -38,7 +39,7 @@ class PerformClassicJobsSearch200ResponseDataInner(BaseModel):
     is_promoted: StrictBool = Field(description="Whether the Job posting has been promoted.")
     easy_apply: StrictBool = Field(description="Whether applicants are allowed to apply to the Job posting directly on LinkedIn.")
     few_applicants: StrictBool = Field(description="Whether the Job posting received a limited number of applications.")
-    company: PerformClassicSearchFromUrl200ResponseAnyOfDataInnerCompany
+    company: JobsSearchResultsDataInnerCompany
     insights: List[StrictStr] = Field(description="A list of insights about the Job posting.")
     __properties: ClassVar[List[str]] = ["object", "id", "title", "location", "listed_at", "workplace_type", "url", "is_repost", "is_promoted", "easy_apply", "few_applicants", "company", "insights"]
 
@@ -60,7 +61,8 @@ class PerformClassicJobsSearch200ResponseDataInner(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -72,8 +74,7 @@ class PerformClassicJobsSearch200ResponseDataInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -124,7 +125,7 @@ class PerformClassicJobsSearch200ResponseDataInner(BaseModel):
             "is_promoted": obj.get("is_promoted"),
             "easy_apply": obj.get("easy_apply"),
             "few_applicants": obj.get("few_applicants"),
-            "company": PerformClassicSearchFromUrl200ResponseAnyOfDataInnerCompany.from_dict(obj["company"]) if obj.get("company") is not None else None,
+            "company": JobsSearchResultsDataInnerCompany.from_dict(obj["company"]) if obj.get("company") is not None else None,
             "insights": obj.get("insights")
         })
         return _obj

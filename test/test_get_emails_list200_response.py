@@ -75,6 +75,9 @@ class TestGetEmailsList200Response(unittest.TestCase):
                         folders = [
                             ''
                             ], 
+                        categories = [
+                            ''
+                            ], 
                         is_unread = True, )
                     ],
                 total_count = 1.337,
@@ -120,6 +123,9 @@ class TestGetEmailsList200Response(unittest.TestCase):
                             null
                             ], 
                         folders = [
+                            ''
+                            ], 
+                        categories = [
                             ''
                             ], 
                         is_unread = True, )

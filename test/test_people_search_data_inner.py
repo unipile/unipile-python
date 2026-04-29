@@ -36,18 +36,23 @@ class TestPeopleSearchDataInner(unittest.TestCase):
         if include_optional:
             return PeopleSearchDataInner(
                 object = 'PeopleSearchResult',
-                product = 'recruiter',
-                visibility = 'full',
                 id = '',
-                candidate_id = '',
                 headline = '',
                 network_distance = 'SELF',
                 location = '',
+                can_send_inmail = True,
+                product = 'recruiter',
+                visibility = 'full',
+                candidate_id = '',
                 is_hidden_candidate = True,
+                hiring_project = unipile.models.partial_profile_hiring_project.Partial_profile_hiring_project(
+                    id = '', 
+                    name = '', 
+                    pipeline_stage = '', ),
                 work_experience = [
                     unipile.models.partial_profile_work_experience_inner.Partial_profile_work_experience_inner(
                         id = '', 
-                        company = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                        company = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                             name = '', 
                             id = '', 
                             public_identifier = '', 
@@ -56,7 +61,7 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                             industries = [
                                 ''
                                 ], ), 
-                        title = '', 
+                        job_title = '', 
                         started_on = '', 
                         ended_on = '', 
                         location = '', 
@@ -68,12 +73,14 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                             ], 
                         skills_preview = '', )
                     ],
-                can_send_inmail = True,
+                member_id = '',
                 display_name = '',
                 public_identifier = '',
                 profile_url = '',
-                industry = '',
+                public_picture_url = '',
+                public_picture_url_large = '',
                 relations_count = 1.337,
+                industry = '',
                 followers_count = 1.337,
                 skills = [
                     unipile.models.full_profile_skills_inner.Full_profile_skills_inner(
@@ -81,7 +88,6 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                         endorsement_count = 1.337, )
                     ],
                 summary = '',
-                public_picture_url = '',
                 emails = [
                     ''
                     ],
@@ -91,7 +97,7 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                 education = [
                     unipile.models.full_profile_education_inner.Full_profile_education_inner(
                         id = '', 
-                        school = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_education_inner_school.getUserProfile_200_response_specifics_allOf_anyOf_education_inner_school(
+                        school = unipile.models.linked_in_education_inner_school.LinkedIn_education_inner_school(
                             id = '', 
                             name = '', 
                             picture_url = '', 
@@ -111,14 +117,14 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                         ended_on = '', )
                     ],
                 languages = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_languages_inner.getUserProfile_200_response_specifics_allOf_anyOf_languages_inner(
+                    unipile.models.linked_in_languages_inner.LinkedIn_languages_inner(
                         language = '', 
                         proficiency = 'ELEMENTARY', )
                     ],
                 certifications = [
                     unipile.models.full_profile_certifications_inner.Full_profile_certifications_inner(
                         title = '', 
-                        organization = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                        organization = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                             name = '', 
                             id = '', 
                             public_identifier = '', 
@@ -141,7 +147,7 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                         name = '', 
                         description = '', 
                         contributors = [
-                            unipile.models.get_user_profile_200_response_specifics_all_of_any_of_projects_inner_contributors_inner.getUserProfile_200_response_specifics_allOf_anyOf_projects_inner_contributors_inner(
+                            unipile.models.linked_in_projects_inner_contributors_inner.LinkedIn_projects_inner_contributors_inner(
                                 id = '', 
                                 object = 'User', 
                                 type = 'individual', 
@@ -160,8 +166,8 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                         ended_on = '', )
                     ],
                 volunteering = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_volunteer_experience_inner.getUserProfile_200_response_specifics_allOf_anyOf_volunteer_experience_inner(
-                        organization = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                    unipile.models.linked_in_volunteer_experience_inner.LinkedIn_volunteer_experience_inner(
+                        organization = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                             name = '', 
                             id = '', 
                             public_identifier = '', 
@@ -177,11 +183,11 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                         ended_on = '', )
                     ],
                 recommendations = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_recommendations_received_inner.getUserProfile_200_response_specifics_allOf_anyOf_recommendations_received_inner(
+                    unipile.models.linked_in_recommendations_received_inner.LinkedIn_recommendations_received_inner(
                         caption = '', 
                         created_on = '', 
                         text = '', 
-                        user = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_recommendations_received_inner_user.getUserProfile_200_response_specifics_allOf_anyOf_recommendations_received_inner_user(
+                        user = unipile.models.linked_in_recommendations_received_inner_user.LinkedIn_recommendations_received_inner_user(
                             id = '', 
                             object = 'User', 
                             type = 'individual', 
@@ -196,18 +202,18 @@ class TestPeopleSearchDataInner(unittest.TestCase):
         else:
             return PeopleSearchDataInner(
                 object = 'PeopleSearchResult',
-                product = 'recruiter',
-                visibility = 'full',
                 id = '',
-                candidate_id = '',
                 headline = '',
                 network_distance = 'SELF',
                 location = '',
+                product = 'recruiter',
+                visibility = 'full',
+                candidate_id = '',
                 is_hidden_candidate = True,
                 work_experience = [
                     unipile.models.partial_profile_work_experience_inner.Partial_profile_work_experience_inner(
                         id = '', 
-                        company = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                        company = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                             name = '', 
                             id = '', 
                             public_identifier = '', 
@@ -216,7 +222,7 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                             industries = [
                                 ''
                                 ], ), 
-                        title = '', 
+                        job_title = '', 
                         started_on = '', 
                         ended_on = '', 
                         location = '', 
@@ -229,7 +235,6 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                         skills_preview = '', )
                     ],
                 display_name = '',
-                profile_url = '',
                 industry = '',
                 skills = [
                     unipile.models.full_profile_skills_inner.Full_profile_skills_inner(
@@ -239,7 +244,7 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                 education = [
                     unipile.models.full_profile_education_inner.Full_profile_education_inner(
                         id = '', 
-                        school = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_education_inner_school.getUserProfile_200_response_specifics_allOf_anyOf_education_inner_school(
+                        school = unipile.models.linked_in_education_inner_school.LinkedIn_education_inner_school(
                             id = '', 
                             name = '', 
                             picture_url = '', 
@@ -259,14 +264,14 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                         ended_on = '', )
                     ],
                 languages = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_languages_inner.getUserProfile_200_response_specifics_allOf_anyOf_languages_inner(
+                    unipile.models.linked_in_languages_inner.LinkedIn_languages_inner(
                         language = '', 
                         proficiency = 'ELEMENTARY', )
                     ],
                 certifications = [
                     unipile.models.full_profile_certifications_inner.Full_profile_certifications_inner(
                         title = '', 
-                        organization = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                        organization = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                             name = '', 
                             id = '', 
                             public_identifier = '', 
@@ -289,7 +294,7 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                         name = '', 
                         description = '', 
                         contributors = [
-                            unipile.models.get_user_profile_200_response_specifics_all_of_any_of_projects_inner_contributors_inner.getUserProfile_200_response_specifics_allOf_anyOf_projects_inner_contributors_inner(
+                            unipile.models.linked_in_projects_inner_contributors_inner.LinkedIn_projects_inner_contributors_inner(
                                 id = '', 
                                 object = 'User', 
                                 type = 'individual', 
@@ -308,8 +313,8 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                         ended_on = '', )
                     ],
                 volunteering = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_volunteer_experience_inner.getUserProfile_200_response_specifics_allOf_anyOf_volunteer_experience_inner(
-                        organization = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                    unipile.models.linked_in_volunteer_experience_inner.LinkedIn_volunteer_experience_inner(
+                        organization = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                             name = '', 
                             id = '', 
                             public_identifier = '', 
@@ -325,11 +330,11 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                         ended_on = '', )
                     ],
                 recommendations = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_recommendations_received_inner.getUserProfile_200_response_specifics_allOf_anyOf_recommendations_received_inner(
+                    unipile.models.linked_in_recommendations_received_inner.LinkedIn_recommendations_received_inner(
                         caption = '', 
                         created_on = '', 
                         text = '', 
-                        user = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_recommendations_received_inner_user.getUserProfile_200_response_specifics_allOf_anyOf_recommendations_received_inner_user(
+                        user = unipile.models.linked_in_recommendations_received_inner_user.LinkedIn_recommendations_received_inner_user(
                             id = '', 
                             object = 'User', 
                             type = 'individual', 

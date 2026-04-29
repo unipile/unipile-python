@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier of the user for the provider. Usually an internal identifier used by the API only. | 
 **object** | **str** |  | 
-**type** | **str** | Type of the user.       - &#x60;individual&#x60; is an individual user.       - &#x60;organization&#x60; is an organization / business entity.       - &#x60;other&#x60; is an other type of entity. | 
+**type** | **str** | Type of the user       - &#x60;individual&#x60; is an individual user.       - &#x60;organization&#x60; is an organization / business entity.       - &#x60;other&#x60; is an other type of entity. | 
 **public_identifier** | **str** | Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.  | [optional] 
 **display_name** | **str** | Display name of the user. | 
 **profile_url** | **str** | Public url to the profile of the user. | [optional] 
@@ -19,9 +19,9 @@ Name | Type | Description | Notes
 **first_name** | **str** | First name of the user. | [optional] 
 **last_name** | **str** | Last name of the user. | [optional] 
 **birth_date** | **str** | Birth date of the user. | [optional] 
-**addresses** | **List[str]** |  | [optional] 
-**emails** | **List[str]** |  | [optional] 
-**phone_numbers** | **List[str]** |  | [optional] 
+**addresses** | **List[Optional[str]]** | List of user addresses. | [optional] 
+**emails** | **List[str]** | List of user email addresses. | [optional] 
+**phone_numbers** | **List[str]** | List of user phone numbers. | [optional] 
 **created_at** | **str** | Date and time when the user account was created on the provider. | [optional] 
 **bio** | **str** | Biography of the user. | [optional] 
 **location** | **str** | Location of the user. | [optional] 
@@ -35,6 +35,8 @@ Name | Type | Description | Notes
 **is_blocked** | **bool** | Whether the user is blocked by the current user. | 
 **provider** | **str** | The provider&#39;s of the Account.     - &#x60;mock&#x60; is mock.     - &#x60;whatsapp&#x60; is WhatsApp.     - &#x60;linkedin&#x60; is LinkedIn.     - &#x60;instagram&#x60; is Instagram.     - &#x60;google&#x60; is Google.     - &#x60;outlook&#x60; is Outlook.     - &#x60;telegram&#x60; is Telegram.     - &#x60;imap&#x60; is IMAP. | 
 **specifics** | [**GetUserProfile200ResponseSpecifics**](GetUserProfile200ResponseSpecifics.md) |  | 
+**social_handles** | [**GetEmailContactsList200ResponseDataInnerSocialHandles**](GetEmailContactsList200ResponseDataInnerSocialHandles.md) |  | [optional] 
+**websites** | **List[str]** | List of user websites. | [optional] 
 
 ## Example
 

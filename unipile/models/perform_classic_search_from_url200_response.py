@@ -19,34 +19,34 @@ import pprint
 import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Optional
-from unipile.models.perform_classic_search_from_url200_response_any_of import PerformClassicSearchFromUrl200ResponseAnyOf
-from unipile.models.perform_classic_search_from_url200_response_any_of1 import PerformClassicSearchFromUrl200ResponseAnyOf1
-from unipile.models.perform_classic_search_from_url200_response_any_of2 import PerformClassicSearchFromUrl200ResponseAnyOf2
-from unipile.models.perform_classic_search_from_url200_response_any_of3 import PerformClassicSearchFromUrl200ResponseAnyOf3
+from unipile.models.companies_search_results import CompaniesSearchResults
+from unipile.models.jobs_search_results import JobsSearchResults
+from unipile.models.people_search_results import PeopleSearchResults
+from unipile.models.posts_search_results import PostsSearchResults
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-PERFORMCLASSICSEARCHFROMURL200RESPONSE_ANY_OF_SCHEMAS = ["PerformClassicSearchFromUrl200ResponseAnyOf", "PerformClassicSearchFromUrl200ResponseAnyOf1", "PerformClassicSearchFromUrl200ResponseAnyOf2", "PerformClassicSearchFromUrl200ResponseAnyOf3"]
+PERFORMCLASSICSEARCHFROMURL200RESPONSE_ANY_OF_SCHEMAS = ["CompaniesSearchResults", "JobsSearchResults", "PeopleSearchResults", "PostsSearchResults"]
 
 class PerformClassicSearchFromUrl200Response(BaseModel):
     """
     PerformClassicSearchFromUrl200Response
     """
 
-    # data type: PerformClassicSearchFromUrl200ResponseAnyOf
-    anyof_schema_1_validator: Optional[PerformClassicSearchFromUrl200ResponseAnyOf] = None
-    # data type: PerformClassicSearchFromUrl200ResponseAnyOf1
-    anyof_schema_2_validator: Optional[PerformClassicSearchFromUrl200ResponseAnyOf1] = None
-    # data type: PerformClassicSearchFromUrl200ResponseAnyOf2
-    anyof_schema_3_validator: Optional[PerformClassicSearchFromUrl200ResponseAnyOf2] = None
-    # data type: PerformClassicSearchFromUrl200ResponseAnyOf3
-    anyof_schema_4_validator: Optional[PerformClassicSearchFromUrl200ResponseAnyOf3] = None
+    # data type: PeopleSearchResults
+    anyof_schema_1_validator: Optional[PeopleSearchResults] = None
+    # data type: CompaniesSearchResults
+    anyof_schema_2_validator: Optional[CompaniesSearchResults] = None
+    # data type: JobsSearchResults
+    anyof_schema_3_validator: Optional[JobsSearchResults] = None
+    # data type: PostsSearchResults
+    anyof_schema_4_validator: Optional[PostsSearchResults] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[PerformClassicSearchFromUrl200ResponseAnyOf, PerformClassicSearchFromUrl200ResponseAnyOf1, PerformClassicSearchFromUrl200ResponseAnyOf2, PerformClassicSearchFromUrl200ResponseAnyOf3]] = None
+        actual_instance: Optional[Union[CompaniesSearchResults, JobsSearchResults, PeopleSearchResults, PostsSearchResults]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "PerformClassicSearchFromUrl200ResponseAnyOf", "PerformClassicSearchFromUrl200ResponseAnyOf1", "PerformClassicSearchFromUrl200ResponseAnyOf2", "PerformClassicSearchFromUrl200ResponseAnyOf3" }
+    any_of_schemas: Set[str] = { "CompaniesSearchResults", "JobsSearchResults", "PeopleSearchResults", "PostsSearchResults" }
 
     model_config = {
         "validate_assignment": True,
@@ -67,33 +67,33 @@ class PerformClassicSearchFromUrl200Response(BaseModel):
     def actual_instance_must_validate_anyof(cls, v):
         instance = PerformClassicSearchFromUrl200Response.model_construct()
         error_messages = []
-        # validate data type: PerformClassicSearchFromUrl200ResponseAnyOf
-        if not isinstance(v, PerformClassicSearchFromUrl200ResponseAnyOf):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `PerformClassicSearchFromUrl200ResponseAnyOf`")
+        # validate data type: PeopleSearchResults
+        if not isinstance(v, PeopleSearchResults):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `PeopleSearchResults`")
         else:
             return v
 
-        # validate data type: PerformClassicSearchFromUrl200ResponseAnyOf1
-        if not isinstance(v, PerformClassicSearchFromUrl200ResponseAnyOf1):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `PerformClassicSearchFromUrl200ResponseAnyOf1`")
+        # validate data type: CompaniesSearchResults
+        if not isinstance(v, CompaniesSearchResults):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `CompaniesSearchResults`")
         else:
             return v
 
-        # validate data type: PerformClassicSearchFromUrl200ResponseAnyOf2
-        if not isinstance(v, PerformClassicSearchFromUrl200ResponseAnyOf2):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `PerformClassicSearchFromUrl200ResponseAnyOf2`")
+        # validate data type: JobsSearchResults
+        if not isinstance(v, JobsSearchResults):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `JobsSearchResults`")
         else:
             return v
 
-        # validate data type: PerformClassicSearchFromUrl200ResponseAnyOf3
-        if not isinstance(v, PerformClassicSearchFromUrl200ResponseAnyOf3):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `PerformClassicSearchFromUrl200ResponseAnyOf3`")
+        # validate data type: PostsSearchResults
+        if not isinstance(v, PostsSearchResults):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `PostsSearchResults`")
         else:
             return v
 
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in PerformClassicSearchFromUrl200Response with anyOf schemas: PerformClassicSearchFromUrl200ResponseAnyOf, PerformClassicSearchFromUrl200ResponseAnyOf1, PerformClassicSearchFromUrl200ResponseAnyOf2, PerformClassicSearchFromUrl200ResponseAnyOf3. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in PerformClassicSearchFromUrl200Response with anyOf schemas: CompaniesSearchResults, JobsSearchResults, PeopleSearchResults, PostsSearchResults. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -106,34 +106,34 @@ class PerformClassicSearchFromUrl200Response(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[PerformClassicSearchFromUrl200ResponseAnyOf] = None
+        # anyof_schema_1_validator: Optional[PeopleSearchResults] = None
         try:
-            instance.actual_instance = PerformClassicSearchFromUrl200ResponseAnyOf.from_json(json_str)
+            instance.actual_instance = PeopleSearchResults.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[PerformClassicSearchFromUrl200ResponseAnyOf1] = None
+        # anyof_schema_2_validator: Optional[CompaniesSearchResults] = None
         try:
-            instance.actual_instance = PerformClassicSearchFromUrl200ResponseAnyOf1.from_json(json_str)
+            instance.actual_instance = CompaniesSearchResults.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_3_validator: Optional[PerformClassicSearchFromUrl200ResponseAnyOf2] = None
+        # anyof_schema_3_validator: Optional[JobsSearchResults] = None
         try:
-            instance.actual_instance = PerformClassicSearchFromUrl200ResponseAnyOf2.from_json(json_str)
+            instance.actual_instance = JobsSearchResults.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_4_validator: Optional[PerformClassicSearchFromUrl200ResponseAnyOf3] = None
+        # anyof_schema_4_validator: Optional[PostsSearchResults] = None
         try:
-            instance.actual_instance = PerformClassicSearchFromUrl200ResponseAnyOf3.from_json(json_str)
+            instance.actual_instance = PostsSearchResults.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into PerformClassicSearchFromUrl200Response with anyOf schemas: PerformClassicSearchFromUrl200ResponseAnyOf, PerformClassicSearchFromUrl200ResponseAnyOf1, PerformClassicSearchFromUrl200ResponseAnyOf2, PerformClassicSearchFromUrl200ResponseAnyOf3. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into PerformClassicSearchFromUrl200Response with anyOf schemas: CompaniesSearchResults, JobsSearchResults, PeopleSearchResults, PostsSearchResults. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -147,7 +147,7 @@ class PerformClassicSearchFromUrl200Response(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], PerformClassicSearchFromUrl200ResponseAnyOf, PerformClassicSearchFromUrl200ResponseAnyOf1, PerformClassicSearchFromUrl200ResponseAnyOf2, PerformClassicSearchFromUrl200ResponseAnyOf3]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], CompaniesSearchResults, JobsSearchResults, PeopleSearchResults, PostsSearchResults]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

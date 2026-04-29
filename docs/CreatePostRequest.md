@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **can_comment** | **str** | The comment control level for the new post (if supported by the provider).           - &#x60;anyone&#x60; anyone can comment.           - &#x60;relations_only&#x60; only to the user&#39;s relations can comment.           - &#x60;no_one&#x60; no one can comment. | [optional] [default to 'anyone']
 **quoted_post_id** | **str** | The ID of a Post to be quoted. For a simple repost without commentary, leave &#x60;text&#x60; as an empty string. | [optional] 
 **post_as** | **str** | The ID of the User on whose behalf the post should be published (if supported by the provider). | [optional] 
-**specifics** | [**CreatePostRequestSpecifics**](CreatePostRequestSpecifics.md) |  | 
+**specifics** | [**CreatePostRequestSpecifics**](CreatePostRequestSpecifics.md) |  | [optional] 
 
 ## Example
 

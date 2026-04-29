@@ -22,6 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from unipile.models.linked_in_classic_applicant import LinkedInClassicApplicant
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class LinkedInClassic(BaseModel):
     """
@@ -29,9 +30,10 @@ class LinkedInClassic(BaseModel):
     """ # noqa: E501
     inmail: Optional[StrictBool] = Field(default=False, description="Whether the chat should be started with an InMail.")
     company_topic: Optional[StrictStr] = Field(default='SERVICE_REQUEST', description="The topic for a conversation with a company.")
+    relation_request_id: Optional[StrictStr] = Field(default=None, description="If you'd like to start a conversation with a user you received a relation request from, the ID of the request is mandatory.")
     applicant: Optional[LinkedInClassicApplicant] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["inmail", "company_topic", "applicant"]
+    __properties: ClassVar[List[str]] = ["inmail", "company_topic", "relation_request_id", "applicant"]
 
     @field_validator('company_topic')
     def company_topic_validate_enum(cls, value):
@@ -44,7 +46,8 @@ class LinkedInClassic(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -56,8 +59,7 @@ class LinkedInClassic(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -106,6 +108,7 @@ class LinkedInClassic(BaseModel):
         _obj = cls.model_validate({
             "inmail": obj.get("inmail") if obj.get("inmail") is not None else False,
             "company_topic": obj.get("company_topic") if obj.get("company_topic") is not None else 'SERVICE_REQUEST',
+            "relation_request_id": obj.get("relation_request_id"),
             "applicant": LinkedInClassicApplicant.from_dict(obj["applicant"]) if obj.get("applicant") is not None else None
         })
         # store additional fields in additional_properties

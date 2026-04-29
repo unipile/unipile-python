@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **sort_by** | **str** | The sort method. | [optional] [default to 'APPLIED_DATE']
 **location** | **List[str]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;LOCATION&#x60; type to find out the possible values.    Native filter : Location    | [optional] 
 **years_of_experience** | [**List[GetClassicApplicantsRequestYearsOfExperienceInner]**](GetClassicApplicantsRequestYearsOfExperienceInner.md) | A list of years ranges. | [optional] 
-**skills** | **List[str]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;SKILL&#x60; type to find out the possible values.    Native filter : Skilled in    | [optional] 
+**skills** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;SKILL&#x60; type to find out the possible values.    Native filter : Skilled in    | [optional] 
 
 ## Example
 

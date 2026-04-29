@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **bcc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;bcc&#x60; header. | [optional] 
 **attachments** | [**List[SendEmailRequestAttachmentsInner]**](SendEmailRequestAttachmentsInner.md) | The list of file attachments to the draft. Any attachment already existing will be removed and replaced by the new ones. | [optional] 
 **tracking_options** | [**SendEmailRequestTrackingOptions**](SendEmailRequestTrackingOptions.md) |  | [optional] 
+**specifics** | [**UpdateDraftRequestSpecifics**](UpdateDraftRequestSpecifics.md) |  | [optional] 
 
 ## Example
 

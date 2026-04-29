@@ -21,13 +21,14 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class CreateAuthLink200Response(BaseModel):
     """
     CreateAuthLink200Response
     """ # noqa: E501
     object: StrictStr
-    link: StrictStr = Field(description="Link to the Hosted Auth session. Redirect your users to this link so they can authenticate their account.")
+    link: StrictStr = Field(description="Link to the Hosted Auth session. Redirect your users to this link so they can authenticate their account. If you use a white-label domain, only replace the hostname with a domain that has been explicitly verified by Unipile for the parent Application.")
     __properties: ClassVar[List[str]] = ["object", "link"]
 
     @field_validator('object')
@@ -38,7 +39,8 @@ class CreateAuthLink200Response(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,8 +52,7 @@ class CreateAuthLink200Response(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

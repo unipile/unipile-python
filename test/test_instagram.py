@@ -35,20 +35,11 @@ class TestInstagram(unittest.TestCase):
         model = Instagram()
         if include_optional:
             return Instagram(
-                provider = 'instagram',
-                credentials = unipile.models.instagram_credentials.Instagram_credentials(
-                    username = '', 
-                    password = '', ),
-                config = {
-                    'key' : null
-                    }
+                messaging_identifier = ''
             )
         else:
             return Instagram(
-                provider = 'instagram',
-                credentials = unipile.models.instagram_credentials.Instagram_credentials(
-                    username = '', 
-                    password = '', ),
+                messaging_identifier = '',
         )
         """
 

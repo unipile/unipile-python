@@ -6,8 +6,9 @@ The daily OR total budget.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**daily** | [**DailyDaily**](DailyDaily.md) |  | 
-**total** | [**DailyDaily**](DailyDaily.md) |  | 
+**currency** | **str** | A 3 capital letters ISO 4217 currency code. | 
+**amount** | **float** | The amount of money to be spent on the job posting. | 
+**scope** | **str** | The time scope of the budget. | 
 
 ## Example
 

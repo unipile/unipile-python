@@ -23,6 +23,7 @@ from typing_extensions import Annotated
 from unipile.models.perform_classic_people_search_request_advanced_keywords import PerformClassicPeopleSearchRequestAdvancedKeywords
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PerformClassicPeopleSearchRequest(BaseModel):
     """
@@ -30,14 +31,14 @@ class PerformClassicPeopleSearchRequest(BaseModel):
     """ # noqa: E501
     keywords: Optional[StrictStr] = Field(default=None, description="A keyword or group of keywords.")
     network_distance: Optional[List[Union[StrictFloat, StrictInt]]] = Field(default=None, description="A list of connection degrees (1 for First, 2 for Second and 3 for Third+).    Native filter : Connections   ")
-    location: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Locations   ")
-    current_company: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `COMPANY` type to find out the possible values.    Native filter : Current company   ")
-    past_company: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `COMPANY` type to find out the possible values.    Native filter : Past company   ")
-    school: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `SCHOOL` type to find out the possible values.    Native filter : School   ")
-    connections_of: Optional[Annotated[str, Field(strict=True)]] = None
-    followers_of: Optional[Annotated[str, Field(strict=True)]] = None
-    industry: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.    Native filter : Industry   ")
-    service: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `SERVICE` type to find out the possible values.    Native filter : Service categories   ")
+    location: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Locations   ")
+    current_company: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `COMPANY` type to find out the possible values.    Native filter : Current company   ")
+    past_company: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `COMPANY` type to find out the possible values.    Native filter : Past company   ")
+    school: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `SCHOOL` type to find out the possible values.    Native filter : School   ")
+    connections_of: Optional[StrictStr] = Field(default=None, description="A parameter ID. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `RELATION` type to find out the possible values.    Native filter : Connections of   ")
+    followers_of: Optional[StrictStr] = Field(default=None, description="A parameter ID. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `PEOPLE` type to find out the possible values.    Native filter : Followers of   ")
+    industry: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.    Native filter : Industry   ")
+    service: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `SERVICE` type to find out the possible values.    Native filter : Service categories   ")
     profile_language: Optional[List[Annotated[str, Field(min_length=2, strict=True, max_length=2)]]] = Field(default=None, description="A list of ISO 639-1 language codes.    Native filter : Profile language   ")
     open_to_volunteering: Optional[StrictBool] = Field(default=None, description="Whether the users should be open to volunteering.    Native filter : Open to Volunteering    ")
     advanced_keywords: Optional[PerformClassicPeopleSearchRequestAdvancedKeywords] = None
@@ -55,28 +56,9 @@ class PerformClassicPeopleSearchRequest(BaseModel):
                 raise ValueError("each list item must be one of (1, 2, 3)")
         return value
 
-    @field_validator('connections_of')
-    def connections_of_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^\d+$", value):
-            raise ValueError(r"must validate the regular expression /^\d+$/")
-        return value
-
-    @field_validator('followers_of')
-    def followers_of_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^\d+$", value):
-            raise ValueError(r"must validate the regular expression /^\d+$/")
-        return value
-
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -88,8 +70,7 @@ class PerformClassicPeopleSearchRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

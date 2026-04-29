@@ -21,27 +21,28 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from unipile.models.create_recruiter_job_posting_draft_in_existing_project_request_apply_method import CreateRecruiterJobPostingDraftInExistingProjectRequestApplyMethod
+from unipile.models.create_recruiter_job_posting_draft_in_existing_project_request_company import CreateRecruiterJobPostingDraftInExistingProjectRequestCompany
+from unipile.models.create_recruiter_job_posting_draft_in_existing_project_request_job_title import CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle
 from unipile.models.create_recruiter_job_posting_draft_in_existing_project_request_rejection_settings import CreateRecruiterJobPostingDraftInExistingProjectRequestRejectionSettings
-from unipile.models.create_recruiter_job_posting_draft_in_new_project_request_job_title import CreateRecruiterJobPostingDraftInNewProjectRequestJobTitle
-from unipile.models.edit_classic_job_posting_request_company import EditClassicJobPostingRequestCompany
 from unipile.models.edit_classic_job_posting_request_screening_questions_inner import EditClassicJobPostingRequestScreeningQuestionsInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EditRecruiterJobPostingRequest(BaseModel):
     """
     EditRecruiterJobPostingRequest
     """ # noqa: E501
-    job_title: Optional[CreateRecruiterJobPostingDraftInNewProjectRequestJobTitle] = None
-    company: Optional[EditClassicJobPostingRequestCompany] = None
+    job_title: Optional[CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle] = None
+    company: Optional[CreateRecruiterJobPostingDraftInExistingProjectRequestCompany] = None
     workplace_type: Optional[StrictStr] = Field(default=None, description="The working method of the job.")
-    location: Optional[Annotated[str, Field(strict=True)]] = None
+    location: Optional[StrictStr] = Field(default=None, description="A parameter ID. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.")
     employment_status: Optional[StrictStr] = Field(default=None, description="The employment status of the job.")
     seniority_level: Optional[StrictStr] = Field(default=None, description="The level of experience of the job.")
     description: Optional[Annotated[str, Field(min_length=200, strict=True)]] = Field(default=None, description="The job description. You can use HTML tags to structure your content.")
-    industry: Optional[Annotated[List[Annotated[str, Field(strict=True)]], Field(min_length=1, max_length=3)]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `INDUSTRY` type to find out the possible values. The company industries related to the job posting.")
-    job_function: Optional[Annotated[List[Annotated[str, Field(strict=True)]], Field(min_length=1, max_length=3)]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values. The job functions related to the job posting.")
-    skills: Optional[Annotated[List[Annotated[str, Field(strict=True)]], Field(max_length=10)]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SKILL` type to find out the possible values. The skills related to the job posting.")
+    industry: Optional[Annotated[List[StrictStr], Field(min_length=1, max_length=3)]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `INDUSTRY` type to find out the possible values. The company industries related to the job posting.")
+    job_function: Optional[Annotated[List[StrictStr], Field(min_length=1, max_length=3)]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values. The job functions related to the job posting.")
+    skills: Optional[Annotated[List[StrictStr], Field(max_length=10)]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SKILL` type to find out the possible values. The skills related to the job posting.")
     include_poster_info: Optional[StrictBool] = Field(default=True, description="Whether basic information about you should be available on the job posting.")
     tracking_pixel_url: Optional[StrictStr] = Field(default=None, description="The tracking pixel URL of the company.")
     company_job_id: Optional[StrictStr] = Field(default=None, description="The ID of the job in the company's system.")
@@ -59,16 +60,6 @@ class EditRecruiterJobPostingRequest(BaseModel):
 
         if value not in set(['ON_SITE', 'HYBRID', 'REMOTE']):
             raise ValueError("must be one of enum values ('ON_SITE', 'HYBRID', 'REMOTE')")
-        return value
-
-    @field_validator('location')
-    def location_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^\d+$", value):
-            raise ValueError(r"must validate the regular expression /^\d+$/")
         return value
 
     @field_validator('employment_status')
@@ -92,7 +83,8 @@ class EditRecruiterJobPostingRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -104,8 +96,7 @@ class EditRecruiterJobPostingRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -168,8 +159,8 @@ class EditRecruiterJobPostingRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "job_title": CreateRecruiterJobPostingDraftInNewProjectRequestJobTitle.from_dict(obj["job_title"]) if obj.get("job_title") is not None else None,
-            "company": EditClassicJobPostingRequestCompany.from_dict(obj["company"]) if obj.get("company") is not None else None,
+            "job_title": CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle.from_dict(obj["job_title"]) if obj.get("job_title") is not None else None,
+            "company": CreateRecruiterJobPostingDraftInExistingProjectRequestCompany.from_dict(obj["company"]) if obj.get("company") is not None else None,
             "workplace_type": obj.get("workplace_type"),
             "location": obj.get("location"),
             "employment_status": obj.get("employment_status"),
