@@ -21,30 +21,36 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, Stri
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from unipile.models.full_profile_education_inner import FullProfileEducationInner
 from unipile.models.full_profile_skills_inner import FullProfileSkillsInner
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_languages_inner import GetUserProfile200ResponseSpecificsAllOfAnyOfLanguagesInner
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_volunteer_experience_inner import GetUserProfile200ResponseSpecificsAllOfAnyOfVolunteerExperienceInner
 from unipile.models.lead_list_data_inner_all_of_all_of_contact_info import LeadListDataInnerAllOfAllOfContactInfo
+from unipile.models.lead_list_data_inner_all_of_all_of_social_handles import LeadListDataInnerAllOfAllOfSocialHandles
+from unipile.models.linked_in_languages_inner import LinkedInLanguagesInner
+from unipile.models.linked_in_volunteer_experience_inner import LinkedInVolunteerExperienceInner
 from unipile.models.partial_profile_work_experience_inner import PartialProfileWorkExperienceInner
 from unipile.models.people_search1_data_inner_latest_contact import PeopleSearch1DataInnerLatestContact
-from unipile.models.people_search1_data_inner_social_networks import PeopleSearch1DataInnerSocialNetworks
+from unipile.models.people_search1_data_inner_network_distance import PeopleSearch1DataInnerNetworkDistance
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PeopleSearch2DataInner(BaseModel):
     """
     PeopleSearch2DataInner
     """ # noqa: E501
     object: StrictStr
-    product: StrictStr
-    id: StrictStr = Field(description="The ID of the User.")
+    id: StrictStr = Field(description="The ID of the user.")
+    member_id: Optional[StrictStr] = Field(default=None, description="The LinkedIn internal member ID of the user.")
     display_name: StrictStr = Field(description="The display name of the User.")
     public_identifier: Optional[StrictStr] = Field(default=None, description="The public identifier of the User.")
     profile_url: Optional[StrictStr] = Field(default=None, description="The profile URL of the User.")
-    public_picture_url: Optional[StrictStr] = Field(default=None, description="The profile picture URL of the User.")
-    relations_count: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of the relations of the User.")
-    shared_relations_count: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of relations that you share with the User.")
+    public_picture_url: Optional[StrictStr] = Field(default=None, description="The public picture URL of the User.")
+    public_picture_url_large: Optional[StrictStr] = Field(default=None, description="The public picture URL of the User in large size.")
+    relations_count: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of relations of the User.")
     location: StrictStr = Field(description="The location of the User.")
     headline: StrictStr = Field(description="The headline of the User.")
+    network_distance: PeopleSearch1DataInnerNetworkDistance
+    can_send_inmail: Optional[StrictBool] = Field(default=None, description="Whether it is possible to send an inMail to this User.")
+    product: StrictStr
+    shared_relations_count: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of relations that you share with the User.")
     summary: Optional[StrictStr] = Field(default=None, description="The summary of the User.")
     has_been_viewed: StrictBool = Field(description="Whether you have already visited the User's profile.")
     has_been_saved: StrictBool = Field(description="Whether the User has been saved to a list.")
@@ -56,21 +62,19 @@ class PeopleSearch2DataInner(BaseModel):
     is_premium: StrictBool = Field(description="Whether the User has a premium subscription.")
     is_past_colleague: StrictBool = Field(description="Whether the User is a past colleague of yours.")
     is_open_profile: StrictBool = Field(description="Whether the User has an Open Profile. The Open Profile feature allows anyone on LinkedIn to contact a Premium member for free.")
-    can_send_inmail: StrictBool = Field(description="Whether it is possible to send an inMail to this User.")
     websites: Optional[List[StrictStr]] = Field(default=None, description="A list of websites of the User.")
     addresses: Optional[List[StrictStr]] = Field(default=None, description="A list of addresses of the User.")
     contact_info: LeadListDataInnerAllOfAllOfContactInfo
     latest_contact: Optional[PeopleSearch1DataInnerLatestContact] = None
     lists_count: Union[StrictFloat, StrictInt] = Field(description="The number of lists you own on which the User appears.")
     notes_count: Union[StrictFloat, StrictInt] = Field(description="The number of notes you own about the User.")
-    social_networks: PeopleSearch1DataInnerSocialNetworks
-    network_distance: StrictStr = Field(description="Network distance to a User.       `SELF`: Yourself.       `FIRST_DEGREE`: 1st degree connection.       `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).       `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).       `OUT_OF_NETWORK`: Unreachable user.'")
+    social_handles: Optional[LeadListDataInnerAllOfAllOfSocialHandles] = None
     education: List[FullProfileEducationInner]
     skills: List[FullProfileSkillsInner]
     work_experience: List[PartialProfileWorkExperienceInner]
-    languages: List[GetUserProfile200ResponseSpecificsAllOfAnyOfLanguagesInner]
-    volunteering: List[GetUserProfile200ResponseSpecificsAllOfAnyOfVolunteerExperienceInner]
-    __properties: ClassVar[List[str]] = ["object", "product", "id", "display_name", "public_identifier", "profile_url", "public_picture_url", "relations_count", "shared_relations_count", "location", "headline", "summary", "has_been_viewed", "has_been_saved", "has_posted_recently", "has_viewed_your_profile", "was_hired_recently", "was_promoted_recently", "follows_your_company", "is_premium", "is_past_colleague", "is_open_profile", "can_send_inmail", "websites", "addresses", "contact_info", "latest_contact", "lists_count", "notes_count", "social_networks", "network_distance", "education", "skills", "work_experience", "languages", "volunteering"]
+    languages: List[LinkedInLanguagesInner]
+    volunteering: List[LinkedInVolunteerExperienceInner]
+    __properties: ClassVar[List[str]] = ["object", "id", "member_id", "display_name", "public_identifier", "profile_url", "public_picture_url", "public_picture_url_large", "relations_count", "location", "headline", "network_distance", "can_send_inmail", "product", "shared_relations_count", "summary", "has_been_viewed", "has_been_saved", "has_posted_recently", "has_viewed_your_profile", "was_hired_recently", "was_promoted_recently", "follows_your_company", "is_premium", "is_past_colleague", "is_open_profile", "websites", "addresses", "contact_info", "latest_contact", "lists_count", "notes_count", "social_handles", "education", "skills", "work_experience", "languages", "volunteering"]
 
     @field_validator('object')
     def object_validate_enum(cls, value):
@@ -86,15 +90,9 @@ class PeopleSearch2DataInner(BaseModel):
             raise ValueError("must be one of enum values ('sales_navigator')")
         return value
 
-    @field_validator('network_distance')
-    def network_distance_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['SELF', 'FIRST_DEGREE', 'SECOND_DEGREE', 'THIRD_DEGREE', 'OUT_OF_NETWORK']):
-            raise ValueError("must be one of enum values ('SELF', 'FIRST_DEGREE', 'SECOND_DEGREE', 'THIRD_DEGREE', 'OUT_OF_NETWORK')")
-        return value
-
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -106,8 +104,7 @@ class PeopleSearch2DataInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -132,15 +129,18 @@ class PeopleSearch2DataInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of network_distance
+        if self.network_distance:
+            _dict['network_distance'] = self.network_distance.to_dict()
         # override the default output from pydantic by calling `to_dict()` of contact_info
         if self.contact_info:
             _dict['contact_info'] = self.contact_info.to_dict()
         # override the default output from pydantic by calling `to_dict()` of latest_contact
         if self.latest_contact:
             _dict['latest_contact'] = self.latest_contact.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of social_networks
-        if self.social_networks:
-            _dict['social_networks'] = self.social_networks.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of social_handles
+        if self.social_handles:
+            _dict['social_handles'] = self.social_handles.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in education (list)
         _items = []
         if self.education:
@@ -189,16 +189,20 @@ class PeopleSearch2DataInner(BaseModel):
 
         _obj = cls.model_validate({
             "object": obj.get("object"),
-            "product": obj.get("product"),
             "id": obj.get("id"),
+            "member_id": obj.get("member_id"),
             "display_name": obj.get("display_name"),
             "public_identifier": obj.get("public_identifier"),
             "profile_url": obj.get("profile_url"),
             "public_picture_url": obj.get("public_picture_url"),
+            "public_picture_url_large": obj.get("public_picture_url_large"),
             "relations_count": obj.get("relations_count"),
-            "shared_relations_count": obj.get("shared_relations_count"),
             "location": obj.get("location"),
             "headline": obj.get("headline"),
+            "network_distance": PeopleSearch1DataInnerNetworkDistance.from_dict(obj["network_distance"]) if obj.get("network_distance") is not None else None,
+            "can_send_inmail": obj.get("can_send_inmail"),
+            "product": obj.get("product"),
+            "shared_relations_count": obj.get("shared_relations_count"),
             "summary": obj.get("summary"),
             "has_been_viewed": obj.get("has_been_viewed"),
             "has_been_saved": obj.get("has_been_saved"),
@@ -210,20 +214,18 @@ class PeopleSearch2DataInner(BaseModel):
             "is_premium": obj.get("is_premium"),
             "is_past_colleague": obj.get("is_past_colleague"),
             "is_open_profile": obj.get("is_open_profile"),
-            "can_send_inmail": obj.get("can_send_inmail"),
             "websites": obj.get("websites"),
             "addresses": obj.get("addresses"),
             "contact_info": LeadListDataInnerAllOfAllOfContactInfo.from_dict(obj["contact_info"]) if obj.get("contact_info") is not None else None,
             "latest_contact": PeopleSearch1DataInnerLatestContact.from_dict(obj["latest_contact"]) if obj.get("latest_contact") is not None else None,
             "lists_count": obj.get("lists_count"),
             "notes_count": obj.get("notes_count"),
-            "social_networks": PeopleSearch1DataInnerSocialNetworks.from_dict(obj["social_networks"]) if obj.get("social_networks") is not None else None,
-            "network_distance": obj.get("network_distance"),
+            "social_handles": LeadListDataInnerAllOfAllOfSocialHandles.from_dict(obj["social_handles"]) if obj.get("social_handles") is not None else None,
             "education": [FullProfileEducationInner.from_dict(_item) for _item in obj["education"]] if obj.get("education") is not None else None,
             "skills": [FullProfileSkillsInner.from_dict(_item) for _item in obj["skills"]] if obj.get("skills") is not None else None,
             "work_experience": [PartialProfileWorkExperienceInner.from_dict(_item) for _item in obj["work_experience"]] if obj.get("work_experience") is not None else None,
-            "languages": [GetUserProfile200ResponseSpecificsAllOfAnyOfLanguagesInner.from_dict(_item) for _item in obj["languages"]] if obj.get("languages") is not None else None,
-            "volunteering": [GetUserProfile200ResponseSpecificsAllOfAnyOfVolunteerExperienceInner.from_dict(_item) for _item in obj["volunteering"]] if obj.get("volunteering") is not None else None
+            "languages": [LinkedInLanguagesInner.from_dict(_item) for _item in obj["languages"]] if obj.get("languages") is not None else None,
+            "volunteering": [LinkedInVolunteerExperienceInner.from_dict(_item) for _item in obj["volunteering"]] if obj.get("volunteering") is not None else None
         })
         return _obj
 

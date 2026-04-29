@@ -19,16 +19,17 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_education_inner_school import GetUserProfile200ResponseSpecificsAllOfAnyOfEducationInnerSchool
+from unipile.models.linked_in_education_inner_school import LinkedInEducationInnerSchool
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class FullProfileEducationInner(BaseModel):
     """
     FullProfileEducationInner
     """ # noqa: E501
     id: Optional[StrictStr] = Field(default=None, description="Id of the education entry.")
-    school: GetUserProfile200ResponseSpecificsAllOfAnyOfEducationInnerSchool
+    school: LinkedInEducationInnerSchool
     degree: Optional[StrictStr] = Field(default=None, description="Name of the degree.")
     description: Optional[StrictStr] = Field(default=None, description="Description of the education.")
     activities: Optional[StrictStr] = Field(default=None, description="Activities carried out during education.")
@@ -41,7 +42,8 @@ class FullProfileEducationInner(BaseModel):
     __properties: ClassVar[List[str]] = ["id", "school", "degree", "description", "activities", "skills", "skills_preview", "grade", "fields_of_study", "started_on", "ended_on"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,8 +55,7 @@ class FullProfileEducationInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -95,7 +96,7 @@ class FullProfileEducationInner(BaseModel):
 
         _obj = cls.model_validate({
             "id": obj.get("id"),
-            "school": GetUserProfile200ResponseSpecificsAllOfAnyOfEducationInnerSchool.from_dict(obj["school"]) if obj.get("school") is not None else None,
+            "school": LinkedInEducationInnerSchool.from_dict(obj["school"]) if obj.get("school") is not None else None,
             "degree": obj.get("degree"),
             "description": obj.get("description"),
             "activities": obj.get("activities"),

@@ -53,7 +53,6 @@ class TestCreatePostRequest(unittest.TestCase):
         else:
             return CreatePostRequest(
                 text = '',
-                specifics = None,
         )
         """
 

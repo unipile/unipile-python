@@ -37,7 +37,10 @@ class TestPublishRecruiterJobPostingRequest(unittest.TestCase):
             return PublishRecruiterJobPostingRequest(
                 bypass_email_verification = True,
                 mode = 'PROMOTED',
-                budget = None
+                budget = unipile.models.publish_in_promoted_mode_1_budget.Publish_in_Promoted_mode_1_budget(
+                    currency = '012', 
+                    amount = 1.337, 
+                    scope = 'DAILY', )
             )
         else:
             return PublishRecruiterJobPostingRequest(

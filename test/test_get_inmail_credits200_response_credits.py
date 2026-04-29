@@ -35,7 +35,7 @@ class TestGetInmailCredits200ResponseCredits(unittest.TestCase):
         model = GetInmailCredits200ResponseCredits()
         if include_optional:
             return GetInmailCredits200ResponseCredits(
-                premium = 1.337,
+                classic = 1.337,
                 recruiter = 1.337,
                 sales_navigator = 1.337
             )

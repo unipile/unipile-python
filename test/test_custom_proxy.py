@@ -45,7 +45,6 @@ class TestCustomProxy(unittest.TestCase):
             return CustomProxy(
                 host = '',
                 port = 1.337,
-                protocol = 'https',
         )
         """
 

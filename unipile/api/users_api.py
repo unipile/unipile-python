@@ -24,9 +24,9 @@ from unipile.models.create_relation_request_request import CreateRelationRequest
 from unipile.models.follow_user200_response import FollowUser200Response
 from unipile.models.get_posts_list200_response import GetPostsList200Response
 from unipile.models.get_relation_requests_list200_response import GetRelationRequestsList200Response
-from unipile.models.get_relation_requests_list200_response_data_inner import GetRelationRequestsList200ResponseDataInner
 from unipile.models.get_user_profile200_response import GetUserProfile200Response
 from unipile.models.get_user_relations200_response import GetUserRelations200Response
+from unipile.models.linked_in_relation_request import LinkedInRelationRequest
 from unipile.models.list_user_followers200_response import ListUserFollowers200Response
 from unipile.models.unfollow_user200_response import UnfollowUser200Response
 from unipile.models.update_user_profile200_response import UpdateUserProfile200Response
@@ -620,7 +620,7 @@ class UsersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> GetRelationRequestsList200ResponseDataInner:
+    ) -> LinkedInRelationRequest:
         """Send a Relation request
 
         Sends a bi-directional relation request to a user. Trying to send a relation request to an existing relation will fail. For uni-directional relations, use `Follow User` instead.
@@ -661,7 +661,7 @@ class UsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "GetRelationRequestsList200ResponseDataInner",
+            '201': "LinkedInRelationRequest",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -691,7 +691,7 @@ class UsersApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[GetRelationRequestsList200ResponseDataInner]:
+    ) -> ApiResponse[LinkedInRelationRequest]:
         """Send a Relation request
 
         Sends a bi-directional relation request to a user. Trying to send a relation request to an existing relation will fail. For uni-directional relations, use `Follow User` instead.
@@ -732,7 +732,7 @@ class UsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "GetRelationRequestsList200ResponseDataInner",
+            '201': "LinkedInRelationRequest",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -803,7 +803,7 @@ class UsersApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "GetRelationRequestsList200ResponseDataInner",
+            '201': "LinkedInRelationRequest",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -3698,7 +3698,7 @@ class UsersApi:
     ) -> UpdateUserProfile200Response:
         """Update a User Profile
 
-        Updates the specified User profile. Use `me` as `user_id` to update the account owner profile.
+        Updates the specified User profile. Use `me` as `user_id` to update the account owner profile.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param user_id: The ID of the User to update. Use `me` to update the account owner profile. (required)
         :type user_id: str
@@ -3773,7 +3773,7 @@ class UsersApi:
     ) -> ApiResponse[UpdateUserProfile200Response]:
         """Update a User Profile
 
-        Updates the specified User profile. Use `me` as `user_id` to update the account owner profile.
+        Updates the specified User profile. Use `me` as `user_id` to update the account owner profile.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param user_id: The ID of the User to update. Use `me` to update the account owner profile. (required)
         :type user_id: str
@@ -3848,7 +3848,7 @@ class UsersApi:
     ) -> RESTResponseType:
         """Update a User Profile
 
-        Updates the specified User profile. Use `me` as `user_id` to update the account owner profile.
+        Updates the specified User profile. Use `me` as `user_id` to update the account owner profile.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param user_id: The ID of the User to update. Use `me` to update the account owner profile. (required)
         :type user_id: str

@@ -19,16 +19,17 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_certifications_inner_organization import GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization
+from unipile.models.linked_in_certifications_inner_organization import LinkedInCertificationsInnerOrganization
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class FullProfileCertificationsInner(BaseModel):
     """
     FullProfileCertificationsInner
     """ # noqa: E501
     title: StrictStr = Field(description="Name of the certification.")
-    organization: GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization
+    organization: LinkedInCertificationsInnerOrganization
     issued_on: Optional[StrictStr] = Field(default=None, description="Date the certification was issued in MM/DD/YYYY format.")
     expires_on: Optional[StrictStr] = Field(default=None, description="Expiration date of the certification in MM/DD/YYYY format.")
     license: Optional[StrictStr] = Field(default=None, description="License identifier.")
@@ -38,7 +39,8 @@ class FullProfileCertificationsInner(BaseModel):
     __properties: ClassVar[List[str]] = ["title", "organization", "issued_on", "expires_on", "license", "skills", "skills_preview", "url"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,8 +52,7 @@ class FullProfileCertificationsInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -92,7 +93,7 @@ class FullProfileCertificationsInner(BaseModel):
 
         _obj = cls.model_validate({
             "title": obj.get("title"),
-            "organization": GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization.from_dict(obj["organization"]) if obj.get("organization") is not None else None,
+            "organization": LinkedInCertificationsInnerOrganization.from_dict(obj["organization"]) if obj.get("organization") is not None else None,
             "issued_on": obj.get("issued_on"),
             "expires_on": obj.get("expires_on"),
             "license": obj.get("license"),

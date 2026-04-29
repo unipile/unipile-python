@@ -20,12 +20,12 @@ import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Optional
 from unipile.models.follow_user200_response_any_of import FollowUser200ResponseAnyOf
-from unipile.models.get_relation_requests_list200_response_data_inner import GetRelationRequestsList200ResponseDataInner
+from unipile.models.linked_in_relation_request import LinkedInRelationRequest
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-FOLLOWUSER200RESPONSE_ANY_OF_SCHEMAS = ["FollowUser200ResponseAnyOf", "GetRelationRequestsList200ResponseDataInner"]
+FOLLOWUSER200RESPONSE_ANY_OF_SCHEMAS = ["FollowUser200ResponseAnyOf", "LinkedInRelationRequest"]
 
 class FollowUser200Response(BaseModel):
     """
@@ -34,13 +34,13 @@ class FollowUser200Response(BaseModel):
 
     # data type: FollowUser200ResponseAnyOf
     anyof_schema_1_validator: Optional[FollowUser200ResponseAnyOf] = None
-    # data type: GetRelationRequestsList200ResponseDataInner
-    anyof_schema_2_validator: Optional[GetRelationRequestsList200ResponseDataInner] = None
+    # data type: LinkedInRelationRequest
+    anyof_schema_2_validator: Optional[LinkedInRelationRequest] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[FollowUser200ResponseAnyOf, GetRelationRequestsList200ResponseDataInner]] = None
+        actual_instance: Optional[Union[FollowUser200ResponseAnyOf, LinkedInRelationRequest]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "FollowUser200ResponseAnyOf", "GetRelationRequestsList200ResponseDataInner" }
+    any_of_schemas: Set[str] = { "FollowUser200ResponseAnyOf", "LinkedInRelationRequest" }
 
     model_config = {
         "validate_assignment": True,
@@ -67,15 +67,15 @@ class FollowUser200Response(BaseModel):
         else:
             return v
 
-        # validate data type: GetRelationRequestsList200ResponseDataInner
-        if not isinstance(v, GetRelationRequestsList200ResponseDataInner):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `GetRelationRequestsList200ResponseDataInner`")
+        # validate data type: LinkedInRelationRequest
+        if not isinstance(v, LinkedInRelationRequest):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `LinkedInRelationRequest`")
         else:
             return v
 
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in FollowUser200Response with anyOf schemas: FollowUser200ResponseAnyOf, GetRelationRequestsList200ResponseDataInner. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in FollowUser200Response with anyOf schemas: FollowUser200ResponseAnyOf, LinkedInRelationRequest. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -94,16 +94,16 @@ class FollowUser200Response(BaseModel):
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[GetRelationRequestsList200ResponseDataInner] = None
+        # anyof_schema_2_validator: Optional[LinkedInRelationRequest] = None
         try:
-            instance.actual_instance = GetRelationRequestsList200ResponseDataInner.from_json(json_str)
+            instance.actual_instance = LinkedInRelationRequest.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into FollowUser200Response with anyOf schemas: FollowUser200ResponseAnyOf, GetRelationRequestsList200ResponseDataInner. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into FollowUser200Response with anyOf schemas: FollowUser200ResponseAnyOf, LinkedInRelationRequest. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -117,7 +117,7 @@ class FollowUser200Response(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], FollowUser200ResponseAnyOf, GetRelationRequestsList200ResponseDataInner]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], FollowUser200ResponseAnyOf, LinkedInRelationRequest]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

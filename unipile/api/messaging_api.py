@@ -31,6 +31,7 @@ from unipile.models.get_message200_response import GetMessage200Response
 from unipile.models.get_message_reactions_list200_response import GetMessageReactionsList200Response
 from unipile.models.get_messages_list200_response import GetMessagesList200Response
 from unipile.models.get_participants_list200_response import GetParticipantsList200Response
+from unipile.models.get_user_chat200_response import GetUserChat200Response
 from unipile.models.modify_message_request import ModifyMessageRequest
 from unipile.models.read_message200_response import ReadMessage200Response
 from unipile.models.remove_message_reaction200_response import RemoveMessageReaction200Response
@@ -672,6 +673,275 @@ class MessagingApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/v2/{account_id}/chats/{chat_id}/participants',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def delete_chat(
+        self,
+        chat_id: Annotated[Optional[StrictStr], Field(description="ID of the Chat to delete.")],
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """Delete a Chat
+
+        Deletes a chat if supported by the provider.
+
+        :param chat_id: ID of the Chat to delete. (required)
+        :type chat_id: str
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_chat_serialize(
+            chat_id=chat_id,
+            account_id=account_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def delete_chat_with_http_info(
+        self,
+        chat_id: Annotated[Optional[StrictStr], Field(description="ID of the Chat to delete.")],
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """Delete a Chat
+
+        Deletes a chat if supported by the provider.
+
+        :param chat_id: ID of the Chat to delete. (required)
+        :type chat_id: str
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_chat_serialize(
+            chat_id=chat_id,
+            account_id=account_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def delete_chat_without_preload_content(
+        self,
+        chat_id: Annotated[Optional[StrictStr], Field(description="ID of the Chat to delete.")],
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Delete a Chat
+
+        Deletes a chat if supported by the provider.
+
+        :param chat_id: ID of the Chat to delete. (required)
+        :type chat_id: str
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._delete_chat_serialize(
+            chat_id=chat_id,
+            account_id=account_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _delete_chat_serialize(
+        self,
+        chat_id,
+        account_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if chat_id is not None:
+            _path_params['chat_id'] = chat_id
+        if account_id is not None:
+            _path_params['account_id'] = account_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'apiKey'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/v2/{account_id}/chats/{chat_id}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1873,6 +2143,8 @@ class MessagingApi:
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         type: Annotated[Optional[StrictStr], Field(description="Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat.")] = None,
+        before: Annotated[Optional[StrictStr], Field(description="A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).")] = None,
+        after: Annotated[Optional[StrictStr], Field(description="A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..")] = None,
         is_archived: Annotated[Optional[StrictBool], Field(description="Return only chats of the given archived status (if supported by the provider).")] = None,
         is_unread: Annotated[Optional[StrictBool], Field(description="Return only chats of the given unread status (if supported by the provider).")] = None,
         _request_timeout: Union[
@@ -1902,6 +2174,10 @@ class MessagingApi:
         :type cursor: str
         :param type: Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat.
         :type type: str
+        :param before: A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+        :type before: str
+        :param after: A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..
+        :type after: str
         :param is_archived: Return only chats of the given archived status (if supported by the provider).
         :type is_archived: bool
         :param is_unread: Return only chats of the given unread status (if supported by the provider).
@@ -1934,6 +2210,8 @@ class MessagingApi:
             limit=limit,
             cursor=cursor,
             type=type,
+            before=before,
+            after=after,
             is_archived=is_archived,
             is_unread=is_unread,
             _request_auth=_request_auth,
@@ -1964,6 +2242,8 @@ class MessagingApi:
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         type: Annotated[Optional[StrictStr], Field(description="Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat.")] = None,
+        before: Annotated[Optional[StrictStr], Field(description="A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).")] = None,
+        after: Annotated[Optional[StrictStr], Field(description="A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..")] = None,
         is_archived: Annotated[Optional[StrictBool], Field(description="Return only chats of the given archived status (if supported by the provider).")] = None,
         is_unread: Annotated[Optional[StrictBool], Field(description="Return only chats of the given unread status (if supported by the provider).")] = None,
         _request_timeout: Union[
@@ -1993,6 +2273,10 @@ class MessagingApi:
         :type cursor: str
         :param type: Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat.
         :type type: str
+        :param before: A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+        :type before: str
+        :param after: A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..
+        :type after: str
         :param is_archived: Return only chats of the given archived status (if supported by the provider).
         :type is_archived: bool
         :param is_unread: Return only chats of the given unread status (if supported by the provider).
@@ -2025,6 +2309,8 @@ class MessagingApi:
             limit=limit,
             cursor=cursor,
             type=type,
+            before=before,
+            after=after,
             is_archived=is_archived,
             is_unread=is_unread,
             _request_auth=_request_auth,
@@ -2055,6 +2341,8 @@ class MessagingApi:
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         type: Annotated[Optional[StrictStr], Field(description="Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat.")] = None,
+        before: Annotated[Optional[StrictStr], Field(description="A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).")] = None,
+        after: Annotated[Optional[StrictStr], Field(description="A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..")] = None,
         is_archived: Annotated[Optional[StrictBool], Field(description="Return only chats of the given archived status (if supported by the provider).")] = None,
         is_unread: Annotated[Optional[StrictBool], Field(description="Return only chats of the given unread status (if supported by the provider).")] = None,
         _request_timeout: Union[
@@ -2084,6 +2372,10 @@ class MessagingApi:
         :type cursor: str
         :param type: Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat.
         :type type: str
+        :param before: A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+        :type before: str
+        :param after: A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..
+        :type after: str
         :param is_archived: Return only chats of the given archived status (if supported by the provider).
         :type is_archived: bool
         :param is_unread: Return only chats of the given unread status (if supported by the provider).
@@ -2116,6 +2408,8 @@ class MessagingApi:
             limit=limit,
             cursor=cursor,
             type=type,
+            before=before,
+            after=after,
             is_archived=is_archived,
             is_unread=is_unread,
             _request_auth=_request_auth,
@@ -2141,6 +2435,8 @@ class MessagingApi:
         limit,
         cursor,
         type,
+        before,
+        after,
         is_archived,
         is_unread,
         _request_auth,
@@ -2182,6 +2478,14 @@ class MessagingApi:
         if type is not None:
             
             _query_params.append(('type', type))
+            
+        if before is not None:
+            
+            _query_params.append(('before', before))
+            
+        if after is not None:
+            
+            _query_params.append(('after', after))
             
         if is_archived is not None:
             
@@ -2237,6 +2541,8 @@ class MessagingApi:
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         type: Annotated[Optional[StrictStr], Field(description="Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat.")] = None,
+        before: Annotated[Optional[StrictStr], Field(description="A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).")] = None,
+        after: Annotated[Optional[StrictStr], Field(description="A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..")] = None,
         is_archived: Annotated[Optional[StrictBool], Field(description="Return only chats of the given archived status (if supported by the provider).")] = None,
         is_unread: Annotated[Optional[StrictBool], Field(description="Return only chats of the given unread status (if supported by the provider).")] = None,
         _request_timeout: Union[
@@ -2268,6 +2574,10 @@ class MessagingApi:
         :type cursor: str
         :param type: Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat.
         :type type: str
+        :param before: A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+        :type before: str
+        :param after: A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..
+        :type after: str
         :param is_archived: Return only chats of the given archived status (if supported by the provider).
         :type is_archived: bool
         :param is_unread: Return only chats of the given unread status (if supported by the provider).
@@ -2301,6 +2611,8 @@ class MessagingApi:
             limit=limit,
             cursor=cursor,
             type=type,
+            before=before,
+            after=after,
             is_archived=is_archived,
             is_unread=is_unread,
             _request_auth=_request_auth,
@@ -2332,6 +2644,8 @@ class MessagingApi:
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         type: Annotated[Optional[StrictStr], Field(description="Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat.")] = None,
+        before: Annotated[Optional[StrictStr], Field(description="A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).")] = None,
+        after: Annotated[Optional[StrictStr], Field(description="A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..")] = None,
         is_archived: Annotated[Optional[StrictBool], Field(description="Return only chats of the given archived status (if supported by the provider).")] = None,
         is_unread: Annotated[Optional[StrictBool], Field(description="Return only chats of the given unread status (if supported by the provider).")] = None,
         _request_timeout: Union[
@@ -2363,6 +2677,10 @@ class MessagingApi:
         :type cursor: str
         :param type: Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat.
         :type type: str
+        :param before: A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+        :type before: str
+        :param after: A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..
+        :type after: str
         :param is_archived: Return only chats of the given archived status (if supported by the provider).
         :type is_archived: bool
         :param is_unread: Return only chats of the given unread status (if supported by the provider).
@@ -2396,6 +2714,8 @@ class MessagingApi:
             limit=limit,
             cursor=cursor,
             type=type,
+            before=before,
+            after=after,
             is_archived=is_archived,
             is_unread=is_unread,
             _request_auth=_request_auth,
@@ -2427,6 +2747,8 @@ class MessagingApi:
         limit: Annotated[Optional[Union[StrictFloat, StrictInt]], Field(description="The limit of items to be returned.")] = None,
         cursor: Annotated[Optional[StrictStr], Field(description="A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`.")] = None,
         type: Annotated[Optional[StrictStr], Field(description="Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat.")] = None,
+        before: Annotated[Optional[StrictStr], Field(description="A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).")] = None,
+        after: Annotated[Optional[StrictStr], Field(description="A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..")] = None,
         is_archived: Annotated[Optional[StrictBool], Field(description="Return only chats of the given archived status (if supported by the provider).")] = None,
         is_unread: Annotated[Optional[StrictBool], Field(description="Return only chats of the given unread status (if supported by the provider).")] = None,
         _request_timeout: Union[
@@ -2458,6 +2780,10 @@ class MessagingApi:
         :type cursor: str
         :param type: Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat.
         :type type: str
+        :param before: A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).
+        :type before: str
+        :param after: A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ)..
+        :type after: str
         :param is_archived: Return only chats of the given archived status (if supported by the provider).
         :type is_archived: bool
         :param is_unread: Return only chats of the given unread status (if supported by the provider).
@@ -2491,6 +2817,8 @@ class MessagingApi:
             limit=limit,
             cursor=cursor,
             type=type,
+            before=before,
+            after=after,
             is_archived=is_archived,
             is_unread=is_unread,
             _request_auth=_request_auth,
@@ -2517,6 +2845,8 @@ class MessagingApi:
         limit,
         cursor,
         type,
+        before,
+        after,
         is_archived,
         is_unread,
         _request_auth,
@@ -2560,6 +2890,14 @@ class MessagingApi:
         if type is not None:
             
             _query_params.append(('type', type))
+            
+        if before is not None:
+            
+            _query_params.append(('before', before))
+            
+        if after is not None:
+            
+            _query_params.append(('after', after))
             
         if is_archived is not None:
             
@@ -4206,6 +4544,282 @@ class MessagingApi:
 
 
     @validate_call
+    def get_user_chat(
+        self,
+        user_id: Annotated[Optional[StrictStr], Field(description="ID of the User whose existing 1to1 Chat should be retrieved.")],
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GetUserChat200Response:
+        """Get a User Chat
+
+        Resolves chat identifiers associated with the specified User. Depending on the provider, the result may include chats with or without message history, and may return multiple matches across inboxes or contexts.
+
+        :param user_id: ID of the User whose existing 1to1 Chat should be retrieved. (required)
+        :type user_id: str
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_user_chat_serialize(
+            user_id=user_id,
+            account_id=account_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetUserChat200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def get_user_chat_with_http_info(
+        self,
+        user_id: Annotated[Optional[StrictStr], Field(description="ID of the User whose existing 1to1 Chat should be retrieved.")],
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[GetUserChat200Response]:
+        """Get a User Chat
+
+        Resolves chat identifiers associated with the specified User. Depending on the provider, the result may include chats with or without message history, and may return multiple matches across inboxes or contexts.
+
+        :param user_id: ID of the User whose existing 1to1 Chat should be retrieved. (required)
+        :type user_id: str
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_user_chat_serialize(
+            user_id=user_id,
+            account_id=account_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetUserChat200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def get_user_chat_without_preload_content(
+        self,
+        user_id: Annotated[Optional[StrictStr], Field(description="ID of the User whose existing 1to1 Chat should be retrieved.")],
+        account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """Get a User Chat
+
+        Resolves chat identifiers associated with the specified User. Depending on the provider, the result may include chats with or without message history, and may return multiple matches across inboxes or contexts.
+
+        :param user_id: ID of the User whose existing 1to1 Chat should be retrieved. (required)
+        :type user_id: str
+        :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
+        :type account_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._get_user_chat_serialize(
+            user_id=user_id,
+            account_id=account_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "GetUserChat200Response",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _get_user_chat_serialize(
+        self,
+        user_id,
+        account_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if user_id is not None:
+            _path_params['user_id'] = user_id
+        if account_id is not None:
+            _path_params['account_id'] = account_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'apiKey'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v2/{account_id}/users/{user_id}/chat',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def modify_message(
         self,
         chat_id: Annotated[StrictStr, Field(description="The ID of the Chat where the message is.")],
@@ -5446,7 +6060,7 @@ class MessagingApi:
     ) -> SendMessage200Response:
         """Send a Message
 
-        Sends a message in the specified chat.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send\">Start a Chat</a> if you don't have a conversation with the wanted user(s) yet.
+        Sends a message in the specified chat.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send\">Start a Chat</a> if you don't have a conversation with the wanted user(s) yet.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param chat_id: The ID of the Chat to send the message to. (required)
         :type chat_id: str
@@ -5521,7 +6135,7 @@ class MessagingApi:
     ) -> ApiResponse[SendMessage200Response]:
         """Send a Message
 
-        Sends a message in the specified chat.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send\">Start a Chat</a> if you don't have a conversation with the wanted user(s) yet.
+        Sends a message in the specified chat.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send\">Start a Chat</a> if you don't have a conversation with the wanted user(s) yet.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param chat_id: The ID of the Chat to send the message to. (required)
         :type chat_id: str
@@ -5596,7 +6210,7 @@ class MessagingApi:
     ) -> RESTResponseType:
         """Send a Message
 
-        Sends a message in the specified chat.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send\">Start a Chat</a> if you don't have a conversation with the wanted user(s) yet.
+        Sends a message in the specified chat.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send\">Start a Chat</a> if you don't have a conversation with the wanted user(s) yet.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param chat_id: The ID of the Chat to send the message to. (required)
         :type chat_id: str
@@ -6331,7 +6945,7 @@ class MessagingApi:
     ) -> StartChat200Response:
         """Start a Chat
 
-        Starts a new 1to1 or group chat by sending the first message.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send\">Send a Message</a> if a conversation already exist with the wanted user(s).       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-inboxes-inbox-id-chats\">Start a Chat from Inbox</a> if the provider uses the inbox concept.
+        Starts a new 1to1 or group chat by sending the first message.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send\">Send a Message</a> if a conversation already exist with the wanted user(s).       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-inboxes-inbox-id-chats\">Start a Chat from Inbox</a> if the provider uses the inbox concept.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
@@ -6402,7 +7016,7 @@ class MessagingApi:
     ) -> ApiResponse[StartChat200Response]:
         """Start a Chat
 
-        Starts a new 1to1 or group chat by sending the first message.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send\">Send a Message</a> if a conversation already exist with the wanted user(s).       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-inboxes-inbox-id-chats\">Start a Chat from Inbox</a> if the provider uses the inbox concept.
+        Starts a new 1to1 or group chat by sending the first message.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send\">Send a Message</a> if a conversation already exist with the wanted user(s).       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-inboxes-inbox-id-chats\">Start a Chat from Inbox</a> if the provider uses the inbox concept.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
@@ -6473,7 +7087,7 @@ class MessagingApi:
     ) -> RESTResponseType:
         """Start a Chat
 
-        Starts a new 1to1 or group chat by sending the first message.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send\">Send a Message</a> if a conversation already exist with the wanted user(s).       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-inboxes-inbox-id-chats\">Start a Chat from Inbox</a> if the provider uses the inbox concept.
+        Starts a new 1to1 or group chat by sending the first message.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send\">Send a Message</a> if a conversation already exist with the wanted user(s).       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-inboxes-inbox-id-chats\">Start a Chat from Inbox</a> if the provider uses the inbox concept.       <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
@@ -6621,7 +7235,7 @@ class MessagingApi:
     ) -> StartChat200Response:
         """Start a Chat from Inbox
 
-        Starts a new 1to1 or group chat in the given inbox by sending the first message.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send\">Send a Message</a> if a conversation already exist with the wanted user(s).       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send\">Start a Chat</a> instead if the provider does not use the inbox concept.       
+        Starts a new 1to1 or group chat in the given inbox by sending the first message.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send\">Send a Message</a> if a conversation already exist with the wanted user(s).       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send\">Start a Chat</a> instead if the provider does not use the inbox concept.              <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param inbox_id: ID of the Inbox to start the Chat in. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes\">List all Inboxes</a> to get the ID of an inbox. (required)
         :type inbox_id: str
@@ -6696,7 +7310,7 @@ class MessagingApi:
     ) -> ApiResponse[StartChat200Response]:
         """Start a Chat from Inbox
 
-        Starts a new 1to1 or group chat in the given inbox by sending the first message.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send\">Send a Message</a> if a conversation already exist with the wanted user(s).       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send\">Start a Chat</a> instead if the provider does not use the inbox concept.       
+        Starts a new 1to1 or group chat in the given inbox by sending the first message.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send\">Send a Message</a> if a conversation already exist with the wanted user(s).       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send\">Start a Chat</a> instead if the provider does not use the inbox concept.              <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param inbox_id: ID of the Inbox to start the Chat in. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes\">List all Inboxes</a> to get the ID of an inbox. (required)
         :type inbox_id: str
@@ -6771,7 +7385,7 @@ class MessagingApi:
     ) -> RESTResponseType:
         """Start a Chat from Inbox
 
-        Starts a new 1to1 or group chat in the given inbox by sending the first message.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send\">Send a Message</a> if a conversation already exist with the wanted user(s).       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send\">Start a Chat</a> instead if the provider does not use the inbox concept.       
+        Starts a new 1to1 or group chat in the given inbox by sending the first message.       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send\">Send a Message</a> if a conversation already exist with the wanted user(s).       <br/>       Use <a href=\"https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send\">Start a Chat</a> instead if the provider does not use the inbox concept.              <br/>       Multipart supported, refer to <a href=\"https://developer.unipile.com/v2.0/reference/api-usage#sending-files\">Sending Files</a>.
 
         :param inbox_id: ID of the Inbox to start the Chat in. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes\">List all Inboxes</a> to get the ID of an inbox. (required)
         :type inbox_id: str

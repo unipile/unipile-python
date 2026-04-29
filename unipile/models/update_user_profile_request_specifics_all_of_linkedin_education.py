@@ -19,28 +19,28 @@ import pprint
 import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Optional
+from unipile.models.create_new_education import CreateNewEducation
 from unipile.models.edit_existing_education import EditExistingEducation
-from unipile.models.new_education import NewEducation
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-UPDATEUSERPROFILEREQUESTSPECIFICSALLOFLINKEDINEDUCATION_ANY_OF_SCHEMAS = ["EditExistingEducation", "NewEducation"]
+UPDATEUSERPROFILEREQUESTSPECIFICSALLOFLINKEDINEDUCATION_ANY_OF_SCHEMAS = ["CreateNewEducation", "EditExistingEducation"]
 
 class UpdateUserProfileRequestSpecificsAllOfLinkedinEducation(BaseModel):
     """
     UpdateUserProfileRequestSpecificsAllOfLinkedinEducation
     """
 
-    # data type: NewEducation
-    anyof_schema_1_validator: Optional[NewEducation] = None
+    # data type: CreateNewEducation
+    anyof_schema_1_validator: Optional[CreateNewEducation] = None
     # data type: EditExistingEducation
     anyof_schema_2_validator: Optional[EditExistingEducation] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[EditExistingEducation, NewEducation]] = None
+        actual_instance: Optional[Union[CreateNewEducation, EditExistingEducation]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "EditExistingEducation", "NewEducation" }
+    any_of_schemas: Set[str] = { "CreateNewEducation", "EditExistingEducation" }
 
     model_config = {
         "validate_assignment": True,
@@ -61,9 +61,9 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinEducation(BaseModel):
     def actual_instance_must_validate_anyof(cls, v):
         instance = UpdateUserProfileRequestSpecificsAllOfLinkedinEducation.model_construct()
         error_messages = []
-        # validate data type: NewEducation
-        if not isinstance(v, NewEducation):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `NewEducation`")
+        # validate data type: CreateNewEducation
+        if not isinstance(v, CreateNewEducation):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `CreateNewEducation`")
         else:
             return v
 
@@ -75,7 +75,7 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinEducation(BaseModel):
 
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in UpdateUserProfileRequestSpecificsAllOfLinkedinEducation with anyOf schemas: EditExistingEducation, NewEducation. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in UpdateUserProfileRequestSpecificsAllOfLinkedinEducation with anyOf schemas: CreateNewEducation, EditExistingEducation. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -88,9 +88,9 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinEducation(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[NewEducation] = None
+        # anyof_schema_1_validator: Optional[CreateNewEducation] = None
         try:
-            instance.actual_instance = NewEducation.from_json(json_str)
+            instance.actual_instance = CreateNewEducation.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
@@ -103,7 +103,7 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinEducation(BaseModel):
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into UpdateUserProfileRequestSpecificsAllOfLinkedinEducation with anyOf schemas: EditExistingEducation, NewEducation. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into UpdateUserProfileRequestSpecificsAllOfLinkedinEducation with anyOf schemas: CreateNewEducation, EditExistingEducation. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -117,7 +117,7 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinEducation(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], EditExistingEducation, NewEducation]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], CreateNewEducation, EditExistingEducation]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

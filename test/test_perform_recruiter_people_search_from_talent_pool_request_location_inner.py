@@ -35,13 +35,13 @@ class TestPerformRecruiterPeopleSearchFromTalentPoolRequestLocationInner(unittes
         model = PerformRecruiterPeopleSearchFromTalentPoolRequestLocationInner()
         if include_optional:
             return PerformRecruiterPeopleSearchFromTalentPoolRequestLocationInner(
-                id = '4',
+                id = '',
                 priority = 'CAN_HAVE',
                 preferences = 'CURRENT'
             )
         else:
             return PerformRecruiterPeopleSearchFromTalentPoolRequestLocationInner(
-                id = '4',
+                id = '',
         )
         """
 

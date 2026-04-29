@@ -505,7 +505,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calendar_event_list**
-> GetCalendarEventList200Response get_calendar_event_list(calendar_id, account_id, is_canceled=is_canceled, title=title, description=description, ical_uid=ical_uid, location=location, start=start, end=end, busy=busy, updated_before=updated_before, updated_after=updated_after, attendees=attendees, event_type=event_type, expand_recurring=expand_recurring, offset=offset, limit=limit, cursor=cursor)
+> GetCalendarEventList200Response get_calendar_event_list(calendar_id, account_id, is_cancelled=is_cancelled, title=title, description=description, ical_uid=ical_uid, location=location, start=start, end=end, busy=busy, updated_before=updated_before, updated_after=updated_after, attendees=attendees, event_type=event_type, expand_recurring=expand_recurring, offset=offset, limit=limit, cursor=cursor)
 
 List all calendar events
 
@@ -544,7 +544,7 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.CalendarApi(api_client)
     calendar_id = 'calendar_id_example' # str | Identifier of the calendar.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    is_canceled = True # bool | Whether you want to retrieve the cancelled events. (optional) (default to True)
+    is_cancelled = True # bool | Whether you want to retrieve the cancelled events. (optional) (default to True)
     title = 'title_example' # str | Filter for events matching the specified title. (optional)
     description = 'description_example' # str | Filter for events matching the specified description. (optional)
     ical_uid = 'ical_uid_example' # str | Filter for events matching the specified iCal UID. (optional)
@@ -563,7 +563,7 @@ with unipile.ApiClient(configuration) as api_client:
 
     try:
         # List all calendar events
-        api_response = api_instance.get_calendar_event_list(calendar_id, account_id, is_canceled=is_canceled, title=title, description=description, ical_uid=ical_uid, location=location, start=start, end=end, busy=busy, updated_before=updated_before, updated_after=updated_after, attendees=attendees, event_type=event_type, expand_recurring=expand_recurring, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_calendar_event_list(calendar_id, account_id, is_cancelled=is_cancelled, title=title, description=description, ical_uid=ical_uid, location=location, start=start, end=end, busy=busy, updated_before=updated_before, updated_after=updated_after, attendees=attendees, event_type=event_type, expand_recurring=expand_recurring, offset=offset, limit=limit, cursor=cursor)
         print("The response of CalendarApi->get_calendar_event_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -579,7 +579,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **calendar_id** | **str**| Identifier of the calendar. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **is_canceled** | **bool**| Whether you want to retrieve the cancelled events. | [optional] [default to True]
+ **is_cancelled** | **bool**| Whether you want to retrieve the cancelled events. | [optional] [default to True]
  **title** | **str**| Filter for events matching the specified title. | [optional] 
  **description** | **str**| Filter for events matching the specified description. | [optional] 
  **ical_uid** | **str**| Filter for events matching the specified iCal UID. | [optional] 

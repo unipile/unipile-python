@@ -19,12 +19,15 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from unipile.models.update_user_profile_request_specifics_all_of_linkedin_custom_link import UpdateUserProfileRequestSpecificsAllOfLinkedinCustomLink
 from unipile.models.update_user_profile_request_specifics_all_of_linkedin_education import UpdateUserProfileRequestSpecificsAllOfLinkedinEducation
 from unipile.models.update_user_profile_request_specifics_all_of_linkedin_experience import UpdateUserProfileRequestSpecificsAllOfLinkedinExperience
+from unipile.models.update_user_profile_request_specifics_all_of_linkedin_open_to_work import UpdateUserProfileRequestSpecificsAllOfLinkedinOpenToWork
 from unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options import UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions
 from unipile.models.update_user_profile_request_specifics_all_of_linkedin_skills_inner import UpdateUserProfileRequestSpecificsAllOfLinkedinSkillsInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class UpdateUserProfileRequestSpecificsAllOfLinkedin(BaseModel):
     """
@@ -38,10 +41,13 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedin(BaseModel):
     education: Optional[UpdateUserProfileRequestSpecificsAllOfLinkedinEducation] = None
     picture_options: Optional[UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions] = None
     background_picture_options: Optional[UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions] = None
-    __properties: ClassVar[List[str]] = ["skills", "skills_follow", "postal_code", "headline", "experience", "education", "picture_options", "background_picture_options"]
+    custom_link: Optional[UpdateUserProfileRequestSpecificsAllOfLinkedinCustomLink] = None
+    open_to_work: Optional[UpdateUserProfileRequestSpecificsAllOfLinkedinOpenToWork] = None
+    __properties: ClassVar[List[str]] = ["skills", "skills_follow", "postal_code", "headline", "experience", "education", "picture_options", "background_picture_options", "custom_link", "open_to_work"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,8 +59,7 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedin(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -98,6 +103,12 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedin(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of background_picture_options
         if self.background_picture_options:
             _dict['background_picture_options'] = self.background_picture_options.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of custom_link
+        if self.custom_link:
+            _dict['custom_link'] = self.custom_link.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of open_to_work
+        if self.open_to_work:
+            _dict['open_to_work'] = self.open_to_work.to_dict()
         return _dict
 
     @classmethod
@@ -117,7 +128,9 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedin(BaseModel):
             "experience": UpdateUserProfileRequestSpecificsAllOfLinkedinExperience.from_dict(obj["experience"]) if obj.get("experience") is not None else None,
             "education": UpdateUserProfileRequestSpecificsAllOfLinkedinEducation.from_dict(obj["education"]) if obj.get("education") is not None else None,
             "picture_options": UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions.from_dict(obj["picture_options"]) if obj.get("picture_options") is not None else None,
-            "background_picture_options": UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions.from_dict(obj["background_picture_options"]) if obj.get("background_picture_options") is not None else None
+            "background_picture_options": UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions.from_dict(obj["background_picture_options"]) if obj.get("background_picture_options") is not None else None,
+            "custom_link": UpdateUserProfileRequestSpecificsAllOfLinkedinCustomLink.from_dict(obj["custom_link"]) if obj.get("custom_link") is not None else None,
+            "open_to_work": UpdateUserProfileRequestSpecificsAllOfLinkedinOpenToWork.from_dict(obj["open_to_work"]) if obj.get("open_to_work") is not None else None
         })
         return _obj
 

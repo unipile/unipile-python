@@ -71,6 +71,9 @@ class TestCreateDraft201Response(unittest.TestCase):
                     ],
                 folders = [
                     ''
+                    ],
+                categories = [
+                    ''
                     ]
             )
         else:

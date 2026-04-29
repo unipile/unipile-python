@@ -6,8 +6,9 @@ Leave this field blank if you don't have a choice of budget when posting a job o
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**daily** | [**DailyDaily**](DailyDaily.md) |  | 
-**total** | [**DailyDaily**](DailyDaily.md) |  | 
+**currency** | **str** | A 3 capital letters ISO 4217 currency code. | 
+**amount** | **float** | The amount of money to be spent on the job posting. | 
+**scope** | **str** | The time scope of the budget. | 
 
 ## Example
 

@@ -22,6 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from unipile.models.publish_in_promoted_mode_budget import PublishInPromotedModeBudget
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PublishInPromotedMode(BaseModel):
     """
@@ -29,7 +30,7 @@ class PublishInPromotedMode(BaseModel):
     """ # noqa: E501
     set_hiring_frame: Optional[StrictBool] = Field(default=True, description="Whether to add the hiring frame to you public profile picture.")
     bypass_email_verification: Optional[StrictBool] = Field(default=False, description="Whether not to verify if you're allowed to post a job on behalf on the current company.")
-    mode: StrictStr
+    mode: StrictStr = Field(description="The publishing mode of the job posting.")
     budget: PublishInPromotedModeBudget
     __properties: ClassVar[List[str]] = ["set_hiring_frame", "bypass_email_verification", "mode", "budget"]
 
@@ -41,7 +42,8 @@ class PublishInPromotedMode(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,8 +55,7 @@ class PublishInPromotedMode(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

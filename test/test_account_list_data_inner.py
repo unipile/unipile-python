@@ -37,19 +37,20 @@ class TestAccountListDataInner(unittest.TestCase):
             return AccountListDataInner(
                 id = '',
                 display_name = '',
-                type = '',
-                specialties = [
-                    ''
-                    ],
                 public_identifier = '',
                 profile_url = '',
                 public_picture_url = '',
+                public_picture_url_large = '',
                 location = '',
                 industry = '',
                 summary = '',
-                headcount = 1.337,
-                is_hiring_on_linkedin = True,
                 relations_count = 1.337,
+                type = '',
+                headcount = 1.337,
+                specialties = [
+                    ''
+                    ],
+                is_hiring_on_linkedin = True,
                 lists_count = 1.337,
                 notes_count = 1.337,
                 website = '',
@@ -58,14 +59,18 @@ class TestAccountListDataInner(unittest.TestCase):
                 object = 'SavedAccount',
                 recommended_lead = unipile.models.account_list_data_inner_recommended_lead.Account_List_data_inner_recommended_lead(
                     id = '', 
+                    member_id = '', 
                     display_name = '', 
                     public_identifier = '', 
                     profile_url = '', 
                     public_picture_url = '', 
+                    public_picture_url_large = '', 
                     relations_count = 1.337, 
-                    shared_relations_count = 1.337, 
                     location = '', 
                     headline = '', 
+                    network_distance = null, 
+                    can_send_inmail = True, 
+                    shared_relations_count = 1.337, 
                     summary = '', 
                     has_posted_recently = True, 
                     has_viewed_your_profile = True, 
@@ -75,7 +80,6 @@ class TestAccountListDataInner(unittest.TestCase):
                     is_premium = True, 
                     is_past_colleague = True, 
                     is_open_profile = True, 
-                    can_send_inmail = True, 
                     websites = [
                         ''
                         ], 
@@ -95,13 +99,12 @@ class TestAccountListDataInner(unittest.TestCase):
                         resource_id = '', ), 
                     lists_count = 1.337, 
                     notes_count = 1.337, 
-                    social_networks = unipile.models.people_search_1_data_inner_social_networks.People_Search_1_data_inner_social_networks(
-                        twitter_id = '', ), 
-                    network_distance = 'SELF', 
+                    social_handles = unipile.models.lead_list_data_inner_all_of_all_of_social_handles.Lead_List_data_inner_allOf_allOf_social_handles(
+                        twitter = '', ), 
                     education = [
                         unipile.models.full_profile_education_inner.Full_profile_education_inner(
                             id = '', 
-                            school = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_education_inner_school.getUserProfile_200_response_specifics_allOf_anyOf_education_inner_school(
+                            school = unipile.models.linked_in_education_inner_school.LinkedIn_education_inner_school(
                                 id = '', 
                                 name = '', 
                                 picture_url = '', 
@@ -128,7 +131,7 @@ class TestAccountListDataInner(unittest.TestCase):
                     work_experience = [
                         unipile.models.partial_profile_work_experience_inner.Partial_profile_work_experience_inner(
                             id = '', 
-                            company = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                            company = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                                 name = '', 
                                 id = '', 
                                 public_identifier = '', 
@@ -137,7 +140,7 @@ class TestAccountListDataInner(unittest.TestCase):
                                 industries = [
                                     ''
                                     ], ), 
-                            title = '', 
+                            job_title = '', 
                             started_on = '', 
                             ended_on = '', 
                             location = '', 
@@ -147,13 +150,13 @@ class TestAccountListDataInner(unittest.TestCase):
                             skills_preview = '', )
                         ], 
                     languages = [
-                        unipile.models.get_user_profile_200_response_specifics_all_of_any_of_languages_inner.getUserProfile_200_response_specifics_allOf_anyOf_languages_inner(
+                        unipile.models.linked_in_languages_inner.LinkedIn_languages_inner(
                             language = '', 
                             proficiency = 'ELEMENTARY', )
                         ], 
                     volunteering = [
-                        unipile.models.get_user_profile_200_response_specifics_all_of_any_of_volunteer_experience_inner.getUserProfile_200_response_specifics_allOf_anyOf_volunteer_experience_inner(
-                            organization = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                        unipile.models.linked_in_volunteer_experience_inner.LinkedIn_volunteer_experience_inner(
+                            organization = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                                 name = '', 
                                 id = '', 
                                 public_identifier = '', 
@@ -171,7 +174,6 @@ class TestAccountListDataInner(unittest.TestCase):
             return AccountListDataInner(
                 id = '',
                 display_name = '',
-                industry = '',
                 lists_count = 1.337,
                 notes_count = 1.337,
                 is_starred = True,

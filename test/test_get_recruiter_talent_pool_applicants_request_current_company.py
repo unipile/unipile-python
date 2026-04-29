@@ -36,10 +36,10 @@ class TestGetRecruiterTalentPoolApplicantsRequestCurrentCompany(unittest.TestCas
         if include_optional:
             return GetRecruiterTalentPoolApplicantsRequestCurrentCompany(
                 include = [
-                    '4'
+                    ''
                     ],
                 exclude = [
-                    '4'
+                    ''
                     ]
             )
         else:

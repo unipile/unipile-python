@@ -19,7 +19,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from unipile.models.get_recruiter_talent_pool_applicants_request_company import GetRecruiterTalentPoolApplicantsRequestCompany
 from unipile.models.get_recruiter_talent_pool_applicants_request_company_size_inner import GetRecruiterTalentPoolApplicantsRequestCompanySizeInner
 from unipile.models.get_recruiter_talent_pool_applicants_request_current_company import GetRecruiterTalentPoolApplicantsRequestCurrentCompany
@@ -34,6 +33,7 @@ from unipile.models.get_recruiter_talent_pool_applicants_request_years_in_curren
 from unipile.models.get_recruiter_talent_pool_applicants_request_years_of_experience import GetRecruiterTalentPoolApplicantsRequestYearsOfExperience
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetRecruiterTalentPoolApplicantsRequest(BaseModel):
     """
@@ -43,12 +43,12 @@ class GetRecruiterTalentPoolApplicantsRequest(BaseModel):
     keywords: Optional[StrictStr] = Field(default=None, description="A keyword or group of keywords.")
     sort_by: Optional[StrictStr] = Field(default=None, description="The sort method.    Native filter : Sort by   ")
     spotlights: Optional[List[StrictStr]] = Field(default=None, description="A list of spotlights.")
-    location: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Current locations   ")
+    location: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Current locations   ")
     company: Optional[GetRecruiterTalentPoolApplicantsRequestCompany] = None
-    skills: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SKILL` type to find out the possible values.    Native filter : Skills   ")
+    skills: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SKILL` type to find out the possible values.    Native filter : Skills   ")
     school: Optional[GetRecruiterTalentPoolApplicantsRequestSchool] = None
-    industry: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.    Native filter : Industries   ")
-    job_title: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.    Native filter : Job titles   ")
+    industry: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.    Native filter : Industries   ")
+    job_title: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.    Native filter : Job titles   ")
     spoken_language: Optional[List[GetRecruiterTalentPoolApplicantsRequestSpokenLanguageInner]] = Field(default=None, description="A list of languages.")
     spoken_language_proficiency: Optional[StrictStr] = Field(default=None, description="The level of proficiency for the spoken languages.    Native filter : Spoken languages proficiency   ")
     network_distance: Optional[List[GetRecruiterTalentPoolApplicantsRequestNetworkDistanceInner]] = Field(default=None, description="A list of connection degrees (1 for First, 2 for Second, 3 for Third+ and GROUP for Common group members).    Native filter : Network relationships   ")
@@ -58,7 +58,7 @@ class GetRecruiterTalentPoolApplicantsRequest(BaseModel):
     degree: Optional[GetRecruiterTalentPoolApplicantsRequestDegree] = None
     field_of_study: Optional[GetRecruiterTalentPoolApplicantsRequestFieldOfStudy] = None
     seniority: Optional[List[StrictStr]] = Field(default=None, description="A list of experience levels.")
-    job_function: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.    Native filter : Job functions   ")
+    job_function: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `JOB_FUNCTION` type to find out the possible values.    Native filter : Job functions   ")
     current_company: Optional[GetRecruiterTalentPoolApplicantsRequestCurrentCompany] = None
     company_size: Optional[List[GetRecruiterTalentPoolApplicantsRequestCompanySizeInner]] = Field(default=None, description="A list of company size ranges.")
     tags: Optional[GetRecruiterTalentPoolApplicantsRequestTags] = None
@@ -107,7 +107,8 @@ class GetRecruiterTalentPoolApplicantsRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -119,8 +120,7 @@ class GetRecruiterTalentPoolApplicantsRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

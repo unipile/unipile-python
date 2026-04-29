@@ -21,10 +21,11 @@ from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, field_valida
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PerformClassicCompaniesSearchRequestHeadcountInner(BaseModel):
     """
-    A list of company headcount ranges.    Native filter : Company size   
+        Native filter : Company size   
     """ # noqa: E501
     min: Optional[Union[StrictFloat, StrictInt]] = None
     max: Optional[Union[StrictFloat, StrictInt]] = None
@@ -51,7 +52,8 @@ class PerformClassicCompaniesSearchRequestHeadcountInner(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -63,8 +65,7 @@ class PerformClassicCompaniesSearchRequestHeadcountInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

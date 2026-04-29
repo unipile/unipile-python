@@ -37,7 +37,8 @@ class TestGetClassicSearchParameters200ResponseDataInner(unittest.TestCase):
             return GetClassicSearchParameters200ResponseDataInner(
                 object = 'SearchParameter',
                 id = '',
-                name = ''
+                name = '',
+                metadata = None
             )
         else:
             return GetClassicSearchParameters200ResponseDataInner(

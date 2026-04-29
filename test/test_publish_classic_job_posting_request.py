@@ -38,12 +38,18 @@ class TestPublishClassicJobPostingRequest(unittest.TestCase):
                 set_hiring_frame = True,
                 bypass_email_verification = True,
                 mode = 'PROMOTED',
-                budget = None
+                budget = unipile.models.publish_in_promoted_mode_budget.Publish_in_Promoted_mode_budget(
+                    currency = '012', 
+                    amount = 1.337, 
+                    scope = 'DAILY', )
             )
         else:
             return PublishClassicJobPostingRequest(
                 mode = 'PROMOTED',
-                budget = None,
+                budget = unipile.models.publish_in_promoted_mode_budget.Publish_in_Promoted_mode_budget(
+                    currency = '012', 
+                    amount = 1.337, 
+                    scope = 'DAILY', ),
         )
         """
 

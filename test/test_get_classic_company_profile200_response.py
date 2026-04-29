@@ -77,7 +77,6 @@ class TestGetClassicCompanyProfile200Response(unittest.TestCase):
                 activities = [
                     ''
                     ],
-                employee_count = 1.337,
                 website = '',
                 establishment_year = 1.337,
                 phone = '',
@@ -90,6 +89,41 @@ class TestGetClassicCompanyProfile200Response(unittest.TestCase):
                     name = '', 
                     public_identifier = '', 
                     profile_url = '', ),
+                insights = unipile.models.get_classic_company_profile_200_response_insights.getClassicCompanyProfile_200_response_insights(
+                    headcount = 1.337, 
+                    headcount_range = unipile.models.get_classic_company_profile_200_response_insights_headcount_range.getClassicCompanyProfile_200_response_insights_headcount_range(
+                        from = 1.337, 
+                        to = 1.337, ), 
+                    heacount_growth = [
+                        unipile.models.get_classic_company_profile_200_response_insights_heacount_growth_inner.getClassicCompanyProfile_200_response_insights_heacount_growth_inner(
+                            date = '', 
+                            headcount = 1.337, )
+                        ], 
+                    growth_periods = [
+                        unipile.models.get_classic_company_profile_200_response_insights_growth_periods_inner.getClassicCompanyProfile_200_response_insights_growth_periods_inner(
+                            months_range = 1.337, 
+                            percentage = 1.337, )
+                        ], 
+                    average_tenure = 1.337, ),
+                funding = unipile.models.get_classic_company_profile_200_response_funding.getClassicCompanyProfile_200_response_funding(
+                    crunchbase = unipile.models.get_classic_company_profile_200_response_funding_crunchbase.getClassicCompanyProfile_200_response_funding_crunchbase(
+                        rounds_url = '', 
+                        rounds_count = 1.337, 
+                        company_url = '', 
+                        last_round = unipile.models.get_classic_company_profile_200_response_funding_crunchbase_last_round.getClassicCompanyProfile_200_response_funding_crunchbase_last_round(
+                            announced_on = '', 
+                            url = '', 
+                            funding_type = '', 
+                            investors_count = 1.337, 
+                            lead_investors = [
+                                unipile.models.get_classic_company_profile_200_response_funding_crunchbase_last_round_lead_investors_inner.getClassicCompanyProfile_200_response_funding_crunchbase_last_round_lead_investors_inner(
+                                    name = '', 
+                                    url = '', 
+                                    logo_url = '', )
+                                ], 
+                            money_raised = unipile.models.get_classic_company_profile_200_response_funding_crunchbase_last_round_money_raised.getClassicCompanyProfile_200_response_funding_crunchbase_last_round_money_raised(
+                                amount = 1.337, 
+                                currency = '', ), ), ), ),
                 hashtags = [
                     ''
                     ]
@@ -131,7 +165,22 @@ class TestGetClassicCompanyProfile200Response(unittest.TestCase):
                 industry = [
                     ''
                     ],
-                employee_count = 1.337,
+                insights = unipile.models.get_classic_company_profile_200_response_insights.getClassicCompanyProfile_200_response_insights(
+                    headcount = 1.337, 
+                    headcount_range = unipile.models.get_classic_company_profile_200_response_insights_headcount_range.getClassicCompanyProfile_200_response_insights_headcount_range(
+                        from = 1.337, 
+                        to = 1.337, ), 
+                    heacount_growth = [
+                        unipile.models.get_classic_company_profile_200_response_insights_heacount_growth_inner.getClassicCompanyProfile_200_response_insights_heacount_growth_inner(
+                            date = '', 
+                            headcount = 1.337, )
+                        ], 
+                    growth_periods = [
+                        unipile.models.get_classic_company_profile_200_response_insights_growth_periods_inner.getClassicCompanyProfile_200_response_insights_growth_periods_inner(
+                            months_range = 1.337, 
+                            percentage = 1.337, )
+                        ], 
+                    average_tenure = 1.337, ),
                 hashtags = [
                     ''
                     ],

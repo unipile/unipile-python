@@ -18,9 +18,11 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
+from unipile.models.get_classic_search_parameters200_response_data_inner_metadata import GetClassicSearchParameters200ResponseDataInnerMetadata
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetClassicSearchParameters200ResponseDataInner(BaseModel):
     """
@@ -29,7 +31,8 @@ class GetClassicSearchParameters200ResponseDataInner(BaseModel):
     object: StrictStr
     id: StrictStr = Field(description="The identifier of the search parameter.")
     name: StrictStr = Field(description="The display name of the search parameter.")
-    __properties: ClassVar[List[str]] = ["object", "id", "name"]
+    metadata: Optional[GetClassicSearchParameters200ResponseDataInnerMetadata] = None
+    __properties: ClassVar[List[str]] = ["object", "id", "name", "metadata"]
 
     @field_validator('object')
     def object_validate_enum(cls, value):
@@ -39,7 +42,8 @@ class GetClassicSearchParameters200ResponseDataInner(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,8 +55,7 @@ class GetClassicSearchParameters200ResponseDataInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -77,6 +80,9 @@ class GetClassicSearchParameters200ResponseDataInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of metadata
+        if self.metadata:
+            _dict['metadata'] = self.metadata.to_dict()
         return _dict
 
     @classmethod
@@ -91,7 +97,8 @@ class GetClassicSearchParameters200ResponseDataInner(BaseModel):
         _obj = cls.model_validate({
             "object": obj.get("object"),
             "id": obj.get("id"),
-            "name": obj.get("name")
+            "name": obj.get("name"),
+            "metadata": GetClassicSearchParameters200ResponseDataInnerMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None
         })
         return _obj
 

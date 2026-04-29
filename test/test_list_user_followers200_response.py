@@ -36,7 +36,7 @@ class TestListUserFollowers200Response(unittest.TestCase):
         if include_optional:
             return ListUserFollowers200Response(
                 data = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_projects_inner_contributors_inner.getUserProfile_200_response_specifics_allOf_anyOf_projects_inner_contributors_inner(
+                    unipile.models.linked_in_projects_inner_contributors_inner.LinkedIn_projects_inner_contributors_inner(
                         id = '', 
                         object = 'User', 
                         type = 'individual', 
@@ -53,7 +53,7 @@ class TestListUserFollowers200Response(unittest.TestCase):
         else:
             return ListUserFollowers200Response(
                 data = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_projects_inner_contributors_inner.getUserProfile_200_response_specifics_allOf_anyOf_projects_inner_contributors_inner(
+                    unipile.models.linked_in_projects_inner_contributors_inner.LinkedIn_projects_inner_contributors_inner(
                         id = '', 
                         object = 'User', 
                         type = 'individual', 

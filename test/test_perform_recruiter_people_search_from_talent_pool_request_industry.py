@@ -36,10 +36,10 @@ class TestPerformRecruiterPeopleSearchFromTalentPoolRequestIndustry(unittest.Tes
         if include_optional:
             return PerformRecruiterPeopleSearchFromTalentPoolRequestIndustry(
                 include = [
-                    '4'
+                    ''
                     ],
                 exclude = [
-                    '4'
+                    ''
                     ]
             )
         else:

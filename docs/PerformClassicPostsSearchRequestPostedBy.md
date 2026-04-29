@@ -1,12 +1,13 @@
 # PerformClassicPostsSearchRequestPostedBy
 
+The users/companies who published the posts.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**member** | **List[str]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;PEOPLE&#x60; type to find out the possible values.    Native filter : From member    | [optional] 
-**company** | **List[str]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;COMPANY&#x60; type to find out the possible values.    Native filter : From company    | [optional] 
+**member** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;PEOPLE&#x60; type to find out the possible values.    Native filter : From member    | [optional] 
+**company** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;COMPANY&#x60; type to find out the possible values.    Native filter : From company    | [optional] 
 **me** | **bool** | Whether the posts should have been published by yourself.    Native filter : Posted by [Me]    | [optional] 
 **relations** | **bool** | Whether the posts should have been published by your relations.    Native filter : Posted by [1st connections]    | [optional] 
 **people_you_follow** | **bool** | Whether the posts should have been published by users you follow.    Native filter : Posted by [People you follow]    | [optional] 

@@ -37,10 +37,10 @@ class TestPerformClassicPostsSearchRequestAuthor(unittest.TestCase):
             return PerformClassicPostsSearchRequestAuthor(
                 keywords = '',
                 company = [
-                    '4'
+                    ''
                     ],
                 industry = [
-                    '4'
+                    ''
                     ]
             )
         else:

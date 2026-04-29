@@ -23,6 +23,7 @@ from unipile.models.get_emails_list200_response_data_inner_from_inner import Get
 from unipile.models.get_messages_list200_response_data_inner_quoted_attachments_inner import GetMessagesList200ResponseDataInnerQuotedAttachmentsInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class CreateDraft201Response(BaseModel):
     """
@@ -41,7 +42,8 @@ class CreateDraft201Response(BaseModel):
     reply_to: Optional[List[GetEmailsList200ResponseDataInnerFromInner]] = Field(default=None, description="The list of attendees that the replies should be sent to.")
     attachments: List[GetMessagesList200ResponseDataInnerQuotedAttachmentsInner] = Field(description="The attachments of the draft.")
     folders: List[StrictStr] = Field(description="The folder the draft is in. For Gmail, the labels assigned to the draft.")
-    __properties: ClassVar[List[str]] = ["object", "id", "thread_id", "body", "snippet", "subject", "from", "to", "cc", "bcc", "reply_to", "attachments", "folders"]
+    categories: Optional[List[StrictStr]] = Field(default=None, description="List of categories assigned to the draft.")
+    __properties: ClassVar[List[str]] = ["object", "id", "thread_id", "body", "snippet", "subject", "from", "to", "cc", "bcc", "reply_to", "attachments", "folders", "categories"]
 
     @field_validator('object')
     def object_validate_enum(cls, value):
@@ -51,7 +53,8 @@ class CreateDraft201Response(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -63,8 +66,7 @@ class CreateDraft201Response(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -155,7 +157,8 @@ class CreateDraft201Response(BaseModel):
             "bcc": [GetEmailsList200ResponseDataInnerFromInner.from_dict(_item) for _item in obj["bcc"]] if obj.get("bcc") is not None else None,
             "reply_to": [GetEmailsList200ResponseDataInnerFromInner.from_dict(_item) for _item in obj["reply_to"]] if obj.get("reply_to") is not None else None,
             "attachments": [GetMessagesList200ResponseDataInnerQuotedAttachmentsInner.from_dict(_item) for _item in obj["attachments"]] if obj.get("attachments") is not None else None,
-            "folders": obj.get("folders")
+            "folders": obj.get("folders"),
+            "categories": obj.get("categories")
         })
         return _obj
 

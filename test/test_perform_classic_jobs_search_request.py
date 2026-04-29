@@ -48,21 +48,21 @@ class TestPerformClassicJobsSearchRequest(unittest.TestCase):
                     'FULL_TIME'
                     ],
                 company = [
-                    '4'
+                    ''
                     ],
-                primary_location = '4',
+                primary_location = '',
                 location = [
-                    '4'
+                    ''
                     ],
                 location_radius = 0,
                 industry = [
-                    '4'
+                    ''
                     ],
                 function = [
-                    '4'
+                    ''
                     ],
                 job_title = [
-                    '4'
+                    ''
                     ],
                 easy_apply = True,
                 has_verifications = True,

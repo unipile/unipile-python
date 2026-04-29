@@ -35,12 +35,12 @@ class TestGetRecruiterTalentPoolApplicantsRequestSpokenLanguageInner(unittest.Te
         model = GetRecruiterTalentPoolApplicantsRequestSpokenLanguageInner()
         if include_optional:
             return GetRecruiterTalentPoolApplicantsRequestSpokenLanguageInner(
-                id = '4',
+                id = '',
                 priority = 'CAN_HAVE'
             )
         else:
             return GetRecruiterTalentPoolApplicantsRequestSpokenLanguageInner(
-                id = '4',
+                id = '',
         )
         """
 

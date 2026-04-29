@@ -35,12 +35,12 @@ class TestCreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle(unittes
         model = CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle()
         if include_optional:
             return CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle(
-                id = '4',
+                id = '',
                 name = ''
             )
         else:
             return CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle(
-                id = '4',
+                id = '',
                 name = '',
         )
         """

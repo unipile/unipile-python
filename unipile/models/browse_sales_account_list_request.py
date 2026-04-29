@@ -19,29 +19,19 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class BrowseSalesAccountListRequest(BaseModel):
     """
     BrowseSalesAccountListRequest
     """ # noqa: E501
-    persona: Optional[Annotated[str, Field(strict=True)]] = None
+    persona: Optional[StrictStr] = Field(default=None, description="A parameter ID. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\">List Search Parameters</a> with `PERSONA` type to find out the possible values.    Native filter : Persona   ")
     filter: Optional[StrictStr] = Field(default=None, description="    Native filter : Filter companies   ")
     sort_by: Optional[StrictStr] = Field(default='NAME', description="The sort method.")
     sort_order: Optional[StrictStr] = Field(default='ASCENDING', description="The sort order.")
     __properties: ClassVar[List[str]] = ["persona", "filter", "sort_by", "sort_order"]
-
-    @field_validator('persona')
-    def persona_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^\d+$", value):
-            raise ValueError(r"must validate the regular expression /^\d+$/")
-        return value
 
     @field_validator('filter')
     def filter_validate_enum(cls, value):
@@ -74,7 +64,8 @@ class BrowseSalesAccountListRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -86,8 +77,7 @@ class BrowseSalesAccountListRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

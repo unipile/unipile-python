@@ -24,6 +24,7 @@ from unipile.models.start_chat_from_inbox_request_users_ids import StartChatFrom
 from unipile.models.start_chat_request_specifics import StartChatRequestSpecifics
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class StartChatFromInboxRequest(BaseModel):
     """
@@ -33,12 +34,12 @@ class StartChatFromInboxRequest(BaseModel):
     name: Optional[StrictStr] = Field(default=None, description="A custom name for the chat. Some providers allow custom names only on groups. Default is made of participant names.")
     users_ids: StartChatFromInboxRequestUsersIds
     attachments: Optional[List[MessageFile]] = Field(default=None, description="The list of file attachments to the message to be sent in the chat.")
-    options: Optional[Any] = None
     specifics: Optional[StartChatRequestSpecifics] = None
-    __properties: ClassVar[List[str]] = ["text", "name", "users_ids", "attachments", "options", "specifics"]
+    __properties: ClassVar[List[str]] = ["text", "name", "users_ids", "attachments", "specifics"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,8 +51,7 @@ class StartChatFromInboxRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -89,11 +89,6 @@ class StartChatFromInboxRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of specifics
         if self.specifics:
             _dict['specifics'] = self.specifics.to_dict()
-        # set to None if options (nullable) is None
-        # and model_fields_set contains the field
-        if self.options is None and "options" in self.model_fields_set:
-            _dict['options'] = None
-
         return _dict
 
     @classmethod
@@ -110,7 +105,6 @@ class StartChatFromInboxRequest(BaseModel):
             "name": obj.get("name"),
             "users_ids": StartChatFromInboxRequestUsersIds.from_dict(obj["users_ids"]) if obj.get("users_ids") is not None else None,
             "attachments": [MessageFile.from_dict(_item) for _item in obj["attachments"]] if obj.get("attachments") is not None else None,
-            "options": obj.get("options"),
             "specifics": StartChatRequestSpecifics.from_dict(obj["specifics"]) if obj.get("specifics") is not None else None
         })
         return _obj

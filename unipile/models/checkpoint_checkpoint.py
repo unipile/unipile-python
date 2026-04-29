@@ -22,13 +22,14 @@ from typing import Optional
 from unipile.models.captcha import Captcha
 from unipile.models.in_app_validation import InAppValidation
 from unipile.models.one_time_password import OneTimePassword
+from unipile.models.otpor_in_app_validation import OTPOrInAppValidation
 from unipile.models.phone_register import PhoneRegister
 from unipile.models.two_factor_authentication import TwoFactorAuthentication
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-CHECKPOINTCHECKPOINT_ANY_OF_SCHEMAS = ["Captcha", "InAppValidation", "OneTimePassword", "PhoneRegister", "TwoFactorAuthentication"]
+CHECKPOINTCHECKPOINT_ANY_OF_SCHEMAS = ["Captcha", "InAppValidation", "OTPOrInAppValidation", "OneTimePassword", "PhoneRegister", "TwoFactorAuthentication"]
 
 class CheckpointCheckpoint(BaseModel):
     """
@@ -45,11 +46,13 @@ class CheckpointCheckpoint(BaseModel):
     anyof_schema_4_validator: Optional[TwoFactorAuthentication] = None
     # data type: Captcha
     anyof_schema_5_validator: Optional[Captcha] = None
+    # data type: OTPOrInAppValidation
+    anyof_schema_6_validator: Optional[OTPOrInAppValidation] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[Captcha, InAppValidation, OneTimePassword, PhoneRegister, TwoFactorAuthentication]] = None
+        actual_instance: Optional[Union[Captcha, InAppValidation, OTPOrInAppValidation, OneTimePassword, PhoneRegister, TwoFactorAuthentication]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "Captcha", "InAppValidation", "OneTimePassword", "PhoneRegister", "TwoFactorAuthentication" }
+    any_of_schemas: Set[str] = { "Captcha", "InAppValidation", "OTPOrInAppValidation", "OneTimePassword", "PhoneRegister", "TwoFactorAuthentication" }
 
     model_config = {
         "validate_assignment": True,
@@ -100,9 +103,15 @@ class CheckpointCheckpoint(BaseModel):
         else:
             return v
 
+        # validate data type: OTPOrInAppValidation
+        if not isinstance(v, OTPOrInAppValidation):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `OTPOrInAppValidation`")
+        else:
+            return v
+
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in CheckpointCheckpoint with anyOf schemas: Captcha, InAppValidation, OneTimePassword, PhoneRegister, TwoFactorAuthentication. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in CheckpointCheckpoint with anyOf schemas: Captcha, InAppValidation, OTPOrInAppValidation, OneTimePassword, PhoneRegister, TwoFactorAuthentication. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -145,10 +154,16 @@ class CheckpointCheckpoint(BaseModel):
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
+        # anyof_schema_6_validator: Optional[OTPOrInAppValidation] = None
+        try:
+            instance.actual_instance = OTPOrInAppValidation.from_json(json_str)
+            return instance
+        except (ValidationError, ValueError) as e:
+             error_messages.append(str(e))
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into CheckpointCheckpoint with anyOf schemas: Captcha, InAppValidation, OneTimePassword, PhoneRegister, TwoFactorAuthentication. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into CheckpointCheckpoint with anyOf schemas: Captcha, InAppValidation, OTPOrInAppValidation, OneTimePassword, PhoneRegister, TwoFactorAuthentication. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -162,7 +177,7 @@ class CheckpointCheckpoint(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], Captcha, InAppValidation, OneTimePassword, PhoneRegister, TwoFactorAuthentication]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], Captcha, InAppValidation, OTPOrInAppValidation, OneTimePassword, PhoneRegister, TwoFactorAuthentication]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

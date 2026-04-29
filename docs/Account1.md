@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **oauth_scope** | **str** | If the provider is OAuth, this is the scope of comma-separated permissions granted to the account. | [optional] 
 **metadata** | **Dict[str, str]** | Metadata of the account. | [optional] 
 **initial_sync** | [**AccountInitialSync**](AccountInitialSync.md) |  | [optional] 
-**proxy** | [**AccountProxy**](AccountProxy.md) |  | [optional] 
+**proxy** | [**Account1Proxy**](Account1Proxy.md) |  | [optional] 
 
 ## Example
 

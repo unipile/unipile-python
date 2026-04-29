@@ -19,16 +19,16 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
+from unipile.models.create_new_experience_end_date import CreateNewExperienceEndDate
+from unipile.models.create_new_experience_media import CreateNewExperienceMedia
+from unipile.models.create_new_experience_skills_inner import CreateNewExperienceSkillsInner
+from unipile.models.create_new_experience_start_date import CreateNewExperienceStartDate
 from unipile.models.edit_existing_experience_company import EditExistingExperienceCompany
 from unipile.models.edit_existing_experience_job_title import EditExistingExperienceJobTitle
 from unipile.models.edit_existing_experience_location import EditExistingExperienceLocation
-from unipile.models.new_experience_attachment import NewExperienceAttachment
-from unipile.models.new_experience_end_date import NewExperienceEndDate
-from unipile.models.new_experience_skills_inner import NewExperienceSkillsInner
-from unipile.models.new_experience_start_date import NewExperienceStartDate
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EditExistingExperience(BaseModel):
     """
@@ -36,30 +36,19 @@ class EditExistingExperience(BaseModel):
     """ # noqa: E501
     notify_network: Optional[StrictBool] = Field(default=False, description="Notify the network about the experience. Turn on to notify your network of key profile changes (such as new job) and work anniversaries. Updates can take up to 2 hours. ")
     job_title: Optional[EditExistingExperienceJobTitle] = None
-    employment_type: Optional[Annotated[str, Field(strict=True)]] = None
+    employment_type: Optional[StrictStr] = Field(default=None, description="A parameter ID. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `EMPLOYMENT_TYPE` type to find out the possible values. Employment type of the experience.")
     company: Optional[EditExistingExperienceCompany] = None
     location: Optional[EditExistingExperienceLocation] = None
     workplace_type: Optional[StrictStr] = Field(default=None, description="The workplace type. Ex: Remote, Hybrid, On-site")
-    start_date: Optional[NewExperienceStartDate] = None
-    end_date: Optional[NewExperienceEndDate] = None
+    start_date: Optional[CreateNewExperienceStartDate] = None
+    end_date: Optional[CreateNewExperienceEndDate] = None
     description: Optional[StrictStr] = Field(default=None, description="Description of the experience. List your major duties and successes, highlighting specific projects.")
     source_of_hire: Optional[StrictStr] = Field(default=None, description="Where did you find this job? This information will be used to improve LinkedIn’s job search experience.")
-    skills: Optional[List[NewExperienceSkillsInner]] = Field(default=None, description="List of skills. We recommend adding your top 5 used in this role. They’ll also appear in your profile Skills section.")
-    attachment: Optional[NewExperienceAttachment] = None
-    attachment_title: Optional[StrictStr] = Field(default=None, description="Title of the attachment.")
-    attachment_description: Optional[StrictStr] = Field(default=None, description="Description of the attachment.")
+    skills: Optional[List[CreateNewExperienceSkillsInner]] = Field(default=None, description="List of skills. We recommend adding your top 5 used in this role. They’ll also appear in your profile Skills section.")
+    media: Optional[CreateNewExperienceMedia] = None
+    operation: StrictStr
     id: StrictStr = Field(description="ID of the experience to edit.")
-    __properties: ClassVar[List[str]] = ["notify_network", "job_title", "employment_type", "company", "location", "workplace_type", "start_date", "end_date", "description", "source_of_hire", "skills", "attachment", "attachment_title", "attachment_description", "id"]
-
-    @field_validator('employment_type')
-    def employment_type_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^\d+$", value):
-            raise ValueError(r"must validate the regular expression /^\d+$/")
-        return value
+    __properties: ClassVar[List[str]] = ["notify_network", "job_title", "employment_type", "company", "location", "workplace_type", "start_date", "end_date", "description", "source_of_hire", "skills", "media", "operation", "id"]
 
     @field_validator('workplace_type')
     def workplace_type_validate_enum(cls, value):
@@ -81,8 +70,16 @@ class EditExistingExperience(BaseModel):
             raise ValueError("must be one of enum values ('INDEED', 'LINKEDIN', 'COMPANY_WEBSITE', 'OTHER_JOB_SITES', 'REFERRAL', 'CONTACTED_BY_RECRUITER', 'STAFFING_AGENCY', 'OTHER')")
         return value
 
+    @field_validator('operation')
+    def operation_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['edit']):
+            raise ValueError("must be one of enum values ('edit')")
+        return value
+
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -94,8 +91,7 @@ class EditExistingExperience(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -142,9 +138,9 @@ class EditExistingExperience(BaseModel):
                 if _item_skills:
                     _items.append(_item_skills.to_dict())
             _dict['skills'] = _items
-        # override the default output from pydantic by calling `to_dict()` of attachment
-        if self.attachment:
-            _dict['attachment'] = self.attachment.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of media
+        if self.media:
+            _dict['media'] = self.media.to_dict()
         return _dict
 
     @classmethod
@@ -163,14 +159,13 @@ class EditExistingExperience(BaseModel):
             "company": EditExistingExperienceCompany.from_dict(obj["company"]) if obj.get("company") is not None else None,
             "location": EditExistingExperienceLocation.from_dict(obj["location"]) if obj.get("location") is not None else None,
             "workplace_type": obj.get("workplace_type"),
-            "start_date": NewExperienceStartDate.from_dict(obj["start_date"]) if obj.get("start_date") is not None else None,
-            "end_date": NewExperienceEndDate.from_dict(obj["end_date"]) if obj.get("end_date") is not None else None,
+            "start_date": CreateNewExperienceStartDate.from_dict(obj["start_date"]) if obj.get("start_date") is not None else None,
+            "end_date": CreateNewExperienceEndDate.from_dict(obj["end_date"]) if obj.get("end_date") is not None else None,
             "description": obj.get("description"),
             "source_of_hire": obj.get("source_of_hire"),
-            "skills": [NewExperienceSkillsInner.from_dict(_item) for _item in obj["skills"]] if obj.get("skills") is not None else None,
-            "attachment": NewExperienceAttachment.from_dict(obj["attachment"]) if obj.get("attachment") is not None else None,
-            "attachment_title": obj.get("attachment_title"),
-            "attachment_description": obj.get("attachment_description"),
+            "skills": [CreateNewExperienceSkillsInner.from_dict(_item) for _item in obj["skills"]] if obj.get("skills") is not None else None,
+            "media": CreateNewExperienceMedia.from_dict(obj["media"]) if obj.get("media") is not None else None,
+            "operation": obj.get("operation"),
             "id": obj.get("id")
         })
         return _obj

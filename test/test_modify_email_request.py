@@ -37,13 +37,11 @@ class TestModifyEmailRequest(unittest.TestCase):
             return ModifyEmailRequest(
                 folders_ids = [
                     ''
-                    ]
+                    ],
+                specifics = None
             )
         else:
             return ModifyEmailRequest(
-                folders_ids = [
-                    ''
-                    ],
         )
         """
 

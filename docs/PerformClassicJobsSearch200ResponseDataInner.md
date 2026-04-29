@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **is_promoted** | **bool** | Whether the Job posting has been promoted. | 
 **easy_apply** | **bool** | Whether applicants are allowed to apply to the Job posting directly on LinkedIn. | 
 **few_applicants** | **bool** | Whether the Job posting received a limited number of applications. | 
-**company** | [**PerformClassicSearchFromUrl200ResponseAnyOfDataInnerCompany**](PerformClassicSearchFromUrl200ResponseAnyOfDataInnerCompany.md) |  | 
+**company** | [**JobsSearchResultsDataInnerCompany**](JobsSearchResultsDataInnerCompany.md) |  | 
 **insights** | **List[str]** | A list of insights about the Job posting. | 
 
 ## Example

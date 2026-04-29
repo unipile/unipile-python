@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **str** | The code to solve the checkpoint. Check the AuthenticationCheckpoint response you have already obtained to see what type of code is expected. | 
 **intent_id** | **str** | The ID of the intent to solve. | 
-**state** | **str** | State data sent in the &#x60;account.add&#x60; / &#x60;account.reconnect&#x60; webhook payload after the authentication process. | [optional] 
 
 ## Example
 

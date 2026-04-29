@@ -35,7 +35,7 @@ class TestCreateRecruiterHiringProjectRequestCompany(unittest.TestCase):
         model = CreateRecruiterHiringProjectRequestCompany()
         if include_optional:
             return CreateRecruiterHiringProjectRequestCompany(
-                id = '4',
+                id = '',
                 name = ''
             )
         else:

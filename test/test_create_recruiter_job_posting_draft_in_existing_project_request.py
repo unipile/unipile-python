@@ -36,24 +36,24 @@ class TestCreateRecruiterJobPostingDraftInExistingProjectRequest(unittest.TestCa
         if include_optional:
             return CreateRecruiterJobPostingDraftInExistingProjectRequest(
                 job_title = unipile.models.create_recruiter_job_posting_draft_in_existing_project_request_job_title.createRecruiterJobPostingDraftInExistingProject_request_job_title(
-                    id = '4', 
+                    id = '', 
                     name = '', ),
-                company = unipile.models.edit_classic_job_posting_request_company.editClassicJobPosting_request_company(
-                    id = '4', 
+                company = unipile.models.create_recruiter_job_posting_draft_in_existing_project_request_company.createRecruiterJobPostingDraftInExistingProject_request_company(
+                    id = '', 
                     name = '', ),
                 workplace_type = 'ON_SITE',
-                location = '4',
+                location = '',
                 employment_status = 'FULL_TIME',
                 seniority_level = 'INTERNSHIP',
                 description = '0123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199',
                 industry = [
-                    '4'
+                    ''
                     ],
                 job_function = [
-                    '4'
+                    ''
                     ],
                 skills = [
-                    '4'
+                    ''
                     ],
                 include_poster_info = True,
                 tracking_pixel_url = '',
@@ -71,21 +71,21 @@ class TestCreateRecruiterJobPostingDraftInExistingProjectRequest(unittest.TestCa
         else:
             return CreateRecruiterJobPostingDraftInExistingProjectRequest(
                 job_title = unipile.models.create_recruiter_job_posting_draft_in_existing_project_request_job_title.createRecruiterJobPostingDraftInExistingProject_request_job_title(
-                    id = '4', 
+                    id = '', 
                     name = '', ),
-                company = unipile.models.edit_classic_job_posting_request_company.editClassicJobPosting_request_company(
-                    id = '4', 
+                company = unipile.models.create_recruiter_job_posting_draft_in_existing_project_request_company.createRecruiterJobPostingDraftInExistingProject_request_company(
+                    id = '', 
                     name = '', ),
                 workplace_type = 'ON_SITE',
-                location = '4',
+                location = '',
                 employment_status = 'FULL_TIME',
                 seniority_level = 'INTERNSHIP',
                 description = '0123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177178179180181182183184185186187188189190191192193194195196197198199',
                 industry = [
-                    '4'
+                    ''
                     ],
                 job_function = [
-                    '4'
+                    ''
                     ],
                 apply_method = None,
         )

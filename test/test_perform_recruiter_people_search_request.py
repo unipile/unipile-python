@@ -36,47 +36,70 @@ class TestPerformRecruiterPeopleSearchRequest(unittest.TestCase):
         if include_optional:
             return PerformRecruiterPeopleSearchRequest(
                 keywords = '',
+                spotlights = [
+                    'OPEN_TO_WORK'
+                    ],
+                load_saved_search = unipile.models.perform_recruiter_people_search_from_talent_pool_request_load_saved_search.performRecruiterPeopleSearchFromTalentPool_request_load_saved_search(
+                    id = '', 
+                    new_results_only = True, ),
+                load_custom_filter = unipile.models.perform_recruiter_people_search_from_talent_pool_request_load_custom_filter.performRecruiterPeopleSearchFromTalentPool_request_load_custom_filter(
+                    id = '', ),
+                save_search = unipile.models.perform_recruiter_people_search_from_talent_pool_request_save_search.performRecruiterPeopleSearchFromTalentPool_request_save_search(
+                    name = '', 
+                    project_id = '', ),
+                save_custom_filter = unipile.models.perform_recruiter_people_search_from_talent_pool_request_save_custom_filter.performRecruiterPeopleSearchFromTalentPool_request_save_custom_filter(
+                    name = '', ),
                 network_distance = [
                     null
                     ],
                 location = [
                     unipile.models.perform_recruiter_people_search_from_talent_pool_request_location_inner.performRecruiterPeopleSearchFromTalentPool_request_location_inner(
-                        id = '4', 
+                        id = '', 
                         priority = 'CAN_HAVE', 
                         preferences = 'CURRENT', )
                     ],
                 postal_code = [
                     unipile.models.perform_recruiter_people_search_from_talent_pool_request_postal_code_inner.performRecruiterPeopleSearchFromTalentPool_request_postal_code_inner(
                         name = '', 
-                        id = '4', )
+                        id = '', )
                     ],
                 postal_code_radius = 1,
                 job_title = [
                     unipile.models.perform_recruiter_people_search_from_talent_pool_request_job_title_inner.performRecruiterPeopleSearchFromTalentPool_request_job_title_inner(
                         name = '', 
-                        id = '4', 
+                        id = '', 
                         priority = 'CAN_HAVE', 
                         preferences = 'CURRENT_OR_PAST', )
                     ],
                 occupation = [
                     unipile.models.perform_recruiter_people_search_from_talent_pool_request_occupation_inner.performRecruiterPeopleSearchFromTalentPool_request_occupation_inner(
                         name = '', 
-                        id = '4', 
+                        id = '', 
                         priority = 'CAN_HAVE', 
                         preferences = 'CURRENT_OR_PAST', )
                     ],
                 skills = [
                     unipile.models.perform_recruiter_people_search_from_talent_pool_request_skills_inner.performRecruiterPeopleSearchFromTalentPool_request_skills_inner(
                         name = '', 
-                        id = '4', 
+                        id = '', 
                         priority = 'CAN_HAVE', )
                     ],
                 company = [
                     unipile.models.perform_recruiter_people_search_from_talent_pool_request_company_inner.performRecruiterPeopleSearchFromTalentPool_request_company_inner(
                         name = '', 
-                        id = '4', 
+                        id = '', 
                         priority = 'CAN_HAVE', 
                         preferences = 'CURRENT_OR_PAST', )
+                    ],
+                current_company = [
+                    unipile.models.perform_recruiter_people_search_from_talent_pool_request_current_company_inner.performRecruiterPeopleSearchFromTalentPool_request_current_company_inner(
+                        id = '', 
+                        priority = 'CAN_HAVE', )
+                    ],
+                past_company = [
+                    unipile.models.perform_recruiter_people_search_from_talent_pool_request_current_company_inner.performRecruiterPeopleSearchFromTalentPool_request_current_company_inner(
+                        id = '', 
+                        priority = 'CAN_HAVE', )
                     ],
                 company_size = [
                     unipile.models.get_recruiter_talent_pool_applicants_request_company_size_inner.getRecruiterTalentPoolApplicants_request_company_size_inner(
@@ -86,40 +109,70 @@ class TestPerformRecruiterPeopleSearchRequest(unittest.TestCase):
                 years_of_experience = unipile.models.get_recruiter_talent_pool_applicants_request_years_of_experience.getRecruiterTalentPoolApplicants_request_years_of_experience(
                     min = 1.337, 
                     max = 1.337, ),
+                years_in_current_position = unipile.models.get_recruiter_talent_pool_applicants_request_years_in_current_position.getRecruiterTalentPoolApplicants_request_years_in_current_position(
+                    min = 1.337, 
+                    max = 1.337, ),
+                years_in_current_company = unipile.models.get_recruiter_talent_pool_applicants_request_years_in_current_company.getRecruiterTalentPoolApplicants_request_years_in_current_company(
+                    min = 1.337, 
+                    max = 1.337, ),
+                degree = unipile.models.perform_recruiter_people_search_from_talent_pool_request_degree.performRecruiterPeopleSearchFromTalentPool_request_degree(
+                    include = [
+                        ''
+                        ], 
+                    exclude = [
+                        ''
+                        ], ),
+                workplace_type = [
+                    'ON_SITE'
+                    ],
                 school = [
                     unipile.models.perform_recruiter_people_search_from_talent_pool_request_school_inner.performRecruiterPeopleSearchFromTalentPool_request_school_inner(
-                        id = '4', 
+                        id = '', 
                         priority = 'CAN_HAVE', )
+                    ],
+                field_of_study = [
+                    unipile.models.perform_recruiter_people_search_from_talent_pool_request_field_of_study_inner.performRecruiterPeopleSearchFromTalentPool_request_field_of_study_inner(
+                        id = '', 
+                        priority = 'CAN_HAVE', )
+                    ],
+                employment_type = [
+                    'FULL_TIME'
                     ],
                 graduation_year = unipile.models.perform_recruiter_people_search_from_talent_pool_request_graduation_year.performRecruiterPeopleSearchFromTalentPool_request_graduation_year(
                     min = 1900, 
                     max = 1900, ),
-                industry = unipile.models.perform_recruiter_people_search_from_talent_pool_request_industry.performRecruiterPeopleSearchFromTalentPool_request_industry(
+                industry = unipile.models.perform_recruiter_people_search_request_industry.performRecruiterPeopleSearch_request_industry(
                     include = [
-                        '4'
+                        ''
                         ], 
                     exclude = [
-                        '4'
+                        ''
                         ], ),
                 seniority = [
                     'UNPAID'
                     ],
+                spoken_language = [
+                    unipile.models.perform_recruiter_people_search_from_talent_pool_request_spoken_language_inner.performRecruiterPeopleSearchFromTalentPool_request_spoken_language_inner(
+                        id = '', 
+                        priority = 'CAN_HAVE', 
+                        proficiency = 'ELEMENTARY', )
+                    ],
                 profile_language = [
-                    '4'
+                    ''
                     ],
                 project = unipile.models.perform_recruiter_people_search_from_talent_pool_request_project.performRecruiterPeopleSearchFromTalentPool_request_project(
                     include = [
                         unipile.models.perform_recruiter_people_search_from_talent_pool_request_project_include_inner.performRecruiterPeopleSearchFromTalentPool_request_project_include_inner(
-                            id = '4', 
+                            id = '', 
                             title = '', )
                         ], 
                     exclude = [
                         unipile.models.perform_recruiter_people_search_from_talent_pool_request_project_include_inner.performRecruiterPeopleSearchFromTalentPool_request_project_include_inner(
-                            id = '4', 
+                            id = '', 
                             title = '', )
                         ], ),
-                function = [
-                    '4'
+                job_function = [
+                    ''
                     ],
                 first_name = [
                     ''
@@ -142,12 +195,19 @@ class TestPerformRecruiterPeopleSearchRequest(unittest.TestCase):
                 hide_previously_viewed = unipile.models.perform_recruiter_people_search_from_talent_pool_request_hide_previously_viewed.performRecruiterPeopleSearchFromTalentPool_request_hide_previously_viewed(
                     timespan = 'PAST_MONTH', ),
                 group = [
-                    '4'
+                    ''
                     ],
                 is_past_applicant = True,
                 notes = [
                     ''
-                    ]
+                    ],
+                tags = unipile.models.perform_recruiter_people_search_from_talent_pool_request_tags.performRecruiterPeopleSearchFromTalentPool_request_tags(
+                    include = [
+                        ''
+                        ], 
+                    exclude = [
+                        ''
+                        ], )
             )
         else:
             return PerformRecruiterPeopleSearchRequest(

@@ -19,21 +19,23 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_projects_inner_contributors_inner import GetUserProfile200ResponseSpecificsAllOfAnyOfProjectsInnerContributorsInner
+from unipile.models.linked_in_projects_inner_contributors_inner import LinkedInProjectsInnerContributorsInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ListUserFollowers200Response(BaseModel):
     """
     ListUserFollowers200Response
     """ # noqa: E501
-    data: List[GetUserProfile200ResponseSpecificsAllOfAnyOfProjectsInnerContributorsInner]
+    data: List[LinkedInProjectsInnerContributorsInner]
     total_count: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Total number of results if supported by the endpoint.")
     next_cursor: Optional[StrictStr] = Field(default=None, description="Cursor to get the next page of results if supported. Else use `offset`.")
     __properties: ClassVar[List[str]] = ["data", "total_count", "next_cursor"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -45,8 +47,7 @@ class ListUserFollowers200Response(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -90,7 +91,7 @@ class ListUserFollowers200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "data": [GetUserProfile200ResponseSpecificsAllOfAnyOfProjectsInnerContributorsInner.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
+            "data": [LinkedInProjectsInnerContributorsInner.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
             "total_count": obj.get("total_count"),
             "next_cursor": obj.get("next_cursor")
         })

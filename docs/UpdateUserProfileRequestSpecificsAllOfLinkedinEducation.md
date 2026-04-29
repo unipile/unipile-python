@@ -6,18 +6,17 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **notify_network** | **bool** | Notify the network about the education. Turn on to notify your network of key profile changes (such as new education) and work anniversaries. | [optional] [default to False]
-**school** | [**EditExistingEducationSchool**](EditExistingEducationSchool.md) |  | [optional] 
+**school** | [**EditExistingEducationSchool**](EditExistingEducationSchool.md) |  | 
 **degree** | [**EditExistingEducationDegree**](EditExistingEducationDegree.md) |  | [optional] 
 **field_of_study** | [**EditExistingEducationFieldOfStudy**](EditExistingEducationFieldOfStudy.md) |  | [optional] 
-**start_date** | [**NewEducationStartDate**](NewEducationStartDate.md) |  | 
-**end_date** | [**NewEducationEndDate**](NewEducationEndDate.md) |  | [optional] 
+**start_date** | [**CreateNewEducationStartDate**](CreateNewEducationStartDate.md) |  | 
+**end_date** | [**CreateNewEducationEndDate**](CreateNewEducationEndDate.md) |  | [optional] 
 **grade** | **str** | Grade of the education. | [optional] 
 **activities** | **str** | Activities and societies. Ex: Alpha Phi Omega, Marching Brand, Volleyball | [optional] 
 **description** | **str** | Description of the education. | [optional] 
-**skills** | [**List[NewExperienceSkillsInner]**](NewExperienceSkillsInner.md) | List of skills. We recommend adding your top 5 used in this training. They’ll also appear in your profile Skills section. | [optional] 
-**attachment** | [**NewExperienceAttachment**](NewExperienceAttachment.md) |  | [optional] 
-**attachment_title** | **str** | Title of the attachment. | [optional] 
-**attachment_description** | **str** | Description of the attachment. | [optional] 
+**skills** | [**List[CreateNewExperienceSkillsInner]**](CreateNewExperienceSkillsInner.md) | List of skills. We recommend adding your top 5 used in this training. They’ll also appear in your profile Skills section. | [optional] 
+**media** | [**CreateNewExperienceMedia**](CreateNewExperienceMedia.md) |  | [optional] 
+**operation** | **str** |  | 
 **id** | **str** | ID of the education to edit. | 
 
 ## Example

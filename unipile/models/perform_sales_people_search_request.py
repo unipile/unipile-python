@@ -19,7 +19,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from unipile.models.get_recruiter_talent_pool_applicants_request_network_distance_inner import GetRecruiterTalentPoolApplicantsRequestNetworkDistanceInner
 from unipile.models.perform_sales_people_search_request_account_list import PerformSalesPeopleSearchRequestAccountList
 from unipile.models.perform_sales_people_search_request_company_headcount_inner import PerformSalesPeopleSearchRequestCompanyHeadcountInner
@@ -30,11 +29,14 @@ from unipile.models.perform_sales_people_search_request_function import PerformS
 from unipile.models.perform_sales_people_search_request_group import PerformSalesPeopleSearchRequestGroup
 from unipile.models.perform_sales_people_search_request_industry import PerformSalesPeopleSearchRequestIndustry
 from unipile.models.perform_sales_people_search_request_lead_list import PerformSalesPeopleSearchRequestLeadList
+from unipile.models.perform_sales_people_search_request_load_recent_search import PerformSalesPeopleSearchRequestLoadRecentSearch
+from unipile.models.perform_sales_people_search_request_load_saved_search import PerformSalesPeopleSearchRequestLoadSavedSearch
 from unipile.models.perform_sales_people_search_request_location import PerformSalesPeopleSearchRequestLocation
 from unipile.models.perform_sales_people_search_request_past_company import PerformSalesPeopleSearchRequestPastCompany
 from unipile.models.perform_sales_people_search_request_past_job_title import PerformSalesPeopleSearchRequestPastJobTitle
 from unipile.models.perform_sales_people_search_request_postal_code import PerformSalesPeopleSearchRequestPostalCode
 from unipile.models.perform_sales_people_search_request_recent_interaction import PerformSalesPeopleSearchRequestRecentInteraction
+from unipile.models.perform_sales_people_search_request_save_search import PerformSalesPeopleSearchRequestSaveSearch
 from unipile.models.perform_sales_people_search_request_saved_resources import PerformSalesPeopleSearchRequestSavedResources
 from unipile.models.perform_sales_people_search_request_school import PerformSalesPeopleSearchRequestSchool
 from unipile.models.perform_sales_people_search_request_seniority import PerformSalesPeopleSearchRequestSeniority
@@ -43,12 +45,16 @@ from unipile.models.perform_sales_people_search_request_years_in_position_inner 
 from unipile.models.perform_sales_people_search_request_years_of_experience_inner import PerformSalesPeopleSearchRequestYearsOfExperienceInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PerformSalesPeopleSearchRequest(BaseModel):
     """
     PerformSalesPeopleSearchRequest
     """ # noqa: E501
     keywords: Optional[StrictStr] = Field(default=None, description="A keyword or group of keywords.")
+    save_search: Optional[PerformSalesPeopleSearchRequestSaveSearch] = None
+    load_saved_search: Optional[PerformSalesPeopleSearchRequestLoadSavedSearch] = None
+    load_recent_search: Optional[PerformSalesPeopleSearchRequestLoadRecentSearch] = None
     current_company: Optional[PerformSalesPeopleSearchRequestCurrentCompany] = None
     past_company: Optional[PerformSalesPeopleSearchRequestPastCompany] = None
     company_headcount: Optional[List[PerformSalesPeopleSearchRequestCompanyHeadcountInner]] = Field(default=None, description="A list of headcount ranges.")
@@ -65,25 +71,25 @@ class PerformSalesPeopleSearchRequest(BaseModel):
     industry: Optional[PerformSalesPeopleSearchRequestIndustry] = None
     first_name: Optional[List[StrictStr]] = Field(default=None, description="A list of names.")
     last_name: Optional[List[StrictStr]] = Field(default=None, description="A list of names.")
-    profile_language: Optional[List[Annotated[str, Field(min_length=2, strict=True, max_length=2)]]] = Field(default=None, description="A list of languages.")
+    profile_language: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\">List Search Parameters</a> with `PROFILE_LANGUAGE` type to find out the possible values.    Native filter : Personal / Profile language   ")
     years_of_experience: Optional[List[PerformSalesPeopleSearchRequestYearsOfExperienceInner]] = Field(default=None, description="A list of years ranges.")
     group: Optional[PerformSalesPeopleSearchRequestGroup] = None
     school: Optional[PerformSalesPeopleSearchRequestSchool] = None
     following_your_company: Optional[StrictBool] = Field(default=None, description="Whether the users are following your company.    Native filter : Buyer intent / Following your company   ")
     viewed_your_profile_recently: Optional[StrictBool] = Field(default=None, description="Whether the users visited your profile recently.    Native filter : Buyer intent / Viewed your profile recently   ")
     network_distance: Optional[List[GetRecruiterTalentPoolApplicantsRequestNetworkDistanceInner]] = Field(default=None, description="A list of connection degrees (1 for First, 2 for Second, 3 for Third+ and GROUP for Common group members).    Native filter : Best path in / Connection   ")
-    connections_of: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\">List Search Parameters</a> with `RELATION` type to find out the possible values.    Native filter : Best path in / Connections of   ")
+    connections_of: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\">List Search Parameters</a> with `RELATION` type to find out the possible values.    Native filter : Best path in / Connections of   ")
     past_colleague: Optional[StrictBool] = Field(default=None, description="Whether the users are past colleagues of yours.    Native filter : Best path in / Past colleague   ")
     shared_experiences: Optional[StrictBool] = Field(default=None, description="Whether the users share professionnal experiences with you.    Native filter : Buyer intent / Shared experiences   ")
     changed_jobs: Optional[StrictBool] = Field(default=None, description="Whether the users recently changed jobs.    Native filter : Recent updates / Changed jobs   ")
     posted_on_linkedin: Optional[StrictBool] = Field(default=None, description="Whether the users recently published posts on LinkedIn.    Native filter : Recent updates / Posted on Linkedin   ")
-    persona: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\">List Search Parameters</a> with `PERSONA` type to find out the possible values.    Native filter : Workflow / Persona   ")
+    persona: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\">List Search Parameters</a> with `PERSONA` type to find out the possible values.    Native filter : Workflow / Persona   ")
     account_list: Optional[PerformSalesPeopleSearchRequestAccountList] = None
     lead_list: Optional[PerformSalesPeopleSearchRequestLeadList] = None
     recent_interaction: Optional[PerformSalesPeopleSearchRequestRecentInteraction] = None
     saved_resources: Optional[PerformSalesPeopleSearchRequestSavedResources] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["keywords", "current_company", "past_company", "company_headcount", "company_type", "company_location", "function", "current_job_title", "past_job_title", "seniority", "years_in_company", "years_in_position", "location", "postal_code", "industry", "first_name", "last_name", "profile_language", "years_of_experience", "group", "school", "following_your_company", "viewed_your_profile_recently", "network_distance", "connections_of", "past_colleague", "shared_experiences", "changed_jobs", "posted_on_linkedin", "persona", "account_list", "lead_list", "recent_interaction", "saved_resources"]
+    __properties: ClassVar[List[str]] = ["keywords", "save_search", "load_saved_search", "load_recent_search", "current_company", "past_company", "company_headcount", "company_type", "company_location", "function", "current_job_title", "past_job_title", "seniority", "years_in_company", "years_in_position", "location", "postal_code", "industry", "first_name", "last_name", "profile_language", "years_of_experience", "group", "school", "following_your_company", "viewed_your_profile_recently", "network_distance", "connections_of", "past_colleague", "shared_experiences", "changed_jobs", "posted_on_linkedin", "persona", "account_list", "lead_list", "recent_interaction", "saved_resources"]
 
     @field_validator('company_type')
     def company_type_validate_enum(cls, value):
@@ -97,7 +103,8 @@ class PerformSalesPeopleSearchRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -109,8 +116,7 @@ class PerformSalesPeopleSearchRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -137,6 +143,15 @@ class PerformSalesPeopleSearchRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of save_search
+        if self.save_search:
+            _dict['save_search'] = self.save_search.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of load_saved_search
+        if self.load_saved_search:
+            _dict['load_saved_search'] = self.load_saved_search.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of load_recent_search
+        if self.load_recent_search:
+            _dict['load_recent_search'] = self.load_recent_search.to_dict()
         # override the default output from pydantic by calling `to_dict()` of current_company
         if self.current_company:
             _dict['current_company'] = self.current_company.to_dict()
@@ -238,6 +253,9 @@ class PerformSalesPeopleSearchRequest(BaseModel):
 
         _obj = cls.model_validate({
             "keywords": obj.get("keywords"),
+            "save_search": PerformSalesPeopleSearchRequestSaveSearch.from_dict(obj["save_search"]) if obj.get("save_search") is not None else None,
+            "load_saved_search": PerformSalesPeopleSearchRequestLoadSavedSearch.from_dict(obj["load_saved_search"]) if obj.get("load_saved_search") is not None else None,
+            "load_recent_search": PerformSalesPeopleSearchRequestLoadRecentSearch.from_dict(obj["load_recent_search"]) if obj.get("load_recent_search") is not None else None,
             "current_company": PerformSalesPeopleSearchRequestCurrentCompany.from_dict(obj["current_company"]) if obj.get("current_company") is not None else None,
             "past_company": PerformSalesPeopleSearchRequestPastCompany.from_dict(obj["past_company"]) if obj.get("past_company") is not None else None,
             "company_headcount": [PerformSalesPeopleSearchRequestCompanyHeadcountInner.from_dict(_item) for _item in obj["company_headcount"]] if obj.get("company_headcount") is not None else None,

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**content** | **str** | Content of the file encoded as base64. | 
+**content** | **str** | Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files | 
 **content_type** | **str** | &lt;a href&#x3D;\&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types\&quot;&gt;MIME type&lt;/a&gt; of the file. | 
 **filename** | **str** | Name of the file (including extension). | 
 **metadata** | [**MessageFileAllOfMetadata**](MessageFileAllOfMetadata.md) |  | [optional] 

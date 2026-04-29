@@ -17,17 +17,18 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from unipile.models.create_new_education_end_date import CreateNewEducationEndDate
+from unipile.models.create_new_education_start_date import CreateNewEducationStartDate
+from unipile.models.create_new_experience_media import CreateNewExperienceMedia
+from unipile.models.create_new_experience_skills_inner import CreateNewExperienceSkillsInner
 from unipile.models.edit_existing_education_degree import EditExistingEducationDegree
 from unipile.models.edit_existing_education_field_of_study import EditExistingEducationFieldOfStudy
 from unipile.models.edit_existing_education_school import EditExistingEducationSchool
-from unipile.models.new_education_end_date import NewEducationEndDate
-from unipile.models.new_education_start_date import NewEducationStartDate
-from unipile.models.new_experience_attachment import NewExperienceAttachment
-from unipile.models.new_experience_skills_inner import NewExperienceSkillsInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class EditExistingEducation(BaseModel):
     """
@@ -37,20 +38,27 @@ class EditExistingEducation(BaseModel):
     school: Optional[EditExistingEducationSchool] = None
     degree: Optional[EditExistingEducationDegree] = None
     field_of_study: Optional[EditExistingEducationFieldOfStudy] = None
-    start_date: Optional[NewEducationStartDate] = None
-    end_date: Optional[NewEducationEndDate] = None
+    start_date: Optional[CreateNewEducationStartDate] = None
+    end_date: Optional[CreateNewEducationEndDate] = None
     grade: Optional[StrictStr] = Field(default=None, description="Grade of the education.")
     activities: Optional[StrictStr] = Field(default=None, description="Activities and societies. Ex: Alpha Phi Omega, Marching Brand, Volleyball")
     description: Optional[StrictStr] = Field(default=None, description="Description of the education.")
-    skills: Optional[List[NewExperienceSkillsInner]] = Field(default=None, description="List of skills. We recommend adding your top 5 used in this training. They’ll also appear in your profile Skills section.")
-    attachment: Optional[NewExperienceAttachment] = None
-    attachment_title: Optional[StrictStr] = Field(default=None, description="Title of the attachment.")
-    attachment_description: Optional[StrictStr] = Field(default=None, description="Description of the attachment.")
+    skills: Optional[List[CreateNewExperienceSkillsInner]] = Field(default=None, description="List of skills. We recommend adding your top 5 used in this training. They’ll also appear in your profile Skills section.")
+    media: Optional[CreateNewExperienceMedia] = None
+    operation: StrictStr
     id: StrictStr = Field(description="ID of the education to edit.")
-    __properties: ClassVar[List[str]] = ["notify_network", "school", "degree", "field_of_study", "start_date", "end_date", "grade", "activities", "description", "skills", "attachment", "attachment_title", "attachment_description", "id"]
+    __properties: ClassVar[List[str]] = ["notify_network", "school", "degree", "field_of_study", "start_date", "end_date", "grade", "activities", "description", "skills", "media", "operation", "id"]
+
+    @field_validator('operation')
+    def operation_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['edit']):
+            raise ValueError("must be one of enum values ('edit')")
+        return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -62,8 +70,7 @@ class EditExistingEducation(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -110,9 +117,9 @@ class EditExistingEducation(BaseModel):
                 if _item_skills:
                     _items.append(_item_skills.to_dict())
             _dict['skills'] = _items
-        # override the default output from pydantic by calling `to_dict()` of attachment
-        if self.attachment:
-            _dict['attachment'] = self.attachment.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of media
+        if self.media:
+            _dict['media'] = self.media.to_dict()
         return _dict
 
     @classmethod
@@ -129,15 +136,14 @@ class EditExistingEducation(BaseModel):
             "school": EditExistingEducationSchool.from_dict(obj["school"]) if obj.get("school") is not None else None,
             "degree": EditExistingEducationDegree.from_dict(obj["degree"]) if obj.get("degree") is not None else None,
             "field_of_study": EditExistingEducationFieldOfStudy.from_dict(obj["field_of_study"]) if obj.get("field_of_study") is not None else None,
-            "start_date": NewEducationStartDate.from_dict(obj["start_date"]) if obj.get("start_date") is not None else None,
-            "end_date": NewEducationEndDate.from_dict(obj["end_date"]) if obj.get("end_date") is not None else None,
+            "start_date": CreateNewEducationStartDate.from_dict(obj["start_date"]) if obj.get("start_date") is not None else None,
+            "end_date": CreateNewEducationEndDate.from_dict(obj["end_date"]) if obj.get("end_date") is not None else None,
             "grade": obj.get("grade"),
             "activities": obj.get("activities"),
             "description": obj.get("description"),
-            "skills": [NewExperienceSkillsInner.from_dict(_item) for _item in obj["skills"]] if obj.get("skills") is not None else None,
-            "attachment": NewExperienceAttachment.from_dict(obj["attachment"]) if obj.get("attachment") is not None else None,
-            "attachment_title": obj.get("attachment_title"),
-            "attachment_description": obj.get("attachment_description"),
+            "skills": [CreateNewExperienceSkillsInner.from_dict(_item) for _item in obj["skills"]] if obj.get("skills") is not None else None,
+            "media": CreateNewExperienceMedia.from_dict(obj["media"]) if obj.get("media") is not None else None,
+            "operation": obj.get("operation"),
             "id": obj.get("id")
         })
         return _obj

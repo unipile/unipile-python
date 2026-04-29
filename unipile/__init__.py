@@ -41,6 +41,7 @@ __all__ = [
     "AcceptRelationRequest200Response",
     "Account",
     "Account1",
+    "Account1Proxy",
     "AccountInitialSync",
     "AccountList",
     "AccountListDataInner",
@@ -60,6 +61,7 @@ __all__ = [
     "ApplicantsSearch",
     "ApplicantsSearchDataInner",
     "ApplicantsSearchDataInnerProfile",
+    "ApplicantsSourced",
     "ApplyOnExternalWebsite",
     "ApplyOnLinkedin",
     "ApplyOnLinkedin1",
@@ -67,6 +69,7 @@ __all__ = [
     "AutomaticProxyConfiguration",
     "BasicAuthentication",
     "BasicAuthentication1",
+    "BasicAuthentication2",
     "BrowseSalesAccountListRequest",
     "BrowseSalesLeadListRequest",
     "CallEnded",
@@ -74,6 +77,9 @@ __all__ = [
     "CallStarted",
     "CancelRelationRequest200Response",
     "Captcha",
+    "ChatDescriptionUpdated",
+    "ChatNameUpdated",
+    "ChatSubjectUpdated",
     "Checkpoint",
     "CheckpointCheckpoint",
     "CloseClassicJobPosting200Response",
@@ -81,7 +87,10 @@ __all__ = [
     "CompaniesSearch1",
     "CompaniesSearch1DataInner",
     "CompaniesSearchDataInner",
+    "CompaniesSearchResults",
+    "CompaniesSearchResultsDataInner",
     "CookieAuthentication",
+    "CookieAuthentication1",
     "CreateAuthLink200Response",
     "CreateAuthLinkRequest",
     "CreateCalendarEvent201Response",
@@ -94,17 +103,30 @@ __all__ = [
     "CreateClassicJobPostingDraftRequest",
     "CreateClassicJobPostingDraftRequestApplyMethod",
     "CreateClassicJobPostingDraftRequestCompany",
+    "CreateClassicJobPostingDraftRequestJobTitle",
     "CreateClassicJobPostingDraftRequestRejectionSettings",
     "CreateClassicJobPostingDraftRequestScreeningQuestionsInner",
-    "CreateClassicJobPostingDraftRequestTitle",
     "CreateDraft201Response",
     "CreateDraftRequest",
     "CreateFolder201Response",
     "CreateFolderRequest",
+    "CreateNewEducation",
+    "CreateNewEducationDegree",
+    "CreateNewEducationEndDate",
+    "CreateNewEducationFieldOfStudy",
+    "CreateNewEducationSchool",
+    "CreateNewEducationStartDate",
+    "CreateNewExperience",
+    "CreateNewExperienceCompany",
+    "CreateNewExperienceEndDate",
+    "CreateNewExperienceJobTitle",
+    "CreateNewExperienceLocation",
+    "CreateNewExperienceMedia",
+    "CreateNewExperienceSkillsInner",
+    "CreateNewExperienceStartDate",
     "CreatePostRequest",
     "CreatePostRequestSpecifics",
     "CreatePostRequestSpecificsAllOfInstagram",
-    "CreatePostRequestSpecificsAllOfInstagramLocation",
     "CreateRecruiterHiringProject201Response",
     "CreateRecruiterHiringProjectRequest",
     "CreateRecruiterHiringProjectRequestCompany",
@@ -112,23 +134,19 @@ __all__ = [
     "CreateRecruiterJobPostingDraftInExistingProject200Response",
     "CreateRecruiterJobPostingDraftInExistingProjectRequest",
     "CreateRecruiterJobPostingDraftInExistingProjectRequestApplyMethod",
+    "CreateRecruiterJobPostingDraftInExistingProjectRequestCompany",
     "CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle",
     "CreateRecruiterJobPostingDraftInExistingProjectRequestRejectionSettings",
     "CreateRecruiterJobPostingDraftInNewProjectRequest",
-    "CreateRecruiterJobPostingDraftInNewProjectRequestJobTitle",
     "CreateRelationRequestRequest",
     "CreateWebhookEndpoint200Response",
     "CreateWebhookEndpointRequest",
     "CustomProxy",
     "CustomProxy1",
-    "Daily",
-    "DailyDaily",
     "DaysBased",
     "EditClassicJobPosting200Response",
     "EditClassicJobPostingRequest",
-    "EditClassicJobPostingRequestCompany",
     "EditClassicJobPostingRequestScreeningQuestionsInner",
-    "EditClassicJobPostingRequestTitle",
     "EditExistingEducation",
     "EditExistingEducationDegree",
     "EditExistingEducationFieldOfStudy",
@@ -140,7 +158,10 @@ __all__ = [
     "EditRecruiterHiringProject200Response",
     "EditRecruiterHiringProjectRequest",
     "EditRecruiterJobPostingRequest",
+    "EndorseClassicMemberSkill200Response",
+    "EndorseClassicMemberSkillRequest",
     "ExcludeActivities",
+    "File",
     "FileDocument",
     "FollowUser200Response",
     "FollowUser200ResponseAnyOf",
@@ -153,6 +174,8 @@ __all__ = [
     "FullProfileEducationInner",
     "FullProfileProjectsInner",
     "FullProfileSkillsInner",
+    "GetAvailableContracts200Response",
+    "GetAvailableContracts200ResponseContractsInner",
     "GetCalendarEventList200Response",
     "GetCalendarEventList200ResponseDataInner",
     "GetCalendarEventList200ResponseDataInnerAttendeesInner",
@@ -188,6 +211,15 @@ __all__ = [
     "GetClassicApplicantsRequestYearsOfExperienceInner",
     "GetClassicCompanyProfile200Response",
     "GetClassicCompanyProfile200ResponseAcquiredBy",
+    "GetClassicCompanyProfile200ResponseFunding",
+    "GetClassicCompanyProfile200ResponseFundingCrunchbase",
+    "GetClassicCompanyProfile200ResponseFundingCrunchbaseLastRound",
+    "GetClassicCompanyProfile200ResponseFundingCrunchbaseLastRoundLeadInvestorsInner",
+    "GetClassicCompanyProfile200ResponseFundingCrunchbaseLastRoundMoneyRaised",
+    "GetClassicCompanyProfile200ResponseInsights",
+    "GetClassicCompanyProfile200ResponseInsightsGrowthPeriodsInner",
+    "GetClassicCompanyProfile200ResponseInsightsHeacountGrowthInner",
+    "GetClassicCompanyProfile200ResponseInsightsHeadcountRange",
     "GetClassicCompanyProfile200ResponseLocationsInner",
     "GetClassicCompanyProfile200ResponseMailbox",
     "GetClassicCompanyProfile200ResponseViewerRolesInner",
@@ -206,8 +238,15 @@ __all__ = [
     "GetClassicJobPostingBudget200ResponsePromotedTotal",
     "GetClassicSearchParameters200Response",
     "GetClassicSearchParameters200ResponseDataInner",
+    "GetClassicSearchParameters200ResponseDataInnerMetadata",
     "GetDraftsList200Response",
     "GetDraftsList200ResponseDataInner",
+    "GetEmailContactsList200Response",
+    "GetEmailContactsList200ResponseDataInner",
+    "GetEmailContactsList200ResponseDataInnerAddressesInner",
+    "GetEmailContactsList200ResponseDataInnerGroupsInner",
+    "GetEmailContactsList200ResponseDataInnerSocialHandles",
+    "GetEmailContactsList200ResponseDataInnerSocialHandlesLinkedin",
     "GetEmailsList200Response",
     "GetEmailsList200ResponseDataInner",
     "GetEmailsList200ResponseDataInnerFromInner",
@@ -226,10 +265,6 @@ __all__ = [
     "GetMessagesList200ResponseDataInner",
     "GetMessagesList200ResponseDataInnerAttachmentsInner",
     "GetMessagesList200ResponseDataInnerEventMetadata",
-    "GetMessagesList200ResponseDataInnerEventMetadataAnyOf",
-    "GetMessagesList200ResponseDataInnerEventMetadataAnyOf1",
-    "GetMessagesList200ResponseDataInnerEventMetadataAnyOf2",
-    "GetMessagesList200ResponseDataInnerEventMetadataAnyOf3",
     "GetMessagesList200ResponseDataInnerForwarded",
     "GetMessagesList200ResponseDataInnerQuoted",
     "GetMessagesList200ResponseDataInnerQuotedAttachmentsInner",
@@ -276,6 +311,7 @@ __all__ = [
     "GetRecruiterJobPostingList200ResponseDataInner",
     "GetRecruiterPipelineCandidatesRequest",
     "GetRecruiterPipelineCandidatesRequestRecruitingActivity",
+    "GetRecruiterSearchParametersRequest",
     "GetRecruiterTalentPoolApplicantsRequest",
     "GetRecruiterTalentPoolApplicantsRequestCompany",
     "GetRecruiterTalentPoolApplicantsRequestCompanySizeInner",
@@ -290,32 +326,22 @@ __all__ = [
     "GetRecruiterTalentPoolApplicantsRequestYearsInCurrentPosition",
     "GetRecruiterTalentPoolApplicantsRequestYearsOfExperience",
     "GetRelationRequestsList200Response",
-    "GetRelationRequestsList200ResponseDataInner",
-    "GetRelationRequestsList200ResponseDataInnerUser",
     "GetSalesAccountLists200Response",
     "GetSalesAccountLists200ResponseDataInner",
     "GetSalesLeadLists200Response",
     "GetSalesLeadLists200ResponseDataInner",
     "GetThread200Response",
     "GetThread200ResponseEmailsInner",
+    "GetUserChat200Response",
+    "GetUserChat200ResponseDataInner",
+    "GetUserCommentsList200Response",
+    "GetUserCommentsList200ResponseDataInner",
+    "GetUserCommentsList200ResponseDataInnerParentPost",
+    "GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner",
     "GetUserProfile200Response",
     "GetUserProfile200ResponseSpecifics",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOf",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOf1",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInner",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOfEducationInner",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOfEducationInnerSchool",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOfExperienceInner",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOfExperienceInnerCompany",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOfLanguagesInner",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOfProjectsInner",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOfProjectsInnerContributorsInner",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOfRecommendations",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOfRecommendationsReceivedInner",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOfRecommendationsReceivedInnerUser",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOfSkillsInner",
-    "GetUserProfile200ResponseSpecificsAllOfAnyOfVolunteerExperienceInner",
+    "GetUserReactionsList200Response",
+    "GetUserReactionsList200ResponseDataInner",
     "GetUserRelations200Response",
     "GetUserRelations200ResponseDataInner",
     "GetUserRelations200ResponseDataInnerUser",
@@ -333,13 +359,20 @@ __all__ = [
     "InUSDK",
     "IncludeActivities",
     "Instagram",
-    "InstagramConfig",
-    "InstagramCredentials",
+    "Instagram1",
+    "Instagram1Config",
+    "Instagram1Credentials",
+    "JobsSearchResults",
+    "JobsSearchResultsDataInner",
+    "JobsSearchResultsDataInnerCompany",
+    "JobsSourced",
     "LeadList",
     "LeadListDataInner",
     "LeadListDataInnerAllOfAllOfContactInfo",
+    "LeadListDataInnerAllOfAllOfSocialHandles",
     "LeadListDataInnerAllOfAssociatedAccount",
     "Link",
+    "Link1",
     "LinkNewAccount",
     "LinkNewAccountConfig",
     "LinkNewAccountConfigGlobal",
@@ -348,14 +381,36 @@ __all__ = [
     "LinkNewAccountConfigLinkedin",
     "LinkNewAccountProviders",
     "LinkedIn",
+    "LinkedIn1",
+    "LinkedIn1Config",
+    "LinkedIn1Credentials",
+    "LinkedInCertificationsInner",
+    "LinkedInCertificationsInnerOrganization",
     "LinkedInClassic",
     "LinkedInClassicApplicant",
-    "LinkedInConfig",
-    "LinkedInCredentials",
+    "LinkedInEducationInner",
+    "LinkedInEducationInnerSchool",
+    "LinkedInExperienceInner",
+    "LinkedInExperienceInnerCompany",
+    "LinkedInLanguagesInner",
+    "LinkedInProjectsInner",
+    "LinkedInProjectsInnerContributorsInner",
+    "LinkedInRecommendations",
+    "LinkedInRecommendationsReceivedInner",
+    "LinkedInRecommendationsReceivedInnerUser",
     "LinkedInRecruiter",
     "LinkedInRecruiterFollowUp",
     "LinkedInRecruiterFollowUpScheduledFor",
+    "LinkedInRecruitingProfile",
+    "LinkedInRecruitingProfileEventsInner",
+    "LinkedInRecruitingProfileNotesInner",
+    "LinkedInRecruitingProfileNotesInnerCommentsInner",
+    "LinkedInRecruitingProfileTagsInner",
+    "LinkedInRelationRequest",
+    "LinkedInRelationRequestUser",
     "LinkedInSalesNavigator",
+    "LinkedInSkillsInner",
+    "LinkedInVolunteerExperienceInner",
     "ListAccounts200Response",
     "ListClassicUserJobPostings200Response",
     "ListClassicUserJobPostings200ResponseDataInner",
@@ -364,37 +419,30 @@ __all__ = [
     "ListWebhookConversations200ResponseDataInner",
     "ListWebhookEndpoints200Response",
     "ListWebhookEndpoints200ResponseDataInner",
+    "ListWebhookEndpoints200ResponseDataInnerAccountTargetsInner",
     "MediaShare",
+    "Message",
     "MessageFile",
     "MessageFileAllOfMetadata",
     "MessagePinStatus",
     "Mock",
     "ModifyEmailRequest",
+    "ModifyEmailRequestSpecifics",
+    "ModifyEmailRequestSpecificsAllOfOutlook",
     "ModifyMessageRequest",
     "MultipleChoices",
     "MultipleChoices1",
-    "NewEducation",
-    "NewEducationDegree",
-    "NewEducationEndDate",
-    "NewEducationFieldOfStudy",
-    "NewEducationSchool",
-    "NewEducationStartDate",
-    "NewExperience",
-    "NewExperienceAttachment",
-    "NewExperienceCompany",
-    "NewExperienceEndDate",
-    "NewExperienceJobTitle",
-    "NewExperienceLocation",
-    "NewExperienceSkillsInner",
-    "NewExperienceStartDate",
     "NewParticipantJoinedTheChatGroup",
+    "Note",
     "NumericAnswer",
+    "OTPOrInAppValidation",
     "OauthOutlookGoogle",
     "OauthOutlookGoogleConfig",
     "OauthURL",
     "OneTimePassword",
     "PartialProfile",
     "PartialProfile1",
+    "PartialProfileHiringProject",
     "PartialProfileWorkExperienceInner",
     "ParticipantRemovedFromChatGroup",
     "ParticipantRoleUpdated",
@@ -403,39 +451,41 @@ __all__ = [
     "PeopleSearch1DataInner",
     "PeopleSearch1DataInnerContactInfo",
     "PeopleSearch1DataInnerLatestContact",
-    "PeopleSearch1DataInnerSocialNetworks",
+    "PeopleSearch1DataInnerNetworkDistance",
+    "PeopleSearch1DataInnerSocialHandles",
     "PeopleSearch2",
     "PeopleSearch2DataInner",
     "PeopleSearchDataInner",
+    "PeopleSearchResults",
+    "PeopleSearchResultsDataInner",
+    "PerformClassicCompaniesSearch200Response",
     "PerformClassicCompaniesSearchRequest",
     "PerformClassicCompaniesSearchRequestHeadcountInner",
     "PerformClassicJobsSearch200Response",
     "PerformClassicJobsSearch200ResponseDataInner",
     "PerformClassicJobsSearchRequest",
     "PerformClassicJobsSearchRequestSalary",
+    "PerformClassicPeopleSearch200Response",
     "PerformClassicPeopleSearchRequest",
     "PerformClassicPeopleSearchRequestAdvancedKeywords",
+    "PerformClassicPostsSearch200Response",
     "PerformClassicPostsSearchRequest",
     "PerformClassicPostsSearchRequestAuthor",
     "PerformClassicPostsSearchRequestMentioning",
     "PerformClassicPostsSearchRequestPostedBy",
     "PerformClassicSearchFromUrl200Response",
-    "PerformClassicSearchFromUrl200ResponseAnyOf",
-    "PerformClassicSearchFromUrl200ResponseAnyOf1",
-    "PerformClassicSearchFromUrl200ResponseAnyOf1DataInner",
-    "PerformClassicSearchFromUrl200ResponseAnyOf2",
-    "PerformClassicSearchFromUrl200ResponseAnyOf2DataInner",
-    "PerformClassicSearchFromUrl200ResponseAnyOf3",
-    "PerformClassicSearchFromUrl200ResponseAnyOf3DataInner",
-    "PerformClassicSearchFromUrl200ResponseAnyOfDataInner",
-    "PerformClassicSearchFromUrl200ResponseAnyOfDataInnerCompany",
     "PerformClassicSearchFromUrlRequest",
     "PerformRecruiterPeopleSearchFromTalentPoolRequest",
     "PerformRecruiterPeopleSearchFromTalentPoolRequestCompanyInner",
+    "PerformRecruiterPeopleSearchFromTalentPoolRequestCurrentCompanyInner",
+    "PerformRecruiterPeopleSearchFromTalentPoolRequestDegree",
+    "PerformRecruiterPeopleSearchFromTalentPoolRequestFieldOfStudyInner",
     "PerformRecruiterPeopleSearchFromTalentPoolRequestGraduationYear",
     "PerformRecruiterPeopleSearchFromTalentPoolRequestHidePreviouslyViewed",
     "PerformRecruiterPeopleSearchFromTalentPoolRequestIndustry",
     "PerformRecruiterPeopleSearchFromTalentPoolRequestJobTitleInner",
+    "PerformRecruiterPeopleSearchFromTalentPoolRequestLoadCustomFilter",
+    "PerformRecruiterPeopleSearchFromTalentPoolRequestLoadSavedSearch",
     "PerformRecruiterPeopleSearchFromTalentPoolRequestLocationInner",
     "PerformRecruiterPeopleSearchFromTalentPoolRequestOccupationInner",
     "PerformRecruiterPeopleSearchFromTalentPoolRequestPostalCodeInner",
@@ -443,11 +493,17 @@ __all__ = [
     "PerformRecruiterPeopleSearchFromTalentPoolRequestProjectIncludeInner",
     "PerformRecruiterPeopleSearchFromTalentPoolRequestRecentlyJoinedInner",
     "PerformRecruiterPeopleSearchFromTalentPoolRequestRecruitingActivityInner",
+    "PerformRecruiterPeopleSearchFromTalentPoolRequestSaveCustomFilter",
+    "PerformRecruiterPeopleSearchFromTalentPoolRequestSaveSearch",
     "PerformRecruiterPeopleSearchFromTalentPoolRequestSchoolInner",
     "PerformRecruiterPeopleSearchFromTalentPoolRequestSkillsInner",
+    "PerformRecruiterPeopleSearchFromTalentPoolRequestSpokenLanguageInner",
+    "PerformRecruiterPeopleSearchFromTalentPoolRequestTags",
     "PerformRecruiterPeopleSearchRequest",
+    "PerformRecruiterPeopleSearchRequestIndustry",
     "PerformRecruiterSearchFromUrl200Response",
     "PerformSalesCompaniesSearchRequest",
+    "PerformSalesCompaniesSearchRequestAccountList",
     "PerformSalesCompaniesSearchRequestAnnualRevenue",
     "PerformSalesCompaniesSearchRequestDepartmentHeadcount",
     "PerformSalesCompaniesSearchRequestDepartmentHeadcountGrowth",
@@ -458,7 +514,6 @@ __all__ = [
     "PerformSalesCompaniesSearchRequestIndustry",
     "PerformSalesCompaniesSearchRequestLocation",
     "PerformSalesCompaniesSearchRequestPostalCode",
-    "PerformSalesCompaniesSearchRequestTechnologies",
     "PerformSalesPeopleSearchRequest",
     "PerformSalesPeopleSearchRequestAccountList",
     "PerformSalesPeopleSearchRequestCompanyHeadcountInner",
@@ -469,11 +524,14 @@ __all__ = [
     "PerformSalesPeopleSearchRequestGroup",
     "PerformSalesPeopleSearchRequestIndustry",
     "PerformSalesPeopleSearchRequestLeadList",
+    "PerformSalesPeopleSearchRequestLoadRecentSearch",
+    "PerformSalesPeopleSearchRequestLoadSavedSearch",
     "PerformSalesPeopleSearchRequestLocation",
     "PerformSalesPeopleSearchRequestPastCompany",
     "PerformSalesPeopleSearchRequestPastJobTitle",
     "PerformSalesPeopleSearchRequestPostalCode",
     "PerformSalesPeopleSearchRequestRecentInteraction",
+    "PerformSalesPeopleSearchRequestSaveSearch",
     "PerformSalesPeopleSearchRequestSavedResources",
     "PerformSalesPeopleSearchRequestSchool",
     "PerformSalesPeopleSearchRequestSeniority",
@@ -484,6 +542,11 @@ __all__ = [
     "PhoneRegister",
     "PipelineCandidatesSearch",
     "PipelineCandidatesSearchDataInner",
+    "PipelineChange",
+    "PipelineSourced",
+    "PostsSearchResults",
+    "PostsSearchResultsDataInner",
+    "ProfileView",
     "ProxyRequest200Response",
     "ProxyRequestRequest",
     "PublishClassicJobPosting200Response",
@@ -493,14 +556,15 @@ __all__ = [
     "PublishInPromotedMode",
     "PublishInPromotedMode1",
     "PublishInPromotedMode1Budget",
-    "PublishInPromotedMode1BudgetAnyOf",
-    "PublishInPromotedMode1BudgetAnyOf1",
     "PublishInPromotedModeBudget",
     "PublishRecruiterJobPostingRequest",
     "QRCode",
     "ReAuthenticateExistingAccount",
+    "Reaction",
     "ReadEmail200Response",
     "ReadMessage200Response",
+    "RecruiterSavedSearch",
+    "RecruiterSavedSearchProject",
     "RemoveAccount200Response",
     "RemoveMessageReaction200Response",
     "RemoveMessageReactionRequest",
@@ -512,6 +576,7 @@ __all__ = [
     "RemovePostReactionRequest",
     "RemovePostReactionRequestReaction",
     "SMTPConnectionsParameters",
+    "SalesNavigatorSavedSearch",
     "SaveRecruiterCandidateToPipeline200Response",
     "SaveRecruiterCandidateToPipelineRequest",
     "SaveSalesAccountToList200Response",
@@ -522,6 +587,8 @@ __all__ = [
     "ScheduledCallCreated",
     "ScheduledCallStarted",
     "SearchLocations200ResponseInner",
+    "SearchOrJobPostingSourced",
+    "SelectContract200Response",
     "SendEmail200Response",
     "SendEmailRequest",
     "SendEmailRequestAttachmentsInner",
@@ -549,10 +616,10 @@ __all__ = [
     "Telegram",
     "TelegramConfig",
     "TelegramCredentials",
-    "Total",
     "TrashEmail200Response",
     "TwoFactorAuthentication",
     "UnfollowUser200Response",
+    "Unhandled",
     "UnreadEmail200Response",
     "UpdateAccountRequest",
     "UpdateCalendarEventRequest",
@@ -560,6 +627,8 @@ __all__ = [
     "UpdateChatRequest",
     "UpdateChatRequestMutedUntil",
     "UpdateDraftRequest",
+    "UpdateDraftRequestSpecifics",
+    "UpdateDraftRequestSpecificsAllOfOutlook",
     "UpdateFolderRequest",
     "UpdatePostCommentRequest",
     "UpdatePostRequest",
@@ -567,9 +636,15 @@ __all__ = [
     "UpdateUserProfileRequest",
     "UpdateUserProfileRequestSpecifics",
     "UpdateUserProfileRequestSpecificsAllOfLinkedin",
+    "UpdateUserProfileRequestSpecificsAllOfLinkedinCustomLink",
     "UpdateUserProfileRequestSpecificsAllOfLinkedinEducation",
     "UpdateUserProfileRequestSpecificsAllOfLinkedinExperience",
+    "UpdateUserProfileRequestSpecificsAllOfLinkedinOpenToWork",
+    "UpdateUserProfileRequestSpecificsAllOfLinkedinOpenToWorkJobTitleInner",
+    "UpdateUserProfileRequestSpecificsAllOfLinkedinOpenToWorkWorkplaceInner",
     "UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions",
+    "UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptionsLayout",
+    "UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptionsLayoutBottomLeft",
     "UpdateUserProfileRequestSpecificsAllOfLinkedinSkillsInner",
     "UpdateWebhookEndpointRequest",
     "VerifyClassicCompanyMemberIdentity200Response",
@@ -613,6 +688,7 @@ from unipile.exceptions import ApiException as ApiException
 from unipile.models.accept_relation_request200_response import AcceptRelationRequest200Response as AcceptRelationRequest200Response
 from unipile.models.account import Account as Account
 from unipile.models.account1 import Account1 as Account1
+from unipile.models.account1_proxy import Account1Proxy as Account1Proxy
 from unipile.models.account_initial_sync import AccountInitialSync as AccountInitialSync
 from unipile.models.account_list import AccountList as AccountList
 from unipile.models.account_list_data_inner import AccountListDataInner as AccountListDataInner
@@ -632,6 +708,7 @@ from unipile.models.add_post_reaction_request_reaction import AddPostReactionReq
 from unipile.models.applicants_search import ApplicantsSearch as ApplicantsSearch
 from unipile.models.applicants_search_data_inner import ApplicantsSearchDataInner as ApplicantsSearchDataInner
 from unipile.models.applicants_search_data_inner_profile import ApplicantsSearchDataInnerProfile as ApplicantsSearchDataInnerProfile
+from unipile.models.applicants_sourced import ApplicantsSourced as ApplicantsSourced
 from unipile.models.apply_on_external_website import ApplyOnExternalWebsite as ApplyOnExternalWebsite
 from unipile.models.apply_on_linkedin import ApplyOnLinkedin as ApplyOnLinkedin
 from unipile.models.apply_on_linkedin1 import ApplyOnLinkedin1 as ApplyOnLinkedin1
@@ -639,6 +716,7 @@ from unipile.models.audio import Audio as Audio
 from unipile.models.automatic_proxy_configuration import AutomaticProxyConfiguration as AutomaticProxyConfiguration
 from unipile.models.basic_authentication import BasicAuthentication as BasicAuthentication
 from unipile.models.basic_authentication1 import BasicAuthentication1 as BasicAuthentication1
+from unipile.models.basic_authentication2 import BasicAuthentication2 as BasicAuthentication2
 from unipile.models.browse_sales_account_list_request import BrowseSalesAccountListRequest as BrowseSalesAccountListRequest
 from unipile.models.browse_sales_lead_list_request import BrowseSalesLeadListRequest as BrowseSalesLeadListRequest
 from unipile.models.call_ended import CallEnded as CallEnded
@@ -646,6 +724,9 @@ from unipile.models.call_rejected import CallRejected as CallRejected
 from unipile.models.call_started import CallStarted as CallStarted
 from unipile.models.cancel_relation_request200_response import CancelRelationRequest200Response as CancelRelationRequest200Response
 from unipile.models.captcha import Captcha as Captcha
+from unipile.models.chat_description_updated import ChatDescriptionUpdated as ChatDescriptionUpdated
+from unipile.models.chat_name_updated import ChatNameUpdated as ChatNameUpdated
+from unipile.models.chat_subject_updated import ChatSubjectUpdated as ChatSubjectUpdated
 from unipile.models.checkpoint import Checkpoint as Checkpoint
 from unipile.models.checkpoint_checkpoint import CheckpointCheckpoint as CheckpointCheckpoint
 from unipile.models.close_classic_job_posting200_response import CloseClassicJobPosting200Response as CloseClassicJobPosting200Response
@@ -653,7 +734,10 @@ from unipile.models.companies_search import CompaniesSearch as CompaniesSearch
 from unipile.models.companies_search1 import CompaniesSearch1 as CompaniesSearch1
 from unipile.models.companies_search1_data_inner import CompaniesSearch1DataInner as CompaniesSearch1DataInner
 from unipile.models.companies_search_data_inner import CompaniesSearchDataInner as CompaniesSearchDataInner
+from unipile.models.companies_search_results import CompaniesSearchResults as CompaniesSearchResults
+from unipile.models.companies_search_results_data_inner import CompaniesSearchResultsDataInner as CompaniesSearchResultsDataInner
 from unipile.models.cookie_authentication import CookieAuthentication as CookieAuthentication
+from unipile.models.cookie_authentication1 import CookieAuthentication1 as CookieAuthentication1
 from unipile.models.create_auth_link200_response import CreateAuthLink200Response as CreateAuthLink200Response
 from unipile.models.create_auth_link_request import CreateAuthLinkRequest as CreateAuthLinkRequest
 from unipile.models.create_calendar_event201_response import CreateCalendarEvent201Response as CreateCalendarEvent201Response
@@ -666,17 +750,30 @@ from unipile.models.create_classic_job_posting_draft201_response import CreateCl
 from unipile.models.create_classic_job_posting_draft_request import CreateClassicJobPostingDraftRequest as CreateClassicJobPostingDraftRequest
 from unipile.models.create_classic_job_posting_draft_request_apply_method import CreateClassicJobPostingDraftRequestApplyMethod as CreateClassicJobPostingDraftRequestApplyMethod
 from unipile.models.create_classic_job_posting_draft_request_company import CreateClassicJobPostingDraftRequestCompany as CreateClassicJobPostingDraftRequestCompany
+from unipile.models.create_classic_job_posting_draft_request_job_title import CreateClassicJobPostingDraftRequestJobTitle as CreateClassicJobPostingDraftRequestJobTitle
 from unipile.models.create_classic_job_posting_draft_request_rejection_settings import CreateClassicJobPostingDraftRequestRejectionSettings as CreateClassicJobPostingDraftRequestRejectionSettings
 from unipile.models.create_classic_job_posting_draft_request_screening_questions_inner import CreateClassicJobPostingDraftRequestScreeningQuestionsInner as CreateClassicJobPostingDraftRequestScreeningQuestionsInner
-from unipile.models.create_classic_job_posting_draft_request_title import CreateClassicJobPostingDraftRequestTitle as CreateClassicJobPostingDraftRequestTitle
 from unipile.models.create_draft201_response import CreateDraft201Response as CreateDraft201Response
 from unipile.models.create_draft_request import CreateDraftRequest as CreateDraftRequest
 from unipile.models.create_folder201_response import CreateFolder201Response as CreateFolder201Response
 from unipile.models.create_folder_request import CreateFolderRequest as CreateFolderRequest
+from unipile.models.create_new_education import CreateNewEducation as CreateNewEducation
+from unipile.models.create_new_education_degree import CreateNewEducationDegree as CreateNewEducationDegree
+from unipile.models.create_new_education_end_date import CreateNewEducationEndDate as CreateNewEducationEndDate
+from unipile.models.create_new_education_field_of_study import CreateNewEducationFieldOfStudy as CreateNewEducationFieldOfStudy
+from unipile.models.create_new_education_school import CreateNewEducationSchool as CreateNewEducationSchool
+from unipile.models.create_new_education_start_date import CreateNewEducationStartDate as CreateNewEducationStartDate
+from unipile.models.create_new_experience import CreateNewExperience as CreateNewExperience
+from unipile.models.create_new_experience_company import CreateNewExperienceCompany as CreateNewExperienceCompany
+from unipile.models.create_new_experience_end_date import CreateNewExperienceEndDate as CreateNewExperienceEndDate
+from unipile.models.create_new_experience_job_title import CreateNewExperienceJobTitle as CreateNewExperienceJobTitle
+from unipile.models.create_new_experience_location import CreateNewExperienceLocation as CreateNewExperienceLocation
+from unipile.models.create_new_experience_media import CreateNewExperienceMedia as CreateNewExperienceMedia
+from unipile.models.create_new_experience_skills_inner import CreateNewExperienceSkillsInner as CreateNewExperienceSkillsInner
+from unipile.models.create_new_experience_start_date import CreateNewExperienceStartDate as CreateNewExperienceStartDate
 from unipile.models.create_post_request import CreatePostRequest as CreatePostRequest
 from unipile.models.create_post_request_specifics import CreatePostRequestSpecifics as CreatePostRequestSpecifics
 from unipile.models.create_post_request_specifics_all_of_instagram import CreatePostRequestSpecificsAllOfInstagram as CreatePostRequestSpecificsAllOfInstagram
-from unipile.models.create_post_request_specifics_all_of_instagram_location import CreatePostRequestSpecificsAllOfInstagramLocation as CreatePostRequestSpecificsAllOfInstagramLocation
 from unipile.models.create_recruiter_hiring_project201_response import CreateRecruiterHiringProject201Response as CreateRecruiterHiringProject201Response
 from unipile.models.create_recruiter_hiring_project_request import CreateRecruiterHiringProjectRequest as CreateRecruiterHiringProjectRequest
 from unipile.models.create_recruiter_hiring_project_request_company import CreateRecruiterHiringProjectRequestCompany as CreateRecruiterHiringProjectRequestCompany
@@ -684,23 +781,19 @@ from unipile.models.create_recruiter_hiring_project_request_job_title import Cre
 from unipile.models.create_recruiter_job_posting_draft_in_existing_project200_response import CreateRecruiterJobPostingDraftInExistingProject200Response as CreateRecruiterJobPostingDraftInExistingProject200Response
 from unipile.models.create_recruiter_job_posting_draft_in_existing_project_request import CreateRecruiterJobPostingDraftInExistingProjectRequest as CreateRecruiterJobPostingDraftInExistingProjectRequest
 from unipile.models.create_recruiter_job_posting_draft_in_existing_project_request_apply_method import CreateRecruiterJobPostingDraftInExistingProjectRequestApplyMethod as CreateRecruiterJobPostingDraftInExistingProjectRequestApplyMethod
+from unipile.models.create_recruiter_job_posting_draft_in_existing_project_request_company import CreateRecruiterJobPostingDraftInExistingProjectRequestCompany as CreateRecruiterJobPostingDraftInExistingProjectRequestCompany
 from unipile.models.create_recruiter_job_posting_draft_in_existing_project_request_job_title import CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle as CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle
 from unipile.models.create_recruiter_job_posting_draft_in_existing_project_request_rejection_settings import CreateRecruiterJobPostingDraftInExistingProjectRequestRejectionSettings as CreateRecruiterJobPostingDraftInExistingProjectRequestRejectionSettings
 from unipile.models.create_recruiter_job_posting_draft_in_new_project_request import CreateRecruiterJobPostingDraftInNewProjectRequest as CreateRecruiterJobPostingDraftInNewProjectRequest
-from unipile.models.create_recruiter_job_posting_draft_in_new_project_request_job_title import CreateRecruiterJobPostingDraftInNewProjectRequestJobTitle as CreateRecruiterJobPostingDraftInNewProjectRequestJobTitle
 from unipile.models.create_relation_request_request import CreateRelationRequestRequest as CreateRelationRequestRequest
 from unipile.models.create_webhook_endpoint200_response import CreateWebhookEndpoint200Response as CreateWebhookEndpoint200Response
 from unipile.models.create_webhook_endpoint_request import CreateWebhookEndpointRequest as CreateWebhookEndpointRequest
 from unipile.models.custom_proxy import CustomProxy as CustomProxy
 from unipile.models.custom_proxy1 import CustomProxy1 as CustomProxy1
-from unipile.models.daily import Daily as Daily
-from unipile.models.daily_daily import DailyDaily as DailyDaily
 from unipile.models.days_based import DaysBased as DaysBased
 from unipile.models.edit_classic_job_posting200_response import EditClassicJobPosting200Response as EditClassicJobPosting200Response
 from unipile.models.edit_classic_job_posting_request import EditClassicJobPostingRequest as EditClassicJobPostingRequest
-from unipile.models.edit_classic_job_posting_request_company import EditClassicJobPostingRequestCompany as EditClassicJobPostingRequestCompany
 from unipile.models.edit_classic_job_posting_request_screening_questions_inner import EditClassicJobPostingRequestScreeningQuestionsInner as EditClassicJobPostingRequestScreeningQuestionsInner
-from unipile.models.edit_classic_job_posting_request_title import EditClassicJobPostingRequestTitle as EditClassicJobPostingRequestTitle
 from unipile.models.edit_existing_education import EditExistingEducation as EditExistingEducation
 from unipile.models.edit_existing_education_degree import EditExistingEducationDegree as EditExistingEducationDegree
 from unipile.models.edit_existing_education_field_of_study import EditExistingEducationFieldOfStudy as EditExistingEducationFieldOfStudy
@@ -712,7 +805,10 @@ from unipile.models.edit_existing_experience_location import EditExistingExperie
 from unipile.models.edit_recruiter_hiring_project200_response import EditRecruiterHiringProject200Response as EditRecruiterHiringProject200Response
 from unipile.models.edit_recruiter_hiring_project_request import EditRecruiterHiringProjectRequest as EditRecruiterHiringProjectRequest
 from unipile.models.edit_recruiter_job_posting_request import EditRecruiterJobPostingRequest as EditRecruiterJobPostingRequest
+from unipile.models.endorse_classic_member_skill200_response import EndorseClassicMemberSkill200Response as EndorseClassicMemberSkill200Response
+from unipile.models.endorse_classic_member_skill_request import EndorseClassicMemberSkillRequest as EndorseClassicMemberSkillRequest
 from unipile.models.exclude_activities import ExcludeActivities as ExcludeActivities
+from unipile.models.file import File as File
 from unipile.models.file_document import FileDocument as FileDocument
 from unipile.models.follow_user200_response import FollowUser200Response as FollowUser200Response
 from unipile.models.follow_user200_response_any_of import FollowUser200ResponseAnyOf as FollowUser200ResponseAnyOf
@@ -725,6 +821,8 @@ from unipile.models.full_profile_certifications_inner import FullProfileCertific
 from unipile.models.full_profile_education_inner import FullProfileEducationInner as FullProfileEducationInner
 from unipile.models.full_profile_projects_inner import FullProfileProjectsInner as FullProfileProjectsInner
 from unipile.models.full_profile_skills_inner import FullProfileSkillsInner as FullProfileSkillsInner
+from unipile.models.get_available_contracts200_response import GetAvailableContracts200Response as GetAvailableContracts200Response
+from unipile.models.get_available_contracts200_response_contracts_inner import GetAvailableContracts200ResponseContractsInner as GetAvailableContracts200ResponseContractsInner
 from unipile.models.get_calendar_event_list200_response import GetCalendarEventList200Response as GetCalendarEventList200Response
 from unipile.models.get_calendar_event_list200_response_data_inner import GetCalendarEventList200ResponseDataInner as GetCalendarEventList200ResponseDataInner
 from unipile.models.get_calendar_event_list200_response_data_inner_attendees_inner import GetCalendarEventList200ResponseDataInnerAttendeesInner as GetCalendarEventList200ResponseDataInnerAttendeesInner
@@ -760,6 +858,15 @@ from unipile.models.get_classic_applicants_request import GetClassicApplicantsRe
 from unipile.models.get_classic_applicants_request_years_of_experience_inner import GetClassicApplicantsRequestYearsOfExperienceInner as GetClassicApplicantsRequestYearsOfExperienceInner
 from unipile.models.get_classic_company_profile200_response import GetClassicCompanyProfile200Response as GetClassicCompanyProfile200Response
 from unipile.models.get_classic_company_profile200_response_acquired_by import GetClassicCompanyProfile200ResponseAcquiredBy as GetClassicCompanyProfile200ResponseAcquiredBy
+from unipile.models.get_classic_company_profile200_response_funding import GetClassicCompanyProfile200ResponseFunding as GetClassicCompanyProfile200ResponseFunding
+from unipile.models.get_classic_company_profile200_response_funding_crunchbase import GetClassicCompanyProfile200ResponseFundingCrunchbase as GetClassicCompanyProfile200ResponseFundingCrunchbase
+from unipile.models.get_classic_company_profile200_response_funding_crunchbase_last_round import GetClassicCompanyProfile200ResponseFundingCrunchbaseLastRound as GetClassicCompanyProfile200ResponseFundingCrunchbaseLastRound
+from unipile.models.get_classic_company_profile200_response_funding_crunchbase_last_round_lead_investors_inner import GetClassicCompanyProfile200ResponseFundingCrunchbaseLastRoundLeadInvestorsInner as GetClassicCompanyProfile200ResponseFundingCrunchbaseLastRoundLeadInvestorsInner
+from unipile.models.get_classic_company_profile200_response_funding_crunchbase_last_round_money_raised import GetClassicCompanyProfile200ResponseFundingCrunchbaseLastRoundMoneyRaised as GetClassicCompanyProfile200ResponseFundingCrunchbaseLastRoundMoneyRaised
+from unipile.models.get_classic_company_profile200_response_insights import GetClassicCompanyProfile200ResponseInsights as GetClassicCompanyProfile200ResponseInsights
+from unipile.models.get_classic_company_profile200_response_insights_growth_periods_inner import GetClassicCompanyProfile200ResponseInsightsGrowthPeriodsInner as GetClassicCompanyProfile200ResponseInsightsGrowthPeriodsInner
+from unipile.models.get_classic_company_profile200_response_insights_heacount_growth_inner import GetClassicCompanyProfile200ResponseInsightsHeacountGrowthInner as GetClassicCompanyProfile200ResponseInsightsHeacountGrowthInner
+from unipile.models.get_classic_company_profile200_response_insights_headcount_range import GetClassicCompanyProfile200ResponseInsightsHeadcountRange as GetClassicCompanyProfile200ResponseInsightsHeadcountRange
 from unipile.models.get_classic_company_profile200_response_locations_inner import GetClassicCompanyProfile200ResponseLocationsInner as GetClassicCompanyProfile200ResponseLocationsInner
 from unipile.models.get_classic_company_profile200_response_mailbox import GetClassicCompanyProfile200ResponseMailbox as GetClassicCompanyProfile200ResponseMailbox
 from unipile.models.get_classic_company_profile200_response_viewer_roles_inner import GetClassicCompanyProfile200ResponseViewerRolesInner as GetClassicCompanyProfile200ResponseViewerRolesInner
@@ -778,8 +885,15 @@ from unipile.models.get_classic_job_posting_budget200_response_promoted_daily im
 from unipile.models.get_classic_job_posting_budget200_response_promoted_total import GetClassicJobPostingBudget200ResponsePromotedTotal as GetClassicJobPostingBudget200ResponsePromotedTotal
 from unipile.models.get_classic_search_parameters200_response import GetClassicSearchParameters200Response as GetClassicSearchParameters200Response
 from unipile.models.get_classic_search_parameters200_response_data_inner import GetClassicSearchParameters200ResponseDataInner as GetClassicSearchParameters200ResponseDataInner
+from unipile.models.get_classic_search_parameters200_response_data_inner_metadata import GetClassicSearchParameters200ResponseDataInnerMetadata as GetClassicSearchParameters200ResponseDataInnerMetadata
 from unipile.models.get_drafts_list200_response import GetDraftsList200Response as GetDraftsList200Response
 from unipile.models.get_drafts_list200_response_data_inner import GetDraftsList200ResponseDataInner as GetDraftsList200ResponseDataInner
+from unipile.models.get_email_contacts_list200_response import GetEmailContactsList200Response as GetEmailContactsList200Response
+from unipile.models.get_email_contacts_list200_response_data_inner import GetEmailContactsList200ResponseDataInner as GetEmailContactsList200ResponseDataInner
+from unipile.models.get_email_contacts_list200_response_data_inner_addresses_inner import GetEmailContactsList200ResponseDataInnerAddressesInner as GetEmailContactsList200ResponseDataInnerAddressesInner
+from unipile.models.get_email_contacts_list200_response_data_inner_groups_inner import GetEmailContactsList200ResponseDataInnerGroupsInner as GetEmailContactsList200ResponseDataInnerGroupsInner
+from unipile.models.get_email_contacts_list200_response_data_inner_social_handles import GetEmailContactsList200ResponseDataInnerSocialHandles as GetEmailContactsList200ResponseDataInnerSocialHandles
+from unipile.models.get_email_contacts_list200_response_data_inner_social_handles_linkedin import GetEmailContactsList200ResponseDataInnerSocialHandlesLinkedin as GetEmailContactsList200ResponseDataInnerSocialHandlesLinkedin
 from unipile.models.get_emails_list200_response import GetEmailsList200Response as GetEmailsList200Response
 from unipile.models.get_emails_list200_response_data_inner import GetEmailsList200ResponseDataInner as GetEmailsList200ResponseDataInner
 from unipile.models.get_emails_list200_response_data_inner_from_inner import GetEmailsList200ResponseDataInnerFromInner as GetEmailsList200ResponseDataInnerFromInner
@@ -798,10 +912,6 @@ from unipile.models.get_messages_list200_response import GetMessagesList200Respo
 from unipile.models.get_messages_list200_response_data_inner import GetMessagesList200ResponseDataInner as GetMessagesList200ResponseDataInner
 from unipile.models.get_messages_list200_response_data_inner_attachments_inner import GetMessagesList200ResponseDataInnerAttachmentsInner as GetMessagesList200ResponseDataInnerAttachmentsInner
 from unipile.models.get_messages_list200_response_data_inner_event_metadata import GetMessagesList200ResponseDataInnerEventMetadata as GetMessagesList200ResponseDataInnerEventMetadata
-from unipile.models.get_messages_list200_response_data_inner_event_metadata_any_of import GetMessagesList200ResponseDataInnerEventMetadataAnyOf as GetMessagesList200ResponseDataInnerEventMetadataAnyOf
-from unipile.models.get_messages_list200_response_data_inner_event_metadata_any_of1 import GetMessagesList200ResponseDataInnerEventMetadataAnyOf1 as GetMessagesList200ResponseDataInnerEventMetadataAnyOf1
-from unipile.models.get_messages_list200_response_data_inner_event_metadata_any_of2 import GetMessagesList200ResponseDataInnerEventMetadataAnyOf2 as GetMessagesList200ResponseDataInnerEventMetadataAnyOf2
-from unipile.models.get_messages_list200_response_data_inner_event_metadata_any_of3 import GetMessagesList200ResponseDataInnerEventMetadataAnyOf3 as GetMessagesList200ResponseDataInnerEventMetadataAnyOf3
 from unipile.models.get_messages_list200_response_data_inner_forwarded import GetMessagesList200ResponseDataInnerForwarded as GetMessagesList200ResponseDataInnerForwarded
 from unipile.models.get_messages_list200_response_data_inner_quoted import GetMessagesList200ResponseDataInnerQuoted as GetMessagesList200ResponseDataInnerQuoted
 from unipile.models.get_messages_list200_response_data_inner_quoted_attachments_inner import GetMessagesList200ResponseDataInnerQuotedAttachmentsInner as GetMessagesList200ResponseDataInnerQuotedAttachmentsInner
@@ -848,6 +958,7 @@ from unipile.models.get_recruiter_job_posting_list200_response import GetRecruit
 from unipile.models.get_recruiter_job_posting_list200_response_data_inner import GetRecruiterJobPostingList200ResponseDataInner as GetRecruiterJobPostingList200ResponseDataInner
 from unipile.models.get_recruiter_pipeline_candidates_request import GetRecruiterPipelineCandidatesRequest as GetRecruiterPipelineCandidatesRequest
 from unipile.models.get_recruiter_pipeline_candidates_request_recruiting_activity import GetRecruiterPipelineCandidatesRequestRecruitingActivity as GetRecruiterPipelineCandidatesRequestRecruitingActivity
+from unipile.models.get_recruiter_search_parameters_request import GetRecruiterSearchParametersRequest as GetRecruiterSearchParametersRequest
 from unipile.models.get_recruiter_talent_pool_applicants_request import GetRecruiterTalentPoolApplicantsRequest as GetRecruiterTalentPoolApplicantsRequest
 from unipile.models.get_recruiter_talent_pool_applicants_request_company import GetRecruiterTalentPoolApplicantsRequestCompany as GetRecruiterTalentPoolApplicantsRequestCompany
 from unipile.models.get_recruiter_talent_pool_applicants_request_company_size_inner import GetRecruiterTalentPoolApplicantsRequestCompanySizeInner as GetRecruiterTalentPoolApplicantsRequestCompanySizeInner
@@ -862,32 +973,22 @@ from unipile.models.get_recruiter_talent_pool_applicants_request_years_in_curren
 from unipile.models.get_recruiter_talent_pool_applicants_request_years_in_current_position import GetRecruiterTalentPoolApplicantsRequestYearsInCurrentPosition as GetRecruiterTalentPoolApplicantsRequestYearsInCurrentPosition
 from unipile.models.get_recruiter_talent_pool_applicants_request_years_of_experience import GetRecruiterTalentPoolApplicantsRequestYearsOfExperience as GetRecruiterTalentPoolApplicantsRequestYearsOfExperience
 from unipile.models.get_relation_requests_list200_response import GetRelationRequestsList200Response as GetRelationRequestsList200Response
-from unipile.models.get_relation_requests_list200_response_data_inner import GetRelationRequestsList200ResponseDataInner as GetRelationRequestsList200ResponseDataInner
-from unipile.models.get_relation_requests_list200_response_data_inner_user import GetRelationRequestsList200ResponseDataInnerUser as GetRelationRequestsList200ResponseDataInnerUser
 from unipile.models.get_sales_account_lists200_response import GetSalesAccountLists200Response as GetSalesAccountLists200Response
 from unipile.models.get_sales_account_lists200_response_data_inner import GetSalesAccountLists200ResponseDataInner as GetSalesAccountLists200ResponseDataInner
 from unipile.models.get_sales_lead_lists200_response import GetSalesLeadLists200Response as GetSalesLeadLists200Response
 from unipile.models.get_sales_lead_lists200_response_data_inner import GetSalesLeadLists200ResponseDataInner as GetSalesLeadLists200ResponseDataInner
 from unipile.models.get_thread200_response import GetThread200Response as GetThread200Response
 from unipile.models.get_thread200_response_emails_inner import GetThread200ResponseEmailsInner as GetThread200ResponseEmailsInner
+from unipile.models.get_user_chat200_response import GetUserChat200Response as GetUserChat200Response
+from unipile.models.get_user_chat200_response_data_inner import GetUserChat200ResponseDataInner as GetUserChat200ResponseDataInner
+from unipile.models.get_user_comments_list200_response import GetUserCommentsList200Response as GetUserCommentsList200Response
+from unipile.models.get_user_comments_list200_response_data_inner import GetUserCommentsList200ResponseDataInner as GetUserCommentsList200ResponseDataInner
+from unipile.models.get_user_comments_list200_response_data_inner_parent_post import GetUserCommentsList200ResponseDataInnerParentPost as GetUserCommentsList200ResponseDataInnerParentPost
+from unipile.models.get_user_comments_list200_response_data_inner_parent_post_attachments_inner import GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner as GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner
 from unipile.models.get_user_profile200_response import GetUserProfile200Response as GetUserProfile200Response
 from unipile.models.get_user_profile200_response_specifics import GetUserProfile200ResponseSpecifics as GetUserProfile200ResponseSpecifics
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of import GetUserProfile200ResponseSpecificsAllOfAnyOf as GetUserProfile200ResponseSpecificsAllOfAnyOf
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of1 import GetUserProfile200ResponseSpecificsAllOfAnyOf1 as GetUserProfile200ResponseSpecificsAllOfAnyOf1
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_certifications_inner import GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInner as GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInner
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_certifications_inner_organization import GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization as GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_education_inner import GetUserProfile200ResponseSpecificsAllOfAnyOfEducationInner as GetUserProfile200ResponseSpecificsAllOfAnyOfEducationInner
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_education_inner_school import GetUserProfile200ResponseSpecificsAllOfAnyOfEducationInnerSchool as GetUserProfile200ResponseSpecificsAllOfAnyOfEducationInnerSchool
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_experience_inner import GetUserProfile200ResponseSpecificsAllOfAnyOfExperienceInner as GetUserProfile200ResponseSpecificsAllOfAnyOfExperienceInner
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_experience_inner_company import GetUserProfile200ResponseSpecificsAllOfAnyOfExperienceInnerCompany as GetUserProfile200ResponseSpecificsAllOfAnyOfExperienceInnerCompany
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_languages_inner import GetUserProfile200ResponseSpecificsAllOfAnyOfLanguagesInner as GetUserProfile200ResponseSpecificsAllOfAnyOfLanguagesInner
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_projects_inner import GetUserProfile200ResponseSpecificsAllOfAnyOfProjectsInner as GetUserProfile200ResponseSpecificsAllOfAnyOfProjectsInner
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_projects_inner_contributors_inner import GetUserProfile200ResponseSpecificsAllOfAnyOfProjectsInnerContributorsInner as GetUserProfile200ResponseSpecificsAllOfAnyOfProjectsInnerContributorsInner
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_recommendations import GetUserProfile200ResponseSpecificsAllOfAnyOfRecommendations as GetUserProfile200ResponseSpecificsAllOfAnyOfRecommendations
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_recommendations_received_inner import GetUserProfile200ResponseSpecificsAllOfAnyOfRecommendationsReceivedInner as GetUserProfile200ResponseSpecificsAllOfAnyOfRecommendationsReceivedInner
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_recommendations_received_inner_user import GetUserProfile200ResponseSpecificsAllOfAnyOfRecommendationsReceivedInnerUser as GetUserProfile200ResponseSpecificsAllOfAnyOfRecommendationsReceivedInnerUser
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_skills_inner import GetUserProfile200ResponseSpecificsAllOfAnyOfSkillsInner as GetUserProfile200ResponseSpecificsAllOfAnyOfSkillsInner
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_volunteer_experience_inner import GetUserProfile200ResponseSpecificsAllOfAnyOfVolunteerExperienceInner as GetUserProfile200ResponseSpecificsAllOfAnyOfVolunteerExperienceInner
+from unipile.models.get_user_reactions_list200_response import GetUserReactionsList200Response as GetUserReactionsList200Response
+from unipile.models.get_user_reactions_list200_response_data_inner import GetUserReactionsList200ResponseDataInner as GetUserReactionsList200ResponseDataInner
 from unipile.models.get_user_relations200_response import GetUserRelations200Response as GetUserRelations200Response
 from unipile.models.get_user_relations200_response_data_inner import GetUserRelations200ResponseDataInner as GetUserRelations200ResponseDataInner
 from unipile.models.get_user_relations200_response_data_inner_user import GetUserRelations200ResponseDataInnerUser as GetUserRelations200ResponseDataInnerUser
@@ -905,13 +1006,20 @@ from unipile.models.in_gbpk import InGBPK as InGBPK
 from unipile.models.in_usdk import InUSDK as InUSDK
 from unipile.models.include_activities import IncludeActivities as IncludeActivities
 from unipile.models.instagram import Instagram as Instagram
-from unipile.models.instagram_config import InstagramConfig as InstagramConfig
-from unipile.models.instagram_credentials import InstagramCredentials as InstagramCredentials
+from unipile.models.instagram1 import Instagram1 as Instagram1
+from unipile.models.instagram1_config import Instagram1Config as Instagram1Config
+from unipile.models.instagram1_credentials import Instagram1Credentials as Instagram1Credentials
+from unipile.models.jobs_search_results import JobsSearchResults as JobsSearchResults
+from unipile.models.jobs_search_results_data_inner import JobsSearchResultsDataInner as JobsSearchResultsDataInner
+from unipile.models.jobs_search_results_data_inner_company import JobsSearchResultsDataInnerCompany as JobsSearchResultsDataInnerCompany
+from unipile.models.jobs_sourced import JobsSourced as JobsSourced
 from unipile.models.lead_list import LeadList as LeadList
 from unipile.models.lead_list_data_inner import LeadListDataInner as LeadListDataInner
 from unipile.models.lead_list_data_inner_all_of_all_of_contact_info import LeadListDataInnerAllOfAllOfContactInfo as LeadListDataInnerAllOfAllOfContactInfo
+from unipile.models.lead_list_data_inner_all_of_all_of_social_handles import LeadListDataInnerAllOfAllOfSocialHandles as LeadListDataInnerAllOfAllOfSocialHandles
 from unipile.models.lead_list_data_inner_all_of_associated_account import LeadListDataInnerAllOfAssociatedAccount as LeadListDataInnerAllOfAssociatedAccount
 from unipile.models.link import Link as Link
+from unipile.models.link1 import Link1 as Link1
 from unipile.models.link_new_account import LinkNewAccount as LinkNewAccount
 from unipile.models.link_new_account_config import LinkNewAccountConfig as LinkNewAccountConfig
 from unipile.models.link_new_account_config_global import LinkNewAccountConfigGlobal as LinkNewAccountConfigGlobal
@@ -920,14 +1028,36 @@ from unipile.models.link_new_account_config_imap import LinkNewAccountConfigImap
 from unipile.models.link_new_account_config_linkedin import LinkNewAccountConfigLinkedin as LinkNewAccountConfigLinkedin
 from unipile.models.link_new_account_providers import LinkNewAccountProviders as LinkNewAccountProviders
 from unipile.models.linked_in import LinkedIn as LinkedIn
+from unipile.models.linked_in1 import LinkedIn1 as LinkedIn1
+from unipile.models.linked_in1_config import LinkedIn1Config as LinkedIn1Config
+from unipile.models.linked_in1_credentials import LinkedIn1Credentials as LinkedIn1Credentials
+from unipile.models.linked_in_certifications_inner import LinkedInCertificationsInner as LinkedInCertificationsInner
+from unipile.models.linked_in_certifications_inner_organization import LinkedInCertificationsInnerOrganization as LinkedInCertificationsInnerOrganization
 from unipile.models.linked_in_classic import LinkedInClassic as LinkedInClassic
 from unipile.models.linked_in_classic_applicant import LinkedInClassicApplicant as LinkedInClassicApplicant
-from unipile.models.linked_in_config import LinkedInConfig as LinkedInConfig
-from unipile.models.linked_in_credentials import LinkedInCredentials as LinkedInCredentials
+from unipile.models.linked_in_education_inner import LinkedInEducationInner as LinkedInEducationInner
+from unipile.models.linked_in_education_inner_school import LinkedInEducationInnerSchool as LinkedInEducationInnerSchool
+from unipile.models.linked_in_experience_inner import LinkedInExperienceInner as LinkedInExperienceInner
+from unipile.models.linked_in_experience_inner_company import LinkedInExperienceInnerCompany as LinkedInExperienceInnerCompany
+from unipile.models.linked_in_languages_inner import LinkedInLanguagesInner as LinkedInLanguagesInner
+from unipile.models.linked_in_projects_inner import LinkedInProjectsInner as LinkedInProjectsInner
+from unipile.models.linked_in_projects_inner_contributors_inner import LinkedInProjectsInnerContributorsInner as LinkedInProjectsInnerContributorsInner
+from unipile.models.linked_in_recommendations import LinkedInRecommendations as LinkedInRecommendations
+from unipile.models.linked_in_recommendations_received_inner import LinkedInRecommendationsReceivedInner as LinkedInRecommendationsReceivedInner
+from unipile.models.linked_in_recommendations_received_inner_user import LinkedInRecommendationsReceivedInnerUser as LinkedInRecommendationsReceivedInnerUser
 from unipile.models.linked_in_recruiter import LinkedInRecruiter as LinkedInRecruiter
 from unipile.models.linked_in_recruiter_follow_up import LinkedInRecruiterFollowUp as LinkedInRecruiterFollowUp
 from unipile.models.linked_in_recruiter_follow_up_scheduled_for import LinkedInRecruiterFollowUpScheduledFor as LinkedInRecruiterFollowUpScheduledFor
+from unipile.models.linked_in_recruiting_profile import LinkedInRecruitingProfile as LinkedInRecruitingProfile
+from unipile.models.linked_in_recruiting_profile_events_inner import LinkedInRecruitingProfileEventsInner as LinkedInRecruitingProfileEventsInner
+from unipile.models.linked_in_recruiting_profile_notes_inner import LinkedInRecruitingProfileNotesInner as LinkedInRecruitingProfileNotesInner
+from unipile.models.linked_in_recruiting_profile_notes_inner_comments_inner import LinkedInRecruitingProfileNotesInnerCommentsInner as LinkedInRecruitingProfileNotesInnerCommentsInner
+from unipile.models.linked_in_recruiting_profile_tags_inner import LinkedInRecruitingProfileTagsInner as LinkedInRecruitingProfileTagsInner
+from unipile.models.linked_in_relation_request import LinkedInRelationRequest as LinkedInRelationRequest
+from unipile.models.linked_in_relation_request_user import LinkedInRelationRequestUser as LinkedInRelationRequestUser
 from unipile.models.linked_in_sales_navigator import LinkedInSalesNavigator as LinkedInSalesNavigator
+from unipile.models.linked_in_skills_inner import LinkedInSkillsInner as LinkedInSkillsInner
+from unipile.models.linked_in_volunteer_experience_inner import LinkedInVolunteerExperienceInner as LinkedInVolunteerExperienceInner
 from unipile.models.list_accounts200_response import ListAccounts200Response as ListAccounts200Response
 from unipile.models.list_classic_user_job_postings200_response import ListClassicUserJobPostings200Response as ListClassicUserJobPostings200Response
 from unipile.models.list_classic_user_job_postings200_response_data_inner import ListClassicUserJobPostings200ResponseDataInner as ListClassicUserJobPostings200ResponseDataInner
@@ -936,37 +1066,30 @@ from unipile.models.list_webhook_conversations200_response import ListWebhookCon
 from unipile.models.list_webhook_conversations200_response_data_inner import ListWebhookConversations200ResponseDataInner as ListWebhookConversations200ResponseDataInner
 from unipile.models.list_webhook_endpoints200_response import ListWebhookEndpoints200Response as ListWebhookEndpoints200Response
 from unipile.models.list_webhook_endpoints200_response_data_inner import ListWebhookEndpoints200ResponseDataInner as ListWebhookEndpoints200ResponseDataInner
+from unipile.models.list_webhook_endpoints200_response_data_inner_account_targets_inner import ListWebhookEndpoints200ResponseDataInnerAccountTargetsInner as ListWebhookEndpoints200ResponseDataInnerAccountTargetsInner
 from unipile.models.media_share import MediaShare as MediaShare
+from unipile.models.message import Message as Message
 from unipile.models.message_file import MessageFile as MessageFile
 from unipile.models.message_file_all_of_metadata import MessageFileAllOfMetadata as MessageFileAllOfMetadata
 from unipile.models.message_pin_status import MessagePinStatus as MessagePinStatus
 from unipile.models.mock import Mock as Mock
 from unipile.models.modify_email_request import ModifyEmailRequest as ModifyEmailRequest
+from unipile.models.modify_email_request_specifics import ModifyEmailRequestSpecifics as ModifyEmailRequestSpecifics
+from unipile.models.modify_email_request_specifics_all_of_outlook import ModifyEmailRequestSpecificsAllOfOutlook as ModifyEmailRequestSpecificsAllOfOutlook
 from unipile.models.modify_message_request import ModifyMessageRequest as ModifyMessageRequest
 from unipile.models.multiple_choices import MultipleChoices as MultipleChoices
 from unipile.models.multiple_choices1 import MultipleChoices1 as MultipleChoices1
-from unipile.models.new_education import NewEducation as NewEducation
-from unipile.models.new_education_degree import NewEducationDegree as NewEducationDegree
-from unipile.models.new_education_end_date import NewEducationEndDate as NewEducationEndDate
-from unipile.models.new_education_field_of_study import NewEducationFieldOfStudy as NewEducationFieldOfStudy
-from unipile.models.new_education_school import NewEducationSchool as NewEducationSchool
-from unipile.models.new_education_start_date import NewEducationStartDate as NewEducationStartDate
-from unipile.models.new_experience import NewExperience as NewExperience
-from unipile.models.new_experience_attachment import NewExperienceAttachment as NewExperienceAttachment
-from unipile.models.new_experience_company import NewExperienceCompany as NewExperienceCompany
-from unipile.models.new_experience_end_date import NewExperienceEndDate as NewExperienceEndDate
-from unipile.models.new_experience_job_title import NewExperienceJobTitle as NewExperienceJobTitle
-from unipile.models.new_experience_location import NewExperienceLocation as NewExperienceLocation
-from unipile.models.new_experience_skills_inner import NewExperienceSkillsInner as NewExperienceSkillsInner
-from unipile.models.new_experience_start_date import NewExperienceStartDate as NewExperienceStartDate
 from unipile.models.new_participant_joined_the_chat_group import NewParticipantJoinedTheChatGroup as NewParticipantJoinedTheChatGroup
+from unipile.models.note import Note as Note
 from unipile.models.numeric_answer import NumericAnswer as NumericAnswer
+from unipile.models.otpor_in_app_validation import OTPOrInAppValidation as OTPOrInAppValidation
 from unipile.models.oauth_outlook_google import OauthOutlookGoogle as OauthOutlookGoogle
 from unipile.models.oauth_outlook_google_config import OauthOutlookGoogleConfig as OauthOutlookGoogleConfig
 from unipile.models.oauth_url import OauthURL as OauthURL
 from unipile.models.one_time_password import OneTimePassword as OneTimePassword
 from unipile.models.partial_profile import PartialProfile as PartialProfile
 from unipile.models.partial_profile1 import PartialProfile1 as PartialProfile1
+from unipile.models.partial_profile_hiring_project import PartialProfileHiringProject as PartialProfileHiringProject
 from unipile.models.partial_profile_work_experience_inner import PartialProfileWorkExperienceInner as PartialProfileWorkExperienceInner
 from unipile.models.participant_removed_from_chat_group import ParticipantRemovedFromChatGroup as ParticipantRemovedFromChatGroup
 from unipile.models.participant_role_updated import ParticipantRoleUpdated as ParticipantRoleUpdated
@@ -975,39 +1098,41 @@ from unipile.models.people_search1 import PeopleSearch1 as PeopleSearch1
 from unipile.models.people_search1_data_inner import PeopleSearch1DataInner as PeopleSearch1DataInner
 from unipile.models.people_search1_data_inner_contact_info import PeopleSearch1DataInnerContactInfo as PeopleSearch1DataInnerContactInfo
 from unipile.models.people_search1_data_inner_latest_contact import PeopleSearch1DataInnerLatestContact as PeopleSearch1DataInnerLatestContact
-from unipile.models.people_search1_data_inner_social_networks import PeopleSearch1DataInnerSocialNetworks as PeopleSearch1DataInnerSocialNetworks
+from unipile.models.people_search1_data_inner_network_distance import PeopleSearch1DataInnerNetworkDistance as PeopleSearch1DataInnerNetworkDistance
+from unipile.models.people_search1_data_inner_social_handles import PeopleSearch1DataInnerSocialHandles as PeopleSearch1DataInnerSocialHandles
 from unipile.models.people_search2 import PeopleSearch2 as PeopleSearch2
 from unipile.models.people_search2_data_inner import PeopleSearch2DataInner as PeopleSearch2DataInner
 from unipile.models.people_search_data_inner import PeopleSearchDataInner as PeopleSearchDataInner
+from unipile.models.people_search_results import PeopleSearchResults as PeopleSearchResults
+from unipile.models.people_search_results_data_inner import PeopleSearchResultsDataInner as PeopleSearchResultsDataInner
+from unipile.models.perform_classic_companies_search200_response import PerformClassicCompaniesSearch200Response as PerformClassicCompaniesSearch200Response
 from unipile.models.perform_classic_companies_search_request import PerformClassicCompaniesSearchRequest as PerformClassicCompaniesSearchRequest
 from unipile.models.perform_classic_companies_search_request_headcount_inner import PerformClassicCompaniesSearchRequestHeadcountInner as PerformClassicCompaniesSearchRequestHeadcountInner
 from unipile.models.perform_classic_jobs_search200_response import PerformClassicJobsSearch200Response as PerformClassicJobsSearch200Response
 from unipile.models.perform_classic_jobs_search200_response_data_inner import PerformClassicJobsSearch200ResponseDataInner as PerformClassicJobsSearch200ResponseDataInner
 from unipile.models.perform_classic_jobs_search_request import PerformClassicJobsSearchRequest as PerformClassicJobsSearchRequest
 from unipile.models.perform_classic_jobs_search_request_salary import PerformClassicJobsSearchRequestSalary as PerformClassicJobsSearchRequestSalary
+from unipile.models.perform_classic_people_search200_response import PerformClassicPeopleSearch200Response as PerformClassicPeopleSearch200Response
 from unipile.models.perform_classic_people_search_request import PerformClassicPeopleSearchRequest as PerformClassicPeopleSearchRequest
 from unipile.models.perform_classic_people_search_request_advanced_keywords import PerformClassicPeopleSearchRequestAdvancedKeywords as PerformClassicPeopleSearchRequestAdvancedKeywords
+from unipile.models.perform_classic_posts_search200_response import PerformClassicPostsSearch200Response as PerformClassicPostsSearch200Response
 from unipile.models.perform_classic_posts_search_request import PerformClassicPostsSearchRequest as PerformClassicPostsSearchRequest
 from unipile.models.perform_classic_posts_search_request_author import PerformClassicPostsSearchRequestAuthor as PerformClassicPostsSearchRequestAuthor
 from unipile.models.perform_classic_posts_search_request_mentioning import PerformClassicPostsSearchRequestMentioning as PerformClassicPostsSearchRequestMentioning
 from unipile.models.perform_classic_posts_search_request_posted_by import PerformClassicPostsSearchRequestPostedBy as PerformClassicPostsSearchRequestPostedBy
 from unipile.models.perform_classic_search_from_url200_response import PerformClassicSearchFromUrl200Response as PerformClassicSearchFromUrl200Response
-from unipile.models.perform_classic_search_from_url200_response_any_of import PerformClassicSearchFromUrl200ResponseAnyOf as PerformClassicSearchFromUrl200ResponseAnyOf
-from unipile.models.perform_classic_search_from_url200_response_any_of1 import PerformClassicSearchFromUrl200ResponseAnyOf1 as PerformClassicSearchFromUrl200ResponseAnyOf1
-from unipile.models.perform_classic_search_from_url200_response_any_of1_data_inner import PerformClassicSearchFromUrl200ResponseAnyOf1DataInner as PerformClassicSearchFromUrl200ResponseAnyOf1DataInner
-from unipile.models.perform_classic_search_from_url200_response_any_of2 import PerformClassicSearchFromUrl200ResponseAnyOf2 as PerformClassicSearchFromUrl200ResponseAnyOf2
-from unipile.models.perform_classic_search_from_url200_response_any_of2_data_inner import PerformClassicSearchFromUrl200ResponseAnyOf2DataInner as PerformClassicSearchFromUrl200ResponseAnyOf2DataInner
-from unipile.models.perform_classic_search_from_url200_response_any_of3 import PerformClassicSearchFromUrl200ResponseAnyOf3 as PerformClassicSearchFromUrl200ResponseAnyOf3
-from unipile.models.perform_classic_search_from_url200_response_any_of3_data_inner import PerformClassicSearchFromUrl200ResponseAnyOf3DataInner as PerformClassicSearchFromUrl200ResponseAnyOf3DataInner
-from unipile.models.perform_classic_search_from_url200_response_any_of_data_inner import PerformClassicSearchFromUrl200ResponseAnyOfDataInner as PerformClassicSearchFromUrl200ResponseAnyOfDataInner
-from unipile.models.perform_classic_search_from_url200_response_any_of_data_inner_company import PerformClassicSearchFromUrl200ResponseAnyOfDataInnerCompany as PerformClassicSearchFromUrl200ResponseAnyOfDataInnerCompany
 from unipile.models.perform_classic_search_from_url_request import PerformClassicSearchFromUrlRequest as PerformClassicSearchFromUrlRequest
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request import PerformRecruiterPeopleSearchFromTalentPoolRequest as PerformRecruiterPeopleSearchFromTalentPoolRequest
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_company_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestCompanyInner as PerformRecruiterPeopleSearchFromTalentPoolRequestCompanyInner
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_current_company_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestCurrentCompanyInner as PerformRecruiterPeopleSearchFromTalentPoolRequestCurrentCompanyInner
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_degree import PerformRecruiterPeopleSearchFromTalentPoolRequestDegree as PerformRecruiterPeopleSearchFromTalentPoolRequestDegree
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_field_of_study_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestFieldOfStudyInner as PerformRecruiterPeopleSearchFromTalentPoolRequestFieldOfStudyInner
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_graduation_year import PerformRecruiterPeopleSearchFromTalentPoolRequestGraduationYear as PerformRecruiterPeopleSearchFromTalentPoolRequestGraduationYear
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_hide_previously_viewed import PerformRecruiterPeopleSearchFromTalentPoolRequestHidePreviouslyViewed as PerformRecruiterPeopleSearchFromTalentPoolRequestHidePreviouslyViewed
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_industry import PerformRecruiterPeopleSearchFromTalentPoolRequestIndustry as PerformRecruiterPeopleSearchFromTalentPoolRequestIndustry
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_job_title_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestJobTitleInner as PerformRecruiterPeopleSearchFromTalentPoolRequestJobTitleInner
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_load_custom_filter import PerformRecruiterPeopleSearchFromTalentPoolRequestLoadCustomFilter as PerformRecruiterPeopleSearchFromTalentPoolRequestLoadCustomFilter
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_load_saved_search import PerformRecruiterPeopleSearchFromTalentPoolRequestLoadSavedSearch as PerformRecruiterPeopleSearchFromTalentPoolRequestLoadSavedSearch
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_location_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestLocationInner as PerformRecruiterPeopleSearchFromTalentPoolRequestLocationInner
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_occupation_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestOccupationInner as PerformRecruiterPeopleSearchFromTalentPoolRequestOccupationInner
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_postal_code_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestPostalCodeInner as PerformRecruiterPeopleSearchFromTalentPoolRequestPostalCodeInner
@@ -1015,11 +1140,17 @@ from unipile.models.perform_recruiter_people_search_from_talent_pool_request_pro
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_project_include_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestProjectIncludeInner as PerformRecruiterPeopleSearchFromTalentPoolRequestProjectIncludeInner
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_recently_joined_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestRecentlyJoinedInner as PerformRecruiterPeopleSearchFromTalentPoolRequestRecentlyJoinedInner
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_recruiting_activity_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestRecruitingActivityInner as PerformRecruiterPeopleSearchFromTalentPoolRequestRecruitingActivityInner
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_save_custom_filter import PerformRecruiterPeopleSearchFromTalentPoolRequestSaveCustomFilter as PerformRecruiterPeopleSearchFromTalentPoolRequestSaveCustomFilter
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_save_search import PerformRecruiterPeopleSearchFromTalentPoolRequestSaveSearch as PerformRecruiterPeopleSearchFromTalentPoolRequestSaveSearch
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_school_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestSchoolInner as PerformRecruiterPeopleSearchFromTalentPoolRequestSchoolInner
 from unipile.models.perform_recruiter_people_search_from_talent_pool_request_skills_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestSkillsInner as PerformRecruiterPeopleSearchFromTalentPoolRequestSkillsInner
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_spoken_language_inner import PerformRecruiterPeopleSearchFromTalentPoolRequestSpokenLanguageInner as PerformRecruiterPeopleSearchFromTalentPoolRequestSpokenLanguageInner
+from unipile.models.perform_recruiter_people_search_from_talent_pool_request_tags import PerformRecruiterPeopleSearchFromTalentPoolRequestTags as PerformRecruiterPeopleSearchFromTalentPoolRequestTags
 from unipile.models.perform_recruiter_people_search_request import PerformRecruiterPeopleSearchRequest as PerformRecruiterPeopleSearchRequest
+from unipile.models.perform_recruiter_people_search_request_industry import PerformRecruiterPeopleSearchRequestIndustry as PerformRecruiterPeopleSearchRequestIndustry
 from unipile.models.perform_recruiter_search_from_url200_response import PerformRecruiterSearchFromUrl200Response as PerformRecruiterSearchFromUrl200Response
 from unipile.models.perform_sales_companies_search_request import PerformSalesCompaniesSearchRequest as PerformSalesCompaniesSearchRequest
+from unipile.models.perform_sales_companies_search_request_account_list import PerformSalesCompaniesSearchRequestAccountList as PerformSalesCompaniesSearchRequestAccountList
 from unipile.models.perform_sales_companies_search_request_annual_revenue import PerformSalesCompaniesSearchRequestAnnualRevenue as PerformSalesCompaniesSearchRequestAnnualRevenue
 from unipile.models.perform_sales_companies_search_request_department_headcount import PerformSalesCompaniesSearchRequestDepartmentHeadcount as PerformSalesCompaniesSearchRequestDepartmentHeadcount
 from unipile.models.perform_sales_companies_search_request_department_headcount_growth import PerformSalesCompaniesSearchRequestDepartmentHeadcountGrowth as PerformSalesCompaniesSearchRequestDepartmentHeadcountGrowth
@@ -1030,7 +1161,6 @@ from unipile.models.perform_sales_companies_search_request_headcount_inner impor
 from unipile.models.perform_sales_companies_search_request_industry import PerformSalesCompaniesSearchRequestIndustry as PerformSalesCompaniesSearchRequestIndustry
 from unipile.models.perform_sales_companies_search_request_location import PerformSalesCompaniesSearchRequestLocation as PerformSalesCompaniesSearchRequestLocation
 from unipile.models.perform_sales_companies_search_request_postal_code import PerformSalesCompaniesSearchRequestPostalCode as PerformSalesCompaniesSearchRequestPostalCode
-from unipile.models.perform_sales_companies_search_request_technologies import PerformSalesCompaniesSearchRequestTechnologies as PerformSalesCompaniesSearchRequestTechnologies
 from unipile.models.perform_sales_people_search_request import PerformSalesPeopleSearchRequest as PerformSalesPeopleSearchRequest
 from unipile.models.perform_sales_people_search_request_account_list import PerformSalesPeopleSearchRequestAccountList as PerformSalesPeopleSearchRequestAccountList
 from unipile.models.perform_sales_people_search_request_company_headcount_inner import PerformSalesPeopleSearchRequestCompanyHeadcountInner as PerformSalesPeopleSearchRequestCompanyHeadcountInner
@@ -1041,11 +1171,14 @@ from unipile.models.perform_sales_people_search_request_function import PerformS
 from unipile.models.perform_sales_people_search_request_group import PerformSalesPeopleSearchRequestGroup as PerformSalesPeopleSearchRequestGroup
 from unipile.models.perform_sales_people_search_request_industry import PerformSalesPeopleSearchRequestIndustry as PerformSalesPeopleSearchRequestIndustry
 from unipile.models.perform_sales_people_search_request_lead_list import PerformSalesPeopleSearchRequestLeadList as PerformSalesPeopleSearchRequestLeadList
+from unipile.models.perform_sales_people_search_request_load_recent_search import PerformSalesPeopleSearchRequestLoadRecentSearch as PerformSalesPeopleSearchRequestLoadRecentSearch
+from unipile.models.perform_sales_people_search_request_load_saved_search import PerformSalesPeopleSearchRequestLoadSavedSearch as PerformSalesPeopleSearchRequestLoadSavedSearch
 from unipile.models.perform_sales_people_search_request_location import PerformSalesPeopleSearchRequestLocation as PerformSalesPeopleSearchRequestLocation
 from unipile.models.perform_sales_people_search_request_past_company import PerformSalesPeopleSearchRequestPastCompany as PerformSalesPeopleSearchRequestPastCompany
 from unipile.models.perform_sales_people_search_request_past_job_title import PerformSalesPeopleSearchRequestPastJobTitle as PerformSalesPeopleSearchRequestPastJobTitle
 from unipile.models.perform_sales_people_search_request_postal_code import PerformSalesPeopleSearchRequestPostalCode as PerformSalesPeopleSearchRequestPostalCode
 from unipile.models.perform_sales_people_search_request_recent_interaction import PerformSalesPeopleSearchRequestRecentInteraction as PerformSalesPeopleSearchRequestRecentInteraction
+from unipile.models.perform_sales_people_search_request_save_search import PerformSalesPeopleSearchRequestSaveSearch as PerformSalesPeopleSearchRequestSaveSearch
 from unipile.models.perform_sales_people_search_request_saved_resources import PerformSalesPeopleSearchRequestSavedResources as PerformSalesPeopleSearchRequestSavedResources
 from unipile.models.perform_sales_people_search_request_school import PerformSalesPeopleSearchRequestSchool as PerformSalesPeopleSearchRequestSchool
 from unipile.models.perform_sales_people_search_request_seniority import PerformSalesPeopleSearchRequestSeniority as PerformSalesPeopleSearchRequestSeniority
@@ -1056,6 +1189,11 @@ from unipile.models.perform_sales_search_from_url200_response import PerformSale
 from unipile.models.phone_register import PhoneRegister as PhoneRegister
 from unipile.models.pipeline_candidates_search import PipelineCandidatesSearch as PipelineCandidatesSearch
 from unipile.models.pipeline_candidates_search_data_inner import PipelineCandidatesSearchDataInner as PipelineCandidatesSearchDataInner
+from unipile.models.pipeline_change import PipelineChange as PipelineChange
+from unipile.models.pipeline_sourced import PipelineSourced as PipelineSourced
+from unipile.models.posts_search_results import PostsSearchResults as PostsSearchResults
+from unipile.models.posts_search_results_data_inner import PostsSearchResultsDataInner as PostsSearchResultsDataInner
+from unipile.models.profile_view import ProfileView as ProfileView
 from unipile.models.proxy_request200_response import ProxyRequest200Response as ProxyRequest200Response
 from unipile.models.proxy_request_request import ProxyRequestRequest as ProxyRequestRequest
 from unipile.models.publish_classic_job_posting200_response import PublishClassicJobPosting200Response as PublishClassicJobPosting200Response
@@ -1065,14 +1203,15 @@ from unipile.models.publish_in_free_mode1 import PublishInFreeMode1 as PublishIn
 from unipile.models.publish_in_promoted_mode import PublishInPromotedMode as PublishInPromotedMode
 from unipile.models.publish_in_promoted_mode1 import PublishInPromotedMode1 as PublishInPromotedMode1
 from unipile.models.publish_in_promoted_mode1_budget import PublishInPromotedMode1Budget as PublishInPromotedMode1Budget
-from unipile.models.publish_in_promoted_mode1_budget_any_of import PublishInPromotedMode1BudgetAnyOf as PublishInPromotedMode1BudgetAnyOf
-from unipile.models.publish_in_promoted_mode1_budget_any_of1 import PublishInPromotedMode1BudgetAnyOf1 as PublishInPromotedMode1BudgetAnyOf1
 from unipile.models.publish_in_promoted_mode_budget import PublishInPromotedModeBudget as PublishInPromotedModeBudget
 from unipile.models.publish_recruiter_job_posting_request import PublishRecruiterJobPostingRequest as PublishRecruiterJobPostingRequest
 from unipile.models.qr_code import QRCode as QRCode
 from unipile.models.re_authenticate_existing_account import ReAuthenticateExistingAccount as ReAuthenticateExistingAccount
+from unipile.models.reaction import Reaction as Reaction
 from unipile.models.read_email200_response import ReadEmail200Response as ReadEmail200Response
 from unipile.models.read_message200_response import ReadMessage200Response as ReadMessage200Response
+from unipile.models.recruiter_saved_search import RecruiterSavedSearch as RecruiterSavedSearch
+from unipile.models.recruiter_saved_search_project import RecruiterSavedSearchProject as RecruiterSavedSearchProject
 from unipile.models.remove_account200_response import RemoveAccount200Response as RemoveAccount200Response
 from unipile.models.remove_message_reaction200_response import RemoveMessageReaction200Response as RemoveMessageReaction200Response
 from unipile.models.remove_message_reaction_request import RemoveMessageReactionRequest as RemoveMessageReactionRequest
@@ -1084,6 +1223,7 @@ from unipile.models.remove_post_reaction200_response import RemovePostReaction20
 from unipile.models.remove_post_reaction_request import RemovePostReactionRequest as RemovePostReactionRequest
 from unipile.models.remove_post_reaction_request_reaction import RemovePostReactionRequestReaction as RemovePostReactionRequestReaction
 from unipile.models.smtp_connections_parameters import SMTPConnectionsParameters as SMTPConnectionsParameters
+from unipile.models.sales_navigator_saved_search import SalesNavigatorSavedSearch as SalesNavigatorSavedSearch
 from unipile.models.save_recruiter_candidate_to_pipeline200_response import SaveRecruiterCandidateToPipeline200Response as SaveRecruiterCandidateToPipeline200Response
 from unipile.models.save_recruiter_candidate_to_pipeline_request import SaveRecruiterCandidateToPipelineRequest as SaveRecruiterCandidateToPipelineRequest
 from unipile.models.save_sales_account_to_list200_response import SaveSalesAccountToList200Response as SaveSalesAccountToList200Response
@@ -1094,6 +1234,8 @@ from unipile.models.scheduled_call_cancelled import ScheduledCallCancelled as Sc
 from unipile.models.scheduled_call_created import ScheduledCallCreated as ScheduledCallCreated
 from unipile.models.scheduled_call_started import ScheduledCallStarted as ScheduledCallStarted
 from unipile.models.search_locations200_response_inner import SearchLocations200ResponseInner as SearchLocations200ResponseInner
+from unipile.models.search_or_job_posting_sourced import SearchOrJobPostingSourced as SearchOrJobPostingSourced
+from unipile.models.select_contract200_response import SelectContract200Response as SelectContract200Response
 from unipile.models.send_email200_response import SendEmail200Response as SendEmail200Response
 from unipile.models.send_email_request import SendEmailRequest as SendEmailRequest
 from unipile.models.send_email_request_attachments_inner import SendEmailRequestAttachmentsInner as SendEmailRequestAttachmentsInner
@@ -1121,10 +1263,10 @@ from unipile.models.submit_classic_company_otp_code_request import SubmitClassic
 from unipile.models.telegram import Telegram as Telegram
 from unipile.models.telegram_config import TelegramConfig as TelegramConfig
 from unipile.models.telegram_credentials import TelegramCredentials as TelegramCredentials
-from unipile.models.total import Total as Total
 from unipile.models.trash_email200_response import TrashEmail200Response as TrashEmail200Response
 from unipile.models.two_factor_authentication import TwoFactorAuthentication as TwoFactorAuthentication
 from unipile.models.unfollow_user200_response import UnfollowUser200Response as UnfollowUser200Response
+from unipile.models.unhandled import Unhandled as Unhandled
 from unipile.models.unread_email200_response import UnreadEmail200Response as UnreadEmail200Response
 from unipile.models.update_account_request import UpdateAccountRequest as UpdateAccountRequest
 from unipile.models.update_calendar_event_request import UpdateCalendarEventRequest as UpdateCalendarEventRequest
@@ -1132,6 +1274,8 @@ from unipile.models.update_calendar_request import UpdateCalendarRequest as Upda
 from unipile.models.update_chat_request import UpdateChatRequest as UpdateChatRequest
 from unipile.models.update_chat_request_muted_until import UpdateChatRequestMutedUntil as UpdateChatRequestMutedUntil
 from unipile.models.update_draft_request import UpdateDraftRequest as UpdateDraftRequest
+from unipile.models.update_draft_request_specifics import UpdateDraftRequestSpecifics as UpdateDraftRequestSpecifics
+from unipile.models.update_draft_request_specifics_all_of_outlook import UpdateDraftRequestSpecificsAllOfOutlook as UpdateDraftRequestSpecificsAllOfOutlook
 from unipile.models.update_folder_request import UpdateFolderRequest as UpdateFolderRequest
 from unipile.models.update_post_comment_request import UpdatePostCommentRequest as UpdatePostCommentRequest
 from unipile.models.update_post_request import UpdatePostRequest as UpdatePostRequest
@@ -1139,9 +1283,15 @@ from unipile.models.update_user_profile200_response import UpdateUserProfile200R
 from unipile.models.update_user_profile_request import UpdateUserProfileRequest as UpdateUserProfileRequest
 from unipile.models.update_user_profile_request_specifics import UpdateUserProfileRequestSpecifics as UpdateUserProfileRequestSpecifics
 from unipile.models.update_user_profile_request_specifics_all_of_linkedin import UpdateUserProfileRequestSpecificsAllOfLinkedin as UpdateUserProfileRequestSpecificsAllOfLinkedin
+from unipile.models.update_user_profile_request_specifics_all_of_linkedin_custom_link import UpdateUserProfileRequestSpecificsAllOfLinkedinCustomLink as UpdateUserProfileRequestSpecificsAllOfLinkedinCustomLink
 from unipile.models.update_user_profile_request_specifics_all_of_linkedin_education import UpdateUserProfileRequestSpecificsAllOfLinkedinEducation as UpdateUserProfileRequestSpecificsAllOfLinkedinEducation
 from unipile.models.update_user_profile_request_specifics_all_of_linkedin_experience import UpdateUserProfileRequestSpecificsAllOfLinkedinExperience as UpdateUserProfileRequestSpecificsAllOfLinkedinExperience
+from unipile.models.update_user_profile_request_specifics_all_of_linkedin_open_to_work import UpdateUserProfileRequestSpecificsAllOfLinkedinOpenToWork as UpdateUserProfileRequestSpecificsAllOfLinkedinOpenToWork
+from unipile.models.update_user_profile_request_specifics_all_of_linkedin_open_to_work_job_title_inner import UpdateUserProfileRequestSpecificsAllOfLinkedinOpenToWorkJobTitleInner as UpdateUserProfileRequestSpecificsAllOfLinkedinOpenToWorkJobTitleInner
+from unipile.models.update_user_profile_request_specifics_all_of_linkedin_open_to_work_workplace_inner import UpdateUserProfileRequestSpecificsAllOfLinkedinOpenToWorkWorkplaceInner as UpdateUserProfileRequestSpecificsAllOfLinkedinOpenToWorkWorkplaceInner
 from unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options import UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions as UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions
+from unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options_layout import UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptionsLayout as UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptionsLayout
+from unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options_layout_bottom_left import UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptionsLayoutBottomLeft as UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptionsLayoutBottomLeft
 from unipile.models.update_user_profile_request_specifics_all_of_linkedin_skills_inner import UpdateUserProfileRequestSpecificsAllOfLinkedinSkillsInner as UpdateUserProfileRequestSpecificsAllOfLinkedinSkillsInner
 from unipile.models.update_webhook_endpoint_request import UpdateWebhookEndpointRequest as UpdateWebhookEndpointRequest
 from unipile.models.verify_classic_company_member_identity200_response import VerifyClassicCompanyMemberIdentity200Response as VerifyClassicCompanyMemberIdentity200Response

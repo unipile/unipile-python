@@ -28,12 +28,13 @@ Name | Type | Description | Notes
 **locations** | [**List[GetClassicCompanyProfile200ResponseLocationsInner]**](GetClassicCompanyProfile200ResponseLocationsInner.md) | The list of locations related to the Company. | 
 **industry** | **List[Optional[str]]** | A list of industries associated with the the Company. | 
 **activities** | **List[Optional[str]]** | The list of activities of the Company. | [optional] 
-**employee_count** | **float** | The number of employees of the Company. | 
 **website** | **str** | The website URL of the Company. | [optional] 
 **establishment_year** | **float** | The year the Company was established. | [optional] 
 **phone** | **str** | The phone number of the Company. | [optional] 
 **fields_of_expertise** | **List[Optional[str]]** | The list of fields of expertise of the Company. | [optional] 
 **acquired_by** | [**GetClassicCompanyProfile200ResponseAcquiredBy**](GetClassicCompanyProfile200ResponseAcquiredBy.md) |  | [optional] 
+**insights** | [**GetClassicCompanyProfile200ResponseInsights**](GetClassicCompanyProfile200ResponseInsights.md) |  | 
+**funding** | [**GetClassicCompanyProfile200ResponseFunding**](GetClassicCompanyProfile200ResponseFunding.md) |  | [optional] 
 **hashtags** | **List[Optional[str]]** | The list of hashtags related to the Company. | 
 
 ## Example

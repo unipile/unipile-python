@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **text** | **str** | Textual content of the comment. User mentions can be added by inserting an @ followed by the &#x60;id&#x60; or &#x60;public_identifier&#x60; of the user (example: @JohnDoe). | 
 **comment_as** | **str** | The ID of the User on whose behalf the comment should be published (if supported by the provider). | [optional] 
+**attachments** | [**List[SendEmailRequestAttachmentsInner]**](SendEmailRequestAttachmentsInner.md) | Attachment associated with the comment | [optional] 
 
 ## Example
 

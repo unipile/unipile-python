@@ -36,7 +36,7 @@ class TestPerformRecruiterPeopleSearchFromTalentPoolRequestOccupationInner(unitt
         if include_optional:
             return PerformRecruiterPeopleSearchFromTalentPoolRequestOccupationInner(
                 name = '',
-                id = '4',
+                id = '',
                 priority = 'CAN_HAVE',
                 preferences = 'CURRENT_OR_PAST'
             )

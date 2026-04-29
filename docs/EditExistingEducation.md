@@ -9,15 +9,14 @@ Name | Type | Description | Notes
 **school** | [**EditExistingEducationSchool**](EditExistingEducationSchool.md) |  | [optional] 
 **degree** | [**EditExistingEducationDegree**](EditExistingEducationDegree.md) |  | [optional] 
 **field_of_study** | [**EditExistingEducationFieldOfStudy**](EditExistingEducationFieldOfStudy.md) |  | [optional] 
-**start_date** | [**NewEducationStartDate**](NewEducationStartDate.md) |  | [optional] 
-**end_date** | [**NewEducationEndDate**](NewEducationEndDate.md) |  | [optional] 
+**start_date** | [**CreateNewEducationStartDate**](CreateNewEducationStartDate.md) |  | [optional] 
+**end_date** | [**CreateNewEducationEndDate**](CreateNewEducationEndDate.md) |  | [optional] 
 **grade** | **str** | Grade of the education. | [optional] 
 **activities** | **str** | Activities and societies. Ex: Alpha Phi Omega, Marching Brand, Volleyball | [optional] 
 **description** | **str** | Description of the education. | [optional] 
-**skills** | [**List[NewExperienceSkillsInner]**](NewExperienceSkillsInner.md) | List of skills. We recommend adding your top 5 used in this training. They’ll also appear in your profile Skills section. | [optional] 
-**attachment** | [**NewExperienceAttachment**](NewExperienceAttachment.md) |  | [optional] 
-**attachment_title** | **str** | Title of the attachment. | [optional] 
-**attachment_description** | **str** | Description of the attachment. | [optional] 
+**skills** | [**List[CreateNewExperienceSkillsInner]**](CreateNewExperienceSkillsInner.md) | List of skills. We recommend adding your top 5 used in this training. They’ll also appear in your profile Skills section. | [optional] 
+**media** | [**CreateNewExperienceMedia**](CreateNewExperienceMedia.md) |  | [optional] 
+**operation** | **str** |  | 
 **id** | **str** | ID of the education to edit. | 
 
 ## Example

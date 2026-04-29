@@ -36,7 +36,7 @@ class TestPartialProfileWorkExperienceInner(unittest.TestCase):
         if include_optional:
             return PartialProfileWorkExperienceInner(
                 id = '',
-                company = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                company = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                     name = '', 
                     id = '', 
                     public_identifier = '', 
@@ -45,7 +45,7 @@ class TestPartialProfileWorkExperienceInner(unittest.TestCase):
                     industries = [
                         ''
                         ], ),
-                title = '',
+                job_title = '',
                 started_on = '',
                 ended_on = '',
                 location = '',
@@ -59,7 +59,7 @@ class TestPartialProfileWorkExperienceInner(unittest.TestCase):
             )
         else:
             return PartialProfileWorkExperienceInner(
-                company = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                company = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                     name = '', 
                     id = '', 
                     public_identifier = '', 
@@ -68,7 +68,7 @@ class TestPartialProfileWorkExperienceInner(unittest.TestCase):
                     industries = [
                         ''
                         ], ),
-                title = '',
+                job_title = '',
         )
         """
 

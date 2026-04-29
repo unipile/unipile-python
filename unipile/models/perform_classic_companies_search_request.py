@@ -17,28 +17,29 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from unipile.models.perform_classic_companies_search_request_headcount_inner import PerformClassicCompaniesSearchRequestHeadcountInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PerformClassicCompaniesSearchRequest(BaseModel):
     """
     PerformClassicCompaniesSearchRequest
     """ # noqa: E501
     keywords: Optional[StrictStr] = Field(default=None, description="A keyword or group of keywords.")
-    location: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Locations   ")
-    industry: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.    Native filter : Industry   ")
-    headcount: Optional[List[PerformClassicCompaniesSearchRequestHeadcountInner]] = None
+    location: Optional[List[StrictStr]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Locations   ")
+    industry: Optional[List[StrictStr]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\">List Search Parameters</a> with `INDUSTRY` type to find out the possible values.    Native filter : Industry   ")
+    headcount: Optional[List[PerformClassicCompaniesSearchRequestHeadcountInner]] = Field(default=None, description="A list of company headcount ranges.")
     has_job_postings: Optional[StrictBool] = Field(default=None, description="Whether the companies should have active job postings on LinkedIn.    Native filter : Job listings on LinkedIn   ")
     is_employing_relations: Optional[StrictBool] = Field(default=None, description="Whether the companies should have first degree relations among employees.    Native filter : Relations   ")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["keywords", "location", "industry", "headcount", "has_job_postings", "is_employing_relations"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,8 +51,7 @@ class PerformClassicCompaniesSearchRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

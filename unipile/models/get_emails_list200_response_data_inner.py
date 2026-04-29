@@ -24,6 +24,7 @@ from unipile.models.get_emails_list200_response_data_inner_headers_inner import 
 from unipile.models.get_messages_list200_response_data_inner_quoted_attachments_inner import GetMessagesList200ResponseDataInnerQuotedAttachmentsInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetEmailsList200ResponseDataInner(BaseModel):
     """
@@ -45,8 +46,9 @@ class GetEmailsList200ResponseDataInner(BaseModel):
     var_date: StrictStr = Field(description="The date the email was sent. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).", alias="date")
     attachments: List[GetMessagesList200ResponseDataInnerQuotedAttachmentsInner] = Field(description="The attachments of the email.")
     folders: List[Optional[StrictStr]] = Field(description="The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email.")
+    categories: Optional[List[StrictStr]] = Field(default=None, description="List of categories assigned to the email.")
     is_unread: StrictBool = Field(description="Is the email unread.")
-    __properties: ClassVar[List[str]] = ["object", "id", "message_id", "thread_id", "body", "snippet", "subject", "headers", "from", "to", "cc", "bcc", "reply_to", "date", "attachments", "folders", "is_unread"]
+    __properties: ClassVar[List[str]] = ["object", "id", "message_id", "thread_id", "body", "snippet", "subject", "headers", "from", "to", "cc", "bcc", "reply_to", "date", "attachments", "folders", "categories", "is_unread"]
 
     @field_validator('object')
     def object_validate_enum(cls, value):
@@ -56,7 +58,8 @@ class GetEmailsList200ResponseDataInner(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -68,8 +71,7 @@ class GetEmailsList200ResponseDataInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -171,6 +173,7 @@ class GetEmailsList200ResponseDataInner(BaseModel):
             "date": obj.get("date"),
             "attachments": [GetMessagesList200ResponseDataInnerQuotedAttachmentsInner.from_dict(_item) for _item in obj["attachments"]] if obj.get("attachments") is not None else None,
             "folders": obj.get("folders"),
+            "categories": obj.get("categories"),
             "is_unread": obj.get("is_unread")
         })
         return _obj

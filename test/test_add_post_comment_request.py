@@ -36,7 +36,15 @@ class TestAddPostCommentRequest(unittest.TestCase):
         if include_optional:
             return AddPostCommentRequest(
                 text = '',
-                comment_as = ''
+                comment_as = '',
+                attachments = [
+                    unipile.models.send_email_request_attachments_inner.sendEmail_request_attachments_inner(
+                        content = '', 
+                        content_type = '', 
+                        filename = '', 
+                        metadata = unipile.models.message_file_all_of_metadata.Message_File_allOf_metadata(
+                            duration = 1.337, ), )
+                    ]
             )
         else:
             return AddPostCommentRequest(

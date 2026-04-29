@@ -37,12 +37,12 @@ class TestPerformRecruiterPeopleSearchFromTalentPoolRequestProject(unittest.Test
             return PerformRecruiterPeopleSearchFromTalentPoolRequestProject(
                 include = [
                     unipile.models.perform_recruiter_people_search_from_talent_pool_request_project_include_inner.performRecruiterPeopleSearchFromTalentPool_request_project_include_inner(
-                        id = '4', 
+                        id = '', 
                         title = '', )
                     ],
                 exclude = [
                     unipile.models.perform_recruiter_people_search_from_talent_pool_request_project_include_inner.performRecruiterPeopleSearchFromTalentPool_request_project_include_inner(
-                        id = '4', 
+                        id = '', 
                         title = '', )
                     ]
             )

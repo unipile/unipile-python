@@ -71,6 +71,9 @@ class TestGetDraftsList200ResponseDataInner(unittest.TestCase):
                     ],
                 folders = [
                     ''
+                    ],
+                categories = [
+                    ''
                     ]
             )
         else:

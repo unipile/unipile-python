@@ -19,6 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from unipile.models.perform_sales_companies_search_request_account_list import PerformSalesCompaniesSearchRequestAccountList
 from unipile.models.perform_sales_companies_search_request_annual_revenue import PerformSalesCompaniesSearchRequestAnnualRevenue
 from unipile.models.perform_sales_companies_search_request_department_headcount import PerformSalesCompaniesSearchRequestDepartmentHeadcount
 from unipile.models.perform_sales_companies_search_request_department_headcount_growth import PerformSalesCompaniesSearchRequestDepartmentHeadcountGrowth
@@ -29,16 +30,21 @@ from unipile.models.perform_sales_companies_search_request_headcount_inner impor
 from unipile.models.perform_sales_companies_search_request_industry import PerformSalesCompaniesSearchRequestIndustry
 from unipile.models.perform_sales_companies_search_request_location import PerformSalesCompaniesSearchRequestLocation
 from unipile.models.perform_sales_companies_search_request_postal_code import PerformSalesCompaniesSearchRequestPostalCode
-from unipile.models.perform_sales_companies_search_request_technologies import PerformSalesCompaniesSearchRequestTechnologies
-from unipile.models.perform_sales_people_search_request_account_list import PerformSalesPeopleSearchRequestAccountList
+from unipile.models.perform_sales_people_search_request_load_recent_search import PerformSalesPeopleSearchRequestLoadRecentSearch
+from unipile.models.perform_sales_people_search_request_load_saved_search import PerformSalesPeopleSearchRequestLoadSavedSearch
+from unipile.models.perform_sales_people_search_request_save_search import PerformSalesPeopleSearchRequestSaveSearch
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class PerformSalesCompaniesSearchRequest(BaseModel):
     """
     PerformSalesCompaniesSearchRequest
     """ # noqa: E501
     keywords: Optional[StrictStr] = Field(default=None, description="A keyword or group of keywords.")
+    save_search: Optional[PerformSalesPeopleSearchRequestSaveSearch] = None
+    load_saved_search: Optional[PerformSalesPeopleSearchRequestLoadSavedSearch] = None
+    load_recent_search: Optional[PerformSalesPeopleSearchRequestLoadRecentSearch] = None
     annual_revenue: Optional[PerformSalesCompaniesSearchRequestAnnualRevenue] = None
     headcount: Optional[List[PerformSalesCompaniesSearchRequestHeadcountInner]] = Field(default=None, description="A list of headcount ranges.")
     headcount_growth: Optional[PerformSalesCompaniesSearchRequestHeadcountGrowth] = None
@@ -49,12 +55,11 @@ class PerformSalesCompaniesSearchRequest(BaseModel):
     department_headcount: Optional[PerformSalesCompaniesSearchRequestDepartmentHeadcount] = None
     department_headcount_growth: Optional[PerformSalesCompaniesSearchRequestDepartmentHeadcountGrowth] = None
     fortune: Optional[List[PerformSalesCompaniesSearchRequestFortuneInner]] = Field(default=None, description="A list of fortune ranges.")
-    technologies: Optional[PerformSalesCompaniesSearchRequestTechnologies] = None
     spotlights: Optional[List[StrictStr]] = Field(default=None, description="A list of spotlights.")
     saved_accounts: Optional[StrictBool] = Field(default=None, description="Whether to include all your saved accounts in the results.    Native filter : Workflow / Saved accounts / All my saved accounts   ")
-    account_list: Optional[PerformSalesPeopleSearchRequestAccountList] = None
+    account_list: Optional[PerformSalesCompaniesSearchRequestAccountList] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["keywords", "annual_revenue", "headcount", "headcount_growth", "location", "postal_code", "industry", "followers", "department_headcount", "department_headcount_growth", "fortune", "technologies", "spotlights", "saved_accounts", "account_list"]
+    __properties: ClassVar[List[str]] = ["keywords", "save_search", "load_saved_search", "load_recent_search", "annual_revenue", "headcount", "headcount_growth", "location", "postal_code", "industry", "followers", "department_headcount", "department_headcount_growth", "fortune", "spotlights", "saved_accounts", "account_list"]
 
     @field_validator('spotlights')
     def spotlights_validate_enum(cls, value):
@@ -68,7 +73,8 @@ class PerformSalesCompaniesSearchRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -80,8 +86,7 @@ class PerformSalesCompaniesSearchRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -108,6 +113,15 @@ class PerformSalesCompaniesSearchRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of save_search
+        if self.save_search:
+            _dict['save_search'] = self.save_search.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of load_saved_search
+        if self.load_saved_search:
+            _dict['load_saved_search'] = self.load_saved_search.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of load_recent_search
+        if self.load_recent_search:
+            _dict['load_recent_search'] = self.load_recent_search.to_dict()
         # override the default output from pydantic by calling `to_dict()` of annual_revenue
         if self.annual_revenue:
             _dict['annual_revenue'] = self.annual_revenue.to_dict()
@@ -150,9 +164,6 @@ class PerformSalesCompaniesSearchRequest(BaseModel):
                 if _item_fortune:
                     _items.append(_item_fortune.to_dict())
             _dict['fortune'] = _items
-        # override the default output from pydantic by calling `to_dict()` of technologies
-        if self.technologies:
-            _dict['technologies'] = self.technologies.to_dict()
         # override the default output from pydantic by calling `to_dict()` of account_list
         if self.account_list:
             _dict['account_list'] = self.account_list.to_dict()
@@ -174,6 +185,9 @@ class PerformSalesCompaniesSearchRequest(BaseModel):
 
         _obj = cls.model_validate({
             "keywords": obj.get("keywords"),
+            "save_search": PerformSalesPeopleSearchRequestSaveSearch.from_dict(obj["save_search"]) if obj.get("save_search") is not None else None,
+            "load_saved_search": PerformSalesPeopleSearchRequestLoadSavedSearch.from_dict(obj["load_saved_search"]) if obj.get("load_saved_search") is not None else None,
+            "load_recent_search": PerformSalesPeopleSearchRequestLoadRecentSearch.from_dict(obj["load_recent_search"]) if obj.get("load_recent_search") is not None else None,
             "annual_revenue": PerformSalesCompaniesSearchRequestAnnualRevenue.from_dict(obj["annual_revenue"]) if obj.get("annual_revenue") is not None else None,
             "headcount": [PerformSalesCompaniesSearchRequestHeadcountInner.from_dict(_item) for _item in obj["headcount"]] if obj.get("headcount") is not None else None,
             "headcount_growth": PerformSalesCompaniesSearchRequestHeadcountGrowth.from_dict(obj["headcount_growth"]) if obj.get("headcount_growth") is not None else None,
@@ -184,10 +198,9 @@ class PerformSalesCompaniesSearchRequest(BaseModel):
             "department_headcount": PerformSalesCompaniesSearchRequestDepartmentHeadcount.from_dict(obj["department_headcount"]) if obj.get("department_headcount") is not None else None,
             "department_headcount_growth": PerformSalesCompaniesSearchRequestDepartmentHeadcountGrowth.from_dict(obj["department_headcount_growth"]) if obj.get("department_headcount_growth") is not None else None,
             "fortune": [PerformSalesCompaniesSearchRequestFortuneInner.from_dict(_item) for _item in obj["fortune"]] if obj.get("fortune") is not None else None,
-            "technologies": PerformSalesCompaniesSearchRequestTechnologies.from_dict(obj["technologies"]) if obj.get("technologies") is not None else None,
             "spotlights": obj.get("spotlights"),
             "saved_accounts": obj.get("saved_accounts"),
-            "account_list": PerformSalesPeopleSearchRequestAccountList.from_dict(obj["account_list"]) if obj.get("account_list") is not None else None
+            "account_list": PerformSalesCompaniesSearchRequestAccountList.from_dict(obj["account_list"]) if obj.get("account_list") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

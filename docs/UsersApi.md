@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_relation_request**
-> GetRelationRequestsList200ResponseDataInner create_relation_request(account_id, create_relation_request_request)
+> LinkedInRelationRequest create_relation_request(account_id, create_relation_request_request)
 
 Send a Relation request
 
@@ -196,7 +196,7 @@ Sends a bi-directional relation request to a user. Trying to send a relation req
 ```python
 import unipile
 from unipile.models.create_relation_request_request import CreateRelationRequestRequest
-from unipile.models.get_relation_requests_list200_response_data_inner import GetRelationRequestsList200ResponseDataInner
+from unipile.models.linked_in_relation_request import LinkedInRelationRequest
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -245,7 +245,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetRelationRequestsList200ResponseDataInner**](GetRelationRequestsList200ResponseDataInner.md)
+[**LinkedInRelationRequest**](LinkedInRelationRequest.md)
 
 ### Authorization
 
@@ -1032,6 +1032,8 @@ Name | Type | Description  | Notes
 Update a User Profile
 
 Updates the specified User profile. Use `me` as `user_id` to update the account owner profile.
+      <br/>
+      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 

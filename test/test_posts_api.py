@@ -110,6 +110,20 @@ class TestPostsApi(unittest.TestCase):
         """
         pass
 
+    def test_get_user_comments_list(self) -> None:
+        """Test case for get_user_comments_list
+
+        List all User Comments
+        """
+        pass
+
+    def test_get_user_reactions_list(self) -> None:
+        """Test case for get_user_reactions_list
+
+        List all User Reactions
+        """
+        pass
+
     def test_remove_post_comment_reaction(self) -> None:
         """Test case for remove_post_comment_reaction
 

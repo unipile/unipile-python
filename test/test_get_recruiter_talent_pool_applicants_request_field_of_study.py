@@ -36,10 +36,10 @@ class TestGetRecruiterTalentPoolApplicantsRequestFieldOfStudy(unittest.TestCase)
         if include_optional:
             return GetRecruiterTalentPoolApplicantsRequestFieldOfStudy(
                 include = [
-                    '4'
+                    ''
                     ],
                 exclude = [
-                    '4'
+                    ''
                     ]
             )
         else:

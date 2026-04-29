@@ -39,12 +39,12 @@ class TestCreateRecruiterHiringProjectRequest(unittest.TestCase):
                 visibility = 'PRIVATE',
                 description = '',
                 company = unipile.models.create_recruiter_hiring_project_request_company.createRecruiterHiringProject_request_company(
-                    id = '4', 
+                    id = '', 
                     name = '', ),
                 job_title = unipile.models.create_recruiter_hiring_project_request_job_title.createRecruiterHiringProject_request_job_title(
-                    id = '4', 
+                    id = '', 
                     name = '', ),
-                location = '4',
+                location = '',
                 seniority_level = 'INTERNSHIP'
             )
         else:

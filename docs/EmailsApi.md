@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**get_draft**](EmailsApi.md#get_draft) | **GET** /v2/{account_id}/drafts/{draft_id} | Get a Draft
 [**get_drafts_list**](EmailsApi.md#get_drafts_list) | **GET** /v2/{account_id}/drafts | List all Drafts
 [**get_email**](EmailsApi.md#get_email) | **GET** /v2/{account_id}/emails/{email_id} | Get an Email
+[**get_email_contacts_list**](EmailsApi.md#get_email_contacts_list) | **GET** /v2/{account_id}/contacts | List email contacts
 [**get_emails_list**](EmailsApi.md#get_emails_list) | **GET** /v2/{account_id}/emails | List all Emails
 [**get_folder**](EmailsApi.md#get_folder) | **GET** /v2/{account_id}/folders/{folder_id} | Get a Folder
 [**get_folder_emails_list**](EmailsApi.md#get_folder_emails_list) | **GET** /v2/{account_id}/folders/{folder_id}/emails | List folder Emails
@@ -33,6 +34,8 @@ Method | HTTP request | Description
 Create a Draft
 
 Creates a new Draft in the draft folder of the provider. Use <a href="@todo">Send a Draft</a> to send the Email later.
+      <br/>
+      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
@@ -682,8 +685,91 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_email_contacts_list**
+> GetEmailContactsList200Response get_email_contacts_list(account_id, cursor=cursor, limit=limit)
+
+List email contacts
+
+Returns a list of contacts from the email provider.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.get_email_contacts_list200_response import GetEmailContactsList200Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.EmailsApi(api_client)
+    account_id = 'account_id_example' # str | 
+    cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
+
+    try:
+        # List email contacts
+        api_response = api_instance.get_email_contacts_list(account_id, cursor=cursor, limit=limit)
+        print("The response of EmailsApi->get_email_contacts_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling EmailsApi->get_email_contacts_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **account_id** | **str**|  | 
+ **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
+
+### Return type
+
+[**GetEmailContactsList200Response**](GetEmailContactsList200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_emails_list**
-> GetEmailsList200Response get_emails_list(account_id, to=to, var_from=var_from, any_email=any_email, before=before, after=after, meta_only=meta_only, offset=offset, limit=limit, cursor=cursor)
+> GetEmailsList200Response get_emails_list(account_id, to=to, subject=subject, var_from=var_from, any_email=any_email, before=before, exclude_folder=exclude_folder, after=after, meta_only=meta_only, offset=offset, limit=limit, cursor=cursor)
 
 List all Emails
 
@@ -722,9 +808,11 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.EmailsApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     to = 'to_example' # str | Filter to only return emails sent to the given email address, either in the to, cc or bcc field. (optional)
+    subject = 'subject_example' # str | Filter to only return emails with the given string in the subject. (optional)
     var_from = 'var_from_example' # str | Filter to only return emails sent from the given email address. (optional)
     any_email = 'any_email_example' # str | Filter to only return emails related to a comma-separated list of email addresses. (optional)
     before = 'before_example' # str | Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. (optional)
+    exclude_folder = 'exclude_folder_example' # str | Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs. (optional)
     after = 'after_example' # str | Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. (optional)
     meta_only = False # bool | Speed up the response by only returning the email metadata, excluding the body and attachments metadata. (optional) (default to False)
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
@@ -733,7 +821,7 @@ with unipile.ApiClient(configuration) as api_client:
 
     try:
         # List all Emails
-        api_response = api_instance.get_emails_list(account_id, to=to, var_from=var_from, any_email=any_email, before=before, after=after, meta_only=meta_only, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_emails_list(account_id, to=to, subject=subject, var_from=var_from, any_email=any_email, before=before, exclude_folder=exclude_folder, after=after, meta_only=meta_only, offset=offset, limit=limit, cursor=cursor)
         print("The response of EmailsApi->get_emails_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -749,9 +837,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **to** | **str**| Filter to only return emails sent to the given email address, either in the to, cc or bcc field. | [optional] 
+ **subject** | **str**| Filter to only return emails with the given string in the subject. | [optional] 
  **var_from** | **str**| Filter to only return emails sent from the given email address. | [optional] 
  **any_email** | **str**| Filter to only return emails related to a comma-separated list of email addresses. | [optional] 
  **before** | **str**| Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. | [optional] 
+ **exclude_folder** | **str**| Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs. | [optional] 
  **after** | **str**| Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. | [optional] 
  **meta_only** | **bool**| Speed up the response by only returning the email metadata, excluding the body and attachments metadata. | [optional] [default to False]
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
@@ -861,7 +951,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_folder_emails_list**
-> GetEmailsList200Response get_folder_emails_list(folder_id, account_id, to=to, var_from=var_from, any_email=any_email, before=before, after=after, meta_only=meta_only, offset=offset, limit=limit, cursor=cursor)
+> GetEmailsList200Response get_folder_emails_list(folder_id, account_id, to=to, subject=subject, var_from=var_from, any_email=any_email, before=before, exclude_folder=exclude_folder, after=after, meta_only=meta_only, offset=offset, limit=limit, cursor=cursor)
 
 List folder Emails
 
@@ -901,9 +991,11 @@ with unipile.ApiClient(configuration) as api_client:
     folder_id = 'folder_id_example' # str | ID of the Folder to retrieve emails from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     to = 'to_example' # str | Filter to only return emails sent to the given email address, either in the to, cc or bcc field. (optional)
+    subject = 'subject_example' # str | Filter to only return emails with the given string in the subject. (optional)
     var_from = 'var_from_example' # str | Filter to only return emails sent from the given email address. (optional)
     any_email = 'any_email_example' # str | Filter to only return emails related to a comma-separated list of email addresses. (optional)
     before = 'before_example' # str | Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. (optional)
+    exclude_folder = 'exclude_folder_example' # str | Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs. (optional)
     after = 'after_example' # str | Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. (optional)
     meta_only = False # bool | Speed up the response by only returning the email metadata, excluding the body and attachments metadata. (optional) (default to False)
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
@@ -912,7 +1004,7 @@ with unipile.ApiClient(configuration) as api_client:
 
     try:
         # List folder Emails
-        api_response = api_instance.get_folder_emails_list(folder_id, account_id, to=to, var_from=var_from, any_email=any_email, before=before, after=after, meta_only=meta_only, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_folder_emails_list(folder_id, account_id, to=to, subject=subject, var_from=var_from, any_email=any_email, before=before, exclude_folder=exclude_folder, after=after, meta_only=meta_only, offset=offset, limit=limit, cursor=cursor)
         print("The response of EmailsApi->get_folder_emails_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -929,9 +1021,11 @@ Name | Type | Description  | Notes
  **folder_id** | **str**| ID of the Folder to retrieve emails from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **to** | **str**| Filter to only return emails sent to the given email address, either in the to, cc or bcc field. | [optional] 
+ **subject** | **str**| Filter to only return emails with the given string in the subject. | [optional] 
  **var_from** | **str**| Filter to only return emails sent from the given email address. | [optional] 
  **any_email** | **str**| Filter to only return emails related to a comma-separated list of email addresses. | [optional] 
  **before** | **str**| Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. | [optional] 
+ **exclude_folder** | **str**| Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs. | [optional] 
  **after** | **str**| Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. | [optional] 
  **meta_only** | **bool**| Speed up the response by only returning the email metadata, excluding the body and attachments metadata. | [optional] [default to False]
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
@@ -1128,11 +1222,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **modify_email**
-> GetThread200ResponseEmailsInner modify_email(email_id, account_id, modify_email_request)
+> GetThread200ResponseEmailsInner modify_email(email_id, account_id, modify_email_request=modify_email_request)
 
 Modify an Email
 
-Modifies the folder(s) on the specified Email.
+Modifies the folder(s) and/or provider-specific properties on the specified Email.
 
 ### Example
 
@@ -1168,11 +1262,11 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.EmailsApi(api_client)
     email_id = 'email_id_example' # str | ID of the Email to modify.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    modify_email_request = unipile.ModifyEmailRequest() # ModifyEmailRequest | 
+    modify_email_request = unipile.ModifyEmailRequest() # ModifyEmailRequest |  (optional)
 
     try:
         # Modify an Email
-        api_response = api_instance.modify_email(email_id, account_id, modify_email_request)
+        api_response = api_instance.modify_email(email_id, account_id, modify_email_request=modify_email_request)
         print("The response of EmailsApi->modify_email:\n")
         pprint(api_response)
     except Exception as e:
@@ -1188,7 +1282,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **email_id** | **str**| ID of the Email to modify. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **modify_email_request** | [**ModifyEmailRequest**](ModifyEmailRequest.md)|  | 
+ **modify_email_request** | [**ModifyEmailRequest**](ModifyEmailRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -1379,6 +1473,8 @@ Name | Type | Description  | Notes
 Send an Email
 
 Sends an Email to the recipients in the `to`, `cc`, and `bcc`.
+      <br/>
+      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
@@ -1623,6 +1719,8 @@ Name | Type | Description  | Notes
 Update a Draft
 
 Updates the specified Draft by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+      <br/>
+      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 

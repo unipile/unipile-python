@@ -30,6 +30,7 @@ from unipile.models.get_posts_list200_response_data_inner_quoted_post_user_react
 from unipile.models.get_posts_list200_response_data_inner_reposted_by import GetPostsList200ResponseDataInnerRepostedBy
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetPost200Response(BaseModel):
     """
@@ -44,9 +45,9 @@ class GetPost200Response(BaseModel):
     author: GetPostsList200ResponseDataInnerAuthor
     user_reacted: GetPostsList200ResponseDataInnerQuotedPostUserReacted
     permissions: GetPostsList200ResponseDataInnerPermissions
-    reactions_counter: Optional[List[GetMessagesList200ResponseDataInnerReactionsCounterInner]] = Field(description="The number of reactions to the element")
-    comments_counter: Optional[Union[StrictFloat, StrictInt]]
-    reposts_counter: Optional[Union[StrictFloat, StrictInt]]
+    reactions_counter: Optional[List[GetMessagesList200ResponseDataInnerReactionsCounterInner]] = Field(description="A list of reactions to the element.")
+    comments_counter: Optional[Union[StrictFloat, StrictInt]] = Field(description="The number of comments to the post. `null` if counter is hidden.")
+    reposts_counter: Optional[Union[StrictFloat, StrictInt]] = Field(description="The number of reposts of the post. `null` if counter is hidden.")
     poll: Optional[GetPostsList200ResponseDataInnerPoll] = None
     attachments: List[GetMessagesList200ResponseDataInnerQuotedAttachmentsInner] = Field(description="List of post attachments.")
     analytics: Optional[GetPostsList200ResponseDataInnerAnalytics] = None
@@ -63,7 +64,8 @@ class GetPost200Response(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -75,8 +77,7 @@ class GetPost200Response(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

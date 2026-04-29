@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**job_title** | [**CreateRecruiterJobPostingDraftInNewProjectRequestJobTitle**](CreateRecruiterJobPostingDraftInNewProjectRequestJobTitle.md) |  | 
-**company** | [**EditClassicJobPostingRequestCompany**](EditClassicJobPostingRequestCompany.md) |  | 
+**job_title** | [**CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle**](CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle.md) |  | 
+**company** | [**CreateRecruiterJobPostingDraftInExistingProjectRequestCompany**](CreateRecruiterJobPostingDraftInExistingProjectRequestCompany.md) |  | 
 **workplace_type** | **str** | The working method of the job. | 
-**location** | **str** |  | 
+**location** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_LOCATION&#x60; type to find out the possible values. | 
 **employment_status** | **str** | The employment status of the job. | 
 **seniority_level** | **str** | The level of experience of the job. | 
 **description** | **str** | The job description. You can use HTML tags to structure your content. | 

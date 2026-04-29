@@ -1,14 +1,12 @@
 # Instagram
 
-Start the authentication intent with Instagram provider.
+Instagram specific dataset for user profiles.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**provider** | **str** | The provider to authenticate with. | 
-**credentials** | [**InstagramCredentials**](InstagramCredentials.md) |  | 
-**config** | [**InstagramConfig**](InstagramConfig.md) |  | [optional] 
+**messaging_identifier** | **str** | The ID of the Company. | 
 
 ## Example
 

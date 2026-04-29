@@ -19,21 +19,23 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
-from unipile.models.get_relation_requests_list200_response_data_inner import GetRelationRequestsList200ResponseDataInner
+from unipile.models.linked_in_relation_request import LinkedInRelationRequest
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetRelationRequestsList200Response(BaseModel):
     """
     GetRelationRequestsList200Response
     """ # noqa: E501
-    data: List[GetRelationRequestsList200ResponseDataInner]
+    data: List[LinkedInRelationRequest]
     total_count: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Total number of results if supported by the endpoint.")
     next_cursor: Optional[StrictStr] = Field(default=None, description="Cursor to get the next page of results if supported. Else use `offset`.")
     __properties: ClassVar[List[str]] = ["data", "total_count", "next_cursor"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -45,8 +47,7 @@ class GetRelationRequestsList200Response(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -90,7 +91,7 @@ class GetRelationRequestsList200Response(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "data": [GetRelationRequestsList200ResponseDataInner.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
+            "data": [LinkedInRelationRequest.from_dict(_item) for _item in obj["data"]] if obj.get("data") is not None else None,
             "total_count": obj.get("total_count"),
             "next_cursor": obj.get("next_cursor")
         })

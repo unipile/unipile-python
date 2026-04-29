@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **reply_to** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | The list of attendees that the replies should be sent to. | [optional] 
 **attachments** | [**List[GetMessagesList200ResponseDataInnerQuotedAttachmentsInner]**](GetMessagesList200ResponseDataInnerQuotedAttachmentsInner.md) | The attachments of the draft. | 
 **folders** | **List[Optional[str]]** | The folder the draft is in. For Gmail, the labels assigned to the draft. | 
+**categories** | **List[str]** | List of categories assigned to the draft. | [optional] 
 
 ## Example
 

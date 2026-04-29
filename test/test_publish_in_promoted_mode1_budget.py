@@ -35,21 +35,15 @@ class TestPublishInPromotedMode1Budget(unittest.TestCase):
         model = PublishInPromotedMode1Budget()
         if include_optional:
             return PublishInPromotedMode1Budget(
-                daily = unipile.models.daily_daily.Daily_daily(
-                    currency = '012', 
-                    amount = 1.337, ),
-                total = unipile.models.daily_daily.Daily_daily(
-                    currency = '012', 
-                    amount = 1.337, )
+                currency = '012',
+                amount = 1.337,
+                scope = 'DAILY'
             )
         else:
             return PublishInPromotedMode1Budget(
-                daily = unipile.models.daily_daily.Daily_daily(
-                    currency = '012', 
-                    amount = 1.337, ),
-                total = unipile.models.daily_daily.Daily_daily(
-                    currency = '012', 
-                    amount = 1.337, ),
+                currency = '012',
+                amount = 1.337,
+                scope = 'DAILY',
         )
         """
 

@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **var_date** | **str** | The date the email was sent. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 
 **attachments** | [**List[GetMessagesList200ResponseDataInnerQuotedAttachmentsInner]**](GetMessagesList200ResponseDataInnerQuotedAttachmentsInner.md) | The attachments of the email. | 
 **folders** | **List[Optional[str]]** | The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email. | 
+**categories** | **List[str]** | List of categories assigned to the email. | [optional] 
 **is_unread** | **bool** | Is the email unread. | 
 
 ## Example

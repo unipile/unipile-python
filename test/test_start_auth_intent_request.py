@@ -36,9 +36,7 @@ class TestStartAuthIntentRequest(unittest.TestCase):
         if include_optional:
             return StartAuthIntentRequest(
                 provider = 'instagram',
-                credentials = unipile.models.instagram_credentials.Instagram_credentials(
-                    username = '', 
-                    password = '', ),
+                credentials = None,
                 config = {
                     'key' : null
                     },
@@ -52,9 +50,7 @@ class TestStartAuthIntentRequest(unittest.TestCase):
         else:
             return StartAuthIntentRequest(
                 provider = 'instagram',
-                credentials = unipile.models.instagram_credentials.Instagram_credentials(
-                    username = '', 
-                    password = '', ),
+                credentials = None,
                 oauth_callback_redirect_uri = '',
         )
         """

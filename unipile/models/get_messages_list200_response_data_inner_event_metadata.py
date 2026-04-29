@@ -22,14 +22,14 @@ from typing import Optional
 from unipile.models.call_ended import CallEnded
 from unipile.models.call_rejected import CallRejected
 from unipile.models.call_started import CallStarted
-from unipile.models.get_messages_list200_response_data_inner_event_metadata_any_of import GetMessagesList200ResponseDataInnerEventMetadataAnyOf
-from unipile.models.get_messages_list200_response_data_inner_event_metadata_any_of1 import GetMessagesList200ResponseDataInnerEventMetadataAnyOf1
-from unipile.models.get_messages_list200_response_data_inner_event_metadata_any_of2 import GetMessagesList200ResponseDataInnerEventMetadataAnyOf2
-from unipile.models.get_messages_list200_response_data_inner_event_metadata_any_of3 import GetMessagesList200ResponseDataInnerEventMetadataAnyOf3
+from unipile.models.chat_description_updated import ChatDescriptionUpdated
+from unipile.models.chat_name_updated import ChatNameUpdated
+from unipile.models.chat_subject_updated import ChatSubjectUpdated
 from unipile.models.message_pin_status import MessagePinStatus
 from unipile.models.new_participant_joined_the_chat_group import NewParticipantJoinedTheChatGroup
 from unipile.models.participant_removed_from_chat_group import ParticipantRemovedFromChatGroup
 from unipile.models.participant_role_updated import ParticipantRoleUpdated
+from unipile.models.reaction import Reaction
 from unipile.models.scheduled_call_cancelled import ScheduledCallCancelled
 from unipile.models.scheduled_call_created import ScheduledCallCreated
 from unipile.models.scheduled_call_started import ScheduledCallStarted
@@ -37,17 +37,17 @@ from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
 from pydantic import Field
 
-GETMESSAGESLIST200RESPONSEDATAINNEREVENTMETADATA_ANY_OF_SCHEMAS = ["CallEnded", "CallRejected", "CallStarted", "GetMessagesList200ResponseDataInnerEventMetadataAnyOf", "GetMessagesList200ResponseDataInnerEventMetadataAnyOf1", "GetMessagesList200ResponseDataInnerEventMetadataAnyOf2", "GetMessagesList200ResponseDataInnerEventMetadataAnyOf3", "MessagePinStatus", "NewParticipantJoinedTheChatGroup", "ParticipantRemovedFromChatGroup", "ParticipantRoleUpdated", "ScheduledCallCancelled", "ScheduledCallCreated", "ScheduledCallStarted"]
+GETMESSAGESLIST200RESPONSEDATAINNEREVENTMETADATA_ANY_OF_SCHEMAS = ["CallEnded", "CallRejected", "CallStarted", "ChatDescriptionUpdated", "ChatNameUpdated", "ChatSubjectUpdated", "MessagePinStatus", "NewParticipantJoinedTheChatGroup", "ParticipantRemovedFromChatGroup", "ParticipantRoleUpdated", "Reaction", "ScheduledCallCancelled", "ScheduledCallCreated", "ScheduledCallStarted"]
 
 class GetMessagesList200ResponseDataInnerEventMetadata(BaseModel):
     """
     GetMessagesList200ResponseDataInnerEventMetadata
     """
 
-    # data type: GetMessagesList200ResponseDataInnerEventMetadataAnyOf
-    anyof_schema_1_validator: Optional[GetMessagesList200ResponseDataInnerEventMetadataAnyOf] = None
-    # data type: GetMessagesList200ResponseDataInnerEventMetadataAnyOf1
-    anyof_schema_2_validator: Optional[GetMessagesList200ResponseDataInnerEventMetadataAnyOf1] = None
+    # data type: ChatNameUpdated
+    anyof_schema_1_validator: Optional[ChatNameUpdated] = None
+    # data type: ChatDescriptionUpdated
+    anyof_schema_2_validator: Optional[ChatDescriptionUpdated] = None
     # data type: CallRejected
     anyof_schema_3_validator: Optional[CallRejected] = None
     # data type: CallEnded
@@ -68,15 +68,15 @@ class GetMessagesList200ResponseDataInnerEventMetadata(BaseModel):
     anyof_schema_11_validator: Optional[ParticipantRemovedFromChatGroup] = None
     # data type: ParticipantRoleUpdated
     anyof_schema_12_validator: Optional[ParticipantRoleUpdated] = None
-    # data type: GetMessagesList200ResponseDataInnerEventMetadataAnyOf2
-    anyof_schema_13_validator: Optional[GetMessagesList200ResponseDataInnerEventMetadataAnyOf2] = None
-    # data type: GetMessagesList200ResponseDataInnerEventMetadataAnyOf3
-    anyof_schema_14_validator: Optional[GetMessagesList200ResponseDataInnerEventMetadataAnyOf3] = None
+    # data type: ChatSubjectUpdated
+    anyof_schema_13_validator: Optional[ChatSubjectUpdated] = None
+    # data type: Reaction
+    anyof_schema_14_validator: Optional[Reaction] = None
     if TYPE_CHECKING:
-        actual_instance: Optional[Union[CallEnded, CallRejected, CallStarted, GetMessagesList200ResponseDataInnerEventMetadataAnyOf, GetMessagesList200ResponseDataInnerEventMetadataAnyOf1, GetMessagesList200ResponseDataInnerEventMetadataAnyOf2, GetMessagesList200ResponseDataInnerEventMetadataAnyOf3, MessagePinStatus, NewParticipantJoinedTheChatGroup, ParticipantRemovedFromChatGroup, ParticipantRoleUpdated, ScheduledCallCancelled, ScheduledCallCreated, ScheduledCallStarted]] = None
+        actual_instance: Optional[Union[CallEnded, CallRejected, CallStarted, ChatDescriptionUpdated, ChatNameUpdated, ChatSubjectUpdated, MessagePinStatus, NewParticipantJoinedTheChatGroup, ParticipantRemovedFromChatGroup, ParticipantRoleUpdated, Reaction, ScheduledCallCancelled, ScheduledCallCreated, ScheduledCallStarted]] = None
     else:
         actual_instance: Any = None
-    any_of_schemas: Set[str] = { "CallEnded", "CallRejected", "CallStarted", "GetMessagesList200ResponseDataInnerEventMetadataAnyOf", "GetMessagesList200ResponseDataInnerEventMetadataAnyOf1", "GetMessagesList200ResponseDataInnerEventMetadataAnyOf2", "GetMessagesList200ResponseDataInnerEventMetadataAnyOf3", "MessagePinStatus", "NewParticipantJoinedTheChatGroup", "ParticipantRemovedFromChatGroup", "ParticipantRoleUpdated", "ScheduledCallCancelled", "ScheduledCallCreated", "ScheduledCallStarted" }
+    any_of_schemas: Set[str] = { "CallEnded", "CallRejected", "CallStarted", "ChatDescriptionUpdated", "ChatNameUpdated", "ChatSubjectUpdated", "MessagePinStatus", "NewParticipantJoinedTheChatGroup", "ParticipantRemovedFromChatGroup", "ParticipantRoleUpdated", "Reaction", "ScheduledCallCancelled", "ScheduledCallCreated", "ScheduledCallStarted" }
 
     model_config = {
         "validate_assignment": True,
@@ -97,15 +97,15 @@ class GetMessagesList200ResponseDataInnerEventMetadata(BaseModel):
     def actual_instance_must_validate_anyof(cls, v):
         instance = GetMessagesList200ResponseDataInnerEventMetadata.model_construct()
         error_messages = []
-        # validate data type: GetMessagesList200ResponseDataInnerEventMetadataAnyOf
-        if not isinstance(v, GetMessagesList200ResponseDataInnerEventMetadataAnyOf):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `GetMessagesList200ResponseDataInnerEventMetadataAnyOf`")
+        # validate data type: ChatNameUpdated
+        if not isinstance(v, ChatNameUpdated):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `ChatNameUpdated`")
         else:
             return v
 
-        # validate data type: GetMessagesList200ResponseDataInnerEventMetadataAnyOf1
-        if not isinstance(v, GetMessagesList200ResponseDataInnerEventMetadataAnyOf1):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `GetMessagesList200ResponseDataInnerEventMetadataAnyOf1`")
+        # validate data type: ChatDescriptionUpdated
+        if not isinstance(v, ChatDescriptionUpdated):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `ChatDescriptionUpdated`")
         else:
             return v
 
@@ -169,21 +169,21 @@ class GetMessagesList200ResponseDataInnerEventMetadata(BaseModel):
         else:
             return v
 
-        # validate data type: GetMessagesList200ResponseDataInnerEventMetadataAnyOf2
-        if not isinstance(v, GetMessagesList200ResponseDataInnerEventMetadataAnyOf2):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `GetMessagesList200ResponseDataInnerEventMetadataAnyOf2`")
+        # validate data type: ChatSubjectUpdated
+        if not isinstance(v, ChatSubjectUpdated):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `ChatSubjectUpdated`")
         else:
             return v
 
-        # validate data type: GetMessagesList200ResponseDataInnerEventMetadataAnyOf3
-        if not isinstance(v, GetMessagesList200ResponseDataInnerEventMetadataAnyOf3):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `GetMessagesList200ResponseDataInnerEventMetadataAnyOf3`")
+        # validate data type: Reaction
+        if not isinstance(v, Reaction):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `Reaction`")
         else:
             return v
 
         if error_messages:
             # no match
-            raise ValueError("No match found when setting the actual_instance in GetMessagesList200ResponseDataInnerEventMetadata with anyOf schemas: CallEnded, CallRejected, CallStarted, GetMessagesList200ResponseDataInnerEventMetadataAnyOf, GetMessagesList200ResponseDataInnerEventMetadataAnyOf1, GetMessagesList200ResponseDataInnerEventMetadataAnyOf2, GetMessagesList200ResponseDataInnerEventMetadataAnyOf3, MessagePinStatus, NewParticipantJoinedTheChatGroup, ParticipantRemovedFromChatGroup, ParticipantRoleUpdated, ScheduledCallCancelled, ScheduledCallCreated, ScheduledCallStarted. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting the actual_instance in GetMessagesList200ResponseDataInnerEventMetadata with anyOf schemas: CallEnded, CallRejected, CallStarted, ChatDescriptionUpdated, ChatNameUpdated, ChatSubjectUpdated, MessagePinStatus, NewParticipantJoinedTheChatGroup, ParticipantRemovedFromChatGroup, ParticipantRoleUpdated, Reaction, ScheduledCallCancelled, ScheduledCallCreated, ScheduledCallStarted. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -196,15 +196,15 @@ class GetMessagesList200ResponseDataInnerEventMetadata(BaseModel):
         """Returns the object represented by the json string"""
         instance = cls.model_construct()
         error_messages = []
-        # anyof_schema_1_validator: Optional[GetMessagesList200ResponseDataInnerEventMetadataAnyOf] = None
+        # anyof_schema_1_validator: Optional[ChatNameUpdated] = None
         try:
-            instance.actual_instance = GetMessagesList200ResponseDataInnerEventMetadataAnyOf.from_json(json_str)
+            instance.actual_instance = ChatNameUpdated.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_2_validator: Optional[GetMessagesList200ResponseDataInnerEventMetadataAnyOf1] = None
+        # anyof_schema_2_validator: Optional[ChatDescriptionUpdated] = None
         try:
-            instance.actual_instance = GetMessagesList200ResponseDataInnerEventMetadataAnyOf1.from_json(json_str)
+            instance.actual_instance = ChatDescriptionUpdated.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
@@ -268,22 +268,22 @@ class GetMessagesList200ResponseDataInnerEventMetadata(BaseModel):
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_13_validator: Optional[GetMessagesList200ResponseDataInnerEventMetadataAnyOf2] = None
+        # anyof_schema_13_validator: Optional[ChatSubjectUpdated] = None
         try:
-            instance.actual_instance = GetMessagesList200ResponseDataInnerEventMetadataAnyOf2.from_json(json_str)
+            instance.actual_instance = ChatSubjectUpdated.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
-        # anyof_schema_14_validator: Optional[GetMessagesList200ResponseDataInnerEventMetadataAnyOf3] = None
+        # anyof_schema_14_validator: Optional[Reaction] = None
         try:
-            instance.actual_instance = GetMessagesList200ResponseDataInnerEventMetadataAnyOf3.from_json(json_str)
+            instance.actual_instance = Reaction.from_json(json_str)
             return instance
         except (ValidationError, ValueError) as e:
              error_messages.append(str(e))
 
         if error_messages:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into GetMessagesList200ResponseDataInnerEventMetadata with anyOf schemas: CallEnded, CallRejected, CallStarted, GetMessagesList200ResponseDataInnerEventMetadataAnyOf, GetMessagesList200ResponseDataInnerEventMetadataAnyOf1, GetMessagesList200ResponseDataInnerEventMetadataAnyOf2, GetMessagesList200ResponseDataInnerEventMetadataAnyOf3, MessagePinStatus, NewParticipantJoinedTheChatGroup, ParticipantRemovedFromChatGroup, ParticipantRoleUpdated, ScheduledCallCancelled, ScheduledCallCreated, ScheduledCallStarted. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into GetMessagesList200ResponseDataInnerEventMetadata with anyOf schemas: CallEnded, CallRejected, CallStarted, ChatDescriptionUpdated, ChatNameUpdated, ChatSubjectUpdated, MessagePinStatus, NewParticipantJoinedTheChatGroup, ParticipantRemovedFromChatGroup, ParticipantRoleUpdated, Reaction, ScheduledCallCancelled, ScheduledCallCreated, ScheduledCallStarted. Details: " + ", ".join(error_messages))
         else:
             return instance
 
@@ -297,7 +297,7 @@ class GetMessagesList200ResponseDataInnerEventMetadata(BaseModel):
         else:
             return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Optional[Union[Dict[str, Any], CallEnded, CallRejected, CallStarted, GetMessagesList200ResponseDataInnerEventMetadataAnyOf, GetMessagesList200ResponseDataInnerEventMetadataAnyOf1, GetMessagesList200ResponseDataInnerEventMetadataAnyOf2, GetMessagesList200ResponseDataInnerEventMetadataAnyOf3, MessagePinStatus, NewParticipantJoinedTheChatGroup, ParticipantRemovedFromChatGroup, ParticipantRoleUpdated, ScheduledCallCancelled, ScheduledCallCreated, ScheduledCallStarted]]:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], CallEnded, CallRejected, CallStarted, ChatDescriptionUpdated, ChatNameUpdated, ChatSubjectUpdated, MessagePinStatus, NewParticipantJoinedTheChatGroup, ParticipantRemovedFromChatGroup, ParticipantRoleUpdated, Reaction, ScheduledCallCancelled, ScheduledCallCreated, ScheduledCallStarted]]:
         """Returns the dict representation of the actual instance"""
         if self.actual_instance is None:
             return None

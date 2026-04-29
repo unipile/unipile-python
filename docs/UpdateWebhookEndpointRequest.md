@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **trigger_events** | **List[str]** | The events that will trigger the webhook endpoint.           Refer to [Events Types](https://developer.unipile.com/v2.0/reference/event-types-1) to see the list of available values. | [optional] 
+**account_ids** | **List[str]** | Restrict the webhook to specific accounts. Leave empty or omit the field to listen to events from every account in the application. | [optional] 
 **url** | **str** | The URL to send the webhook payload to. | [optional] 
 **description** | **str** | A description of the webhook endpoint. | [optional] 
 **enabled** | **bool** | Whether the webhook endpoint is enabled. | [optional] 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **port** | **float** | The port of the proxy. | 
 **username** | **str** | The username to connect to the proxy. | [optional] 
 **password** | **str** | The password to connect to the proxy. | [optional] 
-**protocol** | **str** | The protocol of the proxy.         - &#x60;https&#x60; is HTTPS.         - &#x60;http&#x60; is HTTP.           - &#x60;socks5&#x60; is SOCKS5.           - &#x60;socks4&#x60; is SOCKS4. | 
+**protocol** | **str** | The protocol of the proxy. Defaults to &#x60;https&#x60;.         - &#x60;https&#x60; is HTTPS.         - &#x60;http&#x60; is HTTP.           - &#x60;socks5&#x60; is SOCKS5.           - &#x60;socks4&#x60; is SOCKS4. | [optional] [default to 'https']
 
 ## Example
 

@@ -19,11 +19,11 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from unipile.models.create_recruiter_hiring_project_request_company import CreateRecruiterHiringProjectRequestCompany
 from unipile.models.create_recruiter_hiring_project_request_job_title import CreateRecruiterHiringProjectRequestJobTitle
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class CreateRecruiterHiringProjectRequest(BaseModel):
     """
@@ -34,7 +34,7 @@ class CreateRecruiterHiringProjectRequest(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="The description of the project.")
     company: Optional[CreateRecruiterHiringProjectRequestCompany] = None
     job_title: Optional[CreateRecruiterHiringProjectRequestJobTitle] = None
-    location: Optional[Annotated[str, Field(strict=True)]] = None
+    location: Optional[StrictStr] = Field(default=None, description="A parameter ID. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `JOB_LOCATION` type to find out the possible values.")
     seniority_level: Optional[StrictStr] = Field(default=None, description="The level of experience.")
     __properties: ClassVar[List[str]] = ["name", "visibility", "description", "company", "job_title", "location", "seniority_level"]
 
@@ -43,16 +43,6 @@ class CreateRecruiterHiringProjectRequest(BaseModel):
         """Validates the enum"""
         if value not in set(['PRIVATE', 'PUBLIC']):
             raise ValueError("must be one of enum values ('PRIVATE', 'PUBLIC')")
-        return value
-
-    @field_validator('location')
-    def location_validate_regular_expression(cls, value):
-        """Validates the regular expression"""
-        if value is None:
-            return value
-
-        if not re.match(r"^\d+$", value):
-            raise ValueError(r"must validate the regular expression /^\d+$/")
         return value
 
     @field_validator('seniority_level')
@@ -66,7 +56,8 @@ class CreateRecruiterHiringProjectRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -78,8 +69,7 @@ class CreateRecruiterHiringProjectRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -20,10 +20,11 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from unipile.models.account1_proxy import Account1Proxy
 from unipile.models.account_initial_sync import AccountInitialSync
-from unipile.models.account_proxy import AccountProxy
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class Account1(BaseModel):
     """
@@ -40,7 +41,7 @@ class Account1(BaseModel):
     oauth_scope: Optional[StrictStr] = Field(default=None, description="If the provider is OAuth, this is the scope of comma-separated permissions granted to the account.")
     metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Metadata of the account.")
     initial_sync: Optional[AccountInitialSync] = None
-    proxy: Optional[AccountProxy] = None
+    proxy: Optional[Account1Proxy] = None
     __properties: ClassVar[List[str]] = ["object", "user_id", "name", "created_at", "id", "application_id", "status", "provider", "oauth_scope", "metadata", "initial_sync", "proxy"]
 
     @field_validator('object')
@@ -53,6 +54,9 @@ class Account1(BaseModel):
     @field_validator('id')
     def id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
         if not re.match(r"^acc_(.*)$", value):
             raise ValueError(r"must validate the regular expression /^acc_(.*)$/")
         return value
@@ -60,6 +64,9 @@ class Account1(BaseModel):
     @field_validator('application_id')
     def application_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
         if not re.match(r"^app_(.*)$", value):
             raise ValueError(r"must validate the regular expression /^app_(.*)$/")
         return value
@@ -79,7 +86,8 @@ class Account1(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -91,8 +99,7 @@ class Account1(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -146,7 +153,7 @@ class Account1(BaseModel):
             "oauth_scope": obj.get("oauth_scope"),
             "metadata": obj.get("metadata"),
             "initial_sync": AccountInitialSync.from_dict(obj["initial_sync"]) if obj.get("initial_sync") is not None else None,
-            "proxy": AccountProxy.from_dict(obj["proxy"]) if obj.get("proxy") is not None else None
+            "proxy": Account1Proxy.from_dict(obj["proxy"]) if obj.get("proxy") is not None else None
         })
         return _obj
 

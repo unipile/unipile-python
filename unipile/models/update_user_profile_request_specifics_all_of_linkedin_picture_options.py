@@ -20,15 +20,17 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
+from unipile.models.update_user_profile_request_specifics_all_of_linkedin_picture_options_layout import UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptionsLayout
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions(BaseModel):
     """
     UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions
     """ # noqa: E501
     filter: Optional[StrictStr] = Field(default=None, description="A visual filter to be applied to the picture.")
-    layout: Optional[Dict[str, Any]] = None
+    layout: Optional[UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptionsLayout] = None
     contrast: Optional[Union[Annotated[float, Field(le=0.3, strict=True, ge=-0.3)], Annotated[int, Field(le=0, strict=True, ge=0)]]] = Field(default=None, description="The level of contrast.")
     vignette: Optional[Union[Annotated[float, Field(le=0.3, strict=True, ge=-0.3)], Annotated[int, Field(le=0, strict=True, ge=0)]]] = Field(default=None, description="The level of vignetting.")
     saturation: Optional[Union[Annotated[float, Field(le=0.3, strict=True, ge=-0.3)], Annotated[int, Field(le=0, strict=True, ge=0)]]] = Field(default=None, description="The level of saturation.")
@@ -46,7 +48,8 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -58,8 +61,7 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -84,6 +86,9 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of layout
+        if self.layout:
+            _dict['layout'] = self.layout.to_dict()
         return _dict
 
     @classmethod
@@ -97,7 +102,7 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions(BaseModel):
 
         _obj = cls.model_validate({
             "filter": obj.get("filter"),
-            "layout": obj.get("layout"),
+            "layout": UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptionsLayout.from_dict(obj["layout"]) if obj.get("layout") is not None else None,
             "contrast": obj.get("contrast"),
             "vignette": obj.get("vignette"),
             "saturation": obj.get("saturation"),

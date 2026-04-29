@@ -69,7 +69,7 @@ class TestGetClassicApplicants200Response(unittest.TestCase):
                             public_picture_url = '', 
                             work_experience = [
                                 unipile.models.get_classic_applicants_200_response_data_inner_profile_work_experience_inner.getClassicApplicants_200_response_data_inner_profile_work_experience_inner(
-                                    company = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                                    company = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                                         name = '', 
                                         id = '', 
                                         public_identifier = '', 
@@ -139,7 +139,7 @@ class TestGetClassicApplicants200Response(unittest.TestCase):
                             public_picture_url = '', 
                             work_experience = [
                                 unipile.models.get_classic_applicants_200_response_data_inner_profile_work_experience_inner.getClassicApplicants_200_response_data_inner_profile_work_experience_inner(
-                                    company = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                                    company = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                                         name = '', 
                                         id = '', 
                                         public_identifier = '', 

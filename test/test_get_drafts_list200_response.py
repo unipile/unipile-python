@@ -67,6 +67,9 @@ class TestGetDraftsList200Response(unittest.TestCase):
                             ], 
                         folders = [
                             ''
+                            ], 
+                        categories = [
+                            ''
                             ], )
                     ],
                 total_count = 1.337,
@@ -105,6 +108,9 @@ class TestGetDraftsList200Response(unittest.TestCase):
                             null
                             ], 
                         folders = [
+                            ''
+                            ], 
+                        categories = [
                             ''
                             ], )
                     ],

@@ -6,8 +6,8 @@ The size of the image in pixels.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**height** | **float** |  | 
-**width** | **float** |  | 
+**height** | **float** | The number of comments to the post. &#x60;null&#x60; if counter is hidden. | 
+**width** | **float** | The number of comments to the post. &#x60;null&#x60; if counter is hidden. | 
 
 ## Example
 

@@ -17,23 +17,24 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class SearchLocations200ResponseInner(BaseModel):
     """
     SearchLocations200ResponseInner
     """ # noqa: E501
     object: StrictStr
-    id: Optional[StrictStr]
-    id_source: Optional[StrictStr]
-    name: Optional[StrictStr]
-    address: Optional[StrictStr] = None
-    latitude: Optional[Union[StrictFloat, StrictInt]] = None
-    longitude: Optional[Union[StrictFloat, StrictInt]] = None
-    __properties: ClassVar[List[str]] = ["object", "id", "id_source", "name", "address", "latitude", "longitude"]
+    id: StrictStr = Field(description="The unique identifier of the Instagram location.")
+    source: StrictStr = Field(description="The source provider of the location.")
+    name: StrictStr = Field(description="The name of the location.")
+    address: Optional[StrictStr] = Field(default=None, description="The street address of the location.")
+    latitude: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The latitude coordinate of the location.")
+    longitude: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The longitude coordinate of the location.")
+    __properties: ClassVar[List[str]] = ["object", "id", "source", "name", "address", "latitude", "longitude"]
 
     @field_validator('object')
     def object_validate_enum(cls, value):
@@ -43,7 +44,8 @@ class SearchLocations200ResponseInner(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -55,8 +57,7 @@ class SearchLocations200ResponseInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -81,36 +82,6 @@ class SearchLocations200ResponseInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if id (nullable) is None
-        # and model_fields_set contains the field
-        if self.id is None and "id" in self.model_fields_set:
-            _dict['id'] = None
-
-        # set to None if id_source (nullable) is None
-        # and model_fields_set contains the field
-        if self.id_source is None and "id_source" in self.model_fields_set:
-            _dict['id_source'] = None
-
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict['name'] = None
-
-        # set to None if address (nullable) is None
-        # and model_fields_set contains the field
-        if self.address is None and "address" in self.model_fields_set:
-            _dict['address'] = None
-
-        # set to None if latitude (nullable) is None
-        # and model_fields_set contains the field
-        if self.latitude is None and "latitude" in self.model_fields_set:
-            _dict['latitude'] = None
-
-        # set to None if longitude (nullable) is None
-        # and model_fields_set contains the field
-        if self.longitude is None and "longitude" in self.model_fields_set:
-            _dict['longitude'] = None
-
         return _dict
 
     @classmethod
@@ -125,7 +96,7 @@ class SearchLocations200ResponseInner(BaseModel):
         _obj = cls.model_validate({
             "object": obj.get("object"),
             "id": obj.get("id"),
-            "id_source": obj.get("id_source"),
+            "source": obj.get("source"),
             "name": obj.get("name"),
             "address": obj.get("address"),
             "latitude": obj.get("latitude"),

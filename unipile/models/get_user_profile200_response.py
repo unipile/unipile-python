@@ -19,9 +19,11 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
+from unipile.models.get_email_contacts_list200_response_data_inner_social_handles import GetEmailContactsList200ResponseDataInnerSocialHandles
 from unipile.models.get_user_profile200_response_specifics import GetUserProfile200ResponseSpecifics
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetUserProfile200Response(BaseModel):
     """
@@ -29,7 +31,7 @@ class GetUserProfile200Response(BaseModel):
     """ # noqa: E501
     id: StrictStr = Field(description="Unique identifier of the user for the provider. Usually an internal identifier used by the API only.")
     object: StrictStr
-    type: StrictStr = Field(description="Type of the user.       - `individual` is an individual user.       - `organization` is an organization / business entity.       - `other` is an other type of entity.")
+    type: StrictStr = Field(description="Type of the user       - `individual` is an individual user.       - `organization` is an organization / business entity.       - `other` is an other type of entity.")
     public_identifier: Optional[StrictStr] = Field(default=None, description="Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles. ")
     display_name: StrictStr = Field(description="Display name of the user.")
     profile_url: Optional[StrictStr] = Field(default=None, description="Public url to the profile of the user.")
@@ -41,9 +43,9 @@ class GetUserProfile200Response(BaseModel):
     first_name: Optional[StrictStr] = Field(default=None, description="First name of the user.")
     last_name: Optional[StrictStr] = Field(default=None, description="Last name of the user.")
     birth_date: Optional[StrictStr] = Field(default=None, description="Birth date of the user.")
-    addresses: Optional[List[StrictStr]] = None
-    emails: Optional[List[StrictStr]] = None
-    phone_numbers: Optional[List[StrictStr]] = None
+    addresses: Optional[List[Optional[StrictStr]]] = Field(default=None, description="List of user addresses.")
+    emails: Optional[List[StrictStr]] = Field(default=None, description="List of user email addresses.")
+    phone_numbers: Optional[List[StrictStr]] = Field(default=None, description="List of user phone numbers.")
     created_at: Optional[StrictStr] = Field(default=None, description="Date and time when the user account was created on the provider.")
     bio: Optional[StrictStr] = Field(default=None, description="Biography of the user.")
     location: Optional[StrictStr] = Field(default=None, description="Location of the user.")
@@ -57,7 +59,9 @@ class GetUserProfile200Response(BaseModel):
     is_blocked: StrictBool = Field(description="Whether the user is blocked by the current user.")
     provider: StrictStr = Field(description="The provider's of the Account.     - `mock` is mock.     - `whatsapp` is WhatsApp.     - `linkedin` is LinkedIn.     - `instagram` is Instagram.     - `google` is Google.     - `outlook` is Outlook.     - `telegram` is Telegram.     - `imap` is IMAP.")
     specifics: GetUserProfile200ResponseSpecifics
-    __properties: ClassVar[List[str]] = ["id", "object", "type", "public_identifier", "display_name", "profile_url", "public_picture_url", "private_picture_download_url", "description", "background_picture_url", "public_picture_url_large", "first_name", "last_name", "birth_date", "addresses", "emails", "phone_numbers", "created_at", "bio", "location", "muted_until", "following", "followers_count", "following_count", "relations_count", "shared_relations_count", "shared_followers_count", "is_blocked", "provider", "specifics"]
+    social_handles: Optional[GetEmailContactsList200ResponseDataInnerSocialHandles] = None
+    websites: Optional[List[StrictStr]] = Field(default=None, description="List of user websites.")
+    __properties: ClassVar[List[str]] = ["id", "object", "type", "public_identifier", "display_name", "profile_url", "public_picture_url", "private_picture_download_url", "description", "background_picture_url", "public_picture_url_large", "first_name", "last_name", "birth_date", "addresses", "emails", "phone_numbers", "created_at", "bio", "location", "muted_until", "following", "followers_count", "following_count", "relations_count", "shared_relations_count", "shared_followers_count", "is_blocked", "provider", "specifics", "social_handles", "websites"]
 
     @field_validator('object')
     def object_validate_enum(cls, value):
@@ -81,7 +85,8 @@ class GetUserProfile200Response(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -93,8 +98,7 @@ class GetUserProfile200Response(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -122,6 +126,9 @@ class GetUserProfile200Response(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of specifics
         if self.specifics:
             _dict['specifics'] = self.specifics.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of social_handles
+        if self.social_handles:
+            _dict['social_handles'] = self.social_handles.to_dict()
         return _dict
 
     @classmethod
@@ -163,7 +170,9 @@ class GetUserProfile200Response(BaseModel):
             "shared_followers_count": obj.get("shared_followers_count"),
             "is_blocked": obj.get("is_blocked"),
             "provider": obj.get("provider"),
-            "specifics": GetUserProfile200ResponseSpecifics.from_dict(obj["specifics"]) if obj.get("specifics") is not None else None
+            "specifics": GetUserProfile200ResponseSpecifics.from_dict(obj["specifics"]) if obj.get("specifics") is not None else None,
+            "social_handles": GetEmailContactsList200ResponseDataInnerSocialHandles.from_dict(obj["social_handles"]) if obj.get("social_handles") is not None else None,
+            "websites": obj.get("websites")
         })
         return _obj
 

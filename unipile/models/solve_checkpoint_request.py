@@ -18,10 +18,11 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class SolveCheckpointRequest(BaseModel):
     """
@@ -29,18 +30,21 @@ class SolveCheckpointRequest(BaseModel):
     """ # noqa: E501
     code: StrictStr = Field(description="The code to solve the checkpoint. Check the AuthenticationCheckpoint response you have already obtained to see what type of code is expected.")
     intent_id: Annotated[str, Field(strict=True)] = Field(description="The ID of the intent to solve.")
-    state: Optional[StrictStr] = Field(default=None, description="State data sent in the `account.add` / `account.reconnect` webhook payload after the authentication process.")
-    __properties: ClassVar[List[str]] = ["code", "intent_id", "state"]
+    __properties: ClassVar[List[str]] = ["code", "intent_id"]
 
     @field_validator('intent_id')
     def intent_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
         if not re.match(r"^acc_(.*)$", value):
             raise ValueError(r"must validate the regular expression /^acc_(.*)$/")
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,8 +56,7 @@ class SolveCheckpointRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -91,8 +94,7 @@ class SolveCheckpointRequest(BaseModel):
 
         _obj = cls.model_validate({
             "code": obj.get("code"),
-            "intent_id": obj.get("intent_id"),
-            "state": obj.get("state")
+            "intent_id": obj.get("intent_id")
         })
         return _obj
 

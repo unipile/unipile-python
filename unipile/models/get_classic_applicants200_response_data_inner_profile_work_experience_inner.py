@@ -19,15 +19,16 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from unipile.models.get_user_profile200_response_specifics_all_of_any_of_certifications_inner_organization import GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization
+from unipile.models.linked_in_certifications_inner_organization import LinkedInCertificationsInnerOrganization
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetClassicApplicants200ResponseDataInnerProfileWorkExperienceInner(BaseModel):
     """
     GetClassicApplicants200ResponseDataInnerProfileWorkExperienceInner
     """ # noqa: E501
-    company: GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization
+    company: LinkedInCertificationsInnerOrganization
     title: StrictStr = Field(description="The position name in the experience.")
     started_on: Optional[StrictStr] = Field(default=None, description="The start date of the experience in MM/DD/YYYY format.")
     ended_on: Optional[StrictStr] = Field(default=None, description="The end date of the experience in MM/DD/YYYY format.")
@@ -37,7 +38,8 @@ class GetClassicApplicants200ResponseDataInnerProfileWorkExperienceInner(BaseMod
     __properties: ClassVar[List[str]] = ["company", "title", "started_on", "ended_on", "location", "description", "employment_type"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,8 +51,7 @@ class GetClassicApplicants200ResponseDataInnerProfileWorkExperienceInner(BaseMod
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -90,7 +91,7 @@ class GetClassicApplicants200ResponseDataInnerProfileWorkExperienceInner(BaseMod
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "company": GetUserProfile200ResponseSpecificsAllOfAnyOfCertificationsInnerOrganization.from_dict(obj["company"]) if obj.get("company") is not None else None,
+            "company": LinkedInCertificationsInnerOrganization.from_dict(obj["company"]) if obj.get("company") is not None else None,
             "title": obj.get("title"),
             "started_on": obj.get("started_on"),
             "ended_on": obj.get("ended_on"),

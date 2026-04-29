@@ -41,7 +41,7 @@ class TestGetClassicApplicantsRequest(unittest.TestCase):
                 keywords = '',
                 sort_by = 'APPLIED_DATE',
                 location = [
-                    '4'
+                    ''
                     ],
                 years_of_experience = [
                     unipile.models.get_classic_applicants_request_years_of_experience_inner.getClassicApplicants_request_years_of_experience_inner(
@@ -49,7 +49,7 @@ class TestGetClassicApplicantsRequest(unittest.TestCase):
                         max = 1, )
                     ],
                 skills = [
-                    '4'
+                    ''
                     ]
             )
         else:

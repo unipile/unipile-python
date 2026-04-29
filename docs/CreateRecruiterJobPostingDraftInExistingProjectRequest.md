@@ -6,15 +6,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **job_title** | [**CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle**](CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle.md) |  | 
-**company** | [**EditClassicJobPostingRequestCompany**](EditClassicJobPostingRequestCompany.md) |  | 
+**company** | [**CreateRecruiterJobPostingDraftInExistingProjectRequestCompany**](CreateRecruiterJobPostingDraftInExistingProjectRequestCompany.md) |  | 
 **workplace_type** | **str** | The working method of the job. | 
-**location** | **str** |  | 
+**location** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_LOCATION&#x60; type to find out the possible values. | 
 **employment_status** | **str** | The employment status of the job. | 
 **seniority_level** | **str** | The level of experience of the job. | 
 **description** | **str** | The job description. You can use HTML tags to structure your content. | 
-**industry** | **List[str]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;INDUSTRY&#x60; type to find out the possible values. The company industries related to the job posting. | 
-**job_function** | **List[str]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_FUNCTION&#x60; type to find out the possible values. The job functions related to the job posting. | 
-**skills** | **List[str]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;SKILL&#x60; type to find out the possible values. The skills related to the job posting. | [optional] 
+**industry** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;INDUSTRY&#x60; type to find out the possible values. The company industries related to the job posting. | 
+**job_function** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_FUNCTION&#x60; type to find out the possible values. The job functions related to the job posting. | 
+**skills** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;SKILL&#x60; type to find out the possible values. The skills related to the job posting. | [optional] 
 **include_poster_info** | **bool** | Whether basic information about you should be available on the job posting. | [optional] [default to True]
 **tracking_pixel_url** | **str** | The tracking pixel URL of the company. | [optional] 
 **company_job_id** | **str** | The ID of the job in the company&#39;s system. | [optional] 

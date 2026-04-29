@@ -23,6 +23,7 @@ from unipile.models.get_messages_list200_response_data_inner_reactions_counter_i
 from unipile.models.get_post_comments_list200_response_data_inner_author import GetPostCommentsList200ResponseDataInnerAuthor
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetPostCommentsList200ResponseDataInner(BaseModel):
     """
@@ -38,7 +39,7 @@ class GetPostCommentsList200ResponseDataInner(BaseModel):
     can_reply: StrictBool = Field(description="Whether the current user can reply to the comment or not.")
     can_react: StrictBool = Field(description="Whether the current user can react to the comment or not.")
     reply_counter: Union[StrictFloat, StrictInt] = Field(description="The number of replies to the comment.")
-    reactions_counter: List[GetMessagesList200ResponseDataInnerReactionsCounterInner] = Field(description="The number of reactions to the element")
+    reactions_counter: List[GetMessagesList200ResponseDataInnerReactionsCounterInner] = Field(description="A list of reactions to the element.")
     __properties: ClassVar[List[str]] = ["object", "id", "thread_id", "author", "created_at", "text", "is_sender", "can_reply", "can_react", "reply_counter", "reactions_counter"]
 
     @field_validator('object')
@@ -49,7 +50,8 @@ class GetPostCommentsList200ResponseDataInner(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -61,8 +63,7 @@ class GetPostCommentsList200ResponseDataInner(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

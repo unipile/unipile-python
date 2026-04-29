@@ -37,13 +37,13 @@ class TestPerformSalesCompaniesSearchRequestDepartmentHeadcount(unittest.TestCas
             return PerformSalesCompaniesSearchRequestDepartmentHeadcount(
                 min = 1.337,
                 max = 1.337,
-                department = '4'
+                department = ''
             )
         else:
             return PerformSalesCompaniesSearchRequestDepartmentHeadcount(
                 min = 1.337,
                 max = 1.337,
-                department = '4',
+                department = '',
         )
         """
 

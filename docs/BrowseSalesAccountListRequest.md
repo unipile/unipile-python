@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**persona** | **str** |  | [optional] 
+**persona** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;PERSONA&#x60; type to find out the possible values.    Native filter : Persona    | [optional] 
 **filter** | **str** |     Native filter : Filter companies    | [optional] 
 **sort_by** | **str** | The sort method. | [optional] [default to 'NAME']
 **sort_order** | **str** | The sort order. | [optional] [default to 'ASCENDING']

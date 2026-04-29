@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **outlook** | [**LinkNewAccountConfigGoogle**](LinkNewAccountConfigGoogle.md) |  | [optional] 
 **linkedin** | [**LinkNewAccountConfigLinkedin**](LinkNewAccountConfigLinkedin.md) |  | [optional] 
 **whatsapp** | [**WhatsAppConfig**](WhatsAppConfig.md) |  | [optional] 
-**instagram** | [**InstagramConfig**](InstagramConfig.md) |  | [optional] 
+**instagram** | [**Instagram1Config**](Instagram1Config.md) |  | [optional] 
 **imap** | [**LinkNewAccountConfigImap**](LinkNewAccountConfigImap.md) |  | [optional] 
 **telegram** | [**TelegramConfig**](TelegramConfig.md) |  | [optional] 
 **var_global** | [**LinkNewAccountConfigGlobal**](LinkNewAccountConfigGlobal.md) |  | [optional] 

@@ -21,6 +21,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, Stric
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class CustomProxy1(BaseModel):
     """
@@ -30,18 +31,22 @@ class CustomProxy1(BaseModel):
     port: Union[StrictFloat, StrictInt] = Field(description="The port of the proxy.")
     username: Optional[StrictStr] = Field(default=None, description="The username to connect to the proxy.")
     password: Optional[StrictStr] = Field(default=None, description="The password to connect to the proxy.")
-    protocol: StrictStr = Field(description="The protocol of the proxy.         - `https` is HTTPS.         - `http` is HTTP.           - `socks5` is SOCKS5.           - `socks4` is SOCKS4.")
+    protocol: Optional[StrictStr] = Field(default='https', description="The protocol of the proxy. Defaults to `https`.         - `https` is HTTPS.         - `http` is HTTP.           - `socks5` is SOCKS5.           - `socks4` is SOCKS4.")
     __properties: ClassVar[List[str]] = ["host", "port", "username", "password", "protocol"]
 
     @field_validator('protocol')
     def protocol_validate_enum(cls, value):
         """Validates the enum"""
+        if value is None:
+            return value
+
         if value not in set(['https', 'http', 'socks5', 'socks4']):
             raise ValueError("must be one of enum values ('https', 'http', 'socks5', 'socks4')")
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,8 +58,7 @@ class CustomProxy1(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -95,7 +99,7 @@ class CustomProxy1(BaseModel):
             "port": obj.get("port"),
             "username": obj.get("username"),
             "password": obj.get("password"),
-            "protocol": obj.get("protocol")
+            "protocol": obj.get("protocol") if obj.get("protocol") is not None else 'https'
         })
         return _obj
 

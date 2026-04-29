@@ -68,7 +68,8 @@ class TestUpdateDraftRequest(unittest.TestCase):
                     opens = True, 
                     links = True, 
                     label = '', 
-                    custom_domain = '', )
+                    custom_domain = '', ),
+                specifics = None
             )
         else:
             return UpdateDraftRequest(

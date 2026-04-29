@@ -36,7 +36,7 @@ class TestFullProfileEducationInner(unittest.TestCase):
         if include_optional:
             return FullProfileEducationInner(
                 id = '',
-                school = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_education_inner_school.getUserProfile_200_response_specifics_allOf_anyOf_education_inner_school(
+                school = unipile.models.linked_in_education_inner_school.LinkedIn_education_inner_school(
                     id = '', 
                     name = '', 
                     picture_url = '', 
@@ -57,7 +57,7 @@ class TestFullProfileEducationInner(unittest.TestCase):
             )
         else:
             return FullProfileEducationInner(
-                school = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_education_inner_school.getUserProfile_200_response_specifics_allOf_anyOf_education_inner_school(
+                school = unipile.models.linked_in_education_inner_school.LinkedIn_education_inner_school(
                     id = '', 
                     name = '', 
                     picture_url = '', 

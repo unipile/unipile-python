@@ -103,6 +103,20 @@ class TestLinkedInApi(unittest.TestCase):
         """
         pass
 
+    def test_endorse_classic_member_skill(self) -> None:
+        """Test case for endorse_classic_member_skill
+
+        Endorse a Member's Skill
+        """
+        pass
+
+    def test_get_available_contracts(self) -> None:
+        """Test case for get_available_contracts
+
+        List Available Contracts
+        """
+        pass
+
     def test_get_classic_applicant_by_id(self) -> None:
         """Test case for get_classic_applicant_by_id
 
@@ -380,6 +394,13 @@ class TestLinkedInApi(unittest.TestCase):
         """Test case for save_sales_lead_to_list
 
         Save a Lead To a List
+        """
+        pass
+
+    def test_select_contract(self) -> None:
+        """Test case for select_contract
+
+        Select a Contract
         """
         pass
 

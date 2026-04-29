@@ -21,18 +21,20 @@ from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetInmailCredits200ResponseCredits(BaseModel):
     """
     GetInmailCredits200ResponseCredits
     """ # noqa: E501
-    premium: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="InMail credits for Classic Premium.")
+    classic: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="InMail credits for Classic Premium.")
     recruiter: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="InMail credits for Recruiter.")
     sales_navigator: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="InMail credits for Sales Navigator.")
-    __properties: ClassVar[List[str]] = ["premium", "recruiter", "sales_navigator"]
+    __properties: ClassVar[List[str]] = ["classic", "recruiter", "sales_navigator"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -44,8 +46,7 @@ class GetInmailCredits200ResponseCredits(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -82,7 +83,7 @@ class GetInmailCredits200ResponseCredits(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "premium": obj.get("premium"),
+            "classic": obj.get("classic"),
             "recruiter": obj.get("recruiter"),
             "sales_navigator": obj.get("sales_navigator")
         })

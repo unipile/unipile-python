@@ -7,17 +7,18 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The ID of the Company. | 
 **display_name** | **str** | The display name of the Company. | 
-**type** | **str** | The type of the Company. | [optional] 
-**specialties** | **List[str]** | A list of the company&#39;s activities. | [optional] 
 **public_identifier** | **str** | The public identifier of the Company. | [optional] 
 **profile_url** | **str** | The profile URL of the Company. | [optional] 
-**public_picture_url** | **str** | The profile picture URL of the Company. | [optional] 
+**public_picture_url** | **str** | The public picture URL of the Company. | [optional] 
+**public_picture_url_large** | **str** | The public picture URL of the Company in large size. | [optional] 
 **location** | **str** | The location of the Company. | [optional] 
-**industry** | **str** | The industry to which the Company belongs. | 
+**industry** | **str** | The industry to which the Company belongs. | [optional] 
 **summary** | **str** | The summary of the Company&#39;s activities. | [optional] 
-**headcount** | **float** | The number of employees of the Company. | [optional] 
-**is_hiring_on_linkedin** | **bool** | Whether the Company is hiring on LinkedIn. | [optional] 
 **relations_count** | **float** | The number of the relations of the Company. | [optional] 
+**type** | **str** | The type of the Company. | [optional] 
+**headcount** | **float** | The number of employees of the Company. | [optional] 
+**specialties** | **List[str]** | A list of the company&#39;s activities. | [optional] 
+**is_hiring_on_linkedin** | **bool** | Whether the Company is hiring on LinkedIn. | [optional] 
 **lists_count** | **float** | The number of lists you own on which the Company appears. | 
 **notes_count** | **float** | The number of notes you own about the Company. | 
 **website** | **str** | The webiste URL of the Company. | [optional] 

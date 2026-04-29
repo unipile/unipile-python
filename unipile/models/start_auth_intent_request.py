@@ -20,18 +20,19 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from unipile.models.instagram_config import InstagramConfig
-from unipile.models.instagram_credentials import InstagramCredentials
+from unipile.models.instagram1_config import Instagram1Config
+from unipile.models.instagram1_credentials import Instagram1Credentials
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class StartAuthIntentRequest(BaseModel):
     """
     StartAuthIntentRequest
     """ # noqa: E501
     provider: StrictStr = Field(description="The provider to authenticate with.")
-    credentials: InstagramCredentials
-    config: Optional[InstagramConfig] = None
+    credentials: Instagram1Credentials
+    config: Optional[Instagram1Config] = None
     user_agent: Optional[StrictStr] = Field(default=None, description="If encountering disconnection issues, enter the exact user agent of the browser on which the account has been connected before the `li_at` retrieval. You can easily get it in the browser's console with this command : `console.log(navigator.userAgent)`")
     user_timezone: Optional[StrictStr] = Field(default=None, description="The time zone of the current user can be used on a few specific features (e.g. scheduled actions). Setting it at authentication avoids having to do it on a case-by-case basis later on.")
     oauth_callback_redirect_uri: StrictStr = Field(description="The URL to redirect to after the user has authenticated using the Provider's oAuth screen.")
@@ -53,12 +54,16 @@ class StartAuthIntentRequest(BaseModel):
         if value is None:
             return value
 
+        if not isinstance(value, str):
+            value = str(value)
+
         if not re.match(r"^acc_(.*)$", value):
             raise ValueError(r"must validate the regular expression /^acc_(.*)$/")
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -70,8 +75,7 @@ class StartAuthIntentRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -115,8 +119,8 @@ class StartAuthIntentRequest(BaseModel):
 
         _obj = cls.model_validate({
             "provider": obj.get("provider"),
-            "credentials": InstagramCredentials.from_dict(obj["credentials"]) if obj.get("credentials") is not None else None,
-            "config": InstagramConfig.from_dict(obj["config"]) if obj.get("config") is not None else None,
+            "credentials": Instagram1Credentials.from_dict(obj["credentials"]) if obj.get("credentials") is not None else None,
+            "config": Instagram1Config.from_dict(obj["config"]) if obj.get("config") is not None else None,
             "user_agent": obj.get("user_agent"),
             "user_timezone": obj.get("user_timezone"),
             "oauth_callback_redirect_uri": obj.get("oauth_callback_redirect_uri"),

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**premium** | **float** | InMail credits for Classic Premium. | [optional] 
+**classic** | **float** | InMail credits for Classic Premium. | [optional] 
 **recruiter** | **float** | InMail credits for Recruiter. | [optional] 
 **sales_navigator** | **float** | InMail credits for Sales Navigator. | [optional] 
 

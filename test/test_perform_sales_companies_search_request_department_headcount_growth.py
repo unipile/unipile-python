@@ -37,13 +37,13 @@ class TestPerformSalesCompaniesSearchRequestDepartmentHeadcountGrowth(unittest.T
             return PerformSalesCompaniesSearchRequestDepartmentHeadcountGrowth(
                 min = 1.337,
                 max = 1.337,
-                department = '4'
+                department = ''
             )
         else:
             return PerformSalesCompaniesSearchRequestDepartmentHeadcountGrowth(
                 min = 1.337,
                 max = 1.337,
-                department = '4',
+                department = '',
         )
         """
 

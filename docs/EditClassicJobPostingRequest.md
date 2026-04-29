@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**title** | [**EditClassicJobPostingRequestTitle**](EditClassicJobPostingRequestTitle.md) |  | [optional] 
-**company** | [**EditClassicJobPostingRequestCompany**](EditClassicJobPostingRequestCompany.md) |  | [optional] 
+**job_title** | [**CreateClassicJobPostingDraftRequestJobTitle**](CreateClassicJobPostingDraftRequestJobTitle.md) |  | [optional] 
+**company** | [**CreateClassicJobPostingDraftRequestCompany**](CreateClassicJobPostingDraftRequestCompany.md) |  | [optional] 
 **workplace_type** | **str** | The workplace type of the job. | [optional] 
-**location** | **str** |  | [optional] 
-**employment_status** | **str** |  | [optional] 
+**location** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_LOCATION&#x60; type to find out the possible values. | [optional] 
+**employment_status** | **str** | The employment status of the job. | [optional] 
 **description** | **str** | The job description. You can use HTML tags to structure your content. | [optional] 
 **skills** | **List[str]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;SKILL&#x60; type to find out the possible values. The skills related to the job posting. | [optional] 
 **apply_method** | [**CreateClassicJobPostingDraftRequestApplyMethod**](CreateClassicJobPostingDraftRequestApplyMethod.md) |  | [optional] 

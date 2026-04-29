@@ -24,27 +24,33 @@ from typing_extensions import Annotated
 from unipile.models.link_new_account_config import LinkNewAccountConfig
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class ReAuthenticateExistingAccount(BaseModel):
     """
     Generate a link to re-authenticate an existing account with Unipile.
     """ # noqa: E501
     expires_on: datetime = Field(description="The expiration date of the link. Use ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).")
+    domain: Optional[StrictStr] = Field(default=None, description="Optional Hosted Auth hostname to use in the generated link instead of the default `auth.unipile.com`. The hostname must already be explicitly verified by Unipile for the parent Application.")
     redirect_uri: StrictStr = Field(description="The URL to redirect to after the authentication process. If the authentication succeeded, `account_id` and `provider` will be present in query params, along the specified `state`. If the authentication has failed, `error_title` is present instead. This is useful for your app to be aware of the authentication result and to redirect the user to the correct page of your app.")
     state: Optional[StrictStr] = Field(default=None, description="State data sent as query parameter in the redirect_uri and in the `account.add` / `account.reconnect` webhook payload after the authentication process.")
     config: Optional[LinkNewAccountConfig] = None
     account_id: Annotated[str, Field(strict=True)] = Field(description="Required to re-authenticate an existing account. The ID of the Account to re-authenticate.")
-    __properties: ClassVar[List[str]] = ["expires_on", "redirect_uri", "state", "config", "account_id"]
+    __properties: ClassVar[List[str]] = ["expires_on", "domain", "redirect_uri", "state", "config", "account_id"]
 
     @field_validator('account_id')
     def account_id_validate_regular_expression(cls, value):
         """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
         if not re.match(r"^acc_(.*)$", value):
             raise ValueError(r"must validate the regular expression /^acc_(.*)$/")
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -56,8 +62,7 @@ class ReAuthenticateExistingAccount(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -98,6 +103,7 @@ class ReAuthenticateExistingAccount(BaseModel):
 
         _obj = cls.model_validate({
             "expires_on": obj.get("expires_on"),
+            "domain": obj.get("domain"),
             "redirect_uri": obj.get("redirect_uri"),
             "state": obj.get("state"),
             "config": LinkNewAccountConfig.from_dict(obj["config"]) if obj.get("config") is not None else None,

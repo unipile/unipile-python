@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **object** | **str** |  | 
 **id** | **str** | The identifier of the search parameter. | 
 **name** | **str** | The display name of the search parameter. | 
+**metadata** | [**GetClassicSearchParameters200ResponseDataInnerMetadata**](GetClassicSearchParameters200ResponseDataInnerMetadata.md) |  | [optional] 
 
 ## Example
 

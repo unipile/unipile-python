@@ -1763,7 +1763,7 @@ class CalendarApi:
         self,
         calendar_id: Annotated[Optional[StrictStr], Field(description="Identifier of the calendar.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        is_canceled: Annotated[Optional[StrictBool], Field(description="Whether you want to retrieve the cancelled events.")] = None,
+        is_cancelled: Annotated[Optional[StrictBool], Field(description="Whether you want to retrieve the cancelled events.")] = None,
         title: Annotated[Optional[StrictStr], Field(description="Filter for events matching the specified title.")] = None,
         description: Annotated[Optional[StrictStr], Field(description="Filter for events matching the specified description.")] = None,
         ical_uid: Annotated[Optional[StrictStr], Field(description="Filter for events matching the specified iCal UID.")] = None,
@@ -1800,8 +1800,8 @@ class CalendarApi:
         :type calendar_id: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param is_canceled: Whether you want to retrieve the cancelled events.
-        :type is_canceled: bool
+        :param is_cancelled: Whether you want to retrieve the cancelled events.
+        :type is_cancelled: bool
         :param title: Filter for events matching the specified title.
         :type title: str
         :param description: Filter for events matching the specified description.
@@ -1857,7 +1857,7 @@ class CalendarApi:
         _param = self._get_calendar_event_list_serialize(
             calendar_id=calendar_id,
             account_id=account_id,
-            is_canceled=is_canceled,
+            is_cancelled=is_cancelled,
             title=title,
             description=description,
             ical_uid=ical_uid,
@@ -1898,7 +1898,7 @@ class CalendarApi:
         self,
         calendar_id: Annotated[Optional[StrictStr], Field(description="Identifier of the calendar.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        is_canceled: Annotated[Optional[StrictBool], Field(description="Whether you want to retrieve the cancelled events.")] = None,
+        is_cancelled: Annotated[Optional[StrictBool], Field(description="Whether you want to retrieve the cancelled events.")] = None,
         title: Annotated[Optional[StrictStr], Field(description="Filter for events matching the specified title.")] = None,
         description: Annotated[Optional[StrictStr], Field(description="Filter for events matching the specified description.")] = None,
         ical_uid: Annotated[Optional[StrictStr], Field(description="Filter for events matching the specified iCal UID.")] = None,
@@ -1935,8 +1935,8 @@ class CalendarApi:
         :type calendar_id: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param is_canceled: Whether you want to retrieve the cancelled events.
-        :type is_canceled: bool
+        :param is_cancelled: Whether you want to retrieve the cancelled events.
+        :type is_cancelled: bool
         :param title: Filter for events matching the specified title.
         :type title: str
         :param description: Filter for events matching the specified description.
@@ -1992,7 +1992,7 @@ class CalendarApi:
         _param = self._get_calendar_event_list_serialize(
             calendar_id=calendar_id,
             account_id=account_id,
-            is_canceled=is_canceled,
+            is_cancelled=is_cancelled,
             title=title,
             description=description,
             ical_uid=ical_uid,
@@ -2033,7 +2033,7 @@ class CalendarApi:
         self,
         calendar_id: Annotated[Optional[StrictStr], Field(description="Identifier of the calendar.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        is_canceled: Annotated[Optional[StrictBool], Field(description="Whether you want to retrieve the cancelled events.")] = None,
+        is_cancelled: Annotated[Optional[StrictBool], Field(description="Whether you want to retrieve the cancelled events.")] = None,
         title: Annotated[Optional[StrictStr], Field(description="Filter for events matching the specified title.")] = None,
         description: Annotated[Optional[StrictStr], Field(description="Filter for events matching the specified description.")] = None,
         ical_uid: Annotated[Optional[StrictStr], Field(description="Filter for events matching the specified iCal UID.")] = None,
@@ -2070,8 +2070,8 @@ class CalendarApi:
         :type calendar_id: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param is_canceled: Whether you want to retrieve the cancelled events.
-        :type is_canceled: bool
+        :param is_cancelled: Whether you want to retrieve the cancelled events.
+        :type is_cancelled: bool
         :param title: Filter for events matching the specified title.
         :type title: str
         :param description: Filter for events matching the specified description.
@@ -2127,7 +2127,7 @@ class CalendarApi:
         _param = self._get_calendar_event_list_serialize(
             calendar_id=calendar_id,
             account_id=account_id,
-            is_canceled=is_canceled,
+            is_cancelled=is_cancelled,
             title=title,
             description=description,
             ical_uid=ical_uid,
@@ -2163,7 +2163,7 @@ class CalendarApi:
         self,
         calendar_id,
         account_id,
-        is_canceled,
+        is_cancelled,
         title,
         description,
         ical_uid,
@@ -2205,9 +2205,9 @@ class CalendarApi:
         if account_id is not None:
             _path_params['account_id'] = account_id
         # process the query parameters
-        if is_canceled is not None:
+        if is_cancelled is not None:
             
-            _query_params.append(('is_canceled', is_canceled))
+            _query_params.append(('is_cancelled', is_cancelled))
             
         if title is not None:
             

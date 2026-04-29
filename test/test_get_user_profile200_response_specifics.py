@@ -35,14 +35,29 @@ class TestGetUserProfile200ResponseSpecifics(unittest.TestCase):
         model = GetUserProfile200ResponseSpecifics()
         if include_optional:
             return GetUserProfile200ResponseSpecifics(
-                member_urn = '',
+                member_id = '',
                 can_send_inmail = True,
                 network_distance = 'SELF',
+                relation_request = unipile.models.linked_in_relation_request.LinkedIn_relation_request(
+                    object = 'RelationRequest', 
+                    user = unipile.models.linked_in_relation_request_user.LinkedIn_relation_request_user(
+                        id = '', 
+                        object = 'User', 
+                        type = 'individual', 
+                        public_identifier = '', 
+                        display_name = '', 
+                        profile_url = '', 
+                        public_picture_url = '', 
+                        private_picture_download_url = '', 
+                        description = '', ), 
+                    type = 'sent', 
+                    id = '', 
+                    created_at = '', 
+                    message = '', ),
+                relation_request_status = 'PENDING',
+                pronoun = '',
                 default_locale = '',
                 supported_locales = [
-                    ''
-                    ],
-                websites = [
                     ''
                     ],
                 notify_visit_token = '',
@@ -54,9 +69,8 @@ class TestGetUserProfile200ResponseSpecifics(unittest.TestCase):
                 is_open_to_work = True,
                 is_saved_lead = True,
                 is_crm_imported = True,
-                shared_relations_count = 1.337,
                 skills = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_skills_inner.getUserProfile_200_response_specifics_allOf_anyOf_skills_inner(
+                    unipile.models.linked_in_skills_inner.LinkedIn_skills_inner(
                         name = '', 
                         endorsement_count = 1.337, 
                         endorsement_id = 1.337, 
@@ -66,9 +80,9 @@ class TestGetUserProfile200ResponseSpecifics(unittest.TestCase):
                             ], )
                     ],
                 experience = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_experience_inner.getUserProfile_200_response_specifics_allOf_anyOf_experience_inner(
+                    unipile.models.linked_in_experience_inner.LinkedIn_experience_inner(
                         id = '', 
-                        company = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_experience_inner_company.getUserProfile_200_response_specifics_allOf_anyOf_experience_inner_company(
+                        company = unipile.models.linked_in_experience_inner_company.LinkedIn_experience_inner_company(
                             name = '', 
                             id = '', 
                             public_identifier = '', 
@@ -77,7 +91,7 @@ class TestGetUserProfile200ResponseSpecifics(unittest.TestCase):
                             industries = [
                                 ''
                                 ], ), 
-                        title = '', 
+                        job_title = '', 
                         started_on = '', 
                         ended_on = '', 
                         location = '', 
@@ -90,9 +104,9 @@ class TestGetUserProfile200ResponseSpecifics(unittest.TestCase):
                         skills_preview = '', )
                     ],
                 education = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_education_inner.getUserProfile_200_response_specifics_allOf_anyOf_education_inner(
+                    unipile.models.linked_in_education_inner.LinkedIn_education_inner(
                         id = '', 
-                        school = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_education_inner_school.getUserProfile_200_response_specifics_allOf_anyOf_education_inner_school(
+                        school = unipile.models.linked_in_education_inner_school.LinkedIn_education_inner_school(
                             id = '', 
                             name = '', 
                             picture_url = '', 
@@ -112,14 +126,14 @@ class TestGetUserProfile200ResponseSpecifics(unittest.TestCase):
                         ended_on = '', )
                     ],
                 languages = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_languages_inner.getUserProfile_200_response_specifics_allOf_anyOf_languages_inner(
+                    unipile.models.linked_in_languages_inner.LinkedIn_languages_inner(
                         language = '', 
                         proficiency = 'ELEMENTARY', )
                     ],
                 certifications = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner(
+                    unipile.models.linked_in_certifications_inner.LinkedIn_certifications_inner(
                         title = '', 
-                        organization = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                        organization = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                             name = '', 
                             id = '', 
                             public_identifier = '', 
@@ -138,8 +152,8 @@ class TestGetUserProfile200ResponseSpecifics(unittest.TestCase):
                         url = '', )
                     ],
                 volunteer_experience = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_volunteer_experience_inner.getUserProfile_200_response_specifics_allOf_anyOf_volunteer_experience_inner(
-                        organization = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_certifications_inner_organization.getUserProfile_200_response_specifics_allOf_anyOf_certifications_inner_organization(
+                    unipile.models.linked_in_volunteer_experience_inner.LinkedIn_volunteer_experience_inner(
+                        organization = unipile.models.linked_in_certifications_inner_organization.LinkedIn_certifications_inner_organization(
                             name = '', 
                             id = '', 
                             public_identifier = '', 
@@ -155,11 +169,11 @@ class TestGetUserProfile200ResponseSpecifics(unittest.TestCase):
                         ended_on = '', )
                     ],
                 projects = [
-                    unipile.models.get_user_profile_200_response_specifics_all_of_any_of_projects_inner.getUserProfile_200_response_specifics_allOf_anyOf_projects_inner(
+                    unipile.models.linked_in_projects_inner.LinkedIn_projects_inner(
                         name = '', 
                         description = '', 
                         contributors = [
-                            unipile.models.get_user_profile_200_response_specifics_all_of_any_of_projects_inner_contributors_inner.getUserProfile_200_response_specifics_allOf_anyOf_projects_inner_contributors_inner(
+                            unipile.models.linked_in_projects_inner_contributors_inner.LinkedIn_projects_inner_contributors_inner(
                                 id = '', 
                                 object = 'User', 
                                 type = 'individual', 
@@ -177,13 +191,13 @@ class TestGetUserProfile200ResponseSpecifics(unittest.TestCase):
                         started_on = '', 
                         ended_on = '', )
                     ],
-                recommendations = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_recommendations.getUserProfile_200_response_specifics_allOf_anyOf_recommendations(
+                recommendations = unipile.models.linked_in_recommendations.LinkedIn_recommendations(
                     received = [
-                        unipile.models.get_user_profile_200_response_specifics_all_of_any_of_recommendations_received_inner.getUserProfile_200_response_specifics_allOf_anyOf_recommendations_received_inner(
+                        unipile.models.linked_in_recommendations_received_inner.LinkedIn_recommendations_received_inner(
                             caption = '', 
                             created_on = '', 
                             text = '', 
-                            user = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_recommendations_received_inner_user.getUserProfile_200_response_specifics_allOf_anyOf_recommendations_received_inner_user(
+                            user = unipile.models.linked_in_recommendations_received_inner_user.LinkedIn_recommendations_received_inner_user(
                                 id = '', 
                                 object = 'User', 
                                 type = 'individual', 
@@ -195,11 +209,11 @@ class TestGetUserProfile200ResponseSpecifics(unittest.TestCase):
                                 description = '', ), )
                         ], 
                     given = [
-                        unipile.models.get_user_profile_200_response_specifics_all_of_any_of_recommendations_received_inner.getUserProfile_200_response_specifics_allOf_anyOf_recommendations_received_inner(
+                        unipile.models.linked_in_recommendations_received_inner.LinkedIn_recommendations_received_inner(
                             caption = '', 
                             created_on = '', 
                             text = '', 
-                            user = unipile.models.get_user_profile_200_response_specifics_all_of_any_of_recommendations_received_inner_user.getUserProfile_200_response_specifics_allOf_anyOf_recommendations_received_inner_user(
+                            user = unipile.models.linked_in_recommendations_received_inner_user.LinkedIn_recommendations_received_inner_user(
                                 id = '', 
                                 object = 'User', 
                                 type = 'individual', 
@@ -213,11 +227,50 @@ class TestGetUserProfile200ResponseSpecifics(unittest.TestCase):
                 throttled_sections = [
                     'experience'
                     ],
+                recruiting_profile = unipile.models.linked_in_recruiting_profile.LinkedIn_recruiting_profile(
+                    events = [
+                        null
+                        ], 
+                    notes = [
+                        unipile.models.linked_in_recruiting_profile_notes_inner.LinkedIn_recruiting_profile_notes_inner(
+                            project_id = '', 
+                            content = '', 
+                            last_modified_at = '', 
+                            author = unipile.models.linked_in_projects_inner_contributors_inner.LinkedIn_projects_inner_contributors_inner(
+                                id = '', 
+                                object = 'User', 
+                                type = 'individual', 
+                                public_identifier = '', 
+                                display_name = '', 
+                                profile_url = '', 
+                                public_picture_url = '', 
+                                private_picture_download_url = '', 
+                                description = '', ), 
+                            comments = [
+                                unipile.models.linked_in_recruiting_profile_notes_inner_comments_inner.LinkedIn_recruiting_profile_notes_inner_comments_inner(
+                                    content = '', 
+                                    author = unipile.models.linked_in_projects_inner_contributors_inner.LinkedIn_projects_inner_contributors_inner(
+                                        id = '', 
+                                        object = 'User', 
+                                        type = 'individual', 
+                                        public_identifier = '', 
+                                        display_name = '', 
+                                        profile_url = '', 
+                                        public_picture_url = '', 
+                                        private_picture_download_url = '', 
+                                        description = '', ), 
+                                    last_modified_at = '', )
+                                ], )
+                        ], 
+                    tags = [
+                        unipile.models.linked_in_recruiting_profile_tags_inner.LinkedIn_recruiting_profile_tags_inner(
+                            id = '', 
+                            content = '', )
+                        ], ),
                 messaging_identifier = ''
             )
         else:
             return GetUserProfile200ResponseSpecifics(
-                member_urn = '',
                 network_distance = 'SELF',
                 messaging_identifier = '',
         )

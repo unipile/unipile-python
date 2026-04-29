@@ -22,8 +22,10 @@ from typing import Any, ClassVar, Dict, List, Optional
 from unipile.models.get_emails_list200_response_data_inner_from_inner import GetEmailsList200ResponseDataInnerFromInner
 from unipile.models.send_email_request_attachments_inner import SendEmailRequestAttachmentsInner
 from unipile.models.send_email_request_tracking_options import SendEmailRequestTrackingOptions
+from unipile.models.update_draft_request_specifics import UpdateDraftRequestSpecifics
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class UpdateDraftRequest(BaseModel):
     """
@@ -38,11 +40,12 @@ class UpdateDraftRequest(BaseModel):
     bcc: Optional[List[GetEmailsList200ResponseDataInnerFromInner]] = Field(default=None, description="List of attendees to set in `bcc` header.")
     attachments: Optional[List[SendEmailRequestAttachmentsInner]] = Field(default=None, description="The list of file attachments to the draft. Any attachment already existing will be removed and replaced by the new ones.")
     tracking_options: Optional[SendEmailRequestTrackingOptions] = None
-    additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["html", "plain_text", "subject", "from", "to", "cc", "bcc", "attachments", "tracking_options"]
+    specifics: Optional[UpdateDraftRequestSpecifics] = None
+    __properties: ClassVar[List[str]] = ["html", "plain_text", "subject", "from", "to", "cc", "bcc", "attachments", "tracking_options", "specifics"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,8 +57,7 @@ class UpdateDraftRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -71,10 +73,8 @@ class UpdateDraftRequest(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -116,11 +116,9 @@ class UpdateDraftRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of tracking_options
         if self.tracking_options:
             _dict['tracking_options'] = self.tracking_options.to_dict()
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
+        # override the default output from pydantic by calling `to_dict()` of specifics
+        if self.specifics:
+            _dict['specifics'] = self.specifics.to_dict()
         return _dict
 
     @classmethod
@@ -141,13 +139,9 @@ class UpdateDraftRequest(BaseModel):
             "cc": [GetEmailsList200ResponseDataInnerFromInner.from_dict(_item) for _item in obj["cc"]] if obj.get("cc") is not None else None,
             "bcc": [GetEmailsList200ResponseDataInnerFromInner.from_dict(_item) for _item in obj["bcc"]] if obj.get("bcc") is not None else None,
             "attachments": [SendEmailRequestAttachmentsInner.from_dict(_item) for _item in obj["attachments"]] if obj.get("attachments") is not None else None,
-            "tracking_options": SendEmailRequestTrackingOptions.from_dict(obj["tracking_options"]) if obj.get("tracking_options") is not None else None
+            "tracking_options": SendEmailRequestTrackingOptions.from_dict(obj["tracking_options"]) if obj.get("tracking_options") is not None else None,
+            "specifics": UpdateDraftRequestSpecifics.from_dict(obj["specifics"]) if obj.get("specifics") is not None else None
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

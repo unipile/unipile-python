@@ -1,6 +1,6 @@
 # PerformClassicCompaniesSearchRequestHeadcountInner
 
-A list of company headcount ranges.    Native filter : Company size   
+    Native filter : Company size   
 
 ## Properties
 

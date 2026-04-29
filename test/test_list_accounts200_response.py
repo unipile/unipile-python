@@ -53,7 +53,7 @@ class TestListAccounts200Response(unittest.TestCase):
                         initial_sync = unipile.models.account_initial_sync.Account_initial_sync(
                             status = 'pending', 
                             started_at = '', ), 
-                        proxy = unipile.models.account_proxy.Account_proxy(
+                        proxy = unipile.models.account_1_proxy.Account_1_proxy(
                             country = '', 
                             auto_proxy = True, ), )
                     ],
@@ -79,7 +79,7 @@ class TestListAccounts200Response(unittest.TestCase):
                         initial_sync = unipile.models.account_initial_sync.Account_initial_sync(
                             status = 'pending', 
                             started_at = '', ), 
-                        proxy = unipile.models.account_proxy.Account_proxy(
+                        proxy = unipile.models.account_1_proxy.Account_1_proxy(
                             country = '', 
                             auto_proxy = True, ), )
                     ],

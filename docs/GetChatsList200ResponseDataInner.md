@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **object** | **str** |  | 
 **id** | **str** | The unique identifier of the chat for the provider. | 
 **name** | **str** | The name / title of the chat. If the provider does not provide a name, name is built out of participants usernames. | 
+**label** | **str** | If supported by the provider, a label associated with the chat. | [optional] 
 **description** | **str** | The description / subject of the chat. | [optional] 
 **image_url** | **str** | The URL of the chat image. | [optional] 
 **created_at** | **str** | The creation date of the chat. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | [optional] 

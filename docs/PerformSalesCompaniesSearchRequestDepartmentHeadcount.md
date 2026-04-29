@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**min** | **float** |  | 
-**max** | **float** |  | 
-**department** | **str** |  | 
+**min** | **float** | The number of comments to the post. &#x60;null&#x60; if counter is hidden. | 
+**max** | **float** | The number of comments to the post. &#x60;null&#x60; if counter is hidden. | 
+**department** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_FUNCTION&#x60; type to find out the possible values. | 
 
 ## Example
 

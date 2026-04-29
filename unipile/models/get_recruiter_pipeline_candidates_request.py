@@ -19,11 +19,11 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from unipile.models.get_classic_applicants_request_years_of_experience_inner import GetClassicApplicantsRequestYearsOfExperienceInner
 from unipile.models.get_recruiter_pipeline_candidates_request_recruiting_activity import GetRecruiterPipelineCandidatesRequestRecruitingActivity
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class GetRecruiterPipelineCandidatesRequest(BaseModel):
     """
@@ -34,13 +34,13 @@ class GetRecruiterPipelineCandidatesRequest(BaseModel):
     sort_by: Optional[StrictStr] = Field(default=None, description="The sort method.    Native filter : Sort by   ")
     spotlights: Optional[List[StrictStr]] = Field(default=None, description="A list of spotlights.")
     recruiting_activity: Optional[GetRecruiterPipelineCandidatesRequestRecruitingActivity] = None
-    added_by: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SEAT` type to find out the possible values.    Native filter : Added by   ")
-    skills: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SKILL` type to find out the possible values.    Native filter : Skills   ")
-    years_of_experience: Optional[List[GetClassicApplicantsRequestYearsOfExperienceInner]] = None
-    job_title: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.    Native filter : Job titles   ")
-    company: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `CURRENT_COMPANY` type to find out the possible values.    Native filter : Current companies   ")
-    location: Optional[List[Annotated[str, Field(strict=True)]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Current locations   ")
-    __properties: ClassVar[List[str]] = ["keywords", "stage_id", "sort_by", "spotlights", "recruiting_activity", "added_by", "skills", "years_of_experience", "job_title", "company", "location"]
+    added_by: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SEAT` type to find out the possible values.    Native filter : Added by   ")
+    skills: Optional[List[StrictStr]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SKILL` type to find out the possible values.    Native filter : Skills   ")
+    years_of_experience: Optional[List[GetClassicApplicantsRequestYearsOfExperienceInner]] = Field(default=None, description="A list of years ranges    Native filter : Years of experience   ")
+    job_title: Optional[List[StrictStr]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `JOB_TITLE` type to find out the possible values.    Native filter : Job titles   ")
+    current_company: Optional[List[Optional[StrictStr]]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `CURRENT_COMPANY` type to find out the possible values.    Native filter : Current companies   ")
+    current_location: Optional[List[StrictStr]] = Field(default=None, description="A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Current locations   ")
+    __properties: ClassVar[List[str]] = ["keywords", "stage_id", "sort_by", "spotlights", "recruiting_activity", "added_by", "skills", "years_of_experience", "job_title", "current_company", "current_location"]
 
     @field_validator('sort_by')
     def sort_by_validate_enum(cls, value):
@@ -64,7 +64,8 @@ class GetRecruiterPipelineCandidatesRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -76,8 +77,7 @@ class GetRecruiterPipelineCandidatesRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -133,8 +133,8 @@ class GetRecruiterPipelineCandidatesRequest(BaseModel):
             "skills": obj.get("skills"),
             "years_of_experience": [GetClassicApplicantsRequestYearsOfExperienceInner.from_dict(_item) for _item in obj["years_of_experience"]] if obj.get("years_of_experience") is not None else None,
             "job_title": obj.get("job_title"),
-            "company": obj.get("company"),
-            "location": obj.get("location")
+            "current_company": obj.get("current_company"),
+            "current_location": obj.get("current_location")
         })
         return _obj
 

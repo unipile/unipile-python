@@ -41,28 +41,28 @@ class TestPerformClassicPostsSearchRequest(unittest.TestCase):
                 content_type = 'VIDEOS',
                 posted_by = unipile.models.perform_classic_posts_search_request_posted_by.performClassicPostsSearch_request_posted_by(
                     member = [
-                        '4'
+                        ''
                         ], 
                     company = [
-                        '4'
+                        ''
                         ], 
                     me = True, 
                     relations = True, 
                     people_you_follow = True, ),
                 mentioning = unipile.models.perform_classic_posts_search_request_mentioning.performClassicPostsSearch_request_mentioning(
                     member = [
-                        '4'
+                        ''
                         ], 
                     company = [
-                        '4'
+                        ''
                         ], ),
                 author = unipile.models.perform_classic_posts_search_request_author.performClassicPostsSearch_request_author(
                     keywords = '', 
                     company = [
-                        '4'
+                        ''
                         ], 
                     industry = [
-                        '4'
+                        ''
                         ], )
             )
         else:

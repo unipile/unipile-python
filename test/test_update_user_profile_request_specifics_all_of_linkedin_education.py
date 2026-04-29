@@ -37,38 +37,41 @@ class TestUpdateUserProfileRequestSpecificsAllOfLinkedinEducation(unittest.TestC
             return UpdateUserProfileRequestSpecificsAllOfLinkedinEducation(
                 notify_network = True,
                 school = unipile.models.edit_existing_education_school.Edit_existing_education_school(
-                    text = '', 
-                    id = '4', ),
+                    name = '', 
+                    id = '', ),
                 degree = unipile.models.edit_existing_education_degree.Edit_existing_education_degree(
-                    text = '', 
-                    id = '4', ),
+                    name = '', 
+                    id = '', ),
                 field_of_study = unipile.models.edit_existing_education_field_of_study.Edit_existing_education_field_of_study(
-                    text = '', 
-                    id = '4', ),
-                start_date = unipile.models.new_education_start_date.New_education_start_date(
+                    name = '', 
+                    id = '', ),
+                start_date = unipile.models.create_new_education_start_date.Create_new_education_start_date(
                     month = 1.337, 
                     year = 1.337, ),
-                end_date = unipile.models.new_education_end_date.New_education_end_date(
+                end_date = unipile.models.create_new_education_end_date.Create_new_education_end_date(
                     month = 1.337, 
                     year = 1.337, ),
                 grade = '',
                 activities = '',
                 description = '',
                 skills = [
-                    unipile.models.new_experience_skills_inner.New_experience_skills_inner(
-                        text = '', 
-                        id = '4', )
+                    unipile.models.create_new_experience_skills_inner.Create_new_experience_skills_inner(
+                        name = '', 
+                        id = '', )
                     ],
-                attachment = None,
-                attachment_title = '',
-                attachment_description = '',
+                media = None,
+                operation = 'edit',
                 id = ''
             )
         else:
             return UpdateUserProfileRequestSpecificsAllOfLinkedinEducation(
-                start_date = unipile.models.new_education_start_date.New_education_start_date(
+                school = unipile.models.edit_existing_education_school.Edit_existing_education_school(
+                    name = '', 
+                    id = '', ),
+                start_date = unipile.models.create_new_education_start_date.Create_new_education_start_date(
                     month = 1.337, 
                     year = 1.337, ),
+                operation = 'edit',
                 id = '',
         )
         """

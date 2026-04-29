@@ -17,22 +17,33 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from unipile.models.send_email_request_attachments_inner import SendEmailRequestAttachmentsInner
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List
+from unipile.models.linked_in_projects_inner_contributors_inner import LinkedInProjectsInnerContributorsInner
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class Link(BaseModel):
     """
     Link
     """ # noqa: E501
-    url: StrictStr = Field(description="URL of the link.")
-    thumbnail: Optional[SendEmailRequestAttachmentsInner] = None
-    __properties: ClassVar[List[str]] = ["url", "thumbnail"]
+    last_updated_at: StrictStr = Field(description="The time at which the activity was updated. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).")
+    last_updated_by: LinkedInProjectsInnerContributorsInner
+    event: StrictStr = Field(description="The type of event.")
+    link_content: StrictStr = Field(description="The URL of the link.")
+    __properties: ClassVar[List[str]] = ["last_updated_at", "last_updated_by", "event", "link_content"]
+
+    @field_validator('event')
+    def event_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['LINK_ADDED', 'LINK_DELETED']):
+            raise ValueError("must be one of enum values ('LINK_ADDED', 'LINK_DELETED')")
+        return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -44,8 +55,7 @@ class Link(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -70,9 +80,9 @@ class Link(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of thumbnail
-        if self.thumbnail:
-            _dict['thumbnail'] = self.thumbnail.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of last_updated_by
+        if self.last_updated_by:
+            _dict['last_updated_by'] = self.last_updated_by.to_dict()
         return _dict
 
     @classmethod
@@ -85,8 +95,10 @@ class Link(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "url": obj.get("url"),
-            "thumbnail": SendEmailRequestAttachmentsInner.from_dict(obj["thumbnail"]) if obj.get("thumbnail") is not None else None
+            "last_updated_at": obj.get("last_updated_at"),
+            "last_updated_by": LinkedInProjectsInnerContributorsInner.from_dict(obj["last_updated_by"]) if obj.get("last_updated_by") is not None else None,
+            "event": obj.get("event"),
+            "link_content": obj.get("link_content")
         })
         return _obj
 
