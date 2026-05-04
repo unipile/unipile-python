@@ -1027,7 +1027,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_user_profile**
-> UpdateUserProfile200Response update_user_profile(user_id, account_id, update_user_profile_request)
+> UpdateUserProfile200Response update_user_profile(user_id, account_id, update_user_profile_request=update_user_profile_request)
 
 Update a User Profile
 
@@ -1069,11 +1069,11 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.UsersApi(api_client)
     user_id = 'user_id_example' # str | The ID of the User to update. Use `me` to update the account owner profile.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    update_user_profile_request = unipile.UpdateUserProfileRequest() # UpdateUserProfileRequest | 
+    update_user_profile_request = unipile.UpdateUserProfileRequest() # UpdateUserProfileRequest |  (optional)
 
     try:
         # Update a User Profile
-        api_response = api_instance.update_user_profile(user_id, account_id, update_user_profile_request)
+        api_response = api_instance.update_user_profile(user_id, account_id, update_user_profile_request=update_user_profile_request)
         print("The response of UsersApi->update_user_profile:\n")
         pprint(api_response)
     except Exception as e:
@@ -1089,7 +1089,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **str**| The ID of the User to update. Use &#x60;me&#x60; to update the account owner profile. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **update_user_profile_request** | [**UpdateUserProfileRequest**](UpdateUserProfileRequest.md)|  | 
+ **update_user_profile_request** | [**UpdateUserProfileRequest**](UpdateUserProfileRequest.md)|  | [optional] 
 
 ### Return type
 

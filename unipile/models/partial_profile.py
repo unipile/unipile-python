@@ -32,7 +32,7 @@ class PartialProfile(BaseModel):
     id: StrictStr = Field(description="The ID of the user.")
     headline: StrictStr = Field(description="The headline of the User.")
     network_distance: StrictStr = Field(description="Network distance to a User.       `SELF`: Yourself.       `FIRST_DEGREE`: 1st degree connection.       `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).       `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).       `OUT_OF_NETWORK`: Unreachable user.'")
-    location: StrictStr = Field(description="The location of the User.")
+    location: Optional[StrictStr] = Field(default=None, description="The location of the User.")
     can_send_inmail: Optional[StrictBool] = Field(default=None, description="Whether it is possible to send an inMail to this User.")
     visibility: StrictStr = Field(description="Indidates that you don't have access to the full profile of this User.")
     candidate_id: StrictStr = Field(description="The candidate ID of the User.")

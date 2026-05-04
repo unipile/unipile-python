@@ -23,6 +23,7 @@ from unipile.models.get_messages_list200_response_data_inner_quoted_attachments_
 from unipile.models.get_messages_list200_response_data_inner_reactions_counter_inner import GetMessagesList200ResponseDataInnerReactionsCounterInner
 from unipile.models.get_posts_list200_response_data_inner_analytics import GetPostsList200ResponseDataInnerAnalytics
 from unipile.models.get_posts_list200_response_data_inner_author import GetPostsList200ResponseDataInnerAuthor
+from unipile.models.get_posts_list200_response_data_inner_event import GetPostsList200ResponseDataInnerEvent
 from unipile.models.get_posts_list200_response_data_inner_permissions import GetPostsList200ResponseDataInnerPermissions
 from unipile.models.get_posts_list200_response_data_inner_poll import GetPostsList200ResponseDataInnerPoll
 from unipile.models.get_posts_list200_response_data_inner_quoted_post import GetPostsList200ResponseDataInnerQuotedPost
@@ -49,12 +50,13 @@ class GetPost200Response(BaseModel):
     comments_counter: Optional[Union[StrictFloat, StrictInt]] = Field(description="The number of comments to the post. `null` if counter is hidden.")
     reposts_counter: Optional[Union[StrictFloat, StrictInt]] = Field(description="The number of reposts of the post. `null` if counter is hidden.")
     poll: Optional[GetPostsList200ResponseDataInnerPoll] = None
+    event: Optional[GetPostsList200ResponseDataInnerEvent] = None
     attachments: List[GetMessagesList200ResponseDataInnerQuotedAttachmentsInner] = Field(description="List of post attachments.")
     analytics: Optional[GetPostsList200ResponseDataInnerAnalytics] = None
     is_repost: StrictBool = Field(description="`true` if this post is reposted by someone without quote. Quoted post does not qualify as a repost.")
     reposted_by: Optional[GetPostsList200ResponseDataInnerRepostedBy] = None
     quoted_post: Optional[GetPostsList200ResponseDataInnerQuotedPost] = None
-    __properties: ClassVar[List[str]] = ["object", "id", "share_url", "created_at", "title", "text", "author", "user_reacted", "permissions", "reactions_counter", "comments_counter", "reposts_counter", "poll", "attachments", "analytics", "is_repost", "reposted_by", "quoted_post"]
+    __properties: ClassVar[List[str]] = ["object", "id", "share_url", "created_at", "title", "text", "author", "user_reacted", "permissions", "reactions_counter", "comments_counter", "reposts_counter", "poll", "event", "attachments", "analytics", "is_repost", "reposted_by", "quoted_post"]
 
     @field_validator('object')
     def object_validate_enum(cls, value):
@@ -121,6 +123,9 @@ class GetPost200Response(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of poll
         if self.poll:
             _dict['poll'] = self.poll.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of event
+        if self.event:
+            _dict['event'] = self.event.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in attachments (list)
         _items = []
         if self.attachments:
@@ -177,6 +182,7 @@ class GetPost200Response(BaseModel):
             "comments_counter": obj.get("comments_counter"),
             "reposts_counter": obj.get("reposts_counter"),
             "poll": GetPostsList200ResponseDataInnerPoll.from_dict(obj["poll"]) if obj.get("poll") is not None else None,
+            "event": GetPostsList200ResponseDataInnerEvent.from_dict(obj["event"]) if obj.get("event") is not None else None,
             "attachments": [GetMessagesList200ResponseDataInnerQuotedAttachmentsInner.from_dict(_item) for _item in obj["attachments"]] if obj.get("attachments") is not None else None,
             "analytics": GetPostsList200ResponseDataInnerAnalytics.from_dict(obj["analytics"]) if obj.get("analytics") is not None else None,
             "is_repost": obj.get("is_repost"),

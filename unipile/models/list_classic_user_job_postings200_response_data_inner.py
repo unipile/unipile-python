@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Union
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -32,7 +32,7 @@ class ListClassicUserJobPostings200ResponseDataInner(BaseModel):
     id: StrictStr = Field(description="The ID of the Job posting.")
     title: StrictStr = Field(description="The title of the Job posting.")
     company: StrictStr = Field(description="The company that published the Job posting.")
-    location: StrictStr = Field(description="The location of the Job posting.")
+    location: Optional[StrictStr] = Field(default=None, description="The location of the Job posting.")
     state: StrictStr = Field(description="The state of the Job posting.")
     applications_count: Union[StrictFloat, StrictInt] = Field(description="The number of applications for this job posting.")
     __properties: ClassVar[List[str]] = ["object", "product", "id", "title", "company", "location", "state", "applications_count"]

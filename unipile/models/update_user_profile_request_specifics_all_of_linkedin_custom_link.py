@@ -28,8 +28,8 @@ class UpdateUserProfileRequestSpecificsAllOfLinkedinCustomLink(BaseModel):
     UpdateUserProfileRequestSpecificsAllOfLinkedinCustomLink
     """ # noqa: E501
     type: StrictStr = Field(description="The type of link.")
-    url: StrictStr = Field(description="The type of link.")
-    display_on: Optional[StrictStr] = Field(default='EVERYWHERE', description="The type of link.")
+    url: StrictStr = Field(description="The URL of the link.")
+    display_on: Optional[StrictStr] = Field(default='EVERYWHERE', description="Whether the link should be displayed everywhere or only on the profile.")
     __properties: ClassVar[List[str]] = ["type", "url", "display_on"]
 
     @field_validator('type')

@@ -25,7 +25,7 @@ Method | HTTP request | Description
 [**get_classic_job_posting_budget**](LinkedInApi.md#get_classic_job_posting_budget) | **GET** /v2/{account_id}/linkedin/jobs/{job_id}/budget | Get the Budget for a Job Posting
 [**get_classic_search_parameters**](LinkedInApi.md#get_classic_search_parameters) | **GET** /v2/{account_id}/linkedin/search/parameters | List Search Parameters
 [**get_inmail_credits**](LinkedInApi.md#get_inmail_credits) | **GET** /v2/{account_id}/linkedin/inmail-credits | Get InMail Credits
-[**get_recruiter_applicant_by_id**](LinkedInApi.md#get_recruiter_applicant_by_id) | **POST** /v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants/{applicant_id} | Get an Applicant
+[**get_recruiter_applicant_by_id**](LinkedInApi.md#get_recruiter_applicant_by_id) | **GET** /v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants/{applicant_id} | Get an Applicant
 [**get_recruiter_applicant_resume**](LinkedInApi.md#get_recruiter_applicant_resume) | **GET** /v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants/{applicant_id}/resume | Get an Applicant&#39;s Resume
 [**get_recruiter_hiring_project**](LinkedInApi.md#get_recruiter_hiring_project) | **GET** /v2/{account_id}/linkedin/recruiter/projects/{project_id} | Get a Project
 [**get_recruiter_hiring_project_list**](LinkedInApi.md#get_recruiter_hiring_project_list) | **GET** /v2/{account_id}/linkedin/recruiter/projects | List Projects

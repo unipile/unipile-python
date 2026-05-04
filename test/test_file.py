@@ -42,7 +42,7 @@ class TestFile(unittest.TestCase):
                     content = '', 
                     content_type = '', 
                     filename = '', 
-                    metadata = unipile.models.message_file_all_of_metadata.Message_File_allOf_metadata(
+                    metadata = unipile.models.message_file_metadata.Message_File_metadata(
                         duration = 1.337, ), )
             )
         else:
@@ -52,7 +52,7 @@ class TestFile(unittest.TestCase):
                     content = '', 
                     content_type = '', 
                     filename = '', 
-                    metadata = unipile.models.message_file_all_of_metadata.Message_File_allOf_metadata(
+                    metadata = unipile.models.message_file_metadata.Message_File_metadata(
                         duration = 1.337, ), ),
         )
         """

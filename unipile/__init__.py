@@ -270,6 +270,7 @@ __all__ = [
     "GetMessagesList200ResponseDataInnerQuotedAttachmentsInner",
     "GetMessagesList200ResponseDataInnerReactionsCounterInner",
     "GetMessagesList200ResponseDataInnerSender",
+    "GetMessagesList200ResponseDataInnerSpecifics",
     "GetParticipantsList200Response",
     "GetPost200Response",
     "GetPostCommentsList200Response",
@@ -279,6 +280,7 @@ __all__ = [
     "GetPostsList200ResponseDataInner",
     "GetPostsList200ResponseDataInnerAnalytics",
     "GetPostsList200ResponseDataInnerAuthor",
+    "GetPostsList200ResponseDataInnerEvent",
     "GetPostsList200ResponseDataInnerPermissions",
     "GetPostsList200ResponseDataInnerPoll",
     "GetPostsList200ResponseDataInnerPollOptionsInner",
@@ -337,7 +339,8 @@ __all__ = [
     "GetUserCommentsList200Response",
     "GetUserCommentsList200ResponseDataInner",
     "GetUserCommentsList200ResponseDataInnerParentPost",
-    "GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner",
+    "GetUserCommentsList200ResponseDataInnerParentPostAnyOf",
+    "GetUserCommentsList200ResponseDataInnerParentPostAnyOfAttachmentsInner",
     "GetUserProfile200Response",
     "GetUserProfile200ResponseSpecifics",
     "GetUserReactionsList200Response",
@@ -423,12 +426,13 @@ __all__ = [
     "MediaShare",
     "Message",
     "MessageFile",
-    "MessageFileAllOfMetadata",
+    "MessageFileMetadata",
     "MessagePinStatus",
     "Mock",
     "ModifyEmailRequest",
     "ModifyEmailRequestSpecifics",
     "ModifyEmailRequestSpecificsAllOfOutlook",
+    "ModifyMessage200Response",
     "ModifyMessageRequest",
     "MultipleChoices",
     "MultipleChoices1",
@@ -917,6 +921,7 @@ from unipile.models.get_messages_list200_response_data_inner_quoted import GetMe
 from unipile.models.get_messages_list200_response_data_inner_quoted_attachments_inner import GetMessagesList200ResponseDataInnerQuotedAttachmentsInner as GetMessagesList200ResponseDataInnerQuotedAttachmentsInner
 from unipile.models.get_messages_list200_response_data_inner_reactions_counter_inner import GetMessagesList200ResponseDataInnerReactionsCounterInner as GetMessagesList200ResponseDataInnerReactionsCounterInner
 from unipile.models.get_messages_list200_response_data_inner_sender import GetMessagesList200ResponseDataInnerSender as GetMessagesList200ResponseDataInnerSender
+from unipile.models.get_messages_list200_response_data_inner_specifics import GetMessagesList200ResponseDataInnerSpecifics as GetMessagesList200ResponseDataInnerSpecifics
 from unipile.models.get_participants_list200_response import GetParticipantsList200Response as GetParticipantsList200Response
 from unipile.models.get_post200_response import GetPost200Response as GetPost200Response
 from unipile.models.get_post_comments_list200_response import GetPostCommentsList200Response as GetPostCommentsList200Response
@@ -926,6 +931,7 @@ from unipile.models.get_posts_list200_response import GetPostsList200Response as
 from unipile.models.get_posts_list200_response_data_inner import GetPostsList200ResponseDataInner as GetPostsList200ResponseDataInner
 from unipile.models.get_posts_list200_response_data_inner_analytics import GetPostsList200ResponseDataInnerAnalytics as GetPostsList200ResponseDataInnerAnalytics
 from unipile.models.get_posts_list200_response_data_inner_author import GetPostsList200ResponseDataInnerAuthor as GetPostsList200ResponseDataInnerAuthor
+from unipile.models.get_posts_list200_response_data_inner_event import GetPostsList200ResponseDataInnerEvent as GetPostsList200ResponseDataInnerEvent
 from unipile.models.get_posts_list200_response_data_inner_permissions import GetPostsList200ResponseDataInnerPermissions as GetPostsList200ResponseDataInnerPermissions
 from unipile.models.get_posts_list200_response_data_inner_poll import GetPostsList200ResponseDataInnerPoll as GetPostsList200ResponseDataInnerPoll
 from unipile.models.get_posts_list200_response_data_inner_poll_options_inner import GetPostsList200ResponseDataInnerPollOptionsInner as GetPostsList200ResponseDataInnerPollOptionsInner
@@ -984,7 +990,8 @@ from unipile.models.get_user_chat200_response_data_inner import GetUserChat200Re
 from unipile.models.get_user_comments_list200_response import GetUserCommentsList200Response as GetUserCommentsList200Response
 from unipile.models.get_user_comments_list200_response_data_inner import GetUserCommentsList200ResponseDataInner as GetUserCommentsList200ResponseDataInner
 from unipile.models.get_user_comments_list200_response_data_inner_parent_post import GetUserCommentsList200ResponseDataInnerParentPost as GetUserCommentsList200ResponseDataInnerParentPost
-from unipile.models.get_user_comments_list200_response_data_inner_parent_post_attachments_inner import GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner as GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner
+from unipile.models.get_user_comments_list200_response_data_inner_parent_post_any_of import GetUserCommentsList200ResponseDataInnerParentPostAnyOf as GetUserCommentsList200ResponseDataInnerParentPostAnyOf
+from unipile.models.get_user_comments_list200_response_data_inner_parent_post_any_of_attachments_inner import GetUserCommentsList200ResponseDataInnerParentPostAnyOfAttachmentsInner as GetUserCommentsList200ResponseDataInnerParentPostAnyOfAttachmentsInner
 from unipile.models.get_user_profile200_response import GetUserProfile200Response as GetUserProfile200Response
 from unipile.models.get_user_profile200_response_specifics import GetUserProfile200ResponseSpecifics as GetUserProfile200ResponseSpecifics
 from unipile.models.get_user_reactions_list200_response import GetUserReactionsList200Response as GetUserReactionsList200Response
@@ -1070,12 +1077,13 @@ from unipile.models.list_webhook_endpoints200_response_data_inner_account_target
 from unipile.models.media_share import MediaShare as MediaShare
 from unipile.models.message import Message as Message
 from unipile.models.message_file import MessageFile as MessageFile
-from unipile.models.message_file_all_of_metadata import MessageFileAllOfMetadata as MessageFileAllOfMetadata
+from unipile.models.message_file_metadata import MessageFileMetadata as MessageFileMetadata
 from unipile.models.message_pin_status import MessagePinStatus as MessagePinStatus
 from unipile.models.mock import Mock as Mock
 from unipile.models.modify_email_request import ModifyEmailRequest as ModifyEmailRequest
 from unipile.models.modify_email_request_specifics import ModifyEmailRequestSpecifics as ModifyEmailRequestSpecifics
 from unipile.models.modify_email_request_specifics_all_of_outlook import ModifyEmailRequestSpecificsAllOfOutlook as ModifyEmailRequestSpecificsAllOfOutlook
+from unipile.models.modify_message200_response import ModifyMessage200Response as ModifyMessage200Response
 from unipile.models.modify_message_request import ModifyMessageRequest as ModifyMessageRequest
 from unipile.models.multiple_choices import MultipleChoices as MultipleChoices
 from unipile.models.multiple_choices1 import MultipleChoices1 as MultipleChoices1

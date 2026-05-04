@@ -44,19 +44,18 @@ class TestUpdateUserProfileRequest(unittest.TestCase):
                     content = '', 
                     content_type = '', 
                     filename = '', 
-                    metadata = unipile.models.message_file_all_of_metadata.Message_File_allOf_metadata(
+                    metadata = unipile.models.message_file_metadata.Message_File_metadata(
                         duration = 1.337, ), ),
                 background_picture = unipile.models.send_email_request_attachments_inner.sendEmail_request_attachments_inner(
                     content = '', 
                     content_type = '', 
                     filename = '', 
-                    metadata = unipile.models.message_file_all_of_metadata.Message_File_allOf_metadata(
+                    metadata = unipile.models.message_file_metadata.Message_File_metadata(
                         duration = 1.337, ), ),
                 specifics = None
             )
         else:
             return UpdateUserProfileRequest(
-                specifics = None,
         )
         """
 

@@ -77,7 +77,6 @@ class TestPartialProfile(unittest.TestCase):
                 id = '',
                 headline = '',
                 network_distance = 'SELF',
-                location = '',
                 visibility = 'partial',
                 candidate_id = '',
                 is_hidden_candidate = True,

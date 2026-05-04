@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from unipile.models.message_file_all_of_metadata import MessageFileAllOfMetadata
+from unipile.models.message_file_metadata import MessageFileMetadata
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -31,7 +31,7 @@ class SendEmailRequestAttachmentsInner(BaseModel):
     content: StrictStr = Field(description="Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files")
     content_type: StrictStr = Field(description="<a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types\">MIME type</a> of the file.")
     filename: StrictStr = Field(description="Name of the file (including extension).")
-    metadata: Optional[MessageFileAllOfMetadata] = None
+    metadata: Optional[MessageFileMetadata] = None
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["content", "content_type", "filename", "metadata"]
 
@@ -99,7 +99,7 @@ class SendEmailRequestAttachmentsInner(BaseModel):
             "content": obj.get("content"),
             "content_type": obj.get("content_type"),
             "filename": obj.get("filename"),
-            "metadata": MessageFileAllOfMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None
+            "metadata": MessageFileMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

@@ -17,18 +17,34 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class MessageFileAllOfMetadata(BaseModel):
+class GetUserCommentsList200ResponseDataInnerParentPostAnyOfAttachmentsInner(BaseModel):
     """
-    Metadata of the the file.
+    GetUserCommentsList200ResponseDataInnerParentPostAnyOfAttachmentsInner
     """ # noqa: E501
-    duration: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Duration of the media file.")
-    __properties: ClassVar[List[str]] = ["duration"]
+    object: StrictStr
+    type: StrictStr
+    url: StrictStr = Field(description="The URL of the attachment.")
+    __properties: ClassVar[List[str]] = ["object", "type", "url"]
+
+    @field_validator('object')
+    def object_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['Attachment']):
+            raise ValueError("must be one of enum values ('Attachment')")
+        return value
+
+    @field_validator('type')
+    def type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(['img']):
+            raise ValueError("must be one of enum values ('img')")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -48,7 +64,7 @@ class MessageFileAllOfMetadata(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of MessageFileAllOfMetadata from a JSON string"""
+        """Create an instance of GetUserCommentsList200ResponseDataInnerParentPostAnyOfAttachmentsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +89,7 @@ class MessageFileAllOfMetadata(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of MessageFileAllOfMetadata from a dict"""
+        """Create an instance of GetUserCommentsList200ResponseDataInnerParentPostAnyOfAttachmentsInner from a dict"""
         if obj is None:
             return None
 
@@ -81,7 +97,9 @@ class MessageFileAllOfMetadata(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "duration": obj.get("duration")
+            "object": obj.get("object"),
+            "type": obj.get("type"),
+            "url": obj.get("url")
         })
         return _obj
 

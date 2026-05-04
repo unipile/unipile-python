@@ -3682,7 +3682,7 @@ class UsersApi:
         self,
         user_id: Annotated[Optional[StrictStr], Field(description="The ID of the User to update. Use `me` to update the account owner profile.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        update_user_profile_request: UpdateUserProfileRequest,
+        update_user_profile_request: Optional[UpdateUserProfileRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3704,7 +3704,7 @@ class UsersApi:
         :type user_id: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param update_user_profile_request: (required)
+        :param update_user_profile_request:
         :type update_user_profile_request: UpdateUserProfileRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3757,7 +3757,7 @@ class UsersApi:
         self,
         user_id: Annotated[Optional[StrictStr], Field(description="The ID of the User to update. Use `me` to update the account owner profile.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        update_user_profile_request: UpdateUserProfileRequest,
+        update_user_profile_request: Optional[UpdateUserProfileRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3779,7 +3779,7 @@ class UsersApi:
         :type user_id: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param update_user_profile_request: (required)
+        :param update_user_profile_request:
         :type update_user_profile_request: UpdateUserProfileRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -3832,7 +3832,7 @@ class UsersApi:
         self,
         user_id: Annotated[Optional[StrictStr], Field(description="The ID of the User to update. Use `me` to update the account owner profile.")],
         account_id: Annotated[str, Field(strict=True, description="ID of the Account (acc_xxx) to call the method on behalf of.")],
-        update_user_profile_request: UpdateUserProfileRequest,
+        update_user_profile_request: Optional[UpdateUserProfileRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -3854,7 +3854,7 @@ class UsersApi:
         :type user_id: str
         :param account_id: ID of the Account (acc_xxx) to call the method on behalf of. (required)
         :type account_id: str
-        :param update_user_profile_request: (required)
+        :param update_user_profile_request:
         :type update_user_profile_request: UpdateUserProfileRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

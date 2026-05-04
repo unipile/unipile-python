@@ -13,105 +13,128 @@
 
 
 from __future__ import annotations
+from inspect import getfullargspec
+import json
 import pprint
 import re  # noqa: F401
-import json
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
+from typing import Optional
+from unipile.models.get_post200_response import GetPost200Response
+from unipile.models.get_user_comments_list200_response_data_inner_parent_post_any_of import GetUserCommentsList200ResponseDataInnerParentPostAnyOf
+from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
+from typing_extensions import Literal, Self
+from pydantic import Field
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
-from unipile.models.get_posts_list200_response_data_inner_author import GetPostsList200ResponseDataInnerAuthor
-from unipile.models.get_user_comments_list200_response_data_inner_parent_post_attachments_inner import GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner
-from typing import Optional, Set
-from typing_extensions import Self
-from pydantic_core import to_jsonable_python
+GETUSERCOMMENTSLIST200RESPONSEDATAINNERPARENTPOST_ANY_OF_SCHEMAS = ["GetPost200Response", "GetUserCommentsList200ResponseDataInnerParentPostAnyOf"]
 
 class GetUserCommentsList200ResponseDataInnerParentPost(BaseModel):
     """
-    Based on the provider, more or less data is returned.
-    """ # noqa: E501
-    object: StrictStr
-    id: StrictStr = Field(description="The ID of the post for the provider.")
-    share_url: Optional[StrictStr] = Field(default=None, description="The URL to share the post.")
-    text: Optional[StrictStr] = Field(default=None, description="The text content of the post.")
-    author: Optional[GetPostsList200ResponseDataInnerAuthor] = None
-    attachments: Optional[List[GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner]] = Field(default=None, description="Attachments of the parent post (e.g. post image).")
-    __properties: ClassVar[List[str]] = ["object", "id", "share_url", "text", "author", "attachments"]
+    GetUserCommentsList200ResponseDataInnerParentPost
+    """
 
-    @field_validator('object')
-    def object_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['PostPreview']):
-            raise ValueError("must be one of enum values ('PostPreview')")
-        return value
+    # data type: GetUserCommentsList200ResponseDataInnerParentPostAnyOf
+    anyof_schema_1_validator: Optional[GetUserCommentsList200ResponseDataInnerParentPostAnyOf] = None
+    # data type: GetPost200Response
+    anyof_schema_2_validator: Optional[GetPost200Response] = None
+    if TYPE_CHECKING:
+        actual_instance: Optional[Union[GetPost200Response, GetUserCommentsList200ResponseDataInnerParentPostAnyOf]] = None
+    else:
+        actual_instance: Any = None
+    any_of_schemas: Set[str] = { "GetPost200Response", "GetUserCommentsList200ResponseDataInnerParentPostAnyOf" }
 
-    model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
-        validate_assignment=True,
-        protected_namespaces=(),
-    )
+    model_config = {
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
+    def __init__(self, *args, **kwargs) -> None:
+        if args:
+            if len(args) > 1:
+                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
+            if kwargs:
+                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
+            super().__init__(actual_instance=args[0])
+        else:
+            super().__init__(**kwargs)
 
-    def to_str(self) -> str:
-        """Returns the string representation of the model using alias"""
-        return pprint.pformat(self.model_dump(by_alias=True))
+    @field_validator('actual_instance')
+    def actual_instance_must_validate_anyof(cls, v):
+        if v is None:
+            return v
+
+        instance = GetUserCommentsList200ResponseDataInnerParentPost.model_construct()
+        error_messages = []
+        # validate data type: GetUserCommentsList200ResponseDataInnerParentPostAnyOf
+        if not isinstance(v, GetUserCommentsList200ResponseDataInnerParentPostAnyOf):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `GetUserCommentsList200ResponseDataInnerParentPostAnyOf`")
+        else:
+            return v
+
+        # validate data type: GetPost200Response
+        if not isinstance(v, GetPost200Response):
+            error_messages.append(f"Error! Input type `{type(v)}` is not `GetPost200Response`")
+        else:
+            return v
+
+        if error_messages:
+            # no match
+            raise ValueError("No match found when setting the actual_instance in GetUserCommentsList200ResponseDataInnerParentPost with anyOf schemas: GetPost200Response, GetUserCommentsList200ResponseDataInnerParentPostAnyOf. Details: " + ", ".join(error_messages))
+        else:
+            return v
+
+    @classmethod
+    def from_dict(cls, obj: Dict[str, Any]) -> Self:
+        return cls.from_json(json.dumps(obj))
+
+    @classmethod
+    def from_json(cls, json_str: str) -> Self:
+        """Returns the object represented by the json string"""
+        instance = cls.model_construct()
+        if json_str is None:
+            return instance
+
+        error_messages = []
+        # anyof_schema_1_validator: Optional[GetUserCommentsList200ResponseDataInnerParentPostAnyOf] = None
+        try:
+            instance.actual_instance = GetUserCommentsList200ResponseDataInnerParentPostAnyOf.from_json(json_str)
+            return instance
+        except (ValidationError, ValueError) as e:
+             error_messages.append(str(e))
+        # anyof_schema_2_validator: Optional[GetPost200Response] = None
+        try:
+            instance.actual_instance = GetPost200Response.from_json(json_str)
+            return instance
+        except (ValidationError, ValueError) as e:
+             error_messages.append(str(e))
+
+        if error_messages:
+            # no match
+            raise ValueError("No match found when deserializing the JSON string into GetUserCommentsList200ResponseDataInnerParentPost with anyOf schemas: GetPost200Response, GetUserCommentsList200ResponseDataInnerParentPostAnyOf. Details: " + ", ".join(error_messages))
+        else:
+            return instance
 
     def to_json(self) -> str:
-        """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        """Returns the JSON representation of the actual instance"""
+        if self.actual_instance is None:
+            return "null"
 
-    @classmethod
-    def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GetUserCommentsList200ResponseDataInnerParentPost from a JSON string"""
-        return cls.from_dict(json.loads(json_str))
+        if hasattr(self.actual_instance, "to_json") and callable(self.actual_instance.to_json):
+            return self.actual_instance.to_json()
+        else:
+            return json.dumps(self.actual_instance)
 
-    def to_dict(self) -> Dict[str, Any]:
-        """Return the dictionary representation of the model using alias.
-
-        This has the following differences from calling pydantic's
-        `self.model_dump(by_alias=True)`:
-
-        * `None` is only added to the output dict for nullable fields that
-          were set at model initialization. Other fields with value `None`
-          are ignored.
-        """
-        excluded_fields: Set[str] = set([
-        ])
-
-        _dict = self.model_dump(
-            by_alias=True,
-            exclude=excluded_fields,
-            exclude_none=True,
-        )
-        # override the default output from pydantic by calling `to_dict()` of author
-        if self.author:
-            _dict['author'] = self.author.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in attachments (list)
-        _items = []
-        if self.attachments:
-            for _item_attachments in self.attachments:
-                if _item_attachments:
-                    _items.append(_item_attachments.to_dict())
-            _dict['attachments'] = _items
-        return _dict
-
-    @classmethod
-    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GetUserCommentsList200ResponseDataInnerParentPost from a dict"""
-        if obj is None:
+    def to_dict(self) -> Optional[Union[Dict[str, Any], GetPost200Response, GetUserCommentsList200ResponseDataInnerParentPostAnyOf]]:
+        """Returns the dict representation of the actual instance"""
+        if self.actual_instance is None:
             return None
 
-        if not isinstance(obj, dict):
-            return cls.model_validate(obj)
+        if hasattr(self.actual_instance, "to_dict") and callable(self.actual_instance.to_dict):
+            return self.actual_instance.to_dict()
+        else:
+            return self.actual_instance
 
-        _obj = cls.model_validate({
-            "object": obj.get("object"),
-            "id": obj.get("id"),
-            "share_url": obj.get("share_url"),
-            "text": obj.get("text"),
-            "author": GetPostsList200ResponseDataInnerAuthor.from_dict(obj["author"]) if obj.get("author") is not None else None,
-            "attachments": [GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner.from_dict(_item) for _item in obj["attachments"]] if obj.get("attachments") is not None else None
-        })
-        return _obj
+    def to_str(self) -> str:
+        """Returns the string representation of the actual instance"""
+        return pprint.pformat(self.model_dump())
 
 

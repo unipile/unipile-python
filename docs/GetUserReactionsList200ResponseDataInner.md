@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **value** | **str** | Value of the reaction. Usually an emoji unicode. | 
 **sender** | [**GetMessageReactionsList200ResponseDataInnerSender**](GetMessageReactionsList200ResponseDataInnerSender.md) |  | 
 **is_sender** | **bool** | Is the current user the sender of the reaction. | 
-**parent_post** | [**GetUserCommentsList200ResponseDataInnerParentPost**](GetUserCommentsList200ResponseDataInnerParentPost.md) |  | [optional] 
+**parent_post** | [**GetUserCommentsList200ResponseDataInnerParentPost**](GetUserCommentsList200ResponseDataInnerParentPost.md) |  | 
 
 ## Example
 

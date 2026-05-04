@@ -14,10 +14,10 @@
 
 import unittest
 
-from unipile.models.message_file_all_of_metadata import MessageFileAllOfMetadata
+from unipile.models.message_file_metadata import MessageFileMetadata
 
-class TestMessageFileAllOfMetadata(unittest.TestCase):
-    """MessageFileAllOfMetadata unit test stubs"""
+class TestMessageFileMetadata(unittest.TestCase):
+    """MessageFileMetadata unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,25 +25,25 @@ class TestMessageFileAllOfMetadata(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> MessageFileAllOfMetadata:
-        """Test MessageFileAllOfMetadata
+    def make_instance(self, include_optional) -> MessageFileMetadata:
+        """Test MessageFileMetadata
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `MessageFileAllOfMetadata`
+        # uncomment below to create an instance of `MessageFileMetadata`
         """
-        model = MessageFileAllOfMetadata()
+        model = MessageFileMetadata()
         if include_optional:
-            return MessageFileAllOfMetadata(
+            return MessageFileMetadata(
                 duration = 1.337
             )
         else:
-            return MessageFileAllOfMetadata(
+            return MessageFileMetadata(
         )
         """
 
-    def testMessageFileAllOfMetadata(self):
-        """Test MessageFileAllOfMetadata"""
+    def testMessageFileMetadata(self):
+        """Test MessageFileMetadata"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
