@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The type of link. | 
-**url** | **str** | The type of link. | 
-**display_on** | **str** | The type of link. | [optional] [default to 'EVERYWHERE']
+**url** | **str** | The URL of the link. | 
+**display_on** | **str** | Whether the link should be displayed everywhere or only on the profile. | [optional] [default to 'EVERYWHERE']
 
 ## Example
 

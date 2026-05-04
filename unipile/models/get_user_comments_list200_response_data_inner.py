@@ -41,7 +41,7 @@ class GetUserCommentsList200ResponseDataInner(BaseModel):
     can_react: StrictBool = Field(description="Whether the current user can react to the comment or not.")
     reply_counter: Union[StrictFloat, StrictInt] = Field(description="The number of replies to the comment.")
     reactions_counter: List[GetMessagesList200ResponseDataInnerReactionsCounterInner] = Field(description="A list of reactions to the element.")
-    parent_post: Optional[GetUserCommentsList200ResponseDataInnerParentPost] = None
+    parent_post: Optional[GetUserCommentsList200ResponseDataInnerParentPost]
     __properties: ClassVar[List[str]] = ["object", "id", "thread_id", "author", "created_at", "text", "is_sender", "can_reply", "can_react", "reply_counter", "reactions_counter", "parent_post"]
 
     @field_validator('object')
@@ -103,6 +103,11 @@ class GetUserCommentsList200ResponseDataInner(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of parent_post
         if self.parent_post:
             _dict['parent_post'] = self.parent_post.to_dict()
+        # set to None if parent_post (nullable) is None
+        # and model_fields_set contains the field
+        if self.parent_post is None and "parent_post" in self.model_fields_set:
+            _dict['parent_post'] = None
+
         return _dict
 
     @classmethod

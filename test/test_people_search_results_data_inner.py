@@ -62,7 +62,6 @@ class TestPeopleSearchResultsDataInner(unittest.TestCase):
                 object = 'PeopleSearchResult',
                 id = '',
                 display_name = '',
-                location = '',
                 headline = '',
                 network_distance = 'SELF',
                 product = 'classic',

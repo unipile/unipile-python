@@ -45,7 +45,7 @@ class FullProfile1(BaseModel):
     public_picture_url: Optional[StrictStr] = Field(default=None, description="The public picture URL of the User.")
     public_picture_url_large: Optional[StrictStr] = Field(default=None, description="The public picture URL of the User in large size.")
     relations_count: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of relations of the User.")
-    location: StrictStr = Field(description="The location of the User.")
+    location: Optional[StrictStr] = Field(default=None, description="The location of the User.")
     headline: StrictStr = Field(description="The headline of the User.")
     network_distance: StrictStr = Field(description="Network distance to a User.       `SELF`: Yourself.       `FIRST_DEGREE`: 1st degree connection.       `SECOND_DEGREE`: 2nd degree connection (connection of a 1st degree).       `THIRD_DEGREE`: 3rd degree connection (connection of a 2nd degree).       `OUT_OF_NETWORK`: Unreachable user.'")
     can_send_inmail: Optional[StrictBool] = Field(default=None, description="Whether it is possible to send an inMail to this User.")

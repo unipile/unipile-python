@@ -1319,7 +1319,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **modify_message**
-> GetMessage200Response modify_message(chat_id, message_id, account_id, modify_message_request)
+> ModifyMessage200Response modify_message(chat_id, message_id, account_id, modify_message_request)
 
 Modify a Message
 
@@ -1333,7 +1333,7 @@ Modifies one of the account's owner messages.
 
 ```python
 import unipile
-from unipile.models.get_message200_response import GetMessage200Response
+from unipile.models.modify_message200_response import ModifyMessage200Response
 from unipile.models.modify_message_request import ModifyMessageRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -1387,7 +1387,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetMessage200Response**](GetMessage200Response.md)
+[**ModifyMessage200Response**](ModifyMessage200Response.md)
 
 ### Authorization
 

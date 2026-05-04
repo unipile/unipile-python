@@ -39,7 +39,13 @@ class TestStartChatFromInboxRequest(unittest.TestCase):
                 name = '',
                 users_ids = None,
                 attachments = [
-                    unipile.models.message_file.Message File()
+                    unipile.models.message_file.Message File(
+                        content = '', 
+                        content_type = '', 
+                        filename = '', 
+                        metadata = unipile.models.message_file_metadata.Message_File_metadata(
+                            duration = 1.337, ), 
+                        send_mode = 'native', )
                     ],
                 specifics = unipile.models.start_chat_request_specifics.startChat_request_specifics(
                     linkedin = unipile.models.start_chat_request_specifics_linkedin.startChat_request_specifics_linkedin(
@@ -63,7 +69,13 @@ class TestStartChatFromInboxRequest(unittest.TestCase):
                                 subject = '', 
                                 text = '', 
                                 attachments = [
-                                    unipile.models.message_file.Message File()
+                                    unipile.models.message_file.Message File(
+                                        content = '', 
+                                        content_type = '', 
+                                        filename = '', 
+                                        metadata = unipile.models.message_file_metadata.Message_File_metadata(
+                                            duration = 1.337, ), 
+                                        send_mode = 'native', )
                                     ], 
                                 scheduled_for = null, ), ), ), )
             )

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **id** | **str** | The ID of the Job posting. | 
 **title** | **str** | The title of the Job posting. | 
 **company** | **str** | The company that published the Job posting. | 
-**location** | **str** | The location of the Job posting. | 
+**location** | **str** | The location of the Job posting. | [optional] 
 **state** | **str** | The state of the Job posting. | 
 **applications_count** | **float** | The number of applications for this job posting. | 
 

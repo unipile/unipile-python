@@ -80,7 +80,6 @@ class TestPartialProfile1(unittest.TestCase):
                 id = '',
                 headline = '',
                 network_distance = 'SELF',
-                location = '',
                 product = 'recruiter',
                 visibility = 'partial',
                 candidate_id = '',

@@ -33,7 +33,7 @@ class GetUserReactionsList200ResponseDataInner(BaseModel):
     value: StrictStr = Field(description="Value of the reaction. Usually an emoji unicode.")
     sender: GetMessageReactionsList200ResponseDataInnerSender
     is_sender: StrictBool = Field(description="Is the current user the sender of the reaction.")
-    parent_post: Optional[GetUserCommentsList200ResponseDataInnerParentPost] = None
+    parent_post: Optional[GetUserCommentsList200ResponseDataInnerParentPost]
     __properties: ClassVar[List[str]] = ["object", "value", "sender", "is_sender", "parent_post"]
 
     @field_validator('object')
@@ -88,6 +88,11 @@ class GetUserReactionsList200ResponseDataInner(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of parent_post
         if self.parent_post:
             _dict['parent_post'] = self.parent_post.to_dict()
+        # set to None if parent_post (nullable) is None
+        # and model_fields_set contains the field
+        if self.parent_post is None and "parent_post" in self.model_fields_set:
+            _dict['parent_post'] = None
+
         return _dict
 
     @classmethod

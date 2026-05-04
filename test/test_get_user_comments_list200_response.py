@@ -61,17 +61,7 @@ class TestGetUserCommentsList200Response(unittest.TestCase):
                                 reaction = '', 
                                 count = 1.337, )
                             ], 
-                        parent_post = unipile.models.get_user_comments_list_200_response_data_inner_parent_post.getUserCommentsList_200_response_data_inner_parent_post(
-                            object = 'PostPreview', 
-                            id = '', 
-                            share_url = '', 
-                            text = '', 
-                            attachments = [
-                                unipile.models.get_user_comments_list_200_response_data_inner_parent_post_attachments_inner.getUserCommentsList_200_response_data_inner_parent_post_attachments_inner(
-                                    object = 'Attachment', 
-                                    type = 'img', 
-                                    url = '', )
-                                ], ), )
+                        parent_post = null, )
                     ],
                 total_count = 1.337,
                 next_cursor = ''
@@ -104,17 +94,7 @@ class TestGetUserCommentsList200Response(unittest.TestCase):
                                 reaction = '', 
                                 count = 1.337, )
                             ], 
-                        parent_post = unipile.models.get_user_comments_list_200_response_data_inner_parent_post.getUserCommentsList_200_response_data_inner_parent_post(
-                            object = 'PostPreview', 
-                            id = '', 
-                            share_url = '', 
-                            text = '', 
-                            attachments = [
-                                unipile.models.get_user_comments_list_200_response_data_inner_parent_post_attachments_inner.getUserCommentsList_200_response_data_inner_parent_post_attachments_inner(
-                                    object = 'Attachment', 
-                                    type = 'img', 
-                                    url = '', )
-                                ], ), )
+                        parent_post = null, )
                     ],
         )
         """

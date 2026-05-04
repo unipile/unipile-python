@@ -75,6 +75,16 @@ class TestGetPostsList200ResponseDataInnerQuotedPost(unittest.TestCase):
                             win = True, 
                             votes_count = 1.337, )
                         ], ),
+                event = unipile.models.get_posts_list_200_response_data_inner_event.getPostsList_200_response_data_inner_event(
+                    id = '', 
+                    name = '', 
+                    url = '', 
+                    online = True, 
+                    location = '', 
+                    description = '', 
+                    public_picture_url = '', 
+                    starts_on = '', 
+                    ends_on = '', ),
                 attachments = [
                     null
                     ],

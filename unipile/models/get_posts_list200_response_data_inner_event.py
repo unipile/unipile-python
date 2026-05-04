@@ -17,34 +17,26 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner(BaseModel):
+class GetPostsList200ResponseDataInnerEvent(BaseModel):
     """
-    GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner
+    Data about the event if the post is an event.
     """ # noqa: E501
-    object: StrictStr
-    type: StrictStr
-    url: StrictStr = Field(description="The URL of the attachment.")
-    __properties: ClassVar[List[str]] = ["object", "type", "url"]
-
-    @field_validator('object')
-    def object_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['Attachment']):
-            raise ValueError("must be one of enum values ('Attachment')")
-        return value
-
-    @field_validator('type')
-    def type_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in set(['img']):
-            raise ValueError("must be one of enum values ('img')")
-        return value
+    id: StrictStr = Field(description="The ID of the event.")
+    name: StrictStr = Field(description="The name of the event.")
+    url: Optional[StrictStr] = Field(default=None, description="The link to the event.")
+    online: StrictBool = Field(description="Whether the event is an online event.")
+    location: Optional[StrictStr] = Field(default=None, description="The location of the event.")
+    description: Optional[StrictStr] = Field(default=None, description="The description of the event.")
+    public_picture_url: Optional[StrictStr] = Field(default=None, description="Public url to the picture of the event.")
+    starts_on: Optional[StrictStr] = Field(default=None, description="The date when the event will start. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).")
+    ends_on: Optional[StrictStr] = Field(default=None, description="The date when the event will end. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).")
+    __properties: ClassVar[List[str]] = ["id", "name", "url", "online", "location", "description", "public_picture_url", "starts_on", "ends_on"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -64,7 +56,7 @@ class GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner(BaseMode
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner from a JSON string"""
+        """Create an instance of GetPostsList200ResponseDataInnerEvent from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -89,7 +81,7 @@ class GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner(BaseMode
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner from a dict"""
+        """Create an instance of GetPostsList200ResponseDataInnerEvent from a dict"""
         if obj is None:
             return None
 
@@ -97,9 +89,15 @@ class GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner(BaseMode
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "object": obj.get("object"),
-            "type": obj.get("type"),
-            "url": obj.get("url")
+            "id": obj.get("id"),
+            "name": obj.get("name"),
+            "url": obj.get("url"),
+            "online": obj.get("online"),
+            "location": obj.get("location"),
+            "description": obj.get("description"),
+            "public_picture_url": obj.get("public_picture_url"),
+            "starts_on": obj.get("starts_on"),
+            "ends_on": obj.get("ends_on")
         })
         return _obj
 

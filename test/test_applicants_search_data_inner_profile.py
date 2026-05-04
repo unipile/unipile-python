@@ -202,7 +202,6 @@ class TestApplicantsSearchDataInnerProfile(unittest.TestCase):
                 id = '',
                 headline = '',
                 network_distance = 'SELF',
-                location = '',
                 visibility = 'full',
                 candidate_id = '',
                 is_hidden_candidate = True,

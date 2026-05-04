@@ -205,7 +205,6 @@ class TestPeopleSearchDataInner(unittest.TestCase):
                 id = '',
                 headline = '',
                 network_distance = 'SELF',
-                location = '',
                 product = 'recruiter',
                 visibility = 'full',
                 candidate_id = '',

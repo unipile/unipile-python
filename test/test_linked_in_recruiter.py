@@ -45,7 +45,13 @@ class TestLinkedInRecruiter(unittest.TestCase):
                     subject = '', 
                     text = '', 
                     attachments = [
-                        unipile.models.message_file.Message File()
+                        unipile.models.message_file.Message File(
+                            content = '', 
+                            content_type = '', 
+                            filename = '', 
+                            metadata = unipile.models.message_file_metadata.Message_File_metadata(
+                                duration = 1.337, ), 
+                            send_mode = 'native', )
                         ], 
                     scheduled_for = null, )
             )
