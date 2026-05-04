@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **can_react** | **bool** | Whether the current user can react to the comment or not. | 
 **reply_counter** | **float** | The number of replies to the comment. | 
 **reactions_counter** | [**List[GetMessagesList200ResponseDataInnerReactionsCounterInner]**](GetMessagesList200ResponseDataInnerReactionsCounterInner.md) | A list of reactions to the element. | 
-**parent_post** | [**GetUserCommentsList200ResponseDataInnerParentPost**](GetUserCommentsList200ResponseDataInnerParentPost.md) |  | [optional] 
+**parent_post** | [**GetUserCommentsList200ResponseDataInnerParentPost**](GetUserCommentsList200ResponseDataInnerParentPost.md) |  | 
 
 ## Example
 

@@ -45,7 +45,7 @@ class PeopleSearch2DataInner(BaseModel):
     public_picture_url: Optional[StrictStr] = Field(default=None, description="The public picture URL of the User.")
     public_picture_url_large: Optional[StrictStr] = Field(default=None, description="The public picture URL of the User in large size.")
     relations_count: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The number of relations of the User.")
-    location: StrictStr = Field(description="The location of the User.")
+    location: Optional[StrictStr] = Field(default=None, description="The location of the User.")
     headline: StrictStr = Field(description="The headline of the User.")
     network_distance: PeopleSearch1DataInnerNetworkDistance
     can_send_inmail: Optional[StrictBool] = Field(default=None, description="Whether it is possible to send an inMail to this User.")

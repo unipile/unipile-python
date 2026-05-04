@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **bio** | **str** | Bio / About section of the profile. | [optional] 
 **picture** | [**SendEmailRequestAttachmentsInner**](SendEmailRequestAttachmentsInner.md) |  | [optional] 
 **background_picture** | [**SendEmailRequestAttachmentsInner**](SendEmailRequestAttachmentsInner.md) |  | [optional] 
-**specifics** | [**UpdateUserProfileRequestSpecifics**](UpdateUserProfileRequestSpecifics.md) |  | 
+**specifics** | [**UpdateUserProfileRequestSpecifics**](UpdateUserProfileRequestSpecifics.md) |  | [optional] 
 
 ## Example
 

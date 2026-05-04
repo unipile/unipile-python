@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **public_picture_url** | **str** | The public picture URL of the User. | [optional] 
 **public_picture_url_large** | **str** | The public picture URL of the User in large size. | [optional] 
 **relations_count** | **float** | The number of relations of the User. | [optional] 
-**location** | **str** | The location of the User. | 
+**location** | **str** | The location of the User. | [optional] 
 **headline** | **str** | The headline of the User. | 
 **network_distance** | [**PeopleSearch1DataInnerNetworkDistance**](PeopleSearch1DataInnerNetworkDistance.md) |  | 
 **can_send_inmail** | **bool** | Whether it is possible to send an inMail to this User. | [optional] 

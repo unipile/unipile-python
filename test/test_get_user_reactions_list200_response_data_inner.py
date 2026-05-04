@@ -48,27 +48,7 @@ class TestGetUserReactionsList200ResponseDataInner(unittest.TestCase):
                     private_picture_download_url = '', 
                     description = '', ),
                 is_sender = True,
-                parent_post = unipile.models.get_user_comments_list_200_response_data_inner_parent_post.getUserCommentsList_200_response_data_inner_parent_post(
-                    object = 'PostPreview', 
-                    id = '', 
-                    share_url = '', 
-                    text = '', 
-                    author = unipile.models.get_posts_list_200_response_data_inner_author.getPostsList_200_response_data_inner_author(
-                        id = '', 
-                        object = 'User', 
-                        type = 'individual', 
-                        public_identifier = '', 
-                        display_name = '', 
-                        profile_url = '', 
-                        public_picture_url = '', 
-                        private_picture_download_url = '', 
-                        description = '', ), 
-                    attachments = [
-                        unipile.models.get_user_comments_list_200_response_data_inner_parent_post_attachments_inner.getUserCommentsList_200_response_data_inner_parent_post_attachments_inner(
-                            object = 'Attachment', 
-                            type = 'img', 
-                            url = '', )
-                        ], )
+                parent_post = None
             )
         else:
             return GetUserReactionsList200ResponseDataInner(
@@ -85,6 +65,7 @@ class TestGetUserReactionsList200ResponseDataInner(unittest.TestCase):
                     private_picture_download_url = '', 
                     description = '', ),
                 is_sender = True,
+                parent_post = None,
         )
         """
 

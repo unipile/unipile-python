@@ -35,7 +35,7 @@ class TestGetUserCommentsList200ResponseDataInnerParentPost(unittest.TestCase):
         model = GetUserCommentsList200ResponseDataInnerParentPost()
         if include_optional:
             return GetUserCommentsList200ResponseDataInnerParentPost(
-                object = 'PostPreview',
+                object = 'Post',
                 id = '',
                 share_url = '',
                 text = '',
@@ -50,16 +50,161 @@ class TestGetUserCommentsList200ResponseDataInnerParentPost(unittest.TestCase):
                     private_picture_download_url = '', 
                     description = '', ),
                 attachments = [
-                    unipile.models.get_user_comments_list_200_response_data_inner_parent_post_attachments_inner.getUserCommentsList_200_response_data_inner_parent_post_attachments_inner(
-                        object = 'Attachment', 
-                        type = 'img', 
-                        url = '', )
-                    ]
+                    null
+                    ],
+                created_at = '',
+                title = '',
+                user_reacted = None,
+                permissions = unipile.models.get_posts_list_200_response_data_inner_permissions.getPostsList_200_response_data_inner_permissions(
+                    can_share = True, 
+                    can_react = True, 
+                    can_post_comments = True, ),
+                reactions_counter = [
+                    unipile.models.get_messages_list_200_response_data_inner_reactions_counter_inner.getMessagesList_200_response_data_inner_reactions_counter_inner(
+                        reaction = '', 
+                        count = 1.337, )
+                    ],
+                comments_counter = 1.337,
+                reposts_counter = 1.337,
+                poll = unipile.models.get_posts_list_200_response_data_inner_poll.getPostsList_200_response_data_inner_poll(
+                    id = '', 
+                    total_votes_count = 1.337, 
+                    question = '', 
+                    is_open = True, 
+                    options = [
+                        unipile.models.get_posts_list_200_response_data_inner_poll_options_inner.getPostsList_200_response_data_inner_poll_options_inner(
+                            id = '', 
+                            text = '', 
+                            win = True, 
+                            votes_count = 1.337, )
+                        ], ),
+                event = unipile.models.get_posts_list_200_response_data_inner_event.getPostsList_200_response_data_inner_event(
+                    id = '', 
+                    name = '', 
+                    url = '', 
+                    online = True, 
+                    location = '', 
+                    description = '', 
+                    public_picture_url = '', 
+                    starts_on = '', 
+                    ends_on = '', ),
+                analytics = unipile.models.get_posts_list_200_response_data_inner_analytics.getPostsList_200_response_data_inner_analytics(
+                    impressions_counter = 1.337, 
+                    engagements_counter = 1.337, 
+                    engagement_rate = 1.337, 
+                    clicks_counter = 1.337, 
+                    clickthrough_rate = 1.337, 
+                    page_viewers_from_this_post_counter = 1.337, 
+                    followers_gained_from_this_post_counter = 1.337, 
+                    users_reached_counter = 1.337, ),
+                is_repost = True,
+                reposted_by = unipile.models.get_posts_list_200_response_data_inner_reposted_by.getPostsList_200_response_data_inner_reposted_by(
+                    id = '', 
+                    object = 'User', 
+                    type = 'individual', 
+                    public_identifier = '', 
+                    display_name = '', 
+                    profile_url = '', 
+                    public_picture_url = '', 
+                    private_picture_download_url = '', 
+                    description = '', ),
+                quoted_post = unipile.models.get_posts_list_200_response_data_inner_quoted_post.getPostsList_200_response_data_inner_quoted_post(
+                    object = 'Post', 
+                    id = '', 
+                    share_url = '', 
+                    created_at = '', 
+                    title = '', 
+                    text = '', 
+                    author = unipile.models.get_posts_list_200_response_data_inner_author.getPostsList_200_response_data_inner_author(
+                        id = '', 
+                        object = 'User', 
+                        type = 'individual', 
+                        public_identifier = '', 
+                        display_name = '', 
+                        profile_url = '', 
+                        public_picture_url = '', 
+                        private_picture_download_url = '', 
+                        description = '', ), 
+                    user_reacted = null, 
+                    permissions = unipile.models.get_posts_list_200_response_data_inner_permissions.getPostsList_200_response_data_inner_permissions(
+                        can_share = True, 
+                        can_react = True, 
+                        can_post_comments = True, ), 
+                    reactions_counter = [
+                        unipile.models.get_messages_list_200_response_data_inner_reactions_counter_inner.getMessagesList_200_response_data_inner_reactions_counter_inner(
+                            reaction = '', 
+                            count = 1.337, )
+                        ], 
+                    comments_counter = 1.337, 
+                    reposts_counter = 1.337, 
+                    poll = unipile.models.get_posts_list_200_response_data_inner_poll.getPostsList_200_response_data_inner_poll(
+                        id = '', 
+                        total_votes_count = 1.337, 
+                        question = '', 
+                        is_open = True, 
+                        options = [
+                            unipile.models.get_posts_list_200_response_data_inner_poll_options_inner.getPostsList_200_response_data_inner_poll_options_inner(
+                                id = '', 
+                                text = '', 
+                                win = True, 
+                                votes_count = 1.337, )
+                            ], ), 
+                    event = unipile.models.get_posts_list_200_response_data_inner_event.getPostsList_200_response_data_inner_event(
+                        id = '', 
+                        name = '', 
+                        url = '', 
+                        online = True, 
+                        location = '', 
+                        description = '', 
+                        public_picture_url = '', 
+                        starts_on = '', 
+                        ends_on = '', ), 
+                    attachments = [
+                        null
+                        ], 
+                    analytics = unipile.models.get_posts_list_200_response_data_inner_analytics.getPostsList_200_response_data_inner_analytics(
+                        impressions_counter = 1.337, 
+                        engagements_counter = 1.337, 
+                        engagement_rate = 1.337, 
+                        clicks_counter = 1.337, 
+                        clickthrough_rate = 1.337, 
+                        page_viewers_from_this_post_counter = 1.337, 
+                        followers_gained_from_this_post_counter = 1.337, 
+                        users_reached_counter = 1.337, ), )
             )
         else:
             return GetUserCommentsList200ResponseDataInnerParentPost(
-                object = 'PostPreview',
+                object = 'Post',
                 id = '',
+                share_url = '',
+                text = '',
+                author = unipile.models.get_posts_list_200_response_data_inner_author.getPostsList_200_response_data_inner_author(
+                    id = '', 
+                    object = 'User', 
+                    type = 'individual', 
+                    public_identifier = '', 
+                    display_name = '', 
+                    profile_url = '', 
+                    public_picture_url = '', 
+                    private_picture_download_url = '', 
+                    description = '', ),
+                attachments = [
+                    null
+                    ],
+                created_at = '',
+                user_reacted = None,
+                permissions = unipile.models.get_posts_list_200_response_data_inner_permissions.getPostsList_200_response_data_inner_permissions(
+                    can_share = True, 
+                    can_react = True, 
+                    can_post_comments = True, ),
+                reactions_counter = [
+                    unipile.models.get_messages_list_200_response_data_inner_reactions_counter_inner.getMessagesList_200_response_data_inner_reactions_counter_inner(
+                        reaction = '', 
+                        count = 1.337, )
+                    ],
+                comments_counter = 1.337,
+                reposts_counter = 1.337,
+                is_repost = True,
         )
         """
 

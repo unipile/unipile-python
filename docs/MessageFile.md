@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **content** | **str** | Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files | 
 **content_type** | **str** | &lt;a href&#x3D;\&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types\&quot;&gt;MIME type&lt;/a&gt; of the file. | 
 **filename** | **str** | Name of the file (including extension). | 
-**metadata** | [**MessageFileAllOfMetadata**](MessageFileAllOfMetadata.md) |  | [optional] 
+**metadata** | [**MessageFileMetadata**](MessageFileMetadata.md) |  | [optional] 
 **send_mode** | **str** | Defines how the attachment should be sent, if the provider supports multiple modes.             Omitted: use the provider’s native default behavior.             - &#x60;file&#x60; send as a regular uploaded file.             - &#x60;native&#x60; send as a native media (displayed picture, voice note, recorded video, etc.) | [optional] [default to 'native']
 
 ## Example

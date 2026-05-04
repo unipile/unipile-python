@@ -157,7 +157,6 @@ class TestAccountListDataInnerRecommendedLead(unittest.TestCase):
             return AccountListDataInnerRecommendedLead(
                 id = '',
                 display_name = '',
-                location = '',
                 headline = '',
                 network_distance = None,
                 has_posted_recently = True,

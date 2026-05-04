@@ -166,7 +166,6 @@ class TestLeadListDataInner(unittest.TestCase):
             return LeadListDataInner(
                 id = '',
                 display_name = '',
-                location = '',
                 headline = '',
                 network_distance = None,
                 has_posted_recently = True,

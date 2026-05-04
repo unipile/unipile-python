@@ -161,7 +161,6 @@ class TestPeopleSearch2DataInner(unittest.TestCase):
                 object = 'PeopleSearchResult',
                 id = '',
                 display_name = '',
-                location = '',
                 headline = '',
                 network_distance = None,
                 product = 'sales_navigator',

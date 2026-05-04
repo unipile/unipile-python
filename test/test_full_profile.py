@@ -201,7 +201,6 @@ class TestFullProfile(unittest.TestCase):
             return FullProfile(
                 id = '',
                 display_name = '',
-                location = '',
                 headline = '',
                 network_distance = 'SELF',
                 visibility = 'full',

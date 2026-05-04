@@ -51,7 +51,6 @@ class TestListClassicUserJobPostings200ResponseDataInner(unittest.TestCase):
                 id = '',
                 title = '',
                 company = '',
-                location = '',
                 state = 'DRAFT',
                 applications_count = 1.337,
         )

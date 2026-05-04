@@ -36,7 +36,7 @@ class UpdateUserProfileRequest(BaseModel):
     bio: Optional[StrictStr] = Field(default=None, description="Bio / About section of the profile.")
     picture: Optional[SendEmailRequestAttachmentsInner] = None
     background_picture: Optional[SendEmailRequestAttachmentsInner] = None
-    specifics: UpdateUserProfileRequestSpecifics
+    specifics: Optional[UpdateUserProfileRequestSpecifics] = None
     __properties: ClassVar[List[str]] = ["first_name", "last_name", "description", "location", "bio", "picture", "background_picture", "specifics"]
 
     model_config = ConfigDict(

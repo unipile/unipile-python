@@ -25,6 +25,7 @@ from unipile.models.get_messages_list200_response_data_inner_forwarded import Ge
 from unipile.models.get_messages_list200_response_data_inner_quoted import GetMessagesList200ResponseDataInnerQuoted
 from unipile.models.get_messages_list200_response_data_inner_reactions_counter_inner import GetMessagesList200ResponseDataInnerReactionsCounterInner
 from unipile.models.get_messages_list200_response_data_inner_sender import GetMessagesList200ResponseDataInnerSender
+from unipile.models.get_messages_list200_response_data_inner_specifics import GetMessagesList200ResponseDataInnerSpecifics
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -56,7 +57,7 @@ class GetMessagesList200ResponseDataInner(BaseModel):
     attachments: List[GetMessagesList200ResponseDataInnerAttachmentsInner] = Field(description="List of message attachments.")
     quoted: Optional[GetMessagesList200ResponseDataInnerQuoted] = None
     forwarded: Optional[GetMessagesList200ResponseDataInnerForwarded] = None
-    specifics: Optional[Any] = None
+    specifics: Optional[GetMessagesList200ResponseDataInnerSpecifics] = None
     __properties: ClassVar[List[str]] = ["object", "id", "text", "sender_id", "chat_id", "timestamp", "is_sender", "is_hidden", "is_seen", "is_delivered", "is_deleted", "is_edited", "is_pinned", "is_event", "is_mentionned", "event_type", "event_metadata", "reactions_counter", "sender", "provider", "attachments", "quoted", "forwarded", "specifics"]
 
     @field_validator('object')
@@ -148,11 +149,9 @@ class GetMessagesList200ResponseDataInner(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of forwarded
         if self.forwarded:
             _dict['forwarded'] = self.forwarded.to_dict()
-        # set to None if specifics (nullable) is None
-        # and model_fields_set contains the field
-        if self.specifics is None and "specifics" in self.model_fields_set:
-            _dict['specifics'] = None
-
+        # override the default output from pydantic by calling `to_dict()` of specifics
+        if self.specifics:
+            _dict['specifics'] = self.specifics.to_dict()
         return _dict
 
     @classmethod
@@ -188,7 +187,7 @@ class GetMessagesList200ResponseDataInner(BaseModel):
             "attachments": [GetMessagesList200ResponseDataInnerAttachmentsInner.from_dict(_item) for _item in obj["attachments"]] if obj.get("attachments") is not None else None,
             "quoted": GetMessagesList200ResponseDataInnerQuoted.from_dict(obj["quoted"]) if obj.get("quoted") is not None else None,
             "forwarded": GetMessagesList200ResponseDataInnerForwarded.from_dict(obj["forwarded"]) if obj.get("forwarded") is not None else None,
-            "specifics": obj.get("specifics")
+            "specifics": GetMessagesList200ResponseDataInnerSpecifics.from_dict(obj["specifics"]) if obj.get("specifics") is not None else None
         })
         return _obj
 

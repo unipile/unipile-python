@@ -240,6 +240,7 @@ docs/GetMessagesList200ResponseDataInnerQuoted.md
 docs/GetMessagesList200ResponseDataInnerQuotedAttachmentsInner.md
 docs/GetMessagesList200ResponseDataInnerReactionsCounterInner.md
 docs/GetMessagesList200ResponseDataInnerSender.md
+docs/GetMessagesList200ResponseDataInnerSpecifics.md
 docs/GetParticipantsList200Response.md
 docs/GetPost200Response.md
 docs/GetPostCommentsList200Response.md
@@ -249,6 +250,7 @@ docs/GetPostsList200Response.md
 docs/GetPostsList200ResponseDataInner.md
 docs/GetPostsList200ResponseDataInnerAnalytics.md
 docs/GetPostsList200ResponseDataInnerAuthor.md
+docs/GetPostsList200ResponseDataInnerEvent.md
 docs/GetPostsList200ResponseDataInnerPermissions.md
 docs/GetPostsList200ResponseDataInnerPoll.md
 docs/GetPostsList200ResponseDataInnerPollOptionsInner.md
@@ -307,7 +309,8 @@ docs/GetUserChat200ResponseDataInner.md
 docs/GetUserCommentsList200Response.md
 docs/GetUserCommentsList200ResponseDataInner.md
 docs/GetUserCommentsList200ResponseDataInnerParentPost.md
-docs/GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner.md
+docs/GetUserCommentsList200ResponseDataInnerParentPostAnyOf.md
+docs/GetUserCommentsList200ResponseDataInnerParentPostAnyOfAttachmentsInner.md
 docs/GetUserProfile200Response.md
 docs/GetUserProfile200ResponseSpecifics.md
 docs/GetUserReactionsList200Response.md
@@ -396,13 +399,14 @@ docs/ListWebhookEndpoints200ResponseDataInnerAccountTargetsInner.md
 docs/MediaShare.md
 docs/Message.md
 docs/MessageFile.md
-docs/MessageFileAllOfMetadata.md
+docs/MessageFileMetadata.md
 docs/MessagePinStatus.md
 docs/MessagingApi.md
 docs/Mock.md
 docs/ModifyEmailRequest.md
 docs/ModifyEmailRequestSpecifics.md
 docs/ModifyEmailRequestSpecificsAllOfOutlook.md
+docs/ModifyMessage200Response.md
 docs/ModifyMessageRequest.md
 docs/MultipleChoices.md
 docs/MultipleChoices1.md
@@ -878,6 +882,7 @@ test/test_get_messages_list200_response_data_inner_quoted.py
 test/test_get_messages_list200_response_data_inner_quoted_attachments_inner.py
 test/test_get_messages_list200_response_data_inner_reactions_counter_inner.py
 test/test_get_messages_list200_response_data_inner_sender.py
+test/test_get_messages_list200_response_data_inner_specifics.py
 test/test_get_participants_list200_response.py
 test/test_get_post200_response.py
 test/test_get_post_comments_list200_response.py
@@ -887,6 +892,7 @@ test/test_get_posts_list200_response.py
 test/test_get_posts_list200_response_data_inner.py
 test/test_get_posts_list200_response_data_inner_analytics.py
 test/test_get_posts_list200_response_data_inner_author.py
+test/test_get_posts_list200_response_data_inner_event.py
 test/test_get_posts_list200_response_data_inner_permissions.py
 test/test_get_posts_list200_response_data_inner_poll.py
 test/test_get_posts_list200_response_data_inner_poll_options_inner.py
@@ -945,7 +951,8 @@ test/test_get_user_chat200_response_data_inner.py
 test/test_get_user_comments_list200_response.py
 test/test_get_user_comments_list200_response_data_inner.py
 test/test_get_user_comments_list200_response_data_inner_parent_post.py
-test/test_get_user_comments_list200_response_data_inner_parent_post_attachments_inner.py
+test/test_get_user_comments_list200_response_data_inner_parent_post_any_of.py
+test/test_get_user_comments_list200_response_data_inner_parent_post_any_of_attachments_inner.py
 test/test_get_user_profile200_response.py
 test/test_get_user_profile200_response_specifics.py
 test/test_get_user_reactions_list200_response.py
@@ -1034,13 +1041,14 @@ test/test_list_webhook_endpoints200_response_data_inner_account_targets_inner.py
 test/test_media_share.py
 test/test_message.py
 test/test_message_file.py
-test/test_message_file_all_of_metadata.py
+test/test_message_file_metadata.py
 test/test_message_pin_status.py
 test/test_messaging_api.py
 test/test_mock.py
 test/test_modify_email_request.py
 test/test_modify_email_request_specifics.py
 test/test_modify_email_request_specifics_all_of_outlook.py
+test/test_modify_message200_response.py
 test/test_modify_message_request.py
 test/test_multiple_choices.py
 test/test_multiple_choices1.py
@@ -1524,6 +1532,7 @@ unipile/models/get_messages_list200_response_data_inner_quoted.py
 unipile/models/get_messages_list200_response_data_inner_quoted_attachments_inner.py
 unipile/models/get_messages_list200_response_data_inner_reactions_counter_inner.py
 unipile/models/get_messages_list200_response_data_inner_sender.py
+unipile/models/get_messages_list200_response_data_inner_specifics.py
 unipile/models/get_participants_list200_response.py
 unipile/models/get_post200_response.py
 unipile/models/get_post_comments_list200_response.py
@@ -1533,6 +1542,7 @@ unipile/models/get_posts_list200_response.py
 unipile/models/get_posts_list200_response_data_inner.py
 unipile/models/get_posts_list200_response_data_inner_analytics.py
 unipile/models/get_posts_list200_response_data_inner_author.py
+unipile/models/get_posts_list200_response_data_inner_event.py
 unipile/models/get_posts_list200_response_data_inner_permissions.py
 unipile/models/get_posts_list200_response_data_inner_poll.py
 unipile/models/get_posts_list200_response_data_inner_poll_options_inner.py
@@ -1591,7 +1601,8 @@ unipile/models/get_user_chat200_response_data_inner.py
 unipile/models/get_user_comments_list200_response.py
 unipile/models/get_user_comments_list200_response_data_inner.py
 unipile/models/get_user_comments_list200_response_data_inner_parent_post.py
-unipile/models/get_user_comments_list200_response_data_inner_parent_post_attachments_inner.py
+unipile/models/get_user_comments_list200_response_data_inner_parent_post_any_of.py
+unipile/models/get_user_comments_list200_response_data_inner_parent_post_any_of_attachments_inner.py
 unipile/models/get_user_profile200_response.py
 unipile/models/get_user_profile200_response_specifics.py
 unipile/models/get_user_reactions_list200_response.py
@@ -1677,12 +1688,13 @@ unipile/models/list_webhook_endpoints200_response_data_inner_account_targets_inn
 unipile/models/media_share.py
 unipile/models/message.py
 unipile/models/message_file.py
-unipile/models/message_file_all_of_metadata.py
+unipile/models/message_file_metadata.py
 unipile/models/message_pin_status.py
 unipile/models/mock.py
 unipile/models/modify_email_request.py
 unipile/models/modify_email_request_specifics.py
 unipile/models/modify_email_request_specifics_all_of_outlook.py
+unipile/models/modify_message200_response.py
 unipile/models/modify_message_request.py
 unipile/models/multiple_choices.py
 unipile/models/multiple_choices1.py

@@ -157,7 +157,7 @@ Class | Method | HTTP request | Description
 *LinkedInApi* | [**get_classic_job_posting_budget**](docs/LinkedInApi.md#get_classic_job_posting_budget) | **GET** /v2/{account_id}/linkedin/jobs/{job_id}/budget | Get the Budget for a Job Posting
 *LinkedInApi* | [**get_classic_search_parameters**](docs/LinkedInApi.md#get_classic_search_parameters) | **GET** /v2/{account_id}/linkedin/search/parameters | List Search Parameters
 *LinkedInApi* | [**get_inmail_credits**](docs/LinkedInApi.md#get_inmail_credits) | **GET** /v2/{account_id}/linkedin/inmail-credits | Get InMail Credits
-*LinkedInApi* | [**get_recruiter_applicant_by_id**](docs/LinkedInApi.md#get_recruiter_applicant_by_id) | **POST** /v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants/{applicant_id} | Get an Applicant
+*LinkedInApi* | [**get_recruiter_applicant_by_id**](docs/LinkedInApi.md#get_recruiter_applicant_by_id) | **GET** /v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants/{applicant_id} | Get an Applicant
 *LinkedInApi* | [**get_recruiter_applicant_resume**](docs/LinkedInApi.md#get_recruiter_applicant_resume) | **GET** /v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants/{applicant_id}/resume | Get an Applicant&#39;s Resume
 *LinkedInApi* | [**get_recruiter_hiring_project**](docs/LinkedInApi.md#get_recruiter_hiring_project) | **GET** /v2/{account_id}/linkedin/recruiter/projects/{project_id} | Get a Project
 *LinkedInApi* | [**get_recruiter_hiring_project_list**](docs/LinkedInApi.md#get_recruiter_hiring_project_list) | **GET** /v2/{account_id}/linkedin/recruiter/projects | List Projects
@@ -494,6 +494,7 @@ Class | Method | HTTP request | Description
  - [GetMessagesList200ResponseDataInnerQuotedAttachmentsInner](docs/GetMessagesList200ResponseDataInnerQuotedAttachmentsInner.md)
  - [GetMessagesList200ResponseDataInnerReactionsCounterInner](docs/GetMessagesList200ResponseDataInnerReactionsCounterInner.md)
  - [GetMessagesList200ResponseDataInnerSender](docs/GetMessagesList200ResponseDataInnerSender.md)
+ - [GetMessagesList200ResponseDataInnerSpecifics](docs/GetMessagesList200ResponseDataInnerSpecifics.md)
  - [GetParticipantsList200Response](docs/GetParticipantsList200Response.md)
  - [GetPost200Response](docs/GetPost200Response.md)
  - [GetPostCommentsList200Response](docs/GetPostCommentsList200Response.md)
@@ -503,6 +504,7 @@ Class | Method | HTTP request | Description
  - [GetPostsList200ResponseDataInner](docs/GetPostsList200ResponseDataInner.md)
  - [GetPostsList200ResponseDataInnerAnalytics](docs/GetPostsList200ResponseDataInnerAnalytics.md)
  - [GetPostsList200ResponseDataInnerAuthor](docs/GetPostsList200ResponseDataInnerAuthor.md)
+ - [GetPostsList200ResponseDataInnerEvent](docs/GetPostsList200ResponseDataInnerEvent.md)
  - [GetPostsList200ResponseDataInnerPermissions](docs/GetPostsList200ResponseDataInnerPermissions.md)
  - [GetPostsList200ResponseDataInnerPoll](docs/GetPostsList200ResponseDataInnerPoll.md)
  - [GetPostsList200ResponseDataInnerPollOptionsInner](docs/GetPostsList200ResponseDataInnerPollOptionsInner.md)
@@ -561,7 +563,8 @@ Class | Method | HTTP request | Description
  - [GetUserCommentsList200Response](docs/GetUserCommentsList200Response.md)
  - [GetUserCommentsList200ResponseDataInner](docs/GetUserCommentsList200ResponseDataInner.md)
  - [GetUserCommentsList200ResponseDataInnerParentPost](docs/GetUserCommentsList200ResponseDataInnerParentPost.md)
- - [GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner](docs/GetUserCommentsList200ResponseDataInnerParentPostAttachmentsInner.md)
+ - [GetUserCommentsList200ResponseDataInnerParentPostAnyOf](docs/GetUserCommentsList200ResponseDataInnerParentPostAnyOf.md)
+ - [GetUserCommentsList200ResponseDataInnerParentPostAnyOfAttachmentsInner](docs/GetUserCommentsList200ResponseDataInnerParentPostAnyOfAttachmentsInner.md)
  - [GetUserProfile200Response](docs/GetUserProfile200Response.md)
  - [GetUserProfile200ResponseSpecifics](docs/GetUserProfile200ResponseSpecifics.md)
  - [GetUserReactionsList200Response](docs/GetUserReactionsList200Response.md)
@@ -647,12 +650,13 @@ Class | Method | HTTP request | Description
  - [MediaShare](docs/MediaShare.md)
  - [Message](docs/Message.md)
  - [MessageFile](docs/MessageFile.md)
- - [MessageFileAllOfMetadata](docs/MessageFileAllOfMetadata.md)
+ - [MessageFileMetadata](docs/MessageFileMetadata.md)
  - [MessagePinStatus](docs/MessagePinStatus.md)
  - [Mock](docs/Mock.md)
  - [ModifyEmailRequest](docs/ModifyEmailRequest.md)
  - [ModifyEmailRequestSpecifics](docs/ModifyEmailRequestSpecifics.md)
  - [ModifyEmailRequestSpecificsAllOfOutlook](docs/ModifyEmailRequestSpecificsAllOfOutlook.md)
+ - [ModifyMessage200Response](docs/ModifyMessage200Response.md)
  - [ModifyMessageRequest](docs/ModifyMessageRequest.md)
  - [MultipleChoices](docs/MultipleChoices.md)
  - [MultipleChoices1](docs/MultipleChoices1.md)

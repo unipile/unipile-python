@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **attachments** | [**List[GetMessagesList200ResponseDataInnerAttachmentsInner]**](GetMessagesList200ResponseDataInnerAttachmentsInner.md) | List of message attachments. | 
 **quoted** | [**GetMessagesList200ResponseDataInnerQuoted**](GetMessagesList200ResponseDataInnerQuoted.md) |  | [optional] 
 **forwarded** | [**GetMessagesList200ResponseDataInnerForwarded**](GetMessagesList200ResponseDataInnerForwarded.md) |  | [optional] 
-**specifics** | **object** |  | [optional] 
+**specifics** | [**GetMessagesList200ResponseDataInnerSpecifics**](GetMessagesList200ResponseDataInnerSpecifics.md) |  | [optional] 
 
 ## Example
 

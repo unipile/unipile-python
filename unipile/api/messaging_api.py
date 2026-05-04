@@ -32,6 +32,7 @@ from unipile.models.get_message_reactions_list200_response import GetMessageReac
 from unipile.models.get_messages_list200_response import GetMessagesList200Response
 from unipile.models.get_participants_list200_response import GetParticipantsList200Response
 from unipile.models.get_user_chat200_response import GetUserChat200Response
+from unipile.models.modify_message200_response import ModifyMessage200Response
 from unipile.models.modify_message_request import ModifyMessageRequest
 from unipile.models.read_message200_response import ReadMessage200Response
 from unipile.models.remove_message_reaction200_response import RemoveMessageReaction200Response
@@ -4838,7 +4839,7 @@ class MessagingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> GetMessage200Response:
+    ) -> ModifyMessage200Response:
         """Modify a Message
 
         Modifies one of the account's owner messages.       <br/>       Trying to modify the message of another user will fail.
@@ -4885,7 +4886,7 @@ class MessagingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetMessage200Response",
+            '200': "ModifyMessage200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -4917,7 +4918,7 @@ class MessagingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[GetMessage200Response]:
+    ) -> ApiResponse[ModifyMessage200Response]:
         """Modify a Message
 
         Modifies one of the account's owner messages.       <br/>       Trying to modify the message of another user will fail.
@@ -4964,7 +4965,7 @@ class MessagingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetMessage200Response",
+            '200': "ModifyMessage200Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5043,7 +5044,7 @@ class MessagingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "GetMessage200Response",
+            '200': "ModifyMessage200Response",
         }
         response_data = self.api_client.call_api(
             *_param,

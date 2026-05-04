@@ -42,14 +42,14 @@ class TestCreateNewExperienceMedia(unittest.TestCase):
                     content = '', 
                     content_type = '', 
                     filename = '', 
-                    metadata = unipile.models.message_file_all_of_metadata.Message_File_allOf_metadata(
+                    metadata = unipile.models.message_file_metadata.Message_File_metadata(
                         duration = 1.337, ), ),
                 url = '',
                 thumbnail = unipile.models.send_email_request_attachments_inner.sendEmail_request_attachments_inner(
                     content = '', 
                     content_type = '', 
                     filename = '', 
-                    metadata = unipile.models.message_file_all_of_metadata.Message_File_allOf_metadata(
+                    metadata = unipile.models.message_file_metadata.Message_File_metadata(
                         duration = 1.337, ), )
             )
         else:
@@ -59,7 +59,7 @@ class TestCreateNewExperienceMedia(unittest.TestCase):
                     content = '', 
                     content_type = '', 
                     filename = '', 
-                    metadata = unipile.models.message_file_all_of_metadata.Message_File_allOf_metadata(
+                    metadata = unipile.models.message_file_metadata.Message_File_metadata(
                         duration = 1.337, ), ),
                 url = '',
         )
