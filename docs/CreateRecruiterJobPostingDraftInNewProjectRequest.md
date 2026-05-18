@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 **company_job_id** | **str** | The ID of the job in the company&#39;s system. | [optional] 
 **apply_method** | [**CreateRecruiterJobPostingDraftInExistingProjectRequestApplyMethod**](CreateRecruiterJobPostingDraftInExistingProjectRequestApplyMethod.md) |  | 
 **screening_questions** | [**List[EditClassicJobPostingRequestScreeningQuestionsInner]**](EditClassicJobPostingRequestScreeningQuestionsInner.md) | The questions to be asked to the applicants. | [optional] 
+**salary** | [**CreateRecruiterJobPostingDraftInExistingProjectRequestSalary**](CreateRecruiterJobPostingDraftInExistingProjectRequestSalary.md) |  | [optional] 
+**additional_compensation** | [**CreateRecruiterJobPostingDraftInExistingProjectRequestAdditionalCompensation**](CreateRecruiterJobPostingDraftInExistingProjectRequestAdditionalCompensation.md) |  | [optional] 
 **rejection_settings** | [**CreateRecruiterJobPostingDraftInExistingProjectRequestRejectionSettings**](CreateRecruiterJobPostingDraftInExistingProjectRequestRejectionSettings.md) |  | [optional] 
 **project_name** | **str** | The name you want to give to the new project. | 
 
