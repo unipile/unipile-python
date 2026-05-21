@@ -7,7 +7,7 @@ Oauth authentication configuration.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **custom_proxy** | [**CustomProxy1**](CustomProxy1.md) |  | [optional] 
-**oauth_scope** | **List[Optional[str]]** | Override of the list of authorizations to request from the Provider. Use this field to narrow the scope of API access. For example, if your application only uses the Calendar API, you may request authorization solely for the calendar, excluding email access for providers like Google. Make sure to give only authorizations accepted by your registered provider application. If left unspecified, all authorizations defined in the Provider OAuth settings section will be requested. | [optional] 
+**oauth_scope** | **List[str]** | Override of the list of authorizations to request from the Provider. Use this field to narrow the scope of API access. For example, if your application only uses the Calendar API, you may request authorization solely for the calendar, excluding email access for providers like Google. Make sure to give only authorizations accepted by your registered provider application. If left unspecified, all authorizations defined in the Provider OAuth settings section will be requested. | [optional] 
 
 ## Example
 
