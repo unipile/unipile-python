@@ -12,4 +12,5 @@ from unipile.api.messaging_api import MessagingApi
 from unipile.api.posts_api import PostsApi
 from unipile.api.users_api import UsersApi
 from unipile.api.webhooks_api import WebhooksApi
+from unipile.api.default_api import DefaultApi
 

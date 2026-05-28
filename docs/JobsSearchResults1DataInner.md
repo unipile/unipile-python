@@ -1,4 +1,4 @@
-# PerformClassicJobsSearch200ResponseDataInner
+# JobsSearchResults1DataInner
 
 
 ## Properties
@@ -22,19 +22,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from unipile.models.perform_classic_jobs_search200_response_data_inner import PerformClassicJobsSearch200ResponseDataInner
+from unipile.models.jobs_search_results1_data_inner import JobsSearchResults1DataInner
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of PerformClassicJobsSearch200ResponseDataInner from a JSON string
-perform_classic_jobs_search200_response_data_inner_instance = PerformClassicJobsSearch200ResponseDataInner.from_json(json)
+# create an instance of JobsSearchResults1DataInner from a JSON string
+jobs_search_results1_data_inner_instance = JobsSearchResults1DataInner.from_json(json)
 # print the JSON string representation of the object
-print(PerformClassicJobsSearch200ResponseDataInner.to_json())
+print(JobsSearchResults1DataInner.to_json())
 
 # convert the object into a dict
-perform_classic_jobs_search200_response_data_inner_dict = perform_classic_jobs_search200_response_data_inner_instance.to_dict()
-# create an instance of PerformClassicJobsSearch200ResponseDataInner from a dict
-perform_classic_jobs_search200_response_data_inner_from_dict = PerformClassicJobsSearch200ResponseDataInner.from_dict(perform_classic_jobs_search200_response_data_inner_dict)
+jobs_search_results1_data_inner_dict = jobs_search_results1_data_inner_instance.to_dict()
+# create an instance of JobsSearchResults1DataInner from a dict
+jobs_search_results1_data_inner_from_dict = JobsSearchResults1DataInner.from_dict(jobs_search_results1_data_inner_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **username** | **str** | Email or phone of the LinkedIn account. | 
 **password** | **str** | Password of the LinkedIn account. | 
+**user_agent** | **str** | A custom user agent if you need the session to be started from a specific browser. You can easily get it in the browser&#39;s console with this command : &#x60;console.log(navigator.userAgent)&#x60; | [optional] 
 
 ## Example
 

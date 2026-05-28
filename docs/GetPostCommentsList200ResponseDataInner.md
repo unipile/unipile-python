@@ -11,10 +11,12 @@ Name | Type | Description | Notes
 **author** | [**GetPostCommentsList200ResponseDataInnerAuthor**](GetPostCommentsList200ResponseDataInnerAuthor.md) |  | 
 **created_at** | **str** | The creation date of the comment. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 
 **text** | **str** | The text content of the comment. | 
+**attachments** | [**List[GetMessagesList200ResponseDataInnerQuotedAttachmentsInner]**](GetMessagesList200ResponseDataInnerQuotedAttachmentsInner.md) | List of comment attachments. | 
 **is_sender** | **bool** | Is the current user the sender of the comment. | 
 **can_reply** | **bool** | Whether the current user can reply to the comment or not. | 
 **can_react** | **bool** | Whether the current user can react to the comment or not. | 
 **reply_counter** | **float** | The number of replies to the comment. | 
+**impressions_counter** | **float** | The number of impressions of the comment. | [optional] 
 **reactions_counter** | [**List[GetMessagesList200ResponseDataInnerReactionsCounterInner]**](GetMessagesList200ResponseDataInnerReactionsCounterInner.md) | A list of reactions to the element. | 
 
 ## Example

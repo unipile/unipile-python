@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metadata** | **Dict[str, str]** | Metadata of the account. | 
+**metadata** | **Dict[str, Optional[str]]** | Custom key-value data for the account. Replaces the account &#x60;metadata.custom_data&#x60; field; other metadata fields are not modified. Any fields not provided will be removed. | [optional] 
 **proxy** | [**CustomProxy1**](CustomProxy1.md) |  | [optional] 
 
 ## Example
