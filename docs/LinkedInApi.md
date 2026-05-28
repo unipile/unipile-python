@@ -1656,7 +1656,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_classic_search_parameters**
-> GetClassicSearchParameters200Response get_classic_search_parameters(type, keywords, account_id, offset=offset, limit=limit)
+> SearchParametersList get_classic_search_parameters(type, keywords, account_id, offset=offset, limit=limit)
 
 List Search Parameters
 
@@ -1668,7 +1668,7 @@ Returns a list of parameters to be used in the search route.
 
 ```python
 import unipile
-from unipile.models.get_classic_search_parameters200_response import GetClassicSearchParameters200Response
+from unipile.models.search_parameters_list import SearchParametersList
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -1723,7 +1723,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetClassicSearchParameters200Response**](GetClassicSearchParameters200Response.md)
+[**SearchParametersList**](SearchParametersList.md)
 
 ### Authorization
 
@@ -2585,7 +2585,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_recruiter_search_parameters**
-> GetClassicSearchParameters200Response get_recruiter_search_parameters(account_id, get_recruiter_search_parameters_request=get_recruiter_search_parameters_request)
+> SearchParametersList get_recruiter_search_parameters(account_id, get_recruiter_search_parameters_request=get_recruiter_search_parameters_request)
 
 List Search Parameters
 
@@ -2597,8 +2597,8 @@ Returns a list of parameters to be used in Recruiter search endpoints.
 
 ```python
 import unipile
-from unipile.models.get_classic_search_parameters200_response import GetClassicSearchParameters200Response
 from unipile.models.get_recruiter_search_parameters_request import GetRecruiterSearchParametersRequest
+from unipile.models.search_parameters_list import SearchParametersList
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -2647,7 +2647,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetClassicSearchParameters200Response**](GetClassicSearchParameters200Response.md)
+[**SearchParametersList**](SearchParametersList.md)
 
 ### Authorization
 
@@ -2921,7 +2921,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sales_search_parameters**
-> GetClassicSearchParameters200Response get_sales_search_parameters(type, account_id, keywords=keywords, offset=offset, limit=limit)
+> SearchParametersList get_sales_search_parameters(type, account_id, keywords=keywords, offset=offset, limit=limit)
 
 List Search Parameters
 
@@ -2933,7 +2933,7 @@ Returns a list of parameters to be used in Sales navigator search endpoints.
 
 ```python
 import unipile
-from unipile.models.get_classic_search_parameters200_response import GetClassicSearchParameters200Response
+from unipile.models.search_parameters_list import SearchParametersList
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -2988,7 +2988,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetClassicSearchParameters200Response**](GetClassicSearchParameters200Response.md)
+[**SearchParametersList**](SearchParametersList.md)
 
 ### Authorization
 
@@ -3093,7 +3093,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **perform_classic_companies_search**
-> PerformClassicCompaniesSearch200Response perform_classic_companies_search(account_id, offset=offset, limit=limit, perform_classic_companies_search_request=perform_classic_companies_search_request)
+> CompaniesSearchResults perform_classic_companies_search(account_id, offset=offset, limit=limit, perform_classic_companies_search_request=perform_classic_companies_search_request)
 
 Perform Companies Search
 
@@ -3105,7 +3105,7 @@ Returns a list of companies from search results.
 
 ```python
 import unipile
-from unipile.models.perform_classic_companies_search200_response import PerformClassicCompaniesSearch200Response
+from unipile.models.companies_search_results import CompaniesSearchResults
 from unipile.models.perform_classic_companies_search_request import PerformClassicCompaniesSearchRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -3159,7 +3159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PerformClassicCompaniesSearch200Response**](PerformClassicCompaniesSearch200Response.md)
+[**CompaniesSearchResults**](CompaniesSearchResults.md)
 
 ### Authorization
 
@@ -3179,7 +3179,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **perform_classic_jobs_search**
-> PerformClassicJobsSearch200Response perform_classic_jobs_search(account_id, offset=offset, limit=limit, perform_classic_jobs_search_request=perform_classic_jobs_search_request)
+> JobsSearchResults1 perform_classic_jobs_search(account_id, offset=offset, limit=limit, perform_classic_jobs_search_request=perform_classic_jobs_search_request)
 
 Perform Jobs Search
 
@@ -3191,7 +3191,7 @@ Returns a list of job postings from search results.
 
 ```python
 import unipile
-from unipile.models.perform_classic_jobs_search200_response import PerformClassicJobsSearch200Response
+from unipile.models.jobs_search_results1 import JobsSearchResults1
 from unipile.models.perform_classic_jobs_search_request import PerformClassicJobsSearchRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -3245,7 +3245,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PerformClassicJobsSearch200Response**](PerformClassicJobsSearch200Response.md)
+[**JobsSearchResults1**](JobsSearchResults1.md)
 
 ### Authorization
 
@@ -3265,7 +3265,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **perform_classic_people_search**
-> PerformClassicPeopleSearch200Response perform_classic_people_search(account_id, offset=offset, limit=limit, perform_classic_people_search_request=perform_classic_people_search_request)
+> PeopleSearchResults perform_classic_people_search(account_id, offset=offset, limit=limit, perform_classic_people_search_request=perform_classic_people_search_request)
 
 Perform People Search
 
@@ -3277,7 +3277,7 @@ Returns a list of people from search results.
 
 ```python
 import unipile
-from unipile.models.perform_classic_people_search200_response import PerformClassicPeopleSearch200Response
+from unipile.models.people_search_results import PeopleSearchResults
 from unipile.models.perform_classic_people_search_request import PerformClassicPeopleSearchRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -3331,7 +3331,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PerformClassicPeopleSearch200Response**](PerformClassicPeopleSearch200Response.md)
+[**PeopleSearchResults**](PeopleSearchResults.md)
 
 ### Authorization
 
@@ -3351,7 +3351,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **perform_classic_posts_search**
-> PerformClassicPostsSearch200Response perform_classic_posts_search(account_id, offset=offset, limit=limit, perform_classic_posts_search_request=perform_classic_posts_search_request)
+> PostsSearchResults perform_classic_posts_search(account_id, offset=offset, limit=limit, perform_classic_posts_search_request=perform_classic_posts_search_request)
 
 Perform Posts Search
 
@@ -3363,8 +3363,8 @@ Returns a list of posts from search results.
 
 ```python
 import unipile
-from unipile.models.perform_classic_posts_search200_response import PerformClassicPostsSearch200Response
 from unipile.models.perform_classic_posts_search_request import PerformClassicPostsSearchRequest
+from unipile.models.posts_search_results import PostsSearchResults
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -3417,7 +3417,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PerformClassicPostsSearch200Response**](PerformClassicPostsSearch200Response.md)
+[**PostsSearchResults**](PostsSearchResults.md)
 
 ### Authorization
 
