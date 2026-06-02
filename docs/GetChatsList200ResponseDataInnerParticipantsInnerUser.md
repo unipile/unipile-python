@@ -1,6 +1,5 @@
 # GetChatsList200ResponseDataInnerParticipantsInnerUser
 
-The user who is a participant of the group.
 
 ## Properties
 
@@ -15,6 +14,7 @@ Name | Type | Description | Notes
 **public_picture_url** | **str** | Public url to the profile picture of the user. | [optional] 
 **private_picture_download_url** | **str** | Private url to download the profile picture of the user. This url require authentication. | [optional] 
 **description** | **str** | Description of the user. | [optional] 
+**specifics** | [**GetChatsList200ResponseDataInnerUserSpecifics**](GetChatsList200ResponseDataInnerUserSpecifics.md) |  | [optional] 
 
 ## Example
 

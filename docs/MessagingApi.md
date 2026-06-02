@@ -2095,7 +2095,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_chat**
-> GetChat200Response update_chat(chat_id, account_id, update_chat_request=update_chat_request)
+> UpdateChat200Response update_chat(chat_id, account_id, update_chat_request=update_chat_request)
 
 Update a Chat
 
@@ -2107,7 +2107,7 @@ Updates the specified chat by setting the values of the parameters passed. Any p
 
 ```python
 import unipile
-from unipile.models.get_chat200_response import GetChat200Response
+from unipile.models.update_chat200_response import UpdateChat200Response
 from unipile.models.update_chat_request import UpdateChatRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -2159,7 +2159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetChat200Response**](GetChat200Response.md)
+[**UpdateChat200Response**](UpdateChat200Response.md)
 
 ### Authorization
 
