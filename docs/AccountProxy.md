@@ -8,6 +8,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | **str** | The ID of the Company. | 
 **auto_proxy** | **bool** | Whether the proxy was set automatically by Unipile. | 
+**host** | **str** | The host of the custom proxy. | [optional] 
+**port** | **float** | The port of the custom proxy. | [optional] 
+**username** | **str** | The username used to authenticate to the custom proxy. | [optional] 
+**protocol** | **str** | The protocol of the custom proxy. | [optional] 
 
 ## Example
 
