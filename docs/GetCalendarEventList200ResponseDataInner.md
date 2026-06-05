@@ -19,9 +19,9 @@ Name | Type | Description | Notes
 **is_attendees_list_hidden** | **bool** | Is the attendees list hidden for attendees. | 
 **attendees** | [**List[GetCalendarEventList200ResponseDataInnerAttendeesInner]**](GetCalendarEventList200ResponseDataInnerAttendeesInner.md) | The attendees of the event. | [optional] 
 **start** | [**GetCalendarEventList200ResponseDataInnerStart**](GetCalendarEventList200ResponseDataInnerStart.md) |  | 
-**end** | [**GetCalendarEventList200ResponseDataInnerEnd**](GetCalendarEventList200ResponseDataInnerEnd.md) |  | 
+**end** | [**GetCalendarEventList200ResponseDataInnerStart**](GetCalendarEventList200ResponseDataInnerStart.md) |  | 
 **recurrence** | **List[Optional[str]]** | List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. | [optional] 
-**organizer** | [**GetCalendarEventList200ResponseDataInnerOrganizer**](GetCalendarEventList200ResponseDataInnerOrganizer.md) |  | 
+**organizer** | [**GetEmailsList200ResponseDataInnerFromInner**](GetEmailsList200ResponseDataInnerFromInner.md) |  | 
 **conference** | [**GetCalendarEventList200ResponseDataInnerConference**](GetCalendarEventList200ResponseDataInnerConference.md) |  | [optional] 
 **visibility** | **str** | The visibility of the event.         - &#x60;public&#x60; is visible to all.         - &#x60;private&#x60; is visible only to the calendar owner. | 
 **transparency** | **str** | The transparency of the event.         - &#x60;opaque&#x60; does block time on the calendar and is equivalent to setting Show me as to Busy in the Calendar UI.         - &#x60;transparent&#x60; does not block time on the calendar and is equivalent to setting Show me as to Available in the Calendar UI. | 

@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_relation_request**
-> LinkedInRelationRequest create_relation_request(account_id, create_relation_request_request)
+> GetRelationRequestsList200ResponseDataInner create_relation_request(account_id, create_relation_request_request)
 
 Send a Relation request
 
@@ -196,7 +196,7 @@ Sends a bi-directional relation request to a user. Trying to send a relation req
 ```python
 import unipile
 from unipile.models.create_relation_request_request import CreateRelationRequestRequest
-from unipile.models.linked_in_relation_request import LinkedInRelationRequest
+from unipile.models.get_relation_requests_list200_response_data_inner import GetRelationRequestsList200ResponseDataInner
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -245,7 +245,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LinkedInRelationRequest**](LinkedInRelationRequest.md)
+[**GetRelationRequestsList200ResponseDataInner**](GetRelationRequestsList200ResponseDataInner.md)
 
 ### Authorization
 
