@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_folder**
-> CreateFolder201Response create_folder(account_id, create_folder_request)
+> GetFoldersList200ResponseDataInner create_folder(account_id, create_folder_request)
 
 Create a Folder
 
@@ -125,8 +125,8 @@ Creates a new Folder in the account mailbox.
 
 ```python
 import unipile
-from unipile.models.create_folder201_response import CreateFolder201Response
 from unipile.models.create_folder_request import CreateFolderRequest
+from unipile.models.get_folders_list200_response_data_inner import GetFoldersList200ResponseDataInner
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateFolder201Response**](CreateFolder201Response.md)
+[**GetFoldersList200ResponseDataInner**](GetFoldersList200ResponseDataInner.md)
 
 ### Authorization
 

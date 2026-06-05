@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **is_attendees_list_hidden** | **bool** | Is the attendees list hidden for attendees. | [optional] 
 **attendees** | [**List[CreateCalendarEventRequestAttendeesInner]**](CreateCalendarEventRequestAttendeesInner.md) |  | 
 **recurrence** | **List[str]** | List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. | [optional] 
-**start** | [**CreateCalendarEventRequestStart**](CreateCalendarEventRequestStart.md) |  | 
-**end** | [**CreateCalendarEventRequestEnd**](CreateCalendarEventRequestEnd.md) |  | 
+**start** | [**GetCalendarEventList200ResponseDataInnerStart**](GetCalendarEventList200ResponseDataInnerStart.md) |  | 
+**end** | [**GetCalendarEventList200ResponseDataInnerStart**](GetCalendarEventList200ResponseDataInnerStart.md) |  | 
 
 ## Example
 

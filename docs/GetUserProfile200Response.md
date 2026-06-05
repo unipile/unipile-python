@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **public_picture_url** | **str** | Public url to the profile picture of the user. | [optional] 
 **private_picture_download_url** | **str** | Private url to download the profile picture of the user. This url require authentication. | [optional] 
 **description** | **str** | Description of the user. | [optional] 
+**specifics** | [**GetUserProfile200ResponseSpecifics**](GetUserProfile200ResponseSpecifics.md) |  | 
 **background_picture_url** | **str** | URL of the user&#39;s background / banner picture. | [optional] 
 **public_picture_url_large** | **str** | URL of the user&#39;s public picture in large size. | [optional] 
 **first_name** | **str** | First name of the user. | [optional] 
@@ -34,7 +35,6 @@ Name | Type | Description | Notes
 **shared_followers_count** | **float** | Number of following users that follows the given profile. | [optional] 
 **is_blocked** | **bool** | Whether the user is blocked by the current user. | 
 **provider** | **str** | The provider&#39;s of the Account.     - &#x60;mock&#x60; is mock.     - &#x60;whatsapp&#x60; is WhatsApp.     - &#x60;linkedin&#x60; is LinkedIn.     - &#x60;instagram&#x60; is Instagram.     - &#x60;google&#x60; is Google.     - &#x60;outlook&#x60; is Outlook.     - &#x60;telegram&#x60; is Telegram.     - &#x60;imap&#x60; is IMAP. | 
-**specifics** | [**GetUserProfile200ResponseSpecifics**](GetUserProfile200ResponseSpecifics.md) |  | 
 **social_handles** | [**GetEmailContactsList200ResponseDataInnerSocialHandles**](GetEmailContactsList200ResponseDataInnerSocialHandles.md) |  | [optional] 
 **websites** | **List[str]** | List of user websites. | [optional] 
 
