@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **attendees** | [**List[CreateCalendarEventRequestAttendeesInner]**](CreateCalendarEventRequestAttendeesInner.md) |  | [optional] 
 **recurrence** | **List[str]** | List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. | [optional] 
 **start** | [**GetCalendarEventList200ResponseDataInnerStart**](GetCalendarEventList200ResponseDataInnerStart.md) |  | [optional] 
-**end** | [**GetCalendarEventList200ResponseDataInnerEnd**](GetCalendarEventList200ResponseDataInnerEnd.md) |  | [optional] 
+**end** | [**GetCalendarEventList200ResponseDataInnerStart**](GetCalendarEventList200ResponseDataInnerStart.md) |  | [optional] 
 **notify** | **str** | Only available for google, guests to send updates to:       - &#x60;all&#x60;: Notify all guests.       - &#x60;externalOnly&#x60;: Notify only guests not on the calendar&#39;s domain.       - &#x60;none&#x60;: Do not notify any guests. | [optional] [default to 'all']
 
 ## Example

@@ -1492,7 +1492,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **remove_message_reaction**
-> RemoveMessageReaction200Response remove_message_reaction(chat_id, message_id, account_id, remove_message_reaction_request)
+> RemoveMessageReaction200Response remove_message_reaction(chat_id, message_id, account_id, add_message_reaction_request)
 
 Remove a Message Reaction
 
@@ -1504,8 +1504,8 @@ Removes a reaction of the account's owner from a message. Trying to remove a rea
 
 ```python
 import unipile
+from unipile.models.add_message_reaction_request import AddMessageReactionRequest
 from unipile.models.remove_message_reaction200_response import RemoveMessageReaction200Response
-from unipile.models.remove_message_reaction_request import RemoveMessageReactionRequest
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -1533,11 +1533,11 @@ with unipile.ApiClient(configuration) as api_client:
     chat_id = 'chat_id_example' # str | The ID of the Chat where the message is.
     message_id = 'message_id_example' # str | The ID of the Message where the reaction is.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    remove_message_reaction_request = unipile.RemoveMessageReactionRequest() # RemoveMessageReactionRequest | 
+    add_message_reaction_request = unipile.AddMessageReactionRequest() # AddMessageReactionRequest | 
 
     try:
         # Remove a Message Reaction
-        api_response = api_instance.remove_message_reaction(chat_id, message_id, account_id, remove_message_reaction_request)
+        api_response = api_instance.remove_message_reaction(chat_id, message_id, account_id, add_message_reaction_request)
         print("The response of MessagingApi->remove_message_reaction:\n")
         pprint(api_response)
     except Exception as e:
@@ -1554,7 +1554,7 @@ Name | Type | Description  | Notes
  **chat_id** | **str**| The ID of the Chat where the message is. | 
  **message_id** | **str**| The ID of the Message where the reaction is. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **remove_message_reaction_request** | [**RemoveMessageReactionRequest**](RemoveMessageReactionRequest.md)|  | 
+ **add_message_reaction_request** | [**AddMessageReactionRequest**](AddMessageReactionRequest.md)|  | 
 
 ### Return type
 
@@ -2095,7 +2095,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_chat**
-> GetChat200Response update_chat(chat_id, account_id, update_chat_request=update_chat_request)
+> UpdateChat200Response update_chat(chat_id, account_id, update_chat_request=update_chat_request)
 
 Update a Chat
 
@@ -2107,7 +2107,7 @@ Updates the specified chat by setting the values of the parameters passed. Any p
 
 ```python
 import unipile
-from unipile.models.get_chat200_response import GetChat200Response
+from unipile.models.update_chat200_response import UpdateChat200Response
 from unipile.models.update_chat_request import UpdateChatRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -2159,7 +2159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetChat200Response**](GetChat200Response.md)
+[**UpdateChat200Response**](UpdateChat200Response.md)
 
 ### Authorization
 

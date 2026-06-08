@@ -11,8 +11,7 @@ Name | Type | Description | Notes
 **created_at** | **str** | The creation date of the post. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 
 **title** | **str** | The title of the post. | [optional] 
 **text** | **str** | The text content of the post. | 
-**author** | [**GetPostsList200ResponseDataInnerAuthor**](GetPostsList200ResponseDataInnerAuthor.md) |  | 
-**user_reacted** | [**GetPostsList200ResponseDataInnerUserReacted**](GetPostsList200ResponseDataInnerUserReacted.md) |  | 
+**user_reacted** | [**UpdateChatRequestMutedUntil**](UpdateChatRequestMutedUntil.md) |  | 
 **permissions** | [**GetPostsList200ResponseDataInnerPermissions**](GetPostsList200ResponseDataInnerPermissions.md) |  | 
 **reactions_counter** | [**List[GetMessagesList200ResponseDataInnerReactionsCounterInner]**](GetMessagesList200ResponseDataInnerReactionsCounterInner.md) | A list of reactions to the element. | 
 **comments_counter** | **float** | The number of comments to the post. &#x60;null&#x60; if counter is hidden. | 
@@ -22,7 +21,8 @@ Name | Type | Description | Notes
 **attachments** | [**List[GetMessagesList200ResponseDataInnerQuotedAttachmentsInner]**](GetMessagesList200ResponseDataInnerQuotedAttachmentsInner.md) | List of post attachments. | 
 **analytics** | [**GetPostsList200ResponseDataInnerAnalytics**](GetPostsList200ResponseDataInnerAnalytics.md) |  | [optional] 
 **is_repost** | **bool** | &#x60;true&#x60; if this post is reposted by someone without quote. Quoted post does not qualify as a repost. | 
-**reposted_by** | [**GetPostsList200ResponseDataInnerRepostedBy**](GetPostsList200ResponseDataInnerRepostedBy.md) |  | [optional] 
+**author** | [**GetChatsList200ResponseDataInnerUser**](GetChatsList200ResponseDataInnerUser.md) |  | 
+**reposted_by** | [**GetChatsList200ResponseDataInnerUser**](GetChatsList200ResponseDataInnerUser.md) |  | [optional] 
 **quoted_post** | [**GetPostsList200ResponseDataInnerQuotedPost**](GetPostsList200ResponseDataInnerQuotedPost.md) |  | [optional] 
 
 ## Example
