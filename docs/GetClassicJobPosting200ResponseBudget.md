@@ -7,7 +7,7 @@ The budget allocated to the Job posting.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total** | [**GetClassicJobPosting200ResponseBudgetTotal**](GetClassicJobPosting200ResponseBudgetTotal.md) |  | 
-**daily** | [**GetClassicJobPosting200ResponseBudgetDaily**](GetClassicJobPosting200ResponseBudgetDaily.md) |  | 
+**daily** | [**GetClassicJobPosting200ResponseBudgetTotal**](GetClassicJobPosting200ResponseBudgetTotal.md) |  | 
 
 ## Example
 
