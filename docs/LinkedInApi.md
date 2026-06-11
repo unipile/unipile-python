@@ -106,7 +106,7 @@ with unipile.ApiClient(configuration) as api_client:
     list_id = 'list_id_example' # str | The ID of the list to be browsed.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 25 # float | The limit of items to be returned. (optional) (default to 25)
+    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     browse_sales_account_list_request = unipile.BrowseSalesAccountListRequest() # BrowseSalesAccountListRequest |  (optional)
 
     try:
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
  **list_id** | **str**| The ID of the list to be browsed. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 25]
+ **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **browse_sales_account_list_request** | [**BrowseSalesAccountListRequest**](BrowseSalesAccountListRequest.md)|  | [optional] 
 
 ### Return type
@@ -194,7 +194,7 @@ with unipile.ApiClient(configuration) as api_client:
     list_id = 'list_id_example' # str | The ID of the list to be browsed.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 25 # float | The limit of items to be returned. (optional) (default to 25)
+    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     browse_sales_lead_list_request = unipile.BrowseSalesLeadListRequest() # BrowseSalesLeadListRequest |  (optional)
 
     try:
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
  **list_id** | **str**| The ID of the list to be browsed. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 25]
+ **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **browse_sales_lead_list_request** | [**BrowseSalesLeadListRequest**](BrowseSalesLeadListRequest.md)|  | [optional] 
 
 ### Return type
@@ -1361,7 +1361,7 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     job_id = 'job_id_example' # str | The ID of the Job for which to retrieve the applicants.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 3.4 # float | An offset used for pagination. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     get_classic_applicants_request = unipile.GetClassicApplicantsRequest() # GetClassicApplicantsRequest |  (optional)
 
@@ -1383,7 +1383,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_id** | **str**| The ID of the Job for which to retrieve the applicants. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **float**| An offset used for pagination. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **get_classic_applicants_request** | [**GetClassicApplicantsRequest**](GetClassicApplicantsRequest.md)|  | [optional] 
 
@@ -1656,7 +1656,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_classic_search_parameters**
-> GetClassicSearchParameters200Response get_classic_search_parameters(type, keywords, account_id, offset=offset, limit=limit)
+> SearchParametersList get_classic_search_parameters(type, keywords, account_id, offset=offset, limit=limit)
 
 List Search Parameters
 
@@ -1668,7 +1668,7 @@ Returns a list of parameters to be used in the search route.
 
 ```python
 import unipile
-from unipile.models.get_classic_search_parameters200_response import GetClassicSearchParameters200Response
+from unipile.models.search_parameters_list import SearchParametersList
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -1723,7 +1723,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetClassicSearchParameters200Response**](GetClassicSearchParameters200Response.md)
+[**SearchParametersList**](SearchParametersList.md)
 
 ### Authorization
 
@@ -2109,7 +2109,7 @@ with unipile.ApiClient(configuration) as api_client:
     status = ['status_example'] # List[str] | A list of statuses that the job posting of the project must match. (optional)
     sort_by = LAST_USED_BY_ME # str | The sort method. (optional) (default to LAST_USED_BY_ME)
     keywords = 'keywords_example' # str | A keyword or group of keywords to filter projects by name. (optional)
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 3.4 # float | An offset used for pagination. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
 
     try:
@@ -2132,7 +2132,7 @@ Name | Type | Description  | Notes
  **status** | [**List[str]**](str.md)| A list of statuses that the job posting of the project must match. | [optional] 
  **sort_by** | **str**| The sort method. | [optional] [default to LAST_USED_BY_ME]
  **keywords** | **str**| A keyword or group of keywords to filter projects by name. | [optional] 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **float**| An offset used for pagination. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
 
 ### Return type
@@ -2446,7 +2446,7 @@ with unipile.ApiClient(configuration) as api_client:
     job_poster = ['job_poster_example'] # List[str] | A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `SEAT` type to find out the possible values.    Native filter : Job poster    (optional)
     contract = ['contract_example'] # List[str] | A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\">List Search Parameters</a> with `CONTRACT` type to find out the possible values.    Native filter : Contract    (optional)
     workplace_type = ['workplace_type_example'] # List[str] | A list of workplace types.    Native filter : Workplace type    (optional)
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 3.4 # float | An offset used for pagination. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
 
     try:
@@ -2472,7 +2472,7 @@ Name | Type | Description  | Notes
  **job_poster** | [**List[str]**](str.md)| A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;SEAT&#x60; type to find out the possible values.    Native filter : Job poster    | [optional] 
  **contract** | [**List[str]**](str.md)| A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;CONTRACT&#x60; type to find out the possible values.    Native filter : Contract    | [optional] 
  **workplace_type** | [**List[str]**](str.md)| A list of workplace types.    Native filter : Workplace type    | [optional] 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **float**| An offset used for pagination. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
 
 ### Return type
@@ -2537,7 +2537,7 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     project_id = 'project_id_example' # str | The ID of the Hiring Project from which to browse the Pipeline.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     get_recruiter_pipeline_candidates_request = unipile.GetRecruiterPipelineCandidatesRequest() # GetRecruiterPipelineCandidatesRequest |  (optional)
 
@@ -2559,7 +2559,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **str**| The ID of the Hiring Project from which to browse the Pipeline. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **get_recruiter_pipeline_candidates_request** | [**GetRecruiterPipelineCandidatesRequest**](GetRecruiterPipelineCandidatesRequest.md)|  | [optional] 
 
@@ -2585,7 +2585,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_recruiter_search_parameters**
-> GetClassicSearchParameters200Response get_recruiter_search_parameters(account_id, get_recruiter_search_parameters_request=get_recruiter_search_parameters_request)
+> SearchParametersList get_recruiter_search_parameters(account_id, offset=offset, limit=limit, get_recruiter_search_parameters_request=get_recruiter_search_parameters_request)
 
 List Search Parameters
 
@@ -2597,8 +2597,8 @@ Returns a list of parameters to be used in Recruiter search endpoints.
 
 ```python
 import unipile
-from unipile.models.get_classic_search_parameters200_response import GetClassicSearchParameters200Response
 from unipile.models.get_recruiter_search_parameters_request import GetRecruiterSearchParametersRequest
+from unipile.models.search_parameters_list import SearchParametersList
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -2624,11 +2624,13 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+    offset = 3.4 # float | An offset used for pagination. (optional)
+    limit = 10 # float | The limit of items to be returned. (optional) (default to 10)
     get_recruiter_search_parameters_request = unipile.GetRecruiterSearchParametersRequest() # GetRecruiterSearchParametersRequest |  (optional)
 
     try:
         # List Search Parameters
-        api_response = api_instance.get_recruiter_search_parameters(account_id, get_recruiter_search_parameters_request=get_recruiter_search_parameters_request)
+        api_response = api_instance.get_recruiter_search_parameters(account_id, offset=offset, limit=limit, get_recruiter_search_parameters_request=get_recruiter_search_parameters_request)
         print("The response of LinkedInApi->get_recruiter_search_parameters:\n")
         pprint(api_response)
     except Exception as e:
@@ -2643,11 +2645,13 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+ **offset** | **float**| An offset used for pagination. | [optional] 
+ **limit** | **float**| The limit of items to be returned. | [optional] [default to 10]
  **get_recruiter_search_parameters_request** | [**GetRecruiterSearchParametersRequest**](GetRecruiterSearchParametersRequest.md)|  | [optional] 
 
 ### Return type
 
-[**GetClassicSearchParameters200Response**](GetClassicSearchParameters200Response.md)
+[**SearchParametersList**](SearchParametersList.md)
 
 ### Authorization
 
@@ -2667,7 +2671,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_recruiter_talent_pool_applicants**
-> ApplicantsSearch get_recruiter_talent_pool_applicants(project_id, account_id, get_recruiter_talent_pool_applicants_request, cursor=cursor, limit=limit)
+> ApplicantsSearch get_recruiter_talent_pool_applicants(project_id, account_id, cursor=cursor, limit=limit, get_recruiter_talent_pool_applicants_request=get_recruiter_talent_pool_applicants_request)
 
 List Job Posting Applicants
 
@@ -2707,13 +2711,13 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     project_id = 'project_id_example' # str | The ID of the Hiring Project from which to browse the Talent Pool.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    get_recruiter_talent_pool_applicants_request = unipile.GetRecruiterTalentPoolApplicantsRequest() # GetRecruiterTalentPoolApplicantsRequest | 
-    cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
+    get_recruiter_talent_pool_applicants_request = unipile.GetRecruiterTalentPoolApplicantsRequest() # GetRecruiterTalentPoolApplicantsRequest |  (optional)
 
     try:
         # List Job Posting Applicants
-        api_response = api_instance.get_recruiter_talent_pool_applicants(project_id, account_id, get_recruiter_talent_pool_applicants_request, cursor=cursor, limit=limit)
+        api_response = api_instance.get_recruiter_talent_pool_applicants(project_id, account_id, cursor=cursor, limit=limit, get_recruiter_talent_pool_applicants_request=get_recruiter_talent_pool_applicants_request)
         print("The response of LinkedInApi->get_recruiter_talent_pool_applicants:\n")
         pprint(api_response)
     except Exception as e:
@@ -2729,9 +2733,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **str**| The ID of the Hiring Project from which to browse the Talent Pool. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **get_recruiter_talent_pool_applicants_request** | [**GetRecruiterTalentPoolApplicantsRequest**](GetRecruiterTalentPoolApplicantsRequest.md)|  | 
- **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
+ **get_recruiter_talent_pool_applicants_request** | [**GetRecruiterTalentPoolApplicantsRequest**](GetRecruiterTalentPoolApplicantsRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -2794,7 +2798,7 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 25 # float | The limit of items to be returned. (optional) (default to 25)
+    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
 
     try:
         # Get Accounts Lists
@@ -2814,7 +2818,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 25]
+ **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
 
 ### Return type
 
@@ -2877,7 +2881,7 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 25 # float | The limit of items to be returned. (optional) (default to 25)
+    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
 
     try:
         # Get Leads Lists
@@ -2897,7 +2901,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 25]
+ **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
 
 ### Return type
 
@@ -2921,7 +2925,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sales_search_parameters**
-> GetClassicSearchParameters200Response get_sales_search_parameters(type, account_id, keywords=keywords, offset=offset, limit=limit)
+> SearchParametersList get_sales_search_parameters(type, account_id, keywords=keywords, offset=offset, limit=limit)
 
 List Search Parameters
 
@@ -2933,7 +2937,7 @@ Returns a list of parameters to be used in Sales navigator search endpoints.
 
 ```python
 import unipile
-from unipile.models.get_classic_search_parameters200_response import GetClassicSearchParameters200Response
+from unipile.models.search_parameters_list import SearchParametersList
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -2988,7 +2992,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetClassicSearchParameters200Response**](GetClassicSearchParameters200Response.md)
+[**SearchParametersList**](SearchParametersList.md)
 
 ### Authorization
 
@@ -3047,7 +3051,7 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     state = 'state_example' # str | A list of Job posting states.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 3.4 # float | An offset used for pagination. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
 
     try:
@@ -3068,7 +3072,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **state** | **str**| A list of Job posting states. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **float**| An offset used for pagination. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
 
 ### Return type
@@ -3093,7 +3097,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **perform_classic_companies_search**
-> PerformClassicCompaniesSearch200Response perform_classic_companies_search(account_id, offset=offset, limit=limit, perform_classic_companies_search_request=perform_classic_companies_search_request)
+> CompaniesSearchResults perform_classic_companies_search(account_id, offset=offset, limit=limit, perform_classic_companies_search_request=perform_classic_companies_search_request)
 
 Perform Companies Search
 
@@ -3105,7 +3109,7 @@ Returns a list of companies from search results.
 
 ```python
 import unipile
-from unipile.models.perform_classic_companies_search200_response import PerformClassicCompaniesSearch200Response
+from unipile.models.companies_search_results import CompaniesSearchResults
 from unipile.models.perform_classic_companies_search_request import PerformClassicCompaniesSearchRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -3132,7 +3136,7 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 3.4 # float | An offset used for pagination. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     perform_classic_companies_search_request = unipile.PerformClassicCompaniesSearchRequest() # PerformClassicCompaniesSearchRequest |  (optional)
 
@@ -3153,13 +3157,13 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **float**| An offset used for pagination. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **perform_classic_companies_search_request** | [**PerformClassicCompaniesSearchRequest**](PerformClassicCompaniesSearchRequest.md)|  | [optional] 
 
 ### Return type
 
-[**PerformClassicCompaniesSearch200Response**](PerformClassicCompaniesSearch200Response.md)
+[**CompaniesSearchResults**](CompaniesSearchResults.md)
 
 ### Authorization
 
@@ -3179,7 +3183,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **perform_classic_jobs_search**
-> PerformClassicJobsSearch200Response perform_classic_jobs_search(account_id, offset=offset, limit=limit, perform_classic_jobs_search_request=perform_classic_jobs_search_request)
+> JobsSearchResults1 perform_classic_jobs_search(account_id, offset=offset, limit=limit, perform_classic_jobs_search_request=perform_classic_jobs_search_request)
 
 Perform Jobs Search
 
@@ -3191,7 +3195,7 @@ Returns a list of job postings from search results.
 
 ```python
 import unipile
-from unipile.models.perform_classic_jobs_search200_response import PerformClassicJobsSearch200Response
+from unipile.models.jobs_search_results1 import JobsSearchResults1
 from unipile.models.perform_classic_jobs_search_request import PerformClassicJobsSearchRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -3218,7 +3222,7 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 3.4 # float | An offset used for pagination. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     perform_classic_jobs_search_request = unipile.PerformClassicJobsSearchRequest() # PerformClassicJobsSearchRequest |  (optional)
 
@@ -3239,13 +3243,13 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **float**| An offset used for pagination. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **perform_classic_jobs_search_request** | [**PerformClassicJobsSearchRequest**](PerformClassicJobsSearchRequest.md)|  | [optional] 
 
 ### Return type
 
-[**PerformClassicJobsSearch200Response**](PerformClassicJobsSearch200Response.md)
+[**JobsSearchResults1**](JobsSearchResults1.md)
 
 ### Authorization
 
@@ -3265,7 +3269,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **perform_classic_people_search**
-> PerformClassicPeopleSearch200Response perform_classic_people_search(account_id, offset=offset, limit=limit, perform_classic_people_search_request=perform_classic_people_search_request)
+> PeopleSearchResults perform_classic_people_search(account_id, offset=offset, limit=limit, perform_classic_people_search_request=perform_classic_people_search_request)
 
 Perform People Search
 
@@ -3277,7 +3281,7 @@ Returns a list of people from search results.
 
 ```python
 import unipile
-from unipile.models.perform_classic_people_search200_response import PerformClassicPeopleSearch200Response
+from unipile.models.people_search_results import PeopleSearchResults
 from unipile.models.perform_classic_people_search_request import PerformClassicPeopleSearchRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -3304,7 +3308,7 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 3.4 # float | An offset used for pagination. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     perform_classic_people_search_request = unipile.PerformClassicPeopleSearchRequest() # PerformClassicPeopleSearchRequest |  (optional)
 
@@ -3325,13 +3329,13 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **float**| An offset used for pagination. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **perform_classic_people_search_request** | [**PerformClassicPeopleSearchRequest**](PerformClassicPeopleSearchRequest.md)|  | [optional] 
 
 ### Return type
 
-[**PerformClassicPeopleSearch200Response**](PerformClassicPeopleSearch200Response.md)
+[**PeopleSearchResults**](PeopleSearchResults.md)
 
 ### Authorization
 
@@ -3351,7 +3355,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **perform_classic_posts_search**
-> PerformClassicPostsSearch200Response perform_classic_posts_search(account_id, offset=offset, limit=limit, perform_classic_posts_search_request=perform_classic_posts_search_request)
+> PostsSearchResults perform_classic_posts_search(account_id, offset=offset, limit=limit, perform_classic_posts_search_request=perform_classic_posts_search_request)
 
 Perform Posts Search
 
@@ -3363,8 +3367,8 @@ Returns a list of posts from search results.
 
 ```python
 import unipile
-from unipile.models.perform_classic_posts_search200_response import PerformClassicPostsSearch200Response
 from unipile.models.perform_classic_posts_search_request import PerformClassicPostsSearchRequest
+from unipile.models.posts_search_results import PostsSearchResults
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -3390,7 +3394,7 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 3.4 # float | An offset used for pagination. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     perform_classic_posts_search_request = unipile.PerformClassicPostsSearchRequest() # PerformClassicPostsSearchRequest |  (optional)
 
@@ -3411,13 +3415,13 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **float**| An offset used for pagination. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **perform_classic_posts_search_request** | [**PerformClassicPostsSearchRequest**](PerformClassicPostsSearchRequest.md)|  | [optional] 
 
 ### Return type
 
-[**PerformClassicPostsSearch200Response**](PerformClassicPostsSearch200Response.md)
+[**PostsSearchResults**](PostsSearchResults.md)
 
 ### Authorization
 
@@ -3477,7 +3481,7 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     perform_classic_search_from_url_request = unipile.PerformClassicSearchFromUrlRequest() # PerformClassicSearchFromUrlRequest | 
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 3.4 # float | An offset used for pagination. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
 
     try:
@@ -3498,7 +3502,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **perform_classic_search_from_url_request** | [**PerformClassicSearchFromUrlRequest**](PerformClassicSearchFromUrlRequest.md)|  | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **float**| An offset used for pagination. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
 
 ### Return type
@@ -3562,7 +3566,7 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     perform_recruiter_people_search_request = unipile.PerformRecruiterPeopleSearchRequest() # PerformRecruiterPeopleSearchRequest |  (optional)
 
@@ -3583,7 +3587,7 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **perform_recruiter_people_search_request** | [**PerformRecruiterPeopleSearchRequest**](PerformRecruiterPeopleSearchRequest.md)|  | [optional] 
 
@@ -3650,7 +3654,7 @@ with unipile.ApiClient(configuration) as api_client:
     project_id = 'project_id_example' # str | The ID of the Hiring Project from which to browse the Talent Pool.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     perform_recruiter_people_search_from_talent_pool_request = unipile.PerformRecruiterPeopleSearchFromTalentPoolRequest() # PerformRecruiterPeopleSearchFromTalentPoolRequest | 
-    cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
 
     try:
@@ -3672,7 +3676,7 @@ Name | Type | Description  | Notes
  **project_id** | **str**| The ID of the Hiring Project from which to browse the Talent Pool. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **perform_recruiter_people_search_from_talent_pool_request** | [**PerformRecruiterPeopleSearchFromTalentPoolRequest**](PerformRecruiterPeopleSearchFromTalentPoolRequest.md)|  | 
- **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
 
 ### Return type
@@ -3737,8 +3741,8 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     perform_classic_search_from_url_request = unipile.PerformClassicSearchFromUrlRequest() # PerformClassicSearchFromUrlRequest | 
-    cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
+    cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
+    limit = 20 # float |    `search` and `applicants` channels maximum is 100   `pipeline` channel maximum is 5000 (optional) (default to 20)
 
     try:
         # Perform Recruiter Search from URL
@@ -3758,8 +3762,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **perform_classic_search_from_url_request** | [**PerformClassicSearchFromUrlRequest**](PerformClassicSearchFromUrlRequest.md)|  | 
- **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
+ **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
+ **limit** | **float**|    &#x60;search&#x60; and &#x60;applicants&#x60; channels maximum is 100   &#x60;pipeline&#x60; channel maximum is 5000 | [optional] [default to 20]
 
 ### Return type
 
@@ -3822,7 +3826,7 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 3.4 # float | An offset used for pagination. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     perform_sales_companies_search_request = unipile.PerformSalesCompaniesSearchRequest() # PerformSalesCompaniesSearchRequest |  (optional)
 
@@ -3843,7 +3847,7 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **float**| An offset used for pagination. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **perform_sales_companies_search_request** | [**PerformSalesCompaniesSearchRequest**](PerformSalesCompaniesSearchRequest.md)|  | [optional] 
 
@@ -3908,7 +3912,7 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 3.4 # float | An offset used for pagination. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     perform_sales_people_search_request = unipile.PerformSalesPeopleSearchRequest() # PerformSalesPeopleSearchRequest |  (optional)
 
@@ -3929,7 +3933,7 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **float**| An offset used for pagination. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **perform_sales_people_search_request** | [**PerformSalesPeopleSearchRequest**](PerformSalesPeopleSearchRequest.md)|  | [optional] 
 
@@ -3995,7 +3999,7 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     perform_classic_search_from_url_request = unipile.PerformClassicSearchFromUrlRequest() # PerformClassicSearchFromUrlRequest | 
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 3.4 # float | An offset used for pagination. (optional)
     limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
 
     try:
@@ -4016,7 +4020,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **perform_classic_search_from_url_request** | [**PerformClassicSearchFromUrlRequest**](PerformClassicSearchFromUrlRequest.md)|  | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **float**| An offset used for pagination. | [optional] 
  **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
 
 ### Return type
@@ -4794,7 +4798,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **verify_classic_company_member_identity**
-> VerifyClassicCompanyMemberIdentity200Response verify_classic_company_member_identity(company_id, account_id, verify_classic_company_member_identity_request)
+> VerifyClassicCompanyMemberIdentity200Response verify_classic_company_member_identity(company_id, account_id, create_calendar_event_request_attendees_inner)
 
 Verify Company Member Identity
 
@@ -4806,8 +4810,8 @@ Verifies member identity by submitting an email address.
 
 ```python
 import unipile
+from unipile.models.create_calendar_event_request_attendees_inner import CreateCalendarEventRequestAttendeesInner
 from unipile.models.verify_classic_company_member_identity200_response import VerifyClassicCompanyMemberIdentity200Response
-from unipile.models.verify_classic_company_member_identity_request import VerifyClassicCompanyMemberIdentityRequest
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -4834,11 +4838,11 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     company_id = 'company_id_example' # str | The ID of the company for which the user's identity must be verified.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    verify_classic_company_member_identity_request = unipile.VerifyClassicCompanyMemberIdentityRequest() # VerifyClassicCompanyMemberIdentityRequest | 
+    create_calendar_event_request_attendees_inner = unipile.CreateCalendarEventRequestAttendeesInner() # CreateCalendarEventRequestAttendeesInner | 
 
     try:
         # Verify Company Member Identity
-        api_response = api_instance.verify_classic_company_member_identity(company_id, account_id, verify_classic_company_member_identity_request)
+        api_response = api_instance.verify_classic_company_member_identity(company_id, account_id, create_calendar_event_request_attendees_inner)
         print("The response of LinkedInApi->verify_classic_company_member_identity:\n")
         pprint(api_response)
     except Exception as e:
@@ -4854,7 +4858,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **company_id** | **str**| The ID of the company for which the user&#39;s identity must be verified. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **verify_classic_company_member_identity_request** | [**VerifyClassicCompanyMemberIdentityRequest**](VerifyClassicCompanyMemberIdentityRequest.md)|  | 
+ **create_calendar_event_request_attendees_inner** | [**CreateCalendarEventRequestAttendeesInner**](CreateCalendarEventRequestAttendeesInner.md)|  | 
 
 ### Return type
 
@@ -4878,7 +4882,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **verify_recruiter_company_member_identity**
-> VerifyClassicCompanyMemberIdentity200Response verify_recruiter_company_member_identity(company_id, account_id, verify_classic_company_member_identity_request)
+> VerifyClassicCompanyMemberIdentity200Response verify_recruiter_company_member_identity(company_id, account_id, create_calendar_event_request_attendees_inner)
 
 Verify Company Member Identity
 
@@ -4890,8 +4894,8 @@ Verifies member identity by submitting an email address.
 
 ```python
 import unipile
+from unipile.models.create_calendar_event_request_attendees_inner import CreateCalendarEventRequestAttendeesInner
 from unipile.models.verify_classic_company_member_identity200_response import VerifyClassicCompanyMemberIdentity200Response
-from unipile.models.verify_classic_company_member_identity_request import VerifyClassicCompanyMemberIdentityRequest
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -4918,11 +4922,11 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     company_id = 'company_id_example' # str | The ID of the company for which the user's identity must be verified.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    verify_classic_company_member_identity_request = unipile.VerifyClassicCompanyMemberIdentityRequest() # VerifyClassicCompanyMemberIdentityRequest | 
+    create_calendar_event_request_attendees_inner = unipile.CreateCalendarEventRequestAttendeesInner() # CreateCalendarEventRequestAttendeesInner | 
 
     try:
         # Verify Company Member Identity
-        api_response = api_instance.verify_recruiter_company_member_identity(company_id, account_id, verify_classic_company_member_identity_request)
+        api_response = api_instance.verify_recruiter_company_member_identity(company_id, account_id, create_calendar_event_request_attendees_inner)
         print("The response of LinkedInApi->verify_recruiter_company_member_identity:\n")
         pprint(api_response)
     except Exception as e:
@@ -4938,7 +4942,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **company_id** | **str**| The ID of the company for which the user&#39;s identity must be verified. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **verify_classic_company_member_identity_request** | [**VerifyClassicCompanyMemberIdentityRequest**](VerifyClassicCompanyMemberIdentityRequest.md)|  | 
+ **create_calendar_event_request_attendees_inner** | [**CreateCalendarEventRequestAttendeesInner**](CreateCalendarEventRequestAttendeesInner.md)|  | 
 
 ### Return type
 

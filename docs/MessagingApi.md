@@ -613,7 +613,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_chats_list**
-> GetChatsList200Response get_chats_list(account_id, offset=offset, limit=limit, cursor=cursor, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
+> GetChatsList200Response get_chats_list(account_id, offset=offset, cursor=cursor, limit=limit, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
 
 List all Chats
 
@@ -652,8 +652,8 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.MessagingApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     type = 'type_example' # str | Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat. (optional)
     before = 'before_example' # str | A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). (optional)
     after = 'after_example' # str | A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).. (optional)
@@ -662,7 +662,7 @@ with unipile.ApiClient(configuration) as api_client:
 
     try:
         # List all Chats
-        api_response = api_instance.get_chats_list(account_id, offset=offset, limit=limit, cursor=cursor, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
+        api_response = api_instance.get_chats_list(account_id, offset=offset, cursor=cursor, limit=limit, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
         print("The response of MessagingApi->get_chats_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -678,8 +678,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **type** | **str**| Return only chats of the given type (if supported by the provider).         - &#x60;1to1&#x60; is a 1to1 chat.         - &#x60;group&#x60; is a group chat.         - &#x60;channel&#x60; is a channel chat. | [optional] 
  **before** | **str**| A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | [optional] 
  **after** | **str**| A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).. | [optional] 
@@ -708,7 +708,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_inbox_chats_list**
-> GetChatsList200Response get_inbox_chats_list(inbox_id, account_id, offset=offset, limit=limit, cursor=cursor, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
+> GetChatsList200Response get_inbox_chats_list(inbox_id, account_id, offset=offset, cursor=cursor, limit=limit, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
 
 List Inbox Chats
 
@@ -748,8 +748,8 @@ with unipile.ApiClient(configuration) as api_client:
     inbox_id = 'inbox_id_example' # str | ID of the Inbox to retrieve Chats from. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes\">List all Inboxes</a> to get the ID of an inbox.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     type = 'type_example' # str | Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat. (optional)
     before = 'before_example' # str | A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). (optional)
     after = 'after_example' # str | A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).. (optional)
@@ -758,7 +758,7 @@ with unipile.ApiClient(configuration) as api_client:
 
     try:
         # List Inbox Chats
-        api_response = api_instance.get_inbox_chats_list(inbox_id, account_id, offset=offset, limit=limit, cursor=cursor, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
+        api_response = api_instance.get_inbox_chats_list(inbox_id, account_id, offset=offset, cursor=cursor, limit=limit, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
         print("The response of MessagingApi->get_inbox_chats_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -775,8 +775,8 @@ Name | Type | Description  | Notes
  **inbox_id** | **str**| ID of the Inbox to retrieve Chats from. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes\&quot;&gt;List all Inboxes&lt;/a&gt; to get the ID of an inbox. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **type** | **str**| Return only chats of the given type (if supported by the provider).         - &#x60;1to1&#x60; is a 1to1 chat.         - &#x60;group&#x60; is a group chat.         - &#x60;channel&#x60; is a channel chat. | [optional] 
  **before** | **str**| A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | [optional] 
  **after** | **str**| A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).. | [optional] 
@@ -967,7 +967,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_message_reactions_list**
-> GetMessageReactionsList200Response get_message_reactions_list(chat_id, message_id, account_id, offset=offset, limit=limit, cursor=cursor)
+> GetMessageReactionsList200Response get_message_reactions_list(chat_id, message_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all Message's Reactions
 
@@ -1008,12 +1008,12 @@ with unipile.ApiClient(configuration) as api_client:
     message_id = 'message_id_example' # str | The ID of the Message to retrieve reactions from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
 
     try:
         # List all Message's Reactions
-        api_response = api_instance.get_message_reactions_list(chat_id, message_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_message_reactions_list(chat_id, message_id, account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of MessagingApi->get_message_reactions_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1031,8 +1031,8 @@ Name | Type | Description  | Notes
  **message_id** | **str**| The ID of the Message to retrieve reactions from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
 
 ### Return type
 
@@ -1056,7 +1056,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_messages_list**
-> GetMessagesList200Response get_messages_list(chat_id, account_id, before=before, after=after, user_id=user_id, offset=offset, limit=limit, cursor=cursor)
+> GetMessagesList200Response get_messages_list(chat_id, account_id, before=before, after=after, user_id=user_id, offset=offset, cursor=cursor, limit=limit)
 
 List all Chat Messages
 
@@ -1099,12 +1099,12 @@ with unipile.ApiClient(configuration) as api_client:
     after = 'after_example' # str | Filter to only return messages sent after the given timestamp (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). (optional)
     user_id = 'user_id_example' # str | Filter to only return messages sent by the given User. (optional)
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
 
     try:
         # List all Chat Messages
-        api_response = api_instance.get_messages_list(chat_id, account_id, before=before, after=after, user_id=user_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_messages_list(chat_id, account_id, before=before, after=after, user_id=user_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of MessagingApi->get_messages_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1124,8 +1124,8 @@ Name | Type | Description  | Notes
  **after** | **str**| Filter to only return messages sent after the given timestamp (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | [optional] 
  **user_id** | **str**| Filter to only return messages sent by the given User. | [optional] 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
 
 ### Return type
 
@@ -1149,7 +1149,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_participants_list**
-> GetParticipantsList200Response get_participants_list(chat_id, account_id, offset=offset, limit=limit, cursor=cursor)
+> GetParticipantsList200Response get_participants_list(chat_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all Chat Participants
 
@@ -1191,12 +1191,12 @@ with unipile.ApiClient(configuration) as api_client:
     chat_id = 'chat_id_example' # str | ID of the Chat to retrieve participants from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
 
     try:
         # List all Chat Participants
-        api_response = api_instance.get_participants_list(chat_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_participants_list(chat_id, account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of MessagingApi->get_participants_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1213,8 +1213,8 @@ Name | Type | Description  | Notes
  **chat_id** | **str**| ID of the Chat to retrieve participants from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
 
 ### Return type
 
@@ -1492,7 +1492,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **remove_message_reaction**
-> RemoveMessageReaction200Response remove_message_reaction(chat_id, message_id, account_id, remove_message_reaction_request)
+> RemoveMessageReaction200Response remove_message_reaction(chat_id, message_id, account_id, add_message_reaction_request)
 
 Remove a Message Reaction
 
@@ -1504,8 +1504,8 @@ Removes a reaction of the account's owner from a message. Trying to remove a rea
 
 ```python
 import unipile
+from unipile.models.add_message_reaction_request import AddMessageReactionRequest
 from unipile.models.remove_message_reaction200_response import RemoveMessageReaction200Response
-from unipile.models.remove_message_reaction_request import RemoveMessageReactionRequest
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -1533,11 +1533,11 @@ with unipile.ApiClient(configuration) as api_client:
     chat_id = 'chat_id_example' # str | The ID of the Chat where the message is.
     message_id = 'message_id_example' # str | The ID of the Message where the reaction is.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    remove_message_reaction_request = unipile.RemoveMessageReactionRequest() # RemoveMessageReactionRequest | 
+    add_message_reaction_request = unipile.AddMessageReactionRequest() # AddMessageReactionRequest | 
 
     try:
         # Remove a Message Reaction
-        api_response = api_instance.remove_message_reaction(chat_id, message_id, account_id, remove_message_reaction_request)
+        api_response = api_instance.remove_message_reaction(chat_id, message_id, account_id, add_message_reaction_request)
         print("The response of MessagingApi->remove_message_reaction:\n")
         pprint(api_response)
     except Exception as e:
@@ -1554,7 +1554,7 @@ Name | Type | Description  | Notes
  **chat_id** | **str**| The ID of the Chat where the message is. | 
  **message_id** | **str**| The ID of the Message where the reaction is. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **remove_message_reaction_request** | [**RemoveMessageReactionRequest**](RemoveMessageReactionRequest.md)|  | 
+ **add_message_reaction_request** | [**AddMessageReactionRequest**](AddMessageReactionRequest.md)|  | 
 
 ### Return type
 
@@ -2095,7 +2095,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_chat**
-> GetChat200Response update_chat(chat_id, account_id, update_chat_request=update_chat_request)
+> UpdateChat200Response update_chat(chat_id, account_id, update_chat_request=update_chat_request)
 
 Update a Chat
 
@@ -2107,7 +2107,7 @@ Updates the specified chat by setting the values of the parameters passed. Any p
 
 ```python
 import unipile
-from unipile.models.get_chat200_response import GetChat200Response
+from unipile.models.update_chat200_response import UpdateChat200Response
 from unipile.models.update_chat_request import UpdateChatRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -2159,7 +2159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetChat200Response**](GetChat200Response.md)
+[**UpdateChat200Response**](UpdateChat200Response.md)
 
 ### Authorization
 
