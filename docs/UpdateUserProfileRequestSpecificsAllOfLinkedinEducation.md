@@ -6,11 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **notify_network** | **bool** | Notify the network about the education. Turn on to notify your network of key profile changes (such as new education) and work anniversaries. | [optional] [default to False]
-**school** | [**EditExistingEducationSchool**](EditExistingEducationSchool.md) |  | 
-**degree** | [**EditExistingEducationDegree**](EditExistingEducationDegree.md) |  | [optional] 
-**field_of_study** | [**EditExistingEducationFieldOfStudy**](EditExistingEducationFieldOfStudy.md) |  | [optional] 
-**start_date** | [**CreateNewEducationStartDate**](CreateNewEducationStartDate.md) |  | 
-**end_date** | [**CreateNewEducationEndDate**](CreateNewEducationEndDate.md) |  | [optional] 
+**school** | [**CreateNewExperienceSkillsInner**](CreateNewExperienceSkillsInner.md) |  | 
+**degree** | [**CreateNewExperienceSkillsInner**](CreateNewExperienceSkillsInner.md) |  | [optional] 
+**field_of_study** | [**CreateNewExperienceSkillsInner**](CreateNewExperienceSkillsInner.md) |  | [optional] 
+**start_date** | [**CreateNewExperienceStartDate**](CreateNewExperienceStartDate.md) |  | 
+**end_date** | [**CreateNewExperienceStartDate**](CreateNewExperienceStartDate.md) |  | [optional] 
 **grade** | **str** | Grade of the education. | [optional] 
 **activities** | **str** | Activities and societies. Ex: Alpha Phi Omega, Marching Brand, Volleyball | [optional] 
 **description** | **str** | Description of the education. | [optional] 
