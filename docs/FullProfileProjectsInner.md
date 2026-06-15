@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Name of the project. | 
 **description** | **str** | Description of the project. | [optional] 
-**contributors** | [**List[LinkedInProjectsInnerContributorsInner]**](LinkedInProjectsInnerContributorsInner.md) | Contributors to the project. | 
+**contributors** | [**List[UpdateChat200ResponseParticipantsInnerUser]**](UpdateChat200ResponseParticipantsInnerUser.md) | Contributors to the project. | 
 **skills** | **List[str]** | Skills related to the project. | [optional] 
 **skills_preview** | **str** | Insight of the skills related to the project. | [optional] 
 **started_on** | **str** | Start date of the project in MM/DD/YYYY format. | [optional] 

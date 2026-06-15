@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **content** | **str** | Content of the attachement | [optional] 
 **type** | **str** |  | 
 **duration** | **float** | The duration of the video in seconds. | [optional] 
-**size** | [**VideoSize**](VideoSize.md) |  | 
+**size** | [**ImageSize**](ImageSize.md) |  | 
 **gif** | **bool** | The video is a GIF (should be displayed differently) | 
 
 ## Example
