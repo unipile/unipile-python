@@ -7,7 +7,6 @@ Start the authentication intent with LinkedIn provider.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **provider** | **str** | The provider to authenticate with. | 
-**user_agent** | **str** | If encountering disconnection issues, enter the exact user agent of the browser on which the account has been connected before the &#x60;li_at&#x60; retrieval. You can easily get it in the browser&#39;s console with this command : &#x60;console.log(navigator.userAgent)&#x60; | [optional] 
 **user_timezone** | **str** | The time zone of the current user can be used on a few specific features (e.g. scheduled actions). Setting it at authentication avoids having to do it on a case-by-case basis later on. | [optional] 
 **credentials** | [**LinkedIn1Credentials**](LinkedIn1Credentials.md) |  | 
 **config** | [**LinkedIn1Config**](LinkedIn1Config.md) |  | [optional] 
