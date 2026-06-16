@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **bcc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;bcc&#x60; header. | [optional] 
 **reply_to** | **str** | The ID of the email message that you&#39;re replying to. For Gmail and Outlook, this is the provider ID for the email message that you&#39;re replying to. For IMAP Send, this is the RFC822 Message-ID header of the email message that you&#39;re replying to. | [optional] 
 **attachments** | [**List[SendEmailRequestAttachmentsInner]**](SendEmailRequestAttachmentsInner.md) | The list of file attachments to the email. | [optional] 
-**custom_headers** | [**List[SendEmailRequestCustomHeadersInner]**](SendEmailRequestCustomHeadersInner.md) | An array of custom headers to add to the email. | [optional] 
+**custom_headers** | [**List[SendEmailRequestCustomHeadersInner]**](SendEmailRequestCustomHeadersInner.md) | An array of custom headers to add to the email. Each header overrides any existing header with the same name (case-insensitive), including headers set by other fields such as &#x60;to&#x60;, &#x60;cc&#x60;, &#x60;bcc&#x60;, &#x60;from&#x60;, &#x60;subject&#x60;, or &#x60;reply_to&#x60;. | [optional] 
 **tracking_options** | [**SendEmailRequestTrackingOptions**](SendEmailRequestTrackingOptions.md) |  | [optional] 
 
 ## Example

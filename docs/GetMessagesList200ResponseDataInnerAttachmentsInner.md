@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **type** | **str** |  | 
 **duration** | **float** | The duration of the video in seconds. | [optional] 
 **voice_note** | **bool** | The audio is a voice note (should be displayed differently) | 
-**size** | [**VideoSize**](VideoSize.md) |  | 
+**size** | [**ImageSize**](ImageSize.md) |  | 
 **sticker** | **bool** | The image is a sticker (should be displayed differently) | 
 **gif** | **bool** | The video is a GIF (should be displayed differently) | 
 **filename** | **str** | The name of the file, including the extension. | 

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**job_title** | [**CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle**](CreateRecruiterJobPostingDraftInExistingProjectRequestJobTitle.md) |  | 
-**company** | [**CreateRecruiterJobPostingDraftInExistingProjectRequestCompany**](CreateRecruiterJobPostingDraftInExistingProjectRequestCompany.md) |  | 
+**job_title** | [**CreateRecruiterHiringProjectRequestJobTitle**](CreateRecruiterHiringProjectRequestJobTitle.md) |  | 
+**company** | [**CreateClassicJobPostingDraftRequestJobTitle**](CreateClassicJobPostingDraftRequestJobTitle.md) |  | 
 **workplace_type** | **str** | The working method of the job. | 
 **location** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_LOCATION&#x60; type to find out the possible values. | 
 **employment_status** | **str** | The employment status of the job. | 
@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 **company_job_id** | **str** | The ID of the job in the company&#39;s system. | [optional] 
 **apply_method** | [**CreateRecruiterJobPostingDraftInExistingProjectRequestApplyMethod**](CreateRecruiterJobPostingDraftInExistingProjectRequestApplyMethod.md) |  | 
 **screening_questions** | [**List[EditClassicJobPostingRequestScreeningQuestionsInner]**](EditClassicJobPostingRequestScreeningQuestionsInner.md) | The questions to be asked to the applicants. | [optional] 
+**salary** | [**CreateRecruiterJobPostingDraftInExistingProjectRequestSalary**](CreateRecruiterJobPostingDraftInExistingProjectRequestSalary.md) |  | [optional] 
+**additional_compensation** | [**CreateRecruiterJobPostingDraftInExistingProjectRequestSalary**](CreateRecruiterJobPostingDraftInExistingProjectRequestSalary.md) |  | [optional] 
 **rejection_settings** | [**CreateRecruiterJobPostingDraftInExistingProjectRequestRejectionSettings**](CreateRecruiterJobPostingDraftInExistingProjectRequestRejectionSettings.md) |  | [optional] 
 **project_name** | **str** | The name you want to give to the new project. | 
 
