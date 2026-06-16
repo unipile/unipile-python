@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
-**user** | [**LinkedInRelationRequestUser**](LinkedInRelationRequestUser.md) |  | [optional] 
+**user** | [**UpdateChat200ResponseParticipantsInnerUser**](UpdateChat200ResponseParticipantsInnerUser.md) |  | [optional] 
 **type** | **str** | Type of the relation / follow request.       - &#x60;sent&#x60; if the current user has asked another one to be in his relations.       - &#x60;received&#x60; if another user has asked the current one to be in his relations. | 
 **id** | **str** | The unique identifier of the invitation for the provider. | 
 **created_at** | **str** | Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | [optional] 
