@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bypass_email_verification** | **bool** | Whether not to verify if you&#39;re allowed to post a job on behalf on the current company. | [optional] [default to False]
 **mode** | **str** |  | 
-**budget** | [**PublishInPromotedMode1Budget**](PublishInPromotedMode1Budget.md) |  | [optional] 
+**budget** | [**PublishInPromotedModeBudget**](PublishInPromotedModeBudget.md) |  | [optional] 
 
 ## Example
 

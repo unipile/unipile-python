@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **is_headquarter** | **bool** | Whether the location is the headquarters of the Company. | 
 **country_code** | **str** | The country code of the location. | 
-**city** | **str** | The city of the location. | 
+**city** | **str** | The city of the location. | [optional] 
 **area** | **str** | The area of the location. | [optional] 
 **postal_code** | **str** | The postal code of the location. | [optional] 
 **street** | **str** | The street of the location. | [optional] 

@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **contact_info** | [**GetClassicApplicants200ResponseDataInnerContactInfo**](GetClassicApplicants200ResponseDataInnerContactInfo.md) |  | [optional] 
 **has_resume** | **bool** | Whether the Applicant has a downloadable resume available. | [optional] 
 **screening_questions** | [**List[GetClassicApplicantById200ResponseScreeningQuestionsInner]**](GetClassicApplicantById200ResponseScreeningQuestionsInner.md) | The responses to the job posting screening questions. | [optional] 
-**profile** | [**GetClassicApplicantById200ResponseProfile**](GetClassicApplicantById200ResponseProfile.md) |  | 
+**profile** | [**GetClassicApplicants200ResponseDataInnerProfile**](GetClassicApplicants200ResponseDataInnerProfile.md) |  | 
 
 ## Example
 

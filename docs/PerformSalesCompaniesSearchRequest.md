@@ -6,22 +6,22 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **keywords** | **str** | A keyword or group of keywords. | [optional] 
-**save_search** | [**PerformSalesPeopleSearchRequestSaveSearch**](PerformSalesPeopleSearchRequestSaveSearch.md) |  | [optional] 
+**save_search** | [**PerformRecruiterPeopleSearchFromTalentPoolRequestSaveCustomFilter**](PerformRecruiterPeopleSearchFromTalentPoolRequestSaveCustomFilter.md) |  | [optional] 
 **load_saved_search** | [**PerformSalesPeopleSearchRequestLoadSavedSearch**](PerformSalesPeopleSearchRequestLoadSavedSearch.md) |  | [optional] 
-**load_recent_search** | [**PerformSalesPeopleSearchRequestLoadRecentSearch**](PerformSalesPeopleSearchRequestLoadRecentSearch.md) |  | [optional] 
+**load_recent_search** | [**GetEmailContactsList200ResponseDataInnerGroupsInner**](GetEmailContactsList200ResponseDataInnerGroupsInner.md) |  | [optional] 
 **annual_revenue** | [**PerformSalesCompaniesSearchRequestAnnualRevenue**](PerformSalesCompaniesSearchRequestAnnualRevenue.md) |  | [optional] 
-**headcount** | [**List[PerformSalesCompaniesSearchRequestHeadcountInner]**](PerformSalesCompaniesSearchRequestHeadcountInner.md) | A list of headcount ranges. | [optional] 
+**headcount** | [**List[GetRecruiterTalentPoolApplicantsRequestCompanySizeInner]**](GetRecruiterTalentPoolApplicantsRequestCompanySizeInner.md) | A list of headcount ranges. | [optional] 
 **headcount_growth** | [**PerformSalesCompaniesSearchRequestHeadcountGrowth**](PerformSalesCompaniesSearchRequestHeadcountGrowth.md) |  | [optional] 
-**location** | [**PerformSalesCompaniesSearchRequestLocation**](PerformSalesCompaniesSearchRequestLocation.md) |  | [optional] 
-**postal_code** | [**PerformSalesCompaniesSearchRequestPostalCode**](PerformSalesCompaniesSearchRequestPostalCode.md) |  | [optional] 
-**industry** | [**PerformSalesCompaniesSearchRequestIndustry**](PerformSalesCompaniesSearchRequestIndustry.md) |  | [optional] 
+**location** | [**PerformRecruiterPeopleSearchFromTalentPoolRequestDegree**](PerformRecruiterPeopleSearchFromTalentPoolRequestDegree.md) |  | [optional] 
+**postal_code** | [**PerformRecruiterPeopleSearchFromTalentPoolRequestDegree**](PerformRecruiterPeopleSearchFromTalentPoolRequestDegree.md) |  | [optional] 
+**industry** | [**PerformRecruiterPeopleSearchFromTalentPoolRequestDegree**](PerformRecruiterPeopleSearchFromTalentPoolRequestDegree.md) |  | [optional] 
 **followers** | [**List[PerformSalesCompaniesSearchRequestFollowersInner]**](PerformSalesCompaniesSearchRequestFollowersInner.md) | A list of followers ranges. | [optional] 
 **department_headcount** | [**PerformSalesCompaniesSearchRequestDepartmentHeadcount**](PerformSalesCompaniesSearchRequestDepartmentHeadcount.md) |  | [optional] 
-**department_headcount_growth** | [**PerformSalesCompaniesSearchRequestDepartmentHeadcountGrowth**](PerformSalesCompaniesSearchRequestDepartmentHeadcountGrowth.md) |  | [optional] 
+**department_headcount_growth** | [**PerformSalesCompaniesSearchRequestDepartmentHeadcount**](PerformSalesCompaniesSearchRequestDepartmentHeadcount.md) |  | [optional] 
 **fortune** | [**List[PerformSalesCompaniesSearchRequestFortuneInner]**](PerformSalesCompaniesSearchRequestFortuneInner.md) | A list of fortune ranges. | [optional] 
 **spotlights** | **List[str]** | A list of spotlights. | [optional] 
 **saved_accounts** | **bool** | Whether to include all your saved accounts in the results.    Native filter : Workflow / Saved accounts / All my saved accounts    | [optional] 
-**account_list** | [**PerformSalesCompaniesSearchRequestAccountList**](PerformSalesCompaniesSearchRequestAccountList.md) |  | [optional] 
+**account_list** | [**PerformRecruiterPeopleSearchFromTalentPoolRequestDegree**](PerformRecruiterPeopleSearchFromTalentPoolRequestDegree.md) |  | [optional] 
 
 ## Example
 
