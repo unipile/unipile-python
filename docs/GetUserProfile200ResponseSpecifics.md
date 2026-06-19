@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **recommendations** | [**LinkedInRecommendations**](LinkedInRecommendations.md) |  | [optional] 
 **throttled_sections** | **List[str]** | A list of sections that are temporary unavailable due to LinkedIn rate limiting. | [optional] 
 **recruiting_profile** | [**LinkedInRecruitingProfile**](LinkedInRecruitingProfile.md) |  | [optional] 
-**messaging_identifier** | **str** | The ID of the Company. | 
+**messaging_identifier** | **str** | Unique identifier of the job posting. | 
 
 ## Example
 
