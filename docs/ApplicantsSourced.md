@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **source** | **str** |  | 
 **project_id** | **str** | The ID of the Project associated with the Talent pool. | 
-**channel_id** | **str** | In Talent Pool context, the ID of the JOB_POSTING Channel to get parameters from. | 
 **keywords** | **str** | A keyword or group of keywords to filter results. Applicable to TAG only. | [optional] 
 **type** | **str** | The type of search parameter. | 
 

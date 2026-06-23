@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **content** | **str** | The text content of the comment. | 
-**author** | [**LinkedInProjectsInnerContributorsInner**](LinkedInProjectsInnerContributorsInner.md) |  | 
+**author** | [**MessageLastUpdatedBy**](MessageLastUpdatedBy.md) |  | 
 **last_modified_at** | **str** | The time at which the comment was last modified. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 
 
 ## Example
