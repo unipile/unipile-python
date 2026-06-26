@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **job_title** | [**CreateClassicJobPostingDraftRequestJobTitle**](CreateClassicJobPostingDraftRequestJobTitle.md) |  | [optional] 
-**company** | [**CreateClassicJobPostingDraftRequestCompany**](CreateClassicJobPostingDraftRequestCompany.md) |  | [optional] 
+**company** | [**CreateClassicJobPostingDraftRequestJobTitle**](CreateClassicJobPostingDraftRequestJobTitle.md) |  | [optional] 
 **workplace_type** | **str** | The workplace type of the job. | [optional] 
 **location** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_LOCATION&#x60; type to find out the possible values. | [optional] 
 **employment_status** | **str** | The employment status of the job. | [optional] 
