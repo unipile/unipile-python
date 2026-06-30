@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**reaction** | [**RemovePostReactionRequestReaction**](RemovePostReactionRequestReaction.md) |  | 
+**reaction** | [**AddPostReactionRequestReaction**](AddPostReactionRequestReaction.md) |  | 
 
 ## Example
 
