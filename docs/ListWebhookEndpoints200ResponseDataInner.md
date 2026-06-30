@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enabled** | **bool** |  | 
 **description** | **str** |  | 
-**url** | **str** | The ID of the Company. | 
+**url** | **str** | Unique identifier of the job posting. | 
 **trigger_events** | **List[str]** |  | 
 **secret** | **str** |  | 
 **object** | **str** |  | 
