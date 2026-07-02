@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier of the user relation for the provider. Usually an internal identifier used by the API only. | 
 **object** | **str** |  | 
-**user** | [**GetUserRelations200ResponseDataInnerUser**](GetUserRelations200ResponseDataInnerUser.md) |  | 
 **created_at** | **str** | Date and time when the relation was created.  | [optional] 
+**user** | [**GetChatsList200ResponseDataInnerUser**](GetChatsList200ResponseDataInnerUser.md) |  | 
 
 ## Example
 

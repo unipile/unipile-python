@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **project_id** | **str** | The ID of the project where the note was added. | [optional] 
 **content** | **str** | The text content of the note. | 
 **last_modified_at** | **str** | The time at which the note was last modified. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 
-**author** | [**LinkedInProjectsInnerContributorsInner**](LinkedInProjectsInnerContributorsInner.md) |  | 
+**author** | [**LinkedInInterestsTopVoicesInner**](LinkedInInterestsTopVoicesInner.md) |  | 
 **comments** | [**List[LinkedInRecruitingProfileNotesInnerCommentsInner]**](LinkedInRecruitingProfileNotesInnerCommentsInner.md) | A list of comments published on this note. | 
 
 ## Example

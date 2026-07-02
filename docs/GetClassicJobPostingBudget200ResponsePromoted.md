@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **currency** | **str** | The Budget currency. | 
 **daily** | [**GetClassicJobPostingBudget200ResponsePromotedDaily**](GetClassicJobPostingBudget200ResponsePromotedDaily.md) |  | 
-**total** | [**GetClassicJobPostingBudget200ResponsePromotedTotal**](GetClassicJobPostingBudget200ResponsePromotedTotal.md) |  | 
+**total** | [**GetClassicJobPostingBudget200ResponsePromotedDaily**](GetClassicJobPostingBudget200ResponsePromotedDaily.md) |  | 
 **estimated_daily_applicants_count** | **float** | The estimated number of applicants per day. | 
 
 ## Example

@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
-**user** | [**GetChatsList200ResponseDataInnerParticipantsInnerUser**](GetChatsList200ResponseDataInnerParticipantsInnerUser.md) |  | 
 **is_self** | **bool** | Is the current user the participant. | 
 **is_admin** | **bool** | Is the participant an admin of the group. | 
+**user** | [**GetChatsList200ResponseDataInnerUser**](GetChatsList200ResponseDataInnerUser.md) |  | 
 
 ## Example
 
