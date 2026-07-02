@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **last_updated_at** | **str** | The time at which the activity was updated. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 
-**last_updated_by** | [**LinkedInProjectsInnerContributorsInner**](LinkedInProjectsInnerContributorsInner.md) |  | 
+**last_updated_by** | [**LinkedInInterestsTopVoicesInner**](LinkedInInterestsTopVoicesInner.md) |  | 
 **event** | **str** | The type of event. | 
 **note_content** | **str** | The text content of the note. | [optional] 
 
