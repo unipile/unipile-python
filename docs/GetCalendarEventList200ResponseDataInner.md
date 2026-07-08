@@ -26,8 +26,10 @@ Name | Type | Description | Notes
 **visibility** | **str** | The visibility of the event.         - &#x60;public&#x60; is visible to all.         - &#x60;private&#x60; is visible only to the calendar owner. | 
 **transparency** | **str** | The transparency of the event.         - &#x60;opaque&#x60; does block time on the calendar and is equivalent to setting Show me as to Busy in the Calendar UI.         - &#x60;transparent&#x60; does not block time on the calendar and is equivalent to setting Show me as to Available in the Calendar UI. | 
 **event_type** | **str** | The type of the event (&#x60;birthday&#x60;, &#x60;fromGmail&#x60;, &#x60;outOfOffice&#x60;...) | [default to 'default']
+**timezone** | **str** | The IANA timezone when start and end share the same timezone (e.g. &#x60;Europe/Paris&#x60;). Omitted when they differ; use &#x60;start.timezone&#x60; and &#x60;end.timezone&#x60; instead. | [optional] 
 **background_color** | **str** | Background color of the calendar in hexadecimal format. | [optional] 
 **text_color** | **str** | Foreground color of the event in hexadecimal format. | [optional] 
+**specifics** | **object** |  | [optional] 
 
 ## Example
 
