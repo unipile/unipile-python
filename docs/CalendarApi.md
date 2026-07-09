@@ -505,7 +505,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calendar_event_list**
-> GetCalendarEventList200Response get_calendar_event_list(calendar_id, account_id, is_cancelled=is_cancelled, title=title, description=description, ical_uid=ical_uid, location=location, start=start, end=end, busy=busy, updated_before=updated_before, updated_after=updated_after, attendees=attendees, event_type=event_type, expand_recurring=expand_recurring, offset=offset, limit=limit, cursor=cursor)
+> GetCalendarEventList200Response get_calendar_event_list(calendar_id, account_id, is_cancelled=is_cancelled, title=title, description=description, ical_uid=ical_uid, location=location, start=start, end=end, busy=busy, updated_before=updated_before, updated_after=updated_after, attendees=attendees, event_type=event_type, expand_recurring=expand_recurring, offset=offset, cursor=cursor, limit=limit)
 
 List all calendar events
 
@@ -558,12 +558,12 @@ with unipile.ApiClient(configuration) as api_client:
     event_type = 'event_type_example' # str | Filter events by event type. This parameter accepts a comma-delimited list of event type. (optional)
     expand_recurring = True # bool | Filter events by type (single or occurence). (optional)
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. (optional) (default to 20)
 
     try:
         # List all calendar events
-        api_response = api_instance.get_calendar_event_list(calendar_id, account_id, is_cancelled=is_cancelled, title=title, description=description, ical_uid=ical_uid, location=location, start=start, end=end, busy=busy, updated_before=updated_before, updated_after=updated_after, attendees=attendees, event_type=event_type, expand_recurring=expand_recurring, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_calendar_event_list(calendar_id, account_id, is_cancelled=is_cancelled, title=title, description=description, ical_uid=ical_uid, location=location, start=start, end=end, busy=busy, updated_before=updated_before, updated_after=updated_after, attendees=attendees, event_type=event_type, expand_recurring=expand_recurring, offset=offset, cursor=cursor, limit=limit)
         print("The response of CalendarApi->get_calendar_event_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -593,8 +593,8 @@ Name | Type | Description  | Notes
  **event_type** | **str**| Filter events by event type. This parameter accepts a comma-delimited list of event type. | [optional] 
  **expand_recurring** | **bool**| Filter events by type (single or occurence). | [optional] 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. | [optional] [default to 20]
 
 ### Return type
 
@@ -618,7 +618,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_calendars_list**
-> GetCalendarsList200Response get_calendars_list(account_id, offset=offset, limit=limit, cursor=cursor)
+> GetCalendarsList200Response get_calendars_list(account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all Calendars
 
@@ -657,12 +657,12 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.CalendarApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. (optional) (default to 20)
 
     try:
         # List all Calendars
-        api_response = api_instance.get_calendars_list(account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_calendars_list(account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of CalendarApi->get_calendars_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -678,8 +678,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. | [optional] [default to 20]
 
 ### Return type
 
