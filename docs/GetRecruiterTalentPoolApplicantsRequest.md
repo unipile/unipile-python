@@ -5,7 +5,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**channel_id** | **str** | The ID of the JOB_POSTING channel from the Talent Pool. | 
 **keywords** | **str** | A keyword or group of keywords. | [optional] 
 **sort_by** | **str** | The sort method.    Native filter : Sort by    | [optional] 
 **spotlights** | **List[str]** | A list of spotlights. | [optional] 

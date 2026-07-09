@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**received** | [**List[LinkedInRecommendationsReceivedInner]**](LinkedInRecommendationsReceivedInner.md) |  | 
-**given** | [**List[LinkedInRecommendationsReceivedInner]**](LinkedInRecommendationsReceivedInner.md) |  | 
+**received** | [**List[LinkedInRecommendationsReceivedInner]**](LinkedInRecommendationsReceivedInner.md) | A collection of the user&#39;s received recommendations. | 
+**given** | [**List[LinkedInRecommendationsReceivedInner]**](LinkedInRecommendationsReceivedInner.md) | A collection of the user&#39;s given recommendations. | 
 
 ## Example
 
