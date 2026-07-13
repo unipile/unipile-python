@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
 **id** | **str** | The ID of the user. | 
-**headline** | **str** | The headline of the User. | 
+**headline** | **str** | The headline of the User. | [optional] 
 **network_distance** | **str** | Network distance to a User.       &#x60;SELF&#x60;: Yourself.       &#x60;FIRST_DEGREE&#x60;: 1st degree connection.       &#x60;SECOND_DEGREE&#x60;: 2nd degree connection (connection of a 1st degree).       &#x60;THIRD_DEGREE&#x60;: 3rd degree connection (connection of a 2nd degree).       &#x60;OUT_OF_NETWORK&#x60;: Unreachable user.&#39; | 
 **location** | **str** | The location of the User. | [optional] 
 **can_send_inmail** | **bool** | Whether it is possible to send an inMail to this User. | [optional] 

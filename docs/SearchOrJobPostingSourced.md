@@ -8,8 +8,6 @@ Name | Type | Description | Notes
 **source** | **str** |  | 
 **keywords** | **str** | A keyword or group of keywords to filter results. Not applicable to JOB_FUNCTION, PROFILE_LANGUAGE and CUSTOM_FILTER. | [optional] 
 **type** | **str** | The type of search parameter. | 
-**offset** | **float** | An offset used for pagination. Not applicable to JOB_FUNCTION. | [optional] 
-**limit** | **float** | Not applicable to JOB_FUNCTION. | [optional] [default to 10]
 
 ## Example
 
