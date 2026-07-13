@@ -1,6 +1,5 @@
 # GetChatsList200ResponseDataInnerParticipantsInnerUser
 
-The user who is a participant of the group.
 
 ## Properties
 
@@ -11,10 +10,13 @@ Name | Type | Description | Notes
 **type** | **str** | Type of the user       - &#x60;individual&#x60; is an individual user.       - &#x60;organization&#x60; is an organization / business entity.       - &#x60;other&#x60; is an other type of entity. | 
 **public_identifier** | **str** | Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.  | [optional] 
 **display_name** | **str** | Display name of the user. | 
+**first_name** | **str** | First name of the user. | [optional] 
+**last_name** | **str** | Last name of the user. | [optional] 
 **profile_url** | **str** | Public url to the profile of the user. | [optional] 
 **public_picture_url** | **str** | Public url to the profile picture of the user. | [optional] 
 **private_picture_download_url** | **str** | Private url to download the profile picture of the user. This url require authentication. | [optional] 
 **description** | **str** | Description of the user. | [optional] 
+**specifics** | [**GetChatsList200ResponseDataInnerUserSpecifics**](GetChatsList200ResponseDataInnerUserSpecifics.md) |  | [optional] 
 
 ## Example
 
