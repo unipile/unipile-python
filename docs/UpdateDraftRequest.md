@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **to** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;to&#x60; header. | [optional] 
 **cc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;cc&#x60; header. | [optional] 
 **bcc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;bcc&#x60; header. | [optional] 
+**reply_to** | **str** | The ID of the email message that you&#39;re replying to. For Gmail, this is the provider ID for the email message that you&#39;re replying to. For IMAP, this is the RFC822 Message-ID header of the email message that you&#39;re replying to. Outlook draft replies are not supported. | [optional] 
 **attachments** | [**List[SendEmailRequestAttachmentsInner]**](SendEmailRequestAttachmentsInner.md) | The list of file attachments to the draft. Any attachment already existing will be removed and replaced by the new ones. | [optional] 
 **tracking_options** | [**SendEmailRequestTrackingOptions**](SendEmailRequestTrackingOptions.md) |  | [optional] 
 **specifics** | [**UpdateDraftRequestSpecifics**](UpdateDraftRequestSpecifics.md) |  | [optional] 
