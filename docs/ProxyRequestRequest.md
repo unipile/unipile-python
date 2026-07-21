@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **str** | The specific LinkedIn public API endpoint you need to call. Path variables can be declared with the &#x60;:VARIABLE_NAME&#x60; syntax. | 
 **method** | **str** | The HTTP method to use when performing the request. | 
-**body** | **Dict[str, object]** | A body object to send in the request. | [optional] 
+**body** | **Dict[str, Optional[object]]** | A body object to send in the request. | [optional] 
 **headers** | **Dict[str, Optional[str]]** | A headers object to include in the request. | [optional] 
 **path_variables** | **Dict[str, Optional[str]]** | The Path variables that have been declared in the URL. Each variable must have a corresponding VARIABLE_NAME key to be injected in the URL. | [optional] 
 **var_query_params** | **Dict[str, Optional[str]]** | Query parameters to include in the request URL. | [optional] 
