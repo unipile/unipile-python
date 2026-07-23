@@ -7,7 +7,7 @@ The amount of money that has been raised during the funding round.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amount** | **float** | The number of comments to the post. &#x60;null&#x60; if counter is hidden. | 
-**currency** | **str** | The ID of the Company. | 
+**currency** | **str** | Unique identifier of the job posting. | 
 
 ## Example
 

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | The ID of the Company. | 
-**value** | **str** | The ID of the Company. | 
+**name** | **str** | Unique identifier of the job posting. | 
+**value** | **str** | Unique identifier of the job posting. | 
 
 ## Example
 
