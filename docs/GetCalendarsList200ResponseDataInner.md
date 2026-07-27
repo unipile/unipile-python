@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **background_color** | **str** | Background color of the calendar in hexadecimal format. | 
 **text_color** | **str** | Foreground color of the calendar in hexadecimal format. | [optional] 
 **timezone** | **str** | Timezone used in this calendar. | [optional] 
+**specifics** | **object** |  | [optional] 
 
 ## Example
 
