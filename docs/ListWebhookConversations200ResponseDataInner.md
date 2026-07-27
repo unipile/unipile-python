@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **first_attempt** | **bool** |  | 
 **event_type** | **str** |  | 
-**created_at** | **str** | The ID of the Company. | 
+**created_at** | **str** | Unique identifier of the job posting. | 
 **http_status** | **int** |  | 
-**endpoint_url** | **str** | The ID of the Company. | 
-**response_body** | **str** | The ID of the Company. | 
+**endpoint_url** | **str** | Unique identifier of the job posting. | 
+**response_body** | **str** | Unique identifier of the job posting. | 
 **object** | **str** |  | 
 **id** | **str** |  | 
 **endpoint_id** | **str** |  | 
