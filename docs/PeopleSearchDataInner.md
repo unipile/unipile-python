@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
 **id** | **str** | The ID of the user. | 
-**headline** | **str** | The headline of the User. | 
+**headline** | **str** | The headline of the User. | [optional] 
 **network_distance** | **str** | Network distance to a User.       &#x60;SELF&#x60;: Yourself.       &#x60;FIRST_DEGREE&#x60;: 1st degree connection.       &#x60;SECOND_DEGREE&#x60;: 2nd degree connection (connection of a 1st degree).       &#x60;THIRD_DEGREE&#x60;: 3rd degree connection (connection of a 2nd degree).       &#x60;OUT_OF_NETWORK&#x60;: Unreachable user.&#39; | 
 **location** | **str** | The location of the User. | [optional] 
 **can_send_inmail** | **bool** | Whether it is possible to send an inMail to this User. | [optional] 
@@ -24,18 +24,18 @@ Name | Type | Description | Notes
 **public_picture_url** | **str** | The public picture URL of the User. | [optional] 
 **public_picture_url_large** | **str** | The public picture URL of the User in large size. | [optional] 
 **relations_count** | **float** | The number of relations of the User. | [optional] 
-**industry** | **str** | The industry to which the User belongs. | 
+**industry** | **str** | The industry to which the User belongs. | [optional] 
 **followers_count** | **float** | The number of the followers of the User. | [optional] 
 **skills** | [**List[FullProfileSkillsInner]**](FullProfileSkillsInner.md) | A list of skills. | 
 **summary** | **str** | The summary of the User. | [optional] 
 **emails** | **List[str]** |  | [optional] 
 **phone_numbers** | **List[str]** |  | [optional] 
 **education** | [**List[FullProfileEducationInner]**](FullProfileEducationInner.md) |  | 
-**languages** | [**List[LinkedInLanguagesInner]**](LinkedInLanguagesInner.md) |  | 
+**languages** | [**List[LinkedIn1LanguagesInner]**](LinkedIn1LanguagesInner.md) |  | 
 **certifications** | [**List[FullProfileCertificationsInner]**](FullProfileCertificationsInner.md) |  | 
 **projects** | [**List[FullProfileProjectsInner]**](FullProfileProjectsInner.md) |  | 
-**volunteering** | [**List[LinkedInVolunteerExperienceInner]**](LinkedInVolunteerExperienceInner.md) |  | 
-**recommendations** | [**List[LinkedInRecommendationsReceivedInner]**](LinkedInRecommendationsReceivedInner.md) |  | 
+**volunteering** | [**List[LinkedIn1VolunteerExperienceInner]**](LinkedIn1VolunteerExperienceInner.md) |  | 
+**recommendations** | [**List[LinkedIn1RecommendationsReceivedInner]**](LinkedIn1RecommendationsReceivedInner.md) |  | 
 
 ## Example
 

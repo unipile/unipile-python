@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **notify_network** | **bool** | Notify the network about the experience. Turn on to notify your network of key profile changes (such as new job) and work anniversaries. Updates can take up to 2 hours.  | [optional] [default to False]
 **job_title** | [**EditExistingExperienceJobTitle**](EditExistingExperienceJobTitle.md) |  | 
-**employment_type** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;EMPLOYMENT_TYPE&#x60; type to find out the possible values. Employment type of the experience. | [optional] 
+**employment_type** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getclassicsearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;EMPLOYMENT_TYPE&#x60; type to find out the possible values. Employment type of the experience. | [optional] 
 **company** | [**EditExistingExperienceCompany**](EditExistingExperienceCompany.md) |  | 
 **location** | [**EditExistingExperienceLocation**](EditExistingExperienceLocation.md) |  | [optional] 
 **workplace_type** | **str** | The workplace type. Ex: Remote, Hybrid, On-site | [optional] 
