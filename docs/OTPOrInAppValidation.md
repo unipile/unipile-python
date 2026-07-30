@@ -7,6 +7,7 @@ The user can either enter a one-time password sent to their phone/email or valid
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
+**channel** | **str** | The channel the one-time password was sent through, when known. | [optional] 
 
 ## Example
 

@@ -6,7 +6,7 @@ Saved search to be loaded. Overrides all other filters.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;SAVED_PEOPLE_SEARCH&#x60; type to find out the possible values.    Native filter : Saved search    | 
+**id** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getsalessearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;SAVED_PEOPLE_SEARCH&#x60; type to find out the possible values.    Native filter : Saved search    | 
 **last_viewed_at** | **float** | A Unix timestamp indicating the last time the search results were accessed, to be used to retrieve only the new results. | [optional] 
 
 ## Example

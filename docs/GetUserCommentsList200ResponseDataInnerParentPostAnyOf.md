@@ -1,6 +1,5 @@
 # GetUserCommentsList200ResponseDataInnerParentPostAnyOf
 
-The amount of available data may vary depending on the provider.
 
 ## Properties
 
@@ -10,8 +9,8 @@ Name | Type | Description | Notes
 **id** | **str** | The ID of the post for the provider. | 
 **share_url** | **str** | The URL to share the post. | [optional] 
 **text** | **str** | The text content of the post. | [optional] 
-**author** | [**GetPostsList200ResponseDataInnerAuthor**](GetPostsList200ResponseDataInnerAuthor.md) |  | [optional] 
 **attachments** | [**List[GetUserCommentsList200ResponseDataInnerParentPostAnyOfAttachmentsInner]**](GetUserCommentsList200ResponseDataInnerParentPostAnyOfAttachmentsInner.md) | Attachments of the parent post (e.g. post image). | [optional] 
+**author** | [**GetPostsList200ResponseDataInnerAuthor**](GetPostsList200ResponseDataInnerAuthor.md) |  | [optional] 
 
 ## Example
 

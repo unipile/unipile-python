@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **public_picture_url_large** | **str** | The public picture URL of the User in large size. | [optional] 
 **relations_count** | **float** | The number of relations of the User. | [optional] 
 **location** | **str** | The location of the User. | [optional] 
-**headline** | **str** | The headline of the User. | 
+**headline** | **str** | The headline of the User. | [optional] 
 **network_distance** | [**PeopleSearch1DataInnerNetworkDistance**](PeopleSearch1DataInnerNetworkDistance.md) |  | 
 **can_send_inmail** | **bool** | Whether it is possible to send an inMail to this User. | [optional] 
 **product** | **str** |  | 
@@ -41,8 +41,8 @@ Name | Type | Description | Notes
 **education** | [**List[FullProfileEducationInner]**](FullProfileEducationInner.md) |  | 
 **skills** | [**List[FullProfileSkillsInner]**](FullProfileSkillsInner.md) |  | 
 **work_experience** | [**List[PartialProfileWorkExperienceInner]**](PartialProfileWorkExperienceInner.md) |  | 
-**languages** | [**List[LinkedInLanguagesInner]**](LinkedInLanguagesInner.md) |  | 
-**volunteering** | [**List[LinkedInVolunteerExperienceInner]**](LinkedInVolunteerExperienceInner.md) |  | 
+**languages** | [**List[LinkedIn1LanguagesInner]**](LinkedIn1LanguagesInner.md) |  | 
+**volunteering** | [**List[LinkedIn1VolunteerExperienceInner]**](LinkedIn1VolunteerExperienceInner.md) |  | 
 
 ## Example
 
