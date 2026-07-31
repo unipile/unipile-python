@@ -6,7 +6,7 @@ The company that published the Job posting.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The ID of the Company. | 
+**id** | **str** | Unique identifier of the job posting. | 
 **name** | **str** | The name of the Company. | 
 **public_picture_url** | **str** | The public picture URL of the Company. | [optional] 
 **profile_url** | **str** | The profile URL of the Company. | [optional] 
