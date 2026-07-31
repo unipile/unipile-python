@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **start** | [**GetCalendarEventList200ResponseDataInnerStart**](GetCalendarEventList200ResponseDataInnerStart.md) |  | [optional] 
 **end** | [**GetCalendarEventList200ResponseDataInnerEnd**](GetCalendarEventList200ResponseDataInnerEnd.md) |  | [optional] 
 **notify** | **str** | Only available for google, guests to send updates to:       - &#x60;all&#x60;: Notify all guests.       - &#x60;externalOnly&#x60;: Notify only guests not on the calendar&#39;s domain.       - &#x60;none&#x60;: Do not notify any guests. | [optional] [default to 'all']
+**timezone** | **str** | The IANA timezone the event is expressed in (e.g. &#x60;Europe/Paris&#x60;). Defaults to UTC when omitted. | [optional] 
 
 ## Example
 

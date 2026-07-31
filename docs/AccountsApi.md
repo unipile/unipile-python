@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_account**
-> Account1 update_account(account_id, update_account_request)
+> Account1 update_account(account_id, update_account_request=update_account_request)
 
 Update an Account
 
@@ -295,11 +295,11 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.AccountsApi(api_client)
     account_id = 'account_id_example' # str | The ID of the Account to update.
-    update_account_request = unipile.UpdateAccountRequest() # UpdateAccountRequest | 
+    update_account_request = unipile.UpdateAccountRequest() # UpdateAccountRequest |  (optional)
 
     try:
         # Update an Account
-        api_response = api_instance.update_account(account_id, update_account_request)
+        api_response = api_instance.update_account(account_id, update_account_request=update_account_request)
         print("The response of AccountsApi->update_account:\n")
         pprint(api_response)
     except Exception as e:
@@ -314,7 +314,7 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| The ID of the Account to update. | 
- **update_account_request** | [**UpdateAccountRequest**](UpdateAccountRequest.md)|  | 
+ **update_account_request** | [**UpdateAccountRequest**](UpdateAccountRequest.md)|  | [optional] 
 
 ### Return type
 
