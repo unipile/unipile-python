@@ -6,7 +6,7 @@ Custom filter to be loaded. Can be associated with other filters.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;CUSTOM_FILTER&#x60; type to find out the possible values.    Native filter : Custom filters    | 
+**id** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;CUSTOM_FILTER&#x60; type to find out the possible values.    Native filter : Custom filters    | 
 
 ## Example
 
