@@ -8,8 +8,6 @@ Name | Type | Description | Notes
 **source** | **str** |  | 
 **keywords** | **str** | A keyword or group of keywords to filter results. | [optional] 
 **type** | **str** | The type of search parameter. | 
-**offset** | **float** | An offset used for pagination. | [optional] 
-**limit** | **float** | The limit of items to be returned. | [optional] [default to 10]
 
 ## Example
 
