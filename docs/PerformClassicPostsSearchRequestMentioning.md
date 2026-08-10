@@ -6,8 +6,8 @@ The users/companies mentionned in the posts.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**member** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;PEOPLE&#x60; type to find out the possible values.    Native filter : Mentioning member    | [optional] 
-**company** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;COMPANY&#x60; type to find out the possible values.    Native filter : Mentioning company    | [optional] 
+**member** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getclassicsearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;PEOPLE&#x60; type to find out the possible values.    Native filter : Mentioning member    | [optional] 
+**company** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getclassicsearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;COMPANY&#x60; type to find out the possible values.    Native filter : Mentioning company    | [optional] 
 
 ## Example
 
