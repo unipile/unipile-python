@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
 **product** | **str** |  | 
-**query** | **str** | The ID of the Company. | 
+**query** | **str** | The text content of the message, when available. | 
 **new_results_count** | **float** | The number of comments to the post. &#x60;null&#x60; if counter is hidden. | 
 **project** | [**RecruiterSavedSearchProject**](RecruiterSavedSearchProject.md) |  | [optional] 
 
