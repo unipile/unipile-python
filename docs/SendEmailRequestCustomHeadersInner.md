@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | The ID of the Company. | 
-**value** | **str** | The ID of the Company. | 
+**name** | **str** | The text content of the message, when available. | 
+**value** | **str** | The text content of the message, when available. | 
 
 ## Example
 

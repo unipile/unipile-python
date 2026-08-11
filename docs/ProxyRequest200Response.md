@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
-**data** | **object** |  | 
+**data** | **object** | The raw response data that your LinkedIn request returned. | 
 
 ## Example
 
