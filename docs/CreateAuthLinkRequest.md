@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **state** | **str** | State data sent as query parameter in the redirect_uri and in the &#x60;account.add&#x60; / &#x60;account.reconnect&#x60; webhook payload after the authentication process. | [optional] 
 **config** | [**LinkNewAccountConfig**](LinkNewAccountConfig.md) |  | [optional] 
 **providers** | [**LinkNewAccountProviders**](LinkNewAccountProviders.md) |  | 
-**account_id** | **str** | Required to re-authenticate an existing account. The ID of the Account to re-authenticate. | 
+**account_id** | **str** | Required to re-authenticate or reconfigure an existing account. The entire account is refreshed and all configured products are restarted. | 
 
 ## Example
 

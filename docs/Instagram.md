@@ -6,7 +6,7 @@ Instagram specific dataset for user profiles.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**messaging_identifier** | **str** | The ID of the Company. | 
+**messaging_identifier** | **str** | The text content of the message, when available. | 
 
 ## Example
 
