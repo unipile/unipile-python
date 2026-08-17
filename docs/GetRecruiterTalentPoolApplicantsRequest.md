@@ -5,17 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**channel_id** | **str** | The ID of the JOB_POSTING channel from the Talent Pool. | 
 **keywords** | **str** | A keyword or group of keywords. | [optional] 
 **sort_by** | **str** | The sort method.    Native filter : Sort by    | [optional] 
 **spotlights** | **List[str]** | A list of spotlights. | [optional] 
-**location** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;LOCATION&#x60; type to find out the possible values.    Native filter : Current locations    | [optional] 
+**location** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;LOCATION&#x60; type to find out the possible values.    Native filter : Current locations    | [optional] 
 **company** | [**GetRecruiterTalentPoolApplicantsRequestCompany**](GetRecruiterTalentPoolApplicantsRequestCompany.md) |  | [optional] 
-**skills** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;SKILL&#x60; type to find out the possible values.    Native filter : Skills    | [optional] 
+**skills** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;SKILL&#x60; type to find out the possible values.    Native filter : Skills    | [optional] 
 **school** | [**GetRecruiterTalentPoolApplicantsRequestSchool**](GetRecruiterTalentPoolApplicantsRequestSchool.md) |  | [optional] 
-**industry** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;INDUSTRY&#x60; type to find out the possible values.    Native filter : Industries    | [optional] 
-**job_title** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_TITLE&#x60; type to find out the possible values.    Native filter : Job titles    | [optional] 
-**spoken_language** | [**List[GetRecruiterTalentPoolApplicantsRequestSpokenLanguageInner]**](GetRecruiterTalentPoolApplicantsRequestSpokenLanguageInner.md) | A list of languages. | [optional] 
+**industry** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;INDUSTRY&#x60; type to find out the possible values.    Native filter : Industries    | [optional] 
+**job_title** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_TITLE&#x60; type to find out the possible values.    Native filter : Job titles    | [optional] 
+**spoken_language** | [**List[GetRecruiterTalentPoolApplicantsRequestSpokenLanguageInner]**](GetRecruiterTalentPoolApplicantsRequestSpokenLanguageInner.md) | A list of languages. Only available to Recruiter PRO contracts.    Native filter : Spoken languages    | [optional] 
 **spoken_language_proficiency** | **str** | The level of proficiency for the spoken languages.    Native filter : Spoken languages proficiency    | [optional] 
 **network_distance** | [**List[GetRecruiterTalentPoolApplicantsRequestNetworkDistanceInner]**](GetRecruiterTalentPoolApplicantsRequestNetworkDistanceInner.md) | A list of connection degrees (1 for First, 2 for Second, 3 for Third+ and GROUP for Common group members).    Native filter : Network relationships    | [optional] 
 **years_of_experience** | [**GetRecruiterTalentPoolApplicantsRequestYearsOfExperience**](GetRecruiterTalentPoolApplicantsRequestYearsOfExperience.md) |  | [optional] 
@@ -24,7 +23,7 @@ Name | Type | Description | Notes
 **degree** | [**GetRecruiterTalentPoolApplicantsRequestDegree**](GetRecruiterTalentPoolApplicantsRequestDegree.md) |  | [optional] 
 **field_of_study** | [**GetRecruiterTalentPoolApplicantsRequestFieldOfStudy**](GetRecruiterTalentPoolApplicantsRequestFieldOfStudy.md) |  | [optional] 
 **seniority** | **List[str]** | A list of experience levels. | [optional] 
-**job_function** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_FUNCTION&#x60; type to find out the possible values.    Native filter : Job functions    | [optional] 
+**job_function** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_FUNCTION&#x60; type to find out the possible values.    Native filter : Job functions    | [optional] 
 **current_company** | [**GetRecruiterTalentPoolApplicantsRequestCurrentCompany**](GetRecruiterTalentPoolApplicantsRequestCurrentCompany.md) |  | [optional] 
 **company_size** | [**List[GetRecruiterTalentPoolApplicantsRequestCompanySizeInner]**](GetRecruiterTalentPoolApplicantsRequestCompanySizeInner.md) | A list of company size ranges. | [optional] 
 **tags** | [**GetRecruiterTalentPoolApplicantsRequestTags**](GetRecruiterTalentPoolApplicantsRequestTags.md) |  | [optional] 
