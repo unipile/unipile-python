@@ -9,10 +9,11 @@ Method | HTTP request | Description
 [**delete_draft**](EmailsApi.md#delete_draft) | **DELETE** /v2/{account_id}/drafts/{draft_id} | Delete a Draft
 [**delete_folder**](EmailsApi.md#delete_folder) | **DELETE** /v2/{account_id}/folders/{folder_id} | Delete a Folder
 [**get_attachment1**](EmailsApi.md#get_attachment1) | **GET** /v2/{account_id}/emails/{email_id}/attachments/{attachment_id} | Get an Email Attachment
+[**get_contacts_list**](EmailsApi.md#get_contacts_list) | **GET** /v2/{account_id}/contacts | List contacts
 [**get_draft**](EmailsApi.md#get_draft) | **GET** /v2/{account_id}/drafts/{draft_id} | Get a Draft
 [**get_drafts_list**](EmailsApi.md#get_drafts_list) | **GET** /v2/{account_id}/drafts | List all Drafts
 [**get_email**](EmailsApi.md#get_email) | **GET** /v2/{account_id}/emails/{email_id} | Get an Email
-[**get_email_contacts_list**](EmailsApi.md#get_email_contacts_list) | **GET** /v2/{account_id}/contacts | List email contacts
+[**get_email_senders**](EmailsApi.md#get_email_senders) | **GET** /v2/{account_id}/email-senders | List email senders
 [**get_emails_list**](EmailsApi.md#get_emails_list) | **GET** /v2/{account_id}/emails | List all Emails
 [**get_folder**](EmailsApi.md#get_folder) | **GET** /v2/{account_id}/folders/{folder_id} | Get a Folder
 [**get_folder_emails_list**](EmailsApi.md#get_folder_emails_list) | **GET** /v2/{account_id}/folders/{folder_id}/emails | List folder Emails
@@ -33,9 +34,7 @@ Method | HTTP request | Description
 
 Create a Draft
 
-Creates a new Draft in the draft folder of the provider. Use <a href="@todo">Send a Draft</a> to send the Email later.
-      <br/>
-      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+Creates a new Draft in the draft folder of the provider. Use <a href="@todo">Send a Draft</a> to send the Email later.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
@@ -430,6 +429,91 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_contacts_list**
+> GetContactsList200Response get_contacts_list(account_id, offset=offset, cursor=cursor, limit=limit)
+
+List contacts
+
+Returns a list of contacts for the connected account. Served by the email provider for email accounts and by the messaging provider for messaging accounts (e.g. WhatsApp). On providers where a contact is an overlay over a user, the contact carries the account owner's chosen name while the nested `user` object carries the user's own identity.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.get_contacts_list200_response import GetContactsList200Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.EmailsApi(api_client)
+    account_id = 'account_id_example' # str | 
+    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. (optional) (default to 20)
+
+    try:
+        # List contacts
+        api_response = api_instance.get_contacts_list(account_id, offset=offset, cursor=cursor, limit=limit)
+        print("The response of EmailsApi->get_contacts_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling EmailsApi->get_contacts_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **account_id** | **str**|  | 
+ **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. | [optional] [default to 20]
+
+### Return type
+
+[**GetContactsList200Response**](GetContactsList200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_draft**
 > CreateDraft201Response get_draft(draft_id, account_id)
 
@@ -512,7 +596,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_drafts_list**
-> GetDraftsList200Response get_drafts_list(account_id, to=to, var_from=var_from, any_email=any_email, offset=offset, limit=limit, cursor=cursor)
+> GetDraftsList200Response get_drafts_list(account_id, to=to, var_from=var_from, any_email=any_email, offset=offset, cursor=cursor, limit=limit)
 
 List all Drafts
 
@@ -554,12 +638,12 @@ with unipile.ApiClient(configuration) as api_client:
     var_from = 'var_from_example' # str | Filter to only return drafts  with the given email address in from. (optional)
     any_email = 'any_email_example' # str | Filter to only return drafts related to a comma-separated list of email addresses. (optional)
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. (optional) (default to 20)
 
     try:
         # List all Drafts
-        api_response = api_instance.get_drafts_list(account_id, to=to, var_from=var_from, any_email=any_email, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_drafts_list(account_id, to=to, var_from=var_from, any_email=any_email, offset=offset, cursor=cursor, limit=limit)
         print("The response of EmailsApi->get_drafts_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -578,8 +662,8 @@ Name | Type | Description  | Notes
  **var_from** | **str**| Filter to only return drafts  with the given email address in from. | [optional] 
  **any_email** | **str**| Filter to only return drafts related to a comma-separated list of email addresses. | [optional] 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. | [optional] [default to 20]
 
 ### Return type
 
@@ -685,12 +769,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_email_contacts_list**
-> GetEmailContactsList200Response get_email_contacts_list(account_id, cursor=cursor, limit=limit)
+# **get_email_senders**
+> GetEmailSenders200Response get_email_senders(account_id)
 
-List email contacts
+List email senders
 
-Returns a list of contacts from the email provider.
+Returns the email senders available for the connected account, so you can discover the valid values to pass as `from` when sending emails or creating drafts. The list includes the primary address as well as any configured additional addresses. Supported for Google and Outlook accounts. For Outlook, additional addresses are only available on Microsoft 365 / Exchange accounts; personal Microsoft accounts return the primary address only.
 
 ### Example
 
@@ -698,7 +782,7 @@ Returns a list of contacts from the email provider.
 
 ```python
 import unipile
-from unipile.models.get_email_contacts_list200_response import GetEmailContactsList200Response
+from unipile.models.get_email_senders200_response import GetEmailSenders200Response
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -723,17 +807,15 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.EmailsApi(api_client)
-    account_id = 'account_id_example' # str | 
-    cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
 
     try:
-        # List email contacts
-        api_response = api_instance.get_email_contacts_list(account_id, cursor=cursor, limit=limit)
-        print("The response of EmailsApi->get_email_contacts_list:\n")
+        # List email senders
+        api_response = api_instance.get_email_senders(account_id)
+        print("The response of EmailsApi->get_email_senders:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling EmailsApi->get_email_contacts_list: %s\n" % e)
+        print("Exception when calling EmailsApi->get_email_senders: %s\n" % e)
 ```
 
 
@@ -743,13 +825,11 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **account_id** | **str**|  | 
- **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
 
 ### Return type
 
-[**GetEmailContactsList200Response**](GetEmailContactsList200Response.md)
+[**GetEmailSenders200Response**](GetEmailSenders200Response.md)
 
 ### Authorization
 
@@ -769,11 +849,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_emails_list**
-> GetEmailsList200Response get_emails_list(account_id, to=to, subject=subject, var_from=var_from, any_email=any_email, before=before, exclude_folder=exclude_folder, after=after, meta_only=meta_only, offset=offset, limit=limit, cursor=cursor)
+> GetEmailsList200Response get_emails_list(account_id, q=q, meta_only=meta_only, to=to, var_from=var_from, any_email=any_email, has_attachment=has_attachment, is_starred=is_starred, is_unread=is_unread, before=before, exclude_folder=exclude_folder, after=after, offset=offset, cursor=cursor, limit=limit)
 
 List all Emails
 
-Returns a list of emails in the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first.
+Returns a list of emails in the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first. Search mode applies when `q`, `from`, `to`, or `any_email` is set. Filter mode applies for browse-only queries (dates, folder scope, read/starred/attachment status).
 
 ### Example
 
@@ -807,21 +887,24 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.EmailsApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    to = 'to_example' # str | Filter to only return emails sent to the given email address, either in the to, cc or bcc field. (optional)
-    subject = 'subject_example' # str | Filter to only return emails with the given string in the subject. (optional)
-    var_from = 'var_from_example' # str | Filter to only return emails sent from the given email address. (optional)
-    any_email = 'any_email_example' # str | Filter to only return emails related to a comma-separated list of email addresses. (optional)
+    q = 'q_example' # str | Full-text search in the email subject and body (case-insensitive, partial match). Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). Combine with `from`, `to`, or `any_email` to narrow by participant address. (optional)
+    meta_only = False # bool | Speed up the response by only returning the email metadata, excluding the body and attachments metadata. (optional) (default to False)
+    to = 'to_example' # str | Return messages sent to the given email address. For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). (optional)
+    var_from = 'var_from_example' # str | Return messages sent from the given email address. For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). (optional)
+    any_email = 'any_email_example' # str | Return messages where at least one of the given comma-separated email addresses appears as a participant (from, to, cc, or bcc). For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). (optional)
+    has_attachment = True # bool | Filter to only return emails with or without attachments. For Outlook with `meta_only=true`, this uses the provider attachment flag, which excludes inline attachments. (optional)
+    is_starred = True # bool | Filter to only return starred or unstarred emails. (optional)
+    is_unread = True # bool | Filter to only return unread or read emails. (optional)
     before = 'before_example' # str | Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. (optional)
     exclude_folder = 'exclude_folder_example' # str | Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs. (optional)
     after = 'after_example' # str | Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. (optional)
-    meta_only = False # bool | Speed up the response by only returning the email metadata, excluding the body and attachments metadata. (optional) (default to False)
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. (optional) (default to 20)
 
     try:
         # List all Emails
-        api_response = api_instance.get_emails_list(account_id, to=to, subject=subject, var_from=var_from, any_email=any_email, before=before, exclude_folder=exclude_folder, after=after, meta_only=meta_only, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_emails_list(account_id, q=q, meta_only=meta_only, to=to, var_from=var_from, any_email=any_email, has_attachment=has_attachment, is_starred=is_starred, is_unread=is_unread, before=before, exclude_folder=exclude_folder, after=after, offset=offset, cursor=cursor, limit=limit)
         print("The response of EmailsApi->get_emails_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -836,17 +919,20 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **to** | **str**| Filter to only return emails sent to the given email address, either in the to, cc or bcc field. | [optional] 
- **subject** | **str**| Filter to only return emails with the given string in the subject. | [optional] 
- **var_from** | **str**| Filter to only return emails sent from the given email address. | [optional] 
- **any_email** | **str**| Filter to only return emails related to a comma-separated list of email addresses. | [optional] 
+ **q** | **str**| Full-text search in the email subject and body (case-insensitive, partial match). Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). Combine with &#x60;from&#x60;, &#x60;to&#x60;, or &#x60;any_email&#x60; to narrow by participant address. | [optional] 
+ **meta_only** | **bool**| Speed up the response by only returning the email metadata, excluding the body and attachments metadata. | [optional] [default to False]
+ **to** | **str**| Return messages sent to the given email address. For Outlook, some messages matching this filter may be missing due to a provider limitation. Use &#x60;GET /threads/:thread_id&#x60; to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). | [optional] 
+ **var_from** | **str**| Return messages sent from the given email address. For Outlook, some messages matching this filter may be missing due to a provider limitation. Use &#x60;GET /threads/:thread_id&#x60; to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). | [optional] 
+ **any_email** | **str**| Return messages where at least one of the given comma-separated email addresses appears as a participant (from, to, cc, or bcc). For Outlook, some messages matching this filter may be missing due to a provider limitation. Use &#x60;GET /threads/:thread_id&#x60; to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). | [optional] 
+ **has_attachment** | **bool**| Filter to only return emails with or without attachments. For Outlook with &#x60;meta_only&#x3D;true&#x60;, this uses the provider attachment flag, which excludes inline attachments. | [optional] 
+ **is_starred** | **bool**| Filter to only return starred or unstarred emails. | [optional] 
+ **is_unread** | **bool**| Filter to only return unread or read emails. | [optional] 
  **before** | **str**| Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. | [optional] 
  **exclude_folder** | **str**| Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs. | [optional] 
  **after** | **str**| Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. | [optional] 
- **meta_only** | **bool**| Speed up the response by only returning the email metadata, excluding the body and attachments metadata. | [optional] [default to False]
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. | [optional] [default to 20]
 
 ### Return type
 
@@ -951,11 +1037,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_folder_emails_list**
-> GetEmailsList200Response get_folder_emails_list(folder_id, account_id, to=to, subject=subject, var_from=var_from, any_email=any_email, before=before, exclude_folder=exclude_folder, after=after, meta_only=meta_only, offset=offset, limit=limit, cursor=cursor)
+> GetEmailsList200Response get_folder_emails_list(folder_id, account_id, q=q, meta_only=meta_only, to=to, var_from=var_from, any_email=any_email, has_attachment=has_attachment, is_starred=is_starred, is_unread=is_unread, before=before, exclude_folder=exclude_folder, after=after, offset=offset, cursor=cursor, limit=limit)
 
 List folder Emails
 
-Returns a list of emails in the specific folder of the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first.
+Returns a list of emails in the specific folder of the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first. Search mode applies when `q`, `from`, `to`, or `any_email` is set. Filter mode applies for browse-only queries (dates, read/starred/attachment status).
 
 ### Example
 
@@ -990,21 +1076,24 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.EmailsApi(api_client)
     folder_id = 'folder_id_example' # str | ID of the Folder to retrieve emails from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    to = 'to_example' # str | Filter to only return emails sent to the given email address, either in the to, cc or bcc field. (optional)
-    subject = 'subject_example' # str | Filter to only return emails with the given string in the subject. (optional)
-    var_from = 'var_from_example' # str | Filter to only return emails sent from the given email address. (optional)
-    any_email = 'any_email_example' # str | Filter to only return emails related to a comma-separated list of email addresses. (optional)
+    q = 'q_example' # str | Full-text search in the email subject and body (case-insensitive, partial match). Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). Combine with `from`, `to`, or `any_email` to narrow by participant address. (optional)
+    meta_only = False # bool | Speed up the response by only returning the email metadata, excluding the body and attachments metadata. (optional) (default to False)
+    to = 'to_example' # str | Return messages sent to the given email address. For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). (optional)
+    var_from = 'var_from_example' # str | Return messages sent from the given email address. For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). (optional)
+    any_email = 'any_email_example' # str | Return messages where at least one of the given comma-separated email addresses appears as a participant (from, to, cc, or bcc). For Outlook, some messages matching this filter may be missing due to a provider limitation. Use `GET /threads/:thread_id` to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). (optional)
+    has_attachment = True # bool | Filter to only return emails with or without attachments. For Outlook with `meta_only=true`, this uses the provider attachment flag, which excludes inline attachments. (optional)
+    is_starred = True # bool | Filter to only return starred or unstarred emails. (optional)
+    is_unread = True # bool | Filter to only return unread or read emails. (optional)
     before = 'before_example' # str | Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. (optional)
     exclude_folder = 'exclude_folder_example' # str | Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs. (optional)
     after = 'after_example' # str | Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. (optional)
-    meta_only = False # bool | Speed up the response by only returning the email metadata, excluding the body and attachments metadata. (optional) (default to False)
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. (optional) (default to 20)
 
     try:
         # List folder Emails
-        api_response = api_instance.get_folder_emails_list(folder_id, account_id, to=to, subject=subject, var_from=var_from, any_email=any_email, before=before, exclude_folder=exclude_folder, after=after, meta_only=meta_only, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_folder_emails_list(folder_id, account_id, q=q, meta_only=meta_only, to=to, var_from=var_from, any_email=any_email, has_attachment=has_attachment, is_starred=is_starred, is_unread=is_unread, before=before, exclude_folder=exclude_folder, after=after, offset=offset, cursor=cursor, limit=limit)
         print("The response of EmailsApi->get_folder_emails_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1020,17 +1109,20 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **folder_id** | **str**| ID of the Folder to retrieve emails from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **to** | **str**| Filter to only return emails sent to the given email address, either in the to, cc or bcc field. | [optional] 
- **subject** | **str**| Filter to only return emails with the given string in the subject. | [optional] 
- **var_from** | **str**| Filter to only return emails sent from the given email address. | [optional] 
- **any_email** | **str**| Filter to only return emails related to a comma-separated list of email addresses. | [optional] 
+ **q** | **str**| Full-text search in the email subject and body (case-insensitive, partial match). Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). Combine with &#x60;from&#x60;, &#x60;to&#x60;, or &#x60;any_email&#x60; to narrow by participant address. | [optional] 
+ **meta_only** | **bool**| Speed up the response by only returning the email metadata, excluding the body and attachments metadata. | [optional] [default to False]
+ **to** | **str**| Return messages sent to the given email address. For Outlook, some messages matching this filter may be missing due to a provider limitation. Use &#x60;GET /threads/:thread_id&#x60; to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). | [optional] 
+ **var_from** | **str**| Return messages sent from the given email address. For Outlook, some messages matching this filter may be missing due to a provider limitation. Use &#x60;GET /threads/:thread_id&#x60; to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). | [optional] 
+ **any_email** | **str**| Return messages where at least one of the given comma-separated email addresses appears as a participant (from, to, cc, or bcc). For Outlook, some messages matching this filter may be missing due to a provider limitation. Use &#x60;GET /threads/:thread_id&#x60; to retrieve a specific conversation. Activates search mode: results may be approximate and non-exhaustive (provider-dependent, ~1000 results on Outlook). | [optional] 
+ **has_attachment** | **bool**| Filter to only return emails with or without attachments. For Outlook with &#x60;meta_only&#x3D;true&#x60;, this uses the provider attachment flag, which excludes inline attachments. | [optional] 
+ **is_starred** | **bool**| Filter to only return starred or unstarred emails. | [optional] 
+ **is_unread** | **bool**| Filter to only return unread or read emails. | [optional] 
  **before** | **str**| Filter to only return emails sent before the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. | [optional] 
  **exclude_folder** | **str**| Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs. | [optional] 
  **after** | **str**| Filter to only return emails sent after the given datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). For Gmail, only the date is used, the time is ignored. | [optional] 
- **meta_only** | **bool**| Speed up the response by only returning the email metadata, excluding the body and attachments metadata. | [optional] [default to False]
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. | [optional] [default to 20]
 
 ### Return type
 
@@ -1054,7 +1146,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_folders_list**
-> GetFoldersList200Response get_folders_list(account_id, offset=offset, limit=limit, cursor=cursor)
+> GetFoldersList200Response get_folders_list(account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all Folders
 
@@ -1093,12 +1185,12 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.EmailsApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. (optional) (default to 20)
 
     try:
         # List all Folders
-        api_response = api_instance.get_folders_list(account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_folders_list(account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of EmailsApi->get_folders_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1114,8 +1206,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. | [optional] [default to 20]
 
 ### Return type
 
@@ -1472,9 +1564,7 @@ Name | Type | Description  | Notes
 
 Send an Email
 
-Sends an Email to the recipients in the `to`, `cc`, and `bcc`.
-      <br/>
-      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+Sends an Email to the recipients in the `to`, `cc`, and `bcc`.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
@@ -1718,9 +1808,7 @@ Name | Type | Description  | Notes
 
 Update a Draft
 
-Updates the specified Draft by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
-      <br/>
-      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+Updates the specified Draft by setting the values of the parameters passed. Any parameters not provided will be left unchanged.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
