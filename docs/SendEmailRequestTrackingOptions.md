@@ -7,9 +7,9 @@ Configuration of tracking for this email.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **opens** | **bool** | If &#x60;true&#x60;, trigger webhooks listening to &#x60;tracking.open&#x60; when the email is opened by the recipient. | [optional] [default to False]
-**links** | **bool** | If &#x60;true&#x60;, trigger webhooks listening to &#x60;tracking.link&#x60; when the recipient click on a link in the email content. | [optional] [default to False]
+**clicks** | **bool** | If &#x60;true&#x60;, trigger webhooks listening to &#x60;tracking.click&#x60; when the recipient click on a link in the email content. | [optional] [default to False]
 **label** | **str** | A label to be sent in the tracking event. This can help you to identify the sent email. | [optional] 
-**custom_domain** | **str** | Your custom domain pointing to https://tracking.unipile.com to handle links tracking. | [optional] 
+**custom_domain** | **str** | Your custom domain pointing to https://s2.lnk-fllw.com to handle links tracking. | [optional] 
 
 ## Example
 
