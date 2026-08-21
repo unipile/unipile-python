@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **notify_network** | **bool** | Notify the network about the experience. Turn on to notify your network of key profile changes (such as new job) and work anniversaries. Updates can take up to 2 hours.  | [optional] [default to False]
 **job_title** | [**CreateNewExperienceJobTitle**](CreateNewExperienceJobTitle.md) |  | 
-**employment_type** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;EMPLOYMENT_TYPE&#x60; type to find out the possible values. Employment type of the experience. | [optional] 
+**employment_type** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getclassicsearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;EMPLOYMENT_TYPE&#x60; type to find out the possible values. Employment type of the experience. | [optional] 
 **company** | [**CreateNewExperienceCompany**](CreateNewExperienceCompany.md) |  | 
 **location** | [**CreateNewExperienceLocation**](CreateNewExperienceLocation.md) |  | [optional] 
 **workplace_type** | **str** | The workplace type. Ex: Remote, Hybrid, On-site | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **end_date** | [**CreateNewExperienceEndDate**](CreateNewExperienceEndDate.md) |  | [optional] 
 **description** | **str** | Description of the experience. List your major duties and successes, highlighting specific projects. | [optional] 
 **source_of_hire** | **str** | Where did you find this job? This information will be used to improve LinkedIn’s job search experience. | [optional] 
-**skills** | [**List[CreateNewExperienceSkillsInner]**](CreateNewExperienceSkillsInner.md) | List of skills. We recommend adding your top 5 used in this role. They’ll also appear in your profile Skills section. | [optional] 
+**skills** | [**List[CreateNewExperienceSkillsInner]**](CreateNewExperienceSkillsInner.md) | Skills to associate with this experience. Use this field only inside &#x60;experience&#x60;; it is independent from the profile-level and education &#x60;skills&#x60; fields. These skills also appear in the profile Skills section. | [optional] 
 **media** | [**CreateNewExperienceMedia**](CreateNewExperienceMedia.md) |  | [optional] 
 **operation** | **str** |  | 
 
