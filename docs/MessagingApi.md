@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**get_attachment**](MessagingApi.md#get_attachment) | **GET** /v2/{account_id}/chats/{chat_id}/messages/{message_id}/attachments/{attachment_id} | Get a Message Attachment
 [**get_chat**](MessagingApi.md#get_chat) | **GET** /v2/{account_id}/chats/{chat_id} | Get a Chat
 [**get_chats_list**](MessagingApi.md#get_chats_list) | **GET** /v2/{account_id}/chats | List all Chats
+[**get_contacts_list**](MessagingApi.md#get_contacts_list) | **GET** /v2/{account_id}/contacts | List contacts
 [**get_inbox_chats_list**](MessagingApi.md#get_inbox_chats_list) | **GET** /v2/{account_id}/inboxes/{inbox_id}/chats | List Inbox Chats
 [**get_inboxes_list**](MessagingApi.md#get_inboxes_list) | **GET** /v2/{account_id}/inboxes | List all Inboxes
 [**get_message**](MessagingApi.md#get_message) | **GET** /v2/{account_id}/chats/{chat_id}/messages/{message_id} | Get a Message
@@ -123,7 +124,6 @@ Name | Type | Description  | Notes
 Add a Chat Participant
 
 Adds a new user as participant of chat if you have the rights to. Providers might requires an admin role or some permissions.
-      <br />
       Trying to add a participant into a 1to1 chat can fail depending on the provider.
 
 ### Example
@@ -287,7 +287,6 @@ void (empty response body)
 Delete a Message
 
 Deletes one of your own messages. Depending of the provider, the message might still be visible as deleted.
-      <br />
       Trying to delete the message of another user will fail. 
 
 ### Example
@@ -613,11 +612,14 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_chats_list**
-> GetChatsList200Response get_chats_list(account_id, offset=offset, limit=limit, cursor=cursor, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
+> GetChatsList200Response get_chats_list(account_id, offset=offset, cursor=cursor, limit=limit, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
 
 List all Chats
 
-Returns a list of account's chats, whatever the inbox they belong to. The chats are returned sorted by their last message date, with the most recent appearing first. You might want to use the <a href="https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes-inbox-id-chats">List inbox Chats</a> instead if not supported by the provider. Filters are applied with an AND logic if supported by the provider.
+Returns a list of account's chats, whatever the inbox they belong to. The chats are returned sorted by their last message date, with the most recent appearing first.
+      You might want to use the <a href="https://developer.unipile.com/v2.0/reference/getinboxchatslist">List inbox Chats</a> instead if not supported by the provider.
+      Filters are applied with an AND logic if supported by the provider.
+      
 
 ### Example
 
@@ -652,8 +654,8 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.MessagingApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
     type = 'type_example' # str | Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat. (optional)
     before = 'before_example' # str | A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). (optional)
     after = 'after_example' # str | A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).. (optional)
@@ -662,7 +664,7 @@ with unipile.ApiClient(configuration) as api_client:
 
     try:
         # List all Chats
-        api_response = api_instance.get_chats_list(account_id, offset=offset, limit=limit, cursor=cursor, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
+        api_response = api_instance.get_chats_list(account_id, offset=offset, cursor=cursor, limit=limit, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
         print("The response of MessagingApi->get_chats_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -678,8 +680,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
  **type** | **str**| Return only chats of the given type (if supported by the provider).         - &#x60;1to1&#x60; is a 1to1 chat.         - &#x60;group&#x60; is a group chat.         - &#x60;channel&#x60; is a channel chat. | [optional] 
  **before** | **str**| A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | [optional] 
  **after** | **str**| A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).. | [optional] 
@@ -707,12 +709,100 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_contacts_list**
+> GetContactsList200Response get_contacts_list(account_id, offset=offset, cursor=cursor, limit=limit)
+
+List contacts
+
+Returns a list of contacts for the connected account. Served by the email provider for email accounts and by the messaging provider for messaging accounts (e.g. WhatsApp). On providers where a contact is an overlay over a user, the contact carries the account owner's chosen name while the nested `user` object carries the user's own identity.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.get_contacts_list200_response import GetContactsList200Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.MessagingApi(api_client)
+    account_id = 'account_id_example' # str | 
+    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+
+    try:
+        # List contacts
+        api_response = api_instance.get_contacts_list(account_id, offset=offset, cursor=cursor, limit=limit)
+        print("The response of MessagingApi->get_contacts_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MessagingApi->get_contacts_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **account_id** | **str**|  | 
+ **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+
+### Return type
+
+[**GetContactsList200Response**](GetContactsList200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_inbox_chats_list**
-> GetChatsList200Response get_inbox_chats_list(inbox_id, account_id, offset=offset, limit=limit, cursor=cursor, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
+> GetChatsList200Response get_inbox_chats_list(inbox_id, account_id, offset=offset, cursor=cursor, limit=limit, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
 
 List Inbox Chats
 
-Returns a list of account's chats from a specific inbox. The chats are returned sorted by their last message date, with the most recent appearing first. Filters are applied with an AND logic if supported by the provider.
+Returns a list of account's chats from a specific inbox.
+      The chats are returned sorted by their last message date, with the most recent appearing first.
+      Filters are applied with an AND logic if supported by the provider.
+      
 
 ### Example
 
@@ -745,11 +835,11 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.MessagingApi(api_client)
-    inbox_id = 'inbox_id_example' # str | ID of the Inbox to retrieve Chats from. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes\">List all Inboxes</a> to get the ID of an inbox.
+    inbox_id = 'inbox_id_example' # str | ID of the Inbox to retrieve Chats from. Use <a href=\"https://developer.unipile.com/v2.0/reference/getinboxeslist\">List all Inboxes</a> to get the ID of an inbox.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
     type = 'type_example' # str | Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat. (optional)
     before = 'before_example' # str | A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). (optional)
     after = 'after_example' # str | A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).. (optional)
@@ -758,7 +848,7 @@ with unipile.ApiClient(configuration) as api_client:
 
     try:
         # List Inbox Chats
-        api_response = api_instance.get_inbox_chats_list(inbox_id, account_id, offset=offset, limit=limit, cursor=cursor, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
+        api_response = api_instance.get_inbox_chats_list(inbox_id, account_id, offset=offset, cursor=cursor, limit=limit, type=type, before=before, after=after, is_archived=is_archived, is_unread=is_unread)
         print("The response of MessagingApi->get_inbox_chats_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -772,11 +862,11 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inbox_id** | **str**| ID of the Inbox to retrieve Chats from. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes\&quot;&gt;List all Inboxes&lt;/a&gt; to get the ID of an inbox. | 
+ **inbox_id** | **str**| ID of the Inbox to retrieve Chats from. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getinboxeslist\&quot;&gt;List all Inboxes&lt;/a&gt; to get the ID of an inbox. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
  **type** | **str**| Return only chats of the given type (if supported by the provider).         - &#x60;1to1&#x60; is a 1to1 chat.         - &#x60;group&#x60; is a group chat.         - &#x60;channel&#x60; is a channel chat. | [optional] 
  **before** | **str**| A filter to target items created before the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | [optional] 
  **after** | **str**| A filter to target items created after the datetime (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).. | [optional] 
@@ -967,7 +1057,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_message_reactions_list**
-> GetMessageReactionsList200Response get_message_reactions_list(chat_id, message_id, account_id, offset=offset, limit=limit, cursor=cursor)
+> GetMessageReactionsList200Response get_message_reactions_list(chat_id, message_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all Message's Reactions
 
@@ -1008,12 +1098,12 @@ with unipile.ApiClient(configuration) as api_client:
     message_id = 'message_id_example' # str | The ID of the Message to retrieve reactions from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Message's Reactions
-        api_response = api_instance.get_message_reactions_list(chat_id, message_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_message_reactions_list(chat_id, message_id, account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of MessagingApi->get_message_reactions_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1031,8 +1121,8 @@ Name | Type | Description  | Notes
  **message_id** | **str**| The ID of the Message to retrieve reactions from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1056,7 +1146,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_messages_list**
-> GetMessagesList200Response get_messages_list(chat_id, account_id, before=before, after=after, user_id=user_id, offset=offset, limit=limit, cursor=cursor)
+> GetMessagesList200Response get_messages_list(chat_id, account_id, before=before, after=after, user_id=user_id, offset=offset, cursor=cursor, limit=limit)
 
 List all Chat Messages
 
@@ -1099,12 +1189,12 @@ with unipile.ApiClient(configuration) as api_client:
     after = 'after_example' # str | Filter to only return messages sent after the given timestamp (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). (optional)
     user_id = 'user_id_example' # str | Filter to only return messages sent by the given User. (optional)
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Chat Messages
-        api_response = api_instance.get_messages_list(chat_id, account_id, before=before, after=after, user_id=user_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_messages_list(chat_id, account_id, before=before, after=after, user_id=user_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of MessagingApi->get_messages_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1124,8 +1214,8 @@ Name | Type | Description  | Notes
  **after** | **str**| Filter to only return messages sent after the given timestamp (exclusive). Must be an ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | [optional] 
  **user_id** | **str**| Filter to only return messages sent by the given User. | [optional] 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1149,12 +1239,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_participants_list**
-> GetParticipantsList200Response get_participants_list(chat_id, account_id, offset=offset, limit=limit, cursor=cursor)
+> GetParticipantsList200Response get_participants_list(chat_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all Chat Participants
 
 Returns a list of participants in the specified group chat. For 1to1 chats, the unique participant is given in the chat object.
-      <br />
       Trying to retrieve the list of participants of a 1to1 chat will fail.
 
 ### Example
@@ -1191,12 +1280,12 @@ with unipile.ApiClient(configuration) as api_client:
     chat_id = 'chat_id_example' # str | ID of the Chat to retrieve participants from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Chat Participants
-        api_response = api_instance.get_participants_list(chat_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_participants_list(chat_id, account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of MessagingApi->get_participants_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1213,8 +1302,8 @@ Name | Type | Description  | Notes
  **chat_id** | **str**| ID of the Chat to retrieve participants from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1324,7 +1413,6 @@ Name | Type | Description  | Notes
 Modify a Message
 
 Modifies one of the account's owner messages.
-      <br/>
       Trying to modify the message of another user will fail.
 
 ### Example
@@ -1413,7 +1501,7 @@ Read a Message
 
 Marks a message sent in the chat by another user as read by you.
         Trying to mark your own messages as read will fail.
-        This does not affect the read status of the chat. Use <a href="https://developer.unipile.com/v2.0/reference/patch_v2-account-id-chats-chat-id">Update a Chat</a> to mark a chat as read. 
+        This does not affect the read status of the chat. Use <a href="https://developer.unipile.com/v2.0/reference/updatechat">Update a Chat</a> to mark a chat as read. 
 
 ### Example
 
@@ -1496,7 +1584,9 @@ Name | Type | Description  | Notes
 
 Remove a Message Reaction
 
-Removes a reaction of the account's owner from a message. Trying to remove a reaction from another user will fail.
+Removes a reaction of the account's owner from a message.
+      Trying to remove a reaction from another user will fail.
+      
 
 ### Example
 
@@ -1583,7 +1673,6 @@ Name | Type | Description  | Notes
 Remove a Chat Participant
 
 Removes a participant user from a chat if you have the rights to. Providers might requires an admin role or some permissions.
-      <br />
       Trying to remove a participant from a 1to1 chat will fail.
 
 ### Example
@@ -1668,10 +1757,7 @@ Name | Type | Description  | Notes
 Send a Message
 
 Sends a message in the specified chat.
-      <br/>
-      Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send">Start a Chat</a> if you don't have a conversation with the wanted user(s) yet.
-      <br/>
-      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+      Use <a href="https://developer.unipile.com/v2.0/reference/startchat">Start a Chat</a> or <a href="https://developer.unipile.com/v2.0/reference/startchatfrominbox">Start a Chat from Inbox</a> if no conversation has been started with the specified user or group of users yet.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
@@ -1921,12 +2007,8 @@ Name | Type | Description  | Notes
 Start a Chat
 
 Starts a new 1to1 or group chat by sending the first message.
-      <br/>
-      Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send">Send a Message</a> if a conversation already exist with the wanted user(s).
-      <br/>
-      Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-account-id-inboxes-inbox-id-chats">Start a Chat from Inbox</a> if the provider uses the inbox concept.
-      <br/>
-      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+      Use <a href="https://developer.unipile.com/v2.0/reference/sendmessage">Send a Message</a> if a conversation already exist with the wanted user(s).
+      Use <a href="https://developer.unipile.com/v2.0/reference/startchatfrominbox">Start a Chat from Inbox</a> if the provider uses the inbox concept.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
@@ -2004,18 +2086,13 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **start_chat_from_inbox**
-> StartChat200Response start_chat_from_inbox(inbox_id, account_id, start_chat_from_inbox_request)
+> StartChat200Response start_chat_from_inbox(inbox_id, account_id, start_chat_request)
 
 Start a Chat from Inbox
 
 Starts a new 1to1 or group chat in the given inbox by sending the first message.
-      <br/>
-      Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-chat-id-messages-send">Send a Message</a> if a conversation already exist with the wanted user(s).
-      <br/>
-      Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-account-id-chats-send">Start a Chat</a> instead if the provider does not use the inbox concept.
-      
-      <br/>
-      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+      Use <a href="https://developer.unipile.com/v2.0/reference/sendmessage">Send a Message</a> if a conversation already exist with the wanted user(s).
+      Use <a href="https://developer.unipile.com/v2.0/reference/startchat">Start a Chat</a> instead if the provider does not use the inbox concept.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
@@ -2024,7 +2101,7 @@ Starts a new 1to1 or group chat in the given inbox by sending the first message.
 ```python
 import unipile
 from unipile.models.start_chat200_response import StartChat200Response
-from unipile.models.start_chat_from_inbox_request import StartChatFromInboxRequest
+from unipile.models.start_chat_request import StartChatRequest
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -2049,13 +2126,13 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.MessagingApi(api_client)
-    inbox_id = 'inbox_id_example' # str | ID of the Inbox to start the Chat in. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes\">List all Inboxes</a> to get the ID of an inbox.
+    inbox_id = 'inbox_id_example' # str | ID of the Inbox to start the Chat in. Use <a href=\"https://developer.unipile.com/v2.0/reference/getinboxeslist\">List all Inboxes</a> to get the ID of an inbox.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    start_chat_from_inbox_request = unipile.StartChatFromInboxRequest() # StartChatFromInboxRequest | 
+    start_chat_request = unipile.StartChatRequest() # StartChatRequest | 
 
     try:
         # Start a Chat from Inbox
-        api_response = api_instance.start_chat_from_inbox(inbox_id, account_id, start_chat_from_inbox_request)
+        api_response = api_instance.start_chat_from_inbox(inbox_id, account_id, start_chat_request)
         print("The response of MessagingApi->start_chat_from_inbox:\n")
         pprint(api_response)
     except Exception as e:
@@ -2069,9 +2146,9 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inbox_id** | **str**| ID of the Inbox to start the Chat in. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes\&quot;&gt;List all Inboxes&lt;/a&gt; to get the ID of an inbox. | 
+ **inbox_id** | **str**| ID of the Inbox to start the Chat in. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getinboxeslist\&quot;&gt;List all Inboxes&lt;/a&gt; to get the ID of an inbox. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **start_chat_from_inbox_request** | [**StartChatFromInboxRequest**](StartChatFromInboxRequest.md)|  | 
+ **start_chat_request** | [**StartChatRequest**](StartChatRequest.md)|  | 
 
 ### Return type
 
@@ -2095,7 +2172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_chat**
-> GetChat200Response update_chat(chat_id, account_id, update_chat_request=update_chat_request)
+> UpdateChat200Response update_chat(chat_id, account_id, update_chat_request=update_chat_request)
 
 Update a Chat
 
@@ -2107,7 +2184,7 @@ Updates the specified chat by setting the values of the parameters passed. Any p
 
 ```python
 import unipile
-from unipile.models.get_chat200_response import GetChat200Response
+from unipile.models.update_chat200_response import UpdateChat200Response
 from unipile.models.update_chat_request import UpdateChatRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -2159,7 +2236,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetChat200Response**](GetChat200Response.md)
+[**UpdateChat200Response**](UpdateChat200Response.md)
 
 ### Authorization
 

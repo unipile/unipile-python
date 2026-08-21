@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Id of the work experience entry. | [optional] 
-**company** | [**LinkedInCertificationsInnerOrganization**](LinkedInCertificationsInnerOrganization.md) |  | 
+**company** | [**LinkedIn1CertificationsInnerOrganization**](LinkedIn1CertificationsInnerOrganization.md) |  | 
 **job_title** | **str** | Job title of the experience. | 
 **started_on** | **str** | Start date of the experience in MM/DD/YYYY format. | [optional] 
 **ended_on** | **str** | End date of the experience in MM/DD/YYYY format. | [optional] 
