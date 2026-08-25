@@ -26,13 +26,11 @@ Method | HTTP request | Description
 
 
 # **add_post_comment**
-> GetPostCommentsList200ResponseDataInner add_post_comment(post_id, account_id, add_post_comment_request)
+> AddPostComment201Response add_post_comment(post_id, account_id, add_post_comment_request)
 
 Add Comment to a Post
 
-Adds a comment to a post.
-      <br/>
-      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+Adds a comment to a post.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
@@ -40,8 +38,8 @@ Adds a comment to a post.
 
 ```python
 import unipile
+from unipile.models.add_post_comment201_response import AddPostComment201Response
 from unipile.models.add_post_comment_request import AddPostCommentRequest
-from unipile.models.get_post_comments_list200_response_data_inner import GetPostCommentsList200ResponseDataInner
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -66,7 +64,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to add the comment to.
+    post_id = 'post_id_example' # str | The ID of the Post to add the comment to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     add_post_comment_request = unipile.AddPostCommentRequest() # AddPostCommentRequest | 
 
@@ -86,13 +84,13 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to add the comment to. | 
+ **post_id** | **str**| The ID of the Post to add the comment to.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **add_post_comment_request** | [**AddPostCommentRequest**](AddPostCommentRequest.md)|  | 
 
 ### Return type
 
-[**GetPostCommentsList200ResponseDataInner**](GetPostCommentsList200ResponseDataInner.md)
+[**AddPostComment201Response**](AddPostComment201Response.md)
 
 ### Authorization
 
@@ -150,7 +148,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post where the comment is.
+    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     comment_id = 'comment_id_example' # str | The ID of the Comment to add the reaction to.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     add_post_comment_reaction_request = unipile.AddPostCommentReactionRequest() # AddPostCommentReactionRequest | 
@@ -171,7 +169,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post where the comment is. | 
+ **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **comment_id** | **str**| The ID of the Comment to add the reaction to. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **add_post_comment_reaction_request** | [**AddPostCommentReactionRequest**](AddPostCommentReactionRequest.md)|  | 
@@ -236,7 +234,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to add the reaction to.
+    post_id = 'post_id_example' # str | The ID of the Post to add the reaction to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     add_post_reaction_request = unipile.AddPostReactionRequest() # AddPostReactionRequest | 
 
@@ -256,7 +254,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to add the reaction to. | 
+ **post_id** | **str**| The ID of the Post to add the reaction to.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **add_post_reaction_request** | [**AddPostReactionRequest**](AddPostReactionRequest.md)|  | 
 
@@ -282,13 +280,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_post**
-> GetPost200Response create_post(account_id, create_post_request)
+> UpdatePost200Response create_post(account_id, create_post_request)
 
 Create a Post
 
-Creates a new post.
-      <br/>
-      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+Creates a new post.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
@@ -297,7 +293,7 @@ Creates a new post.
 ```python
 import unipile
 from unipile.models.create_post_request import CreatePostRequest
-from unipile.models.get_post200_response import GetPost200Response
+from unipile.models.update_post200_response import UpdatePost200Response
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -346,7 +342,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetPost200Response**](GetPost200Response.md)
+[**UpdatePost200Response**](UpdatePost200Response.md)
 
 ### Authorization
 
@@ -402,7 +398,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to delete.
+    post_id = 'post_id_example' # str | The ID of the Post to delete.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
 
     try:
@@ -419,7 +415,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to delete. | 
+ **post_id** | **str**| The ID of the Post to delete.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
 
 ### Return type
@@ -480,7 +476,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post where the comment is.
+    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     comment_id = 'comment_id_example' # str | The ID of the Comment to delete.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
 
@@ -498,7 +494,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post where the comment is. | 
+ **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **comment_id** | **str**| The ID of the Comment to delete. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
 
@@ -561,7 +557,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to retrieve.
+    post_id = 'post_id_example' # str | The ID of the Post to retrieve.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
 
     try:
@@ -580,7 +576,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to retrieve. | 
+ **post_id** | **str**| The ID of the Post to retrieve.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
 
 ### Return type
@@ -605,7 +601,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_post_comment_reactions_list**
-> GetMessageReactionsList200Response get_post_comment_reactions_list(post_id, comment_id, account_id, offset=offset, limit=limit, cursor=cursor)
+> GetMessageReactionsList200Response get_post_comment_reactions_list(post_id, comment_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all Comment's Reactions
 
@@ -642,16 +638,16 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post where the comment is.
+    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     comment_id = 'comment_id_example' # str | The ID of the Comment to retrieve reactions from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Comment's Reactions
-        api_response = api_instance.get_post_comment_reactions_list(post_id, comment_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_post_comment_reactions_list(post_id, comment_id, account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of PostsApi->get_post_comment_reactions_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -665,12 +661,12 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post where the comment is. | 
+ **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **comment_id** | **str**| The ID of the Comment to retrieve reactions from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -694,7 +690,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_post_comment_replies_list**
-> GetPostCommentsList200Response get_post_comment_replies_list(post_id, comment_id, account_id, offset=offset, limit=limit, cursor=cursor)
+> GetPostCommentsList200Response get_post_comment_replies_list(post_id, comment_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all Comment's Replies
 
@@ -731,16 +727,16 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post where the comment is.
+    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     comment_id = 'comment_id_example' # str | The ID of the Comment to retrieve replies from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Comment's Replies
-        api_response = api_instance.get_post_comment_replies_list(post_id, comment_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_post_comment_replies_list(post_id, comment_id, account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of PostsApi->get_post_comment_replies_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -754,12 +750,12 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post where the comment is. | 
+ **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **comment_id** | **str**| The ID of the Comment to retrieve replies from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -783,7 +779,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_post_comments_list**
-> GetPostCommentsList200Response get_post_comments_list(post_id, account_id, offset=offset, limit=limit, cursor=cursor, sort_by=sort_by)
+> GetPostCommentsList200Response get_post_comments_list(post_id, account_id, offset=offset, cursor=cursor, limit=limit, sort_by=sort_by)
 
 List all Post's Comments
 
@@ -820,16 +816,16 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to retrieve comments from.
+    post_id = 'post_id_example' # str | The ID of the Post to retrieve comments from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    sort_by = MOST_RECENT # str | Sort criterion for the posts list: MOST_RECENT (most recent first) or MOST_RELEVANT (most relevant first). (optional) (default to MOST_RECENT)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    sort_by = 'MOST_RECENT' # str | Sort criterion for the posts list: MOST_RECENT (most recent first) or MOST_RELEVANT (most relevant first). (optional) (default to 'MOST_RECENT')
 
     try:
         # List all Post's Comments
-        api_response = api_instance.get_post_comments_list(post_id, account_id, offset=offset, limit=limit, cursor=cursor, sort_by=sort_by)
+        api_response = api_instance.get_post_comments_list(post_id, account_id, offset=offset, cursor=cursor, limit=limit, sort_by=sort_by)
         print("The response of PostsApi->get_post_comments_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -843,12 +839,12 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to retrieve comments from. | 
+ **post_id** | **str**| The ID of the Post to retrieve comments from.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **sort_by** | **str**| Sort criterion for the posts list: MOST_RECENT (most recent first) or MOST_RELEVANT (most relevant first). | [optional] [default to MOST_RECENT]
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **sort_by** | **str**| Sort criterion for the posts list: MOST_RECENT (most recent first) or MOST_RELEVANT (most relevant first). | [optional] [default to &#39;MOST_RECENT&#39;]
 
 ### Return type
 
@@ -872,11 +868,13 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_post_reactions_list**
-> GetMessageReactionsList200Response get_post_reactions_list(post_id, account_id, offset=offset, limit=limit, cursor=cursor)
+> GetMessageReactionsList200Response get_post_reactions_list(post_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all Post's Reactions
 
-Returns the list of reactions made to a post. Reaction counts are given with the Post object. This is useful to show a detailed list of all reactions and their author. LIMITATIONS: On Instagram, the list is always limited to a maximum of 100 reactions.
+Returns the list of reactions made to a post. Reaction counts are given with the Post object. This is useful to show a detailed list of all reactions and their author.
+      LIMITATIONS: On Instagram, the list is always limited to a maximum of 100 reactions.
+      
 
 ### Example
 
@@ -909,15 +907,15 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to retrieve reactions from.
+    post_id = 'post_id_example' # str | The ID of the Post to retrieve reactions from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Post's Reactions
-        api_response = api_instance.get_post_reactions_list(post_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_post_reactions_list(post_id, account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of PostsApi->get_post_reactions_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -931,11 +929,11 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to retrieve reactions from. | 
+ **post_id** | **str**| The ID of the Post to retrieve reactions from.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -959,7 +957,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_posts_list**
-> GetPostsList200Response get_posts_list(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+> GetPostsList200Response get_posts_list(user_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all User's Posts
 
@@ -999,12 +997,12 @@ with unipile.ApiClient(configuration) as api_client:
     user_id = 'user_id_example' # str | The ID of the User to retrieve posts from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all User's Posts
-        api_response = api_instance.get_posts_list(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_posts_list(user_id, account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of PostsApi->get_posts_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1021,8 +1019,8 @@ Name | Type | Description  | Notes
  **user_id** | **str**| The ID of the User to retrieve posts from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1046,7 +1044,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user_comments_list**
-> GetUserCommentsList200Response get_user_comments_list(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+> GetUserCommentsList200Response get_user_comments_list(user_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all User Comments
 
@@ -1086,12 +1084,12 @@ with unipile.ApiClient(configuration) as api_client:
     user_id = 'user_id_example' # str | The ID of the User to retrieve the comments from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all User Comments
-        api_response = api_instance.get_user_comments_list(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_user_comments_list(user_id, account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of PostsApi->get_user_comments_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1108,8 +1106,8 @@ Name | Type | Description  | Notes
  **user_id** | **str**| The ID of the User to retrieve the comments from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1133,7 +1131,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user_reactions_list**
-> GetUserReactionsList200Response get_user_reactions_list(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+> GetUserReactionsList200Response get_user_reactions_list(user_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all User Reactions
 
@@ -1173,12 +1171,12 @@ with unipile.ApiClient(configuration) as api_client:
     user_id = 'user_id_example' # str | The ID of the User to retrieve the reactions from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all User Reactions
-        api_response = api_instance.get_user_reactions_list(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_user_reactions_list(user_id, account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of PostsApi->get_user_reactions_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -1195,8 +1193,8 @@ Name | Type | Description  | Notes
  **user_id** | **str**| The ID of the User to retrieve the reactions from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1258,7 +1256,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post where the comment is.
+    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     comment_id = 'comment_id_example' # str | The ID of the Comment where the reaction is.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     remove_post_comment_reaction_request = unipile.RemovePostCommentReactionRequest() # RemovePostCommentReactionRequest | 
@@ -1279,7 +1277,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post where the comment is. | 
+ **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **comment_id** | **str**| The ID of the Comment where the reaction is. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **remove_post_comment_reaction_request** | [**RemovePostCommentReactionRequest**](RemovePostCommentReactionRequest.md)|  | 
@@ -1344,7 +1342,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post where the reaction is.
+    post_id = 'post_id_example' # str | The ID of the Post where the reaction is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     remove_post_reaction_request = unipile.RemovePostReactionRequest() # RemovePostReactionRequest | 
 
@@ -1364,7 +1362,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post where the reaction is. | 
+ **post_id** | **str**| The ID of the Post where the reaction is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **remove_post_reaction_request** | [**RemovePostReactionRequest**](RemovePostReactionRequest.md)|  | 
 
@@ -1390,13 +1388,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **reply_to_comment**
-> GetPostCommentsList200ResponseDataInner reply_to_comment(post_id, comment_id, account_id, add_post_comment_request)
+> AddPostComment201Response reply_to_comment(post_id, comment_id, account_id, add_post_comment_request)
 
 Reply to a Comment
 
-Replies to a particular comment.
-      <br/>
-      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+Replies to a particular comment.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
@@ -1404,8 +1400,8 @@ Replies to a particular comment.
 
 ```python
 import unipile
+from unipile.models.add_post_comment201_response import AddPostComment201Response
 from unipile.models.add_post_comment_request import AddPostCommentRequest
-from unipile.models.get_post_comments_list200_response_data_inner import GetPostCommentsList200ResponseDataInner
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -1430,7 +1426,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to add the comment to.
+    post_id = 'post_id_example' # str | The ID of the Post to add the comment to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     comment_id = 'comment_id_example' # str | The ID of the Comment to reply to.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     add_post_comment_request = unipile.AddPostCommentRequest() # AddPostCommentRequest | 
@@ -1451,14 +1447,14 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to add the comment to. | 
+ **post_id** | **str**| The ID of the Post to add the comment to.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **comment_id** | **str**| The ID of the Comment to reply to. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **add_post_comment_request** | [**AddPostCommentRequest**](AddPostCommentRequest.md)|  | 
 
 ### Return type
 
-[**GetPostCommentsList200ResponseDataInner**](GetPostCommentsList200ResponseDataInner.md)
+[**AddPostComment201Response**](AddPostComment201Response.md)
 
 ### Authorization
 
@@ -1478,7 +1474,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_post**
-> GetPost200Response update_post(post_id, account_id, update_post_request=update_post_request)
+> UpdatePost200Response update_post(post_id, account_id, update_post_request=update_post_request)
 
 Update a Post
 
@@ -1490,7 +1486,7 @@ Updates an existing post.
 
 ```python
 import unipile
-from unipile.models.get_post200_response import GetPost200Response
+from unipile.models.update_post200_response import UpdatePost200Response
 from unipile.models.update_post_request import UpdatePostRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -1516,7 +1512,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to update.
+    post_id = 'post_id_example' # str | The ID of the Post to update.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     update_post_request = unipile.UpdatePostRequest() # UpdatePostRequest |  (optional)
 
@@ -1536,13 +1532,13 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to update. | 
+ **post_id** | **str**| The ID of the Post to update.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **update_post_request** | [**UpdatePostRequest**](UpdatePostRequest.md)|  | [optional] 
 
 ### Return type
 
-[**GetPost200Response**](GetPost200Response.md)
+[**UpdatePost200Response**](UpdatePost200Response.md)
 
 ### Authorization
 
@@ -1562,7 +1558,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_post_comment**
-> GetPostCommentsList200ResponseDataInner update_post_comment(post_id, comment_id, account_id, update_post_comment_request)
+> AddPostComment201Response update_post_comment(post_id, comment_id, account_id, update_post_comment_request)
 
 Update a Comment
 
@@ -1574,7 +1570,7 @@ Updates an existing comment.
 
 ```python
 import unipile
-from unipile.models.get_post_comments_list200_response_data_inner import GetPostCommentsList200ResponseDataInner
+from unipile.models.add_post_comment201_response import AddPostComment201Response
 from unipile.models.update_post_comment_request import UpdatePostCommentRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -1600,7 +1596,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post where the comment is.
+    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
     comment_id = 'comment_id_example' # str | The ID of the Comment to update.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     update_post_comment_request = unipile.UpdatePostCommentRequest() # UpdatePostCommentRequest | 
@@ -1621,14 +1617,14 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post where the comment is. | 
+ **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **comment_id** | **str**| The ID of the Comment to update. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **update_post_comment_request** | [**UpdatePostCommentRequest**](UpdatePostCommentRequest.md)|  | 
 
 ### Return type
 
-[**GetPostCommentsList200ResponseDataInner**](GetPostCommentsList200ResponseDataInner.md)
+[**AddPostComment201Response**](AddPostComment201Response.md)
 
 ### Authorization
 

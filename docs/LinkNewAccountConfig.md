@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **google** | [**LinkNewAccountConfigGoogle**](LinkNewAccountConfigGoogle.md) |  | [optional] 
 **outlook** | [**LinkNewAccountConfigGoogle**](LinkNewAccountConfigGoogle.md) |  | [optional] 
 **linkedin** | [**LinkNewAccountConfigLinkedin**](LinkNewAccountConfigLinkedin.md) |  | [optional] 
-**whatsapp** | [**WhatsAppConfig**](WhatsAppConfig.md) |  | [optional] 
+**whatsapp** | [**WhatsApp2Config**](WhatsApp2Config.md) |  | [optional] 
 **instagram** | [**Instagram1Config**](Instagram1Config.md) |  | [optional] 
 **imap** | [**LinkNewAccountConfigImap**](LinkNewAccountConfigImap.md) |  | [optional] 
 **telegram** | [**TelegramConfig**](TelegramConfig.md) |  | [optional] 

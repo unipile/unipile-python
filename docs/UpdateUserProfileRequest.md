@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**first_name** | **str** | The first name of the User. | [optional] 
-**last_name** | **str** | The last name of the User. | [optional] 
-**description** | **str** | Description of the User. | [optional] 
-**location** | **str** | Location of the User. | [optional] 
-**bio** | **str** | Bio / About section of the profile. | [optional] 
+**first_name** | **str** | The first name of the User. Updating this field is not supported by LinkedIn. | [optional] 
+**last_name** | **str** | The last name of the User. Updating this field is not supported by LinkedIn. | [optional] 
+**description** | **str** | Description of the User. Updating this field is not supported by LinkedIn. | [optional] 
+**location** | **str** | Location of the User. Omit it to leave it unchanged. | [optional] 
+**bio** | **str** | Bio / About section. Omit it to leave it unchanged or use an empty string to clear it. | [optional] 
 **picture** | [**SendEmailRequestAttachmentsInner**](SendEmailRequestAttachmentsInner.md) |  | [optional] 
 **background_picture** | [**SendEmailRequestAttachmentsInner**](SendEmailRequestAttachmentsInner.md) |  | [optional] 
 **specifics** | [**UpdateUserProfileRequestSpecifics**](UpdateUserProfileRequestSpecifics.md) |  | [optional] 
