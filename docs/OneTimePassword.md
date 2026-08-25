@@ -7,6 +7,7 @@ A one-time password was sent to the user's phone or email address. The user need
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
+**channel** | **str** | The channel the one-time password was sent through, when known. | [optional] 
 
 ## Example
 
