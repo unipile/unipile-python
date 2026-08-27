@@ -90,11 +90,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_accounts**
-> ListAccounts200Response list_accounts(status=status, provider=provider, search=search, offset=offset, limit=limit)
+> ListAccounts200Response list_accounts(account_scope_id=account_scope_id, status=status, provider=provider, search=search, offset=offset, limit=limit)
 
 List all Accounts
 
-Returns a list of all Accounts associated with the current Application. The accounts are returned sorted alphabeticaly on `name`.
+Returns the Accounts accessible to the API Key in the current Application. Use `account_scope_id` with a Scope ID to return Accounts assigned to that Scope, or `none` to return Accounts without a Scope. Accounts are sorted alphabetically by `name`.
 
 ### Example
 
@@ -127,6 +127,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.AccountsApi(api_client)
+    account_scope_id = unipile.ListAccountsAccountScopeIdParameter() # ListAccountsAccountScopeIdParameter | Filter Accounts by Scope ID, or use `none` to return Accounts without a Scope. (optional)
     status = 'status_example' # str | Filter to return only accounts of the given status. (optional)
     provider = 'provider_example' # str | Filter to return only accounts of the given provider.         - `mock` is mock.         - `whatsapp` is WhatsApp.         - `linkedin` is LinkedIn.         - `instagram` is Instagram.         - `google` is Google.         - `outlook` is Outlook.         - `telegram` is Telegram.         - `imap` is IMAP. (optional)
     search = 'search_example' # str | Filter to return only accounts matching the given search term on `name` or `id`. (optional)
@@ -135,7 +136,7 @@ with unipile.ApiClient(configuration) as api_client:
 
     try:
         # List all Accounts
-        api_response = api_instance.list_accounts(status=status, provider=provider, search=search, offset=offset, limit=limit)
+        api_response = api_instance.list_accounts(account_scope_id=account_scope_id, status=status, provider=provider, search=search, offset=offset, limit=limit)
         print("The response of AccountsApi->list_accounts:\n")
         pprint(api_response)
     except Exception as e:
@@ -149,6 +150,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **account_scope_id** | [**ListAccountsAccountScopeIdParameter**](.md)| Filter Accounts by Scope ID, or use &#x60;none&#x60; to return Accounts without a Scope. | [optional] 
  **status** | **str**| Filter to return only accounts of the given status. | [optional] 
  **provider** | **str**| Filter to return only accounts of the given provider.         - &#x60;mock&#x60; is mock.         - &#x60;whatsapp&#x60; is WhatsApp.         - &#x60;linkedin&#x60; is LinkedIn.         - &#x60;instagram&#x60; is Instagram.         - &#x60;google&#x60; is Google.         - &#x60;outlook&#x60; is Outlook.         - &#x60;telegram&#x60; is Telegram.         - &#x60;imap&#x60; is IMAP. | [optional] 
  **search** | **str**| Filter to return only accounts matching the given search term on &#x60;name&#x60; or &#x60;id&#x60;. | [optional] 
@@ -256,7 +258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_account**
-> Account1 update_account(account_id, update_account_request)
+> Account1 update_account(account_id, update_account_request=update_account_request)
 
 Update an Account
 
@@ -295,11 +297,11 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.AccountsApi(api_client)
     account_id = 'account_id_example' # str | The ID of the Account to update.
-    update_account_request = unipile.UpdateAccountRequest() # UpdateAccountRequest | 
+    update_account_request = unipile.UpdateAccountRequest() # UpdateAccountRequest |  (optional)
 
     try:
         # Update an Account
-        api_response = api_instance.update_account(account_id, update_account_request)
+        api_response = api_instance.update_account(account_id, update_account_request=update_account_request)
         print("The response of AccountsApi->update_account:\n")
         pprint(api_response)
     except Exception as e:
@@ -314,7 +316,7 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| The ID of the Account to update. | 
- **update_account_request** | [**UpdateAccountRequest**](UpdateAccountRequest.md)|  | 
+ **update_account_request** | [**UpdateAccountRequest**](UpdateAccountRequest.md)|  | [optional] 
 
 ### Return type
 
