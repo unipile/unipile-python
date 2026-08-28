@@ -1,14 +1,21 @@
 # Telegram
 
-Start the authentication intent with Telegram provider.
+Telegram specific dataset for user profiles.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**provider** | **str** | The provider to authenticate with. | 
-**credentials** | [**TelegramCredentials**](TelegramCredentials.md) |  | 
-**config** | [**TelegramConfig**](TelegramConfig.md) |  | [optional] 
+**is_mutual_contact** | **bool** | Whether the user and the account owner are in each other address book. | 
+**is_close_friend** | **bool** | Whether the user is a close friend of the account owner. | 
+**is_bot** | **bool** | Whether the user is a bot. | 
+**is_support** | **bool** | Whether the user is an official Telegram support account. | 
+**is_scam** | **bool** | Whether the user has been flagged as a scam by Telegram. | 
+**is_fake** | **bool** | Whether the user has been flagged as impersonating another user by Telegram. | 
+**is_restricted** | **bool** | Whether the user is restricted on some platforms. | 
+**restrictions** | [**List[TelegramRestrictionsInner]**](TelegramRestrictionsInner.md) | Restrictions applied to the user, if any. | [optional] 
+**status** | [**TelegramStatus**](TelegramStatus.md) |  | [optional] 
+**common_chats_count** | **float** | Number of chats shared between the user and the account owner. | [optional] 
 
 ## Example
 

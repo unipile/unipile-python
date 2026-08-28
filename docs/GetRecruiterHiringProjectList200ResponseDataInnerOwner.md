@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The ID of the Project owner. | 
 **seat_id** | **str** | The seat ID of the Project owner. | 
-**name** | **str** | The name of the Project owner. | 
-**email** | **str** | The email address of the Project owner. | 
-**profile_url** | **str** | The profile URL of the Project owner. | 
-**profile_headline** | **str** | The profile headline of the Project owner. | 
+**name** | **str** | The name of the Project owner. | [optional] 
+**email** | **str** | The email address of the Project owner. | [optional] 
+**profile_url** | **str** | The profile URL of the Project owner. | [optional] 
+**profile_headline** | **str** | The profile headline of the Project owner. | [optional] 
 **public_picture_url** | **str** | The profile picture URL of the Project owner. | [optional] 
 
 ## Example
