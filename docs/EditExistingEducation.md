@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **grade** | **str** | Grade of the education. | [optional] 
 **activities** | **str** | Activities and societies. Ex: Alpha Phi Omega, Marching Brand, Volleyball | [optional] 
 **description** | **str** | Description of the education. | [optional] 
-**skills** | [**List[CreateNewExperienceSkillsInner]**](CreateNewExperienceSkillsInner.md) | List of skills. We recommend adding your top 5 used in this training. They’ll also appear in your profile Skills section. | [optional] 
+**skills** | [**List[CreateNewExperienceSkillsInner]**](CreateNewExperienceSkillsInner.md) | Skills to associate with this education entry. Use this field only inside &#x60;education&#x60;; it is independent from the profile-level and experience &#x60;skills&#x60; fields. These skills also appear in the profile Skills section. | [optional] 
 **media** | [**CreateNewExperienceMedia**](CreateNewExperienceMedia.md) |  | [optional] 
 **operation** | **str** |  | 
 **id** | **str** | ID of the education to edit. | 
