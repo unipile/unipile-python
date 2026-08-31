@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **company** | [**GetRecruiterJobPostingByProjectId200ResponseCompany**](GetRecruiterJobPostingByProjectId200ResponseCompany.md) |  | 
 **location** | **str** | The budget allocated to the Job posting. | 
 **state** | **str** | The budget allocated to the Job posting. | 
-**workplace_type** | **str** | The budget allocated to the Job posting. | 
+**workplace_type** | **str** | The budget allocated to the Job posting. | [optional] 
 **industries** | **List[Optional[str]]** | The budget allocated to the Job posting. | 
 **job_functions** | **List[Optional[str]]** | The job functions associated with the Job posting. | 
 **employment_status** | **str** | The employment status of the Job posting. | 

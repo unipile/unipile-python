@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The name of the Location. | 
-**timezone** | **str** | The time zone of the Location. | 
+**timezone** | **str** | The time zone of the Location. | [optional] 
 
 ## Example
 

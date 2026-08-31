@@ -6,7 +6,7 @@ The budget allocated to the Job posting.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The ID of the Company. | 
+**id** | **str** | The text content of the message, when available. | 
 **name** | **str** | The budget allocated to the Job posting. | 
 **public_picture_url** | **str** | The budget allocated to the Job posting. | [optional] 
 **profile_url** | **str** | The budget allocated to the Job posting. | [optional] 

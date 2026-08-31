@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **id** | **str** | The ID of the Applicant. | 
 **applied_at** | **str** | The date on which the Application was submitted. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 
 **has_resume** | **bool** | Whether the Applicant has a downloadable resume available. | [optional] 
-**screening_questions** | [**List[GetClassicApplicantById200ResponseScreeningQuestionsInner]**](GetClassicApplicantById200ResponseScreeningQuestionsInner.md) | The responses to the job posting screening questions. | [optional] 
+**screening_questions** | [**List[ApplicantsSearchDataInnerScreeningQuestionsInner]**](ApplicantsSearchDataInnerScreeningQuestionsInner.md) | The responses to the job posting screening questions. | [optional] 
 **profile** | [**ApplicantsSearchDataInnerProfile**](ApplicantsSearchDataInnerProfile.md) |  | 
 
 ## Example
