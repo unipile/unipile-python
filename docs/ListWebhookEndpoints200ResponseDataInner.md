@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enabled** | **bool** |  | 
-**description** | **str** |  | 
-**url** | **str** | The ID of the Company. | 
+**description** | **str** | The text content of the message, when available. | 
+**url** | **str** | The text content of the message, when available. | 
 **trigger_events** | **List[str]** |  | 
 **secret** | **str** |  | 
 **object** | **str** |  | 

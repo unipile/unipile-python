@@ -6,7 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
-**data** | **object** |  | 
+**headers** | [**Dict[str, ProxyRequest200ResponseHeadersValue]**](ProxyRequest200ResponseHeadersValue.md) | The LinkedIn response headers to your request. | 
+**data** | **object** | The raw response data that your LinkedIn request returned. | 
 
 ## Example
 
