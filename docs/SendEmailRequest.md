@@ -12,9 +12,10 @@ Name | Type | Description | Notes
 **to** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;to&#x60; header. | 
 **cc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;cc&#x60; header. | [optional] 
 **bcc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;bcc&#x60; header. | [optional] 
-**reply_to** | **str** | The ID of the email message that you&#39;re replying to. For Gmail and Outlook, this is the provider ID for the email message that you&#39;re replying to. For IMAP Send, this is the RFC822 Message-ID header of the email message that you&#39;re replying to. | [optional] 
+**reply_to** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in the standard &#x60;Reply-To&#x60; header. Recipients answering the email will reply to these addresses instead of &#x60;from&#x60;. To reply inside an existing conversation, use &#x60;reply_to_message_id&#x60; instead. | [optional] 
+**reply_to_message_id** | **str** | The ID of the email message that you&#39;re replying to. For Gmail and Outlook, this is the provider ID for the email message that you&#39;re replying to. For IMAP Send, this is the RFC822 Message-ID header of the email message that you&#39;re replying to. | [optional] 
 **attachments** | [**List[SendEmailRequestAttachmentsInner]**](SendEmailRequestAttachmentsInner.md) | The list of file attachments to the email. | [optional] 
-**custom_headers** | [**List[SendEmailRequestCustomHeadersInner]**](SendEmailRequestCustomHeadersInner.md) | An array of custom headers to add to the email. | [optional] 
+**custom_headers** | [**List[SendEmailRequestCustomHeadersInner]**](SendEmailRequestCustomHeadersInner.md) | An array of custom headers to add to the email. Each header overrides any existing header with the same name (case-insensitive), including headers set by other fields such as &#x60;to&#x60;, &#x60;cc&#x60;, &#x60;bcc&#x60;, &#x60;from&#x60;, &#x60;subject&#x60;, or &#x60;reply_to&#x60;. A &#x60;Reply-To&#x60; custom header therefore takes precedence over the &#x60;reply_to&#x60; field and its value is used verbatim. | [optional] 
 **tracking_options** | [**SendEmailRequestTrackingOptions**](SendEmailRequestTrackingOptions.md) |  | [optional] 
 
 ## Example

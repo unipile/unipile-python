@@ -5,7 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**metadata** | **Dict[str, str]** | Metadata of the account. | 
+**account_scope_id** | **str** | The Scope to permanently assign to an unscoped Account. This field requires a Service API Key, and the Scope cannot be removed or replaced after assignment. | [optional] 
+**metadata** | **Dict[str, Optional[str]]** | Custom key-value data for the account. Replaces the account &#x60;metadata.custom_data&#x60; field; other metadata fields are not modified. Any fields not provided will be removed. | [optional] 
+**auto_proxy_country** | **str** | The country to use for Automatic Proxy Protection. | [optional] 
 **proxy** | [**CustomProxy1**](CustomProxy1.md) |  | [optional] 
 
 ## Example
