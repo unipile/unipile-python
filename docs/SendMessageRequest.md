@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **text** | **str** | The textual content of first message to be sent. It&#39;s recommended not to use HTML or Markdown. | 
 **quote_id** | **str** | The ID of the Message to quote / reply to. | [optional] 
-**attachments** | [**List[MessageFile]**](MessageFile.md) | The list of file attachments to the message to be sent in the chat. | [optional] 
+**attachments** | [**List[MessageFile]**](MessageFile.md) | The list of attachments (uploaded files or a shared post or job) to be sent with the message. | [optional] 
+**specifics** | [**SendMessageRequestSpecifics**](SendMessageRequestSpecifics.md) |  | [optional] 
 
 ## Example
 

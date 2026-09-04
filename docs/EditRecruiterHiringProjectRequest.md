@@ -10,8 +10,11 @@ Name | Type | Description | Notes
 **description** | **str** | The description of the project. | [optional] 
 **company** | [**CreateRecruiterHiringProjectRequestCompany**](CreateRecruiterHiringProjectRequestCompany.md) |  | [optional] 
 **job_title** | [**CreateRecruiterHiringProjectRequestJobTitle**](CreateRecruiterHiringProjectRequestJobTitle.md) |  | [optional] 
-**location** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-recruiter-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_LOCATION&#x60; type to find out the possible values. | [optional] 
-**seniority_level** | **str** | The level of experience. | [optional] 
+**location** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;LOCATION&#x60; type to find out the possible values. | [optional] 
+**seniority_level** | **str** | The level of experience of the project. | [optional] 
+**employment_status** | **str** | The employment status of the project. | [optional] 
+**industry** | **List[str]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;INDUSTRY&#x60; type to find out the possible values. The company industries related to the project. | [optional] 
+**job_function** | **List[str]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_FUNCTION&#x60; type to find out the possible values. The job functions of the project. | [optional] 
 
 ## Example
 
