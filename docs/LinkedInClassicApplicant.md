@@ -7,7 +7,7 @@ Options available when the recipient is a candidate for one of your job postings
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The applicant ID of the recipient. | 
-**messaging_token** | **str** | The messaging token to be retrieved using the &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-jobs-job-id-applicants-applicant-id\&quot;&gt;Get an Applicant&lt;/a&gt; endpoint. | 
+**messaging_token** | **str** | The messaging token to be retrieved using the &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getclassicapplicantbyid\&quot;&gt;Get an Applicant&lt;/a&gt; endpoint. | 
 
 ## Example
 

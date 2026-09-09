@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **str** | The code to solve the checkpoint. Check the AuthenticationCheckpoint response you have already obtained to see what type of code is expected. | 
-**intent_id** | **str** | The ID of the intent to solve. | 
+**intent_id** | **str** | The ID of the intent for which a checkpoint must be solved. | 
 
 ## Example
 
