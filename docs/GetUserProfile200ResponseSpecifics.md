@@ -6,9 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **member_id** | **str** | LinkedIn internal member ID of the user. | [optional] 
+**industry** | **str** | The industry of the user&#39;s current company. | [optional] 
 **can_send_inmail** | **bool** | Whether the user can be reached with inmails. | [optional] 
-**network_distance** | **str** | Network distance to a User.       &#x60;SELF&#x60;: Yourself.       &#x60;FIRST_DEGREE&#x60;: 1st degree connection.       &#x60;SECOND_DEGREE&#x60;: 2nd degree connection (connection of a 1st degree).       &#x60;THIRD_DEGREE&#x60;: 3rd degree connection (connection of a 2nd degree).       &#x60;OUT_OF_NETWORK&#x60;: Unreachable user.&#39; | 
-**relation_request** | [**LinkedInRelationRequest**](LinkedInRelationRequest.md) |  | [optional] 
+**network_distance** | **str** | Network distance to a User.       &#x60;SELF&#x60;: Yourself.       &#x60;FIRST_DEGREE&#x60;: 1st degree connection.       &#x60;SECOND_DEGREE&#x60;: 2nd degree connection (connection of a 1st degree).       &#x60;THIRD_DEGREE&#x60;: 3rd degree connection (connection of a 2nd degree).       &#x60;OUT_OF_NETWORK&#x60;: Unreachable user.&#39; | [optional] 
+**relation_request** | [**LinkedIn1RelationRequest**](LinkedIn1RelationRequest.md) |  | [optional] 
 **relation_request_status** | **str** | The status of the relation request with the user if any. | [optional] 
 **pronoun** | **str** | The pronoun to be used to refer to this user. | [optional] 
 **default_locale** | **str** | Default locale for the user&#39;s profile (POSIX format e.g. en_US, fr_FR...). | [optional] 
@@ -22,17 +23,29 @@ Name | Type | Description | Notes
 **is_open_to_work** | **bool** | Whether the user is open to work. | [optional] 
 **is_saved_lead** | **bool** | Whether the user is a saved lead. | [optional] 
 **is_crm_imported** | **bool** | Whether the user is a CRM imported user. | [optional] 
-**skills** | [**List[LinkedInSkillsInner]**](LinkedInSkillsInner.md) |  | [optional] 
-**experience** | [**List[LinkedInExperienceInner]**](LinkedInExperienceInner.md) |  | [optional] 
-**education** | [**List[LinkedInEducationInner]**](LinkedInEducationInner.md) |  | [optional] 
-**languages** | [**List[LinkedInLanguagesInner]**](LinkedInLanguagesInner.md) |  | [optional] 
-**certifications** | [**List[LinkedInCertificationsInner]**](LinkedInCertificationsInner.md) |  | [optional] 
-**volunteer_experience** | [**List[LinkedInVolunteerExperienceInner]**](LinkedInVolunteerExperienceInner.md) |  | [optional] 
-**projects** | [**List[LinkedInProjectsInner]**](LinkedInProjectsInner.md) |  | [optional] 
-**recommendations** | [**LinkedInRecommendations**](LinkedInRecommendations.md) |  | [optional] 
+**skills** | [**List[LinkedIn1SkillsInner]**](LinkedIn1SkillsInner.md) | A collection of the user&#39;s skills. | [optional] 
+**experience** | [**List[LinkedIn1ExperienceInner]**](LinkedIn1ExperienceInner.md) | A collection of the user&#39;s professionnal experiences. | [optional] 
+**education** | [**List[LinkedIn1EducationInner]**](LinkedIn1EducationInner.md) | A collection of the user&#39;s education. | [optional] 
+**languages** | [**List[LinkedIn1LanguagesInner]**](LinkedIn1LanguagesInner.md) | A collection of the user&#39;s languages. | [optional] 
+**certifications** | [**List[LinkedIn1CertificationsInner]**](LinkedIn1CertificationsInner.md) | A collection of the user&#39;s certifications. | [optional] 
+**volunteer_experience** | [**List[LinkedIn1VolunteerExperienceInner]**](LinkedIn1VolunteerExperienceInner.md) | A collection of the user&#39;s volunteering experiences. | [optional] 
+**projects** | [**List[LinkedIn1ProjectsInner]**](LinkedIn1ProjectsInner.md) | A collection of the user&#39;s projects. | [optional] 
+**recommendations** | [**LinkedIn1Recommendations**](LinkedIn1Recommendations.md) |  | [optional] 
+**interests** | [**LinkedIn1Interests**](LinkedIn1Interests.md) |  | [optional] 
 **throttled_sections** | **List[str]** | A list of sections that are temporary unavailable due to LinkedIn rate limiting. | [optional] 
-**recruiting_profile** | [**LinkedInRecruitingProfile**](LinkedInRecruitingProfile.md) |  | [optional] 
-**messaging_identifier** | **str** | The ID of the Company. | 
+**recruiting_profile** | [**LinkedIn1RecruitingProfile**](LinkedIn1RecruitingProfile.md) |  | [optional] 
+**messaging_identifier** | **str** | The text content of the message, when available. | 
+**is_mutual_contact** | **bool** | Whether the user and the account owner are in each other address book. | 
+**is_close_friend** | **bool** | Whether the user is a close friend of the account owner. | 
+**is_bot** | **bool** | Whether the user is a bot. | 
+**is_support** | **bool** | Whether the user is an official Telegram support account. | 
+**is_scam** | **bool** | Whether the user has been flagged as a scam by Telegram. | 
+**is_fake** | **bool** | Whether the user has been flagged as impersonating another user by Telegram. | 
+**is_restricted** | **bool** | Whether the user is restricted on some platforms. | 
+**restrictions** | [**List[TelegramRestrictionsInner]**](TelegramRestrictionsInner.md) | Restrictions applied to the user, if any. | [optional] 
+**status** | [**TelegramStatus**](TelegramStatus.md) |  | [optional] 
+**common_chats_count** | **float** | Number of chats shared between the user and the account owner. | [optional] 
+**contact_name** | **str** | Name saved by the connected account owner in their WhatsApp address book. | [optional] 
 
 ## Example
 
