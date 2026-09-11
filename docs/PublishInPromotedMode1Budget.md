@@ -1,6 +1,6 @@
 # PublishInPromotedMode1Budget
 
-Leave this field blank if you don't have a choice of budget when posting a job on LinkedIn.
+Leave this field blank if you don't have a choice of budget when posting a job on LinkedIn, or if you have available prepaid job slots.
 
 ## Properties
 

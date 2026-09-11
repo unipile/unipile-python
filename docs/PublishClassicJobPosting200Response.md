@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
-**job_state** | **str** | The current state of the Job posting. | 
+**job_state** | **str** | The new state of the Job posting. | 
 
 ## Example
 

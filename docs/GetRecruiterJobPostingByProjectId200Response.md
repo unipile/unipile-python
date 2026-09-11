@@ -7,15 +7,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
 **product** | **str** |  | 
-**id** | **str** | The budget allocated to the Job posting. | 
-**project_id** | **str** | The budget allocated to the Job posting. | 
-**title** | **str** | The budget allocated to the Job posting. | 
+**id** | **str** | The ID of the Job posting. | 
+**project_id** | **str** | The ID of the project associated with the Job posting. | 
+**title** | **str** | The title of the Job posting. | 
 **company** | [**GetRecruiterJobPostingByProjectId200ResponseCompany**](GetRecruiterJobPostingByProjectId200ResponseCompany.md) |  | 
-**location** | **str** | The budget allocated to the Job posting. | 
-**state** | **str** | The budget allocated to the Job posting. | 
-**workplace_type** | **str** | The budget allocated to the Job posting. | 
-**industries** | **List[Optional[str]]** | The budget allocated to the Job posting. | 
-**job_functions** | **List[Optional[str]]** | The job functions associated with the Job posting. | 
+**location** | **str** | The location of the Job posting. | 
+**state** | **str** | The current state of the Job posting. | 
+**workplace_type** | **str** | The workplace type of the Job posting. | [optional] 
+**industries** | **List[Optional[str]]** | A list of industries associated with the Job posting. | 
+**job_functions** | **List[Optional[str]]** | A list of job functions associated with the Job posting. | 
 **employment_status** | **str** | The employment status of the Job posting. | 
 **experience_level** | **str** | The required level of experience of the Job posting. | 
 **published_at** | **str** | The date on which the Job posting was published. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | [optional] 

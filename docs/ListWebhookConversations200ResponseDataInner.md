@@ -5,16 +5,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**first_attempt** | **bool** |  | 
-**event_type** | **str** |  | 
-**created_at** | **str** | The ID of the Company. | 
-**http_status** | **int** |  | 
-**endpoint_url** | **str** | The ID of the Company. | 
-**response_body** | **str** | The ID of the Company. | 
-**object** | **str** |  | 
-**id** | **str** |  | 
-**endpoint_id** | **str** |  | 
-**event_id** | **str** |  | 
+**first_attempt** | **bool** | Whether this delivery was the first attempt to send the webhook. &#x60;false&#x60; indicates a retry. | 
+**event_type** | **str** | The type of the event that was delivered. | 
+**created_at** | **str** | The date and time at which the delivery attempt was made, in ISO 8601 format. | 
+**http_status** | **int** | The HTTP status code returned by the endpoint. | 
+**endpoint_url** | **str** | The URL the webhook was delivered to. | 
+**response_body** | **str** | The text content of the message, when available. | 
+**latency_ms** | **int** | The time between the event occurrence and this delivery attempt, in milliseconds. | 
+**response_time_ms** | **int** | The time between the event occurrence and this delivery attempt, in milliseconds. | 
+**object** | **str** | The type of the returned object. | 
+**id** | **str** | Unique identifier of the webhook conversation. | 
+**endpoint_id** | **str** | Unique identifier of the webhook endpoint the event was delivered to. | 
+**event_id** | **str** | Unique identifier of the event that was delivered. | 
 
 ## Example
 
