@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**List[PeopleSearch2DataInner]**](PeopleSearch2DataInner.md) |  | 
-**total_count** | **float** | Total number of results if supported by the endpoint. | [optional] 
+**total_count** | **float** | Total number of results if supported by the provider. | [optional] 
 **next_cursor** | **str** | Cursor to get the next page of results if supported. Else use &#x60;offset&#x60;. | [optional] 
 
 ## Example

@@ -1,15 +1,15 @@
 # UpdateUserProfileRequestSpecificsAllOfLinkedin
 
-Specific options to apply if the provider of the targeted account is Linkedin
+LinkedIn profile mutations. Omitted properties remain unchanged; values replace existing values; empty strings clear supported text fields; null deletes nullable singleton resources.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**skills** | [**List[UpdateUserProfileRequestSpecificsAllOfLinkedinSkillsInner]**](UpdateUserProfileRequestSpecificsAllOfLinkedinSkillsInner.md) | List of skills to add to the profile. | [optional] 
-**skills_follow** | **bool** | Check \&quot;Follow this skill to keep up with relevant content.\&quot; | [optional] [default to False]
+**skills** | [**List[UpdateUserProfileRequestSpecificsAllOfLinkedinSkillsInner]**](UpdateUserProfileRequestSpecificsAllOfLinkedinSkillsInner.md) | Skills to add directly to the profile. This field is independent from &#x60;experience.skills&#x60; and &#x60;education.skills&#x60;; only send the field that matches the intended target. Existing skills remain untouched and removing skills is not supported by the provider. | [optional] 
+**skills_follow** | **bool** | Whether to follow the profile-level skills supplied in &#x60;skills&#x60;. It does not apply to experience or education skills. | [optional] [default to False]
 **postal_code** | **str** | Postal code associated with the location. | [optional] 
-**headline** | **str** | Headline of the profile. | [optional] 
+**headline** | **str** | Headline. Omit it to leave it unchanged or use an empty string to clear it. | [optional] 
 **experience** | [**UpdateUserProfileRequestSpecificsAllOfLinkedinExperience**](UpdateUserProfileRequestSpecificsAllOfLinkedinExperience.md) |  | [optional] 
 **education** | [**UpdateUserProfileRequestSpecificsAllOfLinkedinEducation**](UpdateUserProfileRequestSpecificsAllOfLinkedinEducation.md) |  | [optional] 
 **picture_options** | [**UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions**](UpdateUserProfileRequestSpecificsAllOfLinkedinPictureOptions.md) |  | [optional] 
