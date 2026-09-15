@@ -7,8 +7,8 @@ The user needs to solve a captcha checkpoint.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
-**public_key** | **str** | The ID of the Company. | 
-**data** | **str** | The ID of the Company. | 
+**public_key** | **str** | The text content of the message, when available. | 
+**data** | **str** | The text content of the message, when available. | 
 
 ## Example
 

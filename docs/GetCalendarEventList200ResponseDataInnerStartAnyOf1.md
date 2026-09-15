@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Indicates a date-only value (for all-day events). | 
 **var_date** | **str** | The date. Uses ISO 8601 date format (YYYY-MM-DD). | 
+**timezone** | **str** | The IANA timezone in which the date is expressed (e.g. &#x60;Europe/Paris&#x60;). | [optional] 
 
 ## Example
 

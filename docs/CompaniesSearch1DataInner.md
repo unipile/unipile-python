@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **lists_count** | **float** | The number of lists you own on which the Company appears. | 
 **notes_count** | **float** | The number of notes you own about the Company. | 
 **website** | **str** | The webiste URL of the Company. | [optional] 
-**founded_on** | **float** | The date on which the Company was founded. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | [optional] 
+**founded_on** | **float** | The year in which the Company was founded. | [optional] 
 **has_been_saved** | **bool** | Whether the Company has been saved to a list. | 
 **is_starred** | **bool** | Whether the Company is on starred state. | 
 

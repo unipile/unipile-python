@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **job_title** | [**CreateClassicJobPostingDraftRequestJobTitle**](CreateClassicJobPostingDraftRequestJobTitle.md) |  | 
 **company** | [**CreateClassicJobPostingDraftRequestCompany**](CreateClassicJobPostingDraftRequestCompany.md) |  | 
 **workplace_type** | **str** | The workplace type of the job. | 
-**location** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;JOB_LOCATION&#x60; type to find out the possible values. | 
+**location** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getclassicsearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;LOCATION&#x60; type to find out the possible values. | 
 **employment_status** | **str** | The employment status of the job. | 
 **description** | **str** | The job description. You can use HTML tags to structure your content. | 
-**skills** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;SKILL&#x60; type to find out the possible values. The skills related to the job posting. | [optional] 
+**skills** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getclassicsearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;SKILL&#x60; type to find out the possible values. The skills related to the job posting. | [optional] 
 **apply_method** | [**CreateClassicJobPostingDraftRequestApplyMethod**](CreateClassicJobPostingDraftRequestApplyMethod.md) |  | 
 **screening_questions** | [**List[CreateClassicJobPostingDraftRequestScreeningQuestionsInner]**](CreateClassicJobPostingDraftRequestScreeningQuestionsInner.md) | The questions to be asked to the applicants. | [optional] 
 **rejection_settings** | [**CreateClassicJobPostingDraftRequestRejectionSettings**](CreateClassicJobPostingDraftRequestRejectionSettings.md) |  | [optional] 

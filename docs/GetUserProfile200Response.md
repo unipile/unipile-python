@@ -9,15 +9,16 @@ Name | Type | Description | Notes
 **object** | **str** |  | 
 **type** | **str** | Type of the user       - &#x60;individual&#x60; is an individual user.       - &#x60;organization&#x60; is an organization / business entity.       - &#x60;other&#x60; is an other type of entity. | 
 **public_identifier** | **str** | Public identifier of the user for the provider. Usually a shareable tag visible in urls and profiles.  | [optional] 
-**display_name** | **str** | Display name of the user. | 
+**display_name** | **str** | Display name of the user as exposed by the provider. | 
+**first_name** | **str** | First name of the user. | [optional] 
+**last_name** | **str** | Last name of the user. | [optional] 
 **profile_url** | **str** | Public url to the profile of the user. | [optional] 
 **public_picture_url** | **str** | Public url to the profile picture of the user. | [optional] 
 **private_picture_download_url** | **str** | Private url to download the profile picture of the user. This url require authentication. | [optional] 
 **description** | **str** | Description of the user. | [optional] 
+**specifics** | [**GetUserProfile200ResponseSpecifics**](GetUserProfile200ResponseSpecifics.md) |  | 
 **background_picture_url** | **str** | URL of the user&#39;s background / banner picture. | [optional] 
 **public_picture_url_large** | **str** | URL of the user&#39;s public picture in large size. | [optional] 
-**first_name** | **str** | First name of the user. | [optional] 
-**last_name** | **str** | Last name of the user. | [optional] 
 **birth_date** | **str** | Birth date of the user. | [optional] 
 **addresses** | **List[Optional[str]]** | List of user addresses. | [optional] 
 **emails** | **List[str]** | List of user email addresses. | [optional] 
@@ -26,16 +27,22 @@ Name | Type | Description | Notes
 **bio** | **str** | Biography of the user. | [optional] 
 **location** | **str** | Location of the user. | [optional] 
 **muted_until** | **str** | Date and time until when the user is muted.  | [optional] 
-**following** | **bool** | Whether the user is followed by the current user. | [optional] 
+**is_following** | **bool** | Whether the user is followed by the current user. | [optional] 
 **followers_count** | **float** | Number of followers of the user. | [optional] 
 **following_count** | **float** | Number of users followed by the user. | [optional] 
 **relations_count** | **float** | Number of relations of the user. | [optional] 
 **shared_relations_count** | **float** | Number of users that have a relation with the given profile and with the account owner. | [optional] 
 **shared_followers_count** | **float** | Number of following users that follows the given profile. | [optional] 
 **is_blocked** | **bool** | Whether the user is blocked by the current user. | 
+**is_contact** | **bool** | Whether the user is saved in the address book of the account owner (if supported by the provider). | [optional] 
+**is_verified** | **bool** | Whether the user is verified by the provider. | [optional] 
+**is_premium** | **bool** | Whether the user has a premium subscription with the provider. | [optional] 
+**is_deleted** | **bool** | Whether the user account was deleted or deactivated. | [optional] 
+**is_online** | **bool** | Whether the user is currently online (if supported by the provider). | [optional] 
+**last_online_at** | **str** | Date and time when the user was last online (if supported by the provider). | [optional] 
+**language** | **str** | Language of the user, as a lowercase ISO 639-1 code (e.g. &#x60;fr&#x60;). | [optional] 
 **provider** | **str** | The provider&#39;s of the Account.     - &#x60;mock&#x60; is mock.     - &#x60;whatsapp&#x60; is WhatsApp.     - &#x60;linkedin&#x60; is LinkedIn.     - &#x60;instagram&#x60; is Instagram.     - &#x60;google&#x60; is Google.     - &#x60;outlook&#x60; is Outlook.     - &#x60;telegram&#x60; is Telegram.     - &#x60;imap&#x60; is IMAP. | 
-**specifics** | [**GetUserProfile200ResponseSpecifics**](GetUserProfile200ResponseSpecifics.md) |  | 
-**social_handles** | [**GetEmailContactsList200ResponseDataInnerSocialHandles**](GetEmailContactsList200ResponseDataInnerSocialHandles.md) |  | [optional] 
+**social_handles** | [**GetContactsList200ResponseDataInnerSocialHandles**](GetContactsList200ResponseDataInnerSocialHandles.md) |  | [optional] 
 **websites** | **List[str]** | List of user websites. | [optional] 
 
 ## Example
