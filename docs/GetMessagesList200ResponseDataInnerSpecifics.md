@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **str** | The category of the message: a regular message, an email, a connection invitation, or an InMail lifecycle event. | 
 **subject** | **str** | The subject of the message. | [optional] 
 
 ## Example

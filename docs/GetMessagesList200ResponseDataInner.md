@@ -20,15 +20,18 @@ Name | Type | Description | Notes
 **is_pinned** | **bool** | Is the message pinned. Pinned messages are usually displayed at the top of the chat. | 
 **is_event** | **bool** | Is the message an event. Events are special messages that are not displayed in the chat but can be used to trigger actions. | 
 **is_mentionned** | **bool** | Is the message mentionning the current user. Usually to notify. | 
-**event_type** | **float** | The type of message event.     0 : Unknown (Not implemented)     1 : Chat name update     2 : Chat description update     3 : New participant added to the chat group     4 : Participant kicked or left the chat group     5 : A message is pinned     6 : Permissions have been updated     7 : Participant was promoted or demoted     8 : Reaction     9 : Call Missed     10 : Call Started     11 : Call Ended     12 : Call Rejected     13 : Scheduled Call Created     14 : Scheduled Call Cancelled     15 : Scheduled Call Started     16 : Announcement      | [optional] 
-**event_metadata** | [**GetMessagesList200ResponseDataInnerEventMetadata**](GetMessagesList200ResponseDataInnerEventMetadata.md) |  | [optional] 
-**reactions_counter** | [**List[GetMessagesList200ResponseDataInnerReactionsCounterInner]**](GetMessagesList200ResponseDataInnerReactionsCounterInner.md) | A list of reactions to the element. | 
-**sender** | [**GetMessagesList200ResponseDataInnerSender**](GetMessagesList200ResponseDataInnerSender.md) |  | [optional] 
+**view_mode** | **str** | How the ephemeral content of this message may be viewed: &#x60;once&#x60; for a single opening, &#x60;replayable&#x60; when the sender allowed it to be opened again.     Absent when the message is not ephemeral at all - a provider that does not expose the notion, or content the sender chose to keep in the conversation.     Depending on the provider the media may never be delivered: WhatsApp only ever serves it to the phone that owns the account, in which case the attachment is reported with &#x60;is_unavailable&#x60; and cannot be downloaded. | [optional] 
+**event_type** | **float** | The type of message event.     0 : Unknown (Not implemented)     1 : Chat name update     2 : Chat description update     3 : New participant added to the chat group     4 : Participant kicked or left the chat group     5 : A message is pinned     6 : Permissions have been updated     7 : Participant was promoted or demoted     8 : Reaction     9 : Call Missed     10 : Call Started     11 : Call Ended     12 : Call Rejected     13 : Scheduled Call Created     14 : Scheduled Call Cancelled     15 : Scheduled Call Started     16 : Announcement     17 : Content mention      | [optional] 
+**event_metadata** | [**GetChatsList200ResponseDataInnerLastMessageAnyOf1EventMetadata**](GetChatsList200ResponseDataInnerLastMessageAnyOf1EventMetadata.md) |  | [optional] 
+**content_relation** | [**ContentRelation**](ContentRelation.md) |  | [optional] 
+**reactions_counter** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1ReactionsCounterInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1ReactionsCounterInner.md) | A list of reactions to the element. | 
 **provider** | **str** | The provider&#39;s of the Account.     - &#x60;mock&#x60; is mock.     - &#x60;whatsapp&#x60; is WhatsApp.     - &#x60;linkedin&#x60; is LinkedIn.     - &#x60;instagram&#x60; is Instagram.     - &#x60;google&#x60; is Google.     - &#x60;outlook&#x60; is Outlook.     - &#x60;telegram&#x60; is Telegram.     - &#x60;imap&#x60; is IMAP. | 
-**attachments** | [**List[GetMessagesList200ResponseDataInnerAttachmentsInner]**](GetMessagesList200ResponseDataInnerAttachmentsInner.md) | List of message attachments. | 
+**attachments** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner.md) | List of message attachments. | 
+**hyperlinks** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1HyperlinksInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1HyperlinksInner.md) | List of message hyperlinks. | 
+**specifics** | [**GetMessagesList200ResponseDataInnerSpecifics**](GetMessagesList200ResponseDataInnerSpecifics.md) |  | [optional] 
+**sender** | [**GetMessagesList200ResponseDataInnerSender**](GetMessagesList200ResponseDataInnerSender.md) |  | [optional] 
 **quoted** | [**GetMessagesList200ResponseDataInnerQuoted**](GetMessagesList200ResponseDataInnerQuoted.md) |  | [optional] 
 **forwarded** | [**GetMessagesList200ResponseDataInnerForwarded**](GetMessagesList200ResponseDataInnerForwarded.md) |  | [optional] 
-**specifics** | [**GetMessagesList200ResponseDataInnerSpecifics**](GetMessagesList200ResponseDataInnerSpecifics.md) |  | [optional] 
 
 ## Example
 
