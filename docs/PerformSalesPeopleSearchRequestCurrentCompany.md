@@ -1,13 +1,13 @@
 # PerformSalesPeopleSearchRequestCurrentCompany
 
-    Native filter : Company / Current company   
+You can also use company names in plain text format.    Native filter : Company / Current company   
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**include** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;COMPANY or ACCOUNT_LIST&#x60; type to find out the possible values. | [optional] 
-**exclude** | **List[str]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-sales-navigator-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;COMPANY or ACCOUNT_LIST&#x60; type to find out the possible values. | [optional] 
+**include** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getsalessearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;COMPANY or ACCOUNT_LIST&#x60; type to find out the possible values. | [optional] 
+**exclude** | **List[str]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getsalessearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;COMPANY or ACCOUNT_LIST&#x60; type to find out the possible values. | [optional] 
 
 ## Example
 

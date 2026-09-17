@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **object** | **str** |  | 
 **id** | **str** | The unique identifier of the attachment for the provider. | 
 **file_size** | **float** | The size of the attachment in bytes. | [optional] 
+**is_inline** | **bool** | Is the attachment inline in the content. | 
 **is_unavailable** | **bool** | The attachment is not available for download because it was removed from provider servers. | [optional] 
 **mimetype** | **str** | The MIME type of the attachment. | 
 **url** | **str** | The URL of the shared content. | 
