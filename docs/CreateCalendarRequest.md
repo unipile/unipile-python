@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **str** | Name of the new calendar | 
 **description** | **str** | Description of the calendar | [optional] 
 **background_color** | **str** | Background color of the calendar in hexadecimal format. | [optional] 
+**timezone** | **str** | Timezone used in this calendar (IANA, e.g. &#x60;Europe/Paris&#x60;). | [optional] 
 
 ## Example
 

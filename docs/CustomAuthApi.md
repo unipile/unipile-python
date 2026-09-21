@@ -4,9 +4,168 @@ All URIs are relative to *https://api.unipile.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**request_checkpoint**](CustomAuthApi.md#request_checkpoint) | **POST** /v2/auth/checkpoint/request | Request Checkpoint
+[**resend_checkpoint**](CustomAuthApi.md#resend_checkpoint) | **POST** /v2/auth/checkpoint/resend | Resend Checkpoint Notification or Code
 [**solve_checkpoint**](CustomAuthApi.md#solve_checkpoint) | **POST** /v2/auth/checkpoint | Solve a Checkpoint
 [**start_auth_intent**](CustomAuthApi.md#start_auth_intent) | **POST** /v2/auth/intent | Start Auth Intent
 
+
+# **request_checkpoint**
+> RequestCheckpoint200Response request_checkpoint(request_checkpoint_request)
+
+Request Checkpoint
+
+Request a checkpoint for the given authentication intent. This can be used to request a different type of checkpoint if the first one was not successful.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.request_checkpoint200_response import RequestCheckpoint200Response
+from unipile.models.request_checkpoint_request import RequestCheckpointRequest
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.CustomAuthApi(api_client)
+    request_checkpoint_request = unipile.RequestCheckpointRequest() # RequestCheckpointRequest | 
+
+    try:
+        # Request Checkpoint
+        api_response = api_instance.request_checkpoint(request_checkpoint_request)
+        print("The response of CustomAuthApi->request_checkpoint:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling CustomAuthApi->request_checkpoint: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **request_checkpoint_request** | [**RequestCheckpointRequest**](RequestCheckpointRequest.md)|  | 
+
+### Return type
+
+[**RequestCheckpoint200Response**](RequestCheckpoint200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **resend_checkpoint**
+> resend_checkpoint(resend_checkpoint_request)
+
+Resend Checkpoint Notification or Code
+
+Resend the notification or code for the current checkpoint of the given authentication intent. Use Request Checkpoint to request a different checkpoint.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.resend_checkpoint_request import ResendCheckpointRequest
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.CustomAuthApi(api_client)
+    resend_checkpoint_request = unipile.ResendCheckpointRequest() # ResendCheckpointRequest | 
+
+    try:
+        # Resend Checkpoint Notification or Code
+        api_instance.resend_checkpoint(resend_checkpoint_request)
+    except Exception as e:
+        print("Exception when calling CustomAuthApi->resend_checkpoint: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resend_checkpoint_request** | [**ResendCheckpointRequest**](ResendCheckpointRequest.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **solve_checkpoint**
 > SolveCheckpoint200Response solve_checkpoint(solve_checkpoint_request)
@@ -93,7 +252,7 @@ Name | Type | Description  | Notes
 
 Start Auth Intent
 
-Start an auth intent for a provider. This might require handling of checkpoints and oauth flows depending on the provider. Use <a href="https://developer.unipile.com/v2.0/reference/post_v2-auth-link">Create Auth Link</a> to let Unipile handle everything for you.
+Start an auth intent for a provider. This might require handling of checkpoints and oauth flows depending on the provider. Use <a href="https://developer.unipile.com/v2.0/reference/createauthlink">Create Auth Link</a> to let Unipile handle everything for you.
 
 ### Example
 

@@ -6,7 +6,7 @@ Social handles of the User.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**twitter** | **str** | The ID of the Company. | [optional] 
+**twitter** | **str** | The text content of the message, when available. | [optional] 
 
 ## Example
 

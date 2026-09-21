@@ -7,17 +7,17 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The ID of the Company for the provider. | 
 **name** | **str** | The name of the Company. | 
-**public_identifier** | **str** | The public identifier of the Company. | 
-**profile_url** | **str** | The public profile URL of the Company. | 
+**profile_url** | **str** | The public profile URL of the Company. | [optional] 
+**public_picture_url** | **str** | The public picture URL of the Company. | [optional] 
+**public_identifier** | **str** | The public identifier of the Company. | [optional] 
+**followers_count** | **float** | The number of followers of the Company. | [optional] 
+**is_following** | **bool** | Whether the current user is following the Company. | [optional] 
 **object** | **str** |  | 
 **description** | **str** | The description of the Company. | [optional] 
-**public_picture_url** | **str** | The public picture URL of the Company. | [optional] 
 **tagline** | **str** | The tagline of the Company. | [optional] 
-**followers_count** | **float** | The number of followers of the Company. | 
 **is_school** | **bool** | Whether the Company is a school. | 
 **is_active** | **bool** | Whether the Company is currently in activity. | 
 **is_archived** | **bool** | Whether the Company has been archived. | 
-**is_following** | **bool** | Whether the current user is following the Company. | 
 **is_employee** | **bool** | Whether the current user is an employee of the Company. | 
 **is_verified** | **bool** | Whether the Company has been verified. | 
 **is_claimable** | **bool** | Whether the Company can be claimed. | 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
 **product** | **str** |  | 
-**last_viewed_at** | **float** | The number of comments to the post. &#x60;null&#x60; if counter is hidden. | 
+**last_viewed_at** | **str** | The text content of the message, when available. | 
 **new_results_count** | **float** | The number of comments to the post. &#x60;null&#x60; if counter is hidden. | 
 
 ## Example
