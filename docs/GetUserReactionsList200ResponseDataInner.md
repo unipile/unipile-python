@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
 **value** | **str** | Value of the reaction. Usually an emoji unicode. | 
-**sender** | [**GetMessageReactionsList200ResponseDataInnerSender**](GetMessageReactionsList200ResponseDataInnerSender.md) |  | 
 **is_sender** | **bool** | Is the current user the sender of the reaction. | 
+**sender** | [**GetChatsList200ResponseDataInnerParticipantsInnerUser**](GetChatsList200ResponseDataInnerParticipantsInnerUser.md) |  | 
 **parent_post** | [**GetUserCommentsList200ResponseDataInnerParentPost**](GetUserCommentsList200ResponseDataInnerParentPost.md) |  | 
 
 ## Example
