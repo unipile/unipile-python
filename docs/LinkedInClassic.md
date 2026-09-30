@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **company_topic** | **str** | The topic for a conversation with a company. | [optional] [default to 'SERVICE_REQUEST']
 **relation_request_id** | **str** | If you&#39;d like to start a conversation with a user you received a relation request from, the ID of the request is mandatory. | [optional] 
 **applicant** | [**LinkedInClassicApplicant**](LinkedInClassicApplicant.md) |  | [optional] 
+**shared_content** | [**LinkedInClassicSharedContent**](LinkedInClassicSharedContent.md) |  | [optional] 
 
 ## Example
 
