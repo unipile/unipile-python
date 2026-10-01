@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **object** | **str** |  | 
 **id** | **str** | The ID of the folder for the provider. | 
 **name** | **str** | The name of the folder. | 
-**role** | **str** | The system role of the folder. | [optional] 
+**role** | **str** | The system role of the folder. [Learn more about roles](https://developer.unipile.com/v2.0/docs/manage-mailboxes#about-roles). | [optional] 
 **total_count** | **float** | The total number of emails in the folder. For Gmail, the total number of emails assigned with this label. | 
 **unread_count** | **float** | The number of unread emails in the folder. For Gmail, the number of unread emails assigned with this label. | 
 **background_color** | **str** | (Gmail Only) The background color of the folder. | [optional] 

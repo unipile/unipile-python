@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **object** | **str** |  | 
 **id** | **str** | The ID of the email. | 
 **message_id** | **str** | The Message-ID header value of the email. Use &#x60;id&#x60; in Unipile requests. | 
-**thread_id** | **str** | The ID of the thread the email belongs to. | [optional] 
+**thread_id** | **str** | The thread identifier. For IMAP, Unipile uses the server-provided thread ID when available. Otherwise, it uses the entire References header, or In-Reply-To, or Message-ID, in that order. A header-derived value may differ between messages in the same conversation and may be absent when none of these headers exists. | [optional] 
 **body** | **str** | The body of the email. | 
 **snippet** | **str** | The snippet (preview) of the email. | 
 **subject** | **str** | The subject of the email. | 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **bcc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | The list of attendees that the email was BCC&#39;d to. | [optional] 
 **reply_to** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | The list of attendees that the replies should be sent to. | [optional] 
 **var_date** | **str** | The date the email was sent. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 
-**attachments** | [**List[GetMessagesList200ResponseDataInnerQuotedAttachmentsInner]**](GetMessagesList200ResponseDataInnerQuotedAttachmentsInner.md) | The attachments of the email. | 
+**attachments** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner.md) | The attachments of the email. | 
 **folders** | **List[Optional[str]]** | The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email. | 
 **categories** | **List[str]** | List of categories assigned to the email. | [optional] 
 **is_unread** | **bool** | Is the email unread. | 
