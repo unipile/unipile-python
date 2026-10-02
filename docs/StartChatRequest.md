@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **text** | **str** | The textual content of the first message to be sent in the chat. It&#39;s recommended not to use HTML or Markdown. Use empty string to start a chat without a message (if supported by the provider). | 
 **name** | **str** | A custom name for the chat. Some providers allow custom names only on groups. Default is made of participant names. | [optional] 
 **users_ids** | [**StartChatRequestUsersIds**](StartChatRequestUsersIds.md) |  | 
-**attachments** | [**List[MessageFile]**](MessageFile.md) | The list of file attachments to the message to be sent in the chat. | [optional] 
+**attachments** | [**List[MessageFile]**](MessageFile.md) | The list of attachments (uploaded files or a shared post or job) to be sent with the message. | [optional] 
 **specifics** | [**StartChatRequestSpecifics**](StartChatRequestSpecifics.md) |  | [optional] 
 
 ## Example

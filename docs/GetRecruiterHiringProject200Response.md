@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **id** | **str** | The ID of the Project. | 
 **name** | **str** | The name of the Project. | 
 **readonly** | **bool** | Whether the Project is read only. | 
+**archived** | **bool** | Whether the Project has been archived. | 
 **created_at** | **str** | The date on which the Project was created. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 
 **last_accessed_at** | **str** | The date on which the Project was last accessed. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | [optional] 
 **last_modified_at** | **str** | The date on which the Project was last modified. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 

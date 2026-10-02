@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **description** | **str** | Description of the media. | [optional] 
 **type** | **str** |  | 
 **url** | **str** | URL of the link. | 
-**thumbnail** | [**SendEmailRequestAttachmentsInner**](SendEmailRequestAttachmentsInner.md) |  | [optional] 
+**thumbnail** | [**UpdateUserProfileRequestPicture**](UpdateUserProfileRequestPicture.md) |  | [optional] 
 
 ## Example
 
