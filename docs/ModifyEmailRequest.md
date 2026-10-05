@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**folders_ids** | **List[Optional[str]]** | The ID(s) of the folder(s) to apply, overwriting all folders previously associated with the Email. Outlook emails can be in a single folder only. Google allows a single email to appear in multiple folders. | [optional] 
+**folders_ids** | **List[Optional[str]]** | The ID(s) of the folder(s) to apply, overwriting all folders previously associated with the Email. Outlook emails can be in a single folder only. Google allows a single email to appear in multiple folders. For Gmail, the UNREAD system label represents read status, so it is excluded from folders and ignored here; use the mark-as-read or mark-as-unread operation to change that status. | [optional] 
 **specifics** | [**ModifyEmailRequestSpecifics**](ModifyEmailRequestSpecifics.md) |  | [optional] 
 
 ## Example
