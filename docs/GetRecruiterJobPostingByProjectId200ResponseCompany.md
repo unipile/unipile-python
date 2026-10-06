@@ -1,15 +1,15 @@
 # GetRecruiterJobPostingByProjectId200ResponseCompany
 
-The budget allocated to the Job posting.
+The company on whose behalf the Job posting was published.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The ID of the Company. | 
-**name** | **str** | The budget allocated to the Job posting. | 
-**public_picture_url** | **str** | The budget allocated to the Job posting. | [optional] 
-**profile_url** | **str** | The budget allocated to the Job posting. | [optional] 
+**id** | **str** | The text content of the message, when available. | 
+**name** | **str** | The name of the company. | 
+**public_picture_url** | **str** | A link to the picture of the company. | [optional] 
+**profile_url** | **str** | A link to the public profile of the company. | [optional] 
 
 ## Example
 

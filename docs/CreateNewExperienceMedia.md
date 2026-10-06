@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **title** | **str** | Title of the media. | [optional] 
 **description** | **str** | Description of the media. | [optional] 
 **type** | **str** |  | 
-**attachment** | [**SendEmailRequestAttachmentsInner**](SendEmailRequestAttachmentsInner.md) |  | 
+**attachment** | [**UpdateUserProfileRequestPicture**](UpdateUserProfileRequestPicture.md) |  | 
 **url** | **str** | URL of the link. | 
-**thumbnail** | [**SendEmailRequestAttachmentsInner**](SendEmailRequestAttachmentsInner.md) |  | [optional] 
+**thumbnail** | [**UpdateUserProfileRequestPicture**](UpdateUserProfileRequestPicture.md) |  | [optional] 
 
 ## Example
 

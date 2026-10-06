@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Indicates a date-time value. | 
 **date_time** | **str** | The date and time. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SSZ). | 
+**timezone** | **str** | The IANA timezone in which the date and time is expressed (e.g. &#x60;Europe/Paris&#x60;). Defaults to UTC when omitted. | [optional] 
 
 ## Example
 
