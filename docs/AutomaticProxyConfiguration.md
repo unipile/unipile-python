@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country** | **str** | An ISO 3166-1 A-2 country code to be set as automatic proxy&#39;s location. | [optional] 
 **ip** | **str** | An IPv4 address to infer proxy&#39;s location. | [optional] 
+**allow_country_fallback** | **bool** | Whether a proxy from another country may be used when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country. If the selected proxy later fails and no replacement is available there, the account enters Service interruption. Rotation to another proxy in that country remains allowed. | [optional] [default to True]
 
 ## Example
 

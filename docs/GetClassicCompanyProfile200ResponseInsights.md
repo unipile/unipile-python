@@ -6,7 +6,7 @@ Insights about the company.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**headcount** | **float** | The number of employees of the Company. | 
+**headcount** | **float** | The number of employees of the Company. | [optional] 
 **headcount_range** | [**GetClassicCompanyProfile200ResponseInsightsHeadcountRange**](GetClassicCompanyProfile200ResponseInsightsHeadcountRange.md) |  | [optional] 
 **heacount_growth** | [**List[GetClassicCompanyProfile200ResponseInsightsHeacountGrowthInner]**](GetClassicCompanyProfile200ResponseInsightsHeacountGrowthInner.md) | A list of time markers to create a chart showing the evolution of the number of employees. | [optional] 
 **growth_periods** | [**List[GetClassicCompanyProfile200ResponseInsightsGrowthPeriodsInner]**](GetClassicCompanyProfile200ResponseInsightsGrowthPeriodsInner.md) | A list of time markers to create a chart showing the evolution of the number of employees. | [optional] 

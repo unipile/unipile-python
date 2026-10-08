@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **filename** | **str** | Name of the file (including extension). | 
 **metadata** | [**MessageFileMetadata**](MessageFileMetadata.md) |  | [optional] 
 **send_mode** | **str** | Defines how the attachment should be sent, if the provider supports multiple modes.             Omitted: use the provider’s native default behavior.             - &#x60;file&#x60; send as a regular uploaded file.             - &#x60;native&#x60; send as a native media (displayed picture, voice note, recorded video, etc.) | [optional] [default to 'native']
+**voice_note** | **bool** | Deprecated compatibility flag for audio attachments. Use &#x60;send_mode: \&quot;native\&quot;&#x60; instead. | [optional] 
 
 ## Example
 

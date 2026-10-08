@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
 **id** | **str** | The ID of the draft. | 
-**thread_id** | **str** | The ID of the thread the draft belongs to. | [optional] 
+**thread_id** | **str** | The ID of the thread the draft belongs to. For IMAP drafts, this field is present only when the server provides a native thread ID. | [optional] 
 **body** | **str** | The body of the draft. | 
 **snippet** | **str** | The snippet (preview) of the draft. | 
 **subject** | **str** | The subject of the draft. | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **cc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | The list of attendees that the email should be CC&#39;d to. | [optional] 
 **bcc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | The list of attendees that the email should be BCC&#39;d to. | [optional] 
 **reply_to** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | The list of attendees that the replies should be sent to. | [optional] 
-**attachments** | [**List[GetMessagesList200ResponseDataInnerQuotedAttachmentsInner]**](GetMessagesList200ResponseDataInnerQuotedAttachmentsInner.md) | The attachments of the draft. | 
+**attachments** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner.md) | The attachments of the draft. | 
 **folders** | **List[Optional[str]]** | The folder the draft is in. For Gmail, the labels assigned to the draft. | 
 **categories** | **List[str]** | List of categories assigned to the draft. | [optional] 
 

@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **min_expectation** | **float** | A minimum expectation. | [optional] 
 **max_expectation** | **float** | A maximum expectation. | [optional] 
 **suggested_value** | **str** | A suggested value. | 
-**choices** | **List[str]** | A list of choices. | 
-**expected_choices** | **List[str]** | A list of ideal choices. | 
+**choices** | **List[Optional[str]]** | A list of choices. | 
+**expected_choices** | **List[Optional[str]]** | A list of ideal choices. | 
 
 ## Example
 
