@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **str** | Name of the certification. | 
-**organization** | [**LinkedInCertificationsInnerOrganization**](LinkedInCertificationsInnerOrganization.md) |  | 
+**organization** | [**LinkedIn1CertificationsInnerOrganization**](LinkedIn1CertificationsInnerOrganization.md) |  | 
 **issued_on** | **str** | Date the certification was issued in MM/DD/YYYY format. | [optional] 
 **expires_on** | **str** | Expiration date of the certification in MM/DD/YYYY format. | [optional] 
 **license** | **str** | License identifier. | [optional] 

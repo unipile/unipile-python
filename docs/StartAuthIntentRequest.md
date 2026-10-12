@@ -5,15 +5,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**provider** | **str** | The provider to authenticate with. | 
+**provider** | **str** | The provider to connect with UniLogin. | 
 **credentials** | [**Instagram1Credentials**](Instagram1Credentials.md) |  | 
-**config** | [**Instagram1Config**](Instagram1Config.md) |  | [optional] 
-**user_agent** | **str** | If encountering disconnection issues, enter the exact user agent of the browser on which the account has been connected before the &#x60;li_at&#x60; retrieval. You can easily get it in the browser&#39;s console with this command : &#x60;console.log(navigator.userAgent)&#x60; | [optional] 
+**config** | [**StartAuthIntentRequestAnyOf1Config**](StartAuthIntentRequestAnyOf1Config.md) |  | [optional] 
 **user_timezone** | **str** | The time zone of the current user can be used on a few specific features (e.g. scheduled actions). Setting it at authentication avoids having to do it on a case-by-case basis later on. | [optional] 
+**user_language** | **str** | Primary browser language captured with the session cookies. | [optional] 
+**user_languages** | **List[str]** | Ordered browser language preferences captured with the session cookies. | [optional] 
 **oauth_callback_redirect_uri** | **str** | The URL to redirect to after the user has authenticated using the Provider&#39;s oAuth screen. | 
 **login_hint** | **str** | Uses the hint to simplify the login flow either by prefilling the email / username / phone number field in the authentication form. | [optional] 
-**state** | **str** | State data sent in the &#x60;account.add&#x60; / &#x60;account.reconnect&#x60; webhook payload after the authentication process. | [optional] 
-**account_id** | **str** | The ID of the Account to re-authenticate. Must be a disconnected account, and &#x60;provider&#x60; must match the provider of the account. If not specified, will link as new account. | [optional] 
+**account_scope_id** | **str** | The Scope assigned to a newly linked Account. | [optional] 
+**state** | **str** | State data sent in the account.add or account.reconnect webhook after completion. | [optional] 
+**account_id** | **str** | The existing LinkedIn or Instagram Account to reconnect. Omit it to link a new Account. | [optional] 
+**unilogin** | **bool** | Use the UniLogin extension instead of submitting credentials. | 
 
 ## Example
 

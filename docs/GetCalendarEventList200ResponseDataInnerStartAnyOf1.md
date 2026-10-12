@@ -7,7 +7,8 @@ A date.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | Indicates a date-only value (for all-day events). | 
-**var_date** | **str** | The date. Uses ISO 8601 date format (YYYY-MM-DD). | 
+**var_date** | **date** | The date. Must use a supported date format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). | 
+**timezone** | **str** | The IANA timezone in which the date is expressed (e.g. &#x60;Europe/Paris&#x60;). | [optional] 
 
 ## Example
 

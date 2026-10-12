@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **custom_proxy** | [**CustomProxy1**](CustomProxy1.md) |  | [optional] 
 **auto_proxy_config** | [**AutomaticProxyConfiguration**](AutomaticProxyConfiguration.md) |  | [optional] 
-**allow_methods** | **List[str]** | The authentication methods to show in the hosted auth.           &#x60;credentials&#x60; : Credentials Authentication           &#x60;cookies&#x60; : Cookies Authentication          | [optional] [default to ["credentials"]]
+**allow_methods** | **List[str]** | The authentication methods to show in the hosted auth.           &#x60;credentials&#x60; : Credentials Authentication           &#x60;cookies&#x60; : Cookies Authentication           &#x60;unilogin&#x60; : Connect the active browser session through the UniLogin extension          | [optional] [default to ["credentials","unilogin"]]
 
 ## Example
 

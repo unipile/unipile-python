@@ -7,7 +7,7 @@ Field of study of the education.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
-**id** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-linkedin-search-parameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;FIELD_OF_STUDY&#x60; type to find out the possible values. | [optional] 
+**id** | **str** | A parameter ID. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getclassicsearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;FIELD_OF_STUDY&#x60; type to find out the possible values. | [optional] 
 
 ## Example
 

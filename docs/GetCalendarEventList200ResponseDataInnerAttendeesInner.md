@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **display_name** | **str** | Display name of the attendee. | [optional] 
 **comment** | **str** | The response comment of the attendee. | [optional] 
 **is_organizer** | **bool** | Is the attendee the organizer of the event. | 
+**is_self** | **bool** | Is the attendee the connected account. | 
 **is_optional** | **bool** | Is the attendee optional (based on type). | 
 **is_resource** | **bool** | Is the attendee a resource (based on type). | 
 **type** | **str** | Type of the attendee.           - &#x60;required&#x60; is a required attendee.           - &#x60;optional&#x60; is an optional attendee.           - &#x60;resource&#x60; is a resource attendee like a room or a device. | 

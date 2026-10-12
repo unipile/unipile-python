@@ -11,6 +11,8 @@ Method | HTTP request | Description
 [**follow_user**](UsersApi.md#follow_user) | **POST** /v2/{account_id}/users/me/follow/{user_id} | Follow a User
 [**get_posts_list**](UsersApi.md#get_posts_list) | **GET** /v2/{account_id}/users/{user_id}/posts | List all User&#39;s Posts
 [**get_relation_requests_list**](UsersApi.md#get_relation_requests_list) | **GET** /v2/{account_id}/users/me/relation-requests | List all pending Relation / Follow requests
+[**get_user_picture**](UsersApi.md#get_user_picture) | **GET** /v2/{account_id}/users/{user_id}/picture | Get a User Picture
+[**get_user_presence**](UsersApi.md#get_user_presence) | **GET** /v2/{account_id}/users/{user_id}/presence | Get a User Presence
 [**get_user_profile**](UsersApi.md#get_user_profile) | **GET** /v2/{account_id}/users/{user_id} | Get a User Profile
 [**get_user_relations**](UsersApi.md#get_user_relations) | **GET** /v2/{account_id}/users/{user_id}/relations | List Relations of a User
 [**list_user_followers**](UsersApi.md#list_user_followers) | **GET** /v2/{account_id}/users/{user_id}/followers | List Followers of a User
@@ -183,7 +185,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_relation_request**
-> LinkedInRelationRequest create_relation_request(account_id, create_relation_request_request)
+> GetRelationRequestsList200ResponseDataInner create_relation_request(account_id, create_relation_request_request)
 
 Send a Relation request
 
@@ -196,7 +198,7 @@ Sends a bi-directional relation request to a user. Trying to send a relation req
 ```python
 import unipile
 from unipile.models.create_relation_request_request import CreateRelationRequestRequest
-from unipile.models.linked_in_relation_request import LinkedInRelationRequest
+from unipile.models.get_relation_requests_list200_response_data_inner import GetRelationRequestsList200ResponseDataInner
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -245,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LinkedInRelationRequest**](LinkedInRelationRequest.md)
+[**GetRelationRequestsList200ResponseDataInner**](GetRelationRequestsList200ResponseDataInner.md)
 
 ### Authorization
 
@@ -424,7 +426,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_posts_list**
-> GetPostsList200Response get_posts_list(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+> GetPostsList200Response get_posts_list(user_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all User's Posts
 
@@ -464,12 +466,12 @@ with unipile.ApiClient(configuration) as api_client:
     user_id = 'user_id_example' # str | The ID of the User to retrieve posts from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all User's Posts
-        api_response = api_instance.get_posts_list(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_posts_list(user_id, account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of UsersApi->get_posts_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -486,8 +488,8 @@ Name | Type | Description  | Notes
  **user_id** | **str**| The ID of the User to retrieve posts from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -511,7 +513,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_relation_requests_list**
-> GetRelationRequestsList200Response get_relation_requests_list(type, account_id, offset=offset, limit=limit, cursor=cursor)
+> GetRelationRequestsList200Response get_relation_requests_list(type, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all pending Relation / Follow requests
 
@@ -551,12 +553,12 @@ with unipile.ApiClient(configuration) as api_client:
     type = 'type_example' # str | Filter to returns only the given type of Relation / Follow request.         - `sent` is the requests sent by the current user.         - `received` is the requests received by the current user.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all pending Relation / Follow requests
-        api_response = api_instance.get_relation_requests_list(type, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_relation_requests_list(type, account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of UsersApi->get_relation_requests_list:\n")
         pprint(api_response)
     except Exception as e:
@@ -573,12 +575,171 @@ Name | Type | Description  | Notes
  **type** | **str**| Filter to returns only the given type of Relation / Follow request.         - &#x60;sent&#x60; is the requests sent by the current user.         - &#x60;received&#x60; is the requests received by the current user. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
 [**GetRelationRequestsList200Response**](GetRelationRequestsList200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_user_picture**
+> get_user_picture(user_id, account_id)
+
+Get a User Picture
+
+Downloads the profile picture of the specified User, for the providers that publish no public url for it. Use `me` as `user_id` to specify the owner of the connected account. The url of this endpoint is given by the `private_picture_download_url` field of a User.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.UsersApi(api_client)
+    user_id = 'user_id_example' # str | The ID of the User whose profile picture must be downloaded. Use `me` to specify the owner of the connected account.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+
+    try:
+        # Get a User Picture
+        api_instance.get_user_picture(user_id, account_id)
+    except Exception as e:
+        print("Exception when calling UsersApi->get_user_picture: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **str**| The ID of the User whose profile picture must be downloaded. Use &#x60;me&#x60; to specify the owner of the connected account. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_user_presence**
+> GetUserPresence200Response get_user_presence(user_id, account_id)
+
+Get a User Presence
+
+Returns whether the specified User is currently online, identified by the id returned by the provider. Only supported by Instagram, LinkedIn, Telegram and WhatsApp. A User whose provider reports no presence at all is returned as `unknown`, and Instagram and WhatsApp never report the presence of the account owner. Instagram also only shares the presence of other Users when the account shares its own activity status.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.get_user_presence200_response import GetUserPresence200Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.UsersApi(api_client)
+    user_id = 'user_id_example' # str | The ID of the User whose presence must be retrieved, as returned by the provider. Use `me` to specify the owner of the connected account, although providers do not always report the presence of the account owner.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+
+    try:
+        # Get a User Presence
+        api_response = api_instance.get_user_presence(user_id, account_id)
+        print("The response of UsersApi->get_user_presence:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UsersApi->get_user_presence: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **str**| The ID of the User whose presence must be retrieved, as returned by the provider. Use &#x60;me&#x60; to specify the owner of the connected account, although providers do not always report the presence of the account owner. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+
+### Return type
+
+[**GetUserPresence200Response**](GetUserPresence200Response.md)
 
 ### Authorization
 
@@ -683,7 +844,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user_relations**
-> GetUserRelations200Response get_user_relations(user_id, account_id, search=search, offset=offset, limit=limit, cursor=cursor)
+> GetUserRelations200Response get_user_relations(user_id, account_id, search=search, offset=offset, cursor=cursor, limit=limit)
 
 List Relations of a User
 
@@ -724,12 +885,12 @@ with unipile.ApiClient(configuration) as api_client:
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     search = 'search_example' # str | Any text input to filter out results (if supported by the provider). (optional)
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List Relations of a User
-        api_response = api_instance.get_user_relations(user_id, account_id, search=search, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.get_user_relations(user_id, account_id, search=search, offset=offset, cursor=cursor, limit=limit)
         print("The response of UsersApi->get_user_relations:\n")
         pprint(api_response)
     except Exception as e:
@@ -747,8 +908,8 @@ Name | Type | Description  | Notes
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **search** | **str**| Any text input to filter out results (if supported by the provider). | [optional] 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -772,7 +933,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_user_followers**
-> ListUserFollowers200Response list_user_followers(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+> ListUserFollowers200Response list_user_followers(user_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List Followers of a User
 
@@ -812,12 +973,12 @@ with unipile.ApiClient(configuration) as api_client:
     user_id = 'user_id_example' # str | The ID of the User to get the followers from. Use `me` to get the followers of the account owner.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List Followers of a User
-        api_response = api_instance.list_user_followers(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.list_user_followers(user_id, account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of UsersApi->list_user_followers:\n")
         pprint(api_response)
     except Exception as e:
@@ -834,8 +995,8 @@ Name | Type | Description  | Notes
  **user_id** | **str**| The ID of the User to get the followers from. Use &#x60;me&#x60; to get the followers of the account owner. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -859,11 +1020,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_user_following**
-> ListUserFollowers200Response list_user_following(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+> ListUserFollowers200Response list_user_following(user_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List Following of a User
 
-Returns a list of Users followed by the specified User. Set `me` as `user_id` to specify the owner of the connected account.
+Returns a list of Users followed by the specified User. Set `me` as `user_id` to specify the owner of the connected account. On LinkedIn, only the literal value `me` is supported for `user_id`; other values return HTTP 501 (`api/not_implemented`).
 
 ### Example
 
@@ -899,12 +1060,12 @@ with unipile.ApiClient(configuration) as api_client:
     user_id = 'user_id_example' # str | The ID of the User to get the followed users from. Use `me` to get the followed users of the account owner.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
-    limit = 20 # float | The limit of items to be returned. (optional) (default to 20)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List Following of a User
-        api_response = api_instance.list_user_following(user_id, account_id, offset=offset, limit=limit, cursor=cursor)
+        api_response = api_instance.list_user_following(user_id, account_id, offset=offset, cursor=cursor, limit=limit)
         print("The response of UsersApi->list_user_following:\n")
         pprint(api_response)
     except Exception as e:
@@ -921,8 +1082,8 @@ Name | Type | Description  | Notes
  **user_id** | **str**| The ID of the User to get the followed users from. Use &#x60;me&#x60; to get the followed users of the account owner. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. | [optional] [default to 20]
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1031,9 +1192,7 @@ Name | Type | Description  | Notes
 
 Update a User Profile
 
-Updates the specified User profile. Use `me` as `user_id` to update the account owner profile.
-      <br/>
-      Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+Partially updates the specified User profile. Use `me` as `user_id` to update the account owner profile. Omitted properties remain unchanged; supplied values replace existing values; empty strings clear supported text fields; and null deletes nullable singleton resources.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 

@@ -9,8 +9,11 @@ Name | Type | Description | Notes
 **object** | **str** |  | 
 **id** | **str** | The ID of the Company for the provider. | 
 **name** | **str** | The name of the Company. | 
-**public_identifier** | **str** | The public identifier of the Company. | 
-**profile_url** | **str** | The public profile URL of the Company. | 
+**profile_url** | **str** | The public profile URL of the Company. | [optional] 
+**public_picture_url** | **str** | The public picture URL of the Company. | [optional] 
+**public_identifier** | **str** | The public identifier of the Company. | [optional] 
+**followers_count** | **float** | The number of followers of the Company. | [optional] 
+**is_following** | **bool** | Whether the current user is following the Company. | [optional] 
 
 ## Example
 
