@@ -1,14 +1,11 @@
 # WhatsApp
 
-Start the authentication intent with WhatsApp provider.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**provider** | **str** | The provider to authenticate with. | 
-**credentials** | [**WhatsAppCredentials**](WhatsAppCredentials.md) |  | 
-**config** | [**WhatsAppConfig**](WhatsAppConfig.md) |  | [optional] 
+**contact_name** | **str** | Name saved by the connected account owner in their WhatsApp address book. | 
 
 ## Example
 

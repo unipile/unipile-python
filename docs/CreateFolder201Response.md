@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **object** | **str** |  | 
 **id** | **str** | The ID of the folder for the provider. | 
 **name** | **str** | The name of the folder. | 
-**role** | **str** | The system role of the folder. | [optional] 
+**role** | **str** | The folder role represents a supported special-use purpose (based on RFC special-use attributes where applicable); it does not indicate whether the folder is system-created. Gmail can expose system labels beyond the RFC special-use list: these have is_system&#x3D;true but no role when they do not map to a supported special-use purpose, such as CATEGORY_* labels. For those Gmail labels, use the label ID or name. Outlook supports INBOX, SENT, DRAFTS, TRASH, SPAM, and ARCHIVE for its corresponding default folders; custom folders have no role. [Learn more about roles](https://developer.unipile.com/v2.0/docs/manage-mailboxes#about-roles). | [optional] 
 **total_count** | **float** | The total number of emails in the folder. For Gmail, the total number of emails assigned with this label. | 
 **unread_count** | **float** | The number of unread emails in the folder. For Gmail, the number of unread emails assigned with this label. | 
 **background_color** | **str** | (Gmail Only) The background color of the folder. | [optional] 

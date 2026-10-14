@@ -6,6 +6,7 @@ Generate a link to authenticate and link a new account with Unipile.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**account_scope_id** | **str** | The Scope the account will be assigned to once authentication is complete. | [optional] 
 **expires_on** | **datetime** | The expiration date of the link. Use ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 
 **domain** | **str** | Optional Hosted Auth hostname to use in the generated link instead of the default &#x60;auth.unipile.com&#x60;. The hostname must already be explicitly verified by Unipile for the parent Application. | [optional] 
 **redirect_uri** | **str** | The URL to redirect to after the authentication process. If the authentication succeeded, &#x60;account_id&#x60; and &#x60;provider&#x60; will be present in query params, along the specified &#x60;state&#x60;. If the authentication has failed, &#x60;error_title&#x60; is present instead. This is useful for your app to be aware of the authentication result and to redirect the user to the correct page of your app. | 

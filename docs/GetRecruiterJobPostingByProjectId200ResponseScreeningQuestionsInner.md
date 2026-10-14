@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **question** | **str** | The text of the question. | 
 **is_eliminatory** | **bool** | Whether an unexpected answer is considered a disqualifying factor. | 
-**choices** | [**List[GetRecruiterJobPostingByProjectId200ResponseScreeningQuestionsInnerChoicesInner]**](GetRecruiterJobPostingByProjectId200ResponseScreeningQuestionsInnerChoicesInner.md) | A list of choices. | 
+**choices** | [**List[GetRecruiterJobPostingByProjectId200ResponseScreeningQuestionsInnerChoicesInner]**](GetRecruiterJobPostingByProjectId200ResponseScreeningQuestionsInnerChoicesInner.md) | A list of choices. | [optional] 
 
 ## Example
 

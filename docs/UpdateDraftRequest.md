@@ -12,7 +12,9 @@ Name | Type | Description | Notes
 **to** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;to&#x60; header. | [optional] 
 **cc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;cc&#x60; header. | [optional] 
 **bcc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;bcc&#x60; header. | [optional] 
-**attachments** | [**List[SendEmailRequestAttachmentsInner]**](SendEmailRequestAttachmentsInner.md) | The list of file attachments to the draft. Any attachment already existing will be removed and replaced by the new ones. | [optional] 
+**reply_to** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in the standard &#x60;Reply-To&#x60; header. Recipients answering the email will reply to these addresses instead of &#x60;from&#x60;. To reply inside an existing conversation, use &#x60;reply_to_message_id&#x60; instead. | [optional] 
+**reply_to_message_id** | **str** | The ID of the email message that you&#39;re replying to. For Gmail, use the provider message ID. For IMAP, use the RFC822 Message-ID header. Outlook cannot change the parent of an existing draft: omit this field when updating a native reply draft to preserve its conversation. Set it when creating the draft instead. | [optional] 
+**attachments** | [**List[EmailFile]**](EmailFile.md) | The list of file attachments to the draft. Any attachment already existing will be removed and replaced by the new ones. For Outlook, each attachment must be smaller than 3 MB. | [optional] 
 **tracking_options** | [**SendEmailRequestTrackingOptions**](SendEmailRequestTrackingOptions.md) |  | [optional] 
 **specifics** | [**UpdateDraftRequestSpecifics**](UpdateDraftRequestSpecifics.md) |  | [optional] 
 
