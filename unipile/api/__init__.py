@@ -1,6 +1,7 @@
 # flake8: noqa
 
 # import apis into api package
+from unipile.api.api_keys_api import APIKeysApi
 from unipile.api.accounts_api import AccountsApi
 from unipile.api.calendar_api import CalendarApi
 from unipile.api.custom_auth_api import CustomAuthApi
@@ -10,6 +11,8 @@ from unipile.api.instagram_api import InstagramApi
 from unipile.api.linked_in_api import LinkedInApi
 from unipile.api.messaging_api import MessagingApi
 from unipile.api.posts_api import PostsApi
+from unipile.api.scopes_api import ScopesApi
 from unipile.api.users_api import UsersApi
 from unipile.api.webhooks_api import WebhooksApi
+from unipile.api.default_api import DefaultApi
 

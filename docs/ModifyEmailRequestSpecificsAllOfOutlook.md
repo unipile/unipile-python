@@ -6,7 +6,7 @@ Specific options to apply if the provider of the targeted account is Outlook.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**categories** | **List[str]** | List of categories to assign to the email. | [optional] 
+**categories** | **List[str]** | Categories to assign to the email, overwriting all previously assigned categories. An empty array removes all categories. | [optional] 
 
 ## Example
 

@@ -6,7 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **provider** | **str** | The conference provider.         - &#x60;google_meet&#x60; is a Google Meet conference.         - &#x60;zoom&#x60; is a Zoom conference.         - &#x60;skype&#x60; is a Skype conference.         - &#x60;teams&#x60; is a Microsoft Teams conference.         - &#x60;unknown&#x60; is an unknown conference provider. | 
-**url** | **str** | The conference URL. | 
+**hosting** | **str** | How the conference is attached to the event.         - &#x60;native&#x60;: hosted by the calendar provider (Microsoft Teams or Skype on Outlook, Google Meet on Google). The           provider owns the meeting and &#x60;url&#x60; is its join link.         - &#x60;description&#x60;: an existing conference attached by URL, whose join link is published in the event body. | 
+**conference_id** | **str** | The conference identifier assigned by its provider. | [optional] 
+**url** | **str** | The URL used to join the conference. | 
 
 ## Example
 

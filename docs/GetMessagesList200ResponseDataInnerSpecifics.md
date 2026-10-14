@@ -5,7 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**subject** | **str** | The subject of the message. | [optional] 
+**type** | **str** | The category of the message: a regular message, an email, a connection invitation, or an InMail lifecycle event. | 
+**subject** | **str** | The subject of the mock message. | 
+**interactive** | [**WhatsApp1Interactive**](WhatsApp1Interactive.md) |  | [optional] 
 
 ## Example
 

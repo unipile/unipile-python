@@ -1,11 +1,13 @@
 # CreateCalendarEventRequestAttendeesInner
 
+An attendee to invite to the event.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **email** | **str** | Email of the attendee. | 
+**type** | **str** | The type of the attendee.             - &#x60;required&#x60; the attendance of the attendee is required.             - &#x60;optional&#x60; the attendance of the attendee is optional. | [optional] [default to 'required']
 
 ## Example
 

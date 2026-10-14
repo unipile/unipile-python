@@ -9,10 +9,12 @@ Name | Type | Description | Notes
 **plain_text** | **str** | The plain text content of the draft. | [optional] 
 **subject** | **str** | Subject of the draft. | [optional] 
 **var_from** | [**GetEmailsList200ResponseDataInnerFromInner**](GetEmailsList200ResponseDataInnerFromInner.md) |  | [optional] 
-**to** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;to&#x60; header. | 
-**cc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;cc&#x60; header. | [optional] 
-**bcc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;bcc&#x60; header. | [optional] 
-**attachments** | [**List[SendEmailRequestAttachmentsInner]**](SendEmailRequestAttachmentsInner.md) | The list of file attachments to the draft. | [optional] 
+**to** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;to&#x60; header. An empty list clears the header. | 
+**cc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;cc&#x60; header. An empty list clears the header. | [optional] 
+**bcc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in &#x60;bcc&#x60; header. An empty list clears the header. | [optional] 
+**reply_to** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | List of attendees to set in the standard &#x60;Reply-To&#x60; header. Recipients answering the email will reply to these addresses instead of &#x60;from&#x60;. To reply inside an existing conversation, use &#x60;reply_to_message_id&#x60; instead. | [optional] 
+**reply_to_message_id** | **str** | The ID of the email message that you&#39;re replying to. For Gmail and Outlook, use the provider message ID. For IMAP, use the RFC822 Message-ID header. Outlook creates a native reply draft in the original conversation; omitted content preserves the quoted body. | [optional] 
+**attachments** | [**List[EmailFile]**](EmailFile.md) | The list of file attachments to the draft. For Outlook, each attachment must be smaller than 3 MB. | [optional] 
 **tracking_options** | [**SendEmailRequestTrackingOptions**](SendEmailRequestTrackingOptions.md) |  | [optional] 
 
 ## Example
