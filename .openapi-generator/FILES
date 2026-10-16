@@ -608,6 +608,7 @@ docs/PhoneRegister.md
 docs/PinMessage200Response.md
 docs/PinMessageRequest.md
 docs/PinMessageRequestSpecifics.md
+docs/PinMessageRequestSpecificsWhatsapp.md
 docs/PipelineCandidatesSearch.md
 docs/PipelineCandidatesSearchDataInner.md
 docs/PipelineChange.md
@@ -1390,6 +1391,7 @@ test/test_phone_register.py
 test/test_pin_message200_response.py
 test/test_pin_message_request.py
 test/test_pin_message_request_specifics.py
+test/test_pin_message_request_specifics_whatsapp.py
 test/test_pipeline_candidates_search.py
 test/test_pipeline_candidates_search_data_inner.py
 test/test_pipeline_change.py
@@ -2177,6 +2179,7 @@ unipile/models/phone_register.py
 unipile/models/pin_message200_response.py
 unipile/models/pin_message_request.py
 unipile/models/pin_message_request_specifics.py
+unipile/models/pin_message_request_specifics_whatsapp.py
 unipile/models/pipeline_candidates_search.py
 unipile/models/pipeline_candidates_search_data_inner.py
 unipile/models/pipeline_change.py
