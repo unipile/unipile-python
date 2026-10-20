@@ -1,13 +1,13 @@
 [project]
 name = "unipile"
-version = "2.59.0"
+version = "2.61.0"
 description = "Unipile API"
 authors = [
   {name = "Unipile",email = "team@openapitools.org"},
 ]
 readme = "README.md"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Unipile API"]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 
 dependencies = [
   "urllib3 (>=2.7.0,<3.0.0)",

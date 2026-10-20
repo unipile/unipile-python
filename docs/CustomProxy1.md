@@ -1,6 +1,6 @@
 # CustomProxy1
 
-A custom proxy to connect through to the account provider. For supported providers, if not given, Unipile will automatically manage the proxy. In this case, the given custom proxy will override the automatic proxy. Read more about it in the Proxy documentation.
+A custom proxy used to connect to the account provider. When Automatic Proxy Protection applies to the provider, Unipile manages the proxy by default. A custom proxy overrides Automatic Proxy Protection. Read more in the Proxy documentation.
 
 ## Properties
 
