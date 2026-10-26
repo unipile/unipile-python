@@ -1,12 +1,11 @@
 # Instagram
 
-Instagram specific dataset for user profiles.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**messaging_identifier** | **str** | The text content of the message, when available. | 
+**messaging_identifier** | **str** | Messaging identifier of the user. Messages sent by this user carry it as their sender_id. | 
 
 ## Example
 

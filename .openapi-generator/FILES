@@ -405,8 +405,9 @@ docs/InUSDK.md
 docs/IncludeActivities.md
 docs/Instagram.md
 docs/Instagram1.md
-docs/Instagram1Config.md
-docs/Instagram1Credentials.md
+docs/Instagram2.md
+docs/Instagram2Config.md
+docs/Instagram2Credentials.md
 docs/InstagramApi.md
 docs/JobsSearchResults.md
 docs/JobsSearchResults1.md
@@ -608,6 +609,7 @@ docs/PhoneRegister.md
 docs/PinMessage200Response.md
 docs/PinMessageRequest.md
 docs/PinMessageRequestSpecifics.md
+docs/PinMessageRequestSpecificsWhatsapp.md
 docs/PipelineCandidatesSearch.md
 docs/PipelineCandidatesSearchDataInner.md
 docs/PipelineChange.md
@@ -1187,8 +1189,9 @@ test/test_in_usdk.py
 test/test_include_activities.py
 test/test_instagram.py
 test/test_instagram1.py
-test/test_instagram1_config.py
-test/test_instagram1_credentials.py
+test/test_instagram2.py
+test/test_instagram2_config.py
+test/test_instagram2_credentials.py
 test/test_instagram_api.py
 test/test_jobs_search_results.py
 test/test_jobs_search_results1.py
@@ -1390,6 +1393,7 @@ test/test_phone_register.py
 test/test_pin_message200_response.py
 test/test_pin_message_request.py
 test/test_pin_message_request_specifics.py
+test/test_pin_message_request_specifics_whatsapp.py
 test/test_pipeline_candidates_search.py
 test/test_pipeline_candidates_search_data_inner.py
 test/test_pipeline_change.py
@@ -1977,8 +1981,9 @@ unipile/models/in_usdk.py
 unipile/models/include_activities.py
 unipile/models/instagram.py
 unipile/models/instagram1.py
-unipile/models/instagram1_config.py
-unipile/models/instagram1_credentials.py
+unipile/models/instagram2.py
+unipile/models/instagram2_config.py
+unipile/models/instagram2_credentials.py
 unipile/models/jobs_search_results.py
 unipile/models/jobs_search_results1.py
 unipile/models/jobs_search_results1_data_inner.py
@@ -2177,6 +2182,7 @@ unipile/models/phone_register.py
 unipile/models/pin_message200_response.py
 unipile/models/pin_message_request.py
 unipile/models/pin_message_request_specifics.py
+unipile/models/pin_message_request_specifics_whatsapp.py
 unipile/models/pipeline_candidates_search.py
 unipile/models/pipeline_candidates_search_data_inner.py
 unipile/models/pipeline_change.py

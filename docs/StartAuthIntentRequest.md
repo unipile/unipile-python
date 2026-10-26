@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **provider** | **str** | The provider to connect with UniLogin. | 
-**credentials** | [**Instagram1Credentials**](Instagram1Credentials.md) |  | 
+**credentials** | [**Instagram2Credentials**](Instagram2Credentials.md) |  | 
 **config** | [**StartAuthIntentRequestAnyOf1Config**](StartAuthIntentRequestAnyOf1Config.md) |  | [optional] 
 **user_timezone** | **str** | The time zone of the current user can be used on a few specific features (e.g. scheduled actions). Setting it at authentication avoids having to do it on a case-by-case basis later on. | [optional] 
 **user_language** | **str** | Primary browser language captured with the session cookies. | [optional] 

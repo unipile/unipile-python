@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **provider** | **str** | The provider to authenticate with. | 
-**credentials** | [**Instagram1Credentials**](Instagram1Credentials.md) |  | 
-**config** | [**Instagram1Config**](Instagram1Config.md) |  | [optional] 
+**credentials** | [**Instagram2Credentials**](Instagram2Credentials.md) |  | 
+**config** | [**Instagram2Config**](Instagram2Config.md) |  | [optional] 
 **user_timezone** | **str** | The time zone of the current user can be used on a few specific features (e.g. scheduled actions). Setting it at authentication avoids having to do it on a case-by-case basis later on. | [optional] 
 **user_language** | **str** | Primary browser language captured with the session cookies. | [optional] 
 **user_languages** | **List[str]** | Ordered browser language preferences captured with the session cookies. | [optional] 

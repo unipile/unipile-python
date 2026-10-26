@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_scope_id** | **str** | The Scope to permanently assign to an unscoped Account. This field requires a Service API Key, and the Scope cannot be removed or replaced after assignment. | [optional] 
 **metadata** | **Dict[str, Optional[str]]** | Custom key-value data for the account. Replaces the account &#x60;metadata.custom_data&#x60; field; other metadata fields are not modified. Any fields not provided will be removed. | [optional] 
-**auto_proxy_country** | **str** | The rotation country to use for Automatic Proxy Protection. | [optional] 
-**allow_country_fallback** | **bool** | Whether Automatic Proxy Protection may use a proxy from another country when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. If false, authentication fails when no proxy is available in the rotation country; if the selected proxy later fails without a replacement there, the account enters Service interruption. | [optional] 
+**auto_proxy_country** | **str** | The rotation country to use for Automatic Proxy Protection. Choose from the &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/docs/proxys#countries\&quot;&gt;countries where Unipile offers automatic proxies&lt;/a&gt;. A proxy may be temporarily unavailable even in a country included in the offering. | [optional] 
+**allow_country_fallback** | **bool** | Whether Automatic Proxy Protection may use an available proxy from another country when none is available in the rotation country, during authentication and throughout the account lifetime. Defaults to true. An explicitly selected rotation country must be part of Unipile’s proxy offering for the provider, but a proxy may still be temporarily unavailable there. If false, authentication fails when no proxy is available in the rotation country; if the selected proxy later fails without an available replacement there, the account enters Service interruption. | [optional] 
 **proxy** | [**CustomProxy1**](CustomProxy1.md) |  | [optional] 
 
 ## Example

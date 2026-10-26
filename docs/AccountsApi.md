@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Get an Account
 
-Retrieve an Account.
+Retrieve an Account. After successful Hosted Auth authentication with initial sync waiting enabled, the consumed session can retrieve only its linked account until its polling deadline.
 
 ### Example
 

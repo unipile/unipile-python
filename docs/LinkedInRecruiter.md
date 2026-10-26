@@ -10,7 +10,8 @@ Name | Type | Description | Notes
 **signature** | **str** | The signature of the sender. | 
 **visibility** | **str** | The level of visibility of the conversation within your organization. | [optional] [default to 'PRIVATE']
 **intent** | **str** | The purpose of the chat. | [optional] [default to 'HIRE_FOR_CLIENT']
-**send_as** | **str** | Whether you want to send the message via InMail or email using profile data. | [optional] [default to 'INMAIL']
+**send_as** | **str** | Whether to send the message via InMail or email. | [optional] [default to 'INMAIL']
+**email** | **str** | The recipient email address to use when send_as is EMAIL. Takes precedence over the primary email from the recipient profile. | [optional] 
 **channel_type** | **str** | The channel from the hiring project talent pool from which to start the chat. | [optional] 
 **follow_up** | [**LinkedInRecruiterFollowUp**](LinkedInRecruiterFollowUp.md) |  | [optional] 
 
