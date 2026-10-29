@@ -7,6 +7,7 @@ Object containing provider-specific user profile data.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **contact_name** | **str** | Name saved by the connected account owner in their WhatsApp address book. | 
+**messaging_identifier** | **str** | Messaging identifier of the user. Messages sent by this user carry it as their sender_id. | 
 **location** | **str** | The geographical location of the user. | [optional] 
 **network_distance** | **str** | Network distance to a User.       &#x60;SELF&#x60;: Yourself.       &#x60;FIRST_DEGREE&#x60;: 1st degree connection.       &#x60;SECOND_DEGREE&#x60;: 2nd degree connection (connection of a 1st degree).       &#x60;THIRD_DEGREE&#x60;: 3rd degree connection (connection of a 2nd degree).       &#x60;OUT_OF_NETWORK&#x60;: Unreachable user.&#39; | [optional] 
 **industry** | **str** | The user&#39;s industry. | [optional] 

@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | A custom name for the chat. Some providers allow custom names only on groups. | [optional] 
+**picture** | [**UpdateChatRequestPicture**](UpdateChatRequestPicture.md) |  | [optional] 
 **pin_status** | **bool** | If supported, set to &#x60;true&#x60; to pin the chat at the top of the list, or &#x60;false&#x60; to unpin it. | [optional] 
 **archive_status** | **bool** | If supported, set to &#x60;true&#x60; to archive the chat, or &#x60;false&#x60; to move it back to the main inbox. | [optional] 
 **label** | **str** | If supported, associate the chat with the given label. For Whatsapp, this is resolved by label name and created if missing. | [optional] 

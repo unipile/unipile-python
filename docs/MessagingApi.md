@@ -4,6 +4,7 @@ All URIs are relative to *https://api.unipile.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**accept_chat_request**](MessagingApi.md#accept_chat_request) | **POST** /v2/{account_id}/inboxes/{inbox_id}/chats/{chat_id}/accept | Accept a Chat Request
 [**add_message_reaction**](MessagingApi.md#add_message_reaction) | **POST** /v2/{account_id}/chats/{chat_id}/messages/{message_id}/reactions | Add a Message Reaction
 [**add_participant**](MessagingApi.md#add_participant) | **POST** /v2/{account_id}/chats/{chat_id}/participants | Add a Chat Participant
 [**delete_chat**](MessagingApi.md#delete_chat) | **DELETE** /v2/{account_id}/chats/{chat_id} | Delete a Chat
@@ -33,6 +34,89 @@ Method | HTTP request | Description
 [**start_chat_from_inbox**](MessagingApi.md#start_chat_from_inbox) | **POST** /v2/{account_id}/inboxes/{inbox_id}/chats/send | Start a Chat from Inbox
 [**update_chat**](MessagingApi.md#update_chat) | **PATCH** /v2/{account_id}/chats/{chat_id} | Update a Chat
 
+
+# **accept_chat_request**
+> UpdateChat200Response accept_chat_request(inbox_id, chat_id, account_id)
+
+Accept a Chat Request
+
+Accepts a chat request from an inbox that contains pending conversations.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.update_chat200_response import UpdateChat200Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.MessagingApi(api_client)
+    inbox_id = 'inbox_id_example' # str | ID of the Inbox where the chat request currently lives. Use <a href=\"https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes\">List all Inboxes</a> to get the ID of an inbox.
+    chat_id = 'chat_id_example' # str | ID of the Chat request to accept.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+
+    try:
+        # Accept a Chat Request
+        api_response = api_instance.accept_chat_request(inbox_id, chat_id, account_id)
+        print("The response of MessagingApi->accept_chat_request:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MessagingApi->accept_chat_request: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inbox_id** | **str**| ID of the Inbox where the chat request currently lives. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/get_v2-account-id-inboxes\&quot;&gt;List all Inboxes&lt;/a&gt; to get the ID of an inbox. | 
+ **chat_id** | **str**| ID of the Chat request to accept. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+
+### Return type
+
+[**UpdateChat200Response**](UpdateChat200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_message_reaction**
 > AddMessageReaction200Response add_message_reaction(chat_id, message_id, account_id, add_message_reaction_request)

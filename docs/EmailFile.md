@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **content** | **str** | Content of the file encoded as base64. For large files, prefer using multipart, learn more here: https://developer.unipile.com/v2.0/reference/api-usage#sending-files | 
 **content_type** | **str** | &lt;a href&#x3D;\&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types\&quot;&gt;MIME type&lt;/a&gt; of the file. | 
 **filename** | **str** | Name of the file (including extension). | 
-**metadata** | [**MessageFileMetadata**](MessageFileMetadata.md) |  | [optional] 
+**metadata** | [**UpdateChatRequestPictureMetadata**](UpdateChatRequestPictureMetadata.md) |  | [optional] 
 **content_id** | **str** | The Content-ID (CID) to give to the file, without the surrounding angle brackets. When set, the file is sent as an inline attachment and can be referenced from the HTML content with &#x60;cid:&lt;content_id&gt;&#x60;, for example &#x60;&lt;img src&#x3D;\&quot;cid:my-logo\&quot;&gt;&#x60;. | [optional] 
 
 ## Example

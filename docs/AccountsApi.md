@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**get_account**](AccountsApi.md#get_account) | **GET** /v2/accounts/{account_id} | Get an Account
 [**list_accounts**](AccountsApi.md#list_accounts) | **GET** /v2/accounts/ | List all Accounts
 [**remove_account**](AccountsApi.md#remove_account) | **DELETE** /v2/accounts/{account_id} | Remove an Account
+[**sync_account**](AccountsApi.md#sync_account) | **POST** /v2/accounts/{account_id}/sync | Synchronize an Account
 [**update_account**](AccountsApi.md#update_account) | **PATCH** /v2/accounts/{account_id} | Update an Account
 
 
@@ -15,7 +16,7 @@ Method | HTTP request | Description
 
 Get an Account
 
-Retrieve an Account.
+Retrieve an Account. After successful Hosted Auth authentication with initial sync waiting enabled, the consumed session can retrieve only its linked account until its polling deadline.
 
 ### Example
 
@@ -129,7 +130,7 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.AccountsApi(api_client)
     account_scope_id = unipile.ListAccountsAccountScopeIdParameter() # ListAccountsAccountScopeIdParameter | Filter Accounts by Scope ID, or use `none` to return Accounts without a Scope. (optional)
     status = 'status_example' # str | Filter to return only accounts of the given status. (optional)
-    provider = 'provider_example' # str | Filter to return only accounts of the given provider.         - `mock` is mock.         - `whatsapp` is WhatsApp.         - `linkedin` is LinkedIn.         - `instagram` is Instagram.         - `google` is Google.         - `outlook` is Outlook.         - `telegram` is Telegram.         - `imap` is IMAP. (optional)
+    provider = 'provider_example' # str | Filter to return only accounts of the given provider.         - `mock` is mock.         - `whatsapp` is WhatsApp.         - `linkedin` is LinkedIn.         - `instagram` is Instagram.         - `facebook` is Facebook.         - `google` is Google.         - `outlook` is Outlook.         - `telegram` is Telegram.         - `imap` is IMAP. (optional)
     search = 'search_example' # str | Filter to return only accounts matching the given search term on `name` or `id`. (optional)
     offset = 'offset_example' # str | A non-negative integer offset used for pagination. (optional)
     limit = '20' # str | A positive integer limit of items to be returned. (optional) (default to '20')
@@ -152,7 +153,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_scope_id** | [**ListAccountsAccountScopeIdParameter**](.md)| Filter Accounts by Scope ID, or use &#x60;none&#x60; to return Accounts without a Scope. | [optional] 
  **status** | **str**| Filter to return only accounts of the given status. | [optional] 
- **provider** | **str**| Filter to return only accounts of the given provider.         - &#x60;mock&#x60; is mock.         - &#x60;whatsapp&#x60; is WhatsApp.         - &#x60;linkedin&#x60; is LinkedIn.         - &#x60;instagram&#x60; is Instagram.         - &#x60;google&#x60; is Google.         - &#x60;outlook&#x60; is Outlook.         - &#x60;telegram&#x60; is Telegram.         - &#x60;imap&#x60; is IMAP. | [optional] 
+ **provider** | **str**| Filter to return only accounts of the given provider.         - &#x60;mock&#x60; is mock.         - &#x60;whatsapp&#x60; is WhatsApp.         - &#x60;linkedin&#x60; is LinkedIn.         - &#x60;instagram&#x60; is Instagram.         - &#x60;facebook&#x60; is Facebook.         - &#x60;google&#x60; is Google.         - &#x60;outlook&#x60; is Outlook.         - &#x60;telegram&#x60; is Telegram.         - &#x60;imap&#x60; is IMAP. | [optional] 
  **search** | **str**| Filter to return only accounts matching the given search term on &#x60;name&#x60; or &#x60;id&#x60;. | [optional] 
  **offset** | **str**| A non-negative integer offset used for pagination. | [optional] 
  **limit** | **str**| A positive integer limit of items to be returned. | [optional] [default to &#39;20&#39;]
@@ -254,6 +255,85 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **sync_account**
+> SyncAccount202Response sync_account(account_id)
+
+Synchronize an Account
+
+Request a full history synchronization for an Account, including after an earlier synchronization completed. Currently supported for WhatsApp accounts. The response confirms that the request was sent; completion is asynchronous and the history returned depends on the provider. An active synchronization prevents another request until it completes or an error is detected.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.sync_account202_response import SyncAccount202Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.AccountsApi(api_client)
+    account_id = 'account_id_example' # str | The ID of the Account to synchronize.
+
+    try:
+        # Synchronize an Account
+        api_response = api_instance.sync_account(account_id)
+        print("The response of AccountsApi->sync_account:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AccountsApi->sync_account: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **account_id** | **str**| The ID of the Account to synchronize. | 
+
+### Return type
+
+[**SyncAccount202Response**](SyncAccount202Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Confirmation that a full history synchronization was requested. Completion is asynchronous. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

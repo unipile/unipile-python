@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reaction** | [**RemovePostCommentReactionRequestReaction**](RemovePostCommentReactionRequestReaction.md) |  | 
+**react_as** | **str** | The ID of the User on whose behalf the reaction was published and should be removed (if supported by the provider). | [optional] 
 
 ## Example
 

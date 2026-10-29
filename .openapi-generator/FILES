@@ -76,6 +76,7 @@ docs/ContractSelection.md
 docs/ContractSelectionContractsInner.md
 docs/CookieAuthentication.md
 docs/CookieAuthentication1.md
+docs/CookieAuthentication2.md
 docs/CreateApiKey200Response.md
 docs/CreateApiKeyRequest.md
 docs/CreateAuthLink200Response.md
@@ -138,6 +139,7 @@ docs/CreateStoryRequestSpecificsAllOfInstagram.md
 docs/CreateStoryRequestSpecificsAllOfInstagramLocation.md
 docs/CreateWebhookEndpoint200Response.md
 docs/CreateWebhookEndpointRequest.md
+docs/CredentialsAuthentication.md
 docs/CustomAuthApi.md
 docs/CustomProxy.md
 docs/CustomProxy1.md
@@ -163,9 +165,15 @@ docs/EditRecruiterHiringProjectRequest.md
 docs/EditRecruiterJobPostingRequest.md
 docs/EmailFile.md
 docs/EmailsApi.md
+docs/EncryptedHistory.md
+docs/EncryptedHistoryLastAttempt.md
+docs/EncryptedHistoryOptionsInner.md
 docs/EndorseClassicMemberSkill200Response.md
 docs/EndorseClassicMemberSkillRequest.md
 docs/ExcludeActivities.md
+docs/Facebook.md
+docs/FacebookConfig.md
+docs/FacebookCredentials.md
 docs/File.md
 docs/FileDocument.md
 docs/FollowUser200Response.md
@@ -405,8 +413,9 @@ docs/InUSDK.md
 docs/IncludeActivities.md
 docs/Instagram.md
 docs/Instagram1.md
-docs/Instagram1Config.md
-docs/Instagram1Credentials.md
+docs/Instagram2.md
+docs/Instagram2Config.md
+docs/Instagram2Credentials.md
 docs/InstagramApi.md
 docs/JobsSearchResults.md
 docs/JobsSearchResults1.md
@@ -423,6 +432,7 @@ docs/Link.md
 docs/Link1.md
 docs/LinkNewAccount.md
 docs/LinkNewAccountConfig.md
+docs/LinkNewAccountConfigFacebook.md
 docs/LinkNewAccountConfigGlobal.md
 docs/LinkNewAccountConfigGoogle.md
 docs/LinkNewAccountConfigImap.md
@@ -489,7 +499,6 @@ docs/Loading.md
 docs/MediaShare.md
 docs/Message.md
 docs/MessageFile.md
-docs/MessageFileMetadata.md
 docs/MessagePinStatus.md
 docs/MessagingApi.md
 docs/Mock.md
@@ -608,6 +617,7 @@ docs/PhoneRegister.md
 docs/PinMessage200Response.md
 docs/PinMessageRequest.md
 docs/PinMessageRequestSpecifics.md
+docs/PinMessageRequestSpecificsWhatsapp.md
 docs/PipelineCandidatesSearch.md
 docs/PipelineCandidatesSearchDataInner.md
 docs/PipelineChange.md
@@ -710,6 +720,7 @@ docs/StartChatRequestSpecificsLinkedin.md
 docs/StartChatRequestUsersIds.md
 docs/SubmitClassicCompanyOtpCode200Response.md
 docs/SubmitClassicCompanyOtpCodeRequest.md
+docs/SyncAccount202Response.md
 docs/Telegram.md
 docs/Telegram1.md
 docs/Telegram1Config.md
@@ -731,6 +742,8 @@ docs/UpdateChat200ResponseParticipantsInnerUser.md
 docs/UpdateChat200ResponseUser.md
 docs/UpdateChatRequest.md
 docs/UpdateChatRequestMutedUntil.md
+docs/UpdateChatRequestPicture.md
+docs/UpdateChatRequestPictureMetadata.md
 docs/UpdateDraftRequest.md
 docs/UpdateDraftRequestSpecifics.md
 docs/UpdateDraftRequestSpecificsAllOfOutlook.md
@@ -858,6 +871,7 @@ test/test_contract_selection.py
 test/test_contract_selection_contracts_inner.py
 test/test_cookie_authentication.py
 test/test_cookie_authentication1.py
+test/test_cookie_authentication2.py
 test/test_create_api_key200_response.py
 test/test_create_api_key_request.py
 test/test_create_auth_link200_response.py
@@ -920,6 +934,7 @@ test/test_create_story_request_specifics_all_of_instagram.py
 test/test_create_story_request_specifics_all_of_instagram_location.py
 test/test_create_webhook_endpoint200_response.py
 test/test_create_webhook_endpoint_request.py
+test/test_credentials_authentication.py
 test/test_custom_auth_api.py
 test/test_custom_proxy.py
 test/test_custom_proxy1.py
@@ -945,9 +960,15 @@ test/test_edit_recruiter_hiring_project_request.py
 test/test_edit_recruiter_job_posting_request.py
 test/test_email_file.py
 test/test_emails_api.py
+test/test_encrypted_history.py
+test/test_encrypted_history_last_attempt.py
+test/test_encrypted_history_options_inner.py
 test/test_endorse_classic_member_skill200_response.py
 test/test_endorse_classic_member_skill_request.py
 test/test_exclude_activities.py
+test/test_facebook.py
+test/test_facebook_config.py
+test/test_facebook_credentials.py
 test/test_file.py
 test/test_file_document.py
 test/test_follow_user200_response.py
@@ -1187,8 +1208,9 @@ test/test_in_usdk.py
 test/test_include_activities.py
 test/test_instagram.py
 test/test_instagram1.py
-test/test_instagram1_config.py
-test/test_instagram1_credentials.py
+test/test_instagram2.py
+test/test_instagram2_config.py
+test/test_instagram2_credentials.py
 test/test_instagram_api.py
 test/test_jobs_search_results.py
 test/test_jobs_search_results1.py
@@ -1205,6 +1227,7 @@ test/test_link.py
 test/test_link1.py
 test/test_link_new_account.py
 test/test_link_new_account_config.py
+test/test_link_new_account_config_facebook.py
 test/test_link_new_account_config_global.py
 test/test_link_new_account_config_google.py
 test/test_link_new_account_config_imap.py
@@ -1271,7 +1294,6 @@ test/test_loading.py
 test/test_media_share.py
 test/test_message.py
 test/test_message_file.py
-test/test_message_file_metadata.py
 test/test_message_pin_status.py
 test/test_messaging_api.py
 test/test_mock.py
@@ -1390,6 +1412,7 @@ test/test_phone_register.py
 test/test_pin_message200_response.py
 test/test_pin_message_request.py
 test/test_pin_message_request_specifics.py
+test/test_pin_message_request_specifics_whatsapp.py
 test/test_pipeline_candidates_search.py
 test/test_pipeline_candidates_search_data_inner.py
 test/test_pipeline_change.py
@@ -1492,6 +1515,7 @@ test/test_start_chat_request_specifics_linkedin.py
 test/test_start_chat_request_users_ids.py
 test/test_submit_classic_company_otp_code200_response.py
 test/test_submit_classic_company_otp_code_request.py
+test/test_sync_account202_response.py
 test/test_telegram.py
 test/test_telegram1.py
 test/test_telegram1_config.py
@@ -1513,6 +1537,8 @@ test/test_update_chat200_response_participants_inner_user.py
 test/test_update_chat200_response_user.py
 test/test_update_chat_request.py
 test/test_update_chat_request_muted_until.py
+test/test_update_chat_request_picture.py
+test/test_update_chat_request_picture_metadata.py
 test/test_update_draft_request.py
 test/test_update_draft_request_specifics.py
 test/test_update_draft_request_specifics_all_of_outlook.py
@@ -1652,6 +1678,7 @@ unipile/models/contract_selection.py
 unipile/models/contract_selection_contracts_inner.py
 unipile/models/cookie_authentication.py
 unipile/models/cookie_authentication1.py
+unipile/models/cookie_authentication2.py
 unipile/models/create_api_key200_response.py
 unipile/models/create_api_key_request.py
 unipile/models/create_auth_link200_response.py
@@ -1714,6 +1741,7 @@ unipile/models/create_story_request_specifics_all_of_instagram.py
 unipile/models/create_story_request_specifics_all_of_instagram_location.py
 unipile/models/create_webhook_endpoint200_response.py
 unipile/models/create_webhook_endpoint_request.py
+unipile/models/credentials_authentication.py
 unipile/models/custom_proxy.py
 unipile/models/custom_proxy1.py
 unipile/models/days_based.py
@@ -1736,9 +1764,15 @@ unipile/models/edit_recruiter_hiring_project200_response.py
 unipile/models/edit_recruiter_hiring_project_request.py
 unipile/models/edit_recruiter_job_posting_request.py
 unipile/models/email_file.py
+unipile/models/encrypted_history.py
+unipile/models/encrypted_history_last_attempt.py
+unipile/models/encrypted_history_options_inner.py
 unipile/models/endorse_classic_member_skill200_response.py
 unipile/models/endorse_classic_member_skill_request.py
 unipile/models/exclude_activities.py
+unipile/models/facebook.py
+unipile/models/facebook_config.py
+unipile/models/facebook_credentials.py
 unipile/models/file.py
 unipile/models/file_document.py
 unipile/models/follow_user200_response.py
@@ -1977,8 +2011,9 @@ unipile/models/in_usdk.py
 unipile/models/include_activities.py
 unipile/models/instagram.py
 unipile/models/instagram1.py
-unipile/models/instagram1_config.py
-unipile/models/instagram1_credentials.py
+unipile/models/instagram2.py
+unipile/models/instagram2_config.py
+unipile/models/instagram2_credentials.py
 unipile/models/jobs_search_results.py
 unipile/models/jobs_search_results1.py
 unipile/models/jobs_search_results1_data_inner.py
@@ -1994,6 +2029,7 @@ unipile/models/link.py
 unipile/models/link1.py
 unipile/models/link_new_account.py
 unipile/models/link_new_account_config.py
+unipile/models/link_new_account_config_facebook.py
 unipile/models/link_new_account_config_global.py
 unipile/models/link_new_account_config_google.py
 unipile/models/link_new_account_config_imap.py
@@ -2059,7 +2095,6 @@ unipile/models/loading.py
 unipile/models/media_share.py
 unipile/models/message.py
 unipile/models/message_file.py
-unipile/models/message_file_metadata.py
 unipile/models/message_pin_status.py
 unipile/models/mock.py
 unipile/models/modify_email_request.py
@@ -2177,6 +2212,7 @@ unipile/models/phone_register.py
 unipile/models/pin_message200_response.py
 unipile/models/pin_message_request.py
 unipile/models/pin_message_request_specifics.py
+unipile/models/pin_message_request_specifics_whatsapp.py
 unipile/models/pipeline_candidates_search.py
 unipile/models/pipeline_candidates_search_data_inner.py
 unipile/models/pipeline_change.py
@@ -2277,6 +2313,7 @@ unipile/models/start_chat_request_specifics_linkedin.py
 unipile/models/start_chat_request_users_ids.py
 unipile/models/submit_classic_company_otp_code200_response.py
 unipile/models/submit_classic_company_otp_code_request.py
+unipile/models/sync_account202_response.py
 unipile/models/telegram.py
 unipile/models/telegram1.py
 unipile/models/telegram1_config.py
@@ -2298,6 +2335,8 @@ unipile/models/update_chat200_response_participants_inner_user.py
 unipile/models/update_chat200_response_user.py
 unipile/models/update_chat_request.py
 unipile/models/update_chat_request_muted_until.py
+unipile/models/update_chat_request_picture.py
+unipile/models/update_chat_request_picture_metadata.py
 unipile/models/update_draft_request.py
 unipile/models/update_draft_request_specifics.py
 unipile/models/update_draft_request_specifics_all_of_outlook.py

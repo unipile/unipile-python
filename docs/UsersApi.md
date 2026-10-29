@@ -431,6 +431,8 @@ Name | Type | Description  | Notes
 List all User's Posts
 
 Returns a list of posts created or shared by a user. Use `me` as `user_id` to specify the owner of the connected account.
+      LIMITATIONS: On Facebook, the page size is set by Facebook: each page holds up to 3 posts whatever the `limit`. Use `next_cursor` to get more.
+      
 
 ### Example
 
@@ -604,7 +606,7 @@ Name | Type | Description  | Notes
 
 Get a User Picture
 
-Downloads the profile picture of the specified User, for the providers that publish no public url for it. Use `me` as `user_id` to specify the owner of the connected account. The url of this endpoint is given by the `private_picture_download_url` field of a User.
+Downloads the profile picture of the specified User. Use `me` as `user_id` to specify the owner of the connected account. For the providers that publish no public url for it, the url of this endpoint is given by the `private_picture_download_url` field of a User; for Facebook, it serves the current picture, whose `public_picture_url` expires within days.
 
 ### Example
 

@@ -63,6 +63,8 @@ Method | HTTP request | Description
 [**save_sales_lead_to_list**](LinkedInApi.md#save_sales_lead_to_list) | **POST** /v2/{account_id}/linkedin/sales-navigator/lead-lists/{list_id}/save | Save a Lead To a List
 [**select_contract**](LinkedInApi.md#select_contract) | **POST** /v2/{account_id}/linkedin/contracts/{contract_id}/select | Select a Contract
 [**send_company_follow_invitation**](LinkedInApi.md#send_company_follow_invitation) | **POST** /v2/{account_id}/linkedin/company/{company_id}/follow-requests | Invite Members to Follow a Company
+[**sign_out_other_recruiter_sessions**](LinkedInApi.md#sign_out_other_recruiter_sessions) | **POST** /v2/{account_id}/linkedin/recruiter/sessions/sign-out-others | Sign Out of Other Recruiter Sessions
+[**sign_out_recruiter_session**](LinkedInApi.md#sign_out_recruiter_session) | **POST** /v2/{account_id}/linkedin/recruiter/sessions/sign-out | Sign Out of the Current Recruiter Session
 [**submit_classic_company_otp_code**](LinkedInApi.md#submit_classic_company_otp_code) | **POST** /v2/{account_id}/linkedin/company/{company_id}/member/submit-otp | Submit Otp Verification Code
 [**submit_recruiter_otp_code**](LinkedInApi.md#submit_recruiter_otp_code) | **POST** /v2/{account_id}/linkedin/recruiter/company/{company_id}/member/submit-otp | Submit Otp Verification Code
 [**verify_classic_company_member_identity**](LinkedInApi.md#verify_classic_company_member_identity) | **POST** /v2/{account_id}/linkedin/company/{company_id}/member/verify-email | Verify Company Member Identity
@@ -5048,6 +5050,158 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **sign_out_other_recruiter_sessions**
+> sign_out_other_recruiter_sessions(account_id)
+
+Sign Out of Other Recruiter Sessions
+
+Signs out the other sessions for the selected LinkedIn Recruiter seat while preserving the current session. This can disconnect other browsers using the same seat. Use this endpoint to solve any session_conflict error you would get.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.LinkedInApi(api_client)
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+
+    try:
+        # Sign Out of Other Recruiter Sessions
+        api_instance.sign_out_other_recruiter_sessions(account_id)
+    except Exception as e:
+        print("Exception when calling LinkedInApi->sign_out_other_recruiter_sessions: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **sign_out_recruiter_session**
+> sign_out_recruiter_session(account_id)
+
+Sign Out of the Current Recruiter Session
+
+Signs out the current session for the selected LinkedIn Recruiter contract.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.LinkedInApi(api_client)
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+
+    try:
+        # Sign Out of the Current Recruiter Session
+        api_instance.sign_out_recruiter_session(account_id)
+    except Exception as e:
+        print("Exception when calling LinkedInApi->sign_out_recruiter_session: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Default Response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

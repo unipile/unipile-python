@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **participants** | [**List[UpdateChat200ResponseParticipantsInner]**](UpdateChat200ResponseParticipantsInner.md) | List of participants in the chat if group chat. | [optional] 
 **last_message** | [**GetChat200ResponseLastMessage**](GetChat200ResponseLastMessage.md) |  | [optional] 
 **user** | [**UpdateChat200ResponseUser**](UpdateChat200ResponseUser.md) |  | [optional] 
-**provider** | **str** | The provider&#39;s of the Account.     - &#x60;mock&#x60; is mock.     - &#x60;whatsapp&#x60; is WhatsApp.     - &#x60;linkedin&#x60; is LinkedIn.     - &#x60;instagram&#x60; is Instagram.     - &#x60;google&#x60; is Google.     - &#x60;outlook&#x60; is Outlook.     - &#x60;telegram&#x60; is Telegram.     - &#x60;imap&#x60; is IMAP. | 
+**provider** | **str** | The provider&#39;s of the Account.     - &#x60;mock&#x60; is mock.     - &#x60;whatsapp&#x60; is WhatsApp.     - &#x60;linkedin&#x60; is LinkedIn.     - &#x60;instagram&#x60; is Instagram.     - &#x60;facebook&#x60; is Facebook.     - &#x60;google&#x60; is Google.     - &#x60;outlook&#x60; is Outlook.     - &#x60;telegram&#x60; is Telegram.     - &#x60;imap&#x60; is IMAP. | 
 **specifics** | **object** |  | [optional] 
 
 ## Example
