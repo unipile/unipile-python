@@ -6,7 +6,7 @@ Object containing provider-specific pin data.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pin_duration** | **str** | How long the message should stay pinned, Whatsapp unpinning it by itself once elapsed.         - &#x60;24_hours&#x60; for a day.         - &#x60;7_days&#x60; for a week.         - &#x60;30_days&#x60; for a month. | [optional] [default to '30_days']
+**whatsapp** | [**PinMessageRequestSpecificsWhatsapp**](PinMessageRequestSpecificsWhatsapp.md) |  | [optional] 
 
 ## Example
 

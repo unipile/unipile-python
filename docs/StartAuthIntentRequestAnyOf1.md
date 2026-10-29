@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **provider** | **str** | The provider to connect with UniLogin. | 
-**account_id** | **str** | The existing LinkedIn or Instagram Account to reconnect. Omit it to link a new Account. | [optional] 
+**account_id** | **str** | The existing LinkedIn, Instagram or Facebook Account to reconnect. Omit it to link a new Account. | [optional] 
 **account_scope_id** | **str** | The Scope assigned to a newly linked Account. | [optional] 
 **state** | **str** | State data sent in the account.add or account.reconnect webhook after completion. | [optional] 
 **config** | [**StartAuthIntentRequestAnyOf1Config**](StartAuthIntentRequestAnyOf1Config.md) |  | [optional] 

@@ -7,6 +7,7 @@ A notification was sent to the user's phone. The user needs to validate the noti
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** |  | 
+**code** | **str** | For number-matching approvals: the digits shown here that the user must select among the choices in their notification. | [optional] 
 
 ## Example
 

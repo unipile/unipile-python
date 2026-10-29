@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The ID of the product. | 
 **display_name** | **str** | The display name of the product. | 
+**description** | **str** | What the product gives access to, shown under its name. | [optional] 
+**icon_url** | **str** | An image of the product&#39;s own (e.g. a Page&#39;s picture), shown instead of the provider icon. | [optional] 
 
 ## Example
 

@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_webhook_conversations**
-> ListWebhookConversations200Response list_webhook_conversations(endpoint_id, event_id=event_id, account_id=account_id, offset=offset, limit=limit)
+> ListWebhookConversations200Response list_webhook_conversations(endpoint_id, event_id=event_id, account_id=account_id, event_type=event_type, status=status, created_after=created_after, created_before=created_before, offset=offset, limit=limit)
 
 List all Webhook Conversations
 
@@ -292,12 +292,16 @@ with unipile.ApiClient(configuration) as api_client:
     endpoint_id = 'endpoint_id_example' # str | Filter to return only conversations for the given endpoint.
     event_id = 'event_id_example' # str | Filter to return only conversations for the given event. (optional)
     account_id = 'account_id_example' # str | Filter to return only conversations for events from the given account. (optional)
+    event_type = 'event_type_example' # str | Filter to return only conversations for events of the given type. (optional)
+    status = 'status_example' # str | The delivery status of an event, based on its latest delivery attempt to the endpoint. `success` means the endpoint returned a 2xx HTTP status; `failed` means it returned another status or did not respond. (optional)
+    created_after = '2013-10-20T19:20:30+01:00' # datetime | Filter to return only conversations created at or after the given date and time, in ISO 8601 format. (optional)
+    created_before = '2013-10-20T19:20:30+01:00' # datetime | Filter to return only conversations created before the given date and time, in ISO 8601 format. (optional)
     offset = 'offset_example' # str | An offset used for pagination. (optional)
     limit = 'limit_example' # str | A limit used for pagination. (optional)
 
     try:
         # List all Webhook Conversations
-        api_response = api_instance.list_webhook_conversations(endpoint_id, event_id=event_id, account_id=account_id, offset=offset, limit=limit)
+        api_response = api_instance.list_webhook_conversations(endpoint_id, event_id=event_id, account_id=account_id, event_type=event_type, status=status, created_after=created_after, created_before=created_before, offset=offset, limit=limit)
         print("The response of WebhooksApi->list_webhook_conversations:\n")
         pprint(api_response)
     except Exception as e:
@@ -314,6 +318,10 @@ Name | Type | Description  | Notes
  **endpoint_id** | **str**| Filter to return only conversations for the given endpoint. | 
  **event_id** | **str**| Filter to return only conversations for the given event. | [optional] 
  **account_id** | **str**| Filter to return only conversations for events from the given account. | [optional] 
+ **event_type** | **str**| Filter to return only conversations for events of the given type. | [optional] 
+ **status** | **str**| The delivery status of an event, based on its latest delivery attempt to the endpoint. &#x60;success&#x60; means the endpoint returned a 2xx HTTP status; &#x60;failed&#x60; means it returned another status or did not respond. | [optional] 
+ **created_after** | **datetime**| Filter to return only conversations created at or after the given date and time, in ISO 8601 format. | [optional] 
+ **created_before** | **datetime**| Filter to return only conversations created before the given date and time, in ISO 8601 format. | [optional] 
  **offset** | **str**| An offset used for pagination. | [optional] 
  **limit** | **str**| A limit used for pagination. | [optional] 
 

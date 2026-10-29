@@ -15,6 +15,10 @@ Name | Type | Description | Notes
 **contracts** | [**List[ContractSelectionContractsInner]**](ContractSelectionContractsInner.md) | A list of contracts to choose from. | 
 **products** | [**List[ConsentScreenProductsInner]**](ConsentScreenProductsInner.md) | A list of products to choose from. | 
 **challenges** | [**List[ChallengeSelectionChallengesInner]**](ChallengeSelectionChallengesInner.md) | A list of alternative verification methods to choose from. | 
+**options** | [**List[EncryptedHistoryOptionsInner]**](EncryptedHistoryOptionsInner.md) | The ways the user can answer. Send the chosen &#x60;id&#x60; as the &#x60;code&#x60; of Solve Checkpoint. | 
+**attempts_remaining** | **int** | The most submissions any credential still has — what the user has left overall. &#x60;0&#x60; means every credential is spent and only skipping remains. The detail per credential is in &#x60;options[].attempts_remaining&#x60;; a credential the provider refuses to even try does not consume one. | 
+**provider_attempts_remaining** | **int** | For a PIN, how many attempts the provider itself still allows before it locks the backup. This budget is the provider&#39;s own and is never spent on the user&#39;s behalf: when it is unknown or too low, the PIN is refused rather than tried. | [optional] 
+**last_attempt** | [**EncryptedHistoryLastAttempt**](EncryptedHistoryLastAttempt.md) |  | [optional] 
 
 ## Example
 

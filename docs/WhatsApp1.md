@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **interactive** | [**WhatsApp1Interactive**](WhatsApp1Interactive.md) |  | [optional] 
+**album_id** | **str** | Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album. | [optional] 
 
 ## Example
 

@@ -41,7 +41,7 @@ Name | Type | Description | Notes
 **is_online** | **bool** | Whether the user is currently online (if supported by the provider). | [optional] 
 **last_online_at** | **str** | Date and time when the user was last online (if supported by the provider). | [optional] 
 **language** | **str** | Language of the user, as a lowercase ISO 639-1 code (e.g. &#x60;fr&#x60;). | [optional] 
-**provider** | **str** | The provider&#39;s of the Account.     - &#x60;mock&#x60; is mock.     - &#x60;whatsapp&#x60; is WhatsApp.     - &#x60;linkedin&#x60; is LinkedIn.     - &#x60;instagram&#x60; is Instagram.     - &#x60;google&#x60; is Google.     - &#x60;outlook&#x60; is Outlook.     - &#x60;telegram&#x60; is Telegram.     - &#x60;imap&#x60; is IMAP. | 
+**provider** | **str** | The provider&#39;s of the Account.     - &#x60;mock&#x60; is mock.     - &#x60;whatsapp&#x60; is WhatsApp.     - &#x60;linkedin&#x60; is LinkedIn.     - &#x60;instagram&#x60; is Instagram.     - &#x60;facebook&#x60; is Facebook.     - &#x60;google&#x60; is Google.     - &#x60;outlook&#x60; is Outlook.     - &#x60;telegram&#x60; is Telegram.     - &#x60;imap&#x60; is IMAP. | 
 **social_handles** | [**GetContactsList200ResponseDataInnerSocialHandles**](GetContactsList200ResponseDataInnerSocialHandles.md) |  | [optional] 
 **websites** | **List[str]** | List of user websites. | [optional] 
 

@@ -6,7 +6,7 @@ Configuration of tracking for this email.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**opens** | **bool** | If &#x60;true&#x60;, trigger webhooks listening to &#x60;tracking.open&#x60; when the email is opened by the recipient. | [optional] [default to False]
+**opens** | **bool** | If &#x60;true&#x60;, trigger webhooks listening to &#x60;tracking.open&#x60; when the email is opened by the recipient. Opens rely on a tracking pixel, which mail clients, privacy proxies and security scanners can also load without the recipient reading the email. Each event carries &#x60;potentially_bot&#x60; and &#x60;bot_reasons&#x60; so you can exclude these automated opens. | [optional] [default to False]
 **clicks** | **bool** | If &#x60;true&#x60;, trigger webhooks listening to &#x60;tracking.click&#x60; when the recipient click on a link in the email content. | [optional] [default to False]
 **label** | **str** | A label to be sent in the tracking event. This can help you to identify the sent email. | [optional] 
 **custom_domain** | **str** | A custom domain verified for the organization, enabled for the application, and pointing to https://track.lnk-fllw.com. | [optional] 

@@ -31,7 +31,8 @@ Method | HTTP request | Description
 
 Add Comment to a Post
 
-Adds a comment to a post.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+Adds a comment to a post.
+      LIMITATIONS: On Facebook, a comment takes one image; an animated GIF file is published as a still image.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
@@ -689,6 +690,8 @@ Name | Type | Description  | Notes
 List all Comment's Reactions
 
 Returns the list of reactions made to a comment. Reaction counts are given with the Comment object. This is useful to show a detailed list of all reactions and their author.
+      LIMITATIONS: On Facebook, each page holds at most 10 reactions: a higher `limit` returns 10. Use `next_cursor` to get more.
+      
 
 ### Example
 
@@ -778,6 +781,8 @@ Name | Type | Description  | Notes
 List all Comment's Replies
 
 Returns the list of replies to a comment. The replies are returned sorted by their creation date, with the most recent appearing first.
+      LIMITATIONS: On Facebook, the page size is set by Facebook: each page holds up to 10 replies whatever the `limit`. Use `next_cursor` to get more.
+      
 
 ### Example
 
@@ -867,6 +872,8 @@ Name | Type | Description  | Notes
 List all Post's Comments
 
 Returns a list of post comments. The comments are returned sorted by their creation date, with the most recent appearing first.
+      LIMITATIONS: On Facebook, the page size is set by Facebook: each page holds up to 10 comments whatever the `limit`. Use `next_cursor` to get more.
+      
 
 ### Example
 
@@ -957,6 +964,7 @@ List all Post's Reactions
 
 Returns the list of reactions made to a post. Reaction counts are given with the Post object. This is useful to show a detailed list of all reactions and their author.
       LIMITATIONS: On Instagram, the list is always limited to a maximum of 100 reactions.
+      On Facebook, each page holds at most 10 reactions: a higher `limit` returns 10. Use `next_cursor` to get more. Some posts (often from very large Pages) only show the account's friends among the people who reacted, so the list can be partial or empty while the post's reaction counters are not.
       
 
 ### Example
@@ -1045,6 +1053,8 @@ Name | Type | Description  | Notes
 List all User's Posts
 
 Returns a list of posts created or shared by a user. Use `me` as `user_id` to specify the owner of the connected account.
+      LIMITATIONS: On Facebook, the page size is set by Facebook: each page holds up to 3 posts whatever the `limit`. Use `next_cursor` to get more.
+      
 
 ### Example
 
@@ -1132,6 +1142,8 @@ Name | Type | Description  | Notes
 List all User Comments
 
 Returns the list of comments made by a user to posts. Use `me` as `user_id` to specify the owner of the connected account.
+      LIMITATIONS: On Facebook, only the account itself (`me`) or one of its activated Pages can be listed, with at most 25 comments per page.
+      
 
 ### Example
 
@@ -1219,6 +1231,8 @@ Name | Type | Description  | Notes
 List all User Reactions
 
 Returns the list of reactions made by a user to posts. Use `me` as `user_id` to specify the owner of the connected account.
+      LIMITATIONS: On Facebook, only the account itself (`me`) or one of its activated Pages can be listed, with at most 25 reactions per page.
+      
 
 ### Example
 
@@ -1475,7 +1489,8 @@ Name | Type | Description  | Notes
 
 Reply to a Comment
 
-Replies to a particular comment.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+Replies to a particular comment.
+      LIMITATIONS: On Facebook, a comment takes one image; an animated GIF file is published as a still image.<br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
 
 ### Example
 
