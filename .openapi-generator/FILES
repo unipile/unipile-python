@@ -97,6 +97,7 @@ docs/CreateClassicJobPostingDraftRequestRejectionSettings.md
 docs/CreateClassicJobPostingDraftRequestScreeningQuestionsInner.md
 docs/CreateDraft201Response.md
 docs/CreateDraftRequest.md
+docs/CreateEmailCategoryRequest.md
 docs/CreateFolder201Response.md
 docs/CreateFolderRequest.md
 docs/CreateNewEducation.md
@@ -272,6 +273,8 @@ docs/GetContactsList200ResponseDataInnerSocialHandlesLinkedin.md
 docs/GetContactsList200ResponseDataInnerUser.md
 docs/GetDraftsList200Response.md
 docs/GetDraftsList200ResponseDataInner.md
+docs/GetEmailCategories200Response.md
+docs/GetEmailCategories200ResponseDataInner.md
 docs/GetEmailSenders200Response.md
 docs/GetEmailSenders200ResponseDataInner.md
 docs/GetEmailsList200Response.md
@@ -517,6 +520,7 @@ docs/OauthOutlookGoogle.md
 docs/OauthOutlookGoogleConfig.md
 docs/OauthURL.md
 docs/OneTimePassword.md
+docs/OutlookApi.md
 docs/PairingCode.md
 docs/PairingCode1.md
 docs/PartialProfile.md
@@ -892,6 +896,7 @@ test/test_create_classic_job_posting_draft_request_rejection_settings.py
 test/test_create_classic_job_posting_draft_request_screening_questions_inner.py
 test/test_create_draft201_response.py
 test/test_create_draft_request.py
+test/test_create_email_category_request.py
 test/test_create_folder201_response.py
 test/test_create_folder_request.py
 test/test_create_new_education.py
@@ -1067,6 +1072,8 @@ test/test_get_contacts_list200_response_data_inner_social_handles_linkedin.py
 test/test_get_contacts_list200_response_data_inner_user.py
 test/test_get_drafts_list200_response.py
 test/test_get_drafts_list200_response_data_inner.py
+test/test_get_email_categories200_response.py
+test/test_get_email_categories200_response_data_inner.py
 test/test_get_email_senders200_response.py
 test/test_get_email_senders200_response_data_inner.py
 test/test_get_emails_list200_response.py
@@ -1312,6 +1319,7 @@ test/test_oauth_outlook_google_config.py
 test/test_oauth_url.py
 test/test_one_time_password.py
 test/test_otpor_in_app_validation.py
+test/test_outlook_api.py
 test/test_pairing_code.py
 test/test_pairing_code1.py
 test/test_partial_profile.py
@@ -1600,6 +1608,7 @@ unipile/api/hosted_auth_api.py
 unipile/api/instagram_api.py
 unipile/api/linked_in_api.py
 unipile/api/messaging_api.py
+unipile/api/outlook_api.py
 unipile/api/posts_api.py
 unipile/api/scopes_api.py
 unipile/api/users_api.py
@@ -1699,6 +1708,7 @@ unipile/models/create_classic_job_posting_draft_request_rejection_settings.py
 unipile/models/create_classic_job_posting_draft_request_screening_questions_inner.py
 unipile/models/create_draft201_response.py
 unipile/models/create_draft_request.py
+unipile/models/create_email_category_request.py
 unipile/models/create_folder201_response.py
 unipile/models/create_folder_request.py
 unipile/models/create_new_education.py
@@ -1871,6 +1881,8 @@ unipile/models/get_contacts_list200_response_data_inner_social_handles_linkedin.
 unipile/models/get_contacts_list200_response_data_inner_user.py
 unipile/models/get_drafts_list200_response.py
 unipile/models/get_drafts_list200_response_data_inner.py
+unipile/models/get_email_categories200_response.py
+unipile/models/get_email_categories200_response_data_inner.py
 unipile/models/get_email_senders200_response.py
 unipile/models/get_email_senders200_response_data_inner.py
 unipile/models/get_emails_list200_response.py
