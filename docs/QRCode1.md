@@ -1,12 +1,13 @@
 # QRCode1
 
-Authenticate by scanning a QR code with the WhatsApp mobile app.
+Start authentication by scanning a QR code with the Telegram mobile app.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **qrcode** | **bool** | This must be set to &#x60;true&#x60; | 
+**twofa** | **str** | The 2FA code to authenticate with. | [optional] 
 
 ## Example
 

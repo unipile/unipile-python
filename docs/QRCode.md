@@ -1,14 +1,12 @@
 # QRCode
 
-The authentication was started for a QR Code.
+Authenticate by scanning a QR code with the WhatsApp mobile app.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**object** | **str** |  | 
-**qrcode** | **str** | The QR Code to scan. | 
-**intent_id** | **str** | The ID of the auth intent. This should be used to listen for the QR Code scan with Solve Checkpoint. | 
+**qrcode** | **bool** | This must be set to &#x60;true&#x60; | 
 
 ## Example
 

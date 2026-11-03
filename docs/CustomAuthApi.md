@@ -286,7 +286,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.CustomAuthApi(api_client)
-    start_auth_intent_request = unipile.StartAuthIntentRequest() # StartAuthIntentRequest |  (optional)
+    start_auth_intent_request = unipile.StartAuthIntentRequest() # StartAuthIntentRequest | Start provider authentication or connect an active browser session with UniLogin. (optional)
 
     try:
         # Start Auth Intent
@@ -304,7 +304,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **start_auth_intent_request** | [**StartAuthIntentRequest**](StartAuthIntentRequest.md)|  | [optional] 
+ **start_auth_intent_request** | [**StartAuthIntentRequest**](StartAuthIntentRequest.md)| Start provider authentication or connect an active browser session with UniLogin. | [optional] 
 
 ### Return type
 

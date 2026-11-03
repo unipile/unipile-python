@@ -7,7 +7,7 @@ Start the authentication intent with Telegram provider.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **provider** | **str** | The provider to authenticate with. | 
-**credentials** | [**Telegram1Credentials**](Telegram1Credentials.md) |  | 
+**credentials** | [**QRCode1**](QRCode1.md) |  | 
 **config** | [**Telegram1Config**](Telegram1Config.md) |  | [optional] 
 
 ## Example
