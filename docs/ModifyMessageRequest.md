@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**text** | **str** | The new textual content of the message. It&#39;s recommended not to use HTML or Markdown. | 
+**text** | **str** | The new textual content of the message. It&#39;s recommended not to use HTML or Markdown. To mention a chat participant, write &#x60;@&#x60; followed by their user ID, as found in &#x60;sender_id&#x60; or the chat attendees: it is replaced with their name and notifies them where the provider supports mentions. A provider may still deliver the mention as plain text. | 
 
 ## Example
 

@@ -6,8 +6,9 @@ The user credentials required by the provider to authenticate with.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**username** | **str** | The username of the Instagram account. | 
-**password** | **str** | The password of the Instagram account. | 
+**username** | **str** | Email or phone of the LinkedIn account. | 
+**password** | **str** | Password of the LinkedIn account. | 
+**user_agent** | **str** | The exact user agent of the browser on which the session has been started. You can get it in the browser&#39;s console with &#x60;console.log(navigator.userAgent)&#x60;. In Hosted Auth, this is collected automatically from the user&#39;s browser. When reconnecting an Account, the user agent it already uses is kept. | [optional] 
 **sessionid** | **str** | The sessionid cookie value. | 
 
 ## Example

@@ -1,13 +1,12 @@
 # PairingCode
 
-A pairing code must be entered in the provider app to complete authentication.
+Authenticate by entering a pairing code on the WhatsApp mobile app.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** |  | 
-**code** | **str** | The pairing code to enter on the phone to link the device. | 
+**phone_number** | **str** | Phone number to link, in international format with digits only (no &#x60;+&#x60;, spaces or separators), e.g. &#x60;33612345678&#x60;. A pairing code will be returned to enter on this phone. | 
 
 ## Example
 

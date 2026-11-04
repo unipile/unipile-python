@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **provider** | **str** | The provider&#39;s of the Account.     - &#x60;mock&#x60; is mock.     - &#x60;whatsapp&#x60; is WhatsApp.     - &#x60;linkedin&#x60; is LinkedIn.     - &#x60;instagram&#x60; is Instagram.     - &#x60;facebook&#x60; is Facebook.     - &#x60;google&#x60; is Google.     - &#x60;outlook&#x60; is Outlook.     - &#x60;telegram&#x60; is Telegram.     - &#x60;imap&#x60; is IMAP. | 
 **attachments** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner.md) | List of message attachments. | 
 **hyperlinks** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1HyperlinksInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1HyperlinksInner.md) | List of message hyperlinks. | 
+**mentions** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1MentionsInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1MentionsInner.md) | List of the users mentioned in the message body. A mention the provider delivered as plain text is not listed. | 
 **quoted** | [**GetChatsList200ResponseDataInnerLastMessageAnyOf1Quoted**](GetChatsList200ResponseDataInnerLastMessageAnyOf1Quoted.md) |  | [optional] 
 **forwarded** | [**GetChatsList200ResponseDataInnerLastMessageAnyOf1Forwarded**](GetChatsList200ResponseDataInnerLastMessageAnyOf1Forwarded.md) |  | [optional] 
 **specifics** | **object** |  | [optional] 
