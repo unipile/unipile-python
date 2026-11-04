@@ -7,6 +7,7 @@ Use the `sessionid` cookie to authenticate with Instagram.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sessionid** | **str** | The sessionid cookie value. | 
+**user_agent** | **str** | The exact user agent of the browser on which the session has been started. You can get it in the browser&#39;s console with &#x60;console.log(navigator.userAgent)&#x60;. In Hosted Auth, this is collected automatically from the user&#39;s browser. When reconnecting an Account, the user agent it already uses is kept. | [optional] 
 
 ## Example
 

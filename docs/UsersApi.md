@@ -5,6 +5,7 @@ All URIs are relative to *https://api.unipile.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**accept_relation_request**](UsersApi.md#accept_relation_request) | **POST** /v2/{account_id}/users/me/relation-requests/{request_id}/accept | Accept a Relation request
+[**block_user**](UsersApi.md#block_user) | **POST** /v2/{account_id}/users/me/block/{user_id} | Block a User
 [**cancel_relation_request**](UsersApi.md#cancel_relation_request) | **POST** /v2/{account_id}/users/me/relation-requests/{request_id}/cancel | Cancel or Refuse a Relation / Follow request
 [**create_relation_request**](UsersApi.md#create_relation_request) | **POST** /v2/{account_id}/users/me/relation-requests | Send a Relation request
 [**delete_relation**](UsersApi.md#delete_relation) | **DELETE** /v2/{account_id}/users/me/relations/{user_id} | Delete a Relation
@@ -17,6 +18,7 @@ Method | HTTP request | Description
 [**get_user_relations**](UsersApi.md#get_user_relations) | **GET** /v2/{account_id}/users/{user_id}/relations | List Relations of a User
 [**list_user_followers**](UsersApi.md#list_user_followers) | **GET** /v2/{account_id}/users/{user_id}/followers | List Followers of a User
 [**list_user_following**](UsersApi.md#list_user_following) | **GET** /v2/{account_id}/users/{user_id}/following | List Following of a User
+[**unblock_user**](UsersApi.md#unblock_user) | **POST** /v2/{account_id}/users/me/unblock/{user_id} | Unblock a User
 [**unfollow_user**](UsersApi.md#unfollow_user) | **POST** /v2/{account_id}/users/me/unfollow/{user_id} | Unfollow a User
 [**update_user_profile**](UsersApi.md#update_user_profile) | **PATCH** /v2/{account_id}/users/{user_id} | Update a User Profile
 [**visit_user_profile**](UsersApi.md#visit_user_profile) | **POST** /v2/{account_id}/users/visit-profile | Report a Profile Visit
@@ -85,6 +87,87 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AcceptRelationRequest200Response**](AcceptRelationRequest200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **block_user**
+> BlockUser200Response block_user(user_id, account_id)
+
+Block a User
+
+Blocks a user on behalf of the account owner. A blocked User can no longer contact the account owner. Blocking an already blocked User has no effect. The `is_blocked` field of the User profile reflects the result.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.block_user200_response import BlockUser200Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.UsersApi(api_client)
+    user_id = 'user_id_example' # str | The ID of the User to block.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+
+    try:
+        # Block a User
+        api_response = api_instance.block_user(user_id, account_id)
+        print("The response of UsersApi->block_user:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UsersApi->block_user: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **str**| The ID of the User to block. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+
+### Return type
+
+[**BlockUser200Response**](BlockUser200Response.md)
 
 ### Authorization
 
@@ -1098,6 +1181,91 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **unblock_user**
+> UnblockUser200Response unblock_user(user_id, account_id, unblock_user_request=unblock_user_request)
+
+Unblock a User
+
+Unblocks a user previously blocked by the account owner. Unblocking a User that is not blocked has no effect. The `is_blocked` field of the User profile reflects the result.
+      LIMITATIONS: On LinkedIn, the password of the account must be provided in the specifics and the same User cannot be blocked again for 48 hours.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.unblock_user200_response import UnblockUser200Response
+from unipile.models.unblock_user_request import UnblockUserRequest
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.UsersApi(api_client)
+    user_id = 'user_id_example' # str | The ID of the User to unblock.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+    unblock_user_request = unipile.UnblockUserRequest() # UnblockUserRequest |  (optional)
+
+    try:
+        # Unblock a User
+        api_response = api_instance.unblock_user(user_id, account_id, unblock_user_request=unblock_user_request)
+        print("The response of UsersApi->unblock_user:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling UsersApi->unblock_user: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **str**| The ID of the User to unblock. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+ **unblock_user_request** | [**UnblockUserRequest**](UnblockUserRequest.md)|  | [optional] 
+
+### Return type
+
+[**UnblockUser200Response**](UnblockUser200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

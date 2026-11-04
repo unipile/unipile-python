@@ -1,6 +1,6 @@
 # WhatsApp4Credentials
 
-The user credentials required by the provider to authenticate with.
+Choose QR code or pairing code authentication.
 
 ## Properties
 

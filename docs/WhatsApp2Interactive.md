@@ -1,6 +1,6 @@
 # WhatsApp2Interactive
 
-WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, hydrated templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
+WhatsApp interactive content available in the received provider payload. The body is exposed in text. Supports buttons, templates and native flows; missing or unsupported payloads cannot be reconstructed. Button metadata does not imply that Unipile can execute the action.
 
 ## Properties
 
