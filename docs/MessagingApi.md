@@ -30,6 +30,7 @@ Method | HTTP request | Description
 [**send_message**](MessagingApi.md#send_message) | **POST** /v2/{account_id}/chats/{chat_id}/messages/send | Send a Message
 [**set_composing_status**](MessagingApi.md#set_composing_status) | **POST** /v2/{account_id}/chats/{chat_id}/composing | Set Composing Status
 [**set_presence**](MessagingApi.md#set_presence) | **POST** /v2/{account_id}/presence | Set Presence
+[**star_message**](MessagingApi.md#star_message) | **POST** /v2/{account_id}/chats/{chat_id}/messages/{message_id}/star | Star a Message
 [**start_chat**](MessagingApi.md#start_chat) | **POST** /v2/{account_id}/chats/send | Start a Chat
 [**start_chat_from_inbox**](MessagingApi.md#start_chat_from_inbox) | **POST** /v2/{account_id}/inboxes/{inbox_id}/chats/send | Start a Chat from Inbox
 [**update_chat**](MessagingApi.md#update_chat) | **PATCH** /v2/{account_id}/chats/{chat_id} | Update a Chat
@@ -2235,6 +2236,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SetPresence200Response**](SetPresence200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **star_message**
+> GetMessage200Response star_message(chat_id, message_id, account_id, star_message_request)
+
+Star a Message
+
+Stars or unstars a message, if supported by the provider. This state is private to the account.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.get_message200_response import GetMessage200Response
+from unipile.models.star_message_request import StarMessageRequest
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.MessagingApi(api_client)
+    chat_id = 'chat_id_example' # str | The ID of the Chat where the message is.
+    message_id = 'message_id_example' # str | The ID of the Message to star or unstar.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+    star_message_request = unipile.StarMessageRequest() # StarMessageRequest | 
+
+    try:
+        # Star a Message
+        api_response = api_instance.star_message(chat_id, message_id, account_id, star_message_request)
+        print("The response of MessagingApi->star_message:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MessagingApi->star_message: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chat_id** | **str**| The ID of the Chat where the message is. | 
+ **message_id** | **str**| The ID of the Message to star or unstar. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+ **star_message_request** | [**StarMessageRequest**](StarMessageRequest.md)|  | 
+
+### Return type
+
+[**GetMessage200Response**](GetMessage200Response.md)
 
 ### Authorization
 

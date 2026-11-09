@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **label** | **str** | If supported, associate the chat with the given label. For Whatsapp, this is resolved by label name and created if missing. | [optional] 
 **muted_until** | [**UpdateChatRequestMutedUntil**](UpdateChatRequestMutedUntil.md) |  | [optional] 
 **read_status** | **bool** | Set to &#x60;true&#x60; to mark the chat as read. This is useful when displaying the list of messages in your app. Set to &#x60;false&#x60; to mark the chat as unread. | [optional] 
+**disappearing_messages_timer** | [**UpdateChatRequestDisappearingMessagesTimer**](UpdateChatRequestDisappearingMessagesTimer.md) |  | [optional] 
 
 ## Example
 
