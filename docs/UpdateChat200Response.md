@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **is_pinned** | **bool** | Is the chat pinned at the top of the list, if supported by the provider. | 
 **is_readonly** | **bool** | Is the chat read-only for the current user. Trying to send messages in read-only chats will fail. | 
 **is_archived** | **bool** | Is the chat archived. Archived chats are usually hidden from the chat list. | 
+**disappearing_messages_timer** | [**GetChatsList200ResponseDataInnerDisappearingMessagesTimer**](GetChatsList200ResponseDataInnerDisappearingMessagesTimer.md) |  | [optional] 
 **folders** | **List[str]** | A list of folders the chat belongs to. | 
 **participants_count** | **float** | The number of participants in the chat if the chat is a group. | [optional] 
 **unread_count** | **float** | The number of unread messages in the chat. &#x60;0&#x60; if the chat is read, &#x60;-1&#x60; if the chat was manually marked as unread by the user and does not have any unread messages. | 

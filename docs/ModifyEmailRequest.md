@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**folders_ids** | **List[Optional[str]]** | The ID(s) of the folder(s) to apply, overwriting all folders previously associated with the Email. Outlook emails can be in a single folder only. Google allows a single email to appear in multiple folders. For Gmail, SENT is ignored: this operation cannot add or remove it, and its existing membership is preserved whether SENT is included or omitted. UNREAD is also ignored and read status is preserved; use the mark-as-read or mark-as-unread operation to change it. | [optional] 
+**folders_ids** | **List[Optional[str]]** | The ID(s) of the folder(s) to apply, overwriting all folders previously associated with the Email. Outlook emails can be in a single folder only. Google allows a single email to appear in multiple folders. For Gmail, SENT and DRAFT are ignored: this operation cannot add or remove them, and their existing membership is preserved whether they are included or omitted. UNREAD is also ignored and read status is preserved; use the mark-as-read or mark-as-unread operation to change it. Gmail accepts an empty list to remove all labels except UNREAD, SENT and DRAFT and thus \&quot;archive\&quot; the email. | [optional] 
 **specifics** | [**ModifyEmailRequestSpecifics**](ModifyEmailRequestSpecifics.md) |  | [optional] 
 
 ## Example

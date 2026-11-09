@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **type** | **str** |  | 
 **duration** | **float** | The duration of the video in seconds. | [optional] 
 **voice_note** | **bool** | The audio is a voice note (should be displayed differently) | 
+**waveform** | **List[int]** | The waveform of the voice note, as a list of amplitude values between 0 and 100. | [optional] 
 **size** | [**VideoSize**](VideoSize.md) |  | 
 **sticker** | **bool** | The image is a sticker (should be displayed differently) | 
 **gif** | **bool** | The video is a GIF (should be displayed differently) | 

@@ -7,6 +7,7 @@ Metadata of the the file.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **duration** | **float** | Duration of the media file. | [optional] 
+**waveform** | **List[int]** | Waveform of an audio file sent as a voice note, as a list of up to 64 amplitude values between 0 and 100. When omitted, it is computed from the audio file if the provider displays one. | [optional] 
 
 ## Example
 
