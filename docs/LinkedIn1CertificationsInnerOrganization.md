@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **picture_url** | **str** | Public url to the profile picture of the company. | [optional] 
 **profile_url** | **str** | Public url to the profile of the company. | [optional] 
 **industries** | **List[str]** | Industry types of the company. | [optional] 
+**headcount_range** | [**LinkedIn1ExperienceInnerCompanyHeadcountRange**](LinkedIn1ExperienceInnerCompanyHeadcountRange.md) |  | [optional] 
 
 ## Example
 

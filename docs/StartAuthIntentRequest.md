@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **oauth_callback_redirect_uri** | **str** | The URL to redirect to after the user has authenticated using the Provider&#39;s oAuth screen. | 
 **login_hint** | **str** | Uses the hint to simplify the login flow either by prefilling the email / username / phone number field in the authentication form. | [optional] 
 **user_agent** | **str** | The exact user agent of the browser used to retrieve the cookies. You can get it in the browser&#39;s console with &#x60;console.log(navigator.userAgent)&#x60;. In Hosted Auth, this is collected automatically from the user&#39;s browser. When reconnecting an Account, the user agent it already uses is kept. | [optional] 
-**account_scope_id** | **str** | The Scope assigned to a newly linked Account. | [optional] 
+**account_scope_id** | **str** | The Scope assigned to a newly linked account. Cannot be specified when reconnecting an existing account. | [optional] 
 **state** | **str** | State data sent in the account.add or account.reconnect webhook after completion. | [optional] 
 **account_id** | **str** | The existing LinkedIn, Instagram or Facebook Account to reconnect. Omit it to link a new Account. | [optional] 
 **unilogin** | **bool** | Use the UniLogin extension instead of submitting credentials. | 

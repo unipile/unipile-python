@@ -448,6 +448,7 @@ docs/LinkedIn1EducationInner.md
 docs/LinkedIn1EducationInnerSchool.md
 docs/LinkedIn1ExperienceInner.md
 docs/LinkedIn1ExperienceInnerCompany.md
+docs/LinkedIn1ExperienceInnerCompanyHeadcountRange.md
 docs/LinkedIn1Interests.md
 docs/LinkedIn1InterestsCompaniesInner.md
 docs/LinkedIn1InterestsGroupsInner.md
@@ -1253,6 +1254,7 @@ test/test_linked_in1_education_inner.py
 test/test_linked_in1_education_inner_school.py
 test/test_linked_in1_experience_inner.py
 test/test_linked_in1_experience_inner_company.py
+test/test_linked_in1_experience_inner_company_headcount_range.py
 test/test_linked_in1_interests.py
 test/test_linked_in1_interests_companies_inner.py
 test/test_linked_in1_interests_groups_inner.py
@@ -2066,6 +2068,7 @@ unipile/models/linked_in1_education_inner.py
 unipile/models/linked_in1_education_inner_school.py
 unipile/models/linked_in1_experience_inner.py
 unipile/models/linked_in1_experience_inner_company.py
+unipile/models/linked_in1_experience_inner_company_headcount_range.py
 unipile/models/linked_in1_interests.py
 unipile/models/linked_in1_interests_companies_inner.py
 unipile/models/linked_in1_interests_groups_inner.py
