@@ -689,7 +689,7 @@ Name | Type | Description  | Notes
 
 Get a User Picture
 
-Downloads the profile picture of the specified User. Use `me` as `user_id` to specify the owner of the connected account. For the providers that publish no public url for it, the url of this endpoint is given by the `private_picture_download_url` field of a User; for Facebook, it serves the current picture, whose `public_picture_url` expires within days.
+Downloads the profile picture of the specified User. Use `me` as `user_id` to specify the owner of the connected account. The `private_picture_download_url` field of a User, when present, points to this endpoint. For Facebook and WhatsApp, it serves the current picture, whose `public_picture_url` expires.
 
 ### Example
 

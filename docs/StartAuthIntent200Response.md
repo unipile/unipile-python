@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**object** | **str** |  | 
-**checkpoint** | [**StartAuthIntent200ResponseAnyOf1Checkpoint**](StartAuthIntent200ResponseAnyOf1Checkpoint.md) |  | 
-**intent_id** | **str** |  | 
+**object** | **str** | The type of the returned object. | 
+**checkpoint** | [**CheckpointCheckpoint**](CheckpointCheckpoint.md) |  | 
+**intent_id** | **str** | The ID of the auth intent. This should be used to listen for the QR Code scan with Solve Checkpoint. | 
 **qrcode** | **str** | The QR Code to scan. | 
 **url** | **str** | The URL to redirect to start the oauth flow of the provider. | 
 **user_id** | **str** | The ID of the user that owns the account for the provider. | 
@@ -23,7 +23,6 @@ Name | Type | Description | Notes
 **metadata** | [**Account1Metadata**](Account1Metadata.md) |  | 
 **initial_sync** | [**AccountInitialSync**](AccountInitialSync.md) |  | [optional] 
 **proxy** | [**Account1Proxy**](Account1Proxy.md) |  | [optional] 
-**account_id** | **str** |  | 
 
 ## Example
 

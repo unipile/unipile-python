@@ -703,7 +703,7 @@ Name | Type | Description  | Notes
 
 Get a Chat Picture
 
-Downloads the picture of the specified Chat, for the providers that publish no public url for it. The url of this endpoint is given by the `private_picture_download_url` field of a Chat.
+Downloads the picture of the specified Chat. The `private_picture_download_url` field of a Chat, when present, points to this endpoint. For Facebook and WhatsApp, it serves the current picture, whose `public_picture_url` expires.
 
 ### Example
 
