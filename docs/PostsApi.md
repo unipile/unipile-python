@@ -66,7 +66,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to add the comment to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post to add the comment to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     add_post_comment_request = unipile.AddPostCommentRequest() # AddPostCommentRequest | 
 
@@ -86,7 +86,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to add the comment to.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post to add the comment to.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **add_post_comment_request** | [**AddPostCommentRequest**](AddPostCommentRequest.md)|  | 
 
@@ -150,7 +150,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     comment_id = 'comment_id_example' # str | The ID of the Comment to add the reaction to.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     add_post_comment_reaction_request = unipile.AddPostCommentReactionRequest() # AddPostCommentReactionRequest | 
@@ -171,7 +171,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **comment_id** | **str**| The ID of the Comment to add the reaction to. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **add_post_comment_reaction_request** | [**AddPostCommentReactionRequest**](AddPostCommentReactionRequest.md)|  | 
@@ -236,7 +236,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to add the reaction to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post to add the reaction to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     add_post_reaction_request = unipile.AddPostReactionRequest() # AddPostReactionRequest | 
 
@@ -256,7 +256,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to add the reaction to.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post to add the reaction to.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **add_post_reaction_request** | [**AddPostReactionRequest**](AddPostReactionRequest.md)|  | 
 
@@ -482,7 +482,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to delete.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post to delete.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
 
     try:
@@ -499,7 +499,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to delete.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post to delete.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
 
 ### Return type
@@ -560,7 +560,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     comment_id = 'comment_id_example' # str | The ID of the Comment to delete.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
 
@@ -578,7 +578,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **comment_id** | **str**| The ID of the Comment to delete. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
 
@@ -641,7 +641,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to retrieve.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post to retrieve.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
 
     try:
@@ -660,7 +660,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to retrieve.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post to retrieve.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
 
 ### Return type
@@ -724,12 +724,12 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     comment_id = 'comment_id_example' # str | The ID of the Comment to retrieve reactions from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Comment's Reactions
@@ -747,12 +747,12 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **comment_id** | **str**| The ID of the Comment to retrieve reactions from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -815,12 +815,12 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     comment_id = 'comment_id_example' # str | The ID of the Comment to retrieve replies from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Comment's Replies
@@ -838,12 +838,12 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **comment_id** | **str**| The ID of the Comment to retrieve replies from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -906,11 +906,11 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to retrieve comments from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post to retrieve comments from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
     sort_by = 'MOST_RECENT' # str | Sort criterion for the posts list: MOST_RECENT (most recent first) or MOST_RELEVANT (most relevant first). (optional) (default to 'MOST_RECENT')
 
     try:
@@ -929,11 +929,11 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to retrieve comments from.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post to retrieve comments from.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
  **sort_by** | **str**| Sort criterion for the posts list: MOST_RECENT (most recent first) or MOST_RELEVANT (most relevant first). | [optional] [default to &#39;MOST_RECENT&#39;]
 
 ### Return type
@@ -998,11 +998,11 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to retrieve reactions from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post to retrieve reactions from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Post's Reactions
@@ -1020,11 +1020,11 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to retrieve reactions from.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post to retrieve reactions from.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1089,9 +1089,9 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.PostsApi(api_client)
     user_id = 'user_id_example' # str | The ID of the User to retrieve posts from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all User's Posts
@@ -1111,9 +1111,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **str**| The ID of the User to retrieve posts from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1178,9 +1178,9 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.PostsApi(api_client)
     user_id = 'user_id_example' # str | The ID of the User to retrieve the comments from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all User Comments
@@ -1200,9 +1200,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **str**| The ID of the User to retrieve the comments from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1267,9 +1267,9 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.PostsApi(api_client)
     user_id = 'user_id_example' # str | The ID of the User to retrieve the reactions from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all User Reactions
@@ -1289,9 +1289,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **str**| The ID of the User to retrieve the reactions from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1353,7 +1353,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     comment_id = 'comment_id_example' # str | The ID of the Comment where the reaction is.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     remove_post_comment_reaction_request = unipile.RemovePostCommentReactionRequest() # RemovePostCommentReactionRequest | 
@@ -1374,7 +1374,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **comment_id** | **str**| The ID of the Comment where the reaction is. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **remove_post_comment_reaction_request** | [**RemovePostCommentReactionRequest**](RemovePostCommentReactionRequest.md)|  | 
@@ -1439,7 +1439,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post where the reaction is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post where the reaction is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     remove_post_reaction_request = unipile.RemovePostReactionRequest() # RemovePostReactionRequest | 
 
@@ -1459,7 +1459,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post where the reaction is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post where the reaction is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **remove_post_reaction_request** | [**RemovePostReactionRequest**](RemovePostReactionRequest.md)|  | 
 
@@ -1524,7 +1524,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to add the comment to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post to add the comment to.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     comment_id = 'comment_id_example' # str | The ID of the Comment to reply to.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     add_post_comment_request = unipile.AddPostCommentRequest() # AddPostCommentRequest | 
@@ -1545,7 +1545,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to add the comment to.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post to add the comment to.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **comment_id** | **str**| The ID of the Comment to reply to. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **add_post_comment_request** | [**AddPostCommentRequest**](AddPostCommentRequest.md)|  | 
@@ -1610,7 +1610,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post to update.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post to update.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     update_post_request = unipile.UpdatePostRequest() # UpdatePostRequest |  (optional)
 
@@ -1630,7 +1630,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post to update.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post to update.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **update_post_request** | [**UpdatePostRequest**](UpdatePostRequest.md)|  | [optional] 
 
@@ -1694,7 +1694,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.PostsApi(api_client)
-    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
     comment_id = 'comment_id_example' # str | The ID of the Comment to update.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     update_post_comment_request = unipile.UpdatePostCommentRequest() # UpdatePostCommentRequest | 
@@ -1715,7 +1715,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses only. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
  **comment_id** | **str**| The ID of the Comment to update. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **update_post_comment_request** | [**UpdatePostCommentRequest**](UpdatePostCommentRequest.md)|  | 

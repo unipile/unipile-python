@@ -550,9 +550,9 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.UsersApi(api_client)
     user_id = 'user_id_example' # str | The ID of the User to retrieve posts from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all User's Posts
@@ -572,9 +572,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **str**| The ID of the User to retrieve posts from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -637,9 +637,9 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.UsersApi(api_client)
     type = 'type_example' # str | Filter to returns only the given type of Relation / Follow request.         - `sent` is the requests sent by the current user.         - `received` is the requests received by the current user.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all pending Relation / Follow requests
@@ -659,9 +659,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **type** | **str**| Filter to returns only the given type of Relation / Follow request.         - &#x60;sent&#x60; is the requests sent by the current user.         - &#x60;received&#x60; is the requests received by the current user. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -689,7 +689,7 @@ Name | Type | Description  | Notes
 
 Get a User Picture
 
-Downloads the profile picture of the specified User. Use `me` as `user_id` to specify the owner of the connected account. For the providers that publish no public url for it, the url of this endpoint is given by the `private_picture_download_url` field of a User; for Facebook, it serves the current picture, whose `public_picture_url` expires within days.
+Downloads the profile picture of the specified User. Use `me` as `user_id` to specify the owner of the connected account. The `private_picture_download_url` field of a User, when present, points to this endpoint. For Facebook and WhatsApp, it serves the current picture, whose `public_picture_url` expires.
 
 ### Example
 
@@ -969,9 +969,9 @@ with unipile.ApiClient(configuration) as api_client:
     user_id = 'user_id_example' # str | The ID of the User to get the relations from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     search = 'search_example' # str | Any text input to filter out results (if supported by the provider). (optional)
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List Relations of a User
@@ -992,9 +992,9 @@ Name | Type | Description  | Notes
  **user_id** | **str**| The ID of the User to get the relations from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **search** | **str**| Any text input to filter out results (if supported by the provider). | [optional] 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1057,9 +1057,9 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.UsersApi(api_client)
     user_id = 'user_id_example' # str | The ID of the User to get the followers from. Use `me` to get the followers of the account owner.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List Followers of a User
@@ -1079,9 +1079,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **str**| The ID of the User to get the followers from. Use &#x60;me&#x60; to get the followers of the account owner. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1144,9 +1144,9 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.UsersApi(api_client)
     user_id = 'user_id_example' # str | The ID of the User to get the followed users from. Use `me` to get the followed users of the account owner.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List Following of a User
@@ -1166,9 +1166,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **str**| The ID of the User to get the followed users from. Use &#x60;me&#x60; to get the followed users of the account owner. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 

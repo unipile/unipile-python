@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
 **checkpoint** | [**CheckpointCheckpoint**](CheckpointCheckpoint.md) |  | 
-**intent_id** | **str** | The ID of the auth intent. This should be used in Solve Checkpoint. | 
+**intent_id** | **str** | The ID of the auth intent. Use it to continue authentication. | 
 
 ## Example
 

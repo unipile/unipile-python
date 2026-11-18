@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | 
 **application_id** | **str** |  | 
 **account_ids** | **List[str]** |  | 
-**account_targets** | [**List[ListWebhookEndpoints200ResponseDataInnerAccountTargetsInner]**](ListWebhookEndpoints200ResponseDataInnerAccountTargetsInner.md) |  | 
+**account_targets** | [**List[CreateWebhookEndpoint200ResponseAccountTargetsInner]**](CreateWebhookEndpoint200ResponseAccountTargetsInner.md) |  | 
 
 ## Example
 

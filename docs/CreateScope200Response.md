@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **application_id** | **str** | The ID of the Application that owns the Scope. | 
 **name** | **str** | The internal name of the Scope. | 
 **reference** | **str** | External metadata used to map the Scope to another resource, or &#x60;null&#x60; when none is defined. | 
-**status** | **str** | The status of the Scope. A disabled scope blocks its scoped API keys and authentication flows until it is enabled again. | 
+**status** | **str** | The status of the Scope. A disabled scope blocks its scoped API keys, MCP access and authentication flows until it is enabled again. | 
 **created_at** | **str** | The date and time when the Scope was created. | 
 **accounts_count** | **float** | The number of Accounts permanently assigned to the Scope. | 
-**api_keys_count** | **float** | The number of API Keys assigned to the Scope. | 
+**api_keys_count** | **float** | The number of user-managed API Keys assigned to the Scope. Automatically managed credentials are excluded. | 
 
 ## Example
 

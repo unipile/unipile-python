@@ -221,9 +221,9 @@ with unipile.ApiClient(configuration) as api_client:
     before = '2013-10-20T19:20:30+01:00' # datetime | Filter to only return emails sent before the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). (optional)
     exclude_folder = 'exclude_folder_example' # str | Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs. (optional)
     after = '2013-10-20T19:20:30+01:00' # datetime | Filter to only return emails sent after the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). (optional)
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List category Emails
@@ -254,9 +254,9 @@ Name | Type | Description  | Notes
  **before** | **datetime**| Filter to only return emails sent before the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). | [optional] 
  **exclude_folder** | **str**| Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs. | [optional] 
  **after** | **datetime**| Filter to only return emails sent after the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). | [optional] 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
