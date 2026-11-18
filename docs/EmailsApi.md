@@ -8,11 +8,11 @@ Method | HTTP request | Description
 [**create_folder**](EmailsApi.md#create_folder) | **POST** /v2/{account_id}/folders | Create a Folder
 [**delete_draft**](EmailsApi.md#delete_draft) | **DELETE** /v2/{account_id}/drafts/{draft_id} | Delete a Draft
 [**delete_folder**](EmailsApi.md#delete_folder) | **DELETE** /v2/{account_id}/folders/{folder_id} | Delete a Folder
-[**get_attachment1**](EmailsApi.md#get_attachment1) | **GET** /v2/{account_id}/emails/{email_id}/attachments/{attachment_id} | Get an Email Attachment
 [**get_contacts_list**](EmailsApi.md#get_contacts_list) | **GET** /v2/{account_id}/contacts | List contacts
 [**get_draft**](EmailsApi.md#get_draft) | **GET** /v2/{account_id}/drafts/{draft_id} | Get a Draft
 [**get_drafts_list**](EmailsApi.md#get_drafts_list) | **GET** /v2/{account_id}/drafts | List all Drafts
 [**get_email**](EmailsApi.md#get_email) | **GET** /v2/{account_id}/emails/{email_id} | Get an Email
+[**get_email_attachment**](EmailsApi.md#get_email_attachment) | **GET** /v2/{account_id}/emails/{email_id}/attachments/{attachment_id} | Get an Email Attachment
 [**get_email_senders**](EmailsApi.md#get_email_senders) | **GET** /v2/{account_id}/email-senders | List email senders
 [**get_emails_list**](EmailsApi.md#get_emails_list) | **GET** /v2/{account_id}/emails | List all Emails
 [**get_folder**](EmailsApi.md#get_folder) | **GET** /v2/{account_id}/folders/{folder_id} | Get a Folder
@@ -349,86 +349,6 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_attachment1**
-> get_attachment1(email_id, attachment_id, account_id)
-
-Get an Email Attachment
-
-Download the attachment file of an Email.
-
-### Example
-
-* Api Key Authentication (apiKey):
-
-```python
-import unipile
-from unipile.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.unipile.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = unipile.Configuration(
-    host = "https://api.unipile.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: apiKey
-configuration.api_key['apiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['apiKey'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with unipile.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = unipile.EmailsApi(api_client)
-    email_id = 'email_id_example' # str | ID of the parent Email.
-    attachment_id = 'attachment_id_example' # str | ID of the Email Attachment to retrieve.
-    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-
-    try:
-        # Get an Email Attachment
-        api_instance.get_attachment1(email_id, attachment_id, account_id)
-    except Exception as e:
-        print("Exception when calling EmailsApi->get_attachment1: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email_id** | **str**| ID of the parent Email. | 
- **attachment_id** | **str**| ID of the Email Attachment to retrieve. | 
- **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[apiKey](../README.md#apiKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_contacts_list**
 > GetContactsList200Response get_contacts_list(account_id, offset=offset, cursor=cursor, limit=limit)
 
@@ -468,9 +388,9 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.EmailsApi(api_client)
     account_id = 'account_id_example' # str | 
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List contacts
@@ -489,9 +409,9 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -637,9 +557,9 @@ with unipile.ApiClient(configuration) as api_client:
     to = 'to_example' # str | Filter to only return drafts with the given email address in to, cc or bcc field. (optional)
     var_from = 'var_from_example' # str | Filter to only return drafts  with the given email address in from. (optional)
     any_email = 'any_email_example' # str | Filter to only return drafts related to a comma-separated list of email addresses. (optional)
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Drafts
@@ -661,9 +581,9 @@ Name | Type | Description  | Notes
  **to** | **str**| Filter to only return drafts with the given email address in to, cc or bcc field. | [optional] 
  **var_from** | **str**| Filter to only return drafts  with the given email address in from. | [optional] 
  **any_email** | **str**| Filter to only return drafts related to a comma-separated list of email addresses. | [optional] 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -760,6 +680,86 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_email_attachment**
+> get_email_attachment(email_id, attachment_id, account_id)
+
+Get an Email Attachment
+
+Download the attachment file of an Email.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.EmailsApi(api_client)
+    email_id = 'email_id_example' # str | ID of the parent Email.
+    attachment_id = 'attachment_id_example' # str | ID of the Email Attachment to retrieve.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+
+    try:
+        # Get an Email Attachment
+        api_instance.get_email_attachment(email_id, attachment_id, account_id)
+    except Exception as e:
+        print("Exception when calling EmailsApi->get_email_attachment: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email_id** | **str**| ID of the parent Email. | 
+ **attachment_id** | **str**| ID of the Email Attachment to retrieve. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 ### HTTP response details
 
@@ -898,9 +898,9 @@ with unipile.ApiClient(configuration) as api_client:
     before = '2013-10-20T19:20:30+01:00' # datetime | Filter to only return emails sent before the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). (optional)
     exclude_folder = 'exclude_folder_example' # str | Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs. (optional)
     after = '2013-10-20T19:20:30+01:00' # datetime | Filter to only return emails sent after the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). (optional)
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Emails
@@ -930,9 +930,9 @@ Name | Type | Description  | Notes
  **before** | **datetime**| Filter to only return emails sent before the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). | [optional] 
  **exclude_folder** | **str**| Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs. | [optional] 
  **after** | **datetime**| Filter to only return emails sent after the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). | [optional] 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1087,9 +1087,9 @@ with unipile.ApiClient(configuration) as api_client:
     before = '2013-10-20T19:20:30+01:00' # datetime | Filter to only return emails sent before the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). (optional)
     exclude_folder = 'exclude_folder_example' # str | Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs. (optional)
     after = '2013-10-20T19:20:30+01:00' # datetime | Filter to only return emails sent after the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). (optional)
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List folder Emails
@@ -1120,9 +1120,9 @@ Name | Type | Description  | Notes
  **before** | **datetime**| Filter to only return emails sent before the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). | [optional] 
  **exclude_folder** | **str**| Filter to only return emails that are not in any of the folders specified in the comma-separated list of folder IDs. | [optional] 
  **after** | **datetime**| Filter to only return emails sent after the given datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). | [optional] 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1184,9 +1184,9 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.EmailsApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Folders
@@ -1205,9 +1205,9 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 

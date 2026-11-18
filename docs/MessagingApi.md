@@ -10,7 +10,6 @@ Method | HTTP request | Description
 [**delete_chat**](MessagingApi.md#delete_chat) | **DELETE** /v2/{account_id}/chats/{chat_id} | Delete a Chat
 [**delete_message**](MessagingApi.md#delete_message) | **DELETE** /v2/{account_id}/chats/{chat_id}/messages/{message_id} | Delete a Message
 [**forward_message**](MessagingApi.md#forward_message) | **POST** /v2/{account_id}/chats/{chat_id}/messages/{message_id}/forward | Forward a Message
-[**get_attachment**](MessagingApi.md#get_attachment) | **GET** /v2/{account_id}/chats/{chat_id}/messages/{message_id}/attachments/{attachment_id} | Get a Message Attachment
 [**get_chat**](MessagingApi.md#get_chat) | **GET** /v2/{account_id}/chats/{chat_id} | Get a Chat
 [**get_chat_picture**](MessagingApi.md#get_chat_picture) | **GET** /v2/{account_id}/chats/{chat_id}/picture | Get a Chat Picture
 [**get_chats_list**](MessagingApi.md#get_chats_list) | **GET** /v2/{account_id}/chats | List all Chats
@@ -18,6 +17,7 @@ Method | HTTP request | Description
 [**get_inbox_chats_list**](MessagingApi.md#get_inbox_chats_list) | **GET** /v2/{account_id}/inboxes/{inbox_id}/chats | List Inbox Chats
 [**get_inboxes_list**](MessagingApi.md#get_inboxes_list) | **GET** /v2/{account_id}/inboxes | List all Inboxes
 [**get_message**](MessagingApi.md#get_message) | **GET** /v2/{account_id}/chats/{chat_id}/messages/{message_id} | Get a Message
+[**get_message_attachment**](MessagingApi.md#get_message_attachment) | **GET** /v2/{account_id}/chats/{chat_id}/messages/{message_id}/attachments/{attachment_id} | Get a Message Attachment
 [**get_message_reactions_list**](MessagingApi.md#get_message_reactions_list) | **GET** /v2/{account_id}/chats/{chat_id}/messages/{message_id}/reactions | List all Message&#39;s Reactions
 [**get_messages_list**](MessagingApi.md#get_messages_list) | **GET** /v2/{account_id}/chats/{chat_id}/messages | List all Chat Messages
 [**get_participants_list**](MessagingApi.md#get_participants_list) | **GET** /v2/{account_id}/chats/{chat_id}/participants | List all Chat Participants
@@ -535,88 +535,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_attachment**
-> get_attachment(chat_id, message_id, attachment_id, account_id)
-
-Get a Message Attachment
-
-Download the attachment file of a message.
-
-### Example
-
-* Api Key Authentication (apiKey):
-
-```python
-import unipile
-from unipile.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.unipile.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = unipile.Configuration(
-    host = "https://api.unipile.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: apiKey
-configuration.api_key['apiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['apiKey'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with unipile.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = unipile.MessagingApi(api_client)
-    chat_id = 'chat_id_example' # str | The ID of the Chat where the parent message of the attachment is.
-    message_id = 'message_id_example' # str | The ID of the Message where the attachment is.
-    attachment_id = 'attachment_id_example' # str | The ID of the Attachment to retrieve.
-    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-
-    try:
-        # Get a Message Attachment
-        api_instance.get_attachment(chat_id, message_id, attachment_id, account_id)
-    except Exception as e:
-        print("Exception when calling MessagingApi->get_attachment: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **chat_id** | **str**| The ID of the Chat where the parent message of the attachment is. | 
- **message_id** | **str**| The ID of the Message where the attachment is. | 
- **attachment_id** | **str**| The ID of the Attachment to retrieve. | 
- **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[apiKey](../README.md#apiKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Default Response |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_chat**
 > GetChat200Response get_chat(chat_id, account_id)
 
@@ -703,7 +621,7 @@ Name | Type | Description  | Notes
 
 Get a Chat Picture
 
-Downloads the picture of the specified Chat, for the providers that publish no public url for it. The url of this endpoint is given by the `private_picture_download_url` field of a Chat.
+Downloads the picture of the specified Chat. The `private_picture_download_url` field of a Chat, when present, points to this endpoint. For Facebook and WhatsApp, it serves the current picture, whose `public_picture_url` expires.
 
 ### Example
 
@@ -818,9 +736,9 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.MessagingApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
     type = 'type_example' # str | Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat. (optional)
     before = '2013-10-20T19:20:30+01:00' # datetime | A filter to target items created before the datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). (optional)
     after = '2013-10-20T19:20:30+01:00' # datetime | A filter to target items created after the datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). (optional)
@@ -844,9 +762,9 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
  **type** | **str**| Return only chats of the given type (if supported by the provider).         - &#x60;1to1&#x60; is a 1to1 chat.         - &#x60;group&#x60; is a group chat.         - &#x60;channel&#x60; is a channel chat. | [optional] 
  **before** | **datetime**| A filter to target items created before the datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). | [optional] 
  **after** | **datetime**| A filter to target items created after the datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). | [optional] 
@@ -913,9 +831,9 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.MessagingApi(api_client)
     account_id = 'account_id_example' # str | 
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List contacts
@@ -934,9 +852,9 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1002,9 +920,9 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.MessagingApi(api_client)
     inbox_id = 'inbox_id_example' # str | ID of the Inbox to retrieve Chats from. Use <a href=\"https://developer.unipile.com/v2.0/reference/getinboxeslist\">List all Inboxes</a> to get the ID of an inbox.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
     type = 'type_example' # str | Return only chats of the given type (if supported by the provider).         - `1to1` is a 1to1 chat.         - `group` is a group chat.         - `channel` is a channel chat. (optional)
     before = '2013-10-20T19:20:30+01:00' # datetime | A filter to target items created before the datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). (optional)
     after = '2013-10-20T19:20:30+01:00' # datetime | A filter to target items created after the datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). (optional)
@@ -1029,9 +947,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **inbox_id** | **str**| ID of the Inbox to retrieve Chats from. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getinboxeslist\&quot;&gt;List all Inboxes&lt;/a&gt; to get the ID of an inbox. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
  **type** | **str**| Return only chats of the given type (if supported by the provider).         - &#x60;1to1&#x60; is a 1to1 chat.         - &#x60;group&#x60; is a group chat.         - &#x60;channel&#x60; is a channel chat. | [optional] 
  **before** | **datetime**| A filter to target items created before the datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). | [optional] 
  **after** | **datetime**| A filter to target items created after the datetime (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). | [optional] 
@@ -1221,6 +1139,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_message_attachment**
+> get_message_attachment(chat_id, message_id, attachment_id, account_id)
+
+Get a Message Attachment
+
+Download the attachment file of a message.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.MessagingApi(api_client)
+    chat_id = 'chat_id_example' # str | The ID of the Chat where the parent message of the attachment is.
+    message_id = 'message_id_example' # str | The ID of the Message where the attachment is.
+    attachment_id = 'attachment_id_example' # str | The ID of the Attachment to retrieve.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+
+    try:
+        # Get a Message Attachment
+        api_instance.get_message_attachment(chat_id, message_id, attachment_id, account_id)
+    except Exception as e:
+        print("Exception when calling MessagingApi->get_message_attachment: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chat_id** | **str**| The ID of the Chat where the parent message of the attachment is. | 
+ **message_id** | **str**| The ID of the Message where the attachment is. | 
+ **attachment_id** | **str**| The ID of the Attachment to retrieve. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_message_reactions_list**
 > GetMessageReactionsList200Response get_message_reactions_list(chat_id, message_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
@@ -1262,9 +1262,9 @@ with unipile.ApiClient(configuration) as api_client:
     chat_id = 'chat_id_example' # str | The ID of the Chat where the message is.
     message_id = 'message_id_example' # str | The ID of the Message to retrieve reactions from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Message's Reactions
@@ -1285,9 +1285,9 @@ Name | Type | Description  | Notes
  **chat_id** | **str**| The ID of the Chat where the message is. | 
  **message_id** | **str**| The ID of the Message to retrieve reactions from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1353,9 +1353,9 @@ with unipile.ApiClient(configuration) as api_client:
     before = '2013-10-20T19:20:30+01:00' # datetime | Filter to only return messages sent before the given timestamp (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). (optional)
     after = '2013-10-20T19:20:30+01:00' # datetime | Filter to only return messages sent after the given timestamp (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). (optional)
     user_id = 'user_id_example' # str | Filter to only return messages sent by the given User. (optional)
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Chat Messages
@@ -1378,9 +1378,9 @@ Name | Type | Description  | Notes
  **before** | **datetime**| Filter to only return messages sent before the given timestamp (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). | [optional] 
  **after** | **datetime**| Filter to only return messages sent after the given timestamp (exclusive). Must use a supported date-time format. See [supported date formats](https://developer.unipile.com/v2.0/reference/api-usage#dates). | [optional] 
  **user_id** | **str**| Filter to only return messages sent by the given User. | [optional] 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1444,9 +1444,9 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.MessagingApi(api_client)
     chat_id = 'chat_id_example' # str | ID of the Chat to retrieve participants from.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
-    limit = 20 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
 
     try:
         # List all Chat Participants
@@ -1466,9 +1466,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chat_id** | **str**| ID of the Chat to retrieve participants from. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
  **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
 
 ### Return type
 

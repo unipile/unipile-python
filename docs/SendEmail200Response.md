@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
-**id** | **str** | The ID of the email. | 
+**id** | **str** | The ID of the email. Empty when the provider kept no copy of the sent email that can be referenced (the email has been sent anyway). | 
 **message_id** | **str** | The Message-ID header value of the email. Use &#x60;id&#x60; in Unipile requests. May be absent when the header could not be retrieved after sending (the email has been sent anyway). | [optional] 
 
 ## Example

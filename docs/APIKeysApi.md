@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 List API Keys
 
-Lists account-wide and scoped API keys. Service API keys are never exposed by this endpoint.
+Lists user-managed account-wide and scoped API keys. Service API keys and automatically managed credentials are excluded.
 
 ### Example
 

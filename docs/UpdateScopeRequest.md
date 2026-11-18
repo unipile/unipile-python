@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | The new internal name of the Scope. | [optional] 
 **reference** | **str** | The new external reference of the Scope. Must be unique in the Application. Set to &#x60;null&#x60; to remove it. | [optional] 
-**status** | **str** | The status of the Scope. A disabled scope blocks its scoped API keys and authentication flows until it is enabled again. | [optional] 
+**status** | **str** | The status of the Scope. A disabled scope blocks its scoped API keys, MCP access and authentication flows until it is enabled again. | [optional] 
 
 ## Example
 

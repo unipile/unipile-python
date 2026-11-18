@@ -92,11 +92,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_scope**
-> DeleteScope200Response delete_scope(scope_id)
+> DeleteScope200Response delete_scope(scope_id, revoke_mcp_access=revoke_mcp_access)
 
 Delete a Scope
 
-Deletes a Scope from the authenticated Application. The Scope must not contain any Accounts or API Keys, including expired API Keys.
+Deletes a Scope from the authenticated Application. Accounts and API Keys, including expired keys, must be removed first, except for internal keys belonging to its assigned MCP users. A Scope with assigned MCP users returns a conflict unless revoke_mcp_access=true is supplied. When confirmed, all assigned MCP accesses, their OAuth authorizations and their internal API keys are deleted together with the Scope. The users’ Unipile accounts are preserved.
 
 ### Example
 
@@ -130,10 +130,11 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.ScopesApi(api_client)
     scope_id = 'scope_id_example' # str | The ID of the Scope to delete.
+    revoke_mcp_access = False # bool | Explicitly revoke all assigned MCP accesses and delete their internal API keys when deleting this Scope. Accounts and other API keys must be removed first. (optional) (default to False)
 
     try:
         # Delete a Scope
-        api_response = api_instance.delete_scope(scope_id)
+        api_response = api_instance.delete_scope(scope_id, revoke_mcp_access=revoke_mcp_access)
         print("The response of ScopesApi->delete_scope:\n")
         pprint(api_response)
     except Exception as e:
@@ -148,6 +149,7 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope_id** | **str**| The ID of the Scope to delete. | 
+ **revoke_mcp_access** | **bool**| Explicitly revoke all assigned MCP accesses and delete their internal API keys when deleting this Scope. Accounts and other API keys must be removed first. | [optional] [default to False]
 
 ### Return type
 
@@ -289,7 +291,7 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.ScopesApi(api_client)
     offset = 'offset_example' # str | The number of Scopes to skip for pagination. (optional)
     limit = '20' # str | The maximum number of Scopes to return. (optional) (default to '20')
-    status = 'status_example' # str | The status of the Scope. A disabled scope blocks its scoped API keys and authentication flows until it is enabled again. (optional)
+    status = 'status_example' # str | The status of the Scope. A disabled scope blocks its scoped API keys, MCP access and authentication flows until it is enabled again. (optional)
     search = 'search_example' # str | Filter scopes by name or reference. (optional)
 
     try:
@@ -310,7 +312,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **offset** | **str**| The number of Scopes to skip for pagination. | [optional] 
  **limit** | **str**| The maximum number of Scopes to return. | [optional] [default to &#39;20&#39;]
- **status** | **str**| The status of the Scope. A disabled scope blocks its scoped API keys and authentication flows until it is enabled again. | [optional] 
+ **status** | **str**| The status of the Scope. A disabled scope blocks its scoped API keys, MCP access and authentication flows until it is enabled again. | [optional] 
  **search** | **str**| Filter scopes by name or reference. | [optional] 
 
 ### Return type

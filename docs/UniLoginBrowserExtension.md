@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **provider** | **str** | The provider to connect with UniLogin. | 
 **account_id** | **str** | The existing LinkedIn, Instagram or Facebook Account to reconnect. Omit it to link a new Account. | [optional] 
-**account_scope_id** | **str** | The Scope assigned to a newly linked Account. | [optional] 
+**account_scope_id** | **str** | The Scope assigned to a newly linked account. Cannot be specified when reconnecting an existing account. | [optional] 
 **state** | **str** | State data sent in the account.add or account.reconnect webhook after completion. | [optional] 
 **config** | [**UniLoginBrowserExtensionConfig**](UniLoginBrowserExtensionConfig.md) |  | [optional] 
 **unilogin** | **bool** | Use the UniLogin extension instead of submitting credentials. | 

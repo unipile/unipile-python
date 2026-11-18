@@ -112,8 +112,8 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     list_id = 'list_id_example' # str | The ID of the list to be browsed.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 25 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 25 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
     browse_sales_account_list_request = unipile.BrowseSalesAccountListRequest() # BrowseSalesAccountListRequest |  (optional)
 
     try:
@@ -134,8 +134,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **list_id** | **str**| The ID of the list to be browsed. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
  **browse_sales_account_list_request** | [**BrowseSalesAccountListRequest**](BrowseSalesAccountListRequest.md)|  | [optional] 
 
 ### Return type
@@ -200,8 +200,8 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     list_id = 'list_id_example' # str | The ID of the list to be browsed.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 25 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 25 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
     browse_sales_lead_list_request = unipile.BrowseSalesLeadListRequest() # BrowseSalesLeadListRequest |  (optional)
 
     try:
@@ -222,8 +222,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **list_id** | **str**| The ID of the list to be browsed. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
  **browse_sales_lead_list_request** | [**BrowseSalesLeadListRequest**](BrowseSalesLeadListRequest.md)|  | [optional] 
 
 ### Return type
@@ -1368,8 +1368,8 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     job_id = 'job_id_example' # str | The ID of the Job for which to retrieve the applicants.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 10 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 10 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
     get_classic_applicants_request = unipile.GetClassicApplicantsRequest() # GetClassicApplicantsRequest |  (optional)
 
     try:
@@ -1390,8 +1390,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_id** | **str**| The ID of the Job for which to retrieve the applicants. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
  **get_classic_applicants_request** | [**GetClassicApplicantsRequest**](GetClassicApplicantsRequest.md)|  | [optional] 
 
 ### Return type
@@ -1703,8 +1703,8 @@ with unipile.ApiClient(configuration) as api_client:
     type = 'type_example' # str | The type of search parameter.
     keywords = 'keywords_example' # str | A keyword or group of keywords to filter results.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 10 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 10 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
 
     try:
         # List Search Parameters
@@ -1725,8 +1725,8 @@ Name | Type | Description  | Notes
  **type** | **str**| The type of search parameter. | 
  **keywords** | **str**| A keyword or group of keywords to filter results. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
 
 ### Return type
 
@@ -2036,8 +2036,8 @@ with unipile.ApiClient(configuration) as api_client:
     company = ['company_example'] # List[str] | A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/getclassicsearchparameters\">List Search Parameters</a> with `COMPANY` type to find out the possible values.    Native filter : Company    (optional)
     location = ['location_example'] # List[str] | A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/getclassicsearchparameters\">List Search Parameters</a> with `LOCATION` type to find out the possible values.    Native filter : Location    (optional)
     details_sections = ["COMPANIES"] # List[str] | A list of additionnal sections to be included in the response analytics. (optional) (default to ["COMPANIES"])
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 10 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 10 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
 
     try:
         # List Profile Views
@@ -2062,8 +2062,8 @@ Name | Type | Description  | Notes
  **company** | [**List[str]**](str.md)| A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getclassicsearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;COMPANY&#x60; type to find out the possible values.    Native filter : Company    | [optional] 
  **location** | [**List[str]**](str.md)| A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getclassicsearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;LOCATION&#x60; type to find out the possible values.    Native filter : Location    | [optional] 
  **details_sections** | [**List[str]**](str.md)| A list of additionnal sections to be included in the response analytics. | [optional] [default to [&quot;COMPANIES&quot;]]
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
 
 ### Return type
 
@@ -2372,8 +2372,8 @@ with unipile.ApiClient(configuration) as api_client:
     status = ["ACTIVE"] # List[str] | A list of statuses that the project must match. (optional) (default to ["ACTIVE"])
     sort_by = 'LAST_USED_BY_ME' # str | The sort method. (optional) (default to 'LAST_USED_BY_ME')
     keywords = 'keywords_example' # str | A keyword or group of keywords to filter projects by name. (optional)
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 10 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 10 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
 
     try:
         # List Projects
@@ -2395,8 +2395,8 @@ Name | Type | Description  | Notes
  **status** | [**List[str]**](str.md)| A list of statuses that the project must match. | [optional] [default to [&quot;ACTIVE&quot;]]
  **sort_by** | **str**| The sort method. | [optional] [default to &#39;LAST_USED_BY_ME&#39;]
  **keywords** | **str**| A keyword or group of keywords to filter projects by name. | [optional] 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
 
 ### Return type
 
@@ -2709,8 +2709,8 @@ with unipile.ApiClient(configuration) as api_client:
     job_poster = ['job_poster_example'] # List[str] | A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters\">List Search Parameters</a> with `SEAT` type to find out the possible values.    Native filter : Job poster    (optional)
     contract = ['contract_example'] # List[str] | A list of parameter IDs. Use <a href=\"https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters\">List Search Parameters</a> with `CONTRACT` type to find out the possible values.    Native filter : Contract    (optional)
     workplace_type = ['workplace_type_example'] # List[str] | A list of workplace types.    Native filter : Workplace type    (optional)
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 10 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 10 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
 
     try:
         # List Job Postings
@@ -2735,8 +2735,8 @@ Name | Type | Description  | Notes
  **job_poster** | [**List[str]**](str.md)| A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;SEAT&#x60; type to find out the possible values.    Native filter : Job poster    | [optional] 
  **contract** | [**List[str]**](str.md)| A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;CONTRACT&#x60; type to find out the possible values.    Native filter : Contract    | [optional] 
  **workplace_type** | [**List[str]**](str.md)| A list of workplace types.    Native filter : Workplace type    | [optional] 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
 
 ### Return type
 
@@ -2880,7 +2880,7 @@ with unipile.ApiClient(configuration) as api_client:
     project_id = 'project_id_example' # str | The ID of the Hiring Project from which to browse the Pipeline.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
-    limit = 25 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
+    limit = 25 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
     get_recruiter_pipeline_candidates_request = unipile.GetRecruiterPipelineCandidatesRequest() # GetRecruiterPipelineCandidatesRequest |  (optional)
 
     try:
@@ -2902,7 +2902,7 @@ Name | Type | Description  | Notes
  **project_id** | **str**| The ID of the Hiring Project from which to browse the Pipeline. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
  **get_recruiter_pipeline_candidates_request** | [**GetRecruiterPipelineCandidatesRequest**](GetRecruiterPipelineCandidatesRequest.md)|  | [optional] 
 
 ### Return type
@@ -2966,8 +2966,8 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 10 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 10 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
     get_recruiter_search_parameters_request = unipile.GetRecruiterSearchParametersRequest() # GetRecruiterSearchParametersRequest |  (optional)
 
     try:
@@ -2987,8 +2987,8 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
  **get_recruiter_search_parameters_request** | [**GetRecruiterSearchParametersRequest**](GetRecruiterSearchParametersRequest.md)|  | [optional] 
 
 ### Return type
@@ -3054,7 +3054,7 @@ with unipile.ApiClient(configuration) as api_client:
     project_id = 'project_id_example' # str | The ID of the Hiring Project from which to browse the Talent Pool.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
-    limit = 25 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
+    limit = 25 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
     get_recruiter_talent_pool_applicants_request = unipile.GetRecruiterTalentPoolApplicantsRequest() # GetRecruiterTalentPoolApplicantsRequest |  (optional)
 
     try:
@@ -3076,7 +3076,7 @@ Name | Type | Description  | Notes
  **project_id** | **str**| The ID of the Hiring Project from which to browse the Talent Pool. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
  **get_recruiter_talent_pool_applicants_request** | [**GetRecruiterTalentPoolApplicantsRequest**](GetRecruiterTalentPoolApplicantsRequest.md)|  | [optional] 
 
 ### Return type
@@ -3139,8 +3139,8 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 25 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 25 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
 
     try:
         # Get Accounts Lists
@@ -3159,8 +3159,8 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
 
 ### Return type
 
@@ -3222,8 +3222,8 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 25 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 25 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
 
     try:
         # Get Leads Lists
@@ -3242,8 +3242,8 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
 
 ### Return type
 
@@ -3307,8 +3307,8 @@ with unipile.ApiClient(configuration) as api_client:
     type = 'type_example' # str | The type of search parameter.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     keywords = 'keywords_example' # str | A keyword or group of keywords to filter results. (optional)
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 10 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 10 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
 
     try:
         # List Search Parameters
@@ -3329,8 +3329,8 @@ Name | Type | Description  | Notes
  **type** | **str**| The type of search parameter. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **keywords** | **str**| A keyword or group of keywords to filter results. | [optional] 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
 
 ### Return type
 
@@ -3393,8 +3393,8 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     state = ['state_example'] # List[str] | A list of Job posting states.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 10 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 10 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
 
     try:
         # List User Job Postings
@@ -3414,8 +3414,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **state** | [**List[str]**](str.md)| A list of Job posting states. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
 
 ### Return type
 
@@ -3562,8 +3562,8 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 25 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 25 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
     perform_classic_jobs_search_request = unipile.PerformClassicJobsSearchRequest() # PerformClassicJobsSearchRequest |  (optional)
 
     try:
@@ -3583,8 +3583,8 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
  **perform_classic_jobs_search_request** | [**PerformClassicJobsSearchRequest**](PerformClassicJobsSearchRequest.md)|  | [optional] 
 
 ### Return type
@@ -3733,7 +3733,7 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
-    limit = 3 # float | The maximum number of posts to return. Post searches default to 3 results, matching LinkedIn's UI, but the limit can technically be increased up to 49. (optional) (default to 3)
+    limit = 3 # int | The maximum number of posts to return. Post searches default to 3 results, matching LinkedIn's UI, but the limit can technically be increased up to 49. (optional) (default to 3)
     perform_classic_posts_search_request = unipile.PerformClassicPostsSearchRequest() # PerformClassicPostsSearchRequest |  (optional)
 
     try:
@@ -3754,7 +3754,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
- **limit** | **float**| The maximum number of posts to return. Post searches default to 3 results, matching LinkedIn&#39;s UI, but the limit can technically be increased up to 49. | [optional] [default to 3]
+ **limit** | **int**| The maximum number of posts to return. Post searches default to 3 results, matching LinkedIn&#39;s UI, but the limit can technically be increased up to 49. | [optional] [default to 3]
  **perform_classic_posts_search_request** | [**PerformClassicPostsSearchRequest**](PerformClassicPostsSearchRequest.md)|  | [optional] 
 
 ### Return type
@@ -3819,7 +3819,7 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     perform_classic_search_from_url_request = unipile.PerformClassicSearchFromUrlRequest() # PerformClassicSearchFromUrlRequest | 
-    offset = 3.4 # float | An offset used for pagination. (optional)
+    offset = 56 # int | An offset used for pagination. (optional)
     limit = 3.4 # float | The maximum number of items to return. Sales Navigator and Recruiter support up to 100 results. For Classic searches, People and Companies are limited to 10 results per page, while Jobs are limited to 50. Post searches default to 3 results, matching LinkedIn's UI, but the limit can technically be increased up to 49. (optional)
     cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
 
@@ -3841,7 +3841,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **perform_classic_search_from_url_request** | [**PerformClassicSearchFromUrlRequest**](PerformClassicSearchFromUrlRequest.md)|  | 
- **offset** | **float**| An offset used for pagination. | [optional] 
+ **offset** | **int**| An offset used for pagination. | [optional] 
  **limit** | **float**| The maximum number of items to return. Sales Navigator and Recruiter support up to 100 results. For Classic searches, People and Companies are limited to 10 results per page, while Jobs are limited to 50. Post searches default to 3 results, matching LinkedIn&#39;s UI, but the limit can technically be increased up to 49. | [optional] 
  **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
 
@@ -3907,7 +3907,7 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
-    limit = 25 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
+    limit = 25 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
     perform_recruiter_people_search_request = unipile.PerformRecruiterPeopleSearchRequest() # PerformRecruiterPeopleSearchRequest |  (optional)
 
     try:
@@ -3928,7 +3928,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
  **perform_recruiter_people_search_request** | [**PerformRecruiterPeopleSearchRequest**](PerformRecruiterPeopleSearchRequest.md)|  | [optional] 
 
 ### Return type
@@ -3995,7 +3995,7 @@ with unipile.ApiClient(configuration) as api_client:
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     perform_recruiter_people_search_from_talent_pool_request = unipile.PerformRecruiterPeopleSearchFromTalentPoolRequest() # PerformRecruiterPeopleSearchFromTalentPoolRequest | 
     cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
-    limit = 25 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
+    limit = 25 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
 
     try:
         # Perform People Search From Talent Pool
@@ -4017,7 +4017,7 @@ Name | Type | Description  | Notes
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **perform_recruiter_people_search_from_talent_pool_request** | [**PerformRecruiterPeopleSearchFromTalentPoolRequest**](PerformRecruiterPeopleSearchFromTalentPoolRequest.md)|  | 
  **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
 
 ### Return type
 
@@ -4082,7 +4082,7 @@ with unipile.ApiClient(configuration) as api_client:
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     perform_classic_search_from_url_request = unipile.PerformClassicSearchFromUrlRequest() # PerformClassicSearchFromUrlRequest | 
     cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
-    limit = 20 # float |    `search` and `applicants` channels maximum is 100<br>   `pipeline` channel maximum is 5000 (optional) (default to 20)
+    limit = 20 # int |    `search` and `applicants` channels maximum is 100<br>   `pipeline` channel maximum is 5000 (optional) (default to 20)
 
     try:
         # Perform Recruiter Search from URL
@@ -4103,7 +4103,7 @@ Name | Type | Description  | Notes
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **perform_classic_search_from_url_request** | [**PerformClassicSearchFromUrlRequest**](PerformClassicSearchFromUrlRequest.md)|  | 
  **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
- **limit** | **float**|    &#x60;search&#x60; and &#x60;applicants&#x60; channels maximum is 100&lt;br&gt;   &#x60;pipeline&#x60; channel maximum is 5000 | [optional] [default to 20]
+ **limit** | **int**|    &#x60;search&#x60; and &#x60;applicants&#x60; channels maximum is 100&lt;br&gt;   &#x60;pipeline&#x60; channel maximum is 5000 | [optional] [default to 20]
 
 ### Return type
 
@@ -4166,8 +4166,8 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 25 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 25 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
     perform_sales_companies_search_request = unipile.PerformSalesCompaniesSearchRequest() # PerformSalesCompaniesSearchRequest |  (optional)
 
     try:
@@ -4187,8 +4187,8 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
  **perform_sales_companies_search_request** | [**PerformSalesCompaniesSearchRequest**](PerformSalesCompaniesSearchRequest.md)|  | [optional] 
 
 ### Return type
@@ -4252,8 +4252,8 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 25 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 25 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
     perform_sales_people_search_request = unipile.PerformSalesPeopleSearchRequest() # PerformSalesPeopleSearchRequest |  (optional)
 
     try:
@@ -4273,8 +4273,8 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
  **perform_sales_people_search_request** | [**PerformSalesPeopleSearchRequest**](PerformSalesPeopleSearchRequest.md)|  | [optional] 
 
 ### Return type
@@ -4339,8 +4339,8 @@ with unipile.ApiClient(configuration) as api_client:
     api_instance = unipile.LinkedInApi(api_client)
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     perform_classic_search_from_url_request = unipile.PerformClassicSearchFromUrlRequest() # PerformClassicSearchFromUrlRequest | 
-    offset = 3.4 # float | An offset used for pagination. (optional)
-    limit = 10 # float | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
+    offset = 56 # int | An offset used for pagination. (optional)
+    limit = 10 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 10)
 
     try:
         # Perform Search from URL
@@ -4360,8 +4360,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **perform_classic_search_from_url_request** | [**PerformClassicSearchFromUrlRequest**](PerformClassicSearchFromUrlRequest.md)|  | 
- **offset** | **float**| An offset used for pagination. | [optional] 
- **limit** | **float**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
+ **offset** | **int**| An offset used for pagination. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 10]
 
 ### Return type
 

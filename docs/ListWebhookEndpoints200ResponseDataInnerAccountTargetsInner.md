@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account_name** | **str** |  | 
+**account_name** | **str** | The password to connect to the proxy. Omitted, null or empty credentials select unauthenticated access when both credentials are absent. SOCKS5 requires both a non-empty username and password for authentication, each at most 255 bytes. HTTP Basic authentication permits an empty username or password. | 
 **account_provider** | **str** | The provider&#39;s of the Account.     - &#x60;mock&#x60; is mock.     - &#x60;whatsapp&#x60; is WhatsApp.     - &#x60;linkedin&#x60; is LinkedIn.     - &#x60;instagram&#x60; is Instagram.     - &#x60;facebook&#x60; is Facebook.     - &#x60;google&#x60; is Google.     - &#x60;outlook&#x60; is Outlook.     - &#x60;telegram&#x60; is Telegram.     - &#x60;imap&#x60; is IMAP. | 
 **object** | **str** |  | 
 **id** | **str** |  | 
