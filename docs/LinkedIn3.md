@@ -1,17 +1,12 @@
 # LinkedIn3
 
-Start the authentication intent with LinkedIn provider.
+Specific options to apply if the provider of the targeted account is Linkedin.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**provider** | **str** | The provider to authenticate with. | 
-**user_timezone** | **str** | The time zone of the current user can be used on a few specific features (e.g. scheduled actions). Setting it at authentication avoids having to do it on a case-by-case basis later on. | [optional] 
-**user_language** | **str** | Primary browser language captured with the session cookies. | [optional] 
-**user_languages** | **List[str]** | Ordered browser language preferences captured with the session cookies. | [optional] 
-**credentials** | [**LinkedIn3Credentials**](LinkedIn3Credentials.md) |  | 
-**config** | [**LinkedIn3Config**](LinkedIn3Config.md) |  | [optional] 
+**password** | **str** | The password of the account. LinkedIn asks for it on every unblock and rejects the operation without it. It is only forwarded to the provider and never stored. | 
 
 ## Example
 

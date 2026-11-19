@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **bcc** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | The list of attendees that the email was BCC&#39;d to. An empty array when none are available. | 
 **reply_to** | [**List[GetEmailsList200ResponseDataInnerFromInner]**](GetEmailsList200ResponseDataInnerFromInner.md) | The list of attendees that the replies should be sent to. An empty array when none are available. | 
 **var_date** | **str** | The date the email was sent. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 
-**attachments** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner.md) | The attachments of the email. | 
+**attachments** | [**List[MessageQuotedAttachmentsInner]**](MessageQuotedAttachmentsInner.md) | The attachments of the email. | 
 **folders** | **List[Optional[str]]** | The IDs of folders the email is in. For Gmail, the IDs of labels assigned to the email, excluding the UNREAD system label, which is exposed through is_unread instead. | 
 **categories** | **List[str]** | List of categories assigned to the email. | [optional] 
 **is_unread** | **bool** | Is the email unread. For Gmail, this reflects the UNREAD system label. | 
