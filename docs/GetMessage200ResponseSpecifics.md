@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **type** | **str** | The category of the message: a regular message, an email, a connection invitation, or an InMail lifecycle event. | 
 **subject** | **str** | The subject of the mock message. | 
 **interactive** | [**WhatsApp2Interactive**](WhatsApp2Interactive.md) |  | [optional] 
-**album_id** | **str** | Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Absent when the message is not part of an album. | [optional] 
+**album_id** | **str** | Identifier of the media album the message belongs to. Messages sent together as one album share the same value. Can be used as &#x60;quote_id&#x60; to reply to the whole album. Absent when the message is not part of an album. | [optional] 
 
 ## Example
 
