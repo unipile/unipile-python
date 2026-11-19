@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **object** | **str** |  | 
 **id** | **str** | The unique identifier of the message for the provider. | 
 **text** | **str** | The text content of the message. | [optional] 
-**attachments** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner.md) | List of message attachments. | 
+**attachments** | [**List[MessageQuotedAttachmentsInner]**](MessageQuotedAttachmentsInner.md) | List of message attachments. | 
 **sender** | [**GetMessagesList200ResponseDataInnerSender**](GetMessagesList200ResponseDataInnerSender.md) |  | [optional] 
 **specifics** | [**WhatsApp2**](WhatsApp2.md) |  | [optional] 
 

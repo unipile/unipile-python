@@ -7,7 +7,7 @@ An activity related to a resume document in LinkedIn Recruiter.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **last_updated_at** | **str** | The time at which the activity was updated. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 
-**last_updated_by** | [**LinkedIn1InterestsTopVoicesInner**](LinkedIn1InterestsTopVoicesInner.md) |  | 
+**last_updated_by** | [**LinkedIn2InterestsTopVoicesInner**](LinkedIn2InterestsTopVoicesInner.md) |  | 
 **event** | **str** | Whether the resume was added, edited, or deleted. | 
 **resume_id** | **str** | The LinkedIn ID of the resume document. | 
 **filename** | **str** | The name of the resume file, including the extension. | 

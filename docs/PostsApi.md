@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_post**
-> UpdatePost200Response create_post(account_id, create_post_request)
+> Post2 create_post(account_id, create_post_request)
 
 Create a Post
 
@@ -295,7 +295,7 @@ Creates a new post.<br/><br/>Multipart supported, refer to <a href="https://deve
 ```python
 import unipile
 from unipile.models.create_post_request import CreatePostRequest
-from unipile.models.update_post200_response import UpdatePost200Response
+from unipile.models.post2 import Post2
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdatePost200Response**](UpdatePost200Response.md)
+[**Post2**](Post2.md)
 
 ### Authorization
 
@@ -604,7 +604,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_post**
-> GetPost200Response get_post(post_id, account_id)
+> Post1 get_post(post_id, account_id)
 
 Get a Post
 
@@ -616,7 +616,7 @@ Retrieves the specified post.
 
 ```python
 import unipile
-from unipile.models.get_post200_response import GetPost200Response
+from unipile.models.post1 import Post1
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -665,7 +665,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetPost200Response**](GetPost200Response.md)
+[**Post1**](Post1.md)
 
 ### Authorization
 
@@ -1572,7 +1572,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_post**
-> UpdatePost200Response update_post(post_id, account_id, update_post_request=update_post_request)
+> Post2 update_post(post_id, account_id, update_post_request=update_post_request)
 
 Update a Post
 
@@ -1584,7 +1584,7 @@ Updates an existing post.
 
 ```python
 import unipile
-from unipile.models.update_post200_response import UpdatePost200Response
+from unipile.models.post2 import Post2
 from unipile.models.update_post_request import UpdatePostRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -1636,7 +1636,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdatePost200Response**](UpdatePost200Response.md)
+[**Post2**](Post2.md)
 
 ### Authorization
 
