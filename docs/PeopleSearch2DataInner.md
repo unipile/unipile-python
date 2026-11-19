@@ -42,8 +42,8 @@ Name | Type | Description | Notes
 **education** | [**List[FullProfileEducationInner]**](FullProfileEducationInner.md) |  | 
 **skills** | [**List[FullProfileSkillsInner]**](FullProfileSkillsInner.md) |  | 
 **work_experience** | [**List[PartialProfileWorkExperienceInner]**](PartialProfileWorkExperienceInner.md) |  | 
-**languages** | [**List[LinkedIn1LanguagesInner]**](LinkedIn1LanguagesInner.md) |  | 
-**volunteering** | [**List[LinkedIn1VolunteerExperienceInner]**](LinkedIn1VolunteerExperienceInner.md) |  | 
+**languages** | [**List[LinkedIn2LanguagesInner]**](LinkedIn2LanguagesInner.md) |  | 
+**volunteering** | [**List[LinkedIn2VolunteerExperienceInner]**](LinkedIn2VolunteerExperienceInner.md) |  | 
 
 ## Example
 

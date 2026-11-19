@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **years_of_experience** | [**GetRecruiterTalentPoolApplicantsRequestYearsOfExperience**](GetRecruiterTalentPoolApplicantsRequestYearsOfExperience.md) |  | [optional] 
 **years_in_current_position** | [**GetRecruiterTalentPoolApplicantsRequestYearsInCurrentPosition**](GetRecruiterTalentPoolApplicantsRequestYearsInCurrentPosition.md) |  | [optional] 
 **years_in_current_company** | [**GetRecruiterTalentPoolApplicantsRequestYearsInCurrentCompany**](GetRecruiterTalentPoolApplicantsRequestYearsInCurrentCompany.md) |  | [optional] 
-**degree** | [**PerformRecruiterPeopleSearchFromTalentPoolRequestDegree**](PerformRecruiterPeopleSearchFromTalentPoolRequestDegree.md) |  | [optional] 
+**degree** | [**GetRecruiterTalentPoolApplyStartersRequestDegree**](GetRecruiterTalentPoolApplyStartersRequestDegree.md) |  | [optional] 
 **workplace_type** | **List[str]** | A list of workplace types. | [optional] 
 **school** | [**List[PerformRecruiterPeopleSearchFromTalentPoolRequestSchoolInner]**](PerformRecruiterPeopleSearchFromTalentPoolRequestSchoolInner.md) | A list of schools. | [optional] 
 **field_of_study** | [**List[PerformRecruiterPeopleSearchFromTalentPoolRequestFieldOfStudyInner]**](PerformRecruiterPeopleSearchFromTalentPoolRequestFieldOfStudyInner.md) | A list of fields of study. | [optional] 
@@ -46,7 +46,7 @@ Name | Type | Description | Notes
 **group** | **List[Optional[str]]** | A list of parameter IDs. Use &lt;a href&#x3D;\&quot;https://developer.unipile.com/v2.0/reference/getrecruitersearchparameters\&quot;&gt;List Search Parameters&lt;/a&gt; with &#x60;GROUP&#x60; type to find out the possible values.    Native filter : All groups    | [optional] 
 **is_past_applicant** | **bool** | Whether the users should have already applied to at least one of your job postings.    Native filter : Past applicants    | [optional] 
 **notes** | **List[str]** | A list of notes. | [optional] 
-**tags** | [**PerformRecruiterPeopleSearchFromTalentPoolRequestTags**](PerformRecruiterPeopleSearchFromTalentPoolRequestTags.md) |  | [optional] 
+**tags** | [**GetRecruiterTalentPoolApplyStartersRequestTags**](GetRecruiterTalentPoolApplyStartersRequestTags.md) |  | [optional] 
 **channel_id** | **str** | The ID of the RECRUITER_SEARCH channel from the Talent Pool. | 
 
 ## Example

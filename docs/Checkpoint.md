@@ -1,6 +1,6 @@
 # Checkpoint
 
-The authentication requires a checkpoint to be solved.
+Authentication requires another step or has stopped and cannot continue.
 
 ## Properties
 
@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **str** |  | 
 **checkpoint** | [**CheckpointCheckpoint**](CheckpointCheckpoint.md) |  | 
-**intent_id** | **str** | The ID of the auth intent. Use it to continue authentication. | 
+**intent_id** | **str** | The ID of the authentication intent. Use it for the next step required by the checkpoint. For PROCESS_STOPPED, it only identifies the stopped attempt and must not be used to resume or resolve it. | 
 
 ## Example
 

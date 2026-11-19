@@ -40,6 +40,7 @@ Method | HTTP request | Description
 [**get_recruiter_pipeline_candidates**](LinkedInApi.md#get_recruiter_pipeline_candidates) | **POST** /v2/{account_id}/linkedin/recruiter/projects/{project_id}/pipeline | List Pipeline Candidates
 [**get_recruiter_search_parameters**](LinkedInApi.md#get_recruiter_search_parameters) | **POST** /v2/{account_id}/linkedin/recruiter/search/parameters | List Search Parameters
 [**get_recruiter_talent_pool_applicants**](LinkedInApi.md#get_recruiter_talent_pool_applicants) | **POST** /v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/applicants | List Job Posting Applicants
+[**get_recruiter_talent_pool_apply_starters**](LinkedInApi.md#get_recruiter_talent_pool_apply_starters) | **POST** /v2/{account_id}/linkedin/recruiter/projects/{project_id}/talent-pool/apply-starters | List Job Posting Apply Starters
 [**get_sales_account_lists**](LinkedInApi.md#get_sales_account_lists) | **GET** /v2/{account_id}/linkedin/sales-navigator/account-lists | Get Accounts Lists
 [**get_sales_lead_lists**](LinkedInApi.md#get_sales_lead_lists) | **GET** /v2/{account_id}/linkedin/sales-navigator/lead-lists | Get Leads Lists
 [**get_sales_search_parameters**](LinkedInApi.md#get_sales_search_parameters) | **GET** /v2/{account_id}/linkedin/sales-navigator/search/parameters | List Search Parameters
@@ -3082,6 +3083,94 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApplicantsSearch**](ApplicantsSearch.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_recruiter_talent_pool_apply_starters**
+> PeopleSearch get_recruiter_talent_pool_apply_starters(project_id, account_id, cursor=cursor, limit=limit, get_recruiter_talent_pool_apply_starters_request=get_recruiter_talent_pool_apply_starters_request)
+
+List Job Posting Apply Starters
+
+Returns Recruiter profiles of people who started applying to a job posting from the talent pool of a project.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.get_recruiter_talent_pool_apply_starters_request import GetRecruiterTalentPoolApplyStartersRequest
+from unipile.models.people_search import PeopleSearch
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.LinkedInApi(api_client)
+    project_id = 'project_id_example' # str | The ID of the Hiring Project from which to browse the Talent Pool.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+    cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
+    limit = 25 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 25)
+    get_recruiter_talent_pool_apply_starters_request = unipile.GetRecruiterTalentPoolApplyStartersRequest() # GetRecruiterTalentPoolApplyStartersRequest | Filters for people who started applying to a job posting in the project talent pool. (optional)
+
+    try:
+        # List Job Posting Apply Starters
+        api_response = api_instance.get_recruiter_talent_pool_apply_starters(project_id, account_id, cursor=cursor, limit=limit, get_recruiter_talent_pool_apply_starters_request=get_recruiter_talent_pool_apply_starters_request)
+        print("The response of LinkedInApi->get_recruiter_talent_pool_apply_starters:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling LinkedInApi->get_recruiter_talent_pool_apply_starters: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **str**| The ID of the Hiring Project from which to browse the Talent Pool. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+ **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 25]
+ **get_recruiter_talent_pool_apply_starters_request** | [**GetRecruiterTalentPoolApplyStartersRequest**](GetRecruiterTalentPoolApplyStartersRequest.md)| Filters for people who started applying to a job posting in the project talent pool. | [optional] 
+
+### Return type
+
+[**PeopleSearch**](PeopleSearch.md)
 
 ### Authorization
 
