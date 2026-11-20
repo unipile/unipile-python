@@ -34,11 +34,11 @@ Name | Type | Description | Notes
 **emails** | **List[str]** |  | [optional] 
 **phone_numbers** | **List[str]** |  | [optional] 
 **education** | [**List[FullProfileEducationInner]**](FullProfileEducationInner.md) |  | 
-**languages** | [**List[LinkedIn1LanguagesInner]**](LinkedIn1LanguagesInner.md) |  | 
+**languages** | [**List[LinkedIn2LanguagesInner]**](LinkedIn2LanguagesInner.md) |  | 
 **certifications** | [**List[FullProfileCertificationsInner]**](FullProfileCertificationsInner.md) |  | 
 **projects** | [**List[FullProfileProjectsInner]**](FullProfileProjectsInner.md) |  | 
-**volunteering** | [**List[LinkedIn1VolunteerExperienceInner]**](LinkedIn1VolunteerExperienceInner.md) |  | 
-**recommendations** | [**List[LinkedIn1RecommendationsReceivedInner]**](LinkedIn1RecommendationsReceivedInner.md) |  | 
+**volunteering** | [**List[LinkedIn2VolunteerExperienceInner]**](LinkedIn2VolunteerExperienceInner.md) |  | 
+**recommendations** | [**List[LinkedIn2RecommendationsReceivedInner]**](LinkedIn2RecommendationsReceivedInner.md) |  | 
 
 ## Example
 
