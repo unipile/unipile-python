@@ -27,16 +27,16 @@ Name | Type | Description | Notes
 **is_disappearing** | **bool** | Is the message part of a disappearing conversation, where the provider automatically deletes messages for every participant once the conversation retention delay has elapsed.     Absent when the provider does not expose the notion.     This describes the retention of the conversation the message belongs to, and is distinct from &#x60;view_mode&#x60;, which describes a single piece of content the recipient may only open a limited number of times. | [optional] 
 **expires_at** | **str** | The date at which a disappearing message is automatically deleted. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ).     Absent when the message is not disappearing, or when the provider does not expose enough information to determine the date. | [optional] 
 **event_type** | **float** | The type of message event.     0 : Unknown (Not implemented)     1 : Chat name update     2 : Chat description update     3 : New participant added to the chat group     4 : Participant kicked or left the chat group     5 : A message is pinned     6 : Permissions have been updated     7 : Participant was promoted or demoted     8 : Reaction     9 : Call Missed     10 : Call Started     11 : Call Ended     12 : Call Rejected     13 : Scheduled Call Created     14 : Scheduled Call Cancelled     15 : Scheduled Call Started     16 : Announcement     17 : Content mention      | [optional] 
-**event_metadata** | [**GetChatsList200ResponseDataInnerLastMessageAnyOf1EventMetadata**](GetChatsList200ResponseDataInnerLastMessageAnyOf1EventMetadata.md) |  | [optional] 
+**event_metadata** | [**MessageEventMetadata**](MessageEventMetadata.md) |  | [optional] 
 **content_relation** | [**ContentRelation**](ContentRelation.md) |  | [optional] 
-**reactions_counter** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1ReactionsCounterInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1ReactionsCounterInner.md) | A list of reactions to the element. | 
-**sender** | [**GetChatsList200ResponseDataInnerLastMessageAnyOf1Sender**](GetChatsList200ResponseDataInnerLastMessageAnyOf1Sender.md) |  | [optional] 
+**reactions_counter** | [**List[MessageReactionsCounterInner]**](MessageReactionsCounterInner.md) | A list of reactions to the element. | 
+**sender** | [**MessageSender**](MessageSender.md) |  | [optional] 
 **provider** | **str** | The provider&#39;s of the Account.     - &#x60;mock&#x60; is mock.     - &#x60;whatsapp&#x60; is WhatsApp.     - &#x60;linkedin&#x60; is LinkedIn.     - &#x60;instagram&#x60; is Instagram.     - &#x60;facebook&#x60; is Facebook.     - &#x60;google&#x60; is Google.     - &#x60;outlook&#x60; is Outlook.     - &#x60;telegram&#x60; is Telegram.     - &#x60;imap&#x60; is IMAP. | 
-**attachments** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner.md) | List of message attachments. | 
-**hyperlinks** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1HyperlinksInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1HyperlinksInner.md) | List of message hyperlinks. | 
-**mentions** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1MentionsInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1MentionsInner.md) | List of the users mentioned in the message body. A mention the provider delivered as plain text is not listed. | 
-**quoted** | [**GetChatsList200ResponseDataInnerLastMessageAnyOf1Quoted**](GetChatsList200ResponseDataInnerLastMessageAnyOf1Quoted.md) |  | [optional] 
-**forwarded** | [**GetChatsList200ResponseDataInnerLastMessageAnyOf1Forwarded**](GetChatsList200ResponseDataInnerLastMessageAnyOf1Forwarded.md) |  | [optional] 
+**attachments** | [**List[MessageQuotedAttachmentsInner]**](MessageQuotedAttachmentsInner.md) | List of message attachments. | 
+**hyperlinks** | [**List[MessageHyperlinksInner]**](MessageHyperlinksInner.md) | List of message hyperlinks. | 
+**mentions** | [**List[MessageMentionsInner]**](MessageMentionsInner.md) | List of the users mentioned in the message body. A mention the provider delivered as plain text is not listed. | 
+**quoted** | [**MessageQuoted**](MessageQuoted.md) |  | [optional] 
+**forwarded** | [**MessageForwarded**](MessageForwarded.md) |  | [optional] 
 **specifics** | **object** |  | [optional] 
 
 ## Example

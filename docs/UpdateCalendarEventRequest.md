@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **background_color** | **str** | Background color of the calendar in hexadecimal format. For Google we match the closest palette available | [optional] 
 **transparency** | **str** | The transparency of the event.             - &#x60;opaque&#x60; does block time on the calendar and is equivalent to setting Show me as to Busy in the Calendar UI.             - &#x60;transparent&#x60; does not block time on the calendar and is equivalent to setting Show me as to Available in the Calendar UI. | [optional] 
 **visibility** | **str** | The visibility of the event.             - &#x60;public&#x60; is visible to all.             - &#x60;private&#x60; is visible only to the calendar owner. | [optional] 
-**conference** | [**UpdateCalendarEventRequestConference**](UpdateCalendarEventRequestConference.md) |  | [optional] 
+**conference** | [**Conference1**](Conference1.md) |  | [optional] 
 **is_attendees_list_hidden** | **bool** | Is the attendees list hidden for attendees. | [optional] 
 **attendees** | [**List[CreateCalendarEventRequestAttendeesInner]**](CreateCalendarEventRequestAttendeesInner.md) |  | [optional] 
 **recurrence** | **List[str]** | List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. | [optional] 

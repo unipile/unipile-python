@@ -11,20 +11,20 @@ Name | Type | Description | Notes
 **created_at** | **str** | The creation date of the post. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 
 **title** | **str** | The title of the post. | [optional] 
 **text** | **str** | The text content of the post. | 
-**author** | [**UpdatePost200ResponseAuthor**](UpdatePost200ResponseAuthor.md) |  | 
-**user_reacted** | [**GetPostsList200ResponseDataInnerQuotedPostUserReacted**](GetPostsList200ResponseDataInnerQuotedPostUserReacted.md) |  | 
-**permissions** | [**GetPostsList200ResponseDataInnerPermissions**](GetPostsList200ResponseDataInnerPermissions.md) |  | 
-**reactions_counter** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1ReactionsCounterInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1ReactionsCounterInner.md) | A list of reactions to the element. | 
+**author** | [**Post2Author**](Post2Author.md) |  | 
+**user_reacted** | [**PostQuotedPostUserReacted**](PostQuotedPostUserReacted.md) |  | 
+**permissions** | [**PostPermissions**](PostPermissions.md) |  | 
+**reactions_counter** | [**List[MessageReactionsCounterInner]**](MessageReactionsCounterInner.md) | A list of reactions to the element. | 
 **comments_counter** | **float** | The number of comments to the post. &#x60;null&#x60; if counter is hidden. | 
 **reposts_counter** | **float** | The number of reposts of the post. &#x60;null&#x60; if counter is hidden. | 
-**poll** | [**GetPostsList200ResponseDataInnerPoll**](GetPostsList200ResponseDataInnerPoll.md) |  | [optional] 
-**event** | [**GetPostsList200ResponseDataInnerEvent**](GetPostsList200ResponseDataInnerEvent.md) |  | [optional] 
-**attachments** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner.md) | List of post attachments. | 
-**analytics** | [**GetPostsList200ResponseDataInnerAnalytics**](GetPostsList200ResponseDataInnerAnalytics.md) |  | [optional] 
+**poll** | [**PostPoll**](PostPoll.md) |  | [optional] 
+**event** | [**PostEvent**](PostEvent.md) |  | [optional] 
+**attachments** | [**List[MessageQuotedAttachmentsInner]**](MessageQuotedAttachmentsInner.md) | List of post attachments. | 
+**analytics** | [**PostAnalytics**](PostAnalytics.md) |  | [optional] 
 **specifics** | **object** | Object containing provider-specific post data. | [optional] 
 **is_repost** | **bool** | &#x60;true&#x60; if this post is reposted by someone without quote. Quoted post does not qualify as a repost. | 
-**reposted_by** | [**UpdatePost200ResponseRepostedBy**](UpdatePost200ResponseRepostedBy.md) |  | [optional] 
-**quoted_post** | [**UpdatePost200ResponseQuotedPost**](UpdatePost200ResponseQuotedPost.md) |  | [optional] 
+**reposted_by** | [**Post2RepostedBy**](Post2RepostedBy.md) |  | [optional] 
+**quoted_post** | [**Post2QuotedPost**](Post2QuotedPost.md) |  | [optional] 
 
 ## Example
 
