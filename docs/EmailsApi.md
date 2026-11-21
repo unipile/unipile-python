@@ -1041,7 +1041,7 @@ Name | Type | Description  | Notes
 
 List folder Emails
 
-Returns a list of emails in the specific folder of the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first. Search mode applies when `q`, `from`, `to`, or `any_email` is set. Filter mode applies for browse-only queries (dates, read/starred/attachment status).
+Returns a list of emails in the specific folder of the account mailbox. Emails are returned sorted by their `date`, with the most recent appearing first. For IMAP accounts without indexed history, date ordering requires server SORT support; otherwise emails are returned in descending UID order. Search mode applies when `q`, `from`, `to`, or `any_email` is set. Filter mode applies for browse-only queries (dates, read/starred/attachment status).
 
 ### Example
 
@@ -1235,7 +1235,7 @@ Name | Type | Description  | Notes
 
 Get a Thread
 
-Returns a list of emails belonging to the specific thread. Emails are sorted by their `date`. On IMAP servers without native thread IDs, results are inferred from message headers and may be incomplete.
+Returns emails belonging to the specified thread, sorted by their `date`. For IMAP accounts with indexing enabled, results will use synchronized messages; no matches return 404. Without indexing, IMAP results are inferred from searches across available folders and may be incomplete.
 
 ### Example
 
@@ -1268,7 +1268,7 @@ configuration.api_key['apiKey'] = os.environ["API_KEY"]
 with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.EmailsApi(api_client)
-    thread_id = 'thread_id_example' # str | ID of the thread to retrieve. For IMAP, use the thread_id returned by an email; results based on header-derived IDs may be incomplete.
+    thread_id = 'thread_id_example' # str | The thread_id returned by an email. Legacy header-derived identifiers containing multiple Message-IDs are accepted using their first reference.
     account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
     meta_only = False # bool | Speed up the response by only returning the email metadata. body and body_plain are empty strings, and attachments metadata is excluded. (optional) (default to False)
 
@@ -1288,7 +1288,7 @@ with unipile.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **thread_id** | **str**| ID of the thread to retrieve. For IMAP, use the thread_id returned by an email; results based on header-derived IDs may be incomplete. | 
+ **thread_id** | **str**| The thread_id returned by an email. Legacy header-derived identifiers containing multiple Message-IDs are accepted using their first reference. | 
  **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
  **meta_only** | **bool**| Speed up the response by only returning the email metadata. body and body_plain are empty strings, and attachments metadata is excluded. | [optional] [default to False]
 

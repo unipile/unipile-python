@@ -7,7 +7,7 @@ IMAP specific configuration.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **custom_proxy** | [**CustomProxy**](CustomProxy.md) |  | [optional] 
-**initial_sync_enable** | **bool** | Whether the initial sync should be enabled. The initial sync is required to perform advanced search. Read more in the Synced Accounts guide. | [optional] [default to False]
+**initial_sync_enable** | **bool** | Whether initial sync is enabled. Defaults to false for new accounts. When reconnecting, omitting this field preserves the current setting. Re-enabling starts a fresh initial sync. Initial sync is required for advanced search. Read more in the Synced Accounts guide. | [optional] 
 
 ## Example
 
