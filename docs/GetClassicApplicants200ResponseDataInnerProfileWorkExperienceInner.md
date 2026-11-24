@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**company** | [**LinkedIn1CertificationsInnerOrganization**](LinkedIn1CertificationsInnerOrganization.md) |  | 
+**company** | [**LinkedIn2CertificationsInnerOrganization**](LinkedIn2CertificationsInnerOrganization.md) |  | 
 **title** | **str** | The position name in the experience. | 
 **started_on** | **str** | The start date of the experience in MM/DD/YYYY format. | [optional] 
 **ended_on** | **str** | The end date of the experience in MM/DD/YYYY format. | [optional] 

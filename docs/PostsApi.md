@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**get_posts_list**](PostsApi.md#get_posts_list) | **GET** /v2/{account_id}/users/{user_id}/posts | List all User&#39;s Posts
 [**get_user_comments_list**](PostsApi.md#get_user_comments_list) | **GET** /v2/{account_id}/users/{user_id}/comments | List all User Comments
 [**get_user_reactions_list**](PostsApi.md#get_user_reactions_list) | **GET** /v2/{account_id}/users/{user_id}/reactions | List all User Reactions
+[**perform_posts_search**](PostsApi.md#perform_posts_search) | **POST** /v2/{account_id}/search/posts | Perform Posts Search
 [**remove_post_comment_reaction**](PostsApi.md#remove_post_comment_reaction) | **DELETE** /v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions | Remove Reaction from a Comment
 [**remove_post_reaction**](PostsApi.md#remove_post_reaction) | **DELETE** /v2/{account_id}/posts/{post_id}/reactions | Remove Reaction from a Post
 [**reply_to_comment**](PostsApi.md#reply_to_comment) | **POST** /v2/{account_id}/posts/{post_id}/comments/{comment_id} | Reply to a Comment
@@ -282,7 +283,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_post**
-> UpdatePost200Response create_post(account_id, create_post_request)
+> Post2 create_post(account_id, create_post_request)
 
 Create a Post
 
@@ -295,7 +296,7 @@ Creates a new post.<br/><br/>Multipart supported, refer to <a href="https://deve
 ```python
 import unipile
 from unipile.models.create_post_request import CreatePostRequest
-from unipile.models.update_post200_response import UpdatePost200Response
+from unipile.models.post2 import Post2
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -344,7 +345,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdatePost200Response**](UpdatePost200Response.md)
+[**Post2**](Post2.md)
 
 ### Authorization
 
@@ -604,7 +605,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_post**
-> GetPost200Response get_post(post_id, account_id)
+> Post1 get_post(post_id, account_id)
 
 Get a Post
 
@@ -616,7 +617,7 @@ Retrieves the specified post.
 
 ```python
 import unipile
-from unipile.models.get_post200_response import GetPost200Response
+from unipile.models.post1 import Post1
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -665,7 +666,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetPost200Response**](GetPost200Response.md)
+[**Post1**](Post1.md)
 
 ### Authorization
 
@@ -1314,6 +1315,94 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **perform_posts_search**
+> GetPostsList200Response perform_posts_search(account_id, perform_posts_search_request, cursor=cursor, limit=limit)
+
+Perform Posts Search
+
+Returns the posts matching the given keywords and filters that the account owner can see. Send the same body with `cursor` to get the next pages.
+      LIMITATIONS: Available on Facebook. On Facebook, the page size is set by Facebook whatever the `limit` (usually 10 to 20 results), a list filter takes one ID, and an ID Facebook does not know is ignored. `start_date` and `end_date` are days of the account's time zone, from 2004 on. `posted_by` takes one option at a time (`me`, `my_groups_and_pages`, `public`, or one ID in `member`, `company` or `group`), and `seen` only `true`. LinkedIn post searches have their own route (`/linkedin/search/posts`).
+      
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.get_posts_list200_response import GetPostsList200Response
+from unipile.models.perform_posts_search_request import PerformPostsSearchRequest
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.PostsApi(api_client)
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+    perform_posts_search_request = unipile.PerformPostsSearchRequest() # PerformPostsSearchRequest | The criteria of the search.
+    cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+
+    try:
+        # Perform Posts Search
+        api_response = api_instance.perform_posts_search(account_id, perform_posts_search_request, cursor=cursor, limit=limit)
+        print("The response of PostsApi->perform_posts_search:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling PostsApi->perform_posts_search: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+ **perform_posts_search_request** | [**PerformPostsSearchRequest**](PerformPostsSearchRequest.md)| The criteria of the search. | 
+ **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+
+### Return type
+
+[**GetPostsList200Response**](GetPostsList200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **remove_post_comment_reaction**
 > RemovePostCommentReaction200Response remove_post_comment_reaction(post_id, comment_id, account_id, remove_post_comment_reaction_request)
 
@@ -1572,7 +1661,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_post**
-> UpdatePost200Response update_post(post_id, account_id, update_post_request=update_post_request)
+> Post2 update_post(post_id, account_id, update_post_request=update_post_request)
 
 Update a Post
 
@@ -1584,7 +1673,7 @@ Updates an existing post.
 
 ```python
 import unipile
-from unipile.models.update_post200_response import UpdatePost200Response
+from unipile.models.post2 import Post2
 from unipile.models.update_post_request import UpdatePostRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -1636,7 +1725,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdatePost200Response**](UpdatePost200Response.md)
+[**Post2**](Post2.md)
 
 ### Authorization
 

@@ -1,13 +1,11 @@
 # Mock
 
-Start the authentication intent with Mock provider.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**provider** | **str** | The provider to authenticate with. | 
-**credentials** | **object** | Test accounts do not have credentials, leave this as empty object. | 
+**subject** | **str** | The subject of the mock message. | 
 
 ## Example
 

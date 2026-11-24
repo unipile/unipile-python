@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**linkedin** | [**LinkedIn2**](LinkedIn2.md) |  | [optional] 
+**linkedin** | [**LinkedIn4**](LinkedIn4.md) |  | [optional] 
 
 ## Example
 

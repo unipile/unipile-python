@@ -7,7 +7,7 @@ Contains the original message if this message was forwarded from another chat, d
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **text** | **str** | The text content of the message. | [optional] 
-**attachments** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner.md) | List of message attachments. | 
+**attachments** | [**List[MessageQuotedAttachmentsInner]**](MessageQuotedAttachmentsInner.md) | List of message attachments. | 
 **object** | **str** |  | 
 **sender** | [**GetMessagesList200ResponseDataInnerSender**](GetMessagesList200ResponseDataInnerSender.md) |  | [optional] 
 **specifics** | [**WhatsApp2**](WhatsApp2.md) |  | [optional] 

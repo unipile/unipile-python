@@ -1,12 +1,14 @@
 # CreateRelationRequestRequest
 
+Options for sending a bi-directional relation request to a user.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **str** | A message to send to the user along with the request (if supported by the provider). | [optional] 
+**message** | **str** | An optional message to send along with the request (if supported by the provider). | [optional] 
 **user_id** | **str** | The ID of the User to request a bi-directional relation with. | 
+**specifics** | [**CreateRelationRequestRequestSpecifics**](CreateRelationRequestRequestSpecifics.md) |  | [optional] 
 
 ## Example
 

@@ -1,6 +1,6 @@
 # CheckpointCheckpoint
 
-The details of the checkpoint that user needs to solve.
+The next authentication step, or a notice that the current attempt cannot continue.
 
 ## Properties
 
@@ -29,6 +29,9 @@ Name | Type | Description | Notes
 **attempts_remaining** | **int** | The most submissions any credential still has — what the user has left overall. &#x60;0&#x60; means every credential is spent and only skipping remains. The detail per credential is in &#x60;options[].attempts_remaining&#x60;; a credential the provider refuses to even try does not consume one. | 
 **provider_attempts_remaining** | **int** | For a PIN, how many attempts the provider itself still allows before it locks the backup. This budget is the provider&#39;s own and is never spent on the user&#39;s behalf: when it is unknown or too low, the PIN is refused rather than tried. | [optional] 
 **last_attempt** | [**EncryptedHistoryLastAttempt**](EncryptedHistoryLastAttempt.md) |  | [optional] 
+**message** | **str** | The reason why the authentication attempt cannot continue. | 
+**description** | **str** | Additional context or instructions for the account owner, supplementing the main message. | [optional] 
+**link** | [**ProcessStoppedLink**](ProcessStoppedLink.md) |  | [optional] 
 
 ## Example
 
