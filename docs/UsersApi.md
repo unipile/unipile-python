@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 Send a Relation request
 
-Sends a bi-directional relation request to a user. Trying to send a relation request to an existing relation will fail. For uni-directional relations, use `Follow User` instead.
+Sends a bi-directional relation request to a user, with an optional message where supported. Not all providers necessarily reject requests sent to users with whom a connection already exists. For uni-directional relations, use `Follow User` instead.
 
 ### Example
 
@@ -307,7 +307,7 @@ with unipile.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = unipile.UsersApi(api_client)
     account_id = 'account_id_example' # str | 
-    create_relation_request_request = unipile.CreateRelationRequestRequest() # CreateRelationRequestRequest | 
+    create_relation_request_request = unipile.CreateRelationRequestRequest() # CreateRelationRequestRequest | Options for sending a bi-directional relation request to a user.
 
     try:
         # Send a Relation request
@@ -326,7 +326,7 @@ with unipile.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **str**|  | 
- **create_relation_request_request** | [**CreateRelationRequestRequest**](CreateRelationRequestRequest.md)|  | 
+ **create_relation_request_request** | [**CreateRelationRequestRequest**](CreateRelationRequestRequest.md)| Options for sending a bi-directional relation request to a user. | 
 
 ### Return type
 
@@ -514,6 +514,7 @@ Name | Type | Description  | Notes
 List all User's Posts
 
 Returns a list of posts created or shared by a user. Use `me` as `user_id` to specify the owner of the connected account.
+      On LinkedIn, the posts of a company page are listed with the page's numeric ID as `user_id` (its profile `id`, or the author `id` of its posts), not the ID of its messaging inbox (`COMPANY_<id>_PRIMARY`). A page the account administers returns its admin view, with analytics. A page without posts returns an empty list.
       LIMITATIONS: On Facebook, the page size is set by Facebook: each page holds up to 3 posts whatever the `limit`. Use `next_cursor` to get more.
       
 

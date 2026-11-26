@@ -13,6 +13,7 @@ from unipile.api.messaging_api import MessagingApi
 from unipile.api.outlook_api import OutlookApi
 from unipile.api.posts_api import PostsApi
 from unipile.api.scopes_api import ScopesApi
+from unipile.api.search_api import SearchApi
 from unipile.api.users_api import UsersApi
 from unipile.api.webhooks_api import WebhooksApi
 from unipile.api.default_api import DefaultApi

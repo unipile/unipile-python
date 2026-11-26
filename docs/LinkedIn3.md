@@ -1,17 +1,12 @@
 # LinkedIn3
 
-Start the authentication intent with LinkedIn provider.
+LinkedIn-specific options for sending a relation request.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**provider** | **str** | The provider to authenticate with. | 
-**user_timezone** | **str** | The time zone of the current user can be used on a few specific features (e.g. scheduled actions). Setting it at authentication avoids having to do it on a case-by-case basis later on. | [optional] 
-**user_language** | **str** | Primary browser language captured with the session cookies. | [optional] 
-**user_languages** | **List[str]** | Ordered browser language preferences captured with the session cookies. | [optional] 
-**credentials** | [**LinkedIn3Credentials**](LinkedIn3Credentials.md) |  | 
-**config** | [**LinkedIn3Config**](LinkedIn3Config.md) |  | [optional] 
+**user_email** | **str** | The recipient&#39;s email address, required when LinkedIn requests it for a Sales Navigator invitation. Only supported for Sales Navigator user IDs (ACw...). | [optional] 
 
 ## Example
 

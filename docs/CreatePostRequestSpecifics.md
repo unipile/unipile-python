@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **instagram** | [**CreatePostRequestSpecificsAllOfInstagram**](CreatePostRequestSpecificsAllOfInstagram.md) |  | [optional] 
+**linkedin** | [**CreatePostRequestSpecificsAllOfLinkedin**](CreatePostRequestSpecificsAllOfLinkedin.md) |  | [optional] 
 
 ## Example
 

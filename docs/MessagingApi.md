@@ -885,6 +885,8 @@ List Inbox Chats
 Returns a list of account's chats from a specific inbox.
       The chats are returned sorted by their last message date, with the most recent appearing first.
       Filters are applied with an AND logic if supported by the provider.
+      For Telegram, use cursor-based pagination; offset-based pagination is not supported. The before and after filters use the last message date.
+      A filtered page may be short or empty and still contain a next_cursor. Continue with that cursor until no next_cursor is returned.
       
 
 ### Example
@@ -982,7 +984,7 @@ Name | Type | Description  | Notes
 
 List all Inboxes
 
-Returns a list of the account's Inboxes.
+Returns a list of the account's Inboxes. For Telegram, these are the custom chat folders; the default All chats view is not included.
 
 ### Example
 
@@ -1573,7 +1575,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **modify_message**
-> ModifyMessage200Response modify_message(chat_id, message_id, account_id, modify_message_request)
+> Message2 modify_message(chat_id, message_id, account_id, modify_message_request)
 
 Modify a Message
 
@@ -1586,7 +1588,7 @@ Modifies one of the account's owner messages.
 
 ```python
 import unipile
-from unipile.models.modify_message200_response import ModifyMessage200Response
+from unipile.models.message2 import Message2
 from unipile.models.modify_message_request import ModifyMessageRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -1640,7 +1642,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ModifyMessage200Response**](ModifyMessage200Response.md)
+[**Message2**](Message2.md)
 
 ### Authorization
 

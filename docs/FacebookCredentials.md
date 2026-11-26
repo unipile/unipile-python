@@ -6,7 +6,7 @@ The user credentials required by the provider to authenticate with.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**username** | **str** | Email or username of the Facebook account. | 
+**username** | **str** | Email address, phone number with its country code (for example +33612345678) or username of the account. | 
 **password** | **str** | Password of the Facebook account. | 
 **xs** | **str** | The &#x60;xs&#x60; cookie value. | 
 **c_user** | **str** | The &#x60;c_user&#x60; cookie value. | 

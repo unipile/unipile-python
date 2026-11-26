@@ -296,8 +296,8 @@ with unipile.ApiClient(configuration) as api_client:
     status = 'status_example' # str | The delivery status of an event, based on its latest delivery attempt to the endpoint. `success` means the endpoint returned a 2xx HTTP status; `failed` means it returned another status or did not respond. (optional)
     created_after = '2013-10-20T19:20:30+01:00' # datetime | Filter to return only conversations created at or after the given date and time, in ISO 8601 format. (optional)
     created_before = '2013-10-20T19:20:30+01:00' # datetime | Filter to return only conversations created before the given date and time, in ISO 8601 format. (optional)
-    offset = 'offset_example' # str | An offset used for pagination. (optional)
-    limit = 'limit_example' # str | A limit used for pagination. (optional)
+    offset = 'offset_example' # str | A non-negative integer offset used for pagination, up to 100000. Defaults to 0. Larger values are rejected. (optional)
+    limit = 'limit_example' # str | A positive integer page size, up to 1000. Defaults to 20. Invalid or larger values are rejected. (optional)
 
     try:
         # List all Webhook Conversations
@@ -322,8 +322,8 @@ Name | Type | Description  | Notes
  **status** | **str**| The delivery status of an event, based on its latest delivery attempt to the endpoint. &#x60;success&#x60; means the endpoint returned a 2xx HTTP status; &#x60;failed&#x60; means it returned another status or did not respond. | [optional] 
  **created_after** | **datetime**| Filter to return only conversations created at or after the given date and time, in ISO 8601 format. | [optional] 
  **created_before** | **datetime**| Filter to return only conversations created before the given date and time, in ISO 8601 format. | [optional] 
- **offset** | **str**| An offset used for pagination. | [optional] 
- **limit** | **str**| A limit used for pagination. | [optional] 
+ **offset** | **str**| A non-negative integer offset used for pagination, up to 100000. Defaults to 0. Larger values are rejected. | [optional] 
+ **limit** | **str**| A positive integer page size, up to 1000. Defaults to 20. Invalid or larger values are rejected. | [optional] 
 
 ### Return type
 

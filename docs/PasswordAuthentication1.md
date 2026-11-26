@@ -6,7 +6,7 @@ Use Facebook credentials to authenticate with Meta messaging.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**username** | **str** | Email or username of the Facebook account. | 
+**username** | **str** | Email address, phone number with its country code (for example +33612345678) or username of the account. | 
 **password** | **str** | Password of the Facebook account. | 
 
 ## Example
