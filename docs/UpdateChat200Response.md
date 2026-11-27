@@ -5,8 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**object** | **str** |  | 
+**object** | **str** | The type of the object: &#x60;Chat&#x60;. | 
 **id** | **str** | The unique identifier of the chat for the provider. | 
+**community_id** | **str** | The ID of the community this chat belongs to, when provided. | [optional] 
 **name** | **str** | The name / title of the chat. If the provider does not provide a name, name is built out of participants usernames. | 
 **label** | **str** | If supported by the provider, a label associated with the chat. | [optional] 
 **description** | **str** | The description / subject of the chat. | [optional] 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **network_distance** | **str** |  | [optional] 
 **premium** | **bool** |  | [optional] 
 **verified** | **bool** |  | [optional] 
-**last_visited** | [**GetProfileViews200ResponseEntitiesInnerLastVisited**](GetProfileViews200ResponseEntitiesInnerLastVisited.md) |  | 
+**last_visited** | [**LastVisited**](LastVisited.md) |  | 
 
 ## Example
 

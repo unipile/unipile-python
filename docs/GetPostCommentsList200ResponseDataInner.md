@@ -10,13 +10,13 @@ Name | Type | Description | Notes
 **thread_id** | **str** | The ID of the thread if this is a reply to another comment. | [optional] 
 **created_at** | **str** | The creation date of the comment. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | 
 **text** | **str** | The text content of the comment. | 
-**attachments** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1QuotedAttachmentsInner.md) | List of comment attachments. | 
+**attachments** | [**List[MessageQuotedAttachmentsInner]**](MessageQuotedAttachmentsInner.md) | List of comment attachments. | 
 **is_sender** | **bool** | Is the current user the sender of the comment. | 
 **can_reply** | **bool** | Whether the current user can reply to the comment or not. | 
 **can_react** | **bool** | Whether the current user can react to the comment or not. | 
 **reply_counter** | **float** | The number of replies to the comment. | 
 **impressions_counter** | **float** | The number of impressions of the comment. | [optional] 
-**reactions_counter** | [**List[GetChatsList200ResponseDataInnerLastMessageAnyOf1ReactionsCounterInner]**](GetChatsList200ResponseDataInnerLastMessageAnyOf1ReactionsCounterInner.md) | A list of reactions to the element. | 
+**reactions_counter** | [**List[MessageReactionsCounterInner]**](MessageReactionsCounterInner.md) | A list of reactions to the element. | 
 **author** | [**GetPostCommentsList200ResponseDataInnerAuthor**](GetPostCommentsList200ResponseDataInnerAuthor.md) |  | 
 
 ## Example

@@ -1,0 +1,53 @@
+# MessageAttachmentsInner
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**object** | **str** |  | 
+**id** | **str** | The unique identifier of the attachment. | 
+**file_size** | **float** | The size of the attachment in bytes. | [optional] 
+**is_inline** | **bool** | Is the attachment inline in the content. | 
+**content_id** | **str** | Reserved for email attachments. The Content-ID (CID) used to reference the attachment inline in the email HTML body via &#x60;cid:&#x60;. Provided without the surrounding angle brackets. | [optional] 
+**is_unavailable** | **bool** | The attachment is not available for download because it was removed from provider servers. | [optional] 
+**mimetype** | **str** | The MIME type of the attachment. | 
+**url** | **str** | The URL to download the attachment. | 
+**url_expires_at** | **str** | The URL expiration timestamp. Uses ISO 8601 UTC datetime (YYYY-MM-DDTHH:MM:SS.sssZ). | [optional] 
+**content** | **str** | The file content encoded as base64, when available directly without an additional download. | [optional] 
+**type** | **str** |  | 
+**duration** | **float** | The duration of the video in seconds. | [optional] 
+**voice_note** | **bool** | The audio is a voice note (should be displayed differently) | 
+**waveform** | **List[int]** | The waveform of the voice note, as a list of amplitude values between 0 and 100. | [optional] 
+**size** | [**VideoSize**](VideoSize.md) |  | 
+**sticker** | **bool** | The image is a sticker (should be displayed differently) | 
+**gif** | **bool** | The video is a GIF (should be displayed differently) | 
+**filename** | **str** | The name of the file, including the extension. | 
+**media_type** | **str** | The type of content being shared. | 
+**author** | **str** | The author of the shared content, if applicable. | [optional] 
+**description** | **str** | A brief description of the shared content. | [optional] 
+**display_name** | **str** | The name of the shared contact. | [optional] 
+**organization** | **str** | The organization of the shared contact. | [optional] 
+**phones** | [**List[ContactCardPhonesInner]**](ContactCardPhonesInner.md) | The phone numbers of the shared contact. | 
+**emails** | [**List[ContactCardEmailsInner]**](ContactCardEmailsInner.md) | The email addresses of the shared contact. | 
+
+## Example
+
+```python
+from unipile.models.message_attachments_inner import MessageAttachmentsInner
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of MessageAttachmentsInner from a JSON string
+message_attachments_inner_instance = MessageAttachmentsInner.from_json(json)
+# print the JSON string representation of the object
+print(MessageAttachmentsInner.to_json())
+
+# convert the object into a dict
+message_attachments_inner_dict = message_attachments_inner_instance.to_dict()
+# create an instance of MessageAttachmentsInner from a dict
+message_attachments_inner_from_dict = MessageAttachmentsInner.from_dict(message_attachments_inner_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

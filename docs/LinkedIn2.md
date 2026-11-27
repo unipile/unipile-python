@@ -1,12 +1,41 @@
 # LinkedIn2
 
-Specific options to apply if the provider of the targeted account is Linkedin.
+LinkedIn specific dataset for user profiles.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**password** | **str** | The password of the account. LinkedIn asks for it on every unblock and rejects the operation without it. It is only forwarded to the provider and never stored. | 
+**member_id** | **str** | LinkedIn internal member ID of the user. | [optional] 
+**industry** | **str** | The industry of the user&#39;s current company. | [optional] 
+**can_send_inmail** | **bool** | Whether the user can be reached with inmails. | [optional] 
+**network_distance** | **str** | Network distance to a User.       &#x60;SELF&#x60;: Yourself.       &#x60;FIRST_DEGREE&#x60;: 1st degree connection.       &#x60;SECOND_DEGREE&#x60;: 2nd degree connection (connection of a 1st degree).       &#x60;THIRD_DEGREE&#x60;: 3rd degree connection (connection of a 2nd degree).       &#x60;OUT_OF_NETWORK&#x60;: Unreachable user.&#39; | [optional] 
+**relation_request** | [**RelationRequest**](RelationRequest.md) |  | [optional] 
+**relation_request_status** | **str** | The status of the relation request with the user if any. | [optional] 
+**pronoun** | **str** | The pronoun to be used to refer to this user. | [optional] 
+**default_locale** | **str** | Default locale for the user&#39;s profile (POSIX format e.g. en_US, fr_FR...). | [optional] 
+**supported_locales** | **List[Optional[str]]** | List of supported locales for the user&#39;s profile (POSIX format e.g. en_US, fr_FR...). | [optional] 
+**notify_visit_token** | **str** | Payload that should be passed to the Notify profile visit route in order to notify the visit. | [optional] 
+**is_open_profile** | **bool** | Whether the user has an open profile (can be reached with free inmails). | [optional] 
+**is_premium** | **bool** | Whether the user has a premium subscription. | [optional] 
+**is_influencer** | **bool** | Whether the user is an influencer. | [optional] 
+**is_creator** | **bool** | Whether the user is a creator. | [optional] 
+**is_hiring** | **bool** | Whether the user is hiring. | [optional] 
+**is_open_to_work** | **bool** | Whether the user is open to work. | [optional] 
+**is_saved_lead** | **bool** | Whether the user is a saved lead. | [optional] 
+**is_crm_imported** | **bool** | Whether the user is a CRM imported user. | [optional] 
+**verifications** | [**List[LinkedIn2VerificationsInner]**](LinkedIn2VerificationsInner.md) | Verification details for verified profiles retrieved with the linkedin_classic variant. | [optional] 
+**skills** | [**List[LinkedIn2SkillsInner]**](LinkedIn2SkillsInner.md) | A collection of the user&#39;s skills. | [optional] 
+**experience** | [**List[LinkedIn2ExperienceInner]**](LinkedIn2ExperienceInner.md) | A collection of the user&#39;s professionnal experiences. | [optional] 
+**education** | [**List[LinkedIn2EducationInner]**](LinkedIn2EducationInner.md) | A collection of the user&#39;s education. | [optional] 
+**languages** | [**List[LinkedIn2LanguagesInner]**](LinkedIn2LanguagesInner.md) | A collection of the user&#39;s languages. | [optional] 
+**certifications** | [**List[LinkedIn2CertificationsInner]**](LinkedIn2CertificationsInner.md) | A collection of the user&#39;s certifications. | [optional] 
+**volunteer_experience** | [**List[LinkedIn2VolunteerExperienceInner]**](LinkedIn2VolunteerExperienceInner.md) | A collection of the user&#39;s volunteering experiences. | [optional] 
+**projects** | [**List[LinkedIn2ProjectsInner]**](LinkedIn2ProjectsInner.md) | A collection of the user&#39;s projects. | [optional] 
+**recommendations** | [**LinkedIn2Recommendations**](LinkedIn2Recommendations.md) |  | [optional] 
+**interests** | [**LinkedIn2Interests**](LinkedIn2Interests.md) |  | [optional] 
+**throttled_sections** | **List[str]** | A list of sections that are temporary unavailable due to LinkedIn rate limiting. | [optional] 
+**recruiting_profile** | [**LinkedIn2RecruitingProfile**](LinkedIn2RecruitingProfile.md) |  | [optional] 
 
 ## Example
 

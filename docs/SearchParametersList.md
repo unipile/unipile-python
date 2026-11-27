@@ -1,11 +1,12 @@
 # SearchParametersList
 
+The values found for the filter.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List[SearchParametersListDataInner]**](SearchParametersListDataInner.md) |  | 
+**data** | [**List[SearchParameter]**](SearchParameter.md) |  | 
 **total_count** | **float** | Total number of results if supported by the provider. | [optional] 
 **next_cursor** | **str** | Cursor to get the next page of results if supported. Else use &#x60;offset&#x60;. | [optional] 
 

@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **relations_count** | **float** | The number of the relations of the Company. | [optional] 
 **type** | **str** | The type of the Company. | [optional] 
 **headcount** | **float** | The number of employees of the Company. | [optional] 
+**headcount_range** | [**GetClassicCompanyProfile200ResponseInsightsHeadcountRange**](GetClassicCompanyProfile200ResponseInsightsHeadcountRange.md) |  | [optional] 
 **specialties** | **List[str]** | A list of the company&#39;s activities. | [optional] 
 **is_hiring_on_linkedin** | **bool** | Whether the Company is hiring on LinkedIn. | [optional] 
 **lists_count** | **float** | The number of lists you own on which the Company appears. | 

@@ -1,6 +1,6 @@
 # StartChatRequestUsersIds
 
-Participant(s) of the chat. To start a 1to1 chat, pass a single user id as a string. To start a group, pass an array of user ids. Passing an array with a single user id will attempt to start a group with that user only.
+Participant(s) of the chat. To start a 1to1 chat, pass a single user ID as a string, for example `\"users_ids\": \"user_id\"`. To start a group (if supported by the provider), pass an array of user IDs, for example `\"users_ids\": [\"user_id_1\", \"user_id_2\"]`. Passing an array with a single user ID will attempt to start a group with that user only. These formats apply to both Start a Chat and Start a Chat from Inbox.
 
 ## Properties
 

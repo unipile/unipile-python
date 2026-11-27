@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**object** | **str** |  | 
+**object** | **str** | &#x60;ParticipantAdded&#x60; when the User was added to the Chat. &#x60;ParticipantInvited&#x60; when they were sent an invitation to join it instead, as &#x60;fallback_to_invite&#x60; asks: they are not a participant until they accept it. | 
 
 ## Example
 

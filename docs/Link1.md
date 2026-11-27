@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **description** | **str** | Description of the media. | [optional] 
 **type** | **str** |  | 
 **url** | **str** | URL of the link. | 
-**thumbnail** | [**UpdateUserProfileRequestPicture**](UpdateUserProfileRequestPicture.md) |  | [optional] 
+**thumbnail** | [**UpdateChatRequestPicture**](UpdateChatRequestPicture.md) |  | [optional] 
 
 ## Example
 

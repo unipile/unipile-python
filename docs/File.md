@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **title** | **str** | Title of the media. | [optional] 
 **description** | **str** | Description of the media. | [optional] 
 **type** | **str** |  | 
-**attachment** | [**UpdateUserProfileRequestPicture**](UpdateUserProfileRequestPicture.md) |  | 
+**attachment** | [**UpdateChatRequestPicture**](UpdateChatRequestPicture.md) |  | 
 
 ## Example
 

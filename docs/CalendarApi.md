@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 
 Create a calendar event
 
-Create a brand new calendar event.
+Creates an event in the specified calendar.
 
 ### Example
 
@@ -599,7 +599,7 @@ Name | Type | Description  | Notes
 
 List all calendar events
 
-Returns a list of calendar events.
+Lists the events stored in the specified calendar, such as meetings and appointments.
         - For Outlook, the attendee list of an invitation the connected account received is the one the organizer sent, and their responses are not refreshed on it. Only the response of the connected account is kept up to date.
 
 ### Example

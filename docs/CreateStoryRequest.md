@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attachment** | [**UpdateUserProfileRequestPicture**](UpdateUserProfileRequestPicture.md) |  | 
+**attachment** | [**UpdateChatRequestPicture**](UpdateChatRequestPicture.md) |  | 
 **text** | **str** | Optional caption for the story. User mentions can be added by inserting an @ followed by the ID or public identifier of the user (example: @JohnDoe), if supported by the provider. | [optional] 
 **specifics** | [**CreateStoryRequestSpecifics**](CreateStoryRequestSpecifics.md) |  | [optional] 
 
