@@ -1,6 +1,6 @@
 # GetProfileViews200ResponseAnalytics
 
-Profile views analytics will only be present in the first request of a series of paginated requests.
+Profile views analytics are only returned on the first page when a valid view count is available. Unavailable analytics cards are omitted; visible entities can still be returned when analytics are unavailable.
 
 ## Properties
 

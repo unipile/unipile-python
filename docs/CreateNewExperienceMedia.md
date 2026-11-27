@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **title** | **str** | Title of the media. | [optional] 
 **description** | **str** | Description of the media. | [optional] 
 **type** | **str** |  | 
-**attachment** | [**UpdateUserProfileRequestPicture**](UpdateUserProfileRequestPicture.md) |  | 
+**attachment** | [**UpdateChatRequestPicture**](UpdateChatRequestPicture.md) |  | 
 **url** | **str** | URL of the link. | 
-**thumbnail** | [**UpdateUserProfileRequestPicture**](UpdateUserProfileRequestPicture.md) |  | [optional] 
+**thumbnail** | [**UpdateChatRequestPicture**](UpdateChatRequestPicture.md) |  | [optional] 
 
 ## Example
 

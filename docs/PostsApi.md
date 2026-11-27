@@ -7,21 +7,27 @@ Method | HTTP request | Description
 [**add_post_comment**](PostsApi.md#add_post_comment) | **POST** /v2/{account_id}/posts/{post_id}/comments | Add Comment to a Post
 [**add_post_comment_reaction**](PostsApi.md#add_post_comment_reaction) | **POST** /v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions | Add Reaction to a Comment
 [**add_post_reaction**](PostsApi.md#add_post_reaction) | **POST** /v2/{account_id}/posts/{post_id}/reactions | Add Reaction to a Post
+[**create_group_post**](PostsApi.md#create_group_post) | **POST** /v2/{account_id}/groups/{group_id}/posts | Create a Post in a Group
 [**create_post**](PostsApi.md#create_post) | **POST** /v2/{account_id}/posts | Create a Post
 [**create_story**](PostsApi.md#create_story) | **POST** /v2/{account_id}/posts/stories | Create a Story
 [**delete_post**](PostsApi.md#delete_post) | **DELETE** /v2/{account_id}/posts/{post_id} | Delete a Post
 [**delete_post_comment**](PostsApi.md#delete_post_comment) | **DELETE** /v2/{account_id}/posts/{post_id}/comments/{comment_id} | Delete Comment from a Post
+[**get_group_posts_list**](PostsApi.md#get_group_posts_list) | **GET** /v2/{account_id}/groups/{group_id}/posts | List all Group&#39;s Posts
 [**get_post**](PostsApi.md#get_post) | **GET** /v2/{account_id}/posts/{post_id} | Get a Post
 [**get_post_comment_reactions_list**](PostsApi.md#get_post_comment_reactions_list) | **GET** /v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions | List all Comment&#39;s Reactions
 [**get_post_comment_replies_list**](PostsApi.md#get_post_comment_replies_list) | **GET** /v2/{account_id}/posts/{post_id}/comments/{comment_id}/replies | List all Comment&#39;s Replies
 [**get_post_comments_list**](PostsApi.md#get_post_comments_list) | **GET** /v2/{account_id}/posts/{post_id}/comments | List all Post&#39;s Comments
 [**get_post_reactions_list**](PostsApi.md#get_post_reactions_list) | **GET** /v2/{account_id}/posts/{post_id}/reactions | List all Post&#39;s Reactions
+[**get_post_reposts_list**](PostsApi.md#get_post_reposts_list) | **GET** /v2/{account_id}/posts/{post_id}/reposts | List all Post&#39;s Reposts
 [**get_posts_list**](PostsApi.md#get_posts_list) | **GET** /v2/{account_id}/users/{user_id}/posts | List all User&#39;s Posts
 [**get_user_comments_list**](PostsApi.md#get_user_comments_list) | **GET** /v2/{account_id}/users/{user_id}/comments | List all User Comments
 [**get_user_reactions_list**](PostsApi.md#get_user_reactions_list) | **GET** /v2/{account_id}/users/{user_id}/reactions | List all User Reactions
+[**perform_posts_search**](PostsApi.md#perform_posts_search) | **POST** /v2/{account_id}/search/posts | Perform Posts Search
+[**pin_post_comment**](PostsApi.md#pin_post_comment) | **POST** /v2/{account_id}/posts/{post_id}/comments/{comment_id}/pin | Pin a Comment
 [**remove_post_comment_reaction**](PostsApi.md#remove_post_comment_reaction) | **DELETE** /v2/{account_id}/posts/{post_id}/comments/{comment_id}/reactions | Remove Reaction from a Comment
 [**remove_post_reaction**](PostsApi.md#remove_post_reaction) | **DELETE** /v2/{account_id}/posts/{post_id}/reactions | Remove Reaction from a Post
 [**reply_to_comment**](PostsApi.md#reply_to_comment) | **POST** /v2/{account_id}/posts/{post_id}/comments/{comment_id} | Reply to a Comment
+[**unpin_post_comment**](PostsApi.md#unpin_post_comment) | **DELETE** /v2/{account_id}/posts/{post_id}/comments/{comment_id}/pin | Unpin a Comment
 [**update_post**](PostsApi.md#update_post) | **PATCH** /v2/{account_id}/posts/{post_id} | Update a Post
 [**update_post_comment**](PostsApi.md#update_post_comment) | **PATCH** /v2/{account_id}/posts/{post_id}/comments/{comment_id} | Update a Comment
 
@@ -281,8 +287,94 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_group_post**
+> Post2 create_group_post(group_id, account_id, create_group_post_request)
+
+Create a Post in a Group
+
+Publishes a new post in a social group the account owner is a member of. The post is visible to whoever can see the group's posts.
+      LIMITATIONS: The post is published by the account owner: publishing as a company page is not supported. Available for Facebook and LinkedIn.
+      <br/><br/>Multipart supported, refer to <a href="https://developer.unipile.com/v2.0/reference/api-usage#sending-files">Sending Files</a>.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.create_group_post_request import CreateGroupPostRequest
+from unipile.models.post2 import Post2
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.PostsApi(api_client)
+    group_id = 'group_id_example' # str | The ID of the social group. Use an ID returned by *Perform Groups Search*.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+    create_group_post_request = unipile.CreateGroupPostRequest() # CreateGroupPostRequest | The post to publish in the social group.
+
+    try:
+        # Create a Post in a Group
+        api_response = api_instance.create_group_post(group_id, account_id, create_group_post_request)
+        print("The response of PostsApi->create_group_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling PostsApi->create_group_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**| The ID of the social group. Use an ID returned by *Perform Groups Search*. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+ **create_group_post_request** | [**CreateGroupPostRequest**](CreateGroupPostRequest.md)| The post to publish in the social group. | 
+
+### Return type
+
+[**Post2**](Post2.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_post**
-> UpdatePost200Response create_post(account_id, create_post_request)
+> Post2 create_post(account_id, create_post_request)
 
 Create a Post
 
@@ -295,7 +387,7 @@ Creates a new post.<br/><br/>Multipart supported, refer to <a href="https://deve
 ```python
 import unipile
 from unipile.models.create_post_request import CreatePostRequest
-from unipile.models.update_post200_response import UpdatePost200Response
+from unipile.models.post2 import Post2
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -344,7 +436,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdatePost200Response**](UpdatePost200Response.md)
+[**Post2**](Post2.md)
 
 ### Authorization
 
@@ -603,8 +695,97 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_group_posts_list**
+> GetPostsList200Response get_group_posts_list(group_id, account_id, offset=offset, cursor=cursor, limit=limit)
+
+List all Group's Posts
+
+Returns the posts published in a social group, newest first. Comment and react to them with the Posts methods.
+      LIMITATIONS: The posts of a private group are returned to its members only: on Facebook, a non-member gets an empty list. On Facebook, each page holds a few posts whatever the `limit`: use `next_cursor` to get more. On LinkedIn, the comments of these posts are returned only once the account owner is a member. Available for Facebook and LinkedIn.
+      
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.get_posts_list200_response import GetPostsList200Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.PostsApi(api_client)
+    group_id = 'group_id_example' # str | The ID of the social group. Use an ID returned by *Perform Groups Search*.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+
+    try:
+        # List all Group's Posts
+        api_response = api_instance.get_group_posts_list(group_id, account_id, offset=offset, cursor=cursor, limit=limit)
+        print("The response of PostsApi->get_group_posts_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling PostsApi->get_group_posts_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_id** | **str**| The ID of the social group. Use an ID returned by *Perform Groups Search*. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+
+### Return type
+
+[**GetPostsList200Response**](GetPostsList200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_post**
-> GetPost200Response get_post(post_id, account_id)
+> Post1 get_post(post_id, account_id)
 
 Get a Post
 
@@ -616,7 +797,7 @@ Retrieves the specified post.
 
 ```python
 import unipile
-from unipile.models.get_post200_response import GetPost200Response
+from unipile.models.post1 import Post1
 from unipile.rest import ApiException
 from pprint import pprint
 
@@ -665,7 +846,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetPost200Response**](GetPost200Response.md)
+[**Post1**](Post1.md)
 
 ### Authorization
 
@@ -1047,12 +1228,102 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_post_reposts_list**
+> GetPostsList200Response get_post_reposts_list(post_id, account_id, offset=offset, cursor=cursor, limit=limit)
+
+List all Post's Reposts
+
+Returns the reposts of a post, each one as a Post of the user who reposted it: a repost without text of its own has `is_repost` set to `true` and names its user in `reposted_by`; a repost with text of its own is a post of that user quoting the post. Repost counts are given with the Post object.
+      LIMITATIONS: Only available on LinkedIn. The list only holds the reposts the account can see.
+      
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.get_posts_list200_response import GetPostsList200Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.PostsApi(api_client)
+    post_id = 'post_id_example' # str | The ID of the Post to retrieve reposts from.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+    offset = 56 # int | An offset used for pagination, if supported by the provider, else use `cursor`. (optional)
+    cursor = 'cursor_example' # str | A cursor used for pagination. If supported by the provider, use `next_cursor` given by the previous page of the list, else use `offset`. (optional)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+
+    try:
+        # List all Post's Reposts
+        api_response = api_instance.get_post_reposts_list(post_id, account_id, offset=offset, cursor=cursor, limit=limit)
+        print("The response of PostsApi->get_post_reposts_list:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling PostsApi->get_post_reposts_list: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **post_id** | **str**| The ID of the Post to retrieve reposts from.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+ **offset** | **int**| An offset used for pagination, if supported by the provider, else use &#x60;cursor&#x60;. | [optional] 
+ **cursor** | **str**| A cursor used for pagination. If supported by the provider, use &#x60;next_cursor&#x60; given by the previous page of the list, else use &#x60;offset&#x60;. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+
+### Return type
+
+[**GetPostsList200Response**](GetPostsList200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_posts_list**
 > GetPostsList200Response get_posts_list(user_id, account_id, offset=offset, cursor=cursor, limit=limit)
 
 List all User's Posts
 
 Returns a list of posts created or shared by a user. Use `me` as `user_id` to specify the owner of the connected account.
+      On LinkedIn, the posts of a company page are listed with the page's numeric ID as `user_id` (its profile `id`, or the author `id` of its posts), not the ID of its messaging inbox (`COMPANY_<id>_PRIMARY`). A page the account administers returns its admin view, with analytics. A page without posts returns an empty list.
       LIMITATIONS: On Facebook, the page size is set by Facebook: each page holds up to 3 posts whatever the `limit`. Use `next_cursor` to get more.
       
 
@@ -1314,6 +1585,178 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **perform_posts_search**
+> GetPostsList200Response perform_posts_search(account_id, perform_posts_search_request, cursor=cursor, limit=limit)
+
+Perform Posts Search
+
+Returns the posts matching the given keywords and filters that the account owner can see. Send the same body with `cursor` to get the next pages.
+      LIMITATIONS: Available on Facebook. On Facebook, the page size is set by Facebook whatever the `limit` (usually 10 to 20 results), a list filter takes one ID, and an ID Facebook does not know is ignored. `start_date` and `end_date` are days of the account's time zone, from 2004 on. `posted_by` takes one option at a time (`me`, `my_groups_and_pages`, `public`, or one ID in `member`, `company` or `group`), and `seen` only `true`. LinkedIn post searches have their own route (`/linkedin/search/posts`).
+      
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.get_posts_list200_response import GetPostsList200Response
+from unipile.models.perform_posts_search_request import PerformPostsSearchRequest
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.PostsApi(api_client)
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+    perform_posts_search_request = unipile.PerformPostsSearchRequest() # PerformPostsSearchRequest | The criteria of the search.
+    cursor = 'cursor_example' # str | A cursor used for pagination. Use `next_cursor` given by the previous page of the list. (optional)
+    limit = 20 # int | The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. (optional) (default to 20)
+
+    try:
+        # Perform Posts Search
+        api_response = api_instance.perform_posts_search(account_id, perform_posts_search_request, cursor=cursor, limit=limit)
+        print("The response of PostsApi->perform_posts_search:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling PostsApi->perform_posts_search: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+ **perform_posts_search_request** | [**PerformPostsSearchRequest**](PerformPostsSearchRequest.md)| The criteria of the search. | 
+ **cursor** | **str**| A cursor used for pagination. Use &#x60;next_cursor&#x60; given by the previous page of the list. | [optional] 
+ **limit** | **int**| The limit of items to be returned. The maximum allowed value depends on the provider. This is a ceiling, not a guarantee: some providers can return fewer items than requested for a given page. | [optional] [default to 20]
+
+### Return type
+
+[**GetPostsList200Response**](GetPostsList200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **pin_post_comment**
+> PinPostComment200Response pin_post_comment(post_id, comment_id, account_id)
+
+Pin a Comment
+
+Pins a comment at the top of the comments of a post owned by the account's owner.
+      LIMITATIONS: Only on LinkedIn and Instagram, and only for comments of the account owner's own posts. On LinkedIn, a post holds a single pinned comment: pinning another one replaces it. On Instagram, the number of pinned comments per post is limited by Instagram.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.pin_post_comment200_response import PinPostComment200Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.PostsApi(api_client)
+    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    comment_id = 'comment_id_example' # str | The ID of the Comment to pin.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+
+    try:
+        # Pin a Comment
+        api_response = api_instance.pin_post_comment(post_id, comment_id, account_id)
+        print("The response of PostsApi->pin_post_comment:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling PostsApi->pin_post_comment: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **comment_id** | **str**| The ID of the Comment to pin. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+
+### Return type
+
+[**PinPostComment200Response**](PinPostComment200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Result of pinning a comment on a post. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **remove_post_comment_reaction**
 > RemovePostCommentReaction200Response remove_post_comment_reaction(post_id, comment_id, account_id, remove_post_comment_reaction_request)
 
@@ -1571,8 +2014,92 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **unpin_post_comment**
+> UnpinPostComment200Response unpin_post_comment(post_id, comment_id, account_id)
+
+Unpin a Comment
+
+Unpins a comment from a post owned by the account's owner.
+      LIMITATIONS: Only on LinkedIn and Instagram, with the same restrictions as pinning a comment.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.unpin_post_comment200_response import UnpinPostComment200Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.PostsApi(api_client)
+    post_id = 'post_id_example' # str | The ID of the Post where the comment is.<br>Use IDs from *Get a Post*, *Create a Post* or *List all User's Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post's permissions. Some providers may allow native Post IDs, please refer to Posts integration guides.
+    comment_id = 'comment_id_example' # str | The ID of the Comment to unpin.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+
+    try:
+        # Unpin a Comment
+        api_response = api_instance.unpin_post_comment(post_id, comment_id, account_id)
+        print("The response of PostsApi->unpin_post_comment:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling PostsApi->unpin_post_comment: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **post_id** | **str**| The ID of the Post where the comment is.&lt;br&gt;Use IDs from *Get a Post*, *Create a Post* or *List all User&#39;s Posts* methods responses. IDs from LinkedIn Classic post search responses can also be used directly. Use the returned ID unchanged; access and available actions still depend on the post&#39;s permissions. Some providers may allow native Post IDs, please refer to Posts integration guides. | 
+ **comment_id** | **str**| The ID of the Comment to unpin. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+
+### Return type
+
+[**UnpinPostComment200Response**](UnpinPostComment200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Result of unpinning a comment from a post. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_post**
-> UpdatePost200Response update_post(post_id, account_id, update_post_request=update_post_request)
+> Post2 update_post(post_id, account_id, update_post_request=update_post_request)
 
 Update a Post
 
@@ -1584,7 +2111,7 @@ Updates an existing post.
 
 ```python
 import unipile
-from unipile.models.update_post200_response import UpdatePost200Response
+from unipile.models.post2 import Post2
 from unipile.models.update_post_request import UpdatePostRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -1636,7 +2163,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdatePost200Response**](UpdatePost200Response.md)
+[**Post2**](Post2.md)
 
 ### Authorization
 

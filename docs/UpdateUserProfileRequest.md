@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **description** | **str** | Description of the User. Updating this field is not supported by LinkedIn and Instagram. | [optional] 
 **location** | **str** | Location of the User. Omit it to leave it unchanged. Updating this field is not supported by Instagram. | [optional] 
 **bio** | **str** | Bio / About section. Omit it to leave it unchanged or use an empty string to clear it. | [optional] 
-**picture** | [**UpdateUserProfileRequestPicture**](UpdateUserProfileRequestPicture.md) |  | [optional] 
-**background_picture** | [**UpdateUserProfileRequestPicture**](UpdateUserProfileRequestPicture.md) |  | [optional] 
+**picture** | [**UpdateChatRequestPicture**](UpdateChatRequestPicture.md) |  | [optional] 
+**background_picture** | [**UpdateChatRequestPicture**](UpdateChatRequestPicture.md) |  | [optional] 
 **specifics** | [**UpdateUserProfileRequestSpecifics**](UpdateUserProfileRequestSpecifics.md) |  | [optional] 
 
 ## Example

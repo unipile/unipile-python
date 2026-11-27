@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**delete_message**](MessagingApi.md#delete_message) | **DELETE** /v2/{account_id}/chats/{chat_id}/messages/{message_id} | Delete a Message
 [**forward_message**](MessagingApi.md#forward_message) | **POST** /v2/{account_id}/chats/{chat_id}/messages/{message_id}/forward | Forward a Message
 [**get_chat**](MessagingApi.md#get_chat) | **GET** /v2/{account_id}/chats/{chat_id} | Get a Chat
+[**get_chat_invite_link**](MessagingApi.md#get_chat_invite_link) | **GET** /v2/{account_id}/chats/{chat_id}/invite-link | Get a Chat&#39;s Invite Link
 [**get_chat_picture**](MessagingApi.md#get_chat_picture) | **GET** /v2/{account_id}/chats/{chat_id}/picture | Get a Chat Picture
 [**get_chats_list**](MessagingApi.md#get_chats_list) | **GET** /v2/{account_id}/chats | List all Chats
 [**get_contacts_list**](MessagingApi.md#get_contacts_list) | **GET** /v2/{account_id}/contacts | List contacts
@@ -22,11 +23,13 @@ Method | HTTP request | Description
 [**get_messages_list**](MessagingApi.md#get_messages_list) | **GET** /v2/{account_id}/chats/{chat_id}/messages | List all Chat Messages
 [**get_participants_list**](MessagingApi.md#get_participants_list) | **GET** /v2/{account_id}/chats/{chat_id}/participants | List all Chat Participants
 [**get_user_chat**](MessagingApi.md#get_user_chat) | **GET** /v2/{account_id}/users/{user_id}/chat | Get a User Chat
+[**join_chat**](MessagingApi.md#join_chat) | **POST** /v2/{account_id}/chats/join | Join a Chat
 [**modify_message**](MessagingApi.md#modify_message) | **POST** /v2/{account_id}/chats/{chat_id}/messages/{message_id}/modify | Modify a Message
 [**pin_message**](MessagingApi.md#pin_message) | **POST** /v2/{account_id}/chats/{chat_id}/messages/{message_id}/pin | Pin a Message
 [**read_message**](MessagingApi.md#read_message) | **POST** /v2/{account_id}/chats/{chat_id}/messages/{message_id}/read | Read a Message
 [**remove_message_reaction**](MessagingApi.md#remove_message_reaction) | **DELETE** /v2/{account_id}/chats/{chat_id}/messages/{message_id}/reactions | Remove a Message Reaction
 [**remove_participant**](MessagingApi.md#remove_participant) | **DELETE** /v2/{account_id}/chats/{chat_id}/participants/{user_id} | Remove a Chat Participant
+[**reset_chat_invite_link**](MessagingApi.md#reset_chat_invite_link) | **POST** /v2/{account_id}/chats/{chat_id}/invite-link/reset | Reset a Chat&#39;s Invite Link
 [**send_message**](MessagingApi.md#send_message) | **POST** /v2/{account_id}/chats/{chat_id}/messages/send | Send a Message
 [**set_composing_status**](MessagingApi.md#set_composing_status) | **POST** /v2/{account_id}/chats/{chat_id}/composing | Set Composing Status
 [**set_presence**](MessagingApi.md#set_presence) | **POST** /v2/{account_id}/presence | Set Presence
@@ -211,7 +214,8 @@ Name | Type | Description  | Notes
 Add a Chat Participant
 
 Adds a new user as participant of chat if you have the rights to. Providers might requires an admin role or some permissions.
-      Trying to add a participant into a 1to1 chat can fail depending on the provider.
+      Trying to add a participant into a 1to1 chat can fail depending on the provider. For a WhatsApp community conversation, use the conversation's `chat_id`.
+      LIMITATIONS: Only WhatsApp supports `fallback_to_invite`: other providers ignore it. On WhatsApp, only the admins of the group can add participants, unless the group lets all its members do it, otherwise the request fails with a 403. A user whose privacy settings do not allow being added also fails with a 403: with `fallback_to_invite`, the account sends them instead a private invitation to the group in their 1to1 chat, as WhatsApp's "Invite to group" option does, and the response is `ParticipantInvited`. The invitation expires after the delay set by WhatsApp, and each such call sends a new one. A user already in the group fails with a 409.
 
 ### Example
 
@@ -541,6 +545,8 @@ Name | Type | Description  | Notes
 Get a Chat
 
 Retrieves a Chat object.
+      LIMITATIONS: On WhatsApp, the conversations in a community have `type=group`. Their `community_id` identifies the community in the Communities API, and `specifics.community_role` is `announcement_group` or `group_chat`.
+      
 
 ### Example
 
@@ -613,6 +619,89 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_chat_invite_link**
+> GetChatInviteLink200Response get_chat_invite_link(chat_id, account_id)
+
+Get a Chat's Invite Link
+
+Returns the link that invites people to join a group chat the account owner administers. Its `code` is accepted by *Join a Chat*.
+      LIMITATIONS: Available for WhatsApp group chats. Only an admin of the group gets its link (403 otherwise). For a WhatsApp community, use *Get a Community's Invite Link*.
+      
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.get_chat_invite_link200_response import GetChatInviteLink200Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.MessagingApi(api_client)
+    chat_id = 'chat_id_example' # str | ID of the group Chat whose invite link is returned.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+
+    try:
+        # Get a Chat's Invite Link
+        api_response = api_instance.get_chat_invite_link(chat_id, account_id)
+        print("The response of MessagingApi->get_chat_invite_link:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MessagingApi->get_chat_invite_link: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chat_id** | **str**| ID of the group Chat whose invite link is returned. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+
+### Return type
+
+[**GetChatInviteLink200Response**](GetChatInviteLink200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The link that invites people to join a group chat or a community. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -702,6 +791,7 @@ List all Chats
 Returns a list of account's chats, whatever the inbox they belong to. The chats are returned sorted by their last message date, with the most recent appearing first.
       You might want to use the <a href="https://developer.unipile.com/v2.0/reference/getinboxchatslist">List inbox Chats</a> instead if not supported by the provider.
       Filters are applied with an AND logic if supported by the provider.
+      LIMITATIONS: On WhatsApp, the conversations in a community have `type=group`. Their `community_id` identifies the community in the Communities API, and `specifics.community_role` is `announcement_group` or `group_chat`.
       
 
 ### Example
@@ -885,6 +975,9 @@ List Inbox Chats
 Returns a list of account's chats from a specific inbox.
       The chats are returned sorted by their last message date, with the most recent appearing first.
       Filters are applied with an AND logic if supported by the provider.
+      For LinkedIn Classic, Company and Sales Navigator inboxes, before and after use last activity time and are preserved in continuation cursors. Send only cursor and optionally limit on subsequent pages. Legacy native cursors remain accepted but cannot restore omitted date filters; restart the filtered listing to obtain a continuation that preserves them. LinkedIn Recruiter supports after using last activity time with offset pagination; repeat the same after on each page. Recruiter does not support before.
+      For Telegram, use cursor-based pagination; offset-based pagination is not supported. The before and after filters use the last message date.
+      A filtered page may be short or empty and still contain a next_cursor. Continue with that cursor until no next_cursor is returned.
       
 
 ### Example
@@ -982,7 +1075,7 @@ Name | Type | Description  | Notes
 
 List all Inboxes
 
-Returns a list of the account's Inboxes.
+Returns a list of the account's Inboxes. For Telegram, these are the custom chat folders; the default All chats view is not included.
 
 ### Example
 
@@ -1316,6 +1409,7 @@ Name | Type | Description  | Notes
 List all Chat Messages
 
 Returns a list of messages in a chat. The messages are returned sorted by their timestamp, with the most recent appearing first.
+      LinkedIn Classic and Company continuation cursors preserve before and after. Send only cursor and optionally limit on subsequent pages. Legacy native cursors remain accepted but cannot restore omitted date filters; restart the filtered listing to obtain a continuation that preserves them. LinkedIn does not support filtering messages by user_id. Recruiter uses offset pagination and does not support before.
 
 ### Example
 
@@ -1409,7 +1503,7 @@ Name | Type | Description  | Notes
 List all Chat Participants
 
 Returns a list of participants in the specified group chat. For 1to1 chats, the unique participant is given in the chat object.
-      Trying to retrieve the list of participants of a 1to1 chat will fail.
+      Trying to retrieve the list of participants of a 1to1 chat will fail. For a WhatsApp community conversation, use one of the IDs in the community's `chat_ids` array.
 
 ### Example
 
@@ -1572,8 +1666,90 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **join_chat**
+> JoinChat200Response join_chat(account_id, join_chat_request)
+
+Join a Chat
+
+Joins a group conversation using its invitation code or link. Available for WhatsApp. If the conversation requires approval, the membership stays `pending` until an admin approves the request. Use *Join a Community* for community invitations.
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.join_chat200_response import JoinChat200Response
+from unipile.models.join_chat_request import JoinChatRequest
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.MessagingApi(api_client)
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+    join_chat_request = unipile.JoinChatRequest() # JoinChatRequest | The invitation to join a group conversation.
+
+    try:
+        # Join a Chat
+        api_response = api_instance.join_chat(account_id, join_chat_request)
+        print("The response of MessagingApi->join_chat:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MessagingApi->join_chat: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+ **join_chat_request** | [**JoinChatRequest**](JoinChatRequest.md)| The invitation to join a group conversation. | 
+
+### Return type
+
+[**JoinChat200Response**](JoinChat200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The result of the request to join the chat. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **modify_message**
-> ModifyMessage200Response modify_message(chat_id, message_id, account_id, modify_message_request)
+> Message2 modify_message(chat_id, message_id, account_id, modify_message_request)
 
 Modify a Message
 
@@ -1586,7 +1762,7 @@ Modifies one of the account's owner messages.
 
 ```python
 import unipile
-from unipile.models.modify_message200_response import ModifyMessage200Response
+from unipile.models.message2 import Message2
 from unipile.models.modify_message_request import ModifyMessageRequest
 from unipile.rest import ApiException
 from pprint import pprint
@@ -1640,7 +1816,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ModifyMessage200Response**](ModifyMessage200Response.md)
+[**Message2**](Message2.md)
 
 ### Authorization
 
@@ -1926,7 +2102,7 @@ Name | Type | Description  | Notes
 Remove a Chat Participant
 
 Removes a participant user from a chat if you have the rights to. Providers might requires an admin role or some permissions.
-      Trying to remove a participant from a 1to1 chat will fail.
+      Trying to remove a participant from a 1to1 chat will fail. For a WhatsApp community conversation, use the conversation's `chat_id`.
 
 ### Example
 
@@ -2001,6 +2177,89 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Default Response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **reset_chat_invite_link**
+> GetChatInviteLink200Response reset_chat_invite_link(chat_id, account_id)
+
+Reset a Chat's Invite Link
+
+Replaces the invite link of a group chat the account owner administers, and returns the new one. The previous link stops working.
+      LIMITATIONS: Available for WhatsApp group chats. Only an admin of the group can reset its link (403 otherwise). For a WhatsApp community, use *Reset a Community's Invite Link*.
+      
+
+### Example
+
+* Api Key Authentication (apiKey):
+
+```python
+import unipile
+from unipile.models.get_chat_invite_link200_response import GetChatInviteLink200Response
+from unipile.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.unipile.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = unipile.Configuration(
+    host = "https://api.unipile.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with unipile.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = unipile.MessagingApi(api_client)
+    chat_id = 'chat_id_example' # str | ID of the group Chat whose invite link is returned.
+    account_id = 'account_id_example' # str | ID of the Account (acc_xxx) to call the method on behalf of.
+
+    try:
+        # Reset a Chat's Invite Link
+        api_response = api_instance.reset_chat_invite_link(chat_id, account_id)
+        print("The response of MessagingApi->reset_chat_invite_link:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling MessagingApi->reset_chat_invite_link: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chat_id** | **str**| ID of the group Chat whose invite link is returned. | 
+ **account_id** | **str**| ID of the Account (acc_xxx) to call the method on behalf of. | 
+
+### Return type
+
+[**GetChatInviteLink200Response**](GetChatInviteLink200Response.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The link that invites people to join a group chat or a community. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

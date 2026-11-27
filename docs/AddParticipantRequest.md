@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **user_id** | **str** | The ID of the User to add as participant. | 
+**fallback_to_invite** | **bool** | When the privacy settings of the User do not allow adding them, send them an invitation to join the Chat instead. The response then tells that the User was invited, not added. Defaults to false. | [optional] 
 
 ## Example
 

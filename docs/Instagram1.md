@@ -7,6 +7,8 @@ Instagram specific dataset for user profiles.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **messaging_identifier** | **str** | The text content of the message, when available. | 
+**account_type** | **str** | Type of the account.       - &#x60;personal&#x60; is a regular personal account.       - &#x60;business&#x60; is a professional account for a business or brand.       - &#x60;creator&#x60; is a professional account for a creator or public figure. | [optional] 
+**category** | **str** | Category displayed on the profile of a professional account. Absent when the profile has none. | [optional] 
 
 ## Example
 

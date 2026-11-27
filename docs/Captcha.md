@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **type** | **str** |  | 
 **public_key** | **str** | The text content of the message, when available. | 
 **data** | **str** | The text content of the message, when available. | 
+**image** | **str** | For image captchas: the challenge image as a base64 data URL. Show it to the user and send their answer as the checkpoint &#x60;code&#x60;. A wrong answer may return a new CAPTCHA checkpoint with a new image, and requesting a checkpoint for the same intent may return one too. | [optional] 
 
 ## Example
 

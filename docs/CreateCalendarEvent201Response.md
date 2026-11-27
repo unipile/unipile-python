@@ -19,8 +19,8 @@ Name | Type | Description | Notes
 **is_all_day** | **bool** | Is the event all day. | 
 **is_attendees_list_hidden** | **bool** | Is the attendees list hidden for attendees. | 
 **attendees** | [**List[GetCalendarEventList200ResponseDataInnerAttendeesInner]**](GetCalendarEventList200ResponseDataInnerAttendeesInner.md) | The attendees of the event. | [optional] 
-**start** | [**GetCalendarEventList200ResponseDataInnerStart**](GetCalendarEventList200ResponseDataInnerStart.md) |  | 
-**end** | [**GetCalendarEventList200ResponseDataInnerEnd**](GetCalendarEventList200ResponseDataInnerEnd.md) |  | 
+**start** | [**PerformEventsSearch200ResponseDataInnerStart**](PerformEventsSearch200ResponseDataInnerStart.md) |  | 
+**end** | [**PerformEventsSearch200ResponseDataInnerEnd**](PerformEventsSearch200ResponseDataInnerEnd.md) |  | 
 **recurrence** | **List[str]** | List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. | [optional] 
 **organizer** | [**GetCalendarEventList200ResponseDataInnerOrganizer**](GetCalendarEventList200ResponseDataInnerOrganizer.md) |  | 
 **conference** | [**GetCalendarEventList200ResponseDataInnerConference**](GetCalendarEventList200ResponseDataInnerConference.md) |  | [optional] 
